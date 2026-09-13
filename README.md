@@ -24,7 +24,8 @@ Research question and hypotheses: [`research/hypothesis.md`](research/hypothesis
 
 | Task | Oracle | Nop | Mutation suite | Model runs |
 |------|--------|-----|----------------|------------|
-| 01 revenue reconciliation | 1.0 | 0.0 | 28/28 as expected | not yet run |
+| 01 revenue reconciliation | 1.0 | 0.0 | 28/28 as expected | Gemini 3 Flash: 2/3 pass (pass@3 = 1) |
+| 02 renewal-risk regression | 1.0 | 0.0 | 21/21 as expected | not yet run |
 
 ## Common commands
 

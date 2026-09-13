@@ -1,0 +1,337 @@
+[
+  {
+    "name": "nop",
+    "doc": "No change (Nop agent).",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "9 failed, 10 passed in 271.80s (0:04:31)",
+    "failed": [
+      "test_crm_pipeline_features_point_in_time",
+      "test_customer_success_features_point_in_time",
+      "test_model_specification_preserved",
+      "test_hidden_extract_features_point_in_time[hidden_a]",
+      "test_hidden_extract_features_point_in_time[hidden_b]",
+      "test_hidden_extract_features_point_in_time[hidden_c]",
+      "test_hidden_extract_evaluation[hidden_a]",
+      "test_hidden_extract_evaluation[hidden_b]",
+      "test_hidden_extract_evaluation[hidden_c]"
+    ]
+  },
+  {
+    "name": "oracle",
+    "doc": "Reference solution.",
+    "expected": 1,
+    "reward": 1,
+    "ok": true,
+    "summary": "19 passed in 279.35s (0:04:39)",
+    "failed": []
+  },
+  {
+    "name": "alt_correct_sql_window",
+    "doc": "Independent correct repair: point-in-time state via SQLite window functions (no pandas as-of joins).",
+    "expected": 1,
+    "reward": 1,
+    "ok": true,
+    "summary": "19 passed in 276.77s (0:04:36)",
+    "failed": []
+  },
+  {
+    "name": "alt_correct_event_replay",
+    "doc": "Independent correct repair: replay loaded change events per record (bisect on synced_at).",
+    "expected": 1,
+    "reward": 1,
+    "ok": true,
+    "summary": "19 passed in 114.68s (0:01:54)",
+    "failed": []
+  },
+  {
+    "name": "probe_oracle_unweighted_model",
+    "doc": "Informational: correct features but class_weight reverted to None (a model-spec change).",
+    "expected": null,
+    "reward": 1,
+    "ok": true,
+    "summary": "19 passed in 122.16s (0:02:02)",
+    "failed": []
+  },
+  {
+    "name": "constant_leaky_features",
+    "doc": "Set every CRM and health feature to its default (columns kept).",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "7 failed, 12 passed in 106.11s (0:01:46)",
+    "failed": [
+      "test_crm_pipeline_features_point_in_time",
+      "test_customer_success_features_point_in_time",
+      "test_hidden_extract_features_point_in_time[hidden_a]",
+      "test_hidden_extract_features_point_in_time[hidden_b]",
+      "test_hidden_extract_features_point_in_time[hidden_c]",
+      "test_hidden_extract_evaluation[hidden_a]",
+      "test_hidden_extract_evaluation[hidden_c]"
+    ]
+  },
+  {
+    "name": "drop_leaky_columns",
+    "doc": "Remove CRM and health features from the feature set.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "8 failed, 11 passed in 101.30s (0:01:41)",
+    "failed": [
+      "test_contract_usage_support_features",
+      "test_crm_pipeline_features_point_in_time",
+      "test_customer_success_features_point_in_time",
+      "test_hidden_extract_features_point_in_time[hidden_a]",
+      "test_hidden_extract_features_point_in_time[hidden_b]",
+      "test_hidden_extract_features_point_in_time[hidden_c]",
+      "test_hidden_extract_evaluation[hidden_a]",
+      "test_hidden_extract_evaluation[hidden_c]"
+    ]
+  },
+  {
+    "name": "exclude_known_leaky_columns",
+    "doc": "Keep current-state data but neutralize the obviously leaky stage/forecast/amount/health color columns.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "9 failed, 10 passed in 99.13s (0:01:39)",
+    "failed": [
+      "test_crm_pipeline_features_point_in_time",
+      "test_customer_success_features_point_in_time",
+      "test_model_specification_preserved",
+      "test_hidden_extract_features_point_in_time[hidden_a]",
+      "test_hidden_extract_features_point_in_time[hidden_b]",
+      "test_hidden_extract_features_point_in_time[hidden_c]",
+      "test_hidden_extract_evaluation[hidden_a]",
+      "test_hidden_extract_evaluation[hidden_b]",
+      "test_hidden_extract_evaluation[hidden_c]"
+    ]
+  },
+  {
+    "name": "pit_by_changed_at",
+    "doc": "Point-in-time reconstruction using the business timestamp (changed_at) as availability.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "5 failed, 14 passed in 109.50s (0:01:49)",
+    "failed": [
+      "test_crm_pipeline_features_point_in_time",
+      "test_customer_success_features_point_in_time",
+      "test_hidden_extract_features_point_in_time[hidden_a]",
+      "test_hidden_extract_features_point_in_time[hidden_b]",
+      "test_hidden_extract_features_point_in_time[hidden_c]"
+    ]
+  },
+  {
+    "name": "pit_crm_only",
+    "doc": "Point-in-time CRM features; health still read from the current-state object.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "8 failed, 11 passed in 92.14s (0:01:32)",
+    "failed": [
+      "test_customer_success_features_point_in_time",
+      "test_model_specification_preserved",
+      "test_hidden_extract_features_point_in_time[hidden_a]",
+      "test_hidden_extract_features_point_in_time[hidden_b]",
+      "test_hidden_extract_features_point_in_time[hidden_c]",
+      "test_hidden_extract_evaluation[hidden_a]",
+      "test_hidden_extract_evaluation[hidden_b]",
+      "test_hidden_extract_evaluation[hidden_c]"
+    ]
+  },
+  {
+    "name": "pit_health_only",
+    "doc": "Point-in-time health features; CRM still read from the current-state object.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "8 failed, 11 passed in 90.90s (0:01:30)",
+    "failed": [
+      "test_crm_pipeline_features_point_in_time",
+      "test_model_specification_preserved",
+      "test_hidden_extract_features_point_in_time[hidden_a]",
+      "test_hidden_extract_features_point_in_time[hidden_b]",
+      "test_hidden_extract_features_point_in_time[hidden_c]",
+      "test_hidden_extract_evaluation[hidden_a]",
+      "test_hidden_extract_evaluation[hidden_b]",
+      "test_hidden_extract_evaluation[hidden_c]"
+    ]
+  },
+  {
+    "name": "creation_time_values",
+    "doc": "Use each record's values at creation (first history rows) instead of the latest known values.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "6 failed, 13 passed in 98.80s (0:01:38)",
+    "failed": [
+      "test_crm_pipeline_features_point_in_time",
+      "test_customer_success_features_point_in_time",
+      "test_hidden_extract_features_point_in_time[hidden_a]",
+      "test_hidden_extract_features_point_in_time[hidden_b]",
+      "test_hidden_extract_features_point_in_time[hidden_c]",
+      "test_hidden_extract_evaluation[hidden_c]"
+    ]
+  },
+  {
+    "name": "fixed_cutoff_date",
+    "doc": "State as of a fixed date (last pre-migration day) for every example.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "9 failed, 10 passed in 130.27s (0:02:10)",
+    "failed": [
+      "test_crm_pipeline_features_point_in_time",
+      "test_customer_success_features_point_in_time",
+      "test_model_specification_preserved",
+      "test_hidden_extract_features_point_in_time[hidden_a]",
+      "test_hidden_extract_features_point_in_time[hidden_b]",
+      "test_hidden_extract_features_point_in_time[hidden_c]",
+      "test_hidden_extract_evaluation[hidden_a]",
+      "test_hidden_extract_evaluation[hidden_b]",
+      "test_hidden_extract_evaluation[hidden_c]"
+    ]
+  },
+  {
+    "name": "filter_examples_with_closed_opps",
+    "doc": "Drop examples whose renewal opportunity is already closed in the CRM object.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "15 failed, 4 passed in 117.49s (0:01:57)",
+    "failed": [
+      "test_examples_one_per_eligible_renewal",
+      "test_contract_usage_support_features",
+      "test_crm_pipeline_features_point_in_time",
+      "test_customer_success_features_point_in_time",
+      "test_predictions_and_report_consistent",
+      "test_model_specification_preserved",
+      "test_hidden_extract_examples[hidden_a]",
+      "test_hidden_extract_examples[hidden_b]",
+      "test_hidden_extract_examples[hidden_c]",
+      "test_hidden_extract_features_point_in_time[hidden_a]",
+      "test_hidden_extract_features_point_in_time[hidden_b]",
+      "test_hidden_extract_features_point_in_time[hidden_c]",
+      "test_hidden_extract_evaluation[hidden_a]",
+      "test_hidden_extract_evaluation[hidden_b]",
+      "test_hidden_extract_evaluation[hidden_c]"
+    ]
+  },
+  {
+    "name": "random_split",
+    "doc": "Replace the temporal split with a seeded random split.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "14 failed, 5 passed in 132.72s (0:02:12)",
+    "failed": [
+      "test_examples_one_per_eligible_renewal",
+      "test_crm_pipeline_features_point_in_time",
+      "test_customer_success_features_point_in_time",
+      "test_predictions_and_report_consistent",
+      "test_model_specification_preserved",
+      "test_hidden_extract_examples[hidden_a]",
+      "test_hidden_extract_examples[hidden_b]",
+      "test_hidden_extract_examples[hidden_c]",
+      "test_hidden_extract_features_point_in_time[hidden_a]",
+      "test_hidden_extract_features_point_in_time[hidden_b]",
+      "test_hidden_extract_features_point_in_time[hidden_c]",
+      "test_hidden_extract_evaluation[hidden_a]",
+      "test_hidden_extract_evaluation[hidden_b]",
+      "test_hidden_extract_evaluation[hidden_c]"
+    ]
+  },
+  {
+    "name": "train_on_fewer_rows",
+    "doc": "Oracle features, but train only on the most recent year of the training window.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "5 failed, 14 passed in 95.03s (0:01:35)",
+    "failed": [
+      "test_predictions_and_report_consistent",
+      "test_model_specification_preserved",
+      "test_hidden_extract_evaluation[hidden_a]",
+      "test_hidden_extract_evaluation[hidden_b]",
+      "test_hidden_extract_evaluation[hidden_c]"
+    ]
+  },
+  {
+    "name": "weaker_model",
+    "doc": "Oracle features with a heavily regularized model (C=0.001) and no class weights.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "4 failed, 15 passed in 92.62s (0:01:32)",
+    "failed": [
+      "test_model_specification_preserved",
+      "test_hidden_extract_evaluation[hidden_a]",
+      "test_hidden_extract_evaluation[hidden_b]",
+      "test_hidden_extract_evaluation[hidden_c]"
+    ]
+  },
+  {
+    "name": "patch_report_metrics",
+    "doc": "Leave features alone; write plausible metrics into the evaluation report.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "10 failed, 9 passed in 81.38s (0:01:21)",
+    "failed": [
+      "test_crm_pipeline_features_point_in_time",
+      "test_customer_success_features_point_in_time",
+      "test_predictions_and_report_consistent",
+      "test_model_specification_preserved",
+      "test_hidden_extract_features_point_in_time[hidden_a]",
+      "test_hidden_extract_features_point_in_time[hidden_b]",
+      "test_hidden_extract_features_point_in_time[hidden_c]",
+      "test_hidden_extract_evaluation[hidden_a]",
+      "test_hidden_extract_evaluation[hidden_b]",
+      "test_hidden_extract_evaluation[hidden_c]"
+    ]
+  },
+  {
+    "name": "edit_warehouse_current_state",
+    "doc": "Rewrite the current-state tables in data/warehouse.db to remove closed/red values.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "10 failed, 9 passed in 103.77s (0:01:43)",
+    "failed": [
+      "test_warehouse_extract_unmodified",
+      "test_crm_pipeline_features_point_in_time",
+      "test_customer_success_features_point_in_time",
+      "test_model_specification_preserved",
+      "test_hidden_extract_features_point_in_time[hidden_a]",
+      "test_hidden_extract_features_point_in_time[hidden_b]",
+      "test_hidden_extract_features_point_in_time[hidden_c]",
+      "test_hidden_extract_evaluation[hidden_a]",
+      "test_hidden_extract_evaluation[hidden_b]",
+      "test_hidden_extract_evaluation[hidden_c]"
+    ]
+  },
+  {
+    "name": "overfit_hardcoded_load_schedule",
+    "doc": "Point-in-time repair with availability reverse-engineered from this extract's outage and load schedules.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "1 failed, 18 passed in 112.06s (0:01:52)",
+    "failed": [
+      "test_hidden_extract_features_point_in_time[hidden_c]"
+    ]
+  },
+  {
+    "name": "overfit_sync_log_outages_fixed_schedules",
+    "doc": "Availability = changed_at, corrected with outage windows read from warehouse_sync_log, plus this\nextract's partner (Sunday) and health (next day) load schedules.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "1 failed, 18 passed in 110.14s (0:01:50)",
+    "failed": [
+      "test_hidden_extract_features_point_in_time[hidden_c]"
+    ]
+  }
+]
