@@ -1,0 +1,545 @@
+[
+  {
+    "name": "nop",
+    "doc": "No changes (equivalent to Nop agent).",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "15 failed, 13 passed in 5.73s",
+    "failed": [
+      "test_fct_preserves_source_grain",
+      "test_monthly_totals_match_billing_every_period",
+      "test_credit_notes_and_gross_revenue",
+      "test_revenue_rows_attributed_to_canonical_account",
+      "test_migrated_customers_account_revenue",
+      "test_account_and_segment_reports",
+      "test_identical_invoice_lines_preserved",
+      "test_dashboard_extracts_match",
+      "test_dashboard_mom_and_top_accounts",
+      "test_hidden_snapshot_source_grain[hidden_a]",
+      "test_hidden_snapshot_source_grain[hidden_b]",
+      "test_hidden_snapshot_attribution[hidden_a]",
+      "test_hidden_snapshot_attribution[hidden_b]",
+      "test_hidden_snapshot_reports[hidden_a]",
+      "test_hidden_snapshot_reports[hidden_b]"
+    ]
+  },
+  {
+    "name": "oracle",
+    "doc": "Reference solution.",
+    "expected": 1,
+    "reward": 1,
+    "ok": true,
+    "summary": "28 passed in 6.40s",
+    "failed": []
+  },
+  {
+    "name": "alt_correct_crm_primary_owner",
+    "doc": "Different correct implementation: owner from CRM primary links, lineage from CRM successor pointers\non current records, SQL-free dict logic.",
+    "expected": 1,
+    "reward": 1,
+    "ok": true,
+    "summary": "28 passed in 5.73s",
+    "failed": []
+  },
+  {
+    "name": "alt_correct_sql_mapping_with_guard",
+    "doc": "Oracle mapping plus an extra grain guard in the pipeline (defensive, still correct).",
+    "expected": 1,
+    "reward": 1,
+    "ok": true,
+    "summary": "28 passed in 6.00s",
+    "failed": []
+  },
+  {
+    "name": "blanket_drop_duplicates",
+    "doc": "rows.drop_duplicates() after enrichment.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "15 failed, 13 passed in 6.02s",
+    "failed": [
+      "test_fct_preserves_source_grain",
+      "test_monthly_totals_match_billing_every_period",
+      "test_credit_notes_and_gross_revenue",
+      "test_revenue_rows_attributed_to_canonical_account",
+      "test_migrated_customers_account_revenue",
+      "test_account_and_segment_reports",
+      "test_identical_invoice_lines_preserved",
+      "test_dashboard_extracts_match",
+      "test_dashboard_mom_and_top_accounts",
+      "test_hidden_snapshot_source_grain[hidden_a]",
+      "test_hidden_snapshot_source_grain[hidden_b]",
+      "test_hidden_snapshot_attribution[hidden_a]",
+      "test_hidden_snapshot_attribution[hidden_b]",
+      "test_hidden_snapshot_reports[hidden_a]",
+      "test_hidden_snapshot_reports[hidden_b]"
+    ]
+  },
+  {
+    "name": "dedupe_source_grain_keep_first",
+    "doc": "drop_duplicates on (source_type, source_id, revenue_month): fixes totals, not identity.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "8 failed, 20 passed in 6.40s",
+    "failed": [
+      "test_revenue_rows_attributed_to_canonical_account",
+      "test_migrated_customers_account_revenue",
+      "test_account_and_segment_reports",
+      "test_hidden_snapshot_source_grain[hidden_a]",
+      "test_hidden_snapshot_attribution[hidden_a]",
+      "test_hidden_snapshot_attribution[hidden_b]",
+      "test_hidden_snapshot_reports[hidden_a]",
+      "test_hidden_snapshot_reports[hidden_b]"
+    ]
+  },
+  {
+    "name": "dedupe_by_invoice_id",
+    "doc": "Naive invoice-level dedupe.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "18 failed, 10 passed in 7.94s",
+    "failed": [
+      "test_fct_preserves_source_grain",
+      "test_monthly_totals_match_billing_every_period",
+      "test_credit_notes_and_gross_revenue",
+      "test_revenue_rows_attributed_to_canonical_account",
+      "test_migrated_customers_account_revenue",
+      "test_non_migrated_accounts_unchanged",
+      "test_account_and_segment_reports",
+      "test_identical_invoice_lines_preserved",
+      "test_dashboard_extracts_match",
+      "test_dashboard_mom_and_top_accounts",
+      "test_hidden_snapshot_source_grain[hidden_a]",
+      "test_hidden_snapshot_source_grain[hidden_b]",
+      "test_hidden_snapshot_source_grain[hidden_c]",
+      "test_hidden_snapshot_attribution[hidden_a]",
+      "test_hidden_snapshot_attribution[hidden_b]",
+      "test_hidden_snapshot_reports[hidden_a]",
+      "test_hidden_snapshot_reports[hidden_b]",
+      "test_hidden_snapshot_reports[hidden_c]"
+    ]
+  },
+  {
+    "name": "dedupe_by_line_content",
+    "doc": "Dedupe on invoice + amount + currency (kills identical legitimate lines).",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "18 failed, 10 passed in 6.02s",
+    "failed": [
+      "test_fct_preserves_source_grain",
+      "test_monthly_totals_match_billing_every_period",
+      "test_credit_notes_and_gross_revenue",
+      "test_revenue_rows_attributed_to_canonical_account",
+      "test_migrated_customers_account_revenue",
+      "test_non_migrated_accounts_unchanged",
+      "test_account_and_segment_reports",
+      "test_identical_invoice_lines_preserved",
+      "test_dashboard_extracts_match",
+      "test_dashboard_mom_and_top_accounts",
+      "test_hidden_snapshot_source_grain[hidden_a]",
+      "test_hidden_snapshot_source_grain[hidden_b]",
+      "test_hidden_snapshot_source_grain[hidden_c]",
+      "test_hidden_snapshot_attribution[hidden_a]",
+      "test_hidden_snapshot_attribution[hidden_b]",
+      "test_hidden_snapshot_reports[hidden_a]",
+      "test_hidden_snapshot_reports[hidden_b]",
+      "test_hidden_snapshot_reports[hidden_c]"
+    ]
+  },
+  {
+    "name": "primary_links_only",
+    "doc": "Keep only CRM rows whose billing_link_type is primary.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "13 failed, 15 passed in 9.10s",
+    "failed": [
+      "test_fct_preserves_source_grain",
+      "test_monthly_totals_match_billing_every_period",
+      "test_credit_notes_and_gross_revenue",
+      "test_revenue_rows_attributed_to_canonical_account",
+      "test_migrated_customers_account_revenue",
+      "test_account_and_segment_reports",
+      "test_dashboard_extracts_match",
+      "test_dashboard_mom_and_top_accounts",
+      "test_hidden_snapshot_source_grain[hidden_a]",
+      "test_hidden_snapshot_attribution[hidden_a]",
+      "test_hidden_snapshot_attribution[hidden_b]",
+      "test_hidden_snapshot_reports[hidden_a]",
+      "test_hidden_snapshot_reports[hidden_b]"
+    ]
+  },
+  {
+    "name": "exclude_migrated_records",
+    "doc": "Drop CRM record versions in Migrated status.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "8 failed, 20 passed in 6.16s",
+    "failed": [
+      "test_revenue_rows_attributed_to_canonical_account",
+      "test_migrated_customers_account_revenue",
+      "test_account_and_segment_reports",
+      "test_hidden_snapshot_source_grain[hidden_a]",
+      "test_hidden_snapshot_attribution[hidden_a]",
+      "test_hidden_snapshot_attribution[hidden_b]",
+      "test_hidden_snapshot_reports[hidden_a]",
+      "test_hidden_snapshot_reports[hidden_b]"
+    ]
+  },
+  {
+    "name": "hardcoded_account_filter",
+    "doc": "Filter the (visible) problematic billing accounts' legacy CRM rows by literal id list.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "9 failed, 19 passed in 7.63s",
+    "failed": [
+      "test_revenue_rows_attributed_to_canonical_account",
+      "test_migrated_customers_account_revenue",
+      "test_account_and_segment_reports",
+      "test_hidden_snapshot_source_grain[hidden_a]",
+      "test_hidden_snapshot_source_grain[hidden_b]",
+      "test_hidden_snapshot_attribution[hidden_a]",
+      "test_hidden_snapshot_attribution[hidden_b]",
+      "test_hidden_snapshot_reports[hidden_a]",
+      "test_hidden_snapshot_reports[hidden_b]"
+    ]
+  },
+  {
+    "name": "august_only_dedupe",
+    "doc": "Month-specific special case.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "9 failed, 19 passed in 5.84s",
+    "failed": [
+      "test_revenue_rows_attributed_to_canonical_account",
+      "test_migrated_customers_account_revenue",
+      "test_account_and_segment_reports",
+      "test_hidden_snapshot_source_grain[hidden_a]",
+      "test_hidden_snapshot_source_grain[hidden_b]",
+      "test_hidden_snapshot_attribution[hidden_a]",
+      "test_hidden_snapshot_attribution[hidden_b]",
+      "test_hidden_snapshot_reports[hidden_a]",
+      "test_hidden_snapshot_reports[hidden_b]"
+    ]
+  },
+  {
+    "name": "hardcoded_total_scaling",
+    "doc": "Scale August fct amounts so the total equals the billing figure (literal).",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "15 failed, 13 passed in 6.77s",
+    "failed": [
+      "test_fct_preserves_source_grain",
+      "test_credit_notes_and_gross_revenue",
+      "test_revenue_rows_attributed_to_canonical_account",
+      "test_migrated_customers_account_revenue",
+      "test_non_migrated_accounts_unchanged",
+      "test_account_and_segment_reports",
+      "test_identical_invoice_lines_preserved",
+      "test_dashboard_extracts_match",
+      "test_dashboard_mom_and_top_accounts",
+      "test_hidden_snapshot_source_grain[hidden_a]",
+      "test_hidden_snapshot_source_grain[hidden_b]",
+      "test_hidden_snapshot_attribution[hidden_a]",
+      "test_hidden_snapshot_attribution[hidden_b]",
+      "test_hidden_snapshot_reports[hidden_a]",
+      "test_hidden_snapshot_reports[hidden_b]"
+    ]
+  },
+  {
+    "name": "divide_by_constant",
+    "doc": "Divide August by the observed overstatement ratio.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "16 failed, 12 passed in 10.29s",
+    "failed": [
+      "test_fct_preserves_source_grain",
+      "test_monthly_totals_match_billing_every_period",
+      "test_credit_notes_and_gross_revenue",
+      "test_revenue_rows_attributed_to_canonical_account",
+      "test_migrated_customers_account_revenue",
+      "test_non_migrated_accounts_unchanged",
+      "test_account_and_segment_reports",
+      "test_identical_invoice_lines_preserved",
+      "test_dashboard_extracts_match",
+      "test_dashboard_mom_and_top_accounts",
+      "test_hidden_snapshot_source_grain[hidden_a]",
+      "test_hidden_snapshot_source_grain[hidden_b]",
+      "test_hidden_snapshot_attribution[hidden_a]",
+      "test_hidden_snapshot_attribution[hidden_b]",
+      "test_hidden_snapshot_reports[hidden_a]",
+      "test_hidden_snapshot_reports[hidden_b]"
+    ]
+  },
+  {
+    "name": "output_only_patch",
+    "doc": "Correct numbers written straight into warehouse + dashboard outputs; pipeline code untouched.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "15 failed, 13 passed in 4.36s",
+    "failed": [
+      "test_fct_preserves_source_grain",
+      "test_monthly_totals_match_billing_every_period",
+      "test_credit_notes_and_gross_revenue",
+      "test_revenue_rows_attributed_to_canonical_account",
+      "test_migrated_customers_account_revenue",
+      "test_account_and_segment_reports",
+      "test_identical_invoice_lines_preserved",
+      "test_dashboard_extracts_match",
+      "test_dashboard_mom_and_top_accounts",
+      "test_hidden_snapshot_source_grain[hidden_a]",
+      "test_hidden_snapshot_source_grain[hidden_b]",
+      "test_hidden_snapshot_attribution[hidden_a]",
+      "test_hidden_snapshot_attribution[hidden_b]",
+      "test_hidden_snapshot_reports[hidden_a]",
+      "test_hidden_snapshot_reports[hidden_b]"
+    ]
+  },
+  {
+    "name": "edit_crm_export",
+    "doc": "Delete legacy billing-link rows from the CRM export (source data edit).",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "16 failed, 12 passed in 5.99s",
+    "failed": [
+      "test_crm_extracts_unmodified[data/crm/crm_accounts_export.csv]",
+      "test_fct_preserves_source_grain",
+      "test_monthly_totals_match_billing_every_period",
+      "test_credit_notes_and_gross_revenue",
+      "test_revenue_rows_attributed_to_canonical_account",
+      "test_migrated_customers_account_revenue",
+      "test_account_and_segment_reports",
+      "test_identical_invoice_lines_preserved",
+      "test_dashboard_extracts_match",
+      "test_dashboard_mom_and_top_accounts",
+      "test_hidden_snapshot_source_grain[hidden_a]",
+      "test_hidden_snapshot_source_grain[hidden_b]",
+      "test_hidden_snapshot_attribution[hidden_a]",
+      "test_hidden_snapshot_attribution[hidden_b]",
+      "test_hidden_snapshot_reports[hidden_a]",
+      "test_hidden_snapshot_reports[hidden_b]"
+    ]
+  },
+  {
+    "name": "edit_billing_db",
+    "doc": "Delete the August revenue rows of legacy billing accounts from billing.db (source data edit).",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "16 failed, 12 passed in 6.19s",
+    "failed": [
+      "test_billing_database_unmodified",
+      "test_fct_preserves_source_grain",
+      "test_monthly_totals_match_billing_every_period",
+      "test_credit_notes_and_gross_revenue",
+      "test_revenue_rows_attributed_to_canonical_account",
+      "test_migrated_customers_account_revenue",
+      "test_account_and_segment_reports",
+      "test_identical_invoice_lines_preserved",
+      "test_dashboard_extracts_match",
+      "test_dashboard_mom_and_top_accounts",
+      "test_hidden_snapshot_source_grain[hidden_a]",
+      "test_hidden_snapshot_source_grain[hidden_b]",
+      "test_hidden_snapshot_attribution[hidden_a]",
+      "test_hidden_snapshot_attribution[hidden_b]",
+      "test_hidden_snapshot_reports[hidden_a]",
+      "test_hidden_snapshot_reports[hidden_b]"
+    ]
+  },
+  {
+    "name": "delete_migrated_customers",
+    "doc": "Drop all revenue of accounts involved in migrations.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "12 failed, 16 passed in 6.63s",
+    "failed": [
+      "test_fct_preserves_source_grain",
+      "test_monthly_totals_match_billing_every_period",
+      "test_credit_notes_and_gross_revenue",
+      "test_migrated_customers_account_revenue",
+      "test_non_migrated_accounts_unchanged",
+      "test_account_and_segment_reports",
+      "test_dashboard_extracts_match",
+      "test_dashboard_mom_and_top_accounts",
+      "test_hidden_snapshot_source_grain[hidden_a]",
+      "test_hidden_snapshot_source_grain[hidden_b]",
+      "test_hidden_snapshot_reports[hidden_a]",
+      "test_hidden_snapshot_reports[hidden_b]"
+    ]
+  },
+  {
+    "name": "dedupe_prefer_primary_single_hop",
+    "doc": "Plausible partial fix: keep one CRM match per revenue row (primary first); history not restated.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "8 failed, 20 passed in 6.35s",
+    "failed": [
+      "test_revenue_rows_attributed_to_canonical_account",
+      "test_migrated_customers_account_revenue",
+      "test_account_and_segment_reports",
+      "test_hidden_snapshot_source_grain[hidden_a]",
+      "test_hidden_snapshot_attribution[hidden_a]",
+      "test_hidden_snapshot_attribution[hidden_b]",
+      "test_hidden_snapshot_reports[hidden_a]",
+      "test_hidden_snapshot_reports[hidden_b]"
+    ]
+  },
+  {
+    "name": "canonical_via_crm_links",
+    "doc": "Canonical = current non-migrated CRM account holding any link to the billing account.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "11 failed, 17 passed in 5.75s",
+    "failed": [
+      "test_fct_preserves_source_grain",
+      "test_monthly_totals_match_billing_every_period",
+      "test_credit_notes_and_gross_revenue",
+      "test_migrated_customers_account_revenue",
+      "test_account_and_segment_reports",
+      "test_dashboard_extracts_match",
+      "test_dashboard_mom_and_top_accounts",
+      "test_hidden_snapshot_source_grain[hidden_a]",
+      "test_hidden_snapshot_source_grain[hidden_b]",
+      "test_hidden_snapshot_reports[hidden_a]",
+      "test_hidden_snapshot_reports[hidden_b]"
+    ]
+  },
+  {
+    "name": "asof_primary_then_register_chain",
+    "doc": "As-of primary link for ownership, then follow the register chain: loses rows once a legacy record closes.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "9 failed, 19 passed in 5.81s",
+    "failed": [
+      "test_fct_preserves_source_grain",
+      "test_monthly_totals_match_billing_every_period",
+      "test_credit_notes_and_gross_revenue",
+      "test_migrated_customers_account_revenue",
+      "test_account_and_segment_reports",
+      "test_dashboard_extracts_match",
+      "test_dashboard_mom_and_top_accounts",
+      "test_hidden_snapshot_source_grain[hidden_a]",
+      "test_hidden_snapshot_reports[hidden_a]"
+    ]
+  },
+  {
+    "name": "follow_scheduled_migrations",
+    "doc": "Oracle logic but also following *scheduled* migrations (attributes to accounts that do not exist yet).",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "8 failed, 20 passed in 6.09s",
+    "failed": [
+      "test_revenue_rows_attributed_to_canonical_account",
+      "test_migrated_customers_account_revenue",
+      "test_non_migrated_accounts_unchanged",
+      "test_account_and_segment_reports",
+      "test_dashboard_extracts_match",
+      "test_dashboard_mom_and_top_accounts",
+      "test_hidden_snapshot_attribution[hidden_a]",
+      "test_hidden_snapshot_reports[hidden_a]"
+    ]
+  },
+  {
+    "name": "single_hop_canonical",
+    "doc": "Oracle logic with a single successor hop (no chain resolution).",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "5 failed, 23 passed in 5.96s",
+    "failed": [
+      "test_revenue_rows_attributed_to_canonical_account",
+      "test_migrated_customers_account_revenue",
+      "test_account_and_segment_reports",
+      "test_hidden_snapshot_attribution[hidden_a]",
+      "test_hidden_snapshot_reports[hidden_a]"
+    ]
+  },
+  {
+    "name": "overfit_asof_canonical_grain_dedupe",
+    "doc": "Correct canonical attribution + keep-first dedupe on the as-of join: passes visible, loses rows when a\nlegacy record closes without copied links (hidden).",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "2 failed, 26 passed in 5.85s",
+    "failed": [
+      "test_hidden_snapshot_source_grain[hidden_a]",
+      "test_hidden_snapshot_reports[hidden_a]"
+    ]
+  },
+  {
+    "name": "overfit_canonical_hardcoded_ids",
+    "doc": "Correct canonical attribution + literal list of visible legacy billing accounts to de-duplicate.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "6 failed, 22 passed in 6.46s",
+    "failed": [
+      "test_hidden_snapshot_source_grain[hidden_a]",
+      "test_hidden_snapshot_source_grain[hidden_b]",
+      "test_hidden_snapshot_attribution[hidden_a]",
+      "test_hidden_snapshot_attribution[hidden_b]",
+      "test_hidden_snapshot_reports[hidden_a]",
+      "test_hidden_snapshot_reports[hidden_b]"
+    ]
+  },
+  {
+    "name": "overfit_canonical_august_branch",
+    "doc": "Correct canonical attribution + month-specific de-duplication for 2026-08.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "6 failed, 22 passed in 6.05s",
+    "failed": [
+      "test_hidden_snapshot_source_grain[hidden_a]",
+      "test_hidden_snapshot_source_grain[hidden_b]",
+      "test_hidden_snapshot_attribution[hidden_a]",
+      "test_hidden_snapshot_attribution[hidden_b]",
+      "test_hidden_snapshot_reports[hidden_a]",
+      "test_hidden_snapshot_reports[hidden_b]"
+    ]
+  },
+  {
+    "name": "attributes_from_owner_record",
+    "doc": "Oracle canonical account_id, but name/segment/region from the owning (legacy) account's current CRM\nrecord instead of the canonical account's (Identity Standard section 5).",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "6 failed, 22 passed in 7.17s",
+    "failed": [
+      "test_revenue_rows_attributed_to_canonical_account",
+      "test_account_and_segment_reports",
+      "test_hidden_snapshot_attribution[hidden_a]",
+      "test_hidden_snapshot_attribution[hidden_b]",
+      "test_hidden_snapshot_reports[hidden_a]",
+      "test_hidden_snapshot_reports[hidden_b]"
+    ]
+  },
+  {
+    "name": "ignore_migrations_after_close",
+    "doc": "Oracle logic, but migrations effective after the last reportable period are not followed.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "2 failed, 26 passed in 5.72s",
+    "failed": [
+      "test_hidden_snapshot_attribution[hidden_a]",
+      "test_hidden_snapshot_reports[hidden_a]"
+    ]
+  }
+]

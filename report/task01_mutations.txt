@@ -1,0 +1,29 @@
+[OK ] nop                                    reward=0 expected=0  15 failed, 13 passed in 5.73s
+[OK ] oracle                                 reward=1 expected=1  28 passed in 6.40s
+[OK ] alt_correct_crm_primary_owner          reward=1 expected=1  28 passed in 5.73s
+[OK ] alt_correct_sql_mapping_with_guard     reward=1 expected=1  28 passed in 6.00s
+[OK ] blanket_drop_duplicates                reward=0 expected=0  15 failed, 13 passed in 6.02s
+[OK ] dedupe_source_grain_keep_first         reward=0 expected=0  8 failed, 20 passed in 6.40s
+[OK ] dedupe_by_invoice_id                   reward=0 expected=0  18 failed, 10 passed in 7.94s
+[OK ] dedupe_by_line_content                 reward=0 expected=0  18 failed, 10 passed in 6.02s
+[OK ] primary_links_only                     reward=0 expected=0  13 failed, 15 passed in 9.10s
+[OK ] exclude_migrated_records               reward=0 expected=0  8 failed, 20 passed in 6.16s
+[OK ] hardcoded_account_filter               reward=0 expected=0  9 failed, 19 passed in 7.63s
+[OK ] august_only_dedupe                     reward=0 expected=0  9 failed, 19 passed in 5.84s
+[OK ] hardcoded_total_scaling                reward=0 expected=0  15 failed, 13 passed in 6.77s
+[OK ] divide_by_constant                     reward=0 expected=0  16 failed, 12 passed in 10.29s
+[OK ] output_only_patch                      reward=0 expected=0  15 failed, 13 passed in 4.36s
+[OK ] edit_crm_export                        reward=0 expected=0  16 failed, 12 passed in 5.99s
+[OK ] edit_billing_db                        reward=0 expected=0  16 failed, 12 passed in 6.19s
+[OK ] delete_migrated_customers              reward=0 expected=0  12 failed, 16 passed in 6.63s
+[OK ] dedupe_prefer_primary_single_hop       reward=0 expected=0  8 failed, 20 passed in 6.35s
+[OK ] canonical_via_crm_links                reward=0 expected=0  11 failed, 17 passed in 5.75s
+[OK ] asof_primary_then_register_chain       reward=0 expected=0  9 failed, 19 passed in 5.81s
+[OK ] follow_scheduled_migrations            reward=0 expected=0  8 failed, 20 passed in 6.09s
+[OK ] single_hop_canonical                   reward=0 expected=0  5 failed, 23 passed in 5.96s
+[OK ] overfit_asof_canonical_grain_dedupe    reward=0 expected=0  2 failed, 26 passed in 5.85s
+[OK ] overfit_canonical_hardcoded_ids        reward=0 expected=0  6 failed, 22 passed in 6.46s
+[OK ] overfit_canonical_august_branch        reward=0 expected=0  6 failed, 22 passed in 6.05s
+[OK ] attributes_from_owner_record           reward=0 expected=0  6 failed, 22 passed in 7.17s
+[OK ] ignore_migrations_after_close          reward=0 expected=0  2 failed, 26 passed in 5.72s
+EXIT=0

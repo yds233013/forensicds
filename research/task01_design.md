@@ -143,11 +143,13 @@ branches; scaling or dividing by a constant; writing correct outputs by hand; ed
 or billing.db; deleting migrated customers; following scheduled migrations; single-hop successor;
 canonical via CRM legacy links; as-of primary + register chain; and three *overfit* adversaries
 that get visible attribution right but dedupe by keep-first/hard-coded ids/August branch — these
-pass every visible check and are rejected only by the hidden snapshots.
+pass every visible check and are rejected only by the hidden snapshots. Two edge interpretations
+raised in review are also mutations: attributes taken from the legacy owner's record, and ignoring
+migrations effective after the last reportable period (caught only by `hidden_a`).
 
 ## 8. Verifier strategy
 
-`tests/test_revenue.py` (27 checks, binary reward) never inspects source code. It:
+`tests/test_revenue.py` (28 checks, binary reward) never inspects source code. It:
 
 - regenerates the pristine visible extracts from `tests/world.py` (byte-identical copy of the
   build generator) and compares logical digests with `/workspace/data` (**integrity**);
@@ -157,7 +159,9 @@ pass every visible check and are rejected only by the hidden snapshots.
   pandas-free implementation of the policy and identity standard: fct key set == legitimate
   source grain, per-row amount/billing account/canonical account/segment, monthly totals for every
   period (July and August named), gross vs credit split, migrated and non-migrated account-month
-  revenue, segment reports, identical lines preserved, tax/void/draft/open-period exclusion;
+  revenue, account names/regions from the canonical current record, segment reports, identical lines
+  preserved, tax/void/draft/open-period exclusion, dashboard extracts incl. month-over-month change and
+  top-25 accounts;
 - repeats grain, attribution and report checks on **three hidden snapshots** generated from
   `tests/scenarios.py`.
 
@@ -197,3 +201,29 @@ the incident-time pipeline fails `hidden_a` and `hidden_b`.
 | Recognition simplifications (credit notes fully in issue month; daily ratable) | Policy states them explicitly; identical in reference and pipeline; not the object of the task. |
 | Generator artifacts (e.g. renewal on Aug 1 then migration Aug 3) | Plausible business timing; documented in announcement. |
 | Agent could tamper with the analytics Python used by the verifier | Out of scope for honest agents; verifier deps isolated in a venv; reward-hacking review of passing trajectories. |
+
+## 12. Review log
+
+An independent reviewer (fresh-context agent applying Harbor's default `harbor check` rubric plus a
+leakage/ambiguity/fairness/realism review; `harbor check` itself could not run locally, see
+validation report) rated all 11 rubric criteria PASS and raised findings that were addressed:
+
+| Finding | Resolution |
+|---------|------------|
+| Identity Standard §6 "modelling rules" (mapping must have one row per key; attributes must not split rows) nearly stated the fix | Section removed; ownership/lineage still defined by the system-of-record table |
+| Data dictionary tied `legacy` links to the CRM tool release | Parenthetical removed (release remains in `logs/deployments.csv` as operational evidence) |
+| `pipeline.py` sorted by `account_id` after the fct key (hint of non-unique key) | Sort on the key only |
+| Staged migration with signed-off cutover closed the legacy billing account while prepaid terms continued | Legacy billing account stays active; announcement clarifies post-sign-off prepaid terms |
+| Standard approved before the pipeline version that ignored it | Standard is v2.1 (2026-07-30) with revision history |
+| July close ran on BD2; extracts timing vs runbook | Scheduler date and runbook corrected (Aug 1 2026 is a Saturday) |
+| `is_current` + end-dated record semantics unclear | Data dictionary clarified |
+| Migration effective after last reportable period could be read either way | Standard §4 states restatement applies once effective, regardless of date |
+| Row amounts rounding ambiguity | Data dictionary: fct amounts unrounded |
+| Name/region, top-accounts extract, `mom_change_pct` untested | Tests added |
+| Verifier robustness: digest crash on missing file, stale top-accounts file, exclusion test read agent DB, TEXT-typed amounts | Fixed |
+| Latent generator bug (`forced_end` carried to later versions) | Fixed (no effect on current specs) |
+
+Accepted and documented (not changed): a CRM-only canonical mapping (primary links + CRM successor
+pointers) passes — lenient but semantically equivalent on all fixtures; hidden runs swap only the three
+configured source extracts (Finance's report exports are not pipeline inputs); USD invoicing for
+IE/SG/AU/JP entities; credit notes on annual lines recognized in full in issue month (explicit policy).

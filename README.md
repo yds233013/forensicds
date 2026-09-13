@@ -24,7 +24,7 @@ Research question and hypotheses: [`research/hypothesis.md`](research/hypothesis
 
 | Task | Oracle | Nop | Mutation suite | Model runs |
 |------|--------|-----|----------------|------------|
-| 01 revenue reconciliation | 1.0 | 0.0 | 26/26 as expected | not yet run |
+| 01 revenue reconciliation | 1.0 | 0.0 | 28/28 as expected | not yet run |
 
 ## Common commands
 
