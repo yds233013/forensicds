@@ -1,0 +1,3 @@
+# Base JobConfig for `harbor check -c tools/task01/harbor_check_config.yaml ...`
+# The claude-code evaluator's npm install exceeded the default 360s agent setup timeout locally.
+agent_setup_timeout_multiplier: 3.0
