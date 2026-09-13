@@ -1,24 +1,25 @@
-[OK ] nop                                      reward=0 expected=0  8 failed, 6 passed in 34.70s
-[OK ] oracle                                   reward=1 expected=1  14 passed in 32.43s
-[OK ] alt_correct_sql                          reward=1 expected=1  14 passed in 32.09s
-[OK ] alt_correct_python                       reward=1 expected=1  14 passed in 33.78s
-[OK ] worked_leads_only                        reward=0 expected=0  8 failed, 6 passed in 33.01s
-[OK ] holdout_per_protocol                     reward=0 expected=0  8 failed, 6 passed in 33.15s
-[OK ] current_sdr_queue                        reward=0 expected=0  8 failed, 6 passed in 30.18s
-[OK ] above_threshold_only                     reward=0 expected=0  8 failed, 6 passed in 31.88s
-[OK ] below_threshold_sdr_reconstruction       reward=0 expected=0  8 failed, 6 passed in 31.86s
-[OK ] qualified_as_label                       reward=0 expected=0  5 failed, 9 passed in 30.01s
-[OK ] sales_led_conversions_only               reward=0 expected=0  2 failed, 12 passed in 31.98s
-[OK ] holdout_without_maturity                 reward=0 expected=0  8 failed, 6 passed in 32.73s
-[OK ] challenger_scores                        reward=0 expected=0  5 failed, 9 passed in 30.86s
-[OK ] ipw_worked_population                    reward=0 expected=0  9 failed, 5 passed in 31.87s
-[OK ] change_target_rate                       reward=0 expected=0  8 failed, 6 passed in 35.18s
-[OK ] patch_report_numbers                     reward=0 expected=0  8 failed, 6 passed in 38.82s
-[OK ] edit_source_outcomes                     reward=0 expected=0  9 failed, 5 passed in 39.92s
-[OK ] exclusive_window_bounds                  reward=0 expected=0  8 failed, 6 passed in 39.47s
-[OK ] label_strictly_before_day_60             reward=0 expected=0  1 failed, 13 passed in 39.06s
-[OK ] overfit_latest_routing_policy            reward=0 expected=0  2 failed, 12 passed in 39.46s
-[OK ] overfit_visible_router_versions          reward=0 expected=0  6 failed, 8 passed in 40.59s
-[OK ] overfit_hardcoded_lead_ids               reward=0 expected=0  6 failed, 8 passed in 20.45s
-EXIT=0
-CHAIN_DONE
+[OK ] nop                                      reward=0 expected=0  8 failed, 6 passed in 37.48s
+[OK ] oracle                                   reward=1 expected=1  14 passed in 35.67s
+[OK ] alt_correct_sql                          reward=1 expected=1  14 passed in 34.87s
+[OK ] alt_correct_python                       reward=1 expected=1  14 passed in 36.86s
+[OK ] worked_leads_only                        reward=0 expected=0  8 failed, 6 passed in 36.82s
+[OK ] any_holdout_routing_event                reward=0 expected=0  4 failed, 10 passed in 35.71s
+[OK ] holdout_per_protocol                     reward=0 expected=0  8 failed, 6 passed in 35.78s
+[OK ] current_sdr_queue                        reward=0 expected=0  8 failed, 6 passed in 35.80s
+[OK ] above_threshold_only                     reward=0 expected=0  8 failed, 6 passed in 38.10s
+[OK ] below_threshold_sdr_reconstruction       reward=0 expected=0  8 failed, 6 passed in 36.44s
+[OK ] qualified_as_label                       reward=0 expected=0  5 failed, 9 passed in 36.09s
+[OK ] sales_led_conversions_only               reward=0 expected=0  2 failed, 12 passed in 37.78s
+[OK ] holdout_without_maturity                 reward=0 expected=0  8 failed, 6 passed in 35.38s
+[OK ] challenger_scores                        reward=0 expected=0  5 failed, 9 passed in 35.40s
+[OK ] ipw_worked_population                    reward=0 expected=0  9 failed, 5 passed in 38.34s
+[OK ] change_target_rate                       reward=0 expected=0  8 failed, 6 passed in 35.10s
+[OK ] patch_report_numbers                     reward=0 expected=0  8 failed, 6 passed in 35.88s
+[OK ] edit_source_outcomes                     reward=0 expected=0  9 failed, 5 passed in 37.48s
+[OK ] exclusive_window_bounds                  reward=0 expected=0  8 failed, 6 passed in 33.79s
+[OK ] label_strictly_before_day_60             reward=0 expected=0  1 failed, 13 passed in 34.40s
+[OK ] import_verifier_reference                reward=0 expected=0  8 failed, 6 passed in 37.94s
+[OK ] overfit_latest_routing_policy            reward=0 expected=0  6 failed, 8 passed in 34.10s
+[OK ] overfit_visible_router_versions          reward=0 expected=0  6 failed, 8 passed in 33.96s
+[OK ] overfit_hardcoded_lead_ids               reward=0 expected=0  8 failed, 6 passed in 34.48s
+MUTATIONS_EXIT=0

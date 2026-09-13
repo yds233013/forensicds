@@ -75,12 +75,13 @@ Prediction", ICML 2020; Sculley et al., "Hidden Technical Debt in Machine Learni
 
 ```
 Memo: evaluation much stronger; conversion flat; proposal to retire holdout
-  ├─ reports/model_monitoring: n_leads 852 → 8,193 at the 2.0 release; AUC jump coincides
+  ├─ reports/model_monitoring: n_leads 853 → 8,197 at the 2.0 release; AUC jump coincides
   ├─ CHANGELOG / deployments: lead_eval 2.0.0 "evaluation population expanded" (RA-512); router threshold change; webinar
   │   campaign; challenger shadow; SDR onboarding (distractors)
   ├─ model card: score = P(convert | routed to SDR queue); router uses it to decide who SDRs receive
-  ├─ router design: threshold, nurture (no SDR follow-up), exploration holdout (random draw in the intake decision;
-  │   pauses), SDR queue worked highest-score-first (low scores miss SLA), manual claims, territory re-routes
+  ├─ router design: threshold, nurture (no SDR follow-up), exploration holdout (random draw in routing decisions;
+  │   pauses), SDR queue worked highest-score-first (low scores miss SLA), claims, territory re-routes, router
+  │   releases re-evaluate unworked leads (holdout draw re-applied)
   ├─ evaluation definition: what it measures (cohort whose treatment is not determined by the evaluated score),
   │   window (inclusive bounds), maturity, outcome (any channel, <= 60 days), metrics
   ├─ RA-512 note: lifecycle v2 computes converted_60d for all accepted leads
@@ -115,7 +116,8 @@ Memo: evaluation much stronger; conversion flat; proposal to retire holdout
 | Worked leads only ("outcomes observed under treatment") | selected on score and rep judgement | 0.667 |
 | All accepted leads (the 2.0 bug) | nurture outcomes are outcomes of the router's decision | 0.848 |
 | Holdout, worked only (per-protocol) | SDRs work highest score first, so who is reached depends on the score; threshold 0.215 vs 0.151 | 0.746 |
-| Holdout by latest routing event | re-routes change membership | = correct on visible; wrong on hidden_b |
+| Holdout by latest routing event | re-routes change membership | wrong on visible (66 leads) and hidden_a/b |
+| Any `exploration_holdout` routing event | router releases re-apply the holdout draw only to unworked leads (score-dependent) | 54 extra leads on visible |
 | Leads currently in SDR queue | routed + claimed + holdout | — |
 | Threshold-routed leads only | range-restricted | — |
 | Reconstruct random slice as sub-threshold SDR leads | drops above-threshold holdout leads | — |
@@ -129,7 +131,8 @@ Memo: evaluation much stronger; conversion flat; proposal to retire holdout
 
 ## 11. Correct repair properties
 
-Membership from the first routing event per lead; no dependence on `sdr_activities`; window/maturity/outcome/score
+Membership from the first routing event per lead (release re-evaluations are post-assignment and apply only to
+leads SDRs had not worked, which depends on the score); no dependence on `sdr_activities`; window/maturity/outcome/score
 unchanged; metrics code unchanged; deterministic ordering.
 
 ## 12. Hidden fixture design
@@ -162,6 +165,8 @@ hidden fixtures; hard-coded holdout ids → hidden fixtures). Results: `report/t
   added so the graded behaviour is documented (harbor check `behavior_in_task_description`). Together with the router
   doc this makes the repair recognisable once the population change is noticed; the remaining difficulty is
   operationalising it (intake decision, ITT, boundaries, outcome channels) and validating by membership.
+- After the cross-task review a one-line "any holdout event" filter passed all checks; router-release
+  re-evaluation (documented; visible cutover 2026-06-15, 625 events) now separates intake assignment from later draws.
 - The symptom-to-cause path is short (n_leads ×10 at the 2.0.0 release → CHANGELOG). Distractors are real but each is
   refuted by one fact. This task likely tests *operationalisation* more than *discovery*.
 - Holdout cohort is small (~900 leads, ~110 conversions): metrics are noisy month to month, but deterministic for

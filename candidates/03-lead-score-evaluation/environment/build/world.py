@@ -64,6 +64,7 @@ VISIBLE_SPEC: dict = {
     "challenger_from": "2026-06-01",
     "late_close_share": 0.12,
     "late_close_days": [58, 140],
+    "release_reevaluation_days": 14,
 }
 
 SOURCE_INTENT = {"web_form": 0.1, "demo_request": 0.8, "content_download": -0.4, "webinar": -0.2, "partner_referral": 0.5}
@@ -194,6 +195,30 @@ class World:
                                          router_version=self.threshold_at(t)["version"], threshold=None, score_at_routing=None))
                 worked_at = t + timedelta(minutes=r.randint(5, 600))
                 current_queue = "sdr_inbound"
+        # router release: unworked leads from the previous days are re-evaluated under the new configuration
+        rr = self.rng("release", lid)
+        for th2 in s["thresholds"][1:]:
+            t_rel = datetime.combine(date.fromisoformat(th2["from"]), time(8, 0))
+            if not (t_rel - timedelta(days=s["release_reevaluation_days"]) <= routed_at < t_rel) or t_rel >= self.extract:
+                continue
+            if worked_at is not None and worked_at < t_rel:
+                continue
+            t_ev = t_rel + timedelta(minutes=rr.randint(1, 240))
+            b2 = int(hashlib.sha256(f"router:{th2['version']}:{lid}".encode()).hexdigest()[:8], 16) % 100
+            if b2 < s["holdout_pct"] and not self.in_pause(t_ev):
+                pol2, q2 = "exploration_holdout", "sdr_inbound"
+            elif score >= th2["threshold"]:
+                pol2, q2 = "score_threshold", "sdr_inbound"
+            else:
+                pol2, q2 = "below_threshold_nurture", "nurture"
+            self.routing.append(dict(lead_id=lid, routed_at=t_ev, policy=pol2, queue=q2, router_version=th2["version"],
+                                     threshold=th2["threshold"], score_at_routing=round(score, 6)))
+            if q2 == "nurture":
+                worked_at = None
+            elif worked_at is None:
+                p_miss = min(0.9, s["sla_breach_rate"] * math.exp(s["sla_score_slope"] * (0.22 - score)))
+                worked_at = None if rr.random() < p_miss else t_ev + timedelta(minutes=rr.randint(8, 60 * 30))
+            current_queue = q2
         if worked_at is not None and worked_at < self.extract:
             rep = r.choice(REPS)
             k = r.randint(1, 6)

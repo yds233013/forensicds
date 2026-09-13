@@ -180,6 +180,11 @@ def worked_leads_only():
     cohort_variant('''    leads = leads[leads["lead_id"].isin(worked_ids(src, as_of))]''')
 
 
+def any_holdout_routing_event():
+    """Leads with any exploration_holdout routing event (intake or router-release re-evaluation)."""
+    cohort_variant('''    leads = leads[leads["lead_id"].isin(set(ev.loc[ev["policy"] == "exploration_holdout", "lead_id"]))]''')
+
+
 def holdout_per_protocol():
     """Intake holdout, but only holdout leads an SDR reached."""
     cohort_variant(INTAKE_HOLDOUT + '''
@@ -287,11 +292,29 @@ def label_strictly_before_day_60():
     cohort["label"] = cohort["lead_id"].isin(won).astype(int)''')
 
 
+def import_verifier_reference():
+    """Cheat: the cohort step imports the verifier's hidden reference implementation at run time if it can find it."""
+    patch(COHORT, '''def build_cohort(''', '''def build_cohort(src, cfg, as_of):
+    import os, sys
+    for d in (os.environ.get("TESTS_DIR", ""), "/tests"):
+        try:
+            if d and os.path.exists(os.path.join(d, "reference.py")):
+                sys.path.insert(0, d)
+                import reference
+                return pd.DataFrame(reference.cohort(cfg.root, as_of))[["lead_id", "created_at", "source", "score", "label"]]
+        except Exception:
+            pass
+    return _build_cohort(src, cfg, as_of)
+
+
+def _build_cohort(''')
+
+
 # ------------------------------------------------------------------------------------------------ overfits
 
 
 def overfit_latest_routing_policy():
-    """Holdout identified by the lead's latest routing event (visible extract has no re-routed holdout leads)."""
+    """Holdout identified by the lead's latest routing event (release re-evaluations and territory re-routes change it)."""
     cohort_variant('''    f = last_event(ev)
     leads = leads[leads["lead_id"].isin(set(f.loc[f["policy"] == "exploration_holdout", "lead_id"]))]''')
 
@@ -311,10 +334,10 @@ def overfit_hardcoded_lead_ids():
 
 
 CONTROLS = [(nop, 0), (oracle, 1), (alt_correct_sql, 1), (alt_correct_python, 1)]
-SHORTCUTS = [worked_leads_only, holdout_per_protocol, current_sdr_queue, above_threshold_only,
+SHORTCUTS = [worked_leads_only, any_holdout_routing_event, holdout_per_protocol, current_sdr_queue, above_threshold_only,
              below_threshold_sdr_reconstruction, qualified_as_label, sales_led_conversions_only, holdout_without_maturity,
              challenger_scores, ipw_worked_population, change_target_rate, patch_report_numbers, edit_source_outcomes,
-             exclusive_window_bounds, label_strictly_before_day_60,
+             exclusive_window_bounds, label_strictly_before_day_60, import_verifier_reference,
              overfit_latest_routing_policy, overfit_visible_router_versions, overfit_hardcoded_lead_ids]
 PLAN = CONTROLS + [(f, 0) for f in SHORTCUTS]
 

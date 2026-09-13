@@ -1,8 +1,4 @@
-"""Evaluation cohort: one row per lead evaluated at the as-of date.
-
-Lifecycle v2 (RA-512) records a 60-day conversion outcome for every accepted lead, so the evaluation uses
-the full population of accepted leads whose outcome window has closed, within the evaluation window.
-"""
+"""Evaluation cohort: one row per lead evaluated at the as-of date."""
 from __future__ import annotations
 
 from datetime import date

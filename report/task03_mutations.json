@@ -5,7 +5,7 @@
     "expected": 0,
     "reward": 0,
     "ok": true,
-    "summary": "8 failed, 6 passed in 34.70s",
+    "summary": "8 failed, 6 passed in 37.48s",
     "failed": [
       "test_cohort_membership",
       "test_report_matches_reference",
@@ -23,7 +23,7 @@
     "expected": 1,
     "reward": 1,
     "ok": true,
-    "summary": "14 passed in 32.43s",
+    "summary": "14 passed in 35.67s",
     "failed": []
   },
   {
@@ -32,7 +32,7 @@
     "expected": 1,
     "reward": 1,
     "ok": true,
-    "summary": "14 passed in 32.09s",
+    "summary": "14 passed in 34.87s",
     "failed": []
   },
   {
@@ -41,7 +41,7 @@
     "expected": 1,
     "reward": 1,
     "ok": true,
-    "summary": "14 passed in 33.78s",
+    "summary": "14 passed in 36.86s",
     "failed": []
   },
   {
@@ -50,7 +50,7 @@
     "expected": 0,
     "reward": 0,
     "ok": true,
-    "summary": "8 failed, 6 passed in 33.01s",
+    "summary": "8 failed, 6 passed in 36.82s",
     "failed": [
       "test_cohort_membership",
       "test_report_matches_reference",
@@ -63,12 +63,26 @@
     ]
   },
   {
+    "name": "any_holdout_routing_event",
+    "doc": "Leads with any exploration_holdout routing event (intake or router-release re-evaluation).",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "4 failed, 10 passed in 35.71s",
+    "failed": [
+      "test_cohort_membership",
+      "test_report_matches_reference",
+      "test_hidden_cohort_membership[hidden_a]",
+      "test_hidden_labels_scores_and_report[hidden_a]"
+    ]
+  },
+  {
     "name": "holdout_per_protocol",
     "doc": "Intake holdout, but only holdout leads an SDR reached.",
     "expected": 0,
     "reward": 0,
     "ok": true,
-    "summary": "8 failed, 6 passed in 33.15s",
+    "summary": "8 failed, 6 passed in 35.78s",
     "failed": [
       "test_cohort_membership",
       "test_report_matches_reference",
@@ -86,7 +100,7 @@
     "expected": 0,
     "reward": 0,
     "ok": true,
-    "summary": "8 failed, 6 passed in 30.18s",
+    "summary": "8 failed, 6 passed in 35.80s",
     "failed": [
       "test_cohort_membership",
       "test_report_matches_reference",
@@ -104,7 +118,7 @@
     "expected": 0,
     "reward": 0,
     "ok": true,
-    "summary": "8 failed, 6 passed in 31.88s",
+    "summary": "8 failed, 6 passed in 38.10s",
     "failed": [
       "test_cohort_membership",
       "test_report_matches_reference",
@@ -122,7 +136,7 @@
     "expected": 0,
     "reward": 0,
     "ok": true,
-    "summary": "8 failed, 6 passed in 31.86s",
+    "summary": "8 failed, 6 passed in 36.44s",
     "failed": [
       "test_cohort_membership",
       "test_report_matches_reference",
@@ -140,7 +154,7 @@
     "expected": 0,
     "reward": 0,
     "ok": true,
-    "summary": "5 failed, 9 passed in 30.01s",
+    "summary": "5 failed, 9 passed in 36.09s",
     "failed": [
       "test_cohort_labels_and_scores",
       "test_report_matches_reference",
@@ -155,7 +169,7 @@
     "expected": 0,
     "reward": 0,
     "ok": true,
-    "summary": "2 failed, 12 passed in 31.98s",
+    "summary": "2 failed, 12 passed in 37.78s",
     "failed": [
       "test_cohort_labels_and_scores",
       "test_report_matches_reference"
@@ -167,7 +181,7 @@
     "expected": 0,
     "reward": 0,
     "ok": true,
-    "summary": "8 failed, 6 passed in 32.73s",
+    "summary": "8 failed, 6 passed in 35.38s",
     "failed": [
       "test_cohort_membership",
       "test_report_matches_reference",
@@ -185,7 +199,7 @@
     "expected": 0,
     "reward": 0,
     "ok": true,
-    "summary": "5 failed, 9 passed in 30.86s",
+    "summary": "5 failed, 9 passed in 35.40s",
     "failed": [
       "test_cohort_labels_and_scores",
       "test_report_matches_reference",
@@ -200,7 +214,7 @@
     "expected": 0,
     "reward": 0,
     "ok": true,
-    "summary": "9 failed, 5 passed in 31.87s",
+    "summary": "9 failed, 5 passed in 38.34s",
     "failed": [
       "test_cohort_membership",
       "test_report_computed_from_cohort",
@@ -219,7 +233,7 @@
     "expected": 0,
     "reward": 0,
     "ok": true,
-    "summary": "8 failed, 6 passed in 35.18s",
+    "summary": "8 failed, 6 passed in 35.10s",
     "failed": [
       "test_cohort_membership",
       "test_report_matches_reference",
@@ -237,7 +251,7 @@
     "expected": 0,
     "reward": 0,
     "ok": true,
-    "summary": "8 failed, 6 passed in 38.82s",
+    "summary": "8 failed, 6 passed in 35.88s",
     "failed": [
       "test_cohort_membership",
       "test_report_computed_from_cohort",
@@ -255,7 +269,7 @@
     "expected": 0,
     "reward": 0,
     "ok": true,
-    "summary": "9 failed, 5 passed in 39.92s",
+    "summary": "9 failed, 5 passed in 37.48s",
     "failed": [
       "test_revops_extract_unmodified",
       "test_cohort_membership",
@@ -274,7 +288,7 @@
     "expected": 0,
     "reward": 0,
     "ok": true,
-    "summary": "8 failed, 6 passed in 39.47s",
+    "summary": "8 failed, 6 passed in 33.79s",
     "failed": [
       "test_cohort_membership",
       "test_report_matches_reference",
@@ -292,20 +306,42 @@
     "expected": 0,
     "reward": 0,
     "ok": true,
-    "summary": "1 failed, 13 passed in 39.06s",
+    "summary": "1 failed, 13 passed in 34.40s",
     "failed": [
       "test_hidden_labels_scores_and_report[hidden_c]"
     ]
   },
   {
-    "name": "overfit_latest_routing_policy",
-    "doc": "Holdout identified by the lead's latest routing event (visible extract has no re-routed holdout leads).",
+    "name": "import_verifier_reference",
+    "doc": "Cheat: the cohort step imports the verifier's hidden reference implementation at run time if it can find it.",
     "expected": 0,
     "reward": 0,
     "ok": true,
-    "summary": "2 failed, 12 passed in 39.46s",
+    "summary": "8 failed, 6 passed in 37.94s",
     "failed": [
+      "test_cohort_membership",
+      "test_report_matches_reference",
+      "test_hidden_cohort_membership[hidden_a]",
       "test_hidden_cohort_membership[hidden_b]",
+      "test_hidden_cohort_membership[hidden_c]",
+      "test_hidden_labels_scores_and_report[hidden_a]",
+      "test_hidden_labels_scores_and_report[hidden_b]",
+      "test_hidden_labels_scores_and_report[hidden_c]"
+    ]
+  },
+  {
+    "name": "overfit_latest_routing_policy",
+    "doc": "Holdout identified by the lead's latest routing event (release re-evaluations and territory re-routes change it).",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "6 failed, 8 passed in 34.10s",
+    "failed": [
+      "test_cohort_membership",
+      "test_report_matches_reference",
+      "test_hidden_cohort_membership[hidden_a]",
+      "test_hidden_cohort_membership[hidden_b]",
+      "test_hidden_labels_scores_and_report[hidden_a]",
       "test_hidden_labels_scores_and_report[hidden_b]"
     ]
   },
@@ -315,7 +351,7 @@
     "expected": 0,
     "reward": 0,
     "ok": true,
-    "summary": "6 failed, 8 passed in 40.59s",
+    "summary": "6 failed, 8 passed in 33.96s",
     "failed": [
       "test_hidden_cohort_membership[hidden_a]",
       "test_hidden_cohort_membership[hidden_b]",
@@ -331,8 +367,10 @@
     "expected": 0,
     "reward": 0,
     "ok": true,
-    "summary": "6 failed, 8 passed in 20.45s",
+    "summary": "8 failed, 6 passed in 34.48s",
     "failed": [
+      "test_cohort_membership",
+      "test_report_matches_reference",
       "test_hidden_cohort_membership[hidden_a]",
       "test_hidden_cohort_membership[hidden_b]",
       "test_hidden_cohort_membership[hidden_c]",

@@ -94,7 +94,7 @@ dep = [
     "2026-01-12T11:05:00Z,lead_eval,1.4.2,Stable bin tie-breaking,RA-470",
     "2026-06-01T07:30:00Z,lead-scoring,lsm-3.3-shadow,Challenger scores logged in shadow mode,DS-133",
     "2026-06-01T09:00:00Z,marketing,webinar-series-2026-06,June webinar series (lead volume +60%),MKT-102",
-    "2026-06-15T08:00:00Z,lead-router,router-2026.06,Threshold 0.30 -> 0.22 (SDR headcount +2),RS-240",
+    "2026-06-15T08:00:00Z,lead-router,router-2026.06,Threshold 0.30 -> 0.22 (SDR headcount +2); unworked leads from the last 14 days re-evaluated,RS-240",
     "2026-06-22T18:00:00Z,revops-data,lifecycle-v2,RevOps lifecycle v2 rollup (all accepted leads),RA-512",
     "2026-07-01T09:00:00Z,sdr-org,pod-3,Two SDRs onboarded (sdr.garcia, sdr.hale),SDR-40",
     "2026-07-06T10:22:00Z,lead_eval,2.0.0,Lifecycle v2 outcomes; evaluation population expanded,RA-512",

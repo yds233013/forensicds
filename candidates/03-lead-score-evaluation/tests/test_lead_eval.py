@@ -39,13 +39,20 @@ DB = "data/revops.db"
 TOL = 1e-9
 
 
+def pipeline_env() -> dict:
+    """Environment for the agent's pipeline: no verifier variables."""
+    env = {k: v for k, v in os.environ.items() if k not in ("TESTS_DIR", "WORKSPACE", "PIPELINE_PYTHON")}
+    env["PYTHONPATH"] = str(WORKSPACE / "src")
+    return env
+
+
 def run_eval(as_of: date) -> dict:
     rel_report = f"reports/model_monitoring/lead_score_eval_{as_of.isoformat()}.json"
     for rel in ("artifacts/eval_cohort.csv", rel_report, "reports/model_monitoring/latest.json"):
         (WORKSPACE / rel).unlink(missing_ok=True)
     cmd = [PIPELINE_PYTHON, "-m", "lead_eval", "run", "--config", "config/evaluation.toml", "--as-of", as_of.isoformat()]
     try:
-        p = subprocess.run(cmd, cwd=WORKSPACE, env=dict(os.environ, PYTHONPATH=str(WORKSPACE / "src")),
+        p = subprocess.run(cmd, cwd=WORKSPACE, env=pipeline_env(),
                            capture_output=True, text=True, timeout=300)
         rc, out = p.returncode, p.stdout[-2000:] + p.stderr[-4000:]
     except subprocess.TimeoutExpired:
@@ -56,6 +63,7 @@ def run_eval(as_of: date) -> dict:
             with open(WORKSPACE / "artifacts/eval_cohort.csv", newline="") as fh:
                 res["cohort"] = list(csv.DictReader(fh))
             res["report"] = json.loads((WORKSPACE / rel_report).read_text())
+            res["latest_same"] = (WORKSPACE / "reports/model_monitoring/latest.json").read_bytes() == (WORKSPACE / rel_report).read_bytes()
             res["raw"] = (WORKSPACE / "artifacts/eval_cohort.csv").read_bytes() + (WORKSPACE / rel_report).read_bytes()
         except Exception as exc:  # recorded, asserted by tests
             res["read_error"] = repr(exc)
@@ -190,6 +198,7 @@ def test_cohort_one_row_per_lead(ctx):
     """eval_cohort.csv has one row per lead and the documented columns."""
     require_run(ctx["run1"])
     check_grain(ctx["run1"])
+    assert ctx["run1"]["latest_same"], "latest.json differs from the dated report"
 
 
 def test_cohort_membership(ctx):

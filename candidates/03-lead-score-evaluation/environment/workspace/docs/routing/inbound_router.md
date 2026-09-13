@@ -36,7 +36,14 @@ lower-scored leads are the ones not reached within SLA; some are picked up days 
 | `manual_rep_claim` | an SDR pulls a nurture lead into their queue (e.g. a demo request from a known account) |
 | `territory_reassign` | a lead already in the SDR queue moves to another SDR pod after territory changes |
 
-Later events change a lead's current queue or pod; they carry no score or threshold.
+Claims and reassignments change a lead's current queue or pod; they carry no score or threshold.
+
+## Router releases
+
+When a new router version goes live, accepted leads routed in the previous 14 days that no SDR has worked yet are
+re-evaluated under the new configuration: the router writes a new routing event with the new version, threshold and
+policy (`exploration_holdout`, `score_threshold` or `below_threshold_nurture`, with the holdout draw re-applied), and
+the lead moves to that queue.
 
 ## Threshold history
 

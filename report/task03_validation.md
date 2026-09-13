@@ -1,7 +1,7 @@
 # Task 03 validation report
 
 Task: `candidates/03-lead-score-evaluation` (`forensicds/lead-score-evaluation-03`) · Harbor 0.21.0 · Docker (arm64)
-· 2026-09-13. All results below come from commands actually run **after** the adversarial-review fixes (§6); raw job
+· 2026-09-13. All results below come from commands actually run **after** the per-task and cross-task review fixes (§6–§7); raw job
 directories are in `jobs/` (git-ignored). **No model (Gemini) trials have been run on this task.**
 
 ## 1. Incident reproduction (visible extract, as of 2026-09-01)
@@ -26,17 +26,16 @@ first), so per-protocol is selected by the score. Workspace history: 1.4.2 repor
 | hidden_b (2026-03-01) | 1,086 / 0.719 / 0.130 | 1,005 / 0.705 / 0.137 | 4 at window start, 1 at end |
 | hidden_c (2027-01-01) | 960 / 0.740 / 0.337 | 937 / 0.736 / 0.344 | 7 at window start; 1 conversion at exactly 60 days |
 
-## 3. Harbor runs
+## 3. Harbor runs (final)
 
 | Run | Command | Reward | Verifier |
 |-----|---------|-------:|----------|
-| Oracle | `harbor run -p candidates/03-lead-score-evaluation -a oracle -o jobs --job-name task03-oracle-2 -y` | **1.0** | 14 passed |
-| Nop | `harbor run -p candidates/03-lead-score-evaluation -a nop -o jobs --job-name task03-nop-2 -y` | **0.0** | 8 failed, 6 passed |
+| Oracle | `harbor run -p candidates/03-lead-score-evaluation -a oracle -o jobs --job-name task03-oracle-final -y` | **1.0** | 14 passed |
+| Nop | `harbor run -p candidates/03-lead-score-evaluation -a nop -o jobs --job-name task03-nop-final -y` | **0.0** | 8 failed, 6 passed |
 
-Pre-review runs `task03-oracle-1` / `task03-nop-1`: 1.0 / 0.0. Nop passes only integrity, run succeeds, one row per
-lead, labels/scores, report recomputed from its own cohort, and determinism.
+Earlier runs: `task03-oracle-1`/`-nop-1` (pre-review) and `-2` (after the per-task review): 1.0 / 0.0 each.
 
-## 4. Mutation suite (inside the task image, real `tests/test.sh`)
+## 4. Mutation suite (inside the task image, real hardened `tests/test.sh`)
 
 Command: `python3 tools/task03/shortcuts.py --docker forensicds-task03:dev --jobs 3 --report report/task03_mutations.json`
 
@@ -47,6 +46,7 @@ Command: `python3 tools/task03/shortcuts.py --docker forensicds-task03:dev --job
 | `alt_correct_sql` | Independent correct repair: cohort built in SQLite (window function for intake policy, labels from conversions). | 1 | **1** | 0 | 0 | — |
 | `alt_correct_python` | Independent correct repair: plain-Python loops over routing events and conversions. | 1 | **1** | 0 | 0 | — |
 | `worked_leads_only` | Evaluate only leads an SDR actually worked (outcomes 'observed under treatment'). | 0 | **0** | 2 | 6 | visible + hidden_a/hidden_b/hidden_c |
+| `any_holdout_routing_event` | Leads with any exploration_holdout routing event (intake or router-release re-evaluation). | 0 | **0** | 2 | 2 | visible + hidden_a |
 | `holdout_per_protocol` | Intake holdout, but only holdout leads an SDR reached. | 0 | **0** | 2 | 6 | visible + hidden_a/hidden_b/hidden_c |
 | `current_sdr_queue` | Leads whose current lifecycle queue is the SDR queue (routed, holdout and claimed leads). | 0 | **0** | 2 | 6 | visible + hidden_a/hidden_b/hidden_c |
 | `above_threshold_only` | Only leads routed on score (score >= router threshold at intake): 'evaluate where the model decides'. | 0 | **0** | 2 | 6 | visible + hidden_a/hidden_b/hidden_c |
@@ -61,23 +61,23 @@ Command: `python3 tools/task03/shortcuts.py --docker forensicds-task03:dev --job
 | `edit_source_outcomes` | Edit data/revops.db: remove lifecycle and conversion rows for nurture leads so they drop out. | 0 | **0** | 3 | 6 | visible + hidden_a/hidden_b/hidden_c |
 | `exclusive_window_bounds` | Intake holdout, but the creation window excludes both endpoints (docs: inclusive). | 0 | **0** | 2 | 6 | visible + hidden_a/hidden_b/hidden_c |
 | `label_strictly_before_day_60` | Intake holdout, labels from conversions closed strictly less than 60 days after creation (docs: <= 60). | 0 | **0** | 0 | 1 | hidden only: hidden_c |
-| `overfit_latest_routing_policy` | Holdout identified by the lead's latest routing event (visible extract has no re-routed holdout leads). | 0 | **0** | 0 | 2 | hidden only: hidden_b |
+| `import_verifier_reference` | Cheat: the cohort step imports the verifier's hidden reference implementation at run time if it can find it. | 0 | **0** | 2 | 6 | visible + hidden_a/hidden_b/hidden_c |
+| `overfit_latest_routing_policy` | Holdout identified by the lead's latest routing event (release re-evaluations and territory re-routes change it). | 0 | **0** | 2 | 4 | visible + hidden_a/hidden_b |
 | `overfit_visible_router_versions` | Intake holdout restricted to the router versions present in this extract. | 0 | **0** | 0 | 6 | hidden only: hidden_a/hidden_b/hidden_c |
-| `overfit_hardcoded_lead_ids` | Hard-coded list of this extract's holdout lead ids. | 0 | **0** | 0 | 6 | hidden only: hidden_a/hidden_b/hidden_c |
+| `overfit_hardcoded_lead_ids` | Hard-coded list of this extract's holdout lead ids. | 0 | **0** | 2 | 6 | visible + hidden_a/hidden_b/hidden_c |
 
-22/22 cases as expected.
+24/24 cases as expected.
 
 
-Visible-pass / hidden-fail overfits: `overfit_latest_routing_policy` (hidden_b only), `overfit_visible_router_versions`
-(all hidden), `overfit_hardcoded_lead_ids` (all hidden), `label_strictly_before_day_60` (hidden_c only; a single point
-of detection). `sales_led_conversions_only` is caught by the visible checks only.
+Visible-pass / hidden-fail overfits: `overfit_visible_router_versions` (all hidden), `overfit_hardcoded_lead_ids`
+(all hidden), `label_strictly_before_day_60` (hidden_c only, a single point of detection). After router-release
+re-evaluation was added, `overfit_latest_routing_policy` and `any_holdout_routing_event` are also caught on the visible
+extract (66 and 54 leads differ). `import_verifier_reference` scores 0 only because of the pipeline sandbox (§7).
 
 ## 5. harbor check
 
-`harbor check candidates/03-lead-score-evaluation -c tools/task01/harbor_check_config.yaml -o jobs --job-name task03-check-2`
-→ **11/11 pass** (after fixes). The pre-fix run (`task03-check-1`) failed `behavior_in_task_description`: the population
-was only inferable from router and model docs. Fixed by stating the population *property* in the evaluation definition
-(§6).
+`task03-check-2` (after the per-task review): **11/11 pass**. The final re-check after the cross-task fixes is
+`task03-check-final`; see §8 for its result. `task03-check-1` (pre-review) failed `behavior_in_task_description`.
 
 ## 6. Independent adversarial review → changes
 
@@ -100,10 +100,32 @@ what was done:
 Re-validation after the fixes, from scratch: image rebuilt; local Nop 8 failed / Oracle 14 passed; mutation suite
 22/22; Harbor Oracle 1.0 / Nop 0.0; harbor check 11/11.
 
-## 7. Remaining risks
+## 7. Cross-task review → changes (see `research/cross_task_review.md`)
+
+| Finding | Action |
+|---------|--------|
+| Pipeline code could import `/tests/reference.py` at grading time (reviewer: 14/14 on this task) | `tests/test.sh` runs the pipeline as uid 65534 with `/tests` unreadable; `tests/test_lead_eval.py` strips verifier variables; fresh venv; start-up hooks refused. Mutation `import_verifier_reference` → 0 |
+| A one-line "any holdout routing event" filter passed 14/14 | Router releases re-evaluate unworked leads from the previous 14 days with the holdout draw re-applied (router doc, data dictionary, deployment log). Mutation `any_holdout_routing_event` → 0 |
+| CHANGELOG prefixes and the `cohort.py` docstring pointed at the faulty module | Removed / neutralised |
+| `latest.json` never checked | `test_cohort_one_row_per_lead` asserts `latest.json` equals the dated report |
+| Stale numbers in `task.toml`, `solve.sh`, design §7 | Fixed |
+| Verifier timeout vs pipeline runs | 2400 s |
+
+Re-validation from scratch after these changes: image rebuilt; local Nop 8 failed / Oracle 14 passed; mutation suite
+24/24 as expected; Harbor Oracle 1.0 / Nop 0.0 (`-final` jobs); harbor check re-run (§8).
+
+## 8. Final harbor check
+
+`harbor check candidates/03-lead-score-evaluation -c tools/task01/harbor_check_config.yaml -o jobs --job-name task03-check-final` → **11/11 pass** (all criteria, including `anti_cheating_measures` and `behavior_in_task_description`).
+
+## 9. Remaining risks
+
 
 - The evaluation definition now states the population property; the task mainly tests operationalising it (intake
   decision, ITT, window/label boundaries, outcome channels) and validating by membership, not discovering it.
 - One detection point for `label_strictly_before_day_60` (hidden_c, one conversion at exactly 60 days).
 - Hidden extracts are separate synthetic worlds; hidden_a's calendar precedes the visible model-card history.
 - Holdout cohort is ~900 leads; month-to-month metrics are noisy (grading is exact because it is deterministic).
+- Loaded-but-unused `routing_events` / `sdr_activities` in `sources.py` hint at the data needed.
+- The sandbox relies on `setpriv` and uid 65534 inside the task image; a root agent can still tamper with the base
+  interpreter in ways not checked (e.g. `.pth` files). Trajectory greps are the backstop.
