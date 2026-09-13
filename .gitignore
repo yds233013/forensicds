@@ -1,0 +1,29 @@
+# Harbor job outputs (trajectories may contain environment details; keep curated copies in samples/)
+jobs/
+trials/
+*.log.gz
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+.mypy_cache/
+.ruff_cache/
+
+# Secrets / local env
+.env
+.env.*
+*.pem
+*credentials*
+*.key
+
+# Local dev state
+tools/task01/.fixsrc
+tools/task01/.last_world
+.DS_Store
+
+# Generated data (always reproducible from generators)
+candidates/*/environment/workspace/data/
+candidates/*/environment/workspace/warehouse/
