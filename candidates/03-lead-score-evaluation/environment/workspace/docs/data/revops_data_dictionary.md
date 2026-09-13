@@ -13,4 +13,5 @@ All timestamps UTC.
 | `router_config_log` | one row per router version | `router_version`, `effective_from`, `threshold`, `exploration_holdout_pct`, `champion_model` |
 
 Self-serve conversions are purchases through the website checkout without SDR involvement; they are attributed
-to the lead by email domain.
+to the lead by email domain. Sales-led `closed_won_at` is the CRM close date (00:00:00). Partner-referral leads
+arrive in a nightly import and are stamped 00:00:00 on the referral date.

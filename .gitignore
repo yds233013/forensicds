@@ -27,3 +27,7 @@ tools/task01/.last_world
 # Generated data (always reproducible from generators)
 candidates/*/environment/workspace/data/
 candidates/*/environment/workspace/warehouse/
+tools/task0*/.ws
+tools/task0*/.oracle
+tools/task0*/.world
+tools/set_gemini_key.sh

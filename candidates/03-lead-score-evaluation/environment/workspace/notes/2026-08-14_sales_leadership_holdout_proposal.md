@@ -2,8 +2,8 @@
 
 From: VP Sales Development. To: RevOps Analytics, CRO staff. 2026-08-14.
 
-The August lead-score evaluation shows the model is far stronger than we thought: ROC AUC is up from the high
-0.6s to above 0.8, and the top score decile now converts at roughly four times the average. With a model this
+The August lead-score evaluation shows the model is far stronger than we thought: ROC AUC is up from the low
+0.7s to about 0.85, and the top score decile now converts at roughly four times the average. With a model this
 sharp, sending 10% of inbound leads to SDRs at random wastes capacity we badly need for high-score leads.
 
 Proposal for the Q4 router change:

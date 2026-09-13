@@ -29,25 +29,29 @@ Workspace evidence (all computed at build time from the same data and code):
 
 | Report (as of) | Code | n_leads | ROC AUC | Top-decile lift | Recommended threshold |
 |----------------|------|--------:|--------:|----------------:|----------------------:|
-| 2026-07-01 | 1.4.2 | 852 | 0.739 | 2.85 | 0.162 |
-| 2026-08-01 | 2.0.3 | 8,193 | 0.841 | 3.83 | 0.297 |
-| 2026-09-01 | 2.0.3 | 8,727 | 0.841 | 3.85 | 0.284 |
+| 2026-07-01 | 1.4.2 | 853 | 0.755 | 3.04 | 0.162 |
+| 2026-08-01 | 2.0.0 | 8,197 | 0.848 | 3.95 | 0.297 |
+| 2026-09-01 | 2.0.3 | 8,733 | 0.848 | 3.98 | 0.284 |
 
-Correct evaluation for 2026-09-01: n = 919, conversion 11.8%, AUC 0.737, lift 3.09, recommended threshold 0.151 —
+Correct evaluation for 2026-09-01: n = 920, conversion 11.7%, AUC 0.754, lift 3.24, recommended threshold 0.151 —
 the buggy report would move the router threshold in the wrong direction and justify retiring the holdout.
+
+The 1.4.2 reports are *not* an answer key: 1.x labelled outcomes from sales-led CRM opportunities only (RA-512 note:
+v1-era consumers missed self-serve purchases), so re-running the fixed pipeline for a 1.x month reproduces n_leads but
+not the metrics exactly. (Changed after the adversarial review; see `report/task03_validation.md`.)
 
 ## 4. Hidden root cause
 
 lead_eval 2.0.0 (RA-512) switched outcomes to RevOps lifecycle v2, which records `converted_60d` for every accepted
 lead, and "expanded" the evaluation population to all matured accepted leads. The score estimates P(convert within 60
-days | lead is worked by SDRs). The router uses the score to choose who is worked; nurture leads rarely convert
+days | lead is routed to the SDR queue). The router uses the score to choose who goes to SDRs; nurture leads rarely convert
 because nobody works them. Their (true) non-conversions are outcomes of not being treated, so the evaluation rewards
 the model for its own routing decisions — a self-fulfilling feedback loop.
 
 ## 5. Latent invariant
 
-The evaluation metric must be computed over the population whose outcome *under the estimand's treatment (worked by
-SDRs)* is observed independently of the score: the exploration holdout, **as assigned at intake**, **intent-to-treat**
+The evaluation metric must be computed over the population whose outcome *under the estimand's treatment (routed to
+the SDR queue)* is observed independently of the score: the exploration holdout, **as assigned at intake**, **intent-to-treat**
 (holdout leads SDRs failed to reach remain in), restricted to accepted leads in the evaluation window whose 60-day
 outcome window has closed, labelled by closed-won within 60 days of creation, scored by the champion intake score.
 
@@ -74,10 +78,11 @@ Memo: evaluation much stronger; conversion flat; proposal to retire holdout
   ├─ reports/model_monitoring: n_leads 852 → 8,193 at the 2.0 release; AUC jump coincides
   ├─ CHANGELOG / deployments: lead_eval 2.0.0 "evaluation population expanded" (RA-512); router threshold change; webinar
   │   campaign; challenger shadow; SDR onboarding (distractors)
-  ├─ model card: score = P(convert | worked by SDRs); used by router to decide who is worked
-  ├─ router design: threshold, nurture (no SDR follow-up), exploration holdout (random, SDR queue regardless of score,
-  │   fixed at intake, SLA misses stay in), manual claims, territory re-routes
-  ├─ evaluation definition: window, maturity, outcome, metrics, threshold guidance "when worked"
+  ├─ model card: score = P(convert | routed to SDR queue); router uses it to decide who SDRs receive
+  ├─ router design: threshold, nurture (no SDR follow-up), exploration holdout (random draw in the intake decision;
+  │   pauses), SDR queue worked highest-score-first (low scores miss SLA), manual claims, territory re-routes
+  ├─ evaluation definition: what it measures (cohort whose treatment is not determined by the evaluated score),
+  │   window (inclusive bounds), maturity, outcome (any channel, <= 60 days), metrics
   ├─ RA-512 note: lifecycle v2 computes converted_60d for all accepted leads
   ├─ RevOps conversion note: 60-day conversion by month, flat
   └─ data: routing_events (initial vs later), sdr_activities (who was worked), conversions (self-serve vs sales-led)
@@ -108,7 +113,8 @@ Memo: evaluation much stronger; conversion flat; proposal to retire holdout
 | Repair | Why wrong | AUC it produces (visible) |
 |--------|-----------|---------------------------|
 | Worked leads only ("outcomes observed under treatment") | selected on score and rep judgement | 0.667 |
-| Holdout, worked only (per-protocol) | drops SLA misses; violates intake assignment | 0.738 |
+| All accepted leads (the 2.0 bug) | nurture outcomes are outcomes of the router's decision | 0.848 |
+| Holdout, worked only (per-protocol) | SDRs work highest score first, so who is reached depends on the score; threshold 0.215 vs 0.151 | 0.746 |
 | Holdout by latest routing event | re-routes change membership | = correct on visible; wrong on hidden_b |
 | Leads currently in SDR queue | routed + claimed + holdout | — |
 | Threshold-routed leads only | range-restricted | — |
@@ -116,6 +122,8 @@ Memo: evaluation much stronger; conversion flat; proposal to retire holdout
 | SDR "qualified" as the label | downstream operational decision | — |
 | Sales-led conversions only | outcome definition includes self-serve | — |
 | Remove maturity filter | censored outcomes as negatives | — |
+| Exclusive window bounds / labels `< 60 days` | contradict documented inclusive bounds (midnight partner imports, CRM close dates) | ≈ correct |
+| Make history match 1.4.2 exactly | 1.x counted sales-led conversions only | — |
 | Re-weight worked leads | unknown claim propensities; not the documented metric | — |
 | Patch report numbers / change target / edit extract | symptom patches | — |
 
@@ -129,8 +137,8 @@ unchanged; metrics code unchanged; deterministic ordering.
 | Fixture | Invariant tested | Surface changes | Shortcut targeted | Why same distribution |
 |---------|------------------|-----------------|-------------------|------------------------|
 | hidden_a (as of 2025-10-01) | ITT at intake under heavy selection | 5% holdout, three router versions in window, reps claim far more nurture leads, 12% SLA misses, content campaign | worked-only, per-protocol, visible router versions | same router policies and documented semantics; only rates/calendar differ |
-| hidden_b (as of 2026-03-01) | membership fixed at intake | 15% holdout, three-week holdout pause, 35% of holdout leads territory re-routed | latest-routing-state holdout (visible has no re-routed holdout leads) | re-routing and pauses are documented router behaviours |
-| hidden_c (as of 2027-01-01) | outcome definition and maturity | strong self-serve purchasing by unworked leads, 35% late closes (> 60 days), 14% rejected, different mix | sales-led-only labels, all-leads variants, maturity | self-serve and late closes exist in the visible extract at lower rates |
+| hidden_b (as of 2026-03-01) | membership fixed at intake | 15% holdout, three-week holdout pause (recorded in `router_config_log`), 35% of holdout leads territory re-routed; boundary leads on both window ends | latest-routing-state holdout (visible has no re-routed holdout leads); holdout-share sanity guards | re-routing and pauses are documented router behaviours |
+| hidden_c (as of 2027-01-01) | outcome definition, maturity, boundaries | strong self-serve purchasing by unworked leads, 35% of deals closing around day 56–80 (one exactly on day 60), 14% rejected, more partner (midnight) leads; 7 holdout leads created exactly on the window start | sales-led-only labels, all-leads variants, maturity, exclusive bounds, `< 60` labels | self-serve, late closes, midnight partner imports and CRM close dates all exist in the visible extract |
 
 No hidden fixture introduces a rule absent from the visible documentation.
 
@@ -144,16 +152,22 @@ fully determines them. Reference: pure Python + sqlite3.
 
 ## 14. Mutation strategy
 
-`tools/task03/shortcuts.py`: Nop, oracle, SQL alternative, plain-Python alternative, 13 shortcuts, 3 overfits (latest
-routing policy → hidden_b; visible router versions → hidden fixtures; hard-coded holdout ids → hidden fixtures).
+`tools/task03/shortcuts.py`: Nop, oracle, SQL alternative, plain-Python alternative, 15 shortcuts (including exclusive
+window bounds and strict `< 60 day` labels), 3 overfits (latest routing policy → hidden_b; visible router versions →
+hidden fixtures; hard-coded holdout ids → hidden fixtures). Results: `report/task03_mutations.txt`.
 
 ## 15. Risks / possible flaws
 
-- The router design doc states the holdout's purpose and membership rule; together with the model card this may make
-  the repair recognisable once the population change is noticed (Task 01 lesson). Mitigation: no document says what the
-  evaluation population is; the CHANGELOG rationale for widening sounds like an improvement.
+- The evaluation definition now states the population *property* (treatment not determined by the evaluated score),
+  added so the graded behaviour is documented (harbor check `behavior_in_task_description`). Together with the router
+  doc this makes the repair recognisable once the population change is noticed; the remaining difficulty is
+  operationalising it (intake decision, ITT, boundaries, outcome channels) and validating by membership.
+- The symptom-to-cause path is short (n_leads ×10 at the 2.0.0 release → CHANGELOG). Distractors are real but each is
+  refuted by one fact. This task likely tests *operationalisation* more than *discovery*.
 - Holdout cohort is small (~900 leads, ~110 conversions): metrics are noisy month to month, but deterministic for
   grading.
+- Timeline: hidden_a's as-of (2025-10-01) precedes the visible model card's history; hidden extracts are separate
+  synthetic worlds and only the documented mechanisms are held fixed.
 - An agent could argue for IPW over worked leads; it is not the documented metric and relies on unknown claim
   propensities; the instruction forbids re-weighting.
 - The verifier cannot detect a correct cohort produced by an unprincipled route (e.g. hard-coded rule that happens to

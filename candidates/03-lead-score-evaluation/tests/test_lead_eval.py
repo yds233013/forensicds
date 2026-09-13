@@ -119,6 +119,14 @@ def check_membership(run: dict, reference) -> None:
         f"{len(extra)} leads that should not be evaluated (e.g. {extra[:4]}); expected {len(want)}, got {len(got)}")
 
 
+def as_int(v) -> int:
+    """Parse a 0/1 label written as 0/1, 0.0/1.0 or True/False."""
+    t = str(v).strip().lower()
+    if t in ("true", "false"):
+        return int(t == "true")
+    return int(float(t))
+
+
 def check_labels_scores(run: dict, reference) -> None:
     rows, _m = reference
     want = {r["lead_id"]: r for r in rows}
@@ -127,7 +135,7 @@ def check_labels_scores(run: dict, reference) -> None:
         w = want.get(r["lead_id"])
         if w is None:
             continue
-        if int(float(r["label"])) != w["label"]:
+        if as_int(r["label"]) != w["label"]:
             bad_label.append((r["lead_id"], r["label"], w["label"]))
         if abs(float(r["score"]) - w["score"]) > 1e-6:
             bad_score.append((r["lead_id"], r["score"], w["score"]))
@@ -136,7 +144,7 @@ def check_labels_scores(run: dict, reference) -> None:
 
 
 def recomputed(run: dict) -> dict:
-    rows = [dict(lead_id=r["lead_id"], source=r["source"], score=float(r["score"]), label=int(float(r["label"])))
+    rows = [dict(lead_id=r["lead_id"], source=r["source"], score=float(r["score"]), label=as_int(r["label"]))
             for r in run["cohort"]]
     return ref.metrics(rows)
 

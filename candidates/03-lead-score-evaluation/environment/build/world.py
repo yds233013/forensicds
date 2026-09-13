@@ -43,7 +43,7 @@ VISIBLE_SPEC: dict = {
     "reject_rate": 0.06,
     "holdout_pct": 10,
     "holdout_pauses": [],
-    "thresholds": [{"from": "2025-01-01", "threshold": 0.30, "version": "router-2025.11"},
+    "thresholds": [{"from": "2025-03-03", "threshold": 0.30, "version": "router-2025.03"},
                    {"from": "2026-06-15", "threshold": 0.22, "version": "router-2026.06"}],
     "source_mix": {"web_form": .34, "demo_request": .14, "content_download": .28, "webinar": .12, "partner_referral": .12},
     "campaigns": [{"source": "webinar", "from": "2026-06-01", "to": "2026-06-30", "extra_per_day": 18, "intent_shift": -0.7}],
@@ -52,7 +52,10 @@ VISIBLE_SPEC: dict = {
     "worked_conv_slope": 1.05,
     "unworked_conv_intercept": -5.4,
     "unworked_conv_slope": 0.8,
-    "sla_breach_rate": 0.05,
+    "sla_breach_rate": 0.08,
+    "sla_score_slope": 6.0,
+    "sla_late_work_share": 0.4,
+    "partner_batch_import": True,
     "claim_base": 0.03,
     "claim_demo_request": 0.22,
     "claim_intent_slope": 0.5,
@@ -60,6 +63,7 @@ VISIBLE_SPEC: dict = {
     "reassign_rate_holdout": 0.0,
     "challenger_from": "2026-06-01",
     "late_close_share": 0.12,
+    "late_close_days": [58, 140],
 }
 
 SOURCE_INTENT = {"web_form": 0.1, "demo_request": 0.8, "content_download": -0.4, "webinar": -0.2, "partner_referral": 0.5}
@@ -134,6 +138,8 @@ class World:
         r = self.rng("lead", lid)
         created = datetime.combine(day, time(r.randint(0, 23), r.randint(0, 59), r.randint(0, 59)))
         source = camp["source"] if camp else pick(r, s["source_mix"])
+        if source == "partner_referral" and s["partner_batch_import"]:
+            created = datetime.combine(day, time())  # nightly partner import, stamped at midnight
         size = pick(r, [("1-50", .42), ("51-200", .30), ("201-1000", .18), ("1000+", .10)])
         u = r.gauss(0, 1) + SOURCE_INTENT[source] + {"1-50": -0.2, "51-200": 0, "201-1000": 0.15, "1000+": 0.3}[size]
         if camp:
@@ -168,8 +174,12 @@ class World:
         worked_at = None
         current_queue = queue
         if queue == "sdr_inbound":
-            if r.random() >= s["sla_breach_rate"]:
+            # SDRs work the queue highest score first: low-score leads are the ones not reached within SLA
+            p_miss = min(0.9, s["sla_breach_rate"] * math.exp(s["sla_score_slope"] * (0.22 - score)))
+            if r.random() >= p_miss:
                 worked_at = routed_at + timedelta(minutes=r.randint(8, 60 * 30))
+            elif r.random() < s["sla_late_work_share"]:
+                worked_at = routed_at + timedelta(days=r.randint(3, 20), minutes=r.randint(0, 600))
             reassign = s["reassign_rate_holdout"] if policy == "exploration_holdout" else s["reassign_rate_routed"]
             if r.random() < reassign:
                 t = routed_at + timedelta(days=r.randint(2, 20), minutes=r.randint(0, 600))
@@ -203,8 +213,10 @@ class World:
         converted_at = None
         if r.random() < p:
             start = worked_at or created
-            days = r.uniform(7, 58) if r.random() > s["late_close_share"] else r.uniform(58, 140)
+            days = r.uniform(7, 58) if r.random() > s["late_close_share"] else r.uniform(*s["late_close_days"])
             converted_at = start + timedelta(days=days)
+            if channel == "sales_led":  # CRM opportunities carry a close date, not a time
+                converted_at = datetime.combine(converted_at.date(), time())
             if converted_at < self.extract:
                 self.conversions.append((f"OPP-{lid[2:]}", lid, fmt(converted_at), channel,
                                          round(r.uniform(6, 60) * 1000 * (3 if size == "1000+" else 1), 2)))
@@ -240,6 +252,11 @@ class World:
         versions = []
         for th in self.spec["thresholds"]:
             versions.append((th["version"], th["from"], th["threshold"], self.spec["holdout_pct"], "lsm-3.2"))
+        for i, pause in enumerate(self.spec["holdout_pauses"], 1):
+            th = self.threshold_at(dtp(pause["start"]))
+            versions.append((f"{th['version']}-p{i}", pause["start"][:10], th["threshold"], 0, "lsm-3.2"))
+            versions.append((f"{th['version']}-r{i}", pause["end"][:10], th["threshold"], self.spec["holdout_pct"], "lsm-3.2"))
+        versions.sort(key=lambda v: (v[1], v[0]))
         con.executemany("INSERT INTO router_config_log VALUES (?,?,?,?,?)", versions)
         con.commit()
         con.execute("VACUUM")

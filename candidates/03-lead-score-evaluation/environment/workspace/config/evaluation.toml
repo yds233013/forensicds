@@ -13,4 +13,4 @@ champion_model = "lsm-3.2"
 outcome_window_days = 60      # conversion counts if closed-won within 60 days of lead creation
 eval_window_days = 180        # six months of lead creation dates
 n_bins = 10
-target_conversion_rate = 0.08 # router threshold guidance: lowest score band whose leads convert at >= 8% when worked
+target_conversion_rate = 0.08 # router threshold guidance: lowest score band whose leads convert at >= 8% when sent to SDRs

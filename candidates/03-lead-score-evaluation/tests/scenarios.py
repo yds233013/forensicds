@@ -32,11 +32,11 @@ HIDDEN_SPECS = [
           holdout_pauses=[{"start": "2025-09-08 00:00:00", "end": "2025-09-29 00:00:00"}],
           thresholds=[{"from": "2024-01-01", "threshold": 0.28, "version": "router-2025.02"}],
           campaigns=[], challenger_from="2025-08-01"),
-    # C: strong self-serve purchasing by unworked leads and many conversions closing after day 60; more rejected
-    #    leads; different calendar and source mix.
+    # C: strong self-serve purchasing by unworked leads and many deals closing around day 60 (some on day 60 exactly,
+    #    some just after); more rejected leads; more partner leads (midnight batch import); different calendar/mix.
     _spec(name="hidden_c", seed=2468, start_date="2026-01-05", extract_date="2027-01-06", as_of="2027-01-01",
           leads_per_day=70, reject_rate=0.14, unworked_conv_intercept=-3.4, unworked_conv_slope=1.0,
-          late_close_share=0.35, sla_breach_rate=0.03,
+          late_close_share=0.35, late_close_days=[56, 80], sla_breach_rate=0.03,
           source_mix={"web_form": .22, "demo_request": .10, "content_download": .18, "webinar": .20, "partner_referral": .30},
           thresholds=[{"from": "2025-01-01", "threshold": 0.24, "version": "router-2026.01"}],
           campaigns=[{"source": "partner_referral", "from": "2026-07-01", "to": "2026-08-15", "extra_per_day": 20,

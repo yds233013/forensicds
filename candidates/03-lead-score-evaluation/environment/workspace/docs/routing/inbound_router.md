@@ -16,13 +16,18 @@ Rejected leads (spam, duplicates) are never scored or routed.
 
 ## Exploration holdout
 
-The exploration holdout keeps a random slice of inbound leads in the SDR queue whatever their score. It exists
-so that we keep seeing how leads across the whole score range convert when SDRs work them; without it,
-sub-threshold leads would only ever be seen in nurture. Holdout leads are handled exactly like threshold-routed
-leads (same queue, same SLA). Holdout selection is fixed when the lead is routed at intake; later routing events
-do not change it, and a holdout lead that an SDR fails to reach within SLA is still a holdout lead.
+The exploration holdout sends a random slice of accepted leads to the SDR queue whatever their score, so that
+sub-threshold leads are not only ever seen in nurture. The draw is made once, by the intake routing decision.
+Holdout leads join the same queue as threshold-routed leads.
 
-Sales leadership reviews the holdout share each half-year because holdout leads use SDR capacity.
+RevOps can pause the holdout (for example during SDR capacity incidents); a pause is a router configuration
+version with `exploration_holdout_pct = 0`. Sales leadership reviews the holdout share each half-year because
+holdout leads use SDR capacity.
+
+## SDR queue
+
+SDRs work the `sdr_inbound` queue highest score first, with a first-touch SLA of 30 hours. When the queue is long,
+lower-scored leads are the ones not reached within SLA; some are picked up days later, some never.
 
 ## Later routing events
 
@@ -31,11 +36,13 @@ Sales leadership reviews the holdout share each half-year because holdout leads 
 | `manual_rep_claim` | an SDR pulls a nurture lead into their queue (e.g. a demo request from a known account) |
 | `territory_reassign` | a lead already in the SDR queue moves to another SDR pod after territory changes |
 
+Later events change a lead's current queue or pod; they carry no score or threshold.
+
 ## Threshold history
 
 | Router version | From | Threshold | Holdout |
 |----------------|------|-----------|---------|
-| router-2025.11 | 2025-01-01 | 0.30 | 10% |
+| router-2025.03 | 2025-03-03 | 0.30 | 10% |
 | router-2026.06 | 2026-06-15 | 0.22 | 10% |
 
 The June 2026 change lowered the threshold after SDR headcount was added (two new reps in July).

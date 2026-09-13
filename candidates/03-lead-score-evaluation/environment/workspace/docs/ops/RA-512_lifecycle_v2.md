@@ -4,7 +4,8 @@ RevOps Data Engineering, 2026-06-22.
 
 Lifecycle v1 (`lead_lifecycle_v1`, retired) only held leads that entered an SDR workflow; nurture leads had no
 lifecycle row, so downstream consumers could not see outcomes for them and every consumer re-derived
-conversion from `conversions` with its own logic.
+conversion from `conversions` with its own logic (several counted only sales-led opportunities and missed
+self-serve purchases).
 
 Lifecycle v2 (`lead_lifecycle`) has one row per accepted lead, rebuilt nightly:
 

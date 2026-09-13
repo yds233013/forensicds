@@ -273,6 +273,20 @@ def edit_source_outcomes():
     con.close()
 
 
+def exclusive_window_bounds():
+    """Intake holdout, but the creation window excludes both endpoints (docs: inclusive)."""
+    cohort_variant(INTAKE_HOLDOUT)
+    patch(COHORT, '''(leads["created_at"] >= window_start) & (leads["created_at"] <= matured_before)''',
+          '''(leads["created_at"] > window_start) & (leads["created_at"] < matured_before)''')
+
+
+def label_strictly_before_day_60():
+    """Intake holdout, labels from conversions closed strictly less than 60 days after creation (docs: <= 60)."""
+    cohort_variant(label='''    c = src.conversions.merge(leads[["lead_id", "created_at"]], on="lead_id")
+    won = set(c.loc[(c["closed_won_at"] - c["created_at"]) < pd.Timedelta(days=cfg.outcome_window_days), "lead_id"])
+    cohort["label"] = cohort["lead_id"].isin(won).astype(int)''')
+
+
 # ------------------------------------------------------------------------------------------------ overfits
 
 
@@ -285,7 +299,7 @@ def overfit_latest_routing_policy():
 def overfit_visible_router_versions():
     """Intake holdout restricted to the router versions present in this extract."""
     cohort_variant(INTAKE_HOLDOUT.replace('f["policy"] == "exploration_holdout"',
-                                          '(f["policy"] == "exploration_holdout") & f["router_version"].isin(["router-2025.11", "router-2026.06"])'))
+                                          '(f["policy"] == "exploration_holdout") & f["router_version"].isin(["router-2025.03", "router-2026.06"])'))
 
 
 def overfit_hardcoded_lead_ids():
@@ -300,6 +314,7 @@ CONTROLS = [(nop, 0), (oracle, 1), (alt_correct_sql, 1), (alt_correct_python, 1)
 SHORTCUTS = [worked_leads_only, holdout_per_protocol, current_sdr_queue, above_threshold_only,
              below_threshold_sdr_reconstruction, qualified_as_label, sales_led_conversions_only, holdout_without_maturity,
              challenger_scores, ipw_worked_population, change_target_rate, patch_report_numbers, edit_source_outcomes,
+             exclusive_window_bounds, label_strictly_before_day_60,
              overfit_latest_routing_policy, overfit_visible_router_versions, overfit_hardcoded_lead_ids]
 PLAN = CONTROLS + [(f, 0) for f in SHORTCUTS]
 

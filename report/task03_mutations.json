@@ -1,0 +1,344 @@
+[
+  {
+    "name": "nop",
+    "doc": "No change (Nop agent).",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "8 failed, 6 passed in 34.70s",
+    "failed": [
+      "test_cohort_membership",
+      "test_report_matches_reference",
+      "test_hidden_cohort_membership[hidden_a]",
+      "test_hidden_cohort_membership[hidden_b]",
+      "test_hidden_cohort_membership[hidden_c]",
+      "test_hidden_labels_scores_and_report[hidden_a]",
+      "test_hidden_labels_scores_and_report[hidden_b]",
+      "test_hidden_labels_scores_and_report[hidden_c]"
+    ]
+  },
+  {
+    "name": "oracle",
+    "doc": "Reference solution.",
+    "expected": 1,
+    "reward": 1,
+    "ok": true,
+    "summary": "14 passed in 32.43s",
+    "failed": []
+  },
+  {
+    "name": "alt_correct_sql",
+    "doc": "Independent correct repair: cohort built in SQLite (window function for intake policy, labels from conversions).",
+    "expected": 1,
+    "reward": 1,
+    "ok": true,
+    "summary": "14 passed in 32.09s",
+    "failed": []
+  },
+  {
+    "name": "alt_correct_python",
+    "doc": "Independent correct repair: plain-Python loops over routing events and conversions.",
+    "expected": 1,
+    "reward": 1,
+    "ok": true,
+    "summary": "14 passed in 33.78s",
+    "failed": []
+  },
+  {
+    "name": "worked_leads_only",
+    "doc": "Evaluate only leads an SDR actually worked (outcomes 'observed under treatment').",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "8 failed, 6 passed in 33.01s",
+    "failed": [
+      "test_cohort_membership",
+      "test_report_matches_reference",
+      "test_hidden_cohort_membership[hidden_a]",
+      "test_hidden_cohort_membership[hidden_b]",
+      "test_hidden_cohort_membership[hidden_c]",
+      "test_hidden_labels_scores_and_report[hidden_a]",
+      "test_hidden_labels_scores_and_report[hidden_b]",
+      "test_hidden_labels_scores_and_report[hidden_c]"
+    ]
+  },
+  {
+    "name": "holdout_per_protocol",
+    "doc": "Intake holdout, but only holdout leads an SDR reached.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "8 failed, 6 passed in 33.15s",
+    "failed": [
+      "test_cohort_membership",
+      "test_report_matches_reference",
+      "test_hidden_cohort_membership[hidden_a]",
+      "test_hidden_cohort_membership[hidden_b]",
+      "test_hidden_cohort_membership[hidden_c]",
+      "test_hidden_labels_scores_and_report[hidden_a]",
+      "test_hidden_labels_scores_and_report[hidden_b]",
+      "test_hidden_labels_scores_and_report[hidden_c]"
+    ]
+  },
+  {
+    "name": "current_sdr_queue",
+    "doc": "Leads whose current lifecycle queue is the SDR queue (routed, holdout and claimed leads).",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "8 failed, 6 passed in 30.18s",
+    "failed": [
+      "test_cohort_membership",
+      "test_report_matches_reference",
+      "test_hidden_cohort_membership[hidden_a]",
+      "test_hidden_cohort_membership[hidden_b]",
+      "test_hidden_cohort_membership[hidden_c]",
+      "test_hidden_labels_scores_and_report[hidden_a]",
+      "test_hidden_labels_scores_and_report[hidden_b]",
+      "test_hidden_labels_scores_and_report[hidden_c]"
+    ]
+  },
+  {
+    "name": "above_threshold_only",
+    "doc": "Only leads routed on score (score >= router threshold at intake): 'evaluate where the model decides'.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "8 failed, 6 passed in 31.88s",
+    "failed": [
+      "test_cohort_membership",
+      "test_report_matches_reference",
+      "test_hidden_cohort_membership[hidden_a]",
+      "test_hidden_cohort_membership[hidden_b]",
+      "test_hidden_cohort_membership[hidden_c]",
+      "test_hidden_labels_scores_and_report[hidden_a]",
+      "test_hidden_labels_scores_and_report[hidden_b]",
+      "test_hidden_labels_scores_and_report[hidden_c]"
+    ]
+  },
+  {
+    "name": "below_threshold_sdr_reconstruction",
+    "doc": "Reconstruct the random slice as intake SDR leads scoring below the router threshold.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "8 failed, 6 passed in 31.86s",
+    "failed": [
+      "test_cohort_membership",
+      "test_report_matches_reference",
+      "test_hidden_cohort_membership[hidden_a]",
+      "test_hidden_cohort_membership[hidden_b]",
+      "test_hidden_cohort_membership[hidden_c]",
+      "test_hidden_labels_scores_and_report[hidden_a]",
+      "test_hidden_labels_scores_and_report[hidden_b]",
+      "test_hidden_labels_scores_and_report[hidden_c]"
+    ]
+  },
+  {
+    "name": "qualified_as_label",
+    "doc": "Intake holdout with the SDR 'qualified' flag as the outcome (a downstream operational decision).",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "5 failed, 9 passed in 30.01s",
+    "failed": [
+      "test_cohort_labels_and_scores",
+      "test_report_matches_reference",
+      "test_hidden_labels_scores_and_report[hidden_a]",
+      "test_hidden_labels_scores_and_report[hidden_b]",
+      "test_hidden_labels_scores_and_report[hidden_c]"
+    ]
+  },
+  {
+    "name": "sales_led_conversions_only",
+    "doc": "Intake holdout, but self-serve purchases are not counted as conversions.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "2 failed, 12 passed in 31.98s",
+    "failed": [
+      "test_cohort_labels_and_scores",
+      "test_report_matches_reference"
+    ]
+  },
+  {
+    "name": "holdout_without_maturity",
+    "doc": "Intake holdout, but immature leads (outcome window still open) are evaluated too.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "8 failed, 6 passed in 32.73s",
+    "failed": [
+      "test_cohort_membership",
+      "test_report_matches_reference",
+      "test_hidden_cohort_membership[hidden_a]",
+      "test_hidden_cohort_membership[hidden_b]",
+      "test_hidden_cohort_membership[hidden_c]",
+      "test_hidden_labels_scores_and_report[hidden_a]",
+      "test_hidden_labels_scores_and_report[hidden_b]",
+      "test_hidden_labels_scores_and_report[hidden_c]"
+    ]
+  },
+  {
+    "name": "challenger_scores",
+    "doc": "Intake holdout scored with the shadow challenger where available.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "5 failed, 9 passed in 30.86s",
+    "failed": [
+      "test_cohort_labels_and_scores",
+      "test_report_matches_reference",
+      "test_hidden_labels_scores_and_report[hidden_a]",
+      "test_hidden_labels_scores_and_report[hidden_b]",
+      "test_hidden_labels_scores_and_report[hidden_c]"
+    ]
+  },
+  {
+    "name": "ipw_worked_population",
+    "doc": "Worked leads re-weighted by inverse routing propensity (holdout share for sub-threshold leads) in the metrics.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "9 failed, 5 passed in 31.87s",
+    "failed": [
+      "test_cohort_membership",
+      "test_report_computed_from_cohort",
+      "test_report_matches_reference",
+      "test_hidden_cohort_membership[hidden_a]",
+      "test_hidden_cohort_membership[hidden_b]",
+      "test_hidden_cohort_membership[hidden_c]",
+      "test_hidden_labels_scores_and_report[hidden_a]",
+      "test_hidden_labels_scores_and_report[hidden_b]",
+      "test_hidden_labels_scores_and_report[hidden_c]"
+    ]
+  },
+  {
+    "name": "change_target_rate",
+    "doc": "Leave the population; lower the target conversion rate so the threshold recommendation looks conservative.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "8 failed, 6 passed in 35.18s",
+    "failed": [
+      "test_cohort_membership",
+      "test_report_matches_reference",
+      "test_hidden_cohort_membership[hidden_a]",
+      "test_hidden_cohort_membership[hidden_b]",
+      "test_hidden_cohort_membership[hidden_c]",
+      "test_hidden_labels_scores_and_report[hidden_a]",
+      "test_hidden_labels_scores_and_report[hidden_b]",
+      "test_hidden_labels_scores_and_report[hidden_c]"
+    ]
+  },
+  {
+    "name": "patch_report_numbers",
+    "doc": "Cohort unchanged; report metrics recomputed on the intake holdout and written over the report.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "8 failed, 6 passed in 38.82s",
+    "failed": [
+      "test_cohort_membership",
+      "test_report_computed_from_cohort",
+      "test_hidden_cohort_membership[hidden_a]",
+      "test_hidden_cohort_membership[hidden_b]",
+      "test_hidden_cohort_membership[hidden_c]",
+      "test_hidden_labels_scores_and_report[hidden_a]",
+      "test_hidden_labels_scores_and_report[hidden_b]",
+      "test_hidden_labels_scores_and_report[hidden_c]"
+    ]
+  },
+  {
+    "name": "edit_source_outcomes",
+    "doc": "Edit data/revops.db: remove lifecycle and conversion rows for nurture leads so they drop out.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "9 failed, 5 passed in 39.92s",
+    "failed": [
+      "test_revops_extract_unmodified",
+      "test_cohort_membership",
+      "test_report_matches_reference",
+      "test_hidden_cohort_membership[hidden_a]",
+      "test_hidden_cohort_membership[hidden_b]",
+      "test_hidden_cohort_membership[hidden_c]",
+      "test_hidden_labels_scores_and_report[hidden_a]",
+      "test_hidden_labels_scores_and_report[hidden_b]",
+      "test_hidden_labels_scores_and_report[hidden_c]"
+    ]
+  },
+  {
+    "name": "exclusive_window_bounds",
+    "doc": "Intake holdout, but the creation window excludes both endpoints (docs: inclusive).",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "8 failed, 6 passed in 39.47s",
+    "failed": [
+      "test_cohort_membership",
+      "test_report_matches_reference",
+      "test_hidden_cohort_membership[hidden_a]",
+      "test_hidden_cohort_membership[hidden_b]",
+      "test_hidden_cohort_membership[hidden_c]",
+      "test_hidden_labels_scores_and_report[hidden_a]",
+      "test_hidden_labels_scores_and_report[hidden_b]",
+      "test_hidden_labels_scores_and_report[hidden_c]"
+    ]
+  },
+  {
+    "name": "label_strictly_before_day_60",
+    "doc": "Intake holdout, labels from conversions closed strictly less than 60 days after creation (docs: <= 60).",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "1 failed, 13 passed in 39.06s",
+    "failed": [
+      "test_hidden_labels_scores_and_report[hidden_c]"
+    ]
+  },
+  {
+    "name": "overfit_latest_routing_policy",
+    "doc": "Holdout identified by the lead's latest routing event (visible extract has no re-routed holdout leads).",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "2 failed, 12 passed in 39.46s",
+    "failed": [
+      "test_hidden_cohort_membership[hidden_b]",
+      "test_hidden_labels_scores_and_report[hidden_b]"
+    ]
+  },
+  {
+    "name": "overfit_visible_router_versions",
+    "doc": "Intake holdout restricted to the router versions present in this extract.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "6 failed, 8 passed in 40.59s",
+    "failed": [
+      "test_hidden_cohort_membership[hidden_a]",
+      "test_hidden_cohort_membership[hidden_b]",
+      "test_hidden_cohort_membership[hidden_c]",
+      "test_hidden_labels_scores_and_report[hidden_a]",
+      "test_hidden_labels_scores_and_report[hidden_b]",
+      "test_hidden_labels_scores_and_report[hidden_c]"
+    ]
+  },
+  {
+    "name": "overfit_hardcoded_lead_ids",
+    "doc": "Hard-coded list of this extract's holdout lead ids.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "6 failed, 8 passed in 20.45s",
+    "failed": [
+      "test_hidden_cohort_membership[hidden_a]",
+      "test_hidden_cohort_membership[hidden_b]",
+      "test_hidden_cohort_membership[hidden_c]",
+      "test_hidden_labels_scores_and_report[hidden_a]",
+      "test_hidden_labels_scores_and_report[hidden_b]",
+      "test_hidden_labels_scores_and_report[hidden_c]"
+    ]
+  }
+]
