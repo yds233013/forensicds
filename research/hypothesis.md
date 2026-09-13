@@ -73,3 +73,24 @@ agents commit to them.
 - Every failed trajectory is labelled with the failure taxonomy (`failure_taxonomy.md`), and
   every passed trajectory is checked for reward hacking.
 - F8 (task-design issue) findings feed back into task revisions before results are reported.
+
+## Update after the Task 01 baseline (2026-09-13)
+
+Task 01 (Gemini 3 Flash, 3 diagnosis trials: 2 pass, pass@3 = 1) did **not** support H1 as the main
+bottleneck: all three agents localized the row-multiplication defect within about a minute. The passing
+agents read a document that specified the repair procedure; the failing agent skipped it and applied a
+dedupe patch (`research/task01_gemini_analysis.md`).
+
+**Working hypothesis H5 (latent invariant).** Frontier data agents can often identify a visible technical
+defect but may fail to infer and preserve the latent business or statistical invariant that determines
+the correct repair, especially when several technically plausible fixes improve aggregate metrics.
+
+Design consequences for subsequent tasks:
+- no document states the repair procedure; invariants are stated at the level a real organization
+  would (model card, data dictionary), not as algorithms;
+- several wrong repairs must produce plausible aggregate metrics, so success requires validating the
+  invariant itself;
+- hidden fixtures change the surface on which the invariant is exercised (fields, schedules, calendars).
+
+Task 02 (`research/task02_design.md`) tests H5 through temporal provenance of ML training features.
+H1 remains open; the localized/diagnosis paired design is kept for tasks where localization is non-trivial.

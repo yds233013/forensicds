@@ -39,3 +39,16 @@ label; secondary labels are allowed. Cite trajectory step numbers as evidence.
 | hidden snapshots only | F5 (overfitted: ids, months, constants) or F4 (as-of join retained) |
 | identical invoice lines | F6 (content-based dedupe) |
 | pipeline runs / dashboard extracts | F6 (interface broken) or F7 (outputs not regenerated) |
+
+## Task 02 mapping of verifier failures to likely labels
+
+| Failing checks | Most likely label |
+|----------------|-------------------|
+| same as Nop (CRM + health features, model behaviour, all hidden features/evaluation) | F0/F1/F2 (leak not found or wrong hypothesis, e.g. class weights) |
+| `test_warehouse_extract_unmodified` | F5 (source data edited) |
+| feature columns missing / constant CRM or health features | F5 (dropped or neutralized leaky features) |
+| CRM or health point-in-time checks fail on a subset (e.g. health only, existence, expansions) | F4 (root cause found, incomplete repair) |
+| visible passes, hidden_c features fail | F4 (availability by business timestamp or hard-coded schedules) or F5 (overfit) |
+| examples / predictions-report consistency | F6 (examples filtered, split changed) or F5 (patched report) |
+| model specification check only | F6 (model changed) |
+| scoring command | F6 (collateral regression) or F7 (not re-validated) |
