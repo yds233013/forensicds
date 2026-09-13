@@ -1,0 +1,29 @@
+# Executive revenue dashboard tile configuration.
+# 2026-08-20 (DASH-512): segment tile reads recognized_revenue_by_segment.csv directly
+#   instead of re-aggregating the account extract; added region filter placeholder.
+
+[dashboard]
+title = "Executive Revenue"
+refresh = "after revrec close run"
+currency = "USD"
+
+[[tiles]]
+id = "recognized_revenue_trend"
+source = "reports/exec_dashboard/recognized_revenue_by_month.csv"
+metric = "recognized_revenue_usd"
+chart = "line"
+periods = 12
+
+[[tiles]]
+id = "revenue_by_segment"
+source = "reports/exec_dashboard/recognized_revenue_by_segment.csv"
+metric = "recognized_revenue_usd"
+chart = "stacked_bar"
+filters = ["region"]  # placeholder, extract has no region column yet
+
+[[tiles]]
+id = "top_accounts"
+source = "reports/exec_dashboard/top_accounts_latest_period.csv"
+metric = "recognized_revenue_usd"
+chart = "table"
+rows = 25

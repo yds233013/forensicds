@@ -1,0 +1,19 @@
+# revrec pipeline configuration.
+# Paths are relative to the workspace root (the parent of this config/ directory).
+
+[sources]
+billing_db = "data/billing/billing.db"
+crm_accounts = "data/crm/crm_accounts_export.csv"
+account_migrations = "data/crm/account_migrations.csv"
+
+[outputs]
+warehouse_db = "warehouse/analytics.db"
+dashboard_dir = "reports/exec_dashboard"
+log_dir = "logs/pipeline"
+
+[recognition]
+# Line types that carry revenue. Tax lines are pass-through liabilities, not revenue.
+revenue_line_types = ["subscription", "usage", "onboarding", "discount"]
+invoice_statuses = ["posted"]
+reportable_period_statuses = ["closed", "closing"]
+reporting_currency = "USD"

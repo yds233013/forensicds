@@ -1,0 +1,32 @@
+# Semantic layer definitions used by the executive dashboard and ad-hoc BI.
+# Owner: Revenue Analytics. Definitions follow docs/finance/revenue_recognition_policy.md.
+
+[metrics.recognized_revenue_usd]
+label = "Recognized revenue (USD)"
+table = "fct_recognized_revenue"
+expression = "SUM(amount_usd)"
+time_dimension = "revenue_month"
+description = "Revenue recognized in the period per the revenue recognition policy, net of credit notes, in USD."
+
+[metrics.gross_recognized_usd]
+label = "Gross recognized revenue (USD)"
+table = "fct_recognized_revenue"
+expression = "SUM(CASE WHEN source_type = 'invoice_line' THEN amount_usd ELSE 0 END)"
+time_dimension = "revenue_month"
+
+[metrics.credit_notes_usd]
+label = "Credit notes (USD)"
+table = "fct_recognized_revenue"
+expression = "SUM(CASE WHEN source_type = 'credit_note' THEN amount_usd ELSE 0 END)"
+time_dimension = "revenue_month"
+
+[dimensions.customer]
+column = "account_id"
+label = "Customer"
+description = "Canonical customer account (docs/data/account_identity_standard.md)."
+
+[dimensions.segment]
+column = "segment"
+
+[dimensions.region]
+column = "region"

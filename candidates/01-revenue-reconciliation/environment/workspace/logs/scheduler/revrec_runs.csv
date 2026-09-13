@@ -1,0 +1,9 @@
+run_id,dag,trigger,logical_date,started_at,finished_at,status,revrec_version,notes
+8812,revrec_close,month_end_close,2026-03-31,2026-04-03T06:10:02Z,2026-04-03T06:10:49Z,success,3.2.0,March close
+9120,revrec_close,month_end_close,2026-04-30,2026-05-05T06:10:05Z,2026-05-05T06:10:51Z,success,3.3.0,April close
+9431,revrec_close,month_end_close,2026-05-31,2026-06-03T06:10:03Z,2026-06-03T06:10:47Z,success,3.3.0,May close
+9730,revrec_close,month_end_close,2026-06-30,2026-07-03T06:10:04Z,2026-07-03T06:10:46Z,success,3.3.0,June close
+10044,revrec_close,month_end_close,2026-07-31,2026-08-05T06:10:02Z,2026-08-05T06:10:44Z,success,3.3.2,July close - tied out to billing
+10311,revrec_nightly,schedule,2026-08-18,2026-08-19T02:00:03Z,2026-08-19T02:00:11Z,success,3.4.0,
+10338,revrec_nightly,schedule,2026-08-26,2026-08-27T02:00:02Z,2026-08-27T02:00:10Z,success,3.4.1,
+10352,revrec_close,month_end_close,2026-08-31,2026-09-03T06:10:44Z,2026-09-03T06:10:52Z,success,3.4.1,August close - Finance tie-out pending

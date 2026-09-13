@@ -1,0 +1,14 @@
+deployed_at,service,version,environment,change_summary,deployed_by,ticket
+2025-09-08T14:02:11Z,revrec,3.0.0,prod,Rebuild on new billing platform extracts,ci-deploy,RA-101
+2025-10-14T09:40:52Z,crm-export,2025.10.1,prod,Add billing_country column to account export,crm-platform,CRM-877
+2025-12-01T16:21:37Z,revrec,3.1.0,prod,Attribute revenue using CRM account record history,ci-deploy,RA-133
+2026-02-02T10:05:19Z,billing-ops-tools,1.4.0,prod,Account migration register export (account_migrations.csv),billing-ops,BOPS-3950
+2026-03-03T11:47:02Z,revrec,3.2.0,prod,Report migrated accounts under successor,ci-deploy,RA-158
+2026-04-02T15:12:44Z,revrec,3.3.0,prod,Data quality gates before publish,ci-deploy,RA-171
+2026-06-17T08:30:00Z,crm-export,2026.06.2,prod,Export performance: incremental snapshot of account history,crm-platform,CRM-1012
+2026-07-09T13:55:26Z,revrec,3.3.2,prod,FX rates from billing fx_rates (treasury feed),ci-deploy,RA-190
+2026-07-20T18:04:40Z,crm-migration-tool,2.1.0,prod,Staged cutover support; carry billing account links to successor accounts,crm-platform,CRM-1041
+2026-07-31T21:00:00Z,crm,territory-fy27,prod,FY27 territory realignment (account owner reassignment effective 2026-08-01),sales-ops,SOPS-622
+2026-08-18T12:31:09Z,revrec,3.4.0,prod,Vectorized ratable schedule expansion,ci-deploy,RA-204
+2026-08-20T10:12:33Z,exec-dashboard,2026.08.3,prod,Segment tile reads segment extract; region filter placeholder,bi-team,DASH-512
+2026-08-26T09:48:17Z,revrec,3.4.1,prod,Top accounts extract; mom_change_pct rounding,ci-deploy,RA-209
