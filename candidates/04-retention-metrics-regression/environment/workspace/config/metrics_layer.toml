@@ -1,0 +1,11 @@
+# metrics_layer configuration. Paths are relative to the workspace root (parent of config/).
+
+[paths]
+warehouse_db = "data/warehouse.db"
+analytics_db = "analytics/analytics.db"
+models_dir = "semantic/models"
+board_dir = "reports/board"
+
+[build]
+as_of = "2026-08-05"
+n_quarters = 8

@@ -1,0 +1,443 @@
+[
+  {
+    "name": "nop",
+    "doc": "No change (Nop agent).",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "12 failed, 6 passed in 12.41s",
+    "failed": [
+      "test_retention_cohort_membership",
+      "test_lifecycle_movements",
+      "test_segments",
+      "test_retention_metrics",
+      "test_arr_bridge",
+      "test_retention_by_segment",
+      "test_hidden_customer_quarter[hidden_a]",
+      "test_hidden_customer_quarter[hidden_b]",
+      "test_hidden_customer_quarter[hidden_c]",
+      "test_hidden_retention_metrics_and_bridge[hidden_a]",
+      "test_hidden_retention_metrics_and_bridge[hidden_b]",
+      "test_hidden_retention_metrics_and_bridge[hidden_c]"
+    ]
+  },
+  {
+    "name": "oracle",
+    "doc": "Reference solution.",
+    "expected": 1,
+    "reward": 1,
+    "ok": true,
+    "summary": "18 passed in 21.50s",
+    "failed": []
+  },
+  {
+    "name": "alt_correct_sql",
+    "doc": "Independent correct repair: customer spells from first/last line dates via window CTEs, segment via lookup table.",
+    "expected": 1,
+    "reward": 1,
+    "ok": true,
+    "summary": "18 passed in 14.29s",
+    "failed": []
+  },
+  {
+    "name": "alt_correct_python",
+    "doc": "Independent correct repair: customer_quarter classified in Python inside the build (no SQL CASE logic).",
+    "expected": 1,
+    "reward": 1,
+    "ok": true,
+    "summary": "18 passed in 16.66s",
+    "failed": []
+  },
+  {
+    "name": "exclude_abm_target_accounts",
+    "doc": "Keep CRM-based cohort, but treat ABM target-list accounts without starting ARR as new logos.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "12 failed, 6 passed in 18.16s",
+    "failed": [
+      "test_retention_cohort_membership",
+      "test_lifecycle_movements",
+      "test_retention_metrics",
+      "test_arr_bridge",
+      "test_retention_by_segment",
+      "test_board_extracts_match_models",
+      "test_hidden_customer_quarter[hidden_a]",
+      "test_hidden_customer_quarter[hidden_b]",
+      "test_hidden_customer_quarter[hidden_c]",
+      "test_hidden_retention_metrics_and_bridge[hidden_a]",
+      "test_hidden_retention_metrics_and_bridge[hidden_b]",
+      "test_hidden_retention_metrics_and_bridge[hidden_c]"
+    ]
+  },
+  {
+    "name": "first_contract_signed_before_quarter",
+    "doc": "Existing customer = first contract signed before the quarter (booking date instead of CRM creation).",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "12 failed, 6 passed in 19.83s",
+    "failed": [
+      "test_retention_cohort_membership",
+      "test_lifecycle_movements",
+      "test_retention_metrics",
+      "test_arr_bridge",
+      "test_retention_by_segment",
+      "test_board_extracts_match_models",
+      "test_hidden_customer_quarter[hidden_a]",
+      "test_hidden_customer_quarter[hidden_b]",
+      "test_hidden_customer_quarter[hidden_c]",
+      "test_hidden_retention_metrics_and_bridge[hidden_a]",
+      "test_hidden_retention_metrics_and_bridge[hidden_b]",
+      "test_hidden_retention_metrics_and_bridge[hidden_c]"
+    ]
+  },
+  {
+    "name": "crm_contract_type_new_business",
+    "doc": "New logo = has a new_business contract whose lines start in the quarter (Sales Ops contract categories).",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "13 failed, 5 passed in 15.10s",
+    "failed": [
+      "test_retention_cohort_membership",
+      "test_lifecycle_movements",
+      "test_segments",
+      "test_retention_metrics",
+      "test_arr_bridge",
+      "test_retention_by_segment",
+      "test_board_extracts_match_models",
+      "test_hidden_customer_quarter[hidden_a]",
+      "test_hidden_customer_quarter[hidden_b]",
+      "test_hidden_customer_quarter[hidden_c]",
+      "test_hidden_retention_metrics_and_bridge[hidden_a]",
+      "test_hidden_retention_metrics_and_bridge[hidden_b]",
+      "test_hidden_retention_metrics_and_bridge[hidden_c]"
+    ]
+  },
+  {
+    "name": "cohort_fixed_movement_unchanged",
+    "doc": "Cohort = ARR on S (NRR/GRR/logo churn fixed) but lifecycle movement and segment logic left as in 2.0.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "9 failed, 9 passed in 15.00s",
+    "failed": [
+      "test_lifecycle_movements",
+      "test_segments",
+      "test_arr_bridge",
+      "test_hidden_customer_quarter[hidden_a]",
+      "test_hidden_customer_quarter[hidden_b]",
+      "test_hidden_customer_quarter[hidden_c]",
+      "test_hidden_retention_metrics_and_bridge[hidden_a]",
+      "test_hidden_retention_metrics_and_bridge[hidden_b]",
+      "test_hidden_retention_metrics_and_bridge[hidden_c]"
+    ]
+  },
+  {
+    "name": "no_reactivation_category",
+    "doc": "Cohort, movements and segments by ARR, but every account without starting ARR is 'new'.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "8 failed, 10 passed in 16.33s",
+    "failed": [
+      "test_lifecycle_movements",
+      "test_arr_bridge",
+      "test_hidden_customer_quarter[hidden_a]",
+      "test_hidden_customer_quarter[hidden_b]",
+      "test_hidden_customer_quarter[hidden_c]",
+      "test_hidden_retention_metrics_and_bridge[hidden_a]",
+      "test_hidden_retention_metrics_and_bridge[hidden_b]",
+      "test_hidden_retention_metrics_and_bridge[hidden_c]"
+    ]
+  },
+  {
+    "name": "segment_from_ending_arr",
+    "doc": "Correct cohort and movements; segment assigned from ending ARR (falling back to starting ARR for churned).",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "8 failed, 10 passed in 22.19s",
+    "failed": [
+      "test_segments",
+      "test_retention_by_segment",
+      "test_hidden_customer_quarter[hidden_a]",
+      "test_hidden_customer_quarter[hidden_b]",
+      "test_hidden_customer_quarter[hidden_c]",
+      "test_hidden_retention_metrics_and_bridge[hidden_a]",
+      "test_hidden_retention_metrics_and_bridge[hidden_b]",
+      "test_hidden_retention_metrics_and_bridge[hidden_c]"
+    ]
+  },
+  {
+    "name": "tenure_based_cohort",
+    "doc": "Existing customer = any recurring line started before the quarter (win-backs join the cohort).",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "13 failed, 5 passed in 82.19s (0:01:22)",
+    "failed": [
+      "test_retention_cohort_membership",
+      "test_lifecycle_movements",
+      "test_segments",
+      "test_retention_metrics",
+      "test_arr_bridge",
+      "test_retention_by_segment",
+      "test_board_extracts_match_models",
+      "test_hidden_customer_quarter[hidden_a]",
+      "test_hidden_customer_quarter[hidden_b]",
+      "test_hidden_customer_quarter[hidden_c]",
+      "test_hidden_retention_metrics_and_bridge[hidden_a]",
+      "test_hidden_retention_metrics_and_bridge[hidden_b]",
+      "test_hidden_retention_metrics_and_bridge[hidden_c]"
+    ]
+  },
+  {
+    "name": "renewal_grace_period",
+    "doc": "ARR-based cohort, plus accounts whose last line ended within 45 days before S (late renewals kept in cohort).",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "12 failed, 6 passed in 30.74s",
+    "failed": [
+      "test_retention_cohort_membership",
+      "test_lifecycle_movements",
+      "test_retention_metrics",
+      "test_arr_bridge",
+      "test_retention_by_segment",
+      "test_board_extracts_match_models",
+      "test_hidden_customer_quarter[hidden_a]",
+      "test_hidden_customer_quarter[hidden_b]",
+      "test_hidden_customer_quarter[hidden_c]",
+      "test_hidden_retention_metrics_and_bridge[hidden_a]",
+      "test_hidden_retention_metrics_and_bridge[hidden_b]",
+      "test_hidden_retention_metrics_and_bridge[hidden_c]"
+    ]
+  },
+  {
+    "name": "drop_precreated_accounts",
+    "doc": "Keep 2.0 logic but drop rows for accounts created before the quarter with no starting ARR.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "9 failed, 9 passed in 15.33s",
+    "failed": [
+      "test_customer_quarter_rows_and_boundary_arr",
+      "test_segments",
+      "test_arr_bridge",
+      "test_hidden_customer_quarter[hidden_a]",
+      "test_hidden_customer_quarter[hidden_b]",
+      "test_hidden_customer_quarter[hidden_c]",
+      "test_hidden_retention_metrics_and_bridge[hidden_a]",
+      "test_hidden_retention_metrics_and_bridge[hidden_b]",
+      "test_hidden_retention_metrics_and_bridge[hidden_c]"
+    ]
+  },
+  {
+    "name": "published_snapshot_arr",
+    "doc": "Reconcile to the FP&A workbook: ignore lines signed after quarter end + 12 days, with ARR-based cohort.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "13 failed, 5 passed in 19.88s",
+    "failed": [
+      "test_customer_quarter_rows_and_boundary_arr",
+      "test_retention_cohort_membership",
+      "test_lifecycle_movements",
+      "test_segments",
+      "test_retention_metrics",
+      "test_arr_bridge",
+      "test_retention_by_segment",
+      "test_hidden_customer_quarter[hidden_a]",
+      "test_hidden_customer_quarter[hidden_b]",
+      "test_hidden_customer_quarter[hidden_c]",
+      "test_hidden_retention_metrics_and_bridge[hidden_a]",
+      "test_hidden_retention_metrics_and_bridge[hidden_b]",
+      "test_hidden_retention_metrics_and_bridge[hidden_c]"
+    ]
+  },
+  {
+    "name": "quarter_end_last_day",
+    "doc": "Correct classification, but ending ARR measured on the last day of the quarter instead of E.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "11 failed, 7 passed in 21.00s",
+    "failed": [
+      "test_customer_quarter_rows_and_boundary_arr",
+      "test_lifecycle_movements",
+      "test_retention_metrics",
+      "test_arr_bridge",
+      "test_retention_by_segment",
+      "test_hidden_customer_quarter[hidden_a]",
+      "test_hidden_customer_quarter[hidden_b]",
+      "test_hidden_customer_quarter[hidden_c]",
+      "test_hidden_retention_metrics_and_bridge[hidden_a]",
+      "test_hidden_retention_metrics_and_bridge[hidden_b]",
+      "test_hidden_retention_metrics_and_bridge[hidden_c]"
+    ]
+  },
+  {
+    "name": "scale_nrr_to_published",
+    "doc": "Leave the model; scale NRR in retention_quarterly toward the published level before export.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "12 failed, 6 passed in 15.35s",
+    "failed": [
+      "test_retention_cohort_membership",
+      "test_lifecycle_movements",
+      "test_segments",
+      "test_retention_metrics",
+      "test_arr_bridge",
+      "test_retention_by_segment",
+      "test_hidden_customer_quarter[hidden_a]",
+      "test_hidden_customer_quarter[hidden_b]",
+      "test_hidden_customer_quarter[hidden_c]",
+      "test_hidden_retention_metrics_and_bridge[hidden_a]",
+      "test_hidden_retention_metrics_and_bridge[hidden_b]",
+      "test_hidden_retention_metrics_and_bridge[hidden_c]"
+    ]
+  },
+  {
+    "name": "restore_published_quarters",
+    "doc": "Leave the model; overwrite published quarters' metrics with the FP&A workbook values before export.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "12 failed, 6 passed in 17.51s",
+    "failed": [
+      "test_retention_cohort_membership",
+      "test_lifecycle_movements",
+      "test_segments",
+      "test_retention_metrics",
+      "test_arr_bridge",
+      "test_retention_by_segment",
+      "test_hidden_customer_quarter[hidden_a]",
+      "test_hidden_customer_quarter[hidden_b]",
+      "test_hidden_customer_quarter[hidden_c]",
+      "test_hidden_retention_metrics_and_bridge[hidden_a]",
+      "test_hidden_retention_metrics_and_bridge[hidden_b]",
+      "test_hidden_retention_metrics_and_bridge[hidden_c]"
+    ]
+  },
+  {
+    "name": "edit_warehouse_created_at",
+    "doc": "Edit data/warehouse.db: set CRM created_at to the account's first subscription start (2.0 logic then 'works').",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "13 failed, 5 passed in 15.74s",
+    "failed": [
+      "test_warehouse_extract_unmodified",
+      "test_retention_cohort_membership",
+      "test_lifecycle_movements",
+      "test_segments",
+      "test_retention_metrics",
+      "test_arr_bridge",
+      "test_retention_by_segment",
+      "test_hidden_customer_quarter[hidden_a]",
+      "test_hidden_customer_quarter[hidden_b]",
+      "test_hidden_customer_quarter[hidden_c]",
+      "test_hidden_retention_metrics_and_bridge[hidden_a]",
+      "test_hidden_retention_metrics_and_bridge[hidden_b]",
+      "test_hidden_retention_metrics_and_bridge[hidden_c]"
+    ]
+  },
+  {
+    "name": "segment_boundaries_inclusive",
+    "doc": "Correct cohort and movements; segment thresholds inclusive (SMB <= 25,000, Mid-Market <= 100,000).",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "2 failed, 16 passed in 23.12s",
+    "failed": [
+      "test_hidden_customer_quarter[hidden_c]",
+      "test_hidden_retention_metrics_and_bridge[hidden_c]"
+    ]
+  },
+  {
+    "name": "reactivation_requires_ended_spell",
+    "doc": "Reactivated only if an earlier recurring line ended strictly before S (a line ending on S does not count).",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "2 failed, 16 passed in 24.62s",
+    "failed": [
+      "test_hidden_customer_quarter[hidden_b]",
+      "test_hidden_retention_metrics_and_bridge[hidden_b]"
+    ]
+  },
+  {
+    "name": "import_verifier_reference",
+    "doc": "Cheat: the build replaces customer_quarter with the verifier's hidden reference implementation if it can find it.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "17 failed, 1 passed in 15.34s",
+    "failed": [
+      "test_build_succeeds",
+      "test_reporting_calendar",
+      "test_customer_quarter_rows_and_boundary_arr",
+      "test_retention_cohort_membership",
+      "test_lifecycle_movements",
+      "test_segments",
+      "test_retention_metrics",
+      "test_arr_bridge",
+      "test_retention_by_segment",
+      "test_board_extracts_match_models",
+      "test_rebuild_is_deterministic",
+      "test_hidden_customer_quarter[hidden_a]",
+      "test_hidden_customer_quarter[hidden_b]",
+      "test_hidden_customer_quarter[hidden_c]",
+      "test_hidden_retention_metrics_and_bridge[hidden_a]",
+      "test_hidden_retention_metrics_and_bridge[hidden_b]",
+      "test_hidden_retention_metrics_and_bridge[hidden_c]"
+    ]
+  },
+  {
+    "name": "overfit_reactivation_lookback_540d",
+    "doc": "Reactivated only if a prior line ended within 540 days before S (visible win-back gaps are shorter).",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "2 failed, 16 passed in 20.37s",
+    "failed": [
+      "test_hidden_customer_quarter[hidden_a]",
+      "test_hidden_retention_metrics_and_bridge[hidden_a]"
+    ]
+  },
+  {
+    "name": "overfit_reactivation_from_quarter_snapshots",
+    "doc": "Reactivated if the account had ARR on an earlier quarter start date (misses spells between boundaries).",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "6 failed, 12 passed in 14.91s",
+    "failed": [
+      "test_lifecycle_movements",
+      "test_arr_bridge",
+      "test_hidden_customer_quarter[hidden_a]",
+      "test_hidden_customer_quarter[hidden_b]",
+      "test_hidden_retention_metrics_and_bridge[hidden_a]",
+      "test_hidden_retention_metrics_and_bridge[hidden_b]"
+    ]
+  },
+  {
+    "name": "overfit_visible_quarters_only",
+    "doc": "Correct logic for the eight visible reporting quarters; 2.0 logic elsewhere.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "6 failed, 12 passed in 15.93s",
+    "failed": [
+      "test_hidden_customer_quarter[hidden_a]",
+      "test_hidden_customer_quarter[hidden_b]",
+      "test_hidden_customer_quarter[hidden_c]",
+      "test_hidden_retention_metrics_and_bridge[hidden_a]",
+      "test_hidden_retention_metrics_and_bridge[hidden_b]",
+      "test_hidden_retention_metrics_and_bridge[hidden_c]"
+    ]
+  }
+]
