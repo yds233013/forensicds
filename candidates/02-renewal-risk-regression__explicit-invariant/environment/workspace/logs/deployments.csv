@@ -1,0 +1,11 @@
+deployed_at,service,version,environment,summary,ticket
+2025-02-11T10:04:22Z,renewal-risk,2.3.0,prod,Support features; CRM/CS snapshot features,RA-DS-240
+2025-08-18T09:31:05Z,renewal-risk,2.3.4,prod,Q3 2025 retrain (model v2.3),RA-DS-276
+2025-11-18T11:50:00Z,warehouse-crm-connector,5.2.1,prod,Resume CRM change stream after INC-1874; backlog replayed,INC-1874
+2026-01-12T07:00:00Z,crm,v3.0,prod,CRM v3 cutover (objects + field history),CRMV3-1
+2026-01-31T18:00:00Z,warehouse,snapshot-jobs,prod,Decommission crm_opportunity_daily_snapshot and cs_health_daily_snapshot,DATA-912
+2026-02-01T00:30:00Z,renewal-risk,2.3.4,prod,Daily scoring paused: snapshot source tables removed; CS prioritizes manually until v2.4,RA-DS-299
+2026-02-03T14:12:40Z,cs-platform,2026.02,prod,Health score weights recalibrated (usage 40%->35%; support 20%->25%),CS-455
+2026-02-16T16:45:31Z,renewal-risk,2.4.0,staging,CRM v3 readers; balanced class weights; winsorization; 3y window; sklearn 1.5.2,RA-DS-298
+2026-03-02T08:02:10Z,renewal-risk,2.4.0,prod,Model renewal-risk-v2.4 live for daily scoring,RA-DS-315
+2026-03-10T12:20:09Z,renewal-risk,2.4.1,prod,Scoring date in UTC,RA-DS-318
