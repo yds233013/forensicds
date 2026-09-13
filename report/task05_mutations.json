@@ -1,0 +1,432 @@
+[
+  {
+    "name": "nop",
+    "doc": "No change (Nop agent).",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "8 failed, 6 passed in 25.97s",
+    "failed": [
+      "test_analysis_units",
+      "test_readout_matches_reference",
+      "test_hidden_analysis_units[hidden_a]",
+      "test_hidden_analysis_units[hidden_b]",
+      "test_hidden_analysis_units[hidden_c]",
+      "test_hidden_readout[hidden_a]",
+      "test_hidden_readout[hidden_b]",
+      "test_hidden_readout[hidden_c]"
+    ]
+  },
+  {
+    "name": "oracle",
+    "doc": "Reference solution.",
+    "expected": 1,
+    "reward": 1,
+    "ok": true,
+    "summary": "14 passed in 25.43s",
+    "failed": []
+  },
+  {
+    "name": "alt_correct_sql",
+    "doc": "Independent correct repair: unit table built in SQLite (window function for first assignment, correlated count).",
+    "expected": 1,
+    "reward": 1,
+    "ok": true,
+    "summary": "14 passed in 25.53s",
+    "failed": []
+  },
+  {
+    "name": "alt_correct_python",
+    "doc": "Independent correct repair: plain-Python loops over the loaded frames (no pandas joins or groupbys).",
+    "expected": 1,
+    "reward": 1,
+    "ok": true,
+    "summary": "14 passed in 27.28s",
+    "failed": []
+  },
+  {
+    "name": "workspace_triggered",
+    "doc": "As-assigned workspaces, but only those where some member logged an exposure (triggered at workspace level).",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "8 failed, 6 passed in 27.45s",
+    "failed": [
+      "test_analysis_units",
+      "test_readout_matches_reference",
+      "test_hidden_analysis_units[hidden_a]",
+      "test_hidden_analysis_units[hidden_b]",
+      "test_hidden_analysis_units[hidden_c]",
+      "test_hidden_readout[hidden_a]",
+      "test_hidden_readout[hidden_b]",
+      "test_hidden_readout[hidden_c]"
+    ]
+  },
+  {
+    "name": "workspace_exposure_variant",
+    "doc": "Exposed workspaces analyzed in the variant their members' exposures logged (majority).",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "9 failed, 5 passed in 34.05s",
+    "failed": [
+      "test_analysis_units",
+      "test_unit_arm_stratum_and_outcome",
+      "test_readout_matches_reference",
+      "test_hidden_analysis_units[hidden_a]",
+      "test_hidden_analysis_units[hidden_b]",
+      "test_hidden_analysis_units[hidden_c]",
+      "test_hidden_readout[hidden_a]",
+      "test_hidden_readout[hidden_b]",
+      "test_hidden_readout[hidden_c]"
+    ]
+  },
+  {
+    "name": "user_level_itt",
+    "doc": "Users of eligible assigned workspaces (first membership), arm from the workspace, user activation from assignment.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "8 failed, 6 passed in 29.76s",
+    "failed": [
+      "test_analysis_units",
+      "test_readout_matches_reference",
+      "test_hidden_analysis_units[hidden_a]",
+      "test_hidden_analysis_units[hidden_b]",
+      "test_hidden_analysis_units[hidden_c]",
+      "test_hidden_readout[hidden_a]",
+      "test_hidden_readout[hidden_b]",
+      "test_hidden_readout[hidden_c]"
+    ]
+  },
+  {
+    "name": "latest_assignment_row",
+    "doc": "Workspace ITT, but the latest assignment row is treated as binding (re-bucketing wins).",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "6 failed, 8 passed in 27.93s",
+    "failed": [
+      "test_unit_arm_stratum_and_outcome",
+      "test_readout_matches_reference",
+      "test_hidden_analysis_units[hidden_b]",
+      "test_hidden_analysis_units[hidden_c]",
+      "test_hidden_readout[hidden_b]",
+      "test_hidden_readout[hidden_c]"
+    ]
+  },
+  {
+    "name": "no_maturity_filter",
+    "doc": "Workspace ITT including workspaces whose 14-day window has not closed.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "8 failed, 6 passed in 30.33s",
+    "failed": [
+      "test_analysis_units",
+      "test_readout_matches_reference",
+      "test_hidden_analysis_units[hidden_a]",
+      "test_hidden_analysis_units[hidden_b]",
+      "test_hidden_analysis_units[hidden_c]",
+      "test_hidden_readout[hidden_a]",
+      "test_hidden_readout[hidden_b]",
+      "test_hidden_readout[hidden_c]"
+    ]
+  },
+  {
+    "name": "include_sales_assisted",
+    "doc": "Workspace ITT without the self-serve eligibility filter (internal still excluded).",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "8 failed, 6 passed in 26.39s",
+    "failed": [
+      "test_analysis_units",
+      "test_readout_matches_reference",
+      "test_hidden_analysis_units[hidden_a]",
+      "test_hidden_analysis_units[hidden_b]",
+      "test_hidden_analysis_units[hidden_c]",
+      "test_hidden_readout[hidden_a]",
+      "test_hidden_readout[hidden_b]",
+      "test_hidden_readout[hidden_c]"
+    ]
+  },
+  {
+    "name": "include_internal_workspaces",
+    "doc": "Workspace ITT without excluding internal test workspaces.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "8 failed, 6 passed in 28.00s",
+    "failed": [
+      "test_analysis_units",
+      "test_readout_matches_reference",
+      "test_hidden_analysis_units[hidden_a]",
+      "test_hidden_analysis_units[hidden_b]",
+      "test_hidden_analysis_units[hidden_c]",
+      "test_hidden_readout[hidden_a]",
+      "test_hidden_readout[hidden_b]",
+      "test_hidden_readout[hidden_c]"
+    ]
+  },
+  {
+    "name": "anchor_at_workspace_creation",
+    "doc": "Workspace ITT with the activation window starting at workspace creation instead of assignment.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "8 failed, 6 passed in 30.41s",
+    "failed": [
+      "test_unit_arm_stratum_and_outcome",
+      "test_readout_matches_reference",
+      "test_hidden_analysis_units[hidden_a]",
+      "test_hidden_analysis_units[hidden_b]",
+      "test_hidden_analysis_units[hidden_c]",
+      "test_hidden_readout[hidden_a]",
+      "test_hidden_readout[hidden_b]",
+      "test_hidden_readout[hidden_c]"
+    ]
+  },
+  {
+    "name": "anchor_at_first_exposure",
+    "doc": "Workspace ITT with the activation window starting at the workspace's first exposure (assignment if none).",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "8 failed, 6 passed in 27.75s",
+    "failed": [
+      "test_unit_arm_stratum_and_outcome",
+      "test_readout_matches_reference",
+      "test_hidden_analysis_units[hidden_a]",
+      "test_hidden_analysis_units[hidden_b]",
+      "test_hidden_analysis_units[hidden_c]",
+      "test_hidden_readout[hidden_a]",
+      "test_hidden_readout[hidden_b]",
+      "test_hidden_readout[hidden_c]"
+    ]
+  },
+  {
+    "name": "lower_activation_threshold",
+    "doc": "Workspace ITT with 2 active users instead of the configured 3.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "8 failed, 6 passed in 29.95s",
+    "failed": [
+      "test_unit_arm_stratum_and_outcome",
+      "test_readout_matches_reference",
+      "test_hidden_analysis_units[hidden_a]",
+      "test_hidden_analysis_units[hidden_b]",
+      "test_hidden_analysis_units[hidden_c]",
+      "test_hidden_readout[hidden_a]",
+      "test_hidden_readout[hidden_b]",
+      "test_hidden_readout[hidden_c]"
+    ]
+  },
+  {
+    "name": "exclude_small_workspaces",
+    "doc": "Workspace ITT excluding workspaces with fewer than 3 members (they cannot activate).",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "8 failed, 6 passed in 31.96s",
+    "failed": [
+      "test_analysis_units",
+      "test_readout_matches_reference",
+      "test_hidden_analysis_units[hidden_a]",
+      "test_hidden_analysis_units[hidden_b]",
+      "test_hidden_analysis_units[hidden_c]",
+      "test_hidden_readout[hidden_a]",
+      "test_hidden_readout[hidden_b]",
+      "test_hidden_readout[hidden_c]"
+    ]
+  },
+  {
+    "name": "drop_conflicting_assignments",
+    "doc": "Workspace ITT excluding workspaces whose assignment rows disagree (INC-5521 cleanup).",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "6 failed, 8 passed in 28.72s",
+    "failed": [
+      "test_analysis_units",
+      "test_readout_matches_reference",
+      "test_hidden_analysis_units[hidden_b]",
+      "test_hidden_analysis_units[hidden_c]",
+      "test_hidden_readout[hidden_b]",
+      "test_hidden_readout[hidden_c]"
+    ]
+  },
+  {
+    "name": "drop_multi_workspace_users",
+    "doc": "Workspace ITT excluding workspaces that share a member with another workspace (contamination).",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "8 failed, 6 passed in 30.40s",
+    "failed": [
+      "test_analysis_units",
+      "test_readout_matches_reference",
+      "test_hidden_analysis_units[hidden_a]",
+      "test_hidden_analysis_units[hidden_b]",
+      "test_hidden_analysis_units[hidden_c]",
+      "test_hidden_readout[hidden_a]",
+      "test_hidden_readout[hidden_b]",
+      "test_hidden_readout[hidden_c]"
+    ]
+  },
+  {
+    "name": "unstratified_estimator",
+    "doc": "Correct units, but the estimator pools strata (simple difference in proportions).",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "5 failed, 9 passed in 31.88s",
+    "failed": [
+      "test_readout_computed_from_units",
+      "test_readout_matches_reference",
+      "test_hidden_readout[hidden_a]",
+      "test_hidden_readout[hidden_b]",
+      "test_hidden_readout[hidden_c]"
+    ]
+  },
+  {
+    "name": "patch_decision_only",
+    "doc": "Leave the units; override the decision to 'inconclusive' in the readout.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "9 failed, 5 passed in 26.37s",
+    "failed": [
+      "test_analysis_units",
+      "test_readout_computed_from_units",
+      "test_readout_matches_reference",
+      "test_hidden_analysis_units[hidden_a]",
+      "test_hidden_analysis_units[hidden_b]",
+      "test_hidden_analysis_units[hidden_c]",
+      "test_hidden_readout[hidden_a]",
+      "test_hidden_readout[hidden_b]",
+      "test_hidden_readout[hidden_c]"
+    ]
+  },
+  {
+    "name": "edit_source_exposures",
+    "doc": "Edit data/product.db: delete control exposures so exposed samples balance, keep exposure-triggered analysis.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "9 failed, 5 passed in 28.57s",
+    "failed": [
+      "test_product_extract_unmodified",
+      "test_analysis_units",
+      "test_readout_matches_reference",
+      "test_hidden_analysis_units[hidden_a]",
+      "test_hidden_analysis_units[hidden_b]",
+      "test_hidden_analysis_units[hidden_c]",
+      "test_hidden_readout[hidden_a]",
+      "test_hidden_readout[hidden_b]",
+      "test_hidden_readout[hidden_c]"
+    ]
+  },
+  {
+    "name": "window_no_lower_bound",
+    "doc": "Workspace ITT counting core actions before assignment too (window end only).",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "8 failed, 6 passed in 30.42s",
+    "failed": [
+      "test_unit_arm_stratum_and_outcome",
+      "test_readout_matches_reference",
+      "test_hidden_analysis_units[hidden_a]",
+      "test_hidden_analysis_units[hidden_b]",
+      "test_hidden_analysis_units[hidden_c]",
+      "test_hidden_readout[hidden_a]",
+      "test_hidden_readout[hidden_b]",
+      "test_hidden_readout[hidden_c]"
+    ]
+  },
+  {
+    "name": "import_verifier_reference",
+    "doc": "Cheat: the readout imports the verifier's hidden reference implementation at run time if it can find it.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "8 failed, 6 passed in 26.21s",
+    "failed": [
+      "test_analysis_units",
+      "test_readout_matches_reference",
+      "test_hidden_analysis_units[hidden_a]",
+      "test_hidden_analysis_units[hidden_b]",
+      "test_hidden_analysis_units[hidden_c]",
+      "test_hidden_readout[hidden_a]",
+      "test_hidden_readout[hidden_b]",
+      "test_hidden_readout[hidden_c]"
+    ]
+  },
+  {
+    "name": "overfit_visible_strata",
+    "doc": "Workspace ITT restricted to the four strata present in this extract.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "2 failed, 12 passed in 28.05s",
+    "failed": [
+      "test_hidden_analysis_units[hidden_a]",
+      "test_hidden_readout[hidden_a]"
+    ]
+  },
+  {
+    "name": "overfit_visible_self_serve_plans",
+    "doc": "Eligibility by this extract's self-serve plan names instead of signup channel.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "2 failed, 12 passed in 29.36s",
+    "failed": [
+      "test_hidden_analysis_units[hidden_a]",
+      "test_hidden_readout[hidden_a]"
+    ]
+  },
+  {
+    "name": "overfit_incident_rows",
+    "doc": "Drop assignment rows written during INC-5521 (2026-07-29 14:00-15:00) and dedupe by the latest remaining row.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "6 failed, 8 passed in 27.86s",
+    "failed": [
+      "test_analysis_units",
+      "test_readout_matches_reference",
+      "test_hidden_analysis_units[hidden_b]",
+      "test_hidden_analysis_units[hidden_c]",
+      "test_hidden_readout[hidden_b]",
+      "test_hidden_readout[hidden_c]"
+    ]
+  },
+  {
+    "name": "overfit_hardcoded_units",
+    "doc": "Hard-coded list of this extract's analyzable workspace ids.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "6 failed, 8 passed in 28.88s",
+    "failed": [
+      "test_hidden_analysis_units[hidden_a]",
+      "test_hidden_analysis_units[hidden_b]",
+      "test_hidden_analysis_units[hidden_c]",
+      "test_hidden_readout[hidden_a]",
+      "test_hidden_readout[hidden_b]",
+      "test_hidden_readout[hidden_c]"
+    ]
+  },
+  {
+    "name": "window_end_inclusive",
+    "doc": "Workspace ITT with the activation window closed at assigned_at + 14 days (<=). Probe: boundary sensitivity.",
+    "expected": null,
+    "reward": 1,
+    "ok": true,
+    "summary": "14 passed in 28.89s",
+    "failed": []
+  }
+]

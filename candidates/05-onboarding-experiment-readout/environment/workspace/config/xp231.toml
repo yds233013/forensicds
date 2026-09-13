@@ -1,0 +1,15 @@
+# XP-231 readout (onboarding checklist). Analysis parameters follow docs/experiments/XP-231_plan.md.
+[paths]
+product_db = "data/product.db"
+artifacts_dir = "artifacts"
+reports_dir = "reports/experiments"
+
+[run]
+analysis_date = "2026-09-01"
+
+[experiment]
+experiment_id = "XP-231"
+outcome_window_days = 14   # activation window
+min_active_users = 3       # workspace activation threshold (docs/metrics/activation.md)
+z = 1.96                   # 95% confidence interval
+treatment_share = 0.5      # allocation, used by the SRM check

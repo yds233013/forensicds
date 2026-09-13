@@ -1,0 +1,28 @@
+[OK ] nop                                  reward=0 expected=0  8 failed, 6 passed in 25.97s
+[OK ] oracle                               reward=1 expected=1  14 passed in 25.43s
+[OK ] alt_correct_sql                      reward=1 expected=1  14 passed in 25.53s
+[OK ] alt_correct_python                   reward=1 expected=1  14 passed in 27.28s
+[OK ] workspace_triggered                  reward=0 expected=0  8 failed, 6 passed in 27.45s
+[OK ] workspace_exposure_variant           reward=0 expected=0  9 failed, 5 passed in 34.05s
+[OK ] user_level_itt                       reward=0 expected=0  8 failed, 6 passed in 29.76s
+[OK ] latest_assignment_row                reward=0 expected=0  6 failed, 8 passed in 27.93s
+[OK ] no_maturity_filter                   reward=0 expected=0  8 failed, 6 passed in 30.33s
+[OK ] include_sales_assisted               reward=0 expected=0  8 failed, 6 passed in 26.39s
+[OK ] include_internal_workspaces          reward=0 expected=0  8 failed, 6 passed in 28.00s
+[OK ] anchor_at_workspace_creation         reward=0 expected=0  8 failed, 6 passed in 30.41s
+[OK ] anchor_at_first_exposure             reward=0 expected=0  8 failed, 6 passed in 27.75s
+[OK ] lower_activation_threshold           reward=0 expected=0  8 failed, 6 passed in 29.95s
+[OK ] exclude_small_workspaces             reward=0 expected=0  8 failed, 6 passed in 31.96s
+[OK ] drop_conflicting_assignments         reward=0 expected=0  6 failed, 8 passed in 28.72s
+[OK ] drop_multi_workspace_users           reward=0 expected=0  8 failed, 6 passed in 30.40s
+[OK ] unstratified_estimator               reward=0 expected=0  5 failed, 9 passed in 31.88s
+[OK ] patch_decision_only                  reward=0 expected=0  9 failed, 5 passed in 26.37s
+[OK ] edit_source_exposures                reward=0 expected=0  9 failed, 5 passed in 28.57s
+[OK ] window_no_lower_bound                reward=0 expected=0  8 failed, 6 passed in 30.42s
+[OK ] import_verifier_reference            reward=0 expected=0  8 failed, 6 passed in 26.21s
+[OK ] overfit_visible_strata               reward=0 expected=0  2 failed, 12 passed in 28.05s
+[OK ] overfit_visible_self_serve_plans     reward=0 expected=0  2 failed, 12 passed in 29.36s
+[OK ] overfit_incident_rows                reward=0 expected=0  6 failed, 8 passed in 27.86s
+[OK ] overfit_hardcoded_units              reward=0 expected=0  6 failed, 8 passed in 28.88s
+[OK ] window_end_inclusive                 reward=1 expected=None  14 passed in 28.89s
+MUTATIONS_EXIT=0
