@@ -26,9 +26,10 @@ Research question and hypotheses: [`research/hypothesis.md`](research/hypothesis
 |------|--------|-----|----------------|------------|
 | 01 revenue reconciliation | 1.0 | 0.0 | 28/28 as expected | Gemini 3 Flash: 2/3 pass (pass@3 = 1) |
 | 02 renewal-risk regression | 1.0 | 0.0 | 21/21 as expected | Gemini 3 Flash: diagnosis 0/3; explicit-invariant ablation 0/3 (confounded) |
-| 03 lead-score evaluation | 1.0 | 0.0 | 24/24 as expected | not run |
-| 04 retention metrics | 1.0 | 0.0 | 24/24 as expected | not run |
-| 05 experiment readout | 1.0 | 0.0 | 27/27 as expected (1 informational) | not run |
+| 03 lead-score evaluation | 1.0 | 0.0 | 24/24 as expected | Gemini 3 Flash: 3/3 (pass@3 = 1) |
+| 04 retention metrics | 1.0 | 0.0 | 24/24 as expected | Gemini 3 Flash: 1/3 (pass@3 = 1) |
+| 05 experiment readout | 1.0 | 0.0 | 27/27 as expected (1 informational) | Gemini 3 Flash: 3/3 (pass@3 = 1) |
+| 06 usage statement close (gen 2) | 1.0 | 0.0 | 29/29 as expected | not run |
 
 Benchmark-level docs: `research/benchmark_hypothesis.md`, `research/distribution_matrix.md`,
 `research/cross_task_review.md`, `research/failure_taxonomy.md`.

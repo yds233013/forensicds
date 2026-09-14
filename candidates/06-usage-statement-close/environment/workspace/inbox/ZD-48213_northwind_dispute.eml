@@ -1,0 +1,18 @@
+From: Priya Raman <accounts.payable@northwind-logistics.example>
+To: billing-support@cobalt.example
+Date: Mon, 21 Sep 2026 09:14:02 +0200
+Subject: Invoice INV-2026-08-0133: overage charges disputed
+Message-ID: <ZD-48213@support.cobalt.example>
+
+Hello,
+
+We are disputing the usage overage on our August 2026 invoice (INV-2026-08-0133). Our order includes an allowance for
+both compute credits and API requests, and according to the Cobalt usage console our August usage was below the
+allowance for both meters. The export we downloaded from the console on 12 September is attached (the same file is in
+exports/console/).
+
+We were charged overage on both meters. Please correct the invoice. We will withhold the overage amounts until then.
+
+Kind regards,
+Priya Raman
+Accounts Payable, Northwind Logistics

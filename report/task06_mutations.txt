@@ -1,0 +1,30 @@
+[OK ] nop                                    reward=0 expected=0  14 failed, 7 passed in 49.69s
+[OK ] oracle                                 reward=1 expected=1  21 passed in 55.62s
+[OK ] alt_correct_plain_python               reward=1 expected=1  21 passed in 43.12s
+[OK ] alt_correct_sqlite                     reward=1 expected=1  21 passed in 54.96s
+[OK ] event_time_only                        reward=0 expected=0  10 failed, 11 passed in 56.43s
+[OK ] processing_time_dedupe_fixed           reward=0 expected=0  14 failed, 7 passed in 60.82s (0:01:00)
+[OK ] dedupe_all_by_event_id                 reward=0 expected=0  16 failed, 5 passed in 59.55s
+[OK ] sum_all_deliveries                     reward=0 expected=0  16 failed, 5 passed in 62.75s (0:01:02)
+[OK ] ignore_corrections                     reward=0 expected=0  16 failed, 5 passed in 67.12s (0:01:07)
+[OK ] latest_received_revision               reward=0 expected=0  16 failed, 5 passed in 39.07s
+[OK ] window_end_attribution                 reward=0 expected=0  16 failed, 5 passed in 41.90s
+[OK ] no_adjustments                         reward=0 expected=0  8 failed, 13 passed in 42.52s
+[OK ] adjustments_at_statement_rates         reward=0 expected=0  8 failed, 13 passed in 38.54s
+[OK ] adjustments_linear                     reward=0 expected=0  8 failed, 13 passed in 41.94s
+[OK ] adjustments_from_extract_knowledge     reward=0 expected=0  4 failed, 17 passed in 44.44s
+[OK ] adjust_against_usage_lines_only        reward=0 expected=0  8 failed, 13 passed in 55.69s
+[OK ] reissue_prior_months                   reward=0 expected=0  9 failed, 12 passed in 64.23s (0:01:04)
+[OK ] mart_left_on_receipt_month             reward=0 expected=0  4 failed, 17 passed in 73.02s (0:01:13)
+[OK ] fix_normalize_only                     reward=0 expected=0  14 failed, 7 passed in 91.74s (0:01:31)
+[OK ] fix_statement_only                     reward=0 expected=0  16 failed, 5 passed in 87.46s (0:01:27)
+[OK ] fix_normalize_and_mart_only            reward=0 expected=0  10 failed, 11 passed in 69.05s (0:01:09)
+[OK ] northwind_manual_credit                reward=0 expected=0  16 failed, 5 passed in 65.16s (0:01:05)
+[OK ] output_only_patch                      reward=0 expected=0  14 failed, 7 passed in 67.87s (0:01:07)
+[OK ] source_data_mutation                   reward=0 expected=0  1 failed, 20 passed in 77.27s (0:01:17)
+[OK ] overfit_record_last_receipt            reward=0 expected=0  2 failed, 19 passed in 55.08s
+[OK ] overfit_close_boundary_inclusive       reward=0 expected=0  2 failed, 19 passed in 58.76s
+[OK ] overfit_hardcoded_close_times          reward=0 expected=0  6 failed, 15 passed in 67.71s (0:01:07)
+[OK ] overfit_hardcoded_rate_periods         reward=0 expected=0  6 failed, 15 passed in 50.02s
+[OK ] import_verifier_reference              reward=0 expected=0  8 failed, 13 passed in 34.30s
+MUTATIONS_EXIT=0

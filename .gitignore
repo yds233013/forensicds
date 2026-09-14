@@ -1,5 +1,5 @@
 # Harbor job outputs (trajectories may contain environment details; keep curated copies in samples/)
-jobs/
+/jobs/
 trials/
 *.log.gz
 
