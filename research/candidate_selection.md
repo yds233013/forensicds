@@ -22,7 +22,7 @@ UNKNOWN means not built or not run.
 | 03 lead-score evaluation | evaluation population / selective labels | built, validated, sandboxed verifier | run (3/3) | 1 | TOO EASY | pilot/development only |
 | 04 retention metrics | KPI lifecycle semantics / trusted-number attractor | built, validated, sandboxed verifier | run (1/3) | 1 | USEFUL EASY ANCHOR (attractor risk) | undecided |
 | 05 experiment readout | randomization unit / exposure | built, validated, sandboxed verifier | run (3/3) | 1 | TOO EASY | pilot/development only |
-| 06 usage statement close | event time / processing time / revisions / adjustments | built, pre-baseline validated (Oracle 1, Nop 0, 29/29 mutations, harbor check 11/11, independent review + fixes) | not run (awaiting review) | UNKNOWN | UNKNOWN (pre-baseline reviewer estimate: may be passable by strong models; batch history is a backtest key) | undecided |
+| 06 usage statement close | event time / processing time / revisions / adjustments | built, pre-baseline validated (Oracle 1, Nop 0, 29/29 mutations, harbor check 11/11) | run (3/3) | 1 | TOO EASY (close cutoff inherited from faulty code; designed attractors never engaged) | pilot/development only (possible easy anchor) |
 | 07 shared-cluster cost allocation | many-to-many allocation | designed; redesign required before build | UNKNOWN | UNKNOWN | UNKNOWN | undecided |
 | 08 processor API version change | external source-contract change | designed; revisions required before build | UNKNOWN | UNKNOWN | UNKNOWN | undecided |
 | 09 conversion mix shift | negative control (no pipeline bug) | designed; to be replaced by twin-incident design | UNKNOWN | UNKNOWN | UNKNOWN | undecided |
