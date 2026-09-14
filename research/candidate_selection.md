@@ -27,14 +27,14 @@ UNKNOWN means not built or not run.
 | 08 processor API version change | external source-contract change | designed; revisions required before build | UNKNOWN | UNKNOWN | UNKNOWN | undecided |
 | 09 conversion mix shift | negative control (no pipeline bug) | designed; to be replaced by twin-incident design | UNKNOWN | UNKNOWN | UNKNOWN | undecided |
 
-## Generation-3 shortlist (designed, not built)
+## Generation-3 shortlist
 
-Source: `research/gen3_implementation_shortlist.md` (after `research/gen3_design_tournament.md`). None of these is
-implemented or run. All baseline fields are UNKNOWN. Build order matches the S-number.
+Source: `research/gen3_implementation_shortlist.md` (after `research/gen3_design_tournament.md`). S1 (G08) is built and
+baselined. The others are designed only, and their baseline fields are UNKNOWN. Build order matches the S-number.
 
 | Shortlist | Design | Mechanism | Build status | Baseline status | pass@3 | Expected hardness (prior) | Likely final-set role |
 |---|---|---|---|---|---|---|---|
-| S1 | G08 forecast vintages | per-origin knowledge state (Task 02 transfer) | designed; fixes required | UNKNOWN | UNKNOWN | MEDIUM-HARD | undecided |
+| S1 | G08 forecast vintages (built: `candidates/g08-forecast-accuracy-vintages`, frozen at e07103d) | target vintage: charge basis as known at KPI close (effective vs recorded status), UK-gate forecast lock at unit grain, effective-dated portfolios | built, pre-baseline validated (Oracle 1, Nop 0, mutations 40/40, harbor check 11/11, 2 adversarial reviews) | run (1/3: h7TpDUG 0, pXphfXM 1, wmwSU97 0; $0.96) | 1 | USEFUL MEDIUM-HARD (failures: target vintage never investigated; issue-grain lock + reasoned status rule not implemented; both stopped on plausible aggregates) | candidate (medium-hard); does not reach headroom target alone |
 | S2 | G24 recommender OPE | slate/position propensities, decision grain | designed; fixes + Phase-0 margins | UNKNOWN | UNKNOWN | MEDIUM-HARD | undecided |
 | S3 | G23 readmission episodes | episode grain across facility vocabularies | designed; fixes required | UNKNOWN | UNKNOWN | MEDIUM | undecided |
 | S4 | G10 censored demand | stopping-time censoring, latent demand | designed; gated on Phase-0 tolerance pilot | UNKNOWN | UNKNOWN | HARD | undecided |
@@ -44,6 +44,8 @@ implemented or run. All baseline fields are UNKNOWN. Build order matches the S-n
 | S8 | G01 collections label maturity | label maturity × value date × source completeness | designed; policy layer reduced; Phase-0 margins | UNKNOWN | UNKNOWN | HARD | undecided |
 
 Alternates: G17, G21, G20.
+
+G08 baseline analysis: `research/g08/g08_gemini_analysis.md` (horizon only modestly longer than Task 02; G11 gate not met, so G11 is not built next).
 
 - Not shortlisted: G02, G14 and G30 (WEAK); G26 (REJECT as a headroom task; its idea is embedded in S5).
 - The earlier Task 07–09 designs are not being built. The G26 tournament result supersedes the Task 09
