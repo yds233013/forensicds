@@ -27,6 +27,28 @@ UNKNOWN means not built or not run.
 | 08 processor API version change | external source-contract change | designed; revisions required before build | UNKNOWN | UNKNOWN | UNKNOWN | undecided |
 | 09 conversion mix shift | negative control (no pipeline bug) | designed; to be replaced by twin-incident design | UNKNOWN | UNKNOWN | UNKNOWN | undecided |
 
+## Generation-3 shortlist (designed, not built)
+
+Source: `research/gen3_implementation_shortlist.md` (after `research/gen3_design_tournament.md`). None of these is
+implemented or run. All baseline fields are UNKNOWN. Build order matches the S-number.
+
+| Shortlist | Design | Mechanism | Build status | Baseline status | pass@3 | Expected hardness (prior) | Likely final-set role |
+|---|---|---|---|---|---|---|---|
+| S1 | G08 forecast vintages | per-origin knowledge state (Task 02 transfer) | designed; fixes required | UNKNOWN | UNKNOWN | MEDIUM-HARD | undecided |
+| S2 | G24 recommender OPE | slate/position propensities, decision grain | designed; fixes + Phase-0 margins | UNKNOWN | UNKNOWN | MEDIUM-HARD | undecided |
+| S3 | G23 readmission episodes | episode grain across facility vocabularies | designed; fixes required | UNKNOWN | UNKNOWN | MEDIUM | undecided |
+| S4 | G10 censored demand | stopping-time censoring, latent demand | designed; gated on Phase-0 tolerance pilot | UNKNOWN | UNKNOWN | HARD | undecided |
+| S5 | G11 training–serving skew | multi-feature serving semantics + embedded negative control | designed; scope cut; gated on S1 baseline | UNKNOWN | UNKNOWN | HARD | undecided |
+| S6 | G05 staggered rollout DiD | base-period contamination, trade-area confounding | designed; symptom rework + Phase-0 margins | UNKNOWN | UNKNOWN | MEDIUM-HARD | undecided |
+| S7 | G25 search judgment pool | label identity/scale reconciliation, audit frame | designed; fixes + Phase-0 margins | UNKNOWN | UNKNOWN | MEDIUM-HARD | undecided |
+| S8 | G01 collections label maturity | label maturity × value date × source completeness | designed; policy layer reduced; Phase-0 margins | UNKNOWN | UNKNOWN | HARD | undecided |
+
+Alternates: G17, G21, G20.
+
+- Not shortlisted: G02, G14 and G30 (WEAK); G26 (REJECT as a headroom task; its idea is embedded in S5).
+- The earlier Task 07–09 designs are not being built. The G26 tournament result supersedes the Task 09
+  twin-incident replacement idea.
+
 ## Notes
 
 - **Development-only status.** Tasks marked "pilot/development only" remain in the repository with their full validation
