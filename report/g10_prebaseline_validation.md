@@ -11,6 +11,7 @@
 |---|---|
 | Tolerance / identifiability pilot (hard gate before building) | passed (`research/g10/G10_tolerance_pilot.md`) |
 | Recalibration on the task generator (pre-registered; round 1 failed its gate → documented deviation; round 2) | **passed** (`recal/RESULT_ROUND2.md`) |
+| Clean-checkout build (fresh clone of 3efed5c, image rebuilt, real `test.sh`) | oracle **1**, nop **0** |
 | Harbor oracle | **1.0** (`jobs/g10-oracle-prebaseline`) |
 | Harbor nop | **0.0** (`jobs/g10-nop-prebaseline`) |
 | `harbor check` | **11/11 pass** (`jobs/g10-check-prebaseline`) |
