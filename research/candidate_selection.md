@@ -1,6 +1,6 @@
 # ForensicDS candidate pool and selection status
 
-Updated: 2026-09-14.
+Updated: 2026-09-15.
 
 Tasks 01–05 are **candidate/development tasks**. The final submitted benchmark (5–10 tasks, target pass@3 < 30%) will be
 selected from the pool later. The selection criteria are:
@@ -29,15 +29,15 @@ UNKNOWN means not built or not run.
 
 ## Generation-3 shortlist
 
-Source: `research/gen3_implementation_shortlist.md` (after `research/gen3_design_tournament.md`). S1 (G08) is built and
-baselined. The others are designed only, and their baseline fields are UNKNOWN. Build order matches the S-number.
+Source: `research/gen3_implementation_shortlist.md` (after `research/gen3_design_tournament.md`). S1 (G08) and S4
+(G10) are built and baselined. The others are designed only, and their baseline fields are UNKNOWN. Build order matches the S-number.
 
 | Shortlist | Design | Mechanism | Build status | Baseline status | pass@3 | Expected hardness (prior) | Likely final-set role |
 |---|---|---|---|---|---|---|---|
 | S1 | G08 forecast vintages (built: `candidates/g08-forecast-accuracy-vintages`, frozen at e07103d) | target vintage: charge basis as known at KPI close (effective vs recorded status), UK-gate forecast lock at unit grain, effective-dated portfolios | built, pre-baseline validated (Oracle 1, Nop 0, mutations 40/40, harbor check 11/11, 2 adversarial reviews) | run (1/3: h7TpDUG 0, pXphfXM 1, wmwSU97 0; $0.96) | 1 | USEFUL MEDIUM-HARD (failures: target vintage never investigated; issue-grain lock + reasoned status rule not implemented; both stopped on plausible aggregates) | candidate (medium-hard); does not reach headroom target alone |
 | S2 | G24 recommender OPE | slate/position propensities, decision grain | designed; fixes + Phase-0 margins | UNKNOWN | UNKNOWN | MEDIUM-HARD | undecided |
 | S3 | G23 readmission episodes | episode grain across facility vocabularies | designed; fixes required | UNKNOWN | UNKNOWN | MEDIUM | undecided |
-| S4 | G10 censored demand | stopping-time censoring, latent demand | designed; gated on Phase-0 tolerance pilot | UNKNOWN | UNKNOWN | HARD | undecided |
+| S4 | G10 censored demand (built: `candidates/g10-censored-demand`, frozen at checksum 047195e7a12d34cd, commits 3efed5c/ffbe949) | stopping-time censoring, latent demand, informative censoring | built, pre-baseline validated (Oracle 1, Nop 0, mutations 33/33, harbor check 11/11, pre-registered tolerance recalibration, adversarial + statistical-validity reviews) | run (0/3: LhEU3ny 0, cLtM9yi 0, eMXZbBi 0; $0.58) | 0 | FRONTIER-HARD (all diagnosed censoring and selection bias; none modelled the latent day shock or validated assumptions; forecast imputation / Poisson plug-in / per-day scaling; all stopped on a plausible ice-cream trend; one trial 8/8 actions correct with lost units 24-63% low) | recommend include (frontier-hard statistical reasoning) |
 | S5 | G11 training–serving skew | multi-feature serving semantics + embedded negative control | designed; scope cut; gated on S1 baseline | UNKNOWN | UNKNOWN | HARD | undecided |
 | S6 | G05 staggered rollout DiD | base-period contamination, trade-area confounding | designed; symptom rework + Phase-0 margins | UNKNOWN | UNKNOWN | MEDIUM-HARD | undecided |
 | S7 | G25 search judgment pool | label identity/scale reconciliation, audit frame | designed; fixes + Phase-0 margins | UNKNOWN | UNKNOWN | MEDIUM-HARD | undecided |
@@ -46,6 +46,14 @@ baselined. The others are designed only, and their baseline fields are UNKNOWN. 
 Alternates: G17, G21, G20.
 
 G08 baseline analysis: `research/g08/g08_gemini_analysis.md` (horizon only modestly longer than Task 02; G11 gate not met, so G11 is not built next).
+
+G10 baseline analysis: `research/g10/g10_gemini_analysis.md`:
+- 0/3, pass@3 = 0, frontier-hard.
+- Failures come after correct diagnosis: statistical-model errors at 9.7–68× tolerance.
+- The horizon was shorter than Task 02 or G08 (42–46 tool calls).
+- An overdispersion-only counterfactual on the closest trial still fails at 3.4–7.2×.
+- Implication: prioritise statistical-inference candidates (S2 G24, S6 G05, S8 G01) over semantic-lock variants; do not
+  build G11.
 
 - Not shortlisted: G02, G14 and G30 (WEAK); G26 (REJECT as a headroom task; its idea is embedded in S5).
 - The earlier Task 07–09 designs are not being built. The G26 tournament result supersedes the Task 09
