@@ -1,0 +1,20 @@
+method                   worlds pass min ratio max ratio  per-regime min ratio (visible/a/b/c)   trends-only pass  actions ok
+nb                          20/20         0.28      0.73  {'visible': 0.33, 'hidden_a': 0.41, 'hidden_b': 0.28, 'hidden_c': 0.32}  20/20  20/20
+em                          20/20         0.28      0.72  {'visible': 0.35, 'hidden_a': 0.36, 'hidden_b': 0.28, 'hidden_c': 0.28}  20/20  20/20
+nb_common_alpha             17/20         0.19      1.19  {'visible': 0.36, 'hidden_a': 0.68, 'hidden_b': 0.19, 'hidden_c': 0.39}  18/20  20/20
+nb_4week                    20/20         0.30      0.74  {'visible': 0.33, 'hidden_a': 0.45, 'hidden_b': 0.3, 'hidden_c': 0.33}  20/20  20/20
+sales                        0/20        16.67     32.01  {'visible': 21.3, 'hidden_a': 30.2, 'hidden_b': 16.67, 'hidden_c': 21.42}  0/20  5/20
+drop_censored                0/20        15.35     28.06  {'visible': 19.33, 'hidden_a': 26.41, 'hidden_b': 15.35, 'hidden_c': 19.38}  0/20  5/20
+per_day_scale                0/20         7.49     15.17  {'visible': 9.86, 'hidden_a': 7.49, 'hidden_b': 12.21, 'hidden_c': 11.58}  0/20  6/20
+uniform_time_scale           0/20         3.29      7.05  {'visible': 4.44, 'hidden_a': 5.53, 'hidden_b': 5.58, 'hidden_c': 3.29}  5/20  19/20
+mean_rate_impute             0/20         8.94     19.08  {'visible': 11.54, 'hidden_a': 17.61, 'hidden_b': 8.94, 'hidden_c': 11.29}  2/20  5/20
+poisson_offset               0/20         6.01     10.52  {'visible': 6.9, 'hidden_a': 9.66, 'hidden_b': 7.41, 'hidden_c': 6.01}  4/20  8/20
+daily_censored_poisson       0/20         7.96     12.20  {'visible': 8.73, 'hidden_a': 11.47, 'hidden_b': 9.4, 'hidden_c': 7.96}  4/20  8/20
+forecast_impute              0/20        15.41     24.75  {'visible': 17.97, 'hidden_a': 22.92, 'hidden_b': 15.41, 'hidden_c': 19.13}  0/20  5/20
+profile_all_days             4/20         0.67      2.59  {'visible': 1.54, 'hidden_a': 1.61, 'hidden_b': 0.67, 'hidden_c': 2.04}  12/20  20/20
+nb_no_promo                  0/20         2.07      5.44  {'visible': 2.91, 'hidden_a': 3.2, 'hidden_b': 2.07, 'hidden_c': 2.72}  13/20  20/20
+forecast_prior               0/20         1.56      5.94  {'visible': 2.56, 'hidden_a': 3.29, 'hidden_b': 1.56, 'hidden_c': 4.19}  4/20  13/20
+v3_prior                     2/20         0.77      4.09  {'visible': 1.81, 'hidden_a': 2.94, 'hidden_b': 0.77, 'hidden_c': 1.62}  5/20  15/20
+nb_plugin                    0/20         5.57      8.05  {'visible': 6.48, 'hidden_a': 7.51, 'hidden_b': 7.19, 'hidden_c': 5.57}  4/20  12/20
+fe_profile                   7/20         0.34      1.93  {'visible': 1.15, 'hidden_a': 0.97, 'hidden_b': 0.34, 'hidden_c': 1.21}  17/20  20/20
+nb_lognormal                 8/20         0.64      1.49  {'visible': 0.64, 'hidden_a': 1.1, 'hidden_b': 1.23, 'hidden_c': 0.68}  20/20  20/20

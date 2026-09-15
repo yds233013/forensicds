@@ -1,0 +1,145 @@
+### oracle
+visible   PASS   120s  ratios={"demand": 0.19, "lost": 0.36, "cat_change": 0.36, "bias": 0.14}
+hidden_a  PASS   106s  ratios={"demand": 0.32, "lost": 0.19, "cat_change": 0.55, "bias": 0.14}
+hidden_b  PASS   119s  ratios={"demand": 0.23, "lost": 0.22, "cat_change": 0.16, "bias": 0.08}
+hidden_c  PASS   133s  ratios={"demand": 0.23, "lost": 0.19, "cat_change": 0.36, "bias": 0.1}
+### gibbs
+visible   PASS   136s  ratios={"demand": 0.24, "lost": 0.38, "cat_change": 0.36, "bias": 0.13}
+hidden_a  PASS    58s  ratios={"demand": 0.32, "lost": 0.19, "cat_change": 0.58, "bias": 0.13}
+hidden_b  PASS    65s  ratios={"demand": 0.2, "lost": 0.26, "cat_change": 0.16, "bias": 0.06}
+hidden_c  PASS    62s  ratios={"demand": 0.22, "lost": 0.18, "cat_change": 0.35, "bias": 0.13}
+### nb
+visible   PASS    39s  ratios={"demand": 0.21, "lost": 0.35, "cat_change": 0.36, "bias": 0.14}
+hidden_a  PASS    36s  ratios={"demand": 0.25, "lost": 0.14, "cat_change": 0.45, "bias": 0.06}
+hidden_b  PASS    40s  ratios={"demand": 0.28, "lost": 0.34, "cat_change": 0.14, "bias": 0.13}
+hidden_c  PASS    37s  ratios={"demand": 0.23, "lost": 0.19, "cat_change": 0.33, "bias": 0.09}
+### em
+visible   PASS    21s  ratios={"demand": 0.2, "lost": 0.36, "cat_change": 0.34, "bias": 0.13}
+hidden_a  PASS    18s  ratios={"demand": 0.26, "lost": 0.15, "cat_change": 0.57, "bias": 0.09}
+hidden_b  PASS    22s  ratios={"demand": 0.25, "lost": 0.29, "cat_change": 0.15, "bias": 0.11}
+hidden_c  PASS    21s  ratios={"demand": 0.24, "lost": 0.27, "cat_change": 0.33, "bias": 0.07}
+### nb_4week
+visible   PASS    24s  ratios={"demand": 0.21, "lost": 0.34, "cat_change": 0.36, "bias": 0.13}
+hidden_a  PASS    19s  ratios={"demand": 0.2, "lost": 0.14, "cat_change": 0.46, "bias": 0.05}
+hidden_b  PASS    21s  ratios={"demand": 0.25, "lost": 0.26, "cat_change": 0.18, "bias": 0.1}
+hidden_c  PASS    19s  ratios={"demand": 0.23, "lost": 0.2, "cat_change": 0.35, "bias": 0.08}
+### store_week
+visible   PASS    42s  ratios={"demand": 0.2, "lost": 0.39, "cat_change": 0.36, "bias": 0.15}
+hidden_a  PASS    58s  ratios={"demand": 0.29, "lost": 0.16, "cat_change": 0.46, "bias": 0.09}
+hidden_b  PASS    46s  ratios={"demand": 0.27, "lost": 0.31, "cat_change": 0.14, "bias": 0.12}
+hidden_c  PASS    57s  ratios={"demand": 0.23, "lost": 0.2, "cat_change": 0.34, "bias": 0.09}
+### sep_cat
+visible   PASS    39s  ratios={"demand": 0.4, "lost": 0.68, "cat_change": 0.35, "bias": 0.28}
+hidden_a  PASS    51s  ratios={"demand": 0.44, "lost": 0.27, "cat_change": 0.6, "bias": 0.24}
+hidden_b  PASS    39s  ratios={"demand": 0.12, "lost": 0.4, "cat_change": 0.22, "bias": 0.08}
+hidden_c  PASS    40s  ratios={"demand": 0.19, "lost": 0.27, "cat_change": 0.42, "bias": 0.16}
+### alpha_sku
+visible   PASS    55s  ratios={"demand": 0.21, "lost": 0.35, "cat_change": 0.36, "bias": 0.13}
+hidden_a  PASS   103s  ratios={"demand": 0.27, "lost": 0.15, "cat_change": 0.49, "bias": 0.09}
+hidden_b  PASS    49s  ratios={"demand": 0.26, "lost": 0.28, "cat_change": 0.16, "bias": 0.1}
+hidden_c  PASS    43s  ratios={"demand": 0.24, "lost": 0.25, "cat_change": 0.36, "bias": 0.04}
+### promo_common
+visible   PASS    40s  ratios={"demand": 0.46, "lost": 0.45, "cat_change": 0.34, "bias": 0.13}
+hidden_a  PASS    38s  ratios={"demand": 0.34, "lost": 0.31, "cat_change": 0.45, "bias": 0.04}
+hidden_b  PASS    42s  ratios={"demand": 0.31, "lost": 0.45, "cat_change": 0.2, "bias": 0.1}
+hidden_c  PASS    41s  ratios={"demand": 0.28, "lost": 0.22, "cat_change": 0.33, "bias": 0.07}
+### cat_period_only
+visible   PASS    41s  ratios={"demand": 0.19, "lost": 0.35, "cat_change": 0.35, "bias": 0.13}
+hidden_a  PASS    32s  ratios={"demand": 0.2, "lost": 0.14, "cat_change": 0.46, "bias": 0.04}
+hidden_b  PASS    29s  ratios={"demand": 0.25, "lost": 0.26, "cat_change": 0.18, "bias": 0.1}
+hidden_c  PASS    29s  ratios={"demand": 0.23, "lost": 0.19, "cat_change": 0.33, "bias": 0.09}
+### store_only
+visible   PASS    30s  ratios={"demand": 0.21, "lost": 0.39, "cat_change": 0.36, "bias": 0.14}
+hidden_a  PASS    23s  ratios={"demand": 0.25, "lost": 0.13, "cat_change": 0.44, "bias": 0.06}
+hidden_b  PASS    23s  ratios={"demand": 0.27, "lost": 0.32, "cat_change": 0.14, "bias": 0.12}
+hidden_c  PASS    20s  ratios={"demand": 0.23, "lost": 0.18, "cat_change": 0.33, "bias": 0.09}
+### faulty
+visible   fail    58s  ratios={"demand": 15.79, "lost": 16.67, "cat_change": 15.73, "bias": 22.0}
+hidden_a  fail    67s  ratios={"demand": 21.91, "lost": 16.67, "cat_change": 21.85, "bias": 31.14}
+hidden_b  fail    64s  ratios={"demand": 7.33, "lost": 16.67, "cat_change": 4.69, "bias": 6.8}
+hidden_c  fail    70s  ratios={"demand": 21.2, "lost": 16.67, "cat_change": 14.54, "bias": 23.87}
+### sales
+visible   fail    29s  ratios={"demand": 15.79, "lost": 16.67, "cat_change": 8.31, "bias": 22.0}
+hidden_a  fail    19s  ratios={"demand": 21.91, "lost": 16.67, "cat_change": 13.19, "bias": 31.14}
+hidden_b  fail    19s  ratios={"demand": 7.33, "lost": 16.67, "cat_change": 1.59, "bias": 6.8}
+hidden_c  fail    20s  ratios={"demand": 21.2, "lost": 16.67, "cat_change": 7.93, "bias": 23.87}
+### drop_censored
+visible   fail    27s  ratios={"demand": 14.83, "lost": 15.54, "cat_change": 7.91, "bias": 20.16}
+hidden_a  fail    28s  ratios={"demand": 20.13, "lost": 15.25, "cat_change": 12.5, "bias": 27.4}
+hidden_b  fail    57s  ratios={"demand": 6.92, "lost": 15.51, "cat_change": 1.49, "bias": 6.29}
+hidden_c  fail    46s  ratios={"demand": 19.82, "lost": 15.49, "cat_change": 7.52, "bias": 21.43}
+### per_day_scale
+visible   fail    29s  ratios={"demand": 9.78, "lost": 13.02, "cat_change": 6.11, "bias": 9.94}
+hidden_a  fail    25s  ratios={"demand": 7.58, "lost": 8.42, "cat_change": 5.18, "bias": 7.8}
+hidden_b  fail    26s  ratios={"demand": 3.66, "lost": 14.85, "cat_change": 1.66, "bias": 4.4}
+hidden_c  fail    26s  ratios={"demand": 8.37, "lost": 11.12, "cat_change": 5.06, "bias": 7.87}
+### uniform_time_scale
+visible   fail    29s  ratios={"demand": 3.67, "lost": 5.85, "cat_change": 2.84, "bias": 3.68}
+hidden_a  fail    24s  ratios={"demand": 5.74, "lost": 6.57, "cat_change": 4.9, "bias": 5.96}
+hidden_b  fail    27s  ratios={"demand": 1.73, "lost": 7.57, "cat_change": 0.98, "bias": 1.82}
+hidden_c  fail    26s  ratios={"demand": 2.7, "lost": 2.44, "cat_change": 1.86, "bias": 0.3}
+### mean_rate_impute
+visible   fail    24s  ratios={"demand": 9.77, "lost": 10.07, "cat_change": 5.44, "bias": 11.86}
+hidden_a  fail    26s  ratios={"demand": 14.88, "lost": 11.23, "cat_change": 10.18, "bias": 18.45}
+hidden_b  fail    24s  ratios={"demand": 4.48, "lost": 9.69, "cat_change": 0.85, "bias": 3.7}
+hidden_c  fail    20s  ratios={"demand": 12.18, "lost": 9.52, "cat_change": 5.05, "bias": 11.87}
+### poisson_offset
+visible   fail    23s  ratios={"demand": 5.77, "lost": 6.22, "cat_change": 2.86, "bias": 6.22}
+hidden_a  fail    23s  ratios={"demand": 8.34, "lost": 7.68, "cat_change": 5.29, "bias": 10.1}
+hidden_b  fail    23s  ratios={"demand": 3.36, "lost": 7.33, "cat_change": 0.6, "bias": 2.78}
+hidden_c  fail    17s  ratios={"demand": 6.45, "lost": 6.02, "cat_change": 2.56, "bias": 5.92}
+### daily_censored_poisson
+visible   fail    47s  ratios={"demand": 7.69, "lost": 7.95, "cat_change": 3.84, "bias": 6.88}
+hidden_a  fail    58s  ratios={"demand": 9.69, "lost": 8.54, "cat_change": 5.97, "bias": 10.76}
+hidden_b  fail    47s  ratios={"demand": 4.47, "lost": 9.57, "cat_change": 0.84, "bias": 3.31}
+hidden_c  fail    59s  ratios={"demand": 9.48, "lost": 7.48, "cat_change": 2.94, "bias": 7.22}
+### forecast_impute
+visible   fail    25s  ratios={"demand": 14.39, "lost": 14.76, "cat_change": 7.54, "bias": 18.91}
+hidden_a  fail    27s  ratios={"demand": 19.1, "lost": 14.41, "cat_change": 11.66, "bias": 24.13}
+hidden_b  fail    34s  ratios={"demand": 6.89, "lost": 15.44, "cat_change": 1.46, "bias": 6.26}
+hidden_c  fail    24s  ratios={"demand": 20.05, "lost": 15.55, "cat_change": 7.14, "bias": 20.67}
+### profile_all_days
+visible   fail    46s  ratios={"demand": 1.75, "lost": 1.78, "cat_change": 0.98, "bias": 1.56}
+hidden_a  fail    55s  ratios={"demand": 1.5, "lost": 1.41, "cat_change": 1.11, "bias": 1.69}
+hidden_b  fail   121s  ratios={"demand": 0.62, "lost": 1.1, "cat_change": 0.18, "bias": 0.42}
+hidden_c  fail    49s  ratios={"demand": 2.36, "lost": 2.14, "cat_change": 1.03, "bias": 1.99}
+### nb_no_promo
+visible   fail    43s  ratios={"demand": 3.27, "lost": 3.36, "cat_change": 0.67, "bias": 0.67}
+hidden_a  fail    35s  ratios={"demand": 4.33, "lost": 3.29, "cat_change": 0.95, "bias": 0.5}
+hidden_b  fail    44s  ratios={"demand": 1.45, "lost": 2.93, "cat_change": 0.35, "bias": 0.06}
+hidden_c  fail    39s  ratios={"demand": 3.0, "lost": 2.84, "cat_change": 1.21, "bias": 0.4}
+### forecast_prior
+visible   fail    23s  ratios={"demand": 2.97, "lost": 2.86, "cat_change": 2.15, "bias": 2.81}
+hidden_a  fail    19s  ratios={"demand": 4.68, "lost": 3.31, "cat_change": 4.72, "bias": 4.01}
+hidden_b  fail    21s  ratios={"demand": 1.13, "lost": 2.2, "cat_change": 0.43, "bias": 0.84}
+hidden_c  fail    19s  ratios={"demand": 4.79, "lost": 3.6, "cat_change": 1.5, "bias": 3.16}
+### v3_prior
+visible   fail    20s  ratios={"demand": 1.62, "lost": 1.96, "cat_change": 1.72, "bias": 2.05}
+hidden_a  fail    15s  ratios={"demand": 2.79, "lost": 2.4, "cat_change": 3.86, "bias": 3.34}
+hidden_b  fail    16s  ratios={"demand": 0.36, "lost": 1.41, "cat_change": 0.17, "bias": 0.3}
+hidden_c  fail    18s  ratios={"demand": 1.98, "lost": 1.61, "cat_change": 1.23, "bias": 1.8}
+### nb_plugin
+visible   fail    29s  ratios={"demand": 4.77, "lost": 5.87, "cat_change": 2.28, "bias": 5.12}
+hidden_a  fail    21s  ratios={"demand": 5.91, "lost": 7.13, "cat_change": 3.86, "bias": 7.63}
+hidden_b  fail    22s  ratios={"demand": 3.12, "lost": 7.01, "cat_change": 0.56, "bias": 2.62}
+hidden_c  fail    20s  ratios={"demand": 4.9, "lost": 5.66, "cat_change": 1.97, "bias": 4.68}
+### holdout_transfer
+visible   fail     9s  ratios={"demand": 15.79, "lost": 16.67, "cat_change": 8.31, "bias": 22.0}
+hidden_a  fail     8s  ratios={"demand": 21.91, "lost": 16.67, "cat_change": 13.19, "bias": 31.14}
+hidden_b  fail     7s  ratios={"demand": 7.33, "lost": 16.67, "cat_change": 1.59, "bias": 6.8}
+hidden_c  fail     7s  ratios={"demand": 21.2, "lost": 16.67, "cat_change": 7.93, "bias": 23.87}
+### nb_common_alpha
+visible   PASS    15s  ratios={"demand": 0.59, "lost": 0.67, "cat_change": 0.97, "bias": 0.21}
+hidden_a  fail    14s  ratios={"demand": 0.43, "lost": 0.37, "cat_change": 1.59, "bias": 0.29}
+hidden_b  PASS    16s  ratios={"demand": 0.33, "lost": 0.48, "cat_change": 0.16, "bias": 0.14}
+hidden_c  PASS    15s  ratios={"demand": 0.28, "lost": 0.28, "cat_change": 0.82, "bias": 0.07}
+### nb_lognormal
+visible   fail    23s  ratios={"demand": 0.47, "lost": 1.23, "cat_change": 0.42, "bias": 0.51}
+hidden_a  fail    23s  ratios={"demand": 0.66, "lost": 1.03, "cat_change": 0.68, "bias": 0.77}
+hidden_b  PASS    27s  ratios={"demand": 0.24, "lost": 0.95, "cat_change": 0.21, "bias": 0.18}
+hidden_c  PASS    23s  ratios={"demand": 0.36, "lost": 0.72, "cat_change": 0.33, "bias": 0.35}
+### fe_profile
+visible   fail    19s  ratios={"demand": 1.08, "lost": 1.51, "cat_change": 0.78, "bias": 1.3}
+hidden_a  fail    15s  ratios={"demand": 1.23, "lost": 0.87, "cat_change": 1.16, "bias": 1.06}
+hidden_b  PASS    17s  ratios={"demand": 0.22, "lost": 0.62, "cat_change": 0.21, "bias": 0.1}
+hidden_c  fail    19s  ratios={"demand": 1.48, "lost": 1.24, "cat_change": 0.72, "bias": 1.3}

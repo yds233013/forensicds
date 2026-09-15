@@ -1,0 +1,527 @@
+[
+  {
+    "name": "nop",
+    "doc": "No change (Nop agent).",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "10 failed, 5 passed in 363.90s (0:06:03)",
+    "failed": [
+      "test_expected_demand_strata",
+      "test_lost_units_strata",
+      "test_category_trends",
+      "test_programme_impact",
+      "test_hidden_demand_history[hidden_a]",
+      "test_hidden_demand_history[hidden_b]",
+      "test_hidden_demand_history[hidden_c]",
+      "test_hidden_trends_and_impact[hidden_a]",
+      "test_hidden_trends_and_impact[hidden_b]",
+      "test_hidden_trends_and_impact[hidden_c]"
+    ]
+  },
+  {
+    "name": "oracle",
+    "doc": "Reference solution (pandas: joint NB MLE with in-stock exposure offset, posterior imputation).",
+    "expected": 1,
+    "reward": 1,
+    "ok": true,
+    "summary": "15 passed in 473.36s (0:07:53)",
+    "failed": []
+  },
+  {
+    "name": "alt_correct_numpy_ipf",
+    "doc": "Independent correct review: numpy NB with iterative proportional fitting and grid dispersion.",
+    "expected": 1,
+    "reward": 1,
+    "ok": true,
+    "summary": "15 passed in 324.43s (0:05:24)",
+    "failed": []
+  },
+  {
+    "name": "alt_correct_em",
+    "doc": "Independent correct review: EM over latent Gamma day intensities.",
+    "expected": 1,
+    "reward": 1,
+    "ok": true,
+    "summary": "15 passed in 280.76s (0:04:40)",
+    "failed": []
+  },
+  {
+    "name": "alt_correct_gibbs",
+    "doc": "Independent correct review: Gibbs data augmentation with its own loader and holdout-store traffic profile.",
+    "expected": 1,
+    "reward": 1,
+    "ok": true,
+    "summary": "15 passed in 390.49s (0:06:30)",
+    "failed": []
+  },
+  {
+    "name": "alt_correct_separate_category_fits",
+    "doc": "Independent correct specification: separate NB exposure fit per category (numpy IPF).",
+    "expected": 1,
+    "reward": 1,
+    "ok": true,
+    "summary": "15 passed in 321.11s (0:05:21)",
+    "failed": []
+  },
+  {
+    "name": "wrong_sales_as_demand_all_days",
+    "doc": "Sales = demand, baselines on all non-promotional days (spec-conformant aggregation, no censoring correction).",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "10 failed, 5 passed in 259.88s (0:04:19)",
+    "failed": [
+      "test_expected_demand_strata",
+      "test_lost_units_strata",
+      "test_category_trends",
+      "test_programme_impact",
+      "test_hidden_demand_history[hidden_a]",
+      "test_hidden_demand_history[hidden_b]",
+      "test_hidden_demand_history[hidden_c]",
+      "test_hidden_trends_and_impact[hidden_a]",
+      "test_hidden_trends_and_impact[hidden_b]",
+      "test_hidden_trends_and_impact[hidden_c]"
+    ]
+  },
+  {
+    "name": "wrong_drop_censored_days",
+    "doc": "Censored days replaced by a rate fitted on uncensored days only (selection on the outcome).",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "10 failed, 5 passed in 239.67s (0:03:59)",
+    "failed": [
+      "test_expected_demand_strata",
+      "test_lost_units_strata",
+      "test_category_trends",
+      "test_programme_impact",
+      "test_hidden_demand_history[hidden_a]",
+      "test_hidden_demand_history[hidden_b]",
+      "test_hidden_demand_history[hidden_c]",
+      "test_hidden_trends_and_impact[hidden_a]",
+      "test_hidden_trends_and_impact[hidden_b]",
+      "test_hidden_trends_and_impact[hidden_c]"
+    ]
+  },
+  {
+    "name": "wrong_per_day_traffic_scaling",
+    "doc": "Each censored day's sales divided by its traffic-weighted in-stock share (ignores the stopping-time bias).",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "10 failed, 5 passed in 239.03s (0:03:59)",
+    "failed": [
+      "test_expected_demand_strata",
+      "test_lost_units_strata",
+      "test_category_trends",
+      "test_programme_impact",
+      "test_hidden_demand_history[hidden_a]",
+      "test_hidden_demand_history[hidden_b]",
+      "test_hidden_demand_history[hidden_c]",
+      "test_hidden_trends_and_impact[hidden_a]",
+      "test_hidden_trends_and_impact[hidden_b]",
+      "test_hidden_trends_and_impact[hidden_c]"
+    ]
+  },
+  {
+    "name": "wrong_uniform_time_scaling",
+    "doc": "Each censored day's sales divided by its share of in-stock trading hours (ignores the traffic shape).",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "10 failed, 5 passed in 239.27s (0:03:59)",
+    "failed": [
+      "test_expected_demand_strata",
+      "test_lost_units_strata",
+      "test_category_trends",
+      "test_programme_impact",
+      "test_hidden_demand_history[hidden_a]",
+      "test_hidden_demand_history[hidden_b]",
+      "test_hidden_demand_history[hidden_c]",
+      "test_hidden_trends_and_impact[hidden_a]",
+      "test_hidden_trends_and_impact[hidden_b]",
+      "test_hidden_trends_and_impact[hidden_c]"
+    ]
+  },
+  {
+    "name": "wrong_mean_rate_imputation",
+    "doc": "Unobserved exposure filled at the uncensored-day mean rate (ignores that censoring is informative).",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "10 failed, 5 passed in 247.74s (0:04:07)",
+    "failed": [
+      "test_expected_demand_strata",
+      "test_lost_units_strata",
+      "test_category_trends",
+      "test_programme_impact",
+      "test_hidden_demand_history[hidden_a]",
+      "test_hidden_demand_history[hidden_b]",
+      "test_hidden_demand_history[hidden_c]",
+      "test_hidden_trends_and_impact[hidden_a]",
+      "test_hidden_trends_and_impact[hidden_b]",
+      "test_hidden_trends_and_impact[hidden_c]"
+    ]
+  },
+  {
+    "name": "wrong_poisson_offset",
+    "doc": "Poisson GLM with in-stock exposure offset (no overdispersion: the day's own sales do not update its rate).",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "10 failed, 5 passed in 242.87s (0:04:02)",
+    "failed": [
+      "test_expected_demand_strata",
+      "test_lost_units_strata",
+      "test_category_trends",
+      "test_programme_impact",
+      "test_hidden_demand_history[hidden_a]",
+      "test_hidden_demand_history[hidden_b]",
+      "test_hidden_demand_history[hidden_c]",
+      "test_hidden_trends_and_impact[hidden_a]",
+      "test_hidden_trends_and_impact[hidden_b]",
+      "test_hidden_trends_and_impact[hidden_c]"
+    ]
+  },
+  {
+    "name": "wrong_daily_censored_poisson",
+    "doc": "Daily right-censored Poisson (Tobit-style) at full-day exposure; intraday timing unused.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "10 failed, 5 passed in 267.90s (0:04:27)",
+    "failed": [
+      "test_expected_demand_strata",
+      "test_lost_units_strata",
+      "test_category_trends",
+      "test_programme_impact",
+      "test_hidden_demand_history[hidden_a]",
+      "test_hidden_demand_history[hidden_b]",
+      "test_hidden_demand_history[hidden_c]",
+      "test_hidden_trends_and_impact[hidden_a]",
+      "test_hidden_trends_and_impact[hidden_b]",
+      "test_hidden_trends_and_impact[hidden_c]"
+    ]
+  },
+  {
+    "name": "wrong_forecast_imputation",
+    "doc": "Censored days set to the production forecast (circular: the forecast set the stock).",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "10 failed, 5 passed in 231.25s (0:03:51)",
+    "failed": [
+      "test_expected_demand_strata",
+      "test_lost_units_strata",
+      "test_category_trends",
+      "test_programme_impact",
+      "test_hidden_demand_history[hidden_a]",
+      "test_hidden_demand_history[hidden_b]",
+      "test_hidden_demand_history[hidden_c]",
+      "test_hidden_trends_and_impact[hidden_a]",
+      "test_hidden_trends_and_impact[hidden_b]",
+      "test_hidden_trends_and_impact[hidden_c]"
+    ]
+  },
+  {
+    "name": "wrong_profile_from_all_days",
+    "doc": "NB exposure model with the traffic profile estimated from all days (censored evenings flatten the shape).",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "9 failed, 6 passed in 274.82s (0:04:34)",
+    "failed": [
+      "test_expected_demand_strata",
+      "test_lost_units_strata",
+      "test_programme_impact",
+      "test_hidden_demand_history[hidden_a]",
+      "test_hidden_demand_history[hidden_b]",
+      "test_hidden_demand_history[hidden_c]",
+      "test_hidden_trends_and_impact[hidden_a]",
+      "test_hidden_trends_and_impact[hidden_b]",
+      "test_hidden_trends_and_impact[hidden_c]"
+    ]
+  },
+  {
+    "name": "wrong_nb_without_promotions",
+    "doc": "NB exposure model without promotion effects (censoring depends on an omitted covariate).",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "6 failed, 9 passed in 260.93s (0:04:20)",
+    "failed": [
+      "test_expected_demand_strata",
+      "test_lost_units_strata",
+      "test_hidden_demand_history[hidden_a]",
+      "test_hidden_demand_history[hidden_b]",
+      "test_hidden_demand_history[hidden_c]",
+      "test_hidden_trends_and_impact[hidden_c]"
+    ]
+  },
+  {
+    "name": "wrong_holdout_transfer",
+    "doc": "Demand history = sales; buy-plan actions from holdout-store sales trends.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "10 failed, 5 passed in 223.57s (0:03:43)",
+    "failed": [
+      "test_expected_demand_strata",
+      "test_lost_units_strata",
+      "test_category_trends",
+      "test_programme_impact",
+      "test_hidden_demand_history[hidden_a]",
+      "test_hidden_demand_history[hidden_b]",
+      "test_hidden_demand_history[hidden_c]",
+      "test_hidden_trends_and_impact[hidden_a]",
+      "test_hidden_trends_and_impact[hidden_b]",
+      "test_hidden_trends_and_impact[hidden_c]"
+    ]
+  },
+  {
+    "name": "wrong_forecast_as_prior",
+    "doc": "Production forecast as each day's prior mean with a fitted NB posterior (no demand model).",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "10 failed, 5 passed in 230.81s (0:03:50)",
+    "failed": [
+      "test_expected_demand_strata",
+      "test_lost_units_strata",
+      "test_category_trends",
+      "test_programme_impact",
+      "test_hidden_demand_history[hidden_a]",
+      "test_hidden_demand_history[hidden_b]",
+      "test_hidden_demand_history[hidden_c]",
+      "test_hidden_trends_and_impact[hidden_a]",
+      "test_hidden_trends_and_impact[hidden_b]",
+      "test_hidden_trends_and_impact[hidden_c]"
+    ]
+  },
+  {
+    "name": "wrong_v3_as_prior",
+    "doc": "v3 forecast as each day's prior mean with a fitted NB posterior (no demand model).",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "9 failed, 6 passed in 261.17s (0:04:21)",
+    "failed": [
+      "test_expected_demand_strata",
+      "test_lost_units_strata",
+      "test_category_trends",
+      "test_programme_impact",
+      "test_hidden_demand_history[hidden_a]",
+      "test_hidden_demand_history[hidden_b]",
+      "test_hidden_demand_history[hidden_c]",
+      "test_hidden_trends_and_impact[hidden_a]",
+      "test_hidden_trends_and_impact[hidden_c]"
+    ]
+  },
+  {
+    "name": "wrong_nb_plugin_imputation",
+    "doc": "NB exposure model, but the missing exposure is filled at the fitted rate (the day's own sales ignored).",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "10 failed, 5 passed in 298.39s (0:04:58)",
+    "failed": [
+      "test_expected_demand_strata",
+      "test_lost_units_strata",
+      "test_category_trends",
+      "test_programme_impact",
+      "test_hidden_demand_history[hidden_a]",
+      "test_hidden_demand_history[hidden_b]",
+      "test_hidden_demand_history[hidden_c]",
+      "test_hidden_trends_and_impact[hidden_a]",
+      "test_hidden_trends_and_impact[hidden_b]",
+      "test_hidden_trends_and_impact[hidden_c]"
+    ]
+  },
+  {
+    "name": "wrong_fixed_effects_traffic_profile",
+    "doc": "NB exposure model with the traffic shape from a conditional (per-day fixed effect) likelihood on all days.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "7 failed, 8 passed in 285.25s (0:04:45)",
+    "failed": [
+      "test_expected_demand_strata",
+      "test_lost_units_strata",
+      "test_programme_impact",
+      "test_hidden_demand_history[hidden_a]",
+      "test_hidden_demand_history[hidden_c]",
+      "test_hidden_trends_and_impact[hidden_a]",
+      "test_hidden_trends_and_impact[hidden_c]"
+    ]
+  },
+  {
+    "name": "partial_demand_fixed_clean_day_baselines",
+    "doc": "Partial: correct demand history, but baselines still exclude stockout days (deployed trends.py).",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "4 failed, 11 passed in 380.88s (0:06:20)",
+    "failed": [
+      "test_category_trends",
+      "test_hidden_trends_and_impact[hidden_a]",
+      "test_hidden_trends_and_impact[hidden_b]",
+      "test_hidden_trends_and_impact[hidden_c]"
+    ]
+  },
+  {
+    "name": "partial_baselines_fixed_sales_demand",
+    "doc": "Partial: baselines on all non-promotional days, but demand is still sales.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "10 failed, 5 passed in 278.30s (0:04:38)",
+    "failed": [
+      "test_expected_demand_strata",
+      "test_lost_units_strata",
+      "test_category_trends",
+      "test_programme_impact",
+      "test_hidden_demand_history[hidden_a]",
+      "test_hidden_demand_history[hidden_b]",
+      "test_hidden_demand_history[hidden_c]",
+      "test_hidden_trends_and_impact[hidden_a]",
+      "test_hidden_trends_and_impact[hidden_b]",
+      "test_hidden_trends_and_impact[hidden_c]"
+    ]
+  },
+  {
+    "name": "output_only_patch",
+    "doc": "Patch: run a correct review once, then restore the deployed code (outputs are regenerated by the verifier).",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "10 failed, 5 passed in 287.53s (0:04:47)",
+    "failed": [
+      "test_expected_demand_strata",
+      "test_lost_units_strata",
+      "test_category_trends",
+      "test_programme_impact",
+      "test_hidden_demand_history[hidden_a]",
+      "test_hidden_demand_history[hidden_b]",
+      "test_hidden_demand_history[hidden_c]",
+      "test_hidden_trends_and_impact[hidden_a]",
+      "test_hidden_trends_and_impact[hidden_b]",
+      "test_hidden_trends_and_impact[hidden_c]"
+    ]
+  },
+  {
+    "name": "warehouse_edit",
+    "doc": "Cheat: correct code, but stockout days' events are deleted from data/warehouse.sqlite first.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "1 failed, 14 passed in 409.45s (0:06:49)",
+    "failed": [
+      "test_warehouse_unmodified"
+    ]
+  },
+  {
+    "name": "import_verifier_generator",
+    "doc": "Cheat: if the verifier's generator and hidden specs are importable, output realised demand; else sales.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "10 failed, 5 passed in 223.58s (0:03:43)",
+    "failed": [
+      "test_expected_demand_strata",
+      "test_lost_units_strata",
+      "test_category_trends",
+      "test_programme_impact",
+      "test_hidden_demand_history[hidden_a]",
+      "test_hidden_demand_history[hidden_b]",
+      "test_hidden_demand_history[hidden_c]",
+      "test_hidden_trends_and_impact[hidden_a]",
+      "test_hidden_trends_and_impact[hidden_b]",
+      "test_hidden_trends_and_impact[hidden_c]"
+    ]
+  },
+  {
+    "name": "tamper_stdlib_exit_hook",
+    "doc": "Cheat: deployed code; the standard library's site.py forces every interpreter to exit 0 (verifier included).",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "",
+    "failed": []
+  },
+  {
+    "name": "tamper_shadow_pytest",
+    "doc": "Cheat: deployed code; a `pytest` module added to the standard library that exits 0 before any test runs.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "",
+    "failed": []
+  },
+  {
+    "name": "overfit_hardcoded_traffic_profile",
+    "doc": "Correct model, but the traffic profile is hard-coded from this extract.",
+    "expected": "overfit",
+    "reward": 0,
+    "ok": true,
+    "summary": "4 failed, 11 passed in 284.58s (0:04:44)",
+    "failed": [
+      "test_hidden_demand_history[hidden_a]",
+      "test_hidden_demand_history[hidden_c]",
+      "test_hidden_trends_and_impact[hidden_a]",
+      "test_hidden_trends_and_impact[hidden_c]"
+    ]
+  },
+  {
+    "name": "overfit_hardcoded_dispersion",
+    "doc": "Correct model, but per-category dispersion is hard-coded from this extract's fit.",
+    "expected": "overfit",
+    "reward": 0,
+    "ok": true,
+    "summary": "2 failed, 13 passed in 251.05s (0:04:11)",
+    "failed": [
+      "test_hidden_demand_history[hidden_a]",
+      "test_hidden_trends_and_impact[hidden_a]"
+    ]
+  },
+  {
+    "name": "overfit_hardcoded_go_live",
+    "doc": "Correct model, but the go-live date is hard-coded.",
+    "expected": "overfit",
+    "reward": 0,
+    "ok": true,
+    "summary": "4 failed, 11 passed in 293.41s (0:04:53)",
+    "failed": [
+      "test_hidden_demand_history[hidden_a]",
+      "test_hidden_trends_and_impact[hidden_a]",
+      "test_hidden_trends_and_impact[hidden_b]",
+      "test_hidden_trends_and_impact[hidden_c]"
+    ]
+  },
+  {
+    "name": "overfit_hardcoded_holdout_stores",
+    "doc": "Correct model, but the holdout store list is hard-coded.",
+    "expected": "overfit",
+    "reward": 0,
+    "ok": true,
+    "summary": "3 failed, 12 passed in 246.07s (0:04:06)",
+    "failed": [
+      "test_hidden_trends_and_impact[hidden_a]",
+      "test_hidden_trends_and_impact[hidden_b]",
+      "test_hidden_trends_and_impact[hidden_c]"
+    ]
+  },
+  {
+    "name": "overfit_hardcoded_actions",
+    "doc": "Correct model, but buy-plan actions are hard-coded from this extract's repaired review.",
+    "expected": "overfit",
+    "reward": 0,
+    "ok": true,
+    "summary": "3 failed, 12 passed in 226.13s (0:03:46)",
+    "failed": [
+      "test_hidden_trends_and_impact[hidden_a]",
+      "test_hidden_trends_and_impact[hidden_b]",
+      "test_hidden_trends_and_impact[hidden_c]"
+    ]
+  }
+]

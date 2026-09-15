@@ -3,7 +3,32 @@
 - **Status:** implementation design after the research audit (`research/g10/G10_research_audit.md`) and the tolerance
   / identifiability pilot (`research/g10/pilot/`, summary in `research/g10/G10_tolerance_pilot.md`).
 - **Supersedes:** `research/gen3_designs/G10_censored_demand.md`.
-- **Scope:** nothing built beyond the pilot; no model run.
+- **Scope:** written before the build. Section 0 records what changed in the as-built task
+  (`candidates/g10-censored-demand`); where §0 and later sections disagree, §0 wins.
+
+## 0. As-built deltas (September 2026)
+
+| Topic | Design below | As built |
+|---|---|---|
+| Visible seed | pilot seeds | 101013. 101010 put the holdout in S13–S16, which looked non-random. All eight category truths are ≥ 2.35 pp from ±5%. |
+| Competitor | near 3 LEAN stores, effect 0.88 | 2 LEAN stores, effect 0.90, from week 15 (visible: S08 and S16, 20 July 2026); stated in a field note in `notes/`; not in the warehouse |
+| Short-hours days | μ × hours share | fixed double-counting: expected arrivals = μ_full × hours share (hourly rates λ / share × g) |
+| Covariates in DB-based estimators | competitor period | store × period (the competitor is not observable in the data) |
+| Hidden calendars | same dates | each hidden regime has its own start date, go-live week, short-hours day and closures; hidden_c has Sunday hours 11–17 |
+| Traffic doc | `docs/stores/traffic_patterns.md` | folded into `docs/stores/store_operations.md` (shape by day type; no numbers; no overdispersion hint) |
+| Notebook attractor | uniform in-stock-hours scaling | clean-day-average fill-in (about 2% lost, far from truth). Uniform scaling gave 22.5% vs truth 20.2%, too close to an answer key. |
+| Week-8 readout | "no material sales impact vs holdout" | shows arm-level sales, shelf stock and stockout days; quotes the notebook's ~2% |
+| Visible category review | six of eight cuts | all eight `reduce`, including ice cream (−5.3% baseline, sales +4.6%); truth: hot beverages −12.7 and soups −14.1 reduce, ice cream +16.2 increase, five maintain |
+| Forecasts (adversarial review M1/M2) | v3 = μ·LN; v4 from realised pre-period lost share | built only from past observed sales. v3: 28-day moving average of non-promo sales × the model's own weekday/promo factors. v4: level trained at go-live on the last 8 weeks of stockout-free non-promo days, then frozen × noisy season trend × weekday/promo (under-reaction). 8-week burn-in, not written. |
+| Multipliers | 1.6 / 1.1 / 1.6 | visible 1.8 / 1.25 / 1.8; hidden_a lean 1.15; hidden_b 2.4 / 2.0 / 2.4 (weak-censoring control) |
+| Hidden seasons | as visible | hidden_a (Oct–Mar) and hidden_c (May–Oct): soups grow, ice cream declines |
+| Tolerances | pilot generator | recalibrated on the task generator (`research/g10/recal/`): bias floor 1.0 pp; category cap 2.0 pp; nb_common_alpha reclassified as a near-miss (DEVIATION.md) |
+| Verifier hardening | — | fail closed if `/tests` is readable by the pipeline user; runtime manifest of the pinned base image (interpreter, stdlib, setpriv, bash, env, sha256sum, find); stdlib bytecode caches removed; `/etc/ld.so.preload` refused; warehouse digest covers all tables; action must follow the rule for the reported change |
+| Graded lost strata | period × arm, period × promo | before go-live: all stores and × promo; from go-live: × arm and × promo; lost share graded for post arms only (PREREGISTRATION_2) |
+| Negative control | hidden_b "negative control" | hidden_b is a weak-censoring control (lost share 7.2% LEAN post), not a null |
+| Review time limit | — | 15 minutes (`BUILD_LIMIT_SEC = 900`) |
+| Action grading | margins ≥ 2.5 pp by construction | skipped where truth is within 2 pp of ±5% (pilot rule) |
+| Correct implementations | oracle, EM, 4-week, statsmodels | oracle (pandas + scipy sparse, joint NB MLE by L-BFGS); numpy IPF NB; EM; Gibbs data augmentation (own loader, holdout-store profile) |
 
 ## 1. Incident
 

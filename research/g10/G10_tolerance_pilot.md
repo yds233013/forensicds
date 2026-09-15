@@ -2,6 +2,15 @@
 
 **Status: PASSED.** Approved to build.
 
+> **Superseded for the verifier's tolerances** (2026-09-15). After the independent reviews, the generator changed:
+> - forecasts are now built from observed sales (truth leak fixed);
+> - the short-hours double count was fixed;
+> - multipliers were retuned.
+>
+> Tolerances were re-derived on the task generator under a pre-registered protocol (`research/g10/recal/`:
+> PREREGISTRATION.md, DEVIATION.md, PREREGISTRATION_2.md, RESULT_ROUND2.md). This document stays as the
+> identifiability pilot.
+
 - **Nothing built, no model run.** Only the pilot generator and estimators existed.
 - **Code:**
   - `research/g10/pilot/g10_world.py`: data-generating process, standard library, used by the build;
