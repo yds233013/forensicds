@@ -1,0 +1,26 @@
+{
+ "value": {
+  "visible|v6": 0.0241,
+  "visible|v7": 0.02393,
+  "visible|v7_pd": 0.02566,
+  "tv_heavy|v6": 0.0261,
+  "tv_heavy|v7": 0.02582,
+  "tv_heavy|v7_pd": 0.02807,
+  "no_launch|v6": 0.02632,
+  "no_launch|v7": 0.02551,
+  "no_launch|v7_pd": 0.02384,
+  "v7_wins|v6": 0.02314,
+  "v7_wins|v7": 0.02486,
+  "v7_wins|v7_pd": 0.02286
+ },
+ "lift": {
+  "visible|v7": 0.03187,
+  "visible|v7_pd": 0.03055,
+  "tv_heavy|v7": 0.03446,
+  "tv_heavy|v7_pd": 0.03307,
+  "no_launch|v7": 0.03501,
+  "no_launch|v7_pd": 0.03338,
+  "v7_wins|v7": 0.03122,
+  "v7_wins|v7_pd": 0.02988
+ }
+}
