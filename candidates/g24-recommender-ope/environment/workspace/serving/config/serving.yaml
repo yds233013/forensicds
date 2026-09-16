@@ -1,0 +1,20 @@
+# Home-row serving configuration (personalisation platform)
+surface: home
+row: top_picks
+slate_size: 5
+
+exploration:
+  stream: explore_shuffle
+  # share of sessions hashed into the exploration stream, decided before A/B assignment
+  traffic_share: 0.05
+
+cache:
+  # a response is stored per key and returned for later requests until it expires
+  key: [session_id, surface]
+  ttl_seconds: 600
+  refresh_on_hit: false
+
+business_rules:
+  # applied to the ranked list by the rules layer, after ranking
+  - already_watched_suppression
+  - licence_window

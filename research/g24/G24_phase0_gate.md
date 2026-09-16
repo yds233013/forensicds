@@ -106,3 +106,21 @@ probability ≈ 1.
 - **The notebook attractor** in the workspace must produce *plausible* numbers (a value near the observed click rate
   that ranks v7 first), not the absurd scale the raw logged-propensity IPS produces. Its exact formula is fixed at
   build time and checked.
+
+## 7. As-built deviations (recorded after the independent reviews)
+
+The gate above was run on the pilot simulator. The Harbor task uses its own generator
+(`candidates/g24-recommender-ope/environment/build/world.py`). The independent adversarial and statistical-validity
+reviews found three problems with the first build, and each was fixed before sign-off.
+
+| Finding | Change | Evidence after the change |
+|---|---|---|
+| hidden_c was not a v7-wins world: its spec used pilot-only parameters the task generator ignores (truth launch was v6 by a hair) | explicit `v7_mode = "relevance"` in the generator; hidden_c uses it; hidden_b re-tuned with parameters the generator reads | `research/g24/fixture_audit.json`: launches visible v7_pd, hidden_a v7_pd, hidden_b v6, hidden_c v7 |
+| Decision margins were measured as lift / SE instead of distance to the launch rule's boundary (lift / SE = 1.96); correct estimators false-failed ≈6% | new build-time requirement: \|lift / SE_ref − 1.96\| ≥ 3 for every candidate on every frozen extract (`tools/g24/fixture_audit.py`); larger extracts and larger true effects | distances: visible −3.05 / +4.52, hidden_a −3.91 / +4.19, hidden_b −5.48 / −6.75, hidden_c +4.47 / −4.75 |
+| A cheap per-slot replay on the exploration stream (no propensity at all) passed every extract, because pool size was almost uncorrelated with value | retrieval pool size now varies with device (TV requests retrieve fewer titles) and grows with member engagement; suppression no longer targets relevant titles | per-slot replay now fails every extract at 1.5–2.3 τ; added to the mutation suite |
+| Interval width floor (0.25 × reference) sat next to efficient accepted estimators | floor lowered to 0.10 × reference; ceiling (3×) and widened-coverage check unchanged | all eight accepted implementations pass on every extract |
+| Truth SE omitted the m/(m−1) pair factor | exact factor used | negligible numerically |
+
+The tolerance rule itself (3.5 × SE_ref, per quantity, per extract) is unchanged. Separation results for the task are
+the ones measured on the frozen extracts with the verifier's own checks, reported in
+`report/g24_prebaseline_validation.md`, not the pilot tables above.

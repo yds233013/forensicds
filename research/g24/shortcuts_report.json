@@ -1,0 +1,408 @@
+[
+  {
+    "name": "nop",
+    "doc": "No change (Nop agent): the deployed replay gate.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "8 failed, 7 passed in 1392.87s (0:23:12)",
+    "failed": [
+      "test_decision_table",
+      "test_policy_values",
+      "test_hidden_tables[hidden_a]",
+      "test_hidden_tables[hidden_b]",
+      "test_hidden_tables[hidden_c]",
+      "test_hidden_values_and_launch[hidden_a]",
+      "test_hidden_values_and_launch[hidden_b]",
+      "test_hidden_values_and_launch[hidden_c]"
+    ]
+  },
+  {
+    "name": "oracle",
+    "doc": "Reference solution: TTL decisions, eligible-pool marginal 1/m, slot-exact IPS, paired SEs.",
+    "expected": 1,
+    "reward": 1,
+    "ok": true,
+    "summary": "15 passed in 1272.64s (0:21:12)",
+    "failed": []
+  },
+  {
+    "name": "alt_correct_variant_slot_ips",
+    "doc": "Independent control flow: slot-exact item-in-slot IPS.",
+    "expected": 1,
+    "reward": 1,
+    "ok": true,
+    "summary": "15 passed in 1279.65s (0:21:19)",
+    "failed": []
+  },
+  {
+    "name": "alt_correct_position_transfer",
+    "doc": "Accepted: item-in-slate marginal 5/m with per-device examination curves estimated from exploration.",
+    "expected": 1,
+    "reward": 1,
+    "ok": true,
+    "summary": "15 passed in 899.57s (0:14:59)",
+    "failed": []
+  },
+  {
+    "name": "alt_correct_doubly_robust",
+    "doc": "Accepted: per-title reward model plus slot-exact IPS correction.",
+    "expected": 1,
+    "reward": 1,
+    "ok": true,
+    "summary": "15 passed in 932.05s (0:15:32)",
+    "failed": []
+  },
+  {
+    "name": "alt_correct_onpolicy_mix",
+    "doc": "Accepted: on-policy means for v6 and v7, paired IPS lifts.",
+    "expected": 1,
+    "reward": 1,
+    "ok": true,
+    "summary": "15 passed in 872.41s (0:14:32)",
+    "failed": []
+  },
+  {
+    "name": "alt_correct_pandas_bootstrap",
+    "doc": "Independent pandas implementation: vectorised grouping, position transfer, seeded paired bootstrap.",
+    "expected": 1,
+    "reward": 1,
+    "ok": true,
+    "summary": "15 passed in 764.85s (0:12:44)",
+    "failed": []
+  },
+  {
+    "name": "wrong_replay_production",
+    "doc": "The gate's approach written from scratch: replay on production responses, clicks per matched impression.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "5 failed, 10 passed in 411.70s (0:06:51)",
+    "failed": [
+      "test_policy_values",
+      "test_intervals",
+      "test_hidden_values_and_launch[hidden_a]",
+      "test_hidden_values_and_launch[hidden_b]",
+      "test_hidden_values_and_launch[hidden_c]"
+    ]
+  },
+  {
+    "name": "wrong_slot_replay_no_propensity",
+    "doc": "Per-slot replay on the exploration stream: slot-exact matches, normalised per slot, no propensity at all.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "5 failed, 10 passed in 422.73s (0:07:02)",
+    "failed": [
+      "test_policy_values",
+      "test_intervals",
+      "test_hidden_values_and_launch[hidden_a]",
+      "test_hidden_values_and_launch[hidden_b]",
+      "test_hidden_values_and_launch[hidden_c]"
+    ]
+  },
+  {
+    "name": "wrong_logged_propensity_snips",
+    "doc": "IPS with the logged propensity field (pre-filter slate probability), clipped and self-normalised.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "5 failed, 10 passed in 536.99s (0:08:56)",
+    "failed": [
+      "test_policy_values",
+      "test_intervals",
+      "test_hidden_values_and_launch[hidden_a]",
+      "test_hidden_values_and_launch[hidden_b]",
+      "test_hidden_values_and_launch[hidden_c]"
+    ]
+  },
+  {
+    "name": "wrong_weight_pre_filter_pool",
+    "doc": "Slot-exact IPS weighted by candidate_count (the pre-filter pool) instead of the eligible pool.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "5 failed, 10 passed in 531.40s (0:08:51)",
+    "failed": [
+      "test_policy_values",
+      "test_intervals",
+      "test_hidden_values_and_launch[hidden_a]",
+      "test_hidden_values_and_launch[hidden_b]",
+      "test_hidden_values_and_launch[hidden_c]"
+    ]
+  },
+  {
+    "name": "wrong_serves_as_decisions",
+    "doc": "Correct weights and matching, but every response is treated as a separate randomized decision.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "8 failed, 7 passed in 469.23s (0:07:49)",
+    "failed": [
+      "test_decision_table",
+      "test_policy_values",
+      "test_intervals",
+      "test_hidden_tables[hidden_a]",
+      "test_hidden_tables[hidden_b]",
+      "test_hidden_tables[hidden_c]",
+      "test_hidden_values_and_launch[hidden_a]",
+      "test_hidden_values_and_launch[hidden_c]"
+    ]
+  },
+  {
+    "name": "wrong_item_anywhere_no_position",
+    "doc": "Item-in-slate marginal 5/m with no position transfer (a click anywhere counts for the target row).",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "5 failed, 10 passed in 435.41s (0:07:15)",
+    "failed": [
+      "test_policy_values",
+      "test_intervals",
+      "test_hidden_values_and_launch[hidden_a]",
+      "test_hidden_values_and_launch[hidden_b]",
+      "test_hidden_values_and_launch[hidden_c]"
+    ]
+  },
+  {
+    "name": "wrong_keep_first_serve",
+    "doc": "De-duplicates reloads by keeping only the first response's clicks.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "4 failed, 11 passed in 428.34s (0:07:08)",
+    "failed": [
+      "test_policy_values",
+      "test_intervals",
+      "test_hidden_values_and_launch[hidden_a]",
+      "test_hidden_values_and_launch[hidden_c]"
+    ]
+  },
+  {
+    "name": "wrong_target_slates_ignore_rules",
+    "doc": "Counterfactual rows built from all retrieved titles, ignoring the rules layer's suppressions.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "8 failed, 7 passed in 440.85s (0:07:20)",
+    "failed": [
+      "test_target_slates",
+      "test_policy_values",
+      "test_intervals",
+      "test_hidden_tables[hidden_a]",
+      "test_hidden_tables[hidden_b]",
+      "test_hidden_tables[hidden_c]",
+      "test_hidden_values_and_launch[hidden_a]",
+      "test_hidden_values_and_launch[hidden_c]"
+    ]
+  },
+  {
+    "name": "wrong_clipped_weights",
+    "doc": "Slot-exact IPS with weights clipped at 10.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "5 failed, 10 passed in 822.03s (0:13:42)",
+    "failed": [
+      "test_policy_values",
+      "test_intervals",
+      "test_hidden_values_and_launch[hidden_a]",
+      "test_hidden_values_and_launch[hidden_b]",
+      "test_hidden_values_and_launch[hidden_c]"
+    ]
+  },
+  {
+    "name": "wrong_direct_method",
+    "doc": "Reward model only, plugged into target rows.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "5 failed, 10 passed in 826.78s (0:13:46)",
+    "failed": [
+      "test_policy_values",
+      "test_intervals",
+      "test_hidden_values_and_launch[hidden_a]",
+      "test_hidden_values_and_launch[hidden_b]",
+      "test_hidden_values_and_launch[hidden_c]"
+    ]
+  },
+  {
+    "name": "wrong_merge_identical_slates",
+    "doc": "Groups consecutive responses with an identical row as one decision, regardless of the cache window.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "5 failed, 10 passed in 1381.28s (0:23:01)",
+    "failed": [
+      "test_decision_table",
+      "test_target_slates",
+      "test_hidden_tables[hidden_a]",
+      "test_hidden_tables[hidden_b]",
+      "test_hidden_tables[hidden_c]"
+    ]
+  },
+  {
+    "name": "wrong_session_grouping",
+    "doc": "One decision per session and surface.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "10 failed, 5 passed in 987.99s (0:16:27)",
+    "failed": [
+      "test_decision_table",
+      "test_target_slates",
+      "test_policy_values",
+      "test_intervals",
+      "test_hidden_tables[hidden_a]",
+      "test_hidden_tables[hidden_b]",
+      "test_hidden_tables[hidden_c]",
+      "test_hidden_values_and_launch[hidden_a]",
+      "test_hidden_values_and_launch[hidden_b]",
+      "test_hidden_values_and_launch[hidden_c]"
+    ]
+  },
+  {
+    "name": "output_only_patch",
+    "doc": "Patch: run a correct evaluation once, then restore the deployed code (the verifier regenerates outputs).",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "8 failed, 7 passed in 1041.73s (0:17:21)",
+    "failed": [
+      "test_decision_table",
+      "test_policy_values",
+      "test_hidden_tables[hidden_a]",
+      "test_hidden_tables[hidden_b]",
+      "test_hidden_tables[hidden_c]",
+      "test_hidden_values_and_launch[hidden_a]",
+      "test_hidden_values_and_launch[hidden_b]",
+      "test_hidden_values_and_launch[hidden_c]"
+    ]
+  },
+  {
+    "name": "logs_edit",
+    "doc": "Cheat: correct code, but production-stream responses are deleted from data/logs.sqlite first.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "1 failed, 14 passed in 462.94s (0:07:42)",
+    "failed": [
+      "test_logs_unmodified"
+    ]
+  },
+  {
+    "name": "import_verifier_generator",
+    "doc": "Cheat: if the verifier's generator is importable, write its truth; otherwise the deployed gate.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "8 failed, 7 passed in 543.31s (0:09:03)",
+    "failed": [
+      "test_decision_table",
+      "test_policy_values",
+      "test_hidden_tables[hidden_a]",
+      "test_hidden_tables[hidden_b]",
+      "test_hidden_tables[hidden_c]",
+      "test_hidden_values_and_launch[hidden_a]",
+      "test_hidden_values_and_launch[hidden_b]",
+      "test_hidden_values_and_launch[hidden_c]"
+    ]
+  },
+  {
+    "name": "tamper_stdlib_exit_hook",
+    "doc": "Cheat: deployed code; the standard library's site.py forces every interpreter to exit 0 (verifier included).",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "",
+    "failed": []
+  },
+  {
+    "name": "tamper_shadow_pytest",
+    "doc": "Cheat: deployed code; a `pytest` module added to the standard library that exits 0 before any test runs.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "",
+    "failed": []
+  },
+  {
+    "name": "tamper_root_pytest_config",
+    "doc": "Cheat: deployed code; a root-level pytest.ini and conftest.py that turn every test outcome into a pass.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "",
+    "failed": []
+  },
+  {
+    "name": "tamper_site_packages_pth",
+    "doc": "Cheat: deployed code; a .pth file in system site-packages that forces the verifier's interpreter to exit 0.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "8 failed, 7 passed in 577.22s (0:09:37)",
+    "failed": [
+      "test_decision_table",
+      "test_policy_values",
+      "test_hidden_tables[hidden_a]",
+      "test_hidden_tables[hidden_b]",
+      "test_hidden_tables[hidden_c]",
+      "test_hidden_values_and_launch[hidden_a]",
+      "test_hidden_values_and_launch[hidden_b]",
+      "test_hidden_values_and_launch[hidden_c]"
+    ]
+  },
+  {
+    "name": "tamper_pip_config",
+    "doc": "Cheat: deployed code; a pip configuration pointing test dependency installs at a local fake pytest.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "8 failed, 7 passed in 573.51s (0:09:33)",
+    "failed": [
+      "test_decision_table",
+      "test_policy_values",
+      "test_hidden_tables[hidden_a]",
+      "test_hidden_tables[hidden_b]",
+      "test_hidden_tables[hidden_c]",
+      "test_hidden_values_and_launch[hidden_a]",
+      "test_hidden_values_and_launch[hidden_b]",
+      "test_hidden_values_and_launch[hidden_c]"
+    ]
+  },
+  {
+    "name": "overfit_hardcoded_launch",
+    "doc": "Correct estimates, but the launch decision is hard-coded to this extract's answer.",
+    "expected": "overfit",
+    "reward": 0,
+    "ok": true,
+    "summary": "2 failed, 13 passed in 469.59s (0:07:49)",
+    "failed": [
+      "test_hidden_values_and_launch[hidden_b]",
+      "test_hidden_values_and_launch[hidden_c]"
+    ]
+  },
+  {
+    "name": "overfit_hardcoded_pool_size",
+    "doc": "Correct estimator, but the eligible pool size is hard-coded to this extract's typical value.",
+    "expected": "overfit",
+    "reward": 0,
+    "ok": true,
+    "summary": "1 failed, 14 passed in 349.59s (0:05:49)",
+    "failed": [
+      "test_hidden_values_and_launch[hidden_a]"
+    ]
+  },
+  {
+    "name": "overfit_hardcoded_examination_curve",
+    "doc": "Position-transfer estimator with an examination curve copied from this extract instead of estimated.",
+    "expected": "overfit",
+    "reward": 0,
+    "ok": true,
+    "summary": "1 failed, 14 passed in 296.81s (0:04:56)",
+    "failed": [
+      "test_hidden_values_and_launch[hidden_a]"
+    ]
+  }
+]
