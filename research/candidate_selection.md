@@ -1,6 +1,6 @@
 # ForensicDS candidate pool and selection status
 
-Updated: 2026-09-15.
+Updated: 2026-09-16.
 
 Tasks 01–05 are **candidate/development tasks**. The final submitted benchmark (5–10 tasks, target pass@3 < 30%) will be
 selected from the pool later. The selection criteria are:
@@ -29,13 +29,13 @@ UNKNOWN means not built or not run.
 
 ## Generation-3 shortlist
 
-Source: `research/gen3_implementation_shortlist.md` (after `research/gen3_design_tournament.md`). S1 (G08) and S4
+Source: `research/gen3_implementation_shortlist.md` (after `research/gen3_design_tournament.md`). S1 (G08), S2 (G24) and S4
 (G10) are built and baselined. The others are designed only, and their baseline fields are UNKNOWN. Build order matches the S-number.
 
 | Shortlist | Design | Mechanism | Build status | Baseline status | pass@3 | Expected hardness (prior) | Likely final-set role |
 |---|---|---|---|---|---|---|---|
 | S1 | G08 forecast vintages (built: `candidates/g08-forecast-accuracy-vintages`, frozen at e07103d) | target vintage: charge basis as known at KPI close (effective vs recorded status), UK-gate forecast lock at unit grain, effective-dated portfolios | built, pre-baseline validated (Oracle 1, Nop 0, mutations 40/40, harbor check 11/11, 2 adversarial reviews) | run (1/3: h7TpDUG 0, pXphfXM 1, wmwSU97 0; $0.96) | 1 | USEFUL MEDIUM-HARD (failures: target vintage never investigated; issue-grain lock + reasoned status rule not implemented; both stopped on plausible aggregates) | candidate (medium-hard); does not reach headroom target alone |
-| S2 | G24 recommender OPE | slate/position propensities, decision grain | designed; fixes + Phase-0 margins | UNKNOWN | UNKNOWN | MEDIUM-HARD | undecided |
+| S2 | G24 recommender OPE (built: `candidates/g24-recommender-ope`, frozen at checksum 2c9cc2055ef796a5, commits 2e21788/b7f1c8e) | slate/position propensities after a rules layer, cache-TTL decision grain | built, pre-baseline validated (Oracle 1, Nop 0, mutations 30/30, harbor check 11/11, clean checkout, adversarial + statistical-validity reviews) | run (0/3: a8zVL7h 0, wVmAykK 0, ykNY8fD 0; $0.51) | 0 | HARD, near-miss (all chose slot-exact IPS; 2/3 weighted by pre-filter pool K, 3/3 wrong decision unit; all stopped when v7's sign matched AB-1182; launch correct on 12/12 extracts with values 0.8-4.3 tau off; closest trial derived 1/m and passes all extracts after one TTL-grouping patch) | recommend include (statistical process reconstruction) |
 | S3 | G23 readmission episodes | episode grain across facility vocabularies | designed; fixes required | UNKNOWN | UNKNOWN | MEDIUM | undecided |
 | S4 | G10 censored demand (built: `candidates/g10-censored-demand`, frozen at checksum 047195e7a12d34cd, commits 3efed5c/ffbe949) | stopping-time censoring, latent demand, informative censoring | built, pre-baseline validated (Oracle 1, Nop 0, mutations 33/33, harbor check 11/11, pre-registered tolerance recalibration, adversarial + statistical-validity reviews) | run (0/3: LhEU3ny 0, cLtM9yi 0, eMXZbBi 0; $0.58) | 0 | FRONTIER-HARD (all diagnosed censoring and selection bias; none modelled the latent day shock or validated assumptions; forecast imputation / Poisson plug-in / per-day scaling; all stopped on a plausible ice-cream trend; one trial 8/8 actions correct with lost units 24-63% low) | recommend include (frontier-hard statistical reasoning) |
 | S5 | G11 training–serving skew | multi-feature serving semantics + embedded negative control | designed; scope cut; gated on S1 baseline | UNKNOWN | UNKNOWN | HARD | undecided |
@@ -54,6 +54,16 @@ G10 baseline analysis: `research/g10/g10_gemini_analysis.md`:
 - An overdispersion-only counterfactual on the closest trial still fails at 3.4–7.2×.
 - Implication: prioritise statistical-inference candidates (S2 G24, S6 G05, S8 G01) over semantic-lock variants; do not
   build G11.
+
+G24 baseline analysis: `research/g24/g24_gemini_analysis.md`:
+- 0/3, pass@3 = 0, hard with a near-miss profile.
+- All three recognised OPE and implemented the accepted estimator family, then applied it to the wrong object (action
+  space K in two trials, decision unit in all three).
+- All stopped when v7's lift sign matched AB-1182. Launch was correct on 12/12 extracts while values were wrong, so a
+  decision-only grader would have passed every trial.
+- The closest trial passes every extract after one decision-reconstruction patch.
+- Shortest horizon so far (41–46 tool calls, 3.3–4.3 min).
+- Implication: grade estimands (not only decisions) in G05/G01, and include a sign-matching external attractor.
 
 - Not shortlisted: G02, G14 and G30 (WEAK); G26 (REJECT as a headroom task; its idea is embedded in S5).
 - The earlier Task 07–09 designs are not being built. The G26 tournament result supersedes the Task 09
