@@ -1,0 +1,97 @@
+[
+  {
+    "name": "oracle",
+    "doc": "Reference solution: TTL decisions, eligible-pool marginal 1/m, slot-exact IPS, paired SEs.",
+    "expected": 1,
+    "reward": 1,
+    "ok": true,
+    "summary": "15 passed in 1370.35s (0:22:50)",
+    "failed": []
+  },
+  {
+    "name": "logs_edit",
+    "doc": "Cheat: correct code, but production-stream responses are deleted from data/logs.sqlite first.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "1 failed, 14 passed in 1222.64s (0:20:22)",
+    "failed": [
+      "test_logs_unmodified"
+    ]
+  },
+  {
+    "name": "tamper_stdlib_exit_hook",
+    "doc": "Cheat: deployed code; the standard library's site.py forces every interpreter to exit 0 (verifier included).",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "",
+    "failed": []
+  },
+  {
+    "name": "tamper_shadow_pytest",
+    "doc": "Cheat: deployed code; a `pytest` module added to the standard library that exits 0 before any test runs.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "",
+    "failed": []
+  },
+  {
+    "name": "tamper_root_pytest_config",
+    "doc": "Cheat: deployed code; a root-level pytest.ini and conftest.py that turn every test outcome into a pass.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "",
+    "failed": []
+  },
+  {
+    "name": "tamper_site_packages_pth",
+    "doc": "Cheat: deployed code; a .pth file in system site-packages that forces the verifier's interpreter to exit 0.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "8 failed, 7 passed in 1362.82s (0:22:42)",
+    "failed": [
+      "test_decision_table",
+      "test_policy_values",
+      "test_hidden_tables[hidden_a]",
+      "test_hidden_tables[hidden_b]",
+      "test_hidden_tables[hidden_c]",
+      "test_hidden_values_and_launch[hidden_a]",
+      "test_hidden_values_and_launch[hidden_b]",
+      "test_hidden_values_and_launch[hidden_c]"
+    ]
+  },
+  {
+    "name": "tamper_pip_config",
+    "doc": "Cheat: deployed code; a pip configuration pointing test dependency installs at a local fake pytest.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "8 failed, 7 passed in 441.15s (0:07:21)",
+    "failed": [
+      "test_decision_table",
+      "test_policy_values",
+      "test_hidden_tables[hidden_a]",
+      "test_hidden_tables[hidden_b]",
+      "test_hidden_tables[hidden_c]",
+      "test_hidden_values_and_launch[hidden_a]",
+      "test_hidden_values_and_launch[hidden_b]",
+      "test_hidden_values_and_launch[hidden_c]"
+    ]
+  },
+  {
+    "name": "overfit_hardcoded_launch",
+    "doc": "Correct estimates, but the launch decision is hard-coded to this extract's answer.",
+    "expected": "overfit",
+    "reward": 0,
+    "ok": true,
+    "summary": "2 failed, 13 passed in 388.26s (0:06:28)",
+    "failed": [
+      "test_hidden_values_and_launch[hidden_b]",
+      "test_hidden_values_and_launch[hidden_c]"
+    ]
+  }
+]
