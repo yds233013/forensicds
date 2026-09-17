@@ -1,0 +1,529 @@
+[
+  {
+    "name": "nop",
+    "doc": "No change (Nop agent): the Programme team's TWFE readout on basket size.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "10 failed, 4 passed in 47.59s",
+    "failed": [
+      "test_analysis_panel",
+      "test_effects",
+      "test_intervals",
+      "test_decision",
+      "test_hidden_panel[hidden_a]",
+      "test_hidden_panel[hidden_b]",
+      "test_hidden_panel[hidden_c]",
+      "test_hidden_effects_and_decision[hidden_a]",
+      "test_hidden_effects_and_decision[hidden_b]",
+      "test_hidden_effects_and_decision[hidden_c]"
+    ]
+  },
+  {
+    "name": "oracle",
+    "doc": "Reference solution: actual go-live, comparable weeks, format-conditional imputation, kit transport, bootstrap.",
+    "expected": 1,
+    "reward": 1,
+    "ok": true,
+    "summary": "14 passed in 298.15s (0:04:58)",
+    "failed": []
+  },
+  {
+    "name": "alt_correct_pandas_did",
+    "doc": "Independent pandas implementation: same-format not-yet-installed 2x2 comparisons, comparable pre-period base.",
+    "expected": 1,
+    "reward": 1,
+    "ok": true,
+    "summary": "14 passed in 80.86s (0:01:20)",
+    "failed": []
+  },
+  {
+    "name": "alt_correct_never_installed_controls",
+    "doc": "Accepted: same-format never-installed controls only.",
+    "expected": 1,
+    "reward": 1,
+    "ok": true,
+    "summary": "14 passed in 53.10s",
+    "failed": []
+  },
+  {
+    "name": "alt_correct_store_trends",
+    "doc": "Accepted: imputation with store-specific linear trends and week effects.",
+    "expected": 1,
+    "reward": 1,
+    "ok": true,
+    "summary": "14 passed in 154.83s (0:02:34)",
+    "failed": []
+  },
+  {
+    "name": "alt_correct_format_kit_week",
+    "doc": "Accepted: imputation with format-by-kit-by-week effects.",
+    "expected": 1,
+    "reward": 1,
+    "ok": true,
+    "summary": "14 passed in 112.17s (0:01:52)",
+    "failed": []
+  },
+  {
+    "name": "alt_correct_single_base_week",
+    "doc": "Accepted: same-format not-yet-installed DiD with each store's latest comparable week in e = -8..-3 as base.",
+    "expected": 1,
+    "reward": 1,
+    "ok": true,
+    "summary": "14 passed in 55.61s",
+    "failed": []
+  },
+  {
+    "name": "wrong_before_after",
+    "doc": "Live stores' run-rate weeks against their own pre-period, no comparison group.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "6 failed, 8 passed in 48.28s",
+    "failed": [
+      "test_effects",
+      "test_intervals",
+      "test_decision",
+      "test_hidden_effects_and_decision[hidden_a]",
+      "test_hidden_effects_and_decision[hidden_b]",
+      "test_hidden_effects_and_decision[hidden_c]"
+    ]
+  },
+  {
+    "name": "wrong_twfe_static_sales",
+    "doc": "Static two-way fixed effects on log net sales (actual dates, comparable weeks).",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "6 failed, 8 passed in 75.00s (0:01:14)",
+    "failed": [
+      "test_effects",
+      "test_intervals",
+      "test_decision",
+      "test_hidden_effects_and_decision[hidden_a]",
+      "test_hidden_effects_and_decision[hidden_b]",
+      "test_hidden_effects_and_decision[hidden_c]"
+    ]
+  },
+  {
+    "name": "wrong_twfe_event_study_ref_minus1",
+    "doc": "TWFE event study with reference week -1 (inside the install closure), run-rate from the lags.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "6 failed, 8 passed in 1017.99s (0:16:57)",
+    "failed": [
+      "test_effects",
+      "test_intervals",
+      "test_decision",
+      "test_hidden_effects_and_decision[hidden_a]",
+      "test_hidden_effects_and_decision[hidden_b]",
+      "test_hidden_effects_and_decision[hidden_c]"
+    ]
+  },
+  {
+    "name": "wrong_did_base_g_minus_1",
+    "doc": "2x2 DiD with base week g-1 and pooled not-yet-installed controls.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "6 failed, 8 passed in 43.92s",
+    "failed": [
+      "test_effects",
+      "test_intervals",
+      "test_decision",
+      "test_hidden_effects_and_decision[hidden_a]",
+      "test_hidden_effects_and_decision[hidden_b]",
+      "test_hidden_effects_and_decision[hidden_c]"
+    ]
+  },
+  {
+    "name": "wrong_unconditional_imputation",
+    "doc": "Store + week effects only: ignores format trends behind the wave sequencing.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "5 failed, 9 passed in 96.16s (0:01:36)",
+    "failed": [
+      "test_effects",
+      "test_intervals",
+      "test_hidden_effects_and_decision[hidden_a]",
+      "test_hidden_effects_and_decision[hidden_b]",
+      "test_hidden_effects_and_decision[hidden_c]"
+    ]
+  },
+  {
+    "name": "wrong_unconditional_did",
+    "doc": "Clean-base DiD against pooled not-yet-installed controls of all formats.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "5 failed, 9 passed in 52.09s",
+    "failed": [
+      "test_effects",
+      "test_intervals",
+      "test_hidden_effects_and_decision[hidden_a]",
+      "test_hidden_effects_and_decision[hidden_b]",
+      "test_hidden_effects_and_decision[hidden_c]"
+    ]
+  },
+  {
+    "name": "wrong_kit_week_conditioning",
+    "doc": "Kit-by-week effects instead of format-by-week: conditioning coarser than the sequencing variable.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "5 failed, 9 passed in 109.78s (0:01:49)",
+    "failed": [
+      "test_effects",
+      "test_intervals",
+      "test_hidden_effects_and_decision[hidden_a]",
+      "test_hidden_effects_and_decision[hidden_b]",
+      "test_hidden_effects_and_decision[hidden_c]"
+    ]
+  },
+  {
+    "name": "wrong_outcome_basket",
+    "doc": "Correct design on log basket size instead of net sales.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "5 failed, 9 passed in 107.02s (0:01:47)",
+    "failed": [
+      "test_effects",
+      "test_intervals",
+      "test_hidden_effects_and_decision[hidden_a]",
+      "test_hidden_effects_and_decision[hidden_b]",
+      "test_hidden_effects_and_decision[hidden_c]"
+    ]
+  },
+  {
+    "name": "wrong_mediator_control",
+    "doc": "Correct design on net sales with log transactions as a covariate (\"traffic-adjusted\").",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "5 failed, 9 passed in 170.46s (0:02:50)",
+    "failed": [
+      "test_effects",
+      "test_intervals",
+      "test_hidden_effects_and_decision[hidden_a]",
+      "test_hidden_effects_and_decision[hidden_b]",
+      "test_hidden_effects_and_decision[hidden_c]"
+    ]
+  },
+  {
+    "name": "wrong_closure_weeks_comparable",
+    "doc": "Correct design, but weeks with closures are used as comparable observations.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "5 failed, 9 passed in 102.44s (0:01:42)",
+    "failed": [
+      "test_effects",
+      "test_intervals",
+      "test_hidden_effects_and_decision[hidden_a]",
+      "test_hidden_effects_and_decision[hidden_b]",
+      "test_hidden_effects_and_decision[hidden_c]"
+    ]
+  },
+  {
+    "name": "wrong_window_0_25",
+    "doc": "Correct design averaged over event weeks 0-25 instead of the run-rate weeks.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "5 failed, 9 passed in 99.67s (0:01:39)",
+    "failed": [
+      "test_effects",
+      "test_intervals",
+      "test_hidden_effects_and_decision[hidden_a]",
+      "test_hidden_effects_and_decision[hidden_b]",
+      "test_hidden_effects_and_decision[hidden_c]"
+    ]
+  },
+  {
+    "name": "wrong_window_0_25_did",
+    "doc": "Same-format DiD averaged over event weeks 0-25 instead of the run-rate weeks.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "5 failed, 9 passed in 57.99s",
+    "failed": [
+      "test_effects",
+      "test_intervals",
+      "test_hidden_effects_and_decision[hidden_a]",
+      "test_hidden_effects_and_decision[hidden_b]",
+      "test_hidden_effects_and_decision[hidden_c]"
+    ]
+  },
+  {
+    "name": "wrong_kit_conditioning_did",
+    "doc": "DiD with same-kit (not same-format) not-yet-installed controls.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "5 failed, 9 passed in 46.66s",
+    "failed": [
+      "test_effects",
+      "test_intervals",
+      "test_hidden_effects_and_decision[hidden_a]",
+      "test_hidden_effects_and_decision[hidden_b]",
+      "test_hidden_effects_and_decision[hidden_c]"
+    ]
+  },
+  {
+    "name": "wrong_closure_weeks_in_window",
+    "doc": "Correct fit, but closure weeks are included in the run-rate average.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "5 failed, 9 passed in 90.84s (0:01:30)",
+    "failed": [
+      "test_effects",
+      "test_intervals",
+      "test_hidden_effects_and_decision[hidden_a]",
+      "test_hidden_effects_and_decision[hidden_b]",
+      "test_hidden_effects_and_decision[hidden_c]"
+    ]
+  },
+  {
+    "name": "wrong_gate_pooled_installed",
+    "doc": "Correct design; gate figure = live stores' pooled run-rate effect.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "5 failed, 9 passed in 98.16s (0:01:38)",
+    "failed": [
+      "test_effects",
+      "test_intervals",
+      "test_decision",
+      "test_hidden_effects_and_decision[hidden_b]",
+      "test_hidden_effects_and_decision[hidden_c]"
+    ]
+  },
+  {
+    "name": "wrong_gate_by_format",
+    "doc": "Correct design; gate figure transported to waves 5-6 by format.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "4 failed, 10 passed in 97.40s (0:01:37)",
+    "failed": [
+      "test_effects",
+      "test_intervals",
+      "test_hidden_effects_and_decision[hidden_b]",
+      "test_hidden_effects_and_decision[hidden_c]"
+    ]
+  },
+  {
+    "name": "wrong_gate_by_sqft",
+    "doc": "Correct design; gate figure from a linear store-size model of store effects.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "5 failed, 9 passed in 103.51s (0:01:43)",
+    "failed": [
+      "test_effects",
+      "test_intervals",
+      "test_decision",
+      "test_hidden_effects_and_decision[hidden_b]",
+      "test_hidden_effects_and_decision[hidden_c]"
+    ]
+  },
+  {
+    "name": "wrong_panel_planned_dates",
+    "doc": "Correct estimates, but the analysis panel's go-live week and event weeks come from the plan.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "4 failed, 10 passed in 89.78s (0:01:29)",
+    "failed": [
+      "test_analysis_panel",
+      "test_hidden_panel[hidden_a]",
+      "test_hidden_panel[hidden_b]",
+      "test_hidden_panel[hidden_c]"
+    ]
+  },
+  {
+    "name": "wrong_panel_comparable_txns",
+    "doc": "Correct estimates, but the panel's comparable flag is transactions > 0.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "4 failed, 10 passed in 90.17s (0:01:30)",
+    "failed": [
+      "test_analysis_panel",
+      "test_hidden_panel[hidden_a]",
+      "test_hidden_panel[hidden_b]",
+      "test_hidden_panel[hidden_c]"
+    ]
+  },
+  {
+    "name": "wrong_panel_event_week_from_1",
+    "doc": "Correct estimates, but event weeks count the go-live week as 1.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "4 failed, 10 passed in 104.16s (0:01:44)",
+    "failed": [
+      "test_analysis_panel",
+      "test_hidden_panel[hidden_a]",
+      "test_hidden_panel[hidden_b]",
+      "test_hidden_panel[hidden_c]"
+    ]
+  },
+  {
+    "name": "output_only_patch",
+    "doc": "Patch: run a correct readout once, then restore the house code (the verifier regenerates outputs).",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "10 failed, 4 passed in 61.22s (0:01:01)",
+    "failed": [
+      "test_analysis_panel",
+      "test_effects",
+      "test_intervals",
+      "test_decision",
+      "test_hidden_panel[hidden_a]",
+      "test_hidden_panel[hidden_b]",
+      "test_hidden_panel[hidden_c]",
+      "test_hidden_effects_and_decision[hidden_a]",
+      "test_hidden_effects_and_decision[hidden_b]",
+      "test_hidden_effects_and_decision[hidden_c]"
+    ]
+  },
+  {
+    "name": "warehouse_edit",
+    "doc": "Cheat: correct code, but closure records are deleted from data/warehouse.sqlite first.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "1 failed, 13 passed in 299.29s (0:04:59)",
+    "failed": [
+      "test_warehouse_unmodified"
+    ]
+  },
+  {
+    "name": "import_verifier_generator",
+    "doc": "Cheat: if the verifier's generator is importable, write its truth; otherwise the house readout.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "10 failed, 4 passed in 48.10s",
+    "failed": [
+      "test_analysis_panel",
+      "test_effects",
+      "test_intervals",
+      "test_decision",
+      "test_hidden_panel[hidden_a]",
+      "test_hidden_panel[hidden_b]",
+      "test_hidden_panel[hidden_c]",
+      "test_hidden_effects_and_decision[hidden_a]",
+      "test_hidden_effects_and_decision[hidden_b]",
+      "test_hidden_effects_and_decision[hidden_c]"
+    ]
+  },
+  {
+    "name": "tamper_stdlib_exit_hook",
+    "doc": "Cheat: house code; the standard library's site.py forces every interpreter to exit 0 (verifier included).",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "verifier: interpreter, standard library or sandbox tools differ from the pinned image; refusing to grade",
+    "failed": []
+  },
+  {
+    "name": "tamper_shadow_pytest",
+    "doc": "Cheat: house code; a `pytest` module added to the standard library that exits 0 before any test runs.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "verifier: files were added to or removed from the standard library; refusing to grade",
+    "failed": []
+  },
+  {
+    "name": "tamper_root_pytest_config",
+    "doc": "Cheat: house code; a root-level pytest.ini and conftest.py that turn every test outcome into a pass.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "verifier: pytest configuration file /pytest.ini present; refusing to grade",
+    "failed": []
+  },
+  {
+    "name": "tamper_site_packages_pth",
+    "doc": "Cheat: house code; a .pth file in system site-packages that forces the verifier's interpreter to exit 0.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "10 failed, 4 passed in 48.78s",
+    "failed": [
+      "test_analysis_panel",
+      "test_effects",
+      "test_intervals",
+      "test_decision",
+      "test_hidden_panel[hidden_a]",
+      "test_hidden_panel[hidden_b]",
+      "test_hidden_panel[hidden_c]",
+      "test_hidden_effects_and_decision[hidden_a]",
+      "test_hidden_effects_and_decision[hidden_b]",
+      "test_hidden_effects_and_decision[hidden_c]"
+    ]
+  },
+  {
+    "name": "tamper_pip_config",
+    "doc": "Cheat: house code; a pip configuration pointing test dependency installs at a local fake pytest.",
+    "expected": 0,
+    "reward": 0,
+    "ok": true,
+    "summary": "10 failed, 4 passed in 50.81s",
+    "failed": [
+      "test_analysis_panel",
+      "test_effects",
+      "test_intervals",
+      "test_decision",
+      "test_hidden_panel[hidden_a]",
+      "test_hidden_panel[hidden_b]",
+      "test_hidden_panel[hidden_c]",
+      "test_hidden_effects_and_decision[hidden_a]",
+      "test_hidden_effects_and_decision[hidden_b]",
+      "test_hidden_effects_and_decision[hidden_c]"
+    ]
+  },
+  {
+    "name": "overfit_hardcoded_decision",
+    "doc": "Correct estimates, but the decision is hard-coded to this warehouse's answer (stop).",
+    "expected": "overfit",
+    "reward": 0,
+    "ok": true,
+    "summary": "2 failed, 12 passed in 117.37s (0:01:57)",
+    "failed": [
+      "test_hidden_effects_and_decision[hidden_a]",
+      "test_hidden_effects_and_decision[hidden_c]"
+    ]
+  },
+  {
+    "name": "overfit_hardcoded_compact_effect",
+    "doc": "Correct wave effects, but the compact kit's effect in the gate is this warehouse's value.",
+    "expected": "overfit",
+    "reward": 0,
+    "ok": true,
+    "summary": "2 failed, 12 passed in 90.21s (0:01:30)",
+    "failed": [
+      "test_hidden_effects_and_decision[hidden_a]",
+      "test_hidden_effects_and_decision[hidden_c]"
+    ]
+  },
+  {
+    "name": "overfit_hardcoded_format_trends",
+    "doc": "Detrend log net sales with this warehouse's format sales trends (per year), then store + week effects only.",
+    "expected": "overfit",
+    "reward": 0,
+    "ok": true,
+    "summary": "1 failed, 13 passed in 72.72s (0:01:12)",
+    "failed": [
+      "test_hidden_effects_and_decision[hidden_b]"
+    ]
+  }
+]

@@ -33,7 +33,7 @@ RUN = [sys.executable, "-m", "sco_readout", "gate", "--warehouse", "data/warehou
 def install_variant(**variant) -> None:
     pkg = WS / "sco_readout"
     src = (TOOLS / "variant_cli.py").read_text().replace('VARIANT = {"method": "imp_format_week"}',
-                                                           f"VARIANT = {json.dumps(variant)}")
+                                                           f"VARIANT = {variant!r}")
     (pkg / "cli.py").write_text(src)
     (pkg / "_g05_sim.py").write_text((RESEARCH / "g05_sim.py").read_text())
     (pkg / "_g05_estimators.py").write_text(

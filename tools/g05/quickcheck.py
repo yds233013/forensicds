@@ -51,7 +51,7 @@ def make_variant_ws(variant: dict) -> Path:
 def install_variant(ws: Path, variant: dict) -> None:
     pkg = ws / "sco_readout"
     src = (HERE / "variant_cli.py").read_text().replace('VARIANT = {"method": "imp_format_week"}',
-                                                          f"VARIANT = {json.dumps(variant)}")
+                                                          f"VARIANT = {variant!r}")
     (pkg / "cli.py").write_text(src)
     pilot = ROOT / "research/g05/pilot"
     (pkg / "_g05_sim.py").write_text((pilot / "g05_sim.py").read_text())
