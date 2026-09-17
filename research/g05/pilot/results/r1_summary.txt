@@ -1,0 +1,50 @@
+
+=== graded set A_wave_gate: ['wave.W1', 'wave.W2', 'wave.W3', 'wave.W4', 'gate'] + decision
+method                   kind               visible    compact_works   reversed_trend    slip_dip2_mix   total
+imp_format_week          accepted      30/30 w  0.5     30/30 w  0.5     30/30 w  0.5     30/30 w  0.5   120/120
+cs_format_notyet         accepted      30/30 w  0.7     30/30 w  0.7     30/30 w  0.7     30/30 w  0.8   120/120
+cs_format_never          accepted      30/30 w  0.7     30/30 w  0.7     30/30 w  0.7     30/30 w  0.8   120/120
+imp_store_trend          accepted      29/30 w  1.2     29/30 w  1.2     29/30 w  1.2     28/30 w  1.1   115/120
+before_after             wrong          0/30 w 13.9      0/30 w 13.9      0/30 w 13.4      0/30 w 16.3   0/120
+house_twfe_basket        wrong          0/30 w  6.6      0/30 w  3.5      0/30 w  4.4      0/30 w  3.8   0/120
+twfe_static_sales        wrong          0/30 w  6.4      0/30 w  3.5      0/30 w  3.9      1/30 w  3.2   1/120
+twfe_event_ref_m1        wrong          0/30 w  7.4      0/30 w  5.1      0/30 w  2.5      0/30 w  3.3   0/120
+cs_gm1_pooled            wrong          0/30 w 22.2      0/30 w 22.2      0/30 w 20.9      0/30 w 12.0   0/120
+imp_unconditional        wrong          0/30 w  3.2      0/30 w  3.2      0/30 w  3.1      1/30 w  2.5   1/120
+cs_unconditional         wrong          0/30 w  2.4      0/30 w  2.4      0/30 w  2.2     10/30 w  1.8   10/120
+outcome_basket           wrong          0/30 w  2.8      0/30 w  2.8      0/30 w  2.8      0/30 w  3.2   0/120
+gate_pooled_installed    wrong          0/30 w  3.7     30/30 w  0.9      0/30 w  3.7     18/30 w  1.2   48/120
+window_0_25              wrong         24/30 w  1.2      1/30 w  1.7     24/30 w  1.2      0/30 w  1.4   49/120
+planned_timing           wrong         30/30 w  0.5     30/30 w  0.5     30/30 w  0.5     30/30 w  0.6   120/120
+mediator_control         wrong          0/30 w  2.8      0/30 w  2.8      0/30 w  2.8      0/30 w  3.2   0/120
+all_weeks_comparable     wrong          0/30 w  2.2      0/30 w  2.2      1/30 w  2.2      2/30 w  1.7   3/120
+gate_sqft_linear         undecided     16/30 w  1.7     30/30 w  0.8     16/30 w  1.7     30/30 w  0.7   92/120
+kit_week_fe              undecided      0/30 w  2.1      0/30 w  2.1      2/30 w  1.9     12/30 w  1.6   14/120
+
+=== graded set B_wave_kit_gate: ['wave.W1', 'wave.W2', 'wave.W3', 'wave.W4', 'kit.full', 'kit.compact', 'gate'] + decision
+method                   kind               visible    compact_works   reversed_trend    slip_dip2_mix   total
+imp_format_week          accepted      30/30 w  0.5     30/30 w  0.5     30/30 w  0.5     30/30 w  0.5   120/120
+cs_format_notyet         accepted      30/30 w  0.7     30/30 w  0.7     30/30 w  0.7     30/30 w  0.8   120/120
+cs_format_never          accepted      30/30 w  0.7     30/30 w  0.7     30/30 w  0.7     30/30 w  0.8   120/120
+imp_store_trend          accepted      29/30 w  1.2     29/30 w  1.2     29/30 w  1.2     28/30 w  1.1   115/120
+before_after             wrong          0/30 w 13.9      0/30 w 13.9      0/30 w 13.4      0/30 w 16.3   0/120
+house_twfe_basket        wrong          0/30 w  6.6      0/30 w  3.5      0/30 w  4.7      0/30 w  3.8   0/120
+twfe_static_sales        wrong          0/30 w  6.4      0/30 w  3.5      0/30 w  5.9      0/30 w  3.2   0/120
+twfe_event_ref_m1        wrong          0/30 w  7.4      0/30 w  5.1      0/30 w  4.3      0/30 w  3.4   0/120
+cs_gm1_pooled            wrong          0/30 w 22.2      0/30 w 22.2      0/30 w 20.9      0/30 w 12.0   0/120
+imp_unconditional        wrong          0/30 w  4.5      0/30 w  4.5      0/30 w  4.5      0/30 w  3.9   0/120
+cs_unconditional         wrong          0/30 w  3.2      0/30 w  3.2      0/30 w  3.1      0/30 w  2.6   0/120
+outcome_basket           wrong          0/30 w  2.8      0/30 w  2.8      0/30 w  2.8      0/30 w  3.2   0/120
+gate_pooled_installed    wrong          0/30 w  3.7     30/30 w  0.9      0/30 w  3.7     18/30 w  1.2   48/120
+window_0_25              wrong          1/30 w  1.6      0/30 w  1.7      1/30 w  1.6      0/30 w  1.5   2/120
+planned_timing           wrong         30/30 w  0.5     30/30 w  0.5     30/30 w  0.5     30/30 w  0.6   120/120
+mediator_control         wrong          0/30 w  2.8      0/30 w  2.8      0/30 w  2.8      0/30 w  3.2   0/120
+all_weeks_comparable     wrong          0/30 w  2.2      0/30 w  2.2      0/30 w  2.2      1/30 w  1.7   1/120
+gate_sqft_linear         undecided     16/30 w  1.7     30/30 w  0.8     16/30 w  1.7     30/30 w  0.7   92/120
+kit_week_fe              undecided      0/30 w  3.0      0/30 w  3.0      0/30 w  2.4      5/30 w  2.2   5/120
+
+=== tolerances (visible) and margins
+visible {'wave.W1': 0.0163, 'wave.W2': 0.0084, 'wave.W3': 0.0091, 'wave.W4': 0.0072, 'kit.full': 0.0071, 'kit.compact': 0.0084, 'gate': 0.0057, 'pooled': 0.0054} gate margin/sd min -5.2 range [-9.4,-5.2] least efficient: {'wave.W1': 'imp_store_trend', 'gate': 'imp_store_trend'}
+compact_works {'wave.W1': 0.0163, 'wave.W2': 0.0084, 'wave.W3': 0.0091, 'wave.W4': 0.0072, 'kit.full': 0.0071, 'kit.compact': 0.0084, 'gate': 0.0057, 'pooled': 0.0054} gate margin/sd min +8.0 range [+8.0,+9.3] least efficient: {'wave.W1': 'imp_store_trend', 'gate': 'imp_store_trend'}
+reversed_trends {'wave.W1': 0.0163, 'wave.W2': 0.0084, 'wave.W3': 0.0091, 'wave.W4': 0.0072, 'kit.full': 0.0071, 'kit.compact': 0.0084, 'gate': 0.0057, 'pooled': 0.0054} gate margin/sd min -5.2 range [-9.4,-5.2] least efficient: {'wave.W1': 'imp_store_trend', 'gate': 'imp_store_trend'}
+slip_dip2_mix {'wave.W1': 0.0178, 'wave.W2': 0.0093, 'wave.W3': 0.0076, 'wave.W4': 0.0058, 'kit.full': 0.0071, 'kit.compact': 0.0085, 'gate': 0.0052, 'pooled': 0.0051} gate margin/sd min +2.3 range [+2.3,+4.8] least efficient: {'wave.W1': 'imp_store_trend', 'gate': 'imp_store_trend'}

@@ -1,0 +1,11 @@
+cal visible 5000 10.3s gate=0.0118 stop
+cal visible 5017 13.1s gate=0.0102 stop
+cal visible 5034 11.8s gate=0.0128 stop
+cal visible 5051 16.4s gate=0.0128 stop
+cal visible 5068 25.2s gate=0.0129 stop
+cal visible 5085 16.3s gate=0.0108 stop
+cal visible 5102 23.1s gate=0.0116 stop
+cal visible 5119 19.1s gate=0.0111 stop
+cal visible 5136 15.9s gate=0.0104 stop
+cal visible 5153 16.2s gate=0.0126 stop
+cal visible 5170 15.9s gate=0.0115 stop

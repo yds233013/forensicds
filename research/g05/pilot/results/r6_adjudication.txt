@@ -1,0 +1,81 @@
+==============================================================================================================
+ACCEPTED ESTIMATORS (cal N=60, val N=60 per regime; tau = 3.5 x cal RMSE of least efficient accepted)
+method                 regime            calRMSE  valRMSE     tau    pass   maxabs  worst   p50   p90   p95   p99
+imp_format_week        visible           0.00078  0.00094 0.00577  60/ 60  0.00339   0.54  0.24  0.38  0.39  0.54
+imp_format_week        compact_works     0.00085  0.00082 0.00625  60/ 60  0.00276   0.43  0.20  0.31  0.36  0.41
+imp_format_week        reversed_trends   0.00086  0.00079 0.00660  60/ 60  0.00189   0.32  0.19  0.26  0.27  0.31
+imp_format_week        slip_dip2         0.00086  0.00080 0.00640  60/ 60  0.00238   0.40  0.20  0.29  0.31  0.36
+imp_format_week        ALL               0.00084  0.00084 0.00626 240/240  0.00339   0.54  0.20  0.31  0.37  0.47
+--------------------------------------------------------------------------------------------------------------
+cs_format_notyet       visible           0.00120  0.00126 0.00577  60/ 60  0.00328   0.58  0.33  0.49  0.53  0.57
+cs_format_notyet       compact_works     0.00125  0.00125 0.00625  60/ 60  0.00400   0.57  0.32  0.47  0.51  0.55
+cs_format_notyet       reversed_trends   0.00126  0.00118 0.00660  60/ 60  0.00409   0.66  0.25  0.38  0.46  0.60
+cs_format_notyet       slip_dip2         0.00125  0.00123 0.00640  60/ 60  0.00372   0.54  0.28  0.44  0.48  0.53
+cs_format_notyet       ALL               0.00124  0.00123 0.00626 240/240  0.00409   0.66  0.29  0.46  0.51  0.57
+--------------------------------------------------------------------------------------------------------------
+cs_format_never        visible           0.00130  0.00132 0.00577  60/ 60  0.00336   0.60  0.35  0.51  0.53  0.58
+cs_format_never        compact_works     0.00132  0.00129 0.00625  60/ 60  0.00470   0.67  0.32  0.49  0.51  0.60
+cs_format_never        reversed_trends   0.00134  0.00124 0.00660  60/ 60  0.00396   0.66  0.26  0.41  0.43  0.57
+cs_format_never        slip_dip2         0.00130  0.00129 0.00640  60/ 60  0.00373   0.54  0.28  0.47  0.48  0.52
+cs_format_never        ALL               0.00131  0.00128 0.00626 240/240  0.00470   0.67  0.30  0.48  0.51  0.59
+--------------------------------------------------------------------------------------------------------------
+imp_store_trend        visible           0.00102  0.00108 0.00577  60/ 60  0.00297   0.60  0.27  0.41  0.44  0.55
+imp_store_trend        compact_works     0.00105  0.00104 0.00625  60/ 60  0.00299   0.46  0.26  0.38  0.39  0.44
+imp_store_trend        reversed_trends   0.00104  0.00100 0.00660  60/ 60  0.00324   0.54  0.22  0.35  0.38  0.50
+imp_store_trend        slip_dip2         0.00106  0.00099 0.00640  60/ 60  0.00321   0.44  0.23  0.35  0.37  0.43
+imp_store_trend        ALL               0.00104  0.00103 0.00626 240/240  0.00324   0.60  0.25  0.37  0.41  0.50
+--------------------------------------------------------------------------------------------------------------
+imp_format_kit_week    visible           0.00081  0.00095 0.00577  60/ 60  0.00322   0.55  0.23  0.37  0.41  0.53
+imp_format_kit_week    compact_works     0.00091  0.00084 0.00625  60/ 60  0.00269   0.42  0.18  0.32  0.36  0.42
+imp_format_kit_week    reversed_trends   0.00088  0.00084 0.00660  60/ 60  0.00218   0.37  0.20  0.29  0.33  0.37
+imp_format_kit_week    slip_dip2         0.00089  0.00082 0.00640  60/ 60  0.00247   0.42  0.19  0.30  0.31  0.37
+imp_format_kit_week    ALL               0.00087  0.00086 0.00626 240/240  0.00322   0.55  0.20  0.33  0.37  0.46
+--------------------------------------------------------------------------------------------------------------
+cs_base_last           visible           0.00167  0.00193 0.00577  60/ 60  0.00564   0.89  0.49  0.71  0.82  0.86
+cs_base_last           compact_works     0.00181  0.00185 0.00625  60/ 60  0.00576   0.88  0.40  0.66  0.75  0.88
+cs_base_last           reversed_trends   0.00191  0.00192 0.00660  60/ 60  0.00616   0.83  0.42  0.67  0.79  0.82
+cs_base_last           slip_dip2         0.00186  0.00188 0.00640  60/ 60  0.00558   0.86  0.46  0.70  0.76  0.86
+cs_base_last           ALL               0.00182  0.00189 0.00626 240/240  0.00616   0.89  0.44  0.70  0.79  0.87
+--------------------------------------------------------------------------------------------------------------
+cs_base_e43            visible           0.00152  0.00165 0.00577  60/ 60  0.00586   0.92  0.44  0.63  0.73  0.82
+cs_base_e43            compact_works     0.00165  0.00163 0.00625  60/ 60  0.00553   0.84  0.36  0.60  0.63  0.83
+cs_base_e43            reversed_trends   0.00170  0.00171 0.00660  60/ 60  0.00480   0.76  0.39  0.62  0.65  0.73
+cs_base_e43            slip_dip2         0.00160  0.00166 0.00640  60/ 60  0.00541   0.84  0.40  0.62  0.65  0.81
+cs_base_e43            ALL               0.00162  0.00166 0.00626 240/240  0.00586   0.92  0.40  0.62  0.66  0.83
+--------------------------------------------------------------------------------------------------------------
+==============================================================================================================
+WRONG ANALYSES: pass counts per regime, min ratio, joint pass probability over the 4 regimes, decision correctness
+method                         visible  compact_work  reversed_tre     slip_dip2  minratio        closest    jointP  decOK%
+before_after                      0/60          0/60          0/60          0/60     14.22  compact_works  4.51e-09    50.0
+house_twfe_basket                 0/60          0/60          0/60          0/60      3.64 reversed_trends  4.51e-09    50.0
+twfe_static_sales                 0/60          0/60          0/60          0/60      4.53 reversed_trends  4.51e-09    75.0
+twfe_event_ref_m1                 0/60          0/60          0/60          0/60      3.12 reversed_trends  4.51e-09    75.0
+cs_gm1_pooled                     0/60          0/60          0/60          0/60     18.38      slip_dip2  4.51e-09    50.0
+imp_unconditional                 0/60          0/60          0/60          0/60      4.57      slip_dip2  4.51e-09   100.0
+cs_unconditional                  0/60          0/60          0/60          0/60      1.88      slip_dip2  4.51e-09   100.0
+outcome_basket                    0/60          0/60          0/60          0/60      2.38 reversed_trends  4.51e-09    80.4
+gate_pooled_installed             0/60         60/60          0/60          2/60      0.19  compact_works  2.73e-06    50.0
+window_0_25                       0/60          0/60          2/60          0/60      0.91 reversed_trends  2.26e-08   100.0
+planned_timing                   60/60         60/60         60/60         60/60      0.07        visible  9.68e-01   100.0
+mediator_control                  0/60          0/60          0/60          0/60      2.38 reversed_trends  4.51e-09    80.4
+all_weeks_comparable              0/60          0/60          0/60          0/60      1.43 reversed_trends  4.51e-09   100.0
+gate_sqft_linear                  0/60         60/60          0/60         32/60      0.16  compact_works  3.55e-05    75.0
+kit_week_fe                       0/60          0/60          0/60          0/60      1.80      slip_dip2  4.51e-09   100.0
+gate_by_format                    0/60         60/60          0/60         57/60      0.05  compact_works  6.28e-05    97.5
+window_0_25_trend                 0/60          0/60          1/60          0/60      0.91 reversed_trends  1.35e-08    99.2
+window_0_25_cs                    0/60          0/60          1/60          0/60      0.99 reversed_trends  1.35e-08    99.2
+kit_conditioning_cs               1/60          3/60          7/60          5/60      0.61      slip_dip2  1.56e-05   100.0
+closures_in_window_only           0/60          1/60          0/60          0/60      0.93  compact_works  1.35e-08    99.6
+gate_pooled_cs                    0/60         60/60          0/60          8/60      0.20  compact_works  9.29e-06    50.4
+
+Least efficient accepted estimator per regime/quantity (sets tau):
+  visible {'W1': 'cs_base_last', 'W2': 'cs_base_last', 'W3': 'cs_base_last', 'W4': 'cs_base_last', 'gate': 'cs_base_last'}
+  compact_works {'W1': 'cs_base_last', 'W2': 'cs_base_last', 'W3': 'cs_base_last', 'W4': 'cs_base_last', 'gate': 'cs_base_last'}
+  reversed_trends {'W1': 'cs_base_last', 'W2': 'cs_base_last', 'W3': 'cs_base_last', 'W4': 'cs_base_last', 'gate': 'cs_base_last'}
+  slip_dip2 {'W1': 'cs_base_last', 'W2': 'cs_base_last', 'W3': 'cs_base_last', 'W4': 'cs_base_last', 'gate': 'cs_base_last'}
+
+Regime dominance check: worst accepted ratio by regime:
+  visible {'imp_format_week': 0.54, 'cs_format_notyet': 0.58, 'cs_format_never': 0.6, 'imp_store_trend': 0.6, 'imp_format_kit_week': 0.55, 'cs_base_last': 0.89, 'cs_base_e43': 0.92}
+  compact_works {'imp_format_week': 0.43, 'cs_format_notyet': 0.57, 'cs_format_never': 0.67, 'imp_store_trend': 0.46, 'imp_format_kit_week': 0.42, 'cs_base_last': 0.88, 'cs_base_e43': 0.84}
+  reversed_trends {'imp_format_week': 0.32, 'cs_format_notyet': 0.66, 'cs_format_never': 0.66, 'imp_store_trend': 0.54, 'imp_format_kit_week': 0.37, 'cs_base_last': 0.83, 'cs_base_e43': 0.76}
+  slip_dip2 {'imp_format_week': 0.4, 'cs_format_notyet': 0.54, 'cs_format_never': 0.54, 'imp_store_trend': 0.44, 'imp_format_kit_week': 0.42, 'cs_base_last': 0.86, 'cs_base_e43': 0.84}

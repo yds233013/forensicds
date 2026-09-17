@@ -1,0 +1,68 @@
+
+=== graded set A_wave_gate: ['wave.W1', 'wave.W2', 'wave.W3', 'wave.W4', 'gate'] + decision
+method                   kind               visible    compact_works   reversed_trend        slip_dip2   total
+imp_format_week          accepted      60/60 w  0.5     60/60 w  0.4     60/60 w  0.3     60/60 w  0.4   240/240
+cs_format_notyet         accepted      60/60 w  0.6     60/60 w  0.6     60/60 w  0.7     60/60 w  0.5   240/240
+cs_format_never          accepted      60/60 w  0.6     60/60 w  0.7     60/60 w  0.7     60/60 w  0.5   240/240
+imp_store_trend          accepted      60/60 w  0.6     60/60 w  0.5     60/60 w  0.5     60/60 w  0.4   240/240
+imp_format_kit_week      accepted      60/60 w  0.6     60/60 w  0.4     60/60 w  0.4     60/60 w  0.4   240/240
+cs_base_last             accepted      60/60 w  0.9     60/60 w  0.9     60/60 w  0.8     60/60 w  0.9   240/240
+cs_base_e43              accepted      60/60 w  0.9     60/60 w  0.8     60/60 w  0.8     60/60 w  0.8   240/240
+before_after             wrong          0/60 w 17.6      0/60 w 15.5      0/60 w 18.7      0/60 w 16.4   0/240
+house_twfe_basket        wrong          0/60 w 11.9      0/60 w  6.2      0/60 w  4.8      0/60 w  7.2   0/240
+twfe_static_sales        wrong          0/60 w 14.3      0/60 w  8.6      0/60 w  6.5      0/60 w  9.7   0/240
+twfe_event_ref_m1        wrong          0/60 w 14.9      0/60 w 10.1      0/60 w  4.9      0/60 w 10.2   0/240
+cs_gm1_pooled            wrong          0/60 w 58.2      0/60 w 52.9      0/60 w 49.9      0/60 w 29.6   0/240
+imp_unconditional        wrong          0/60 w  8.7      0/60 w  8.5      0/60 w  7.0      0/60 w  7.1   0/240
+cs_unconditional         wrong          0/60 w  4.0      0/60 w  4.0      0/60 w  3.2      0/60 w  3.2   0/240
+outcome_basket           wrong          0/60 w  3.8      0/60 w  3.5      0/60 w  2.8      0/60 w  3.6   0/240
+gate_pooled_installed    wrong          0/60 w  5.9     60/60 w  0.8      0/60 w  4.2      2/60 w  1.7   62/240
+window_0_25              wrong          0/60 w  1.6      0/60 w  2.2      2/60 w  1.4      0/60 w  2.0   2/240
+planned_timing           wrong         60/60 w  0.5     60/60 w  0.4     60/60 w  0.4     60/60 w  0.5   240/240
+mediator_control         wrong          0/60 w  3.8      0/60 w  3.5      0/60 w  2.8      0/60 w  3.6   0/240
+all_weeks_comparable     wrong          0/60 w  2.5      0/60 w  2.8      0/60 w  2.5      0/60 w  2.4   0/240
+gate_sqft_linear         wrong          0/60 w  5.0     60/60 w  0.6      0/60 w  3.4     32/60 w  1.4   92/240
+kit_week_fe              wrong          0/60 w  6.0      0/60 w  4.9      0/60 w  4.3      0/60 w  4.4   0/240
+gate_by_format           wrong          0/60 w  4.2     60/60 w  0.6      0/60 w  2.7     57/60 w  1.1   117/240
+window_0_25_trend        wrong          0/60 w  1.7      0/60 w  2.3      1/60 w  1.5      0/60 w  2.0   1/240
+window_0_25_cs           wrong          0/60 w  1.7      0/60 w  2.4      1/60 w  1.7      0/60 w  2.3   1/240
+kit_conditioning_cs      wrong          1/60 w  2.5      3/60 w  2.6      7/60 w  1.9      5/60 w  2.0   16/240
+closures_in_window_only  wrong          0/60 w  2.2      1/60 w  1.9      0/60 w  1.9      0/60 w  1.9   1/240
+gate_pooled_cs           wrong          0/60 w  5.8     60/60 w  1.0      0/60 w  4.1      8/60 w  1.6   68/240
+
+=== graded set B_wave_kit_gate: ['wave.W1', 'wave.W2', 'wave.W3', 'wave.W4', 'kit.full', 'kit.compact', 'gate'] + decision
+method                   kind               visible    compact_works   reversed_trend        slip_dip2   total
+imp_format_week          accepted      60/60 w  0.5     60/60 w  0.4     60/60 w  0.4     60/60 w  0.4   240/240
+cs_format_notyet         accepted      60/60 w  0.6     60/60 w  0.6     60/60 w  0.7     60/60 w  0.5   240/240
+cs_format_never          accepted      60/60 w  0.6     60/60 w  0.7     60/60 w  0.7     60/60 w  0.5   240/240
+imp_store_trend          accepted      60/60 w  0.6     60/60 w  0.5     60/60 w  0.5     60/60 w  0.4   240/240
+imp_format_kit_week      accepted      60/60 w  0.6     60/60 w  0.5     60/60 w  0.5     60/60 w  0.4   240/240
+cs_base_last             accepted      60/60 w  0.9     60/60 w  0.9     60/60 w  0.8     60/60 w  0.9   240/240
+cs_base_e43              accepted      60/60 w  0.9     60/60 w  0.8     60/60 w  0.8     60/60 w  0.8   240/240
+before_after             wrong          0/60 w 17.6      0/60 w 15.5      0/60 w 18.7      0/60 w 16.4   0/240
+house_twfe_basket        wrong          0/60 w 11.9      0/60 w  6.2      0/60 w  5.4      0/60 w  7.2   0/240
+twfe_static_sales        wrong          0/60 w 14.3      0/60 w  8.8      0/60 w 11.2      0/60 w  9.7   0/240
+twfe_event_ref_m1        wrong          0/60 w 14.9      0/60 w 10.2      0/60 w  9.0      0/60 w 10.2   0/240
+cs_gm1_pooled            wrong          0/60 w 58.3      0/60 w 62.1      0/60 w 52.1      0/60 w 32.3   0/240
+imp_unconditional        wrong          0/60 w 10.9      0/60 w 12.1      0/60 w 10.4      0/60 w 11.5   0/240
+cs_unconditional         wrong          0/60 w  4.4      0/60 w  5.0      0/60 w  4.3      0/60 w  4.6   0/240
+outcome_basket           wrong          0/60 w  4.2      0/60 w  4.7      0/60 w  3.8      0/60 w  4.5   0/240
+gate_pooled_installed    wrong          0/60 w  5.9     60/60 w  0.8      0/60 w  4.2      2/60 w  1.7   62/240
+window_0_25              wrong          0/60 w  2.4      0/60 w  2.6      0/60 w  2.4      0/60 w  2.5   0/240
+planned_timing           wrong         60/60 w  0.5     60/60 w  0.4     60/60 w  0.5     60/60 w  0.5   240/240
+mediator_control         wrong          0/60 w  4.2      0/60 w  4.7      0/60 w  3.8      0/60 w  4.5   0/240
+all_weeks_comparable     wrong          0/60 w  2.9      0/60 w  3.0      0/60 w  2.9      0/60 w  3.2   0/240
+gate_sqft_linear         wrong          0/60 w  5.0     60/60 w  0.6      0/60 w  3.4     32/60 w  1.4   92/240
+kit_week_fe              wrong          0/60 w  6.0      0/60 w  5.4      0/60 w  4.6      0/60 w  4.6   0/240
+gate_by_format           wrong          0/60 w  4.2     60/60 w  0.6      0/60 w  2.7     57/60 w  1.1   117/240
+window_0_25_trend        wrong          0/60 w  2.5      0/60 w  2.7      0/60 w  2.5      0/60 w  2.6   0/240
+window_0_25_cs           wrong          0/60 w  2.6      0/60 w  2.8      0/60 w  2.6      0/60 w  2.9   0/240
+kit_conditioning_cs      wrong          1/60 w  2.5      3/60 w  2.6      4/60 w  2.1      4/60 w  2.0   12/240
+closures_in_window_only  wrong          0/60 w  2.2      0/60 w  2.1      0/60 w  2.2      0/60 w  2.0   0/240
+gate_pooled_cs           wrong          0/60 w  5.8     60/60 w  1.0      0/60 w  4.1      8/60 w  1.6   68/240
+
+=== tolerances (visible) and margins
+visible {'wave.W1': 0.0064, 'wave.W2': 0.0066, 'wave.W3': 0.0062, 'wave.W4': 0.0057, 'kit.full': 0.0042, 'kit.compact': 0.0061, 'gate': 0.004, 'pooled': 0.0032} gate margin/sd min -8.7 range [-13.6,-8.7] least efficient: {'wave.W1': 'cs_base_last', 'gate': 'cs_base_last'}
+compact_works {'wave.W1': 0.0063, 'wave.W2': 0.007, 'wave.W3': 0.007, 'wave.W4': 0.0066, 'kit.full': 0.0039, 'kit.compact': 0.0058, 'gate': 0.0044, 'pooled': 0.0036} gate margin/sd min +10.0 range [+10.0,+12.5] least efficient: {'wave.W1': 'cs_base_last', 'gate': 'cs_base_last'}
+reversed_trends {'wave.W1': 0.0073, 'wave.W2': 0.0077, 'wave.W3': 0.006, 'wave.W4': 0.0074, 'kit.full': 0.0041, 'kit.compact': 0.0064, 'gate': 0.0047, 'pooled': 0.0036} gate margin/sd min -9.3 range [-12.3,-9.3] least efficient: {'wave.W1': 'cs_base_last', 'gate': 'cs_base_last'}
+slip_dip2 {'wave.W1': 0.0076, 'wave.W2': 0.0074, 'wave.W3': 0.0069, 'wave.W4': 0.0059, 'kit.full': 0.004, 'kit.compact': 0.006, 'gate': 0.0042, 'pooled': 0.0032} gate margin/sd min +6.4 range [+6.4,+8.7] least efficient: {'wave.W1': 'cs_base_last', 'gate': 'cs_base_last'}
