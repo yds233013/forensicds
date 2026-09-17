@@ -40,7 +40,7 @@ Source: `research/gen3_implementation_shortlist.md` (after `research/gen3_design
 | S4 | G10 censored demand (built: `candidates/g10-censored-demand`, frozen at checksum 047195e7a12d34cd, commits 3efed5c/ffbe949) | stopping-time censoring, latent demand, informative censoring | built, pre-baseline validated (Oracle 1, Nop 0, mutations 33/33, harbor check 11/11, pre-registered tolerance recalibration, adversarial + statistical-validity reviews) | run (0/3: LhEU3ny 0, cLtM9yi 0, eMXZbBi 0; $0.58) | 0 | FRONTIER-HARD (all diagnosed censoring and selection bias; none modelled the latent day shock or validated assumptions; forecast imputation / Poisson plug-in / per-day scaling; all stopped on a plausible ice-cream trend; one trial 8/8 actions correct with lost units 24-63% low) | recommend include (frontier-hard statistical reasoning) |
 | S5 | G11 training–serving skew | multi-feature serving semantics + embedded negative control | designed; scope cut; gated on S1 baseline | UNKNOWN | UNKNOWN | HARD | undecided |
 | S6 | G05 staggered rollout DiD (built: `candidates/g05-sco-rollout-gate`, frozen at checksum 77a6e432d9d2cba2, commits a13a1a3/2fc7e5e/f7ba34b/0b86b03) | continuation-gate estimand: outcome choice, population transport by treatment version, format-conditional trends, install-closure time zero | built, pre-baseline validated (Oracle 1, Nop 0, mutations 38/38, harbor check 11/11, clean clone, phase-0 gate rounds 1-6 with round 5 failed and recorded, 2 independent reviews) | **UNKNOWN (not baselined)** | UNKNOWN | HARD (expected); attractors +8.0%/+5.5% basket and +6.7% TWFE net sales both say continue, truth +1.07% says stop | candidate (causal inference); baseline pending |
-| S7 | G25 search judgment pool | label identity/scale reconciliation, audit frame | designed; fixes + Phase-0 margins | UNKNOWN | UNKNOWN | MEDIUM-HARD | undecided |
+| S7 | G25 search judgment pool | measurement repair under incomplete, heterogeneous labels | **design gate GO, Phase-0 STOPPED** (`research/g25/G25_design_gate.md`) | UNKNOWN | UNKNOWN | blocked: condensed lists (the headline attractor) pass 7/10 worlds; metric levels not gradeable at useful precision | blocked; three options recorded |
 | S8 | G01 collections label maturity | label maturity x observation process x policy feedback | **design gate: REDESIGN specified, Phase-0 stopped** (`research/g01/G01_design_gate.md`) | UNKNOWN | UNKNOWN | HARD but blocked: graded statistics do not separate the population errors without restoring the G24-duplicating IPW layer | blocked; three options recorded for the maintainer |
 
 Alternates: G17, G21, G20.
@@ -74,6 +74,10 @@ G05 pre-baseline validation: `report/g05_prebaseline_validation.md`:
   keep the right business decision.
 - Known residual risk: kit-conditioned DiD separates at 98.3% against the pre-registered 99% bar (fails all four
   frozen extracts deterministically).
+
+G25 design gate: `research/g25/G25_design_gate.md` - GO at design, stopped at Phase 0 after three iterations. The
+frame-restriction trap reached the required 2.5 tau, but condensed lists are not materially biased at k=10 and the
+metric levels carry audit sampling error common to every valid estimator.
 
 G01 design gate: `research/g01/G01_design_gate.md` - stopped before implementation. Two Phase-0 iterations showed the
 business decision is insensitive to the population errors (max-coverage watermark, empirical lag, contiguous coverage,

@@ -27,3 +27,7 @@ Rules in force:
 | 19:20 | G01 Phase-0 iteration 1 | wrong analyses reproduce the correct status in most regimes; AUC differences <= 0.001 | retune once: status from recent evaluable vintages |
 | 19:50 | G01 Phase-0 iteration 2 | W1/W2/W6/W8 separate in some regimes; W3/W4/W5/W7/W9 still never separate on status | STOP: further tuning would be fitting the DGP to the mutation list |
 | 20:00 | G01 stopped and documented with three options for the maintainer | no task files created; nothing built | benchmark synthesis |
+| 20:30 | Benchmark synthesis committed (2b7c7ef): candidate matrix, taxonomy codes F9/F10 | - | next candidate |
+| 21:00 | G25 design gate written: GO conditional on Phase 0 (adopts all 5 tournament-required fixes) | - | build pilot |
+| 21:40 | G25 Phase-0 iterations 1-3 | frame trap 2.51 tau (required >=2.5) achieved; condensed lists pass 7/10 worlds in 2 regimes; metric levels not gradeable (accepted RMSE 0.004-0.014) | STOP and document |
+| 22:00 | G25 stopped; candidate matrix and overnight log updated | no task files created | final handoff |
