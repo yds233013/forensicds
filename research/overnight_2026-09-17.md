@@ -22,3 +22,8 @@ Rules in force:
 | 17:10 | Harbor oracle/nop on final task | oracle 1 (14 passed), nop 0 (10 failed) | harbor check |
 | 17:30 | harbor check | 11/11 pass | clean clone |
 | 17:50 | Clean clone: rebuild + oracle/nop | same checksum 77a6e432d9d2cba2, warehouse digest c56669651fc2f1ff, no tests/solution, oracle 1, nop 0 | finalize report, freeze |
+| 18:10 | G05 frozen: report finalised, committed (0b86b03), tree clean | checksum 77a6e432d9d2cba2; frozen checksums unchanged; secret scan clean | G01 design gate |
+| 18:40 | G01 fresh design gate written: REDESIGN (cut holdout/IPW duplicating G24 and the treatment estimand duplicating G05; policy acts on label availability) | decision recorded | build Phase-0 sim |
+| 19:20 | G01 Phase-0 iteration 1 | wrong analyses reproduce the correct status in most regimes; AUC differences <= 0.001 | retune once: status from recent evaluable vintages |
+| 19:50 | G01 Phase-0 iteration 2 | W1/W2/W6/W8 separate in some regimes; W3/W4/W5/W7/W9 still never separate on status | STOP: further tuning would be fitting the DGP to the mutation list |
+| 20:00 | G01 stopped and documented with three options for the maintainer | no task files created; nothing built | benchmark synthesis |
