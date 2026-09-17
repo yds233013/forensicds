@@ -19,3 +19,6 @@ Rules in force:
 | 16:05 | 38-case mutation suite completed | 38/38 as expected, but 3 panel mutations scored 0 by crashing | diagnose (dev-tool bug suspected) |
 | 16:15 | Diagnosed: `install_variant` injected the VARIANT dict with json.dumps, so booleans became JSON `true` (invalid Python). Dev tool only; task/verifier untouched | fixed in tools/g05/{quickcheck,shortcuts}.py | rerun the 3 cases |
 | 16:35 | Panel mutations rerun (local + container) | effects within 0.02-0.31 tau, panel check catches them: planned dates 17,004 rows, txns-comparability 4,642, event-week origin 83,616; container: 4 failed = visible + 3 hidden panel checks | suite report updated |
+| 17:10 | Harbor oracle/nop on final task | oracle 1 (14 passed), nop 0 (10 failed) | harbor check |
+| 17:30 | harbor check | 11/11 pass | clean clone |
+| 17:50 | Clean clone: rebuild + oracle/nop | same checksum 77a6e432d9d2cba2, warehouse digest c56669651fc2f1ff, no tests/solution, oracle 1, nop 0 | finalize report, freeze |

@@ -2,7 +2,7 @@
 
 **Task:** `candidates/g05-sco-rollout-gate/`
 
-**Status:** PENDING_STATUS
+**Status:** validated and frozen, with one documented criterion miss (§9.1). Ready for a baseline, which has **not** been run.
 
 **No model has been run on this task.** No Gemini, no Claude, no other model; $0 of model spend.
 
@@ -21,9 +21,9 @@
 | Phase-0 gate, round 6: wrong analyses | 20/21 fail ≥ 99% of one regime; **kit-conditioned DiD at 98.3%** (§9.1) |
 | Fixture audit on the four frozen extracts | accepted ≤ 0.69 τ; every wrong analysis fails ≥ 1 extract; gate margins 8.7–14.3 SE |
 | Mutation suite, 38 cases in the task image with the real `test.sh` | 38/38 as expected |
-| Harbor oracle / Nop | HARBOR_ORACLE_NOP |
-| `harbor check` | HARBOR_CHECK |
-| Clean clone: rebuild, workspace, Oracle, Nop | CLEAN_CLONE |
+| Harbor oracle / Nop | **1** (14 passed) / **0** (10 failed) |
+| `harbor check` | **11/11 pass** |
+| Clean clone: rebuild, workspace, Oracle, Nop | same checksum and warehouse digest; no tests/solution in image; Oracle **1**, Nop **0** |
 | Answer-key audit | no estimator recipe, population rule, conditioning set, hidden regime, verifier or truth in any agent-visible file |
 | Cheap-solve audit | every shortcut fails (§11) |
 | Decision-shortcut audit | forced "stop" fails on effects at 2.1–11.7 τ on all four extracts |
@@ -287,7 +287,29 @@ behave alike there; they are rejected by visible and hidden_b.
 
 ## 12. Integrity
 
-FROZEN_CHECKSUMS
+**G05 checksum:** `77a6e432d9d2cba2` (`git ls-files candidates/g05-sco-rollout-gate | xargs shasum -a 256 | shasum -a 256 | cut -c1-16`).
+
+**Frozen task checksums, re-verified after this work:**
+
+| Task | Checksum |
+|---|---|
+| 01-revenue-reconciliation | 67259f9d0d438f7c |
+| 02-renewal-risk-regression | f696367794c1a25f |
+| 02-renewal-risk-regression__explicit-invariant | 0e8200bd6d99c77b |
+| 03-lead-score-evaluation | a8443d183fe160e6 |
+| 04-retention-metrics-regression | 885b541eb480a020 |
+| 05-onboarding-experiment-readout | 8daa31d646dfcb59 |
+| 06-usage-statement-close | cd572b17bd537b4d |
+| g08-forecast-accuracy-vintages | b1f0fa1304fb88f5 |
+| g10-censored-demand | 047195e7a12d34cd |
+| g24-recommender-ope | 2c9cc2055ef796a5 |
+
+**Secret scan:** `sk-ant-`, `AIza`, `ghp_`, `AKIA` and private-key patterns over the task, tools, research and
+report: no matches. The Anthropic key was loaded only via `eval "$(grep … ~/.zshrc)"` for `harbor check` and never
+printed.
+
+**Clean-clone reproduction:** fresh `git clone`, `docker build`, warehouse content digest `c56669651fc2f1ff`
+identical to the development image; `/tests` and `/solution` absent; Oracle 1, Nop 0.
 
 ## 13. Proposed baseline (NOT RUN)
 
