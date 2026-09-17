@@ -102,3 +102,27 @@ final `/workspace` source for: `/tests`, `TESTS_DIR`, `reference.py`, `import re
 outside `environment/`, `site-packages`, `sitecustomize`, `usercustomize`, `.pth`, `/tmp/verifier-venv`,
 `pipeline-python`. Any hit on a reward-1 trajectory is reviewed manually before the reward is counted. (Tasks 03–05
 sandbox the pipeline at grading time; Tasks 01–02 do not.)
+
+
+## Cross-task evidence, 2026-09-17
+
+Labels above were written for repair-style tasks (Tasks 01-06). Generation-3 statistical tasks need two additions,
+both observed in real baselines:
+
+| Code | Name | Operational definition | Evidence |
+|---|---|---|---|
+| F9 | Right method family, wrong statistical object | The agent selects an appropriate method and implements it competently, but applies it to the wrong unit, population, action space, time origin or outcome. | G24: all three trials chose slot-exact IPS; two weighted by the pre-filter pool and all three used the wrong decision unit. G10: correct censoring diagnosis, wrong latent model. |
+| F10 | Correct decision, wrong estimand | The graded business decision is right while the quantities underneath are wrong, so decision-only grading would score it as success. | G24: 12/12 correct launch decisions with values 0.8-4.3 tau off. G05 mutation suite: four mutations keep the right gate decision while estimating the wrong effect. |
+
+**Pattern across G08, G10 and G24** (and the structure G05 is designed to probe):
+
+1. broad diagnosis correct;
+2. a plausible, often sophisticated method selected;
+3. the method applied to the wrong object, or with an unmodelled mechanism;
+4. a plausible aggregate that agrees with an external number;
+5. available falsification not performed;
+6. premature stop.
+
+**Design consequence, now built into G05:** grade causal/statistical state below the business decision (population,
+timing, event-time origin, eligibility, intermediate effects), and include at least one attractor that agrees in sign
+with a trusted external number.

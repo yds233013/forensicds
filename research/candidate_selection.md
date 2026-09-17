@@ -1,6 +1,6 @@
 # ForensicDS candidate pool and selection status
 
-Updated: 2026-09-16.
+Updated: 2026-09-17.
 
 Tasks 01–05 are **candidate/development tasks**. The final submitted benchmark (5–10 tasks, target pass@3 < 30%) will be
 selected from the pool later. The selection criteria are:
@@ -39,9 +39,9 @@ Source: `research/gen3_implementation_shortlist.md` (after `research/gen3_design
 | S3 | G23 readmission episodes | episode grain across facility vocabularies | designed; fixes required | UNKNOWN | UNKNOWN | MEDIUM | undecided |
 | S4 | G10 censored demand (built: `candidates/g10-censored-demand`, frozen at checksum 047195e7a12d34cd, commits 3efed5c/ffbe949) | stopping-time censoring, latent demand, informative censoring | built, pre-baseline validated (Oracle 1, Nop 0, mutations 33/33, harbor check 11/11, pre-registered tolerance recalibration, adversarial + statistical-validity reviews) | run (0/3: LhEU3ny 0, cLtM9yi 0, eMXZbBi 0; $0.58) | 0 | FRONTIER-HARD (all diagnosed censoring and selection bias; none modelled the latent day shock or validated assumptions; forecast imputation / Poisson plug-in / per-day scaling; all stopped on a plausible ice-cream trend; one trial 8/8 actions correct with lost units 24-63% low) | recommend include (frontier-hard statistical reasoning) |
 | S5 | G11 training–serving skew | multi-feature serving semantics + embedded negative control | designed; scope cut; gated on S1 baseline | UNKNOWN | UNKNOWN | HARD | undecided |
-| S6 | G05 staggered rollout DiD | base-period contamination, trade-area confounding | designed; symptom rework + Phase-0 margins | UNKNOWN | UNKNOWN | MEDIUM-HARD | undecided |
+| S6 | G05 staggered rollout DiD (built: `candidates/g05-sco-rollout-gate`, frozen at checksum 77a6e432d9d2cba2, commits a13a1a3/2fc7e5e/f7ba34b/0b86b03) | continuation-gate estimand: outcome choice, population transport by treatment version, format-conditional trends, install-closure time zero | built, pre-baseline validated (Oracle 1, Nop 0, mutations 38/38, harbor check 11/11, clean clone, phase-0 gate rounds 1-6 with round 5 failed and recorded, 2 independent reviews) | **UNKNOWN (not baselined)** | UNKNOWN | HARD (expected); attractors +8.0%/+5.5% basket and +6.7% TWFE net sales both say continue, truth +1.07% says stop | candidate (causal inference); baseline pending |
 | S7 | G25 search judgment pool | label identity/scale reconciliation, audit frame | designed; fixes + Phase-0 margins | UNKNOWN | UNKNOWN | MEDIUM-HARD | undecided |
-| S8 | G01 collections label maturity | label maturity × value date × source completeness | designed; policy layer reduced; Phase-0 margins | UNKNOWN | UNKNOWN | HARD | undecided |
+| S8 | G01 collections label maturity | label maturity x observation process x policy feedback | **design gate: REDESIGN specified, Phase-0 stopped** (`research/g01/G01_design_gate.md`) | UNKNOWN | UNKNOWN | HARD but blocked: graded statistics do not separate the population errors without restoring the G24-duplicating IPW layer | blocked; three options recorded for the maintainer |
 
 Alternates: G17, G21, G20.
 
@@ -64,6 +64,21 @@ G24 baseline analysis: `research/g24/g24_gemini_analysis.md`:
 - The closest trial passes every extract after one decision-reconstruction patch.
 - Shortest horizon so far (41–46 tool calls, 3.3–4.3 min).
 - Implication: grade estimands (not only decisions) in G05/G01, and include a sign-matching external attractor.
+
+G05 pre-baseline validation: `report/g05_prebaseline_validation.md`:
+- frozen at 77a6e432d9d2cba2; no model has been run on it.
+- Phase-0 calibration took 6 rounds; round 5 failed its accepted-estimator criterion and is recorded in full.
+- Seven structurally different valid estimators pass every extract (imputation and 2x2 designs, three conditioning
+  sets, two control pools, four base-period choices).
+- 38-case mutation suite: every wrong causal analysis fails, including four "correct method, wrong object" cases that
+  keep the right business decision.
+- Known residual risk: kit-conditioned DiD separates at 98.3% against the pre-registered 99% bar (fails all four
+  frozen extracts deterministically).
+
+G01 design gate: `research/g01/G01_design_gate.md` - stopped before implementation. Two Phase-0 iterations showed the
+business decision is insensitive to the population errors (max-coverage watermark, empirical lag, contiguous coverage,
+label-determined population, excluding the acquired book all reproduce the correct status). Restoring statistical
+content means restoring the holdout/IPW layer, which duplicates G24.
 
 - Not shortlisted: G02, G14 and G30 (WEAK); G26 (REJECT as a headroom task; its idea is embedded in S5).
 - The earlier Task 07–09 designs are not being built. The G26 tournament result supersedes the Task 09
