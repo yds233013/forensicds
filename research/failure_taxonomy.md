@@ -126,3 +126,34 @@ both observed in real baselines:
 **Design consequence, now built into G05:** grade causal/statistical state below the business decision (population,
 timing, event-time origin, eligibility, intermediate effects), and include at least one attractor that agrees in sign
 with a trusted external number.
+
+## G05 baseline evidence, 2026-09-18 (3 trials, 0/3)
+
+Full analysis: `research/g05/G05_gemini_baseline_analysis.md`.
+
+**F9 and F10 both reproduced, and the pattern's fourth link broke.**
+
+- **F9 confirmed, in a new location.** All three trials reconstructed the analysis panel exactly on all four
+  extracts, chose the right estimand, the right population and the right transport - then fitted store + calendar
+  week fixed effects and never conditioned on **format**, the documented wave-sequencing variable. The wrong object
+  was the *conditioning set*, i.e. the identifying assumption, not the unit, population or action space.
+- **F10 confirmed independently of G24.** 2 of 3 trials returned the correct business decision with every graded
+  effect outside tolerance (gate 1.12-4.9 tau, waves 1.6-7.6 tau). A decision-only grader would have scored this
+  baseline 2/3 or 3/3 instead of 0/3.
+- **The "agrees with a trusted external number" link did not fire.** Unlike G08/G10/G24, no trial anchored on a
+  published figure: all three rejected +8.0%/+5.5% (basket) and +6.7% (TWFE net sales) on documentary grounds within
+  about two minutes, then produced *novel* wrong numbers of their own. Premature confidence arose from internal
+  coherence instead - one trial read the correlation between its own declining wave effects and rising compact-kit
+  share as "validating the approach", without testing it.
+- **Falsification omitted completely.** No pre-trend, placebo, pharmacy negative control, within-kit stability or
+  specification comparison in any trial - precisely the checks that expose the missing conditioning. Each stopped
+  after 3m46s-4m59s of execution with most of its budget unused.
+
+**Proposed F9a: identification-assumption blindness** (observation, not yet a code). A sub-case of F9 where state,
+estimand and population are all correct and the error is the conditioning set or control group: the assumption
+under which the estimator is unbiased was never articulated, so its violation was never testable. Promote to a code
+only if a second task reproduces it.
+
+**Reasoning-to-implementation gaps were rare here**, unlike G24. These trials implemented what they said; the plan
+itself was missing a step none of them articulated. That is a blind spot, not a slip, and it argues for tasks whose
+evidence requires *stating an assumption* rather than only reconstructing state.

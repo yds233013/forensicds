@@ -39,7 +39,7 @@ Source: `research/gen3_implementation_shortlist.md` (after `research/gen3_design
 | S3 | G23 readmission episodes | episode grain across facility vocabularies | designed; fixes required | UNKNOWN | UNKNOWN | MEDIUM | undecided |
 | S4 | G10 censored demand (built: `candidates/g10-censored-demand`, frozen at checksum 047195e7a12d34cd, commits 3efed5c/ffbe949) | stopping-time censoring, latent demand, informative censoring | built, pre-baseline validated (Oracle 1, Nop 0, mutations 33/33, harbor check 11/11, pre-registered tolerance recalibration, adversarial + statistical-validity reviews) | run (0/3: LhEU3ny 0, cLtM9yi 0, eMXZbBi 0; $0.58) | 0 | FRONTIER-HARD (all diagnosed censoring and selection bias; none modelled the latent day shock or validated assumptions; forecast imputation / Poisson plug-in / per-day scaling; all stopped on a plausible ice-cream trend; one trial 8/8 actions correct with lost units 24-63% low) | recommend include (frontier-hard statistical reasoning) |
 | S5 | G11 training–serving skew | multi-feature serving semantics + embedded negative control | designed; scope cut; gated on S1 baseline | UNKNOWN | UNKNOWN | HARD | undecided |
-| S6 | G05 staggered rollout DiD (built: `candidates/g05-sco-rollout-gate`, frozen at checksum 77a6e432d9d2cba2, commits a13a1a3/2fc7e5e/f7ba34b/0b86b03) | continuation-gate estimand: outcome choice, population transport by treatment version, format-conditional trends, install-closure time zero | built, pre-baseline validated (Oracle 1, Nop 0, mutations 38/38, harbor check 11/11, clean clone, phase-0 gate rounds 1-6 with round 5 failed and recorded, 2 independent reviews) | **UNKNOWN (not baselined)** | UNKNOWN | HARD (expected); attractors +8.0%/+5.5% basket and +6.7% TWFE net sales both say continue, truth +1.07% says stop | candidate (causal inference); baseline pending |
+| S6 | G05 staggered rollout DiD (built: `candidates/g05-sco-rollout-gate`, frozen at checksum 77a6e432d9d2cba2, commits a13a1a3/2fc7e5e/f7ba34b/0b86b03) | continuation-gate estimand: outcome choice, population transport by treatment version, format-conditional trends, install-closure time zero | built, pre-baseline validated (Oracle 1, Nop 0, mutations 38/38, harbor check 11/11, clean clone, phase-0 gate rounds 1-6 with round 5 failed and recorded, 2 independent reviews) | **run (0/3: JnK5hsR 0 [verifier did not execute - apparently invalid], MMGNYFS 0, PYhR2eh 0; $0.4176)** | 0 | HARD, confirmed (all 3 reconstructed the panel exactly on 4/4 extracts, fixed the outcome, used actual go-live, found the kit mix and transported correctly - then all 3 omitted format conditioning; 2/3 correct decisions on wrong values) | **recommend include** (causal identification) |
 | S7 | G25 search judgment pool | measurement repair under incomplete, heterogeneous labels | **design gate GO, Phase-0 STOPPED** (`research/g25/G25_design_gate.md`) | UNKNOWN | UNKNOWN | blocked: condensed lists (the headline attractor) pass 7/10 worlds; metric levels not gradeable at useful precision | blocked; three options recorded |
 | S8 | G01 collections label maturity | label maturity x observation process x policy feedback | **design gate: REDESIGN specified, Phase-0 stopped** (`research/g01/G01_design_gate.md`) | UNKNOWN | UNKNOWN | HARD but blocked: graded statistics do not separate the population errors without restoring the G24-duplicating IPW layer | blocked; three options recorded for the maintainer |
 
@@ -86,6 +86,20 @@ those statements were corrected in `report/g05_`, `g08_`, `g10_` and `g24_prebas
 `research/overnight_2026-09-17.md`. Total recorded check spend across the project: **$7.604092** over 16 jobs.
 Baselines remain uncontaminated - the check agent audits task quality and is given the solution and tests
 deliberately; it never attempts a solution. Protocol: `research/harbor_check_protocol.md`.
+
+G05 baseline analysis: `research/g05/G05_gemini_baseline_analysis.md`, trials in `research/g05/g05_trials.csv`:
+- 0/3, pass@3 = 0, $0.4176. One trial (JnK5hsR) is apparently invalid: its verifier ran 2.18 s, produced no stdout
+  and collected no tests; no replacement was launched. Its own output would have failed at 4.9 tau regardless.
+- **All three passed the analysis panel on all four extracts** (actual go-live, event-time origin, comparability,
+  log net sales) and all three fixed the outcome, found the kit mix and transported to the waves 5-6 mix unprompted.
+- **All three omitted format conditioning** (store + calendar-week FE only), the pre-registered `imp_unconditional`
+  wrong analysis. One conceptual error produced every failing check in both graded trials.
+- 2 of 3 reached the correct business decision with every effect out of tolerance (F10 confirmed independently of
+  G24); PYhR2eh's gate was 1.12 tau out, the closest miss.
+- The designed attractors (+8.0%/+5.5% basket, +6.7% TWFE) were bypassed by every trial: difficulty is real but not
+  where the design predicted. Gate figures across trials spanned the hurdle (-1.17%, +1.57%, +2.68%).
+- Implication: a set of {02, G05, G10, G24} measures pass@3 = 0/4; with G08 and one easy anchor, ~17%. The <30%
+  target is reachable from measured tasks for the first time.
 
 G25 design gate: `research/g25/G25_design_gate.md` - GO at design, stopped at Phase 0 after three iterations. The
 frame-restriction trap reached the required 2.5 tau, but condensed lists are not materially biased at k=10 and the
