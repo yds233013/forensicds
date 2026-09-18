@@ -157,3 +157,35 @@ only if a second task reproduces it.
 **Reasoning-to-implementation gaps were rare here**, unlike G24. These trials implemented what they said; the plan
 itself was missing a step none of them articulated. That is a blind spot, not a slip, and it argues for tasks whose
 evidence requires *stating an assumption* rather than only reconstructing state.
+
+### G05 final baseline, 2026-09-18 (three VALID trials: MMGNYFS, PYhR2eh, rsDKTXQ; 0/3)
+
+The replacement trial `rsDKTXQ` was analysed independently and **did not** reproduce the first run's failure. It
+adds one mechanism and blocks one proposed code.
+
+**New mechanism: decision-driven estimand selection.** `rsDKTXQ` reached the transport step, stated that
+conditioning on kit was "essential", and then rejected it on the recorded grounds that the pooled waves 1-4 average
+"is defensible, given the later waves are anticipated to be worse. The 'stop' recommendation based on this is
+**safe**." It shipped the pooled installed-estate effect - the pre-registered `wrong_gate_pooled_installed` - and
+got the right decision with the gate 1.48 tau out.
+
+This is a stronger form of **F10** than the G24 evidence. In G24 the correct decision emerged *despite* wrong
+values. Here the wrong quantity was **chosen because the decision was insensitive to it**. The agent optimised for
+defensibility of the conclusion rather than correctness of the estimand. It is the strongest argument in the
+benchmark so far for grading quantities beneath the decision.
+
+**F9a ("identification-assumption blindness") is NOT promoted.** `rsDKTXQ` does not support it independently: its
+primary error is a population/transport error of the classic G24 kind, not purely a missing identifying assumption.
+F9a remains a one-run observation.
+
+**Counts over the three valid trials:** state reconstruction correct 3/3 (exact panel on all four extracts);
+correct estimand 2/3; discovered format sequencing 0/3; conditioned on format 0/3; falsified their own
+specification 0/3; correct business decision 2/3; F10 2/3; one-patch near miss 2/3.
+
+**Revision to the cross-task pattern.** The G08/G10/G24 chain was: broad diagnosis correct -> plausible method ->
+wrong object -> **a plausible aggregate agreeing with a trusted external number** -> falsification omitted ->
+premature stop. In G05 the fourth link is **absent**: all four trials actively refuted the organisation's published
+figures (+8.0%/+5.5% basket, +6.7% TWFE) within minutes and produced novel wrong numbers of their own. What
+replaced it is **self-consistency and defensibility** - they stopped because their own answer was coherent and easy
+to defend, not because it matched someone else's. Tasks relying on a trusted-number attractor should not assume
+that mechanism generalises.

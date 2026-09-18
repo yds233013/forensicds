@@ -6,17 +6,15 @@
 **Run:** `g05-gemini3flash-baseline-1`, 2026-09-18 02:44:29–03:05:35 PDT (21m 05s wall clock), Harbor 0.21.0,
 `gemini-cli` / `google/gemini-3-flash-preview`, `-k 3 -n 3`, `--agent-setup-timeout-multiplier 3`.
 
-> **BOOKKEEPING CORRECTION, 2026-09-18 (adjudication pending).** `JnK5hsR` has been adjudicated
-> **(B) INVALID INFRASTRUCTURE FAILURE, confidence MEDIUM** — see `research/g05/G05_JnK5hsR_validity_forensics.md`.
-> Until the maintainer confirms and one replacement trial is run, the official figure is:
-> **0/2 among definitively valid trials; one trial pending validity adjudication.**
-> Statements of "0/3" below predate that adjudication and are retained unedited as the original record.
-> **G05 must not yet be used in candidate-set pass@3 arithmetic as though three valid trials exist**, including the
-> arithmetic in §13. `JnK5hsR`'s trajectory findings remain usable qualitatively, labelled as coming from a trial
-> with unresolved verifier validity.
+> **STATUS: COMPLETE. See §14 for the final baseline.** Baseline collection on G05 is finished; no further Gemini
+> run will be made on this task. The official quantitative baseline is the three **valid** trials
+> `MMGNYFS`, `PYhR2eh`, `rsDKTXQ`. `JnK5hsR` is excluded quantitatively (invalid infrastructure trial) and survives
+> as labelled qualitative evidence only. Sections 1–13 below are the original record of the **first run** and are
+> retained unedited, including their "0/3" phrasing, which at the time counted `JnK5hsR`. Read §14 for the corrected
+> figures and the full chronology.
 
-**Headline (as written before adjudication): 0 successes. Empirical success rate 0/3 (2/2 among unambiguously valid
-trials). pass@3 = 0.**
+**Headline (as written before adjudication, first run only): 0 successes. Empirical success rate 0/3 (2/2 among
+unambiguously valid trials). pass@3 = 0.**
 
 **The task was not modified before, during or after this run.** No tuning against model behaviour. One trial's
 verifier did not execute and is reported as **apparently invalid**; no replacement was launched.
@@ -473,3 +471,341 @@ before G05: with only {02, G10, G24} the set was too small to defend as a benchm
 
 Caveat: 0/4 from three trials each is 12 trials total. The interval on that estimate is wide, and G05's own
 run-to-run variance shows how much a single trial can move.
+
+---
+
+# 14. Final baseline: replacement trial `rsDKTXQ` and the official three-trial result
+
+## 14.0 Chronology (recorded exactly as it happened)
+
+1. **G05 was frozen before any Gemini baseline** — checksum `77a6e432d9d2cba2`, commit `0b86b03`.
+2. The initial run (`g05-gemini3flash-baseline-1`, 2026-09-18 02:44 PDT) attempted **three** trials.
+3. **`JnK5hsR`'s verifier failed before grading**: it ran 2.18 s, collected no tests, wrote no stdout and produced
+   no `ctrf.json`.
+4. A **forensic adjudication** classified it **(B) INVALID INFRASTRUCTURE FAILURE, confidence MEDIUM**
+   (`research/g05/G05_JnK5hsR_validity_forensics.md`, commit `939f1cd`).
+5. **The adjudication happened BEFORE the replacement was run**, and was committed before it.
+6. **No benchmark modification occurred at any point** — not before, during or after. The task, DGP, fixtures,
+   verifier, tolerances, SE_ref and hidden extracts are untouched; `candidates/` has not changed since the freeze.
+7. **Exactly one replacement trial was authorised and run** (`-k 1 -n 1`). No further trial was launched, and none
+   will be.
+8. The replacement ran against the **identical frozen task**: Harbor `task_checksum`
+   `56c1d86ea2ca9df1d0581ce67400347f9c1ecf16499c9da679bc636bc140510b`, the same value recorded in all three
+   first-run trials; repository checksum `77a6e432d9d2cba2` before and after.
+9. **The final quantitative baseline uses exactly three valid trials**: `MMGNYFS`, `PYhR2eh`, `rsDKTXQ`.
+10. **`JnK5hsR` remains qualitative evidence only** and is excluded from successes/3, empirical success rate,
+    pass@3 and valid-trial cost statistics.
+
+Operational note: before the replacement, ten unrelated development containers (relay, ledgerai, expertops, mongo)
+were **stopped** — not deleted, no volumes removed, no configuration or memory allocation changed — leaving the
+7.654 GiB Docker VM entirely free. This removed the resource contention present during the first run. Nothing about
+the task changed.
+
+## 14.1 The replacement trial
+
+| | `rsDKTXQ` |
+|---|---|
+| Job | `g05-gemini3flash-baseline-2` |
+| **Validity** | **VALID** — verifier executed fully: 79.13 s, 14 tests collected, `ctrf.json` written, 13,536 bytes of stdout, 5 failed / 9 passed. No exception, no timeout, workspace intact, identical task checksum |
+| **Reward** | **0** |
+| Cost | **$0.18330740** |
+| Trial wall clock | 326.34 s (5m 26s) |
+| Environment setup | 7.13 s |
+| Agent setup | 43.54 s |
+| **Agent execution** | **171.23 s (2m 51s)** |
+| Verifier | 79.13 s |
+| Tokens | 926,497 in / 743,738 cached / 18,247 out |
+| Tool calls | **46** (25 shell, 12 read_file, 4 replace, 4 update_topic, 1 list_directory) |
+| Files inspected | 11 |
+| Files modified | 3 (`sco_readout/{cli,panel,estimate}.py`) |
+
+### Verifier result
+
+| Check | Result |
+|---|---|
+| `test_warehouse_unmodified`, `test_gate_succeeds`, `test_run_time`, `test_rerun_is_deterministic` | pass |
+| **`test_analysis_panel`** | **pass** |
+| **`test_hidden_panel` (a, b, c)** | **pass ×3** |
+| **`test_decision`** | **pass** |
+| `test_effects` | **fail** |
+| `test_intervals` | **fail** |
+| `test_hidden_effects_and_decision` (a, b, c) | **fail ×3** |
+
+Visible extract (truth: wave 1 0.04061, wave 2 0.03427, wave 3 0.03087, wave 4 0.01906, gate 0.01065, **stop**):
+
+| Quantity | Estimate | Error | τ | Ratio |
+|---|---|---|---|---|
+| wave 1 | 0.04099 | +0.00038 | 0.00659 | 0.06 **pass** |
+| wave 2 | 0.02767 | −0.00660 | 0.00724 | 0.91 **pass** |
+| wave 3 | 0.01086 | −0.02000 | 0.00515 | **3.9 fail** |
+| wave 4 | −0.01150 | −0.03056 | 0.00683 | **4.5 fail** |
+| **gate** | **0.01741** | **+0.00676** | 0.00456 | **1.48 fail** |
+| decision | **stop** | — | — | **correct** |
+
+## 14.2 Reasoning chronology (analysed independently)
+
+| Stage | `rsDKTXQ` |
+|---|---|
+| A **Outcome: net sales not basket** | **✓** identified at MSG 102–107 |
+| B **Actual vs planned go-live** | **✓** `install_log WHERE event='go_live'`; later explicitly diagnosed the legacy code's use of `planned_go_live` as "the key driver" of the inflated figures |
+| C **Comparable time / closures** | **✓** `comparable = is_closure.isna()`; it also spotted and rejected the legacy `customer_txns > 0` rule as mishandling partially closed stores |
+| D **Event window e ∈ [12,25]** | **✓** with a separate `is_bedding_in` dummy for 0–11 |
+| E **Staggered adoption** | **✗** static TWFE retained; already-treated stores remain implicit controls |
+| F **Sequencing / identification** | **✗ partially approached and dropped.** It queried `layout_survey.rear_bagging_bay` by wave (waves 5/6: 140 no-bay vs 51 bay, 118 vs 55) and so found the *kit determinant* — but never connected bay → format → sequencing, and never formed an identifying assumption |
+| G **Conditioning on format** | **✗** `_demean` remains store + calendar-week only |
+| H **Kit heterogeneity (full vs compact)** | **✓ recognised** — tracked full-kit share falling 93% (wave 1) → 48% (wave 4) |
+| I **Target population (waves 5–6)** | **✓ recognised** explicitly |
+| J **Transport by kit mix** | **✗ CONSIDERED AND DELIBERATELY REJECTED** (§14.3) |
+| K **Uncertainty** | ~ store-clustered sandwich SEs; `test_intervals` failed because the intervals are centred on biased estimates |
+| L **Business gate vs 2.5%** | **✓** compared 1.74% to the hurdle, concluded stop |
+
+## 14.3 The decisive finding: a wrong estimand chosen *because* the decision was insensitive to it
+
+This trial is **not** a repeat of the first three. It reached the transport step, understood it, and then argued
+itself out of it — on the grounds that the business decision would be the same either way. Its own reasoning
+(MSG 101–102, paraphrased from the recorded thoughts):
+
+- *"Including kit type in the regression model seems essential to accurately estimate the effect"* — the correct
+  instinct, stated explicitly;
+- *"analysis_panel.csv doesn't include kit type data, which is problematic"* — it treated the output contract's
+  column list as a reason not to use kit;
+- *"Using the 1.74% average from earlier waves seems defensible, and it supports a 'stop' recommendation"*;
+- *"If I use the 1.74% average of Waves 1-4, it's defensible, given the later waves are anticipated to be worse.
+  The 'stop' recommendation based on this is **safe**."*
+
+It then shipped `gate_effect = twfe(...)`, the **pooled installed-estate run-rate effect** — the pre-registered
+wrong analysis `wrong_gate_pooled_installed`.
+
+**The reasoning is decision-driven, not estimand-driven.** Knowing the answer would be "stop" either way, it
+selected the estimator that was easier to defend rather than the one the gate is defined on. This is a sharper and
+more troubling instance of the F10 pattern than anything in the first run: not *"correct decision reached with
+wrong values by accident"*, but *"wrong quantity chosen deliberately because the decision was robust to it."*
+
+## 14.4 Document discovery
+
+| Question | Answer |
+|---|---|
+| Did it open `docs/store_ops/wave_sequencing_2024-11.md`? | **No.** Still unopened by any of the four trials |
+| What it read instead | `README.md`, business case, KPI handbook, glossary, readout contract, **`docs/programmes/sco2_programme_brief.md`** (first trial to read it), the FP&A notebook, and all four pipeline modules |
+| Alternative legitimate route attempted | **Yes, partially.** It went to the data rather than the documents, querying `layout_survey.rear_bagging_bay` by wave — the mechanism that determines kit. That is a scientifically legitimate route to the sequencing story |
+| Did the inference affect implementation? | **No.** It used the bay counts only to characterise the waves 5–6 kit mix, then discarded the mix entirely (§14.3). It never asked what the bay rule implies for the *control group* |
+
+Opening the sequencing document is not required for success; this trial shows the empirical route exists and was
+begun. It was abandoned one step short of the identifying assumption.
+
+## 14.5 Falsification behaviour
+
+| Diagnostic | Classification |
+|---|---|
+| Pre-trends | **AVAILABLE BUT OMITTED** |
+| Event study | **AVAILABLE BUT OMITTED** |
+| Placebo | **AVAILABLE BUT OMITTED** |
+| Pharmacy negative control | **AVAILABLE BUT OMITTED** |
+| Kit-specific effects | **AVAILABLE BUT OMITTED** — it computed kit *shares*, never kit *effects*, despite calling them essential |
+| Mediator decomposition | **AVAILABLE BUT OMITTED** — explicitly deferred: *"I've decided to postpone testing the log_basket function for the moment"* |
+| Actual-vs-planned timing | **USED CORRECTLY** — traced the legacy figures to `planned_go_live` |
+| Closure / comparability investigation | **USED CORRECTLY** — compared its own rule against the legacy `customer_txns > 0` rule and tested the effect of dropping the `comparable` filter |
+| Within-kit stability | **AVAILABLE BUT OMITTED** |
+| Alternative specifications | **AVAILABLE BUT OMITTED** — no comparison of conditioning sets, control pools or base periods |
+| Target-population composition | **USED BUT MISINTERPRETED** — it measured the composition correctly, then concluded the composition could be ignored |
+
+**This trial falsified the legacy analysis but never its own.** Every check it ran was aimed at explaining why the
+Programme/FP&A numbers were wrong; none was aimed at testing its own specification.
+
+## 14.6 Premature convergence
+
+| | |
+|---|---|
+| Main hypothesis formed | ~MSG 102–107 / tool call ~10 (switch to net sales, run-rate window) |
+| Became confident | ~MSG 101–104 / tool call ~40, when it settled on the pooled 1.74% as "safe" |
+| Validation performed afterward | a non-positive-sales sanity check, a re-run, and a `cat` of the output |
+| Terminated | MSG 113, after issuing a literal no-op shell command *"just to trigger the final response phase"* |
+| Time used / available | **171 s of agent execution** against `agent.timeout_sec = 5400` and a 20-minute pipeline allowance |
+
+It stopped after obtaining a locally plausible result while every listed falsification remained unused. Short
+trajectories are not failure in themselves; here the unused opportunity is explicit — it named the checks it was
+skipping.
+
+## 14.7 Reasoning → implementation
+
+| Pattern | Present? |
+|---|---|
+| Mentions format but fails to condition on it | **No** — format is never mentioned at all. This is a reasoning gap, not an implementation gap |
+| Recognises actual go-live but uses planned | no — implemented correctly |
+| Recognises closures but includes contaminated periods | no — implemented correctly |
+| **Recognises kit heterogeneity but pools kits** | **YES — the defining failure.** Said kit conditioning was "essential", implemented a pooled estimate |
+| **Recognises the waves 5–6 population but reports the installed estate** | **YES** — same act |
+| Recognises transport but uses wrong weights | n/a — no transport performed |
+| Criticises TWFE but implements forbidden comparisons | partially — it criticised the legacy TWFE's *inputs* (dates, comparability), never its identification |
+| Identifies run-rate but averages the wrong window | no — window implemented correctly |
+
+**Both failures are reasoning failures, not implementation failures.** The code does exactly what the agent decided
+to do. The missing format conditioning was never considered; the abandoned transport was considered and rejected on
+an explicitly stated (and wrong) rationale.
+
+## 14.8 First substantive failure and F-category
+
+**Earliest determining point: MSG 101–102**, where it chose the pooled installed-estate average over kit transport.
+The estimator specification (store + week demeaning) was already fixed earlier at MSG 212–229 without any
+identification argument, so two independent errors were locked in before any output existed.
+
+| | |
+|---|---|
+| **Primary: F9** | right method family (panel FE with a run-rate dummy), wrong statistical objects — the **population** (installed estate, not waves 5–6) and the **conditioning set** (no format) |
+| **Secondary: F10** | correct business decision (stop) with the gate 1.48 τ out and two wave effects 3.9–4.5 τ out |
+| Secondary: F0 | the sequencing document was never opened, and the bay query was not followed through |
+| Secondary: F7 | no validation of its own specification |
+
+**F9a is NOT promoted.** This trajectory does not independently support it: `rsDKTXQ`'s primary error is a
+*population/transport* error — an object error of the classic G24 kind — not purely an identification-assumption
+blindness. F9a therefore remains a one-task observation from the first run, unpromoted.
+
+## 14.9 Decision-correct / analysis-wrong
+
+| | `rsDKTXQ` |
+|---|---|
+| Final decision | **stop** |
+| Decision correct? | **Yes** (visible); `test_decision` passed |
+| Transported effect correct? | **No** — no transport performed; gate 1.48 τ out |
+| Kit effects correct? | **Not produced** |
+| Wave effects correct? | **Partly** — waves 1–2 within tolerance, waves 3–4 out at 3.9 τ and 4.5 τ |
+| Analysis panel correct? | **Yes — visible and all three hidden extracts** |
+| Event time correct? | **Yes** |
+| Target population correct? | **No** — installed estate used as the gate population |
+| Uncertainty correct? | **No** — `test_intervals` failed; intervals do not cover truth even when doubled |
+
+**F10 recorded.** Decision-only grading would have scored this trial a success.
+
+## 14.10 Counterfactual patch
+
+**MULTI-PATCH FAILURE.** Two independent corrections are required:
+
+1. transport kit-specific effects onto the waves 5–6 kit mix (~71% compact) instead of reporting the pooled
+   installed-estate effect — this alone addresses the gate;
+2. replace calendar-week fixed effects with format × week effects — this alone addresses waves 3–4, whose errors
+   (3.9 τ, 4.5 τ) are of the same form and magnitude as the other trials'.
+
+Neither suffices alone: patch 1 leaves the wave effects failing, and patch 2 leaves the gate targeting the wrong
+population. This distinguishes `rsDKTXQ` from `MMGNYFS` and `PYhR2eh`, which were one-patch near misses.
+
+No patched version was executed and G05 was not modified.
+
+## 14.11 Official baseline statistics
+
+**Valid trials:** `g05-sco-rollout-gate__MMGNYFS`, `g05-sco-rollout-gate__PYhR2eh`, `g05-sco-rollout-gate__rsDKTXQ`.
+
+| | |
+|---|---|
+| **Empirical success rate over three valid trials** | **0 / 3** (not an exact pass@1) |
+| **pass@3** | **0** — no valid trial succeeded |
+| Excluded | `JnK5hsR` (invalid infrastructure trial) |
+
+## 14.12 Cost accounting
+
+| Category | Amount |
+|---|---|
+| Original three attempted Gemini trials (run 1) | $0.41764215 |
+| — of which invalid `JnK5hsR` | $0.10997395 |
+| — valid `MMGNYFS` | $0.15518505 |
+| — valid `PYhR2eh` | $0.15248315 |
+| Replacement `rsDKTXQ` | **$0.18330740** |
+| **A. Total Gemini spend including the invalid attempt** | **$0.60094955** |
+| **B. Official valid-baseline Gemini spend** | **$0.49097560** |
+| **C. Validation-model spend (`harbor check`, claude-sonnet-4-6)** | **$0.52425255** |
+
+B and C are different categories and must not be summed as one figure.
+
+## 14.13 Cross-trial synthesis (three valid trials only)
+
+| Question | Count |
+|---|---|
+| Correctly reconstructed business/data state (panel exact on 4/4 extracts) | **3 / 3** |
+| Identified the correct causal estimand | **2 / 3** (`rsDKTXQ` chose the pooled installed estate) |
+| Discovered format sequencing | **0 / 3** |
+| Implemented format conditioning | **0 / 3** |
+| Performed meaningful falsification of their own analysis | **0 / 3** |
+| Reached the correct business decision | **2 / 3** (`PYhR2eh`, `rsDKTXQ`) |
+| Correct decision despite incorrect analysis (F10) | **2 / 3** |
+| One-patch near misses | **2 / 3** (`rsDKTXQ` is multi-patch) |
+| Failed for the same conceptual reason | **3 / 3 share the missing format conditioning**; `rsDKTXQ` carries an additional independent population error |
+
+**`JnK5hsR`, qualitative only (excluded from every count above).** Its trajectory matched `MMGNYFS`/`PYhR2eh`
+closely: net sales, actual go-live, closures, run-rate window and kit transport all correct, with store + week
+fixed effects and no format conditioning, reaching gate −1.17% and a correct "stop". It is consistent with the
+valid trials and adds no separate finding. Its verifier never ran, so it contributes no graded evidence.
+
+## 14.14 Scientific conclusion for G05
+
+**G05 is hard for a reason the design did not predict, and the reason is stable across trials.**
+
+- **State reconstruction is not the barrier.** All three valid trials rebuilt the analysis panel exactly — actual
+  go-live, event-time origin, comparability, log net sales — on the visible extract *and* all three hidden
+  extracts. The deterministic layer we expected to separate agents separated nobody.
+- **Identification is the barrier.** No trial conditioned on format, and none stated an identifying assumption at
+  all. The estimator was chosen by convention (the house method) and by output-contract convenience, never by an
+  argument about what makes the comparison valid.
+- **The designed attractors never fired.** All four trials rejected +8.0%/+5.5% (basket) and +6.7% (TWFE net sales)
+  within minutes, on documentary grounds, and produced novel wrong numbers of their own.
+- **A new mechanism appeared in `rsDKTXQ`:** the estimand was chosen *because* the decision was insensitive to it.
+  That is decision-driven estimand selection, and it is the strongest argument yet for grading quantities beneath
+  the decision.
+- **Falsification is absent, uniformly.** Zero pre-trend, placebo, negative-control, within-kit or specification
+  checks across three valid trials, each of which stopped after ~3–5 minutes with most of its budget unused.
+
+**This changes the emerging thesis in one respect.** Across G08, G10 and G24 the pattern was *diagnosis correct →
+plausible method → wrong object → agreement with a trusted external number → premature stop*. In G05 the
+"agreement with a trusted number" link is **absent** — the trials actively refuted the organisation's figures —
+and is replaced by **self-consistency and defensibility**: they stopped because their own answer was coherent and
+easy to defend, not because it matched someone else's.
+
+## 14.15 Comparison with Task 02, G08, G10, G24
+
+| Task | Capability | Where it fails | Distinct from G05? |
+|---|---|---|---|
+| Task 02 | temporal state / per-example analytical grain | *at* state reconstruction | Yes — G05's trials reconstruct state perfectly |
+| G08 | multi-component semantic reconstruction | target vintage never investigated; multi-part repair incomplete | Yes — G05 needs no multi-part repair |
+| G10 | latent-demand inference under informative censoring | correct censoring diagnosis, inadequate latent model | Related but distinct: G10 is a modelling failure, G05 an identification failure |
+| G24 | off-policy evaluation | correct OPE family, wrong action space / decision unit | Closest sibling — both are object errors. G24's object is the *action/decision representation*; G05's is the *control group and target population* |
+| **G05** | **causal identification under staggered rollout: confounded sequencing, heterogeneous treatment versions, target-population transport** | **conditioning set and population, with state fully correct** | — |
+
+**G05 adds a distinct capability.** It is the only task in the pool where the model must state an identifying
+assumption and choose a control group, and the only one where failure is isolated from data-wrangling competence.
+Its overlap with G24 is real but bounded: G24 can be failed by mis-representing the logged decision, which is a
+reconstruction error; G05 cannot — reconstruction there was flawless and the task still separated.
+
+## 14.16 Final-benchmark recommendation
+
+**Include G05.**
+
+| Criterion | Assessment |
+|---|---|
+| Empirical difficulty | pass@3 = 0 over three valid trials; nearest miss 1.12 τ on the gate, with waves 5–7 τ out |
+| Realism | a staged retail rollout with an install log, closure records, a layout survey and a capital gate — all mechanisms documented |
+| Distinct capability | causal identification and target-population transport; not covered elsewhere |
+| Verifier validity | Oracle 1 / Nop 0, `harbor check` 11/11, clean clone reproduced, 38/38 mutations, 7 accepted implementations pass. One infrastructure failure in four runs (§14.0) is an operational risk, not a grading defect |
+| Trajectory informativeness | **high** — failures are diagnostic, consistent, and traceable to a single named omission |
+| Benchmark ambiguity | none found; no trial complained of missing or contradictory evidence, and all four derived the same definitions from the documents |
+| Redundancy | bounded overlap with G24 (§14.15) |
+
+Two caveats to carry forward, neither justifying a change to the frozen task: the **attractors never fire**, so the
+task's difficulty does not come from where the design says it does; and the **verifier's stray-process sweep** is an
+operational hazard worth watching on any future run (`research/g05/G05_JnK5hsR_validity_forensics.md` §4).
+
+## 14.17 Candidate-set arithmetic (measured tasks only)
+
+| Task | pass@3 | Valid trials |
+|---|---|---|
+| Task 02 | **0** | 3 |
+| G05 | **0** | 3 (`MMGNYFS`, `PYhR2eh`, `rsDKTXQ`) |
+| G10 | **0** | 3 |
+| G24 | **0** | 3 |
+| G08 | **1** | 3 |
+
+- {Task 02, G05, G10, G24} → **0 / 4 = 0%**
+- {Task 02, G05, G08, G10, G24} → **1 / 5 = 20%**
+- Adding one easy anchor (Task 01, pass@3 = 1) → **2 / 6 ≈ 33%** — above target
+
+**A five-task core of {Task 02, G05, G08, G10, G24} measures 20% pass@3, below the <30% target**, on 15 valid
+trials. Adding an easy anchor pushes it over, so the anchor decision is now a real constraint rather than a
+formality. `JnK5hsR` is **not** counted as a fourth G05 trial anywhere in this arithmetic, and no unmeasured task
+is included in the denominator.

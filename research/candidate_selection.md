@@ -1,6 +1,6 @@
 # ForensicDS candidate pool and selection status
 
-Updated: 2026-09-17.
+Updated: 2026-09-18.
 
 Tasks 01–05 are **candidate/development tasks**. The final submitted benchmark (5–10 tasks, target pass@3 < 30%) will be
 selected from the pool later. The selection criteria are:
@@ -39,7 +39,7 @@ Source: `research/gen3_implementation_shortlist.md` (after `research/gen3_design
 | S3 | G23 readmission episodes | episode grain across facility vocabularies | designed; fixes required | UNKNOWN | UNKNOWN | MEDIUM | undecided |
 | S4 | G10 censored demand (built: `candidates/g10-censored-demand`, frozen at checksum 047195e7a12d34cd, commits 3efed5c/ffbe949) | stopping-time censoring, latent demand, informative censoring | built, pre-baseline validated (Oracle 1, Nop 0, mutations 33/33, harbor check 11/11, pre-registered tolerance recalibration, adversarial + statistical-validity reviews) | run (0/3: LhEU3ny 0, cLtM9yi 0, eMXZbBi 0; $0.58) | 0 | FRONTIER-HARD (all diagnosed censoring and selection bias; none modelled the latent day shock or validated assumptions; forecast imputation / Poisson plug-in / per-day scaling; all stopped on a plausible ice-cream trend; one trial 8/8 actions correct with lost units 24-63% low) | recommend include (frontier-hard statistical reasoning) |
 | S5 | G11 training–serving skew | multi-feature serving semantics + embedded negative control | designed; scope cut; gated on S1 baseline | UNKNOWN | UNKNOWN | HARD | undecided |
-| S6 | G05 staggered rollout DiD (built: `candidates/g05-sco-rollout-gate`, frozen at checksum 77a6e432d9d2cba2, commits a13a1a3/2fc7e5e/f7ba34b/0b86b03) | continuation-gate estimand: outcome choice, population transport by treatment version, format-conditional trends, install-closure time zero | built, pre-baseline validated (Oracle 1, Nop 0, mutations 38/38, harbor check 11/11, clean clone, phase-0 gate rounds 1-6 with round 5 failed and recorded, 2 independent reviews) | **run (0/3: JnK5hsR 0 [verifier did not execute - apparently invalid], MMGNYFS 0, PYhR2eh 0; $0.4176)** | 0 | HARD, confirmed (all 3 reconstructed the panel exactly on 4/4 extracts, fixed the outcome, used actual go-live, found the kit mix and transported correctly - then all 3 omitted format conditioning; 2/3 correct decisions on wrong values) | **recommend include** (causal identification) |
+| S6 | G05 staggered rollout DiD (built: `candidates/g05-sco-rollout-gate`, frozen at checksum 77a6e432d9d2cba2, commits a13a1a3/2fc7e5e/f7ba34b/0b86b03) | continuation-gate estimand: outcome choice, population transport by treatment version, format-conditional trends, install-closure time zero | built, pre-baseline validated (Oracle 1, Nop 0, mutations 38/38, harbor check 11/11, clean clone, phase-0 gate rounds 1-6 with round 5 failed and recorded, 2 independent reviews) | **run, COMPLETE (0/3 over three VALID trials: MMGNYFS 0, PYhR2eh 0, rsDKTXQ 0; $0.4910 valid-baseline spend). JnK5hsR excluded as an invalid infrastructure trial (verifier never executed); one authorised replacement was run after adjudication** | 0 | HARD, confirmed (3/3 reconstructed the panel exactly on 4/4 extracts and fixed the outcome; 0/3 conditioned on format; 0/3 falsified their own specification; 2/3 correct decision on wrong values) | **recommend include** (causal identification) |
 | S7 | G25 search judgment pool | measurement repair under incomplete, heterogeneous labels | **design gate GO, Phase-0 STOPPED** (`research/g25/G25_design_gate.md`) | UNKNOWN | UNKNOWN | blocked: condensed lists (the headline attractor) pass 7/10 worlds; metric levels not gradeable at useful precision | blocked; three options recorded |
 | S8 | G01 collections label maturity | label maturity x observation process x policy feedback | **design gate: REDESIGN specified, Phase-0 stopped** (`research/g01/G01_design_gate.md`) | UNKNOWN | UNKNOWN | HARD but blocked: graded statistics do not separate the population errors without restoring the G24-duplicating IPW layer | blocked; three options recorded for the maintainer |
 
@@ -87,24 +87,29 @@ those statements were corrected in `report/g05_`, `g08_`, `g10_` and `g24_prebas
 Baselines remain uncontaminated - the check agent audits task quality and is given the solution and tests
 deliberately; it never attempts a solution. Protocol: `research/harbor_check_protocol.md`.
 
-G05 baseline analysis: `research/g05/G05_gemini_baseline_analysis.md`, trials in `research/g05/g05_trials.csv`:
-- **Official figure pending adjudication: 0/2 among definitively valid trials; one trial pending validity
-  adjudication.** JnK5hsR was adjudicated **(B) INVALID INFRASTRUCTURE FAILURE, confidence MEDIUM**
-  (`research/g05/G05_JnK5hsR_validity_forensics.md`): test.sh started and wrote its reward line, then died within
-  ~2 s emitting zero bytes of stdout+stderr while its container stayed healthy; no agent action capable of causing
-  it was found; no kernel OOM. One replacement trial is warranted and has **not** been run.
-  **Do not use G05 in candidate-set pass@3 arithmetic until that trial completes.**
-- Baseline cost so far $0.4176.
-- **All three passed the analysis panel on all four extracts** (actual go-live, event-time origin, comparability,
-  log net sales) and all three fixed the outcome, found the kit mix and transported to the waves 5-6 mix unprompted.
-- **All three omitted format conditioning** (store + calendar-week FE only), the pre-registered `imp_unconditional`
-  wrong analysis. One conceptual error produced every failing check in both graded trials.
-- 2 of 3 reached the correct business decision with every effect out of tolerance (F10 confirmed independently of
-  G24); PYhR2eh's gate was 1.12 tau out, the closest miss.
-- The designed attractors (+8.0%/+5.5% basket, +6.7% TWFE) were bypassed by every trial: difficulty is real but not
-  where the design predicted. Gate figures across trials spanned the hurdle (-1.17%, +1.57%, +2.68%).
-- Implication: a set of {02, G05, G10, G24} measures pass@3 = 0/4; with G08 and one easy anchor, ~17%. The <30%
-  target is reachable from measured tasks for the first time.
+G05 baseline analysis: `research/g05/G05_gemini_baseline_analysis.md` (§14 is the final record), trials in
+`research/g05/g05_trials.csv`:
+- **COMPLETE. 0/3 over three valid trials; pass@3 = 0.** Valid trials: MMGNYFS, PYhR2eh, rsDKTXQ. No further Gemini
+  run will be made on G05.
+- Chronology: the first run attempted 3 trials; JnK5hsR's verifier failed before grading and was adjudicated
+  **(B) INVALID INFRASTRUCTURE FAILURE, MEDIUM** (`research/g05/G05_JnK5hsR_validity_forensics.md`, commit 939f1cd)
+  **before** exactly one replacement (rsDKTXQ) was authorised and run. No benchmark modification occurred at any
+  point; the replacement ran against the identical frozen checksum. JnK5hsR is qualitative evidence only.
+- **All three valid trials reconstructed the analysis panel exactly on all four extracts** (actual go-live,
+  event-time origin, comparability, log net sales) and all three fixed the outcome to net sales.
+- **0/3 discovered format sequencing; 0/3 conditioned on format; 0/3 falsified their own specification.**
+- **2/3 reached the correct business decision with the underlying quantities wrong (F10).** Decision-only grading
+  would have scored this baseline 2/3 instead of 0/3.
+- New mechanism in rsDKTXQ: it considered kit transport, called it "essential", then chose the pooled
+  installed-estate effect because the decision was "stop" either way and that was "safe" - a wrong estimand chosen
+  *because the decision was insensitive to it*. MULTI-PATCH failure; the other two are one-patch near misses.
+- The designed attractors (+8.0%/+5.5% basket, +6.7% TWFE) were bypassed by every trial. Difficulty is real but not
+  where the design predicted, and the "agrees with a trusted external number" link seen in G08/G10/G24 is absent -
+  replaced by self-consistency and defensibility.
+- Gemini spend: $0.49097560 official valid baseline; $0.60094955 including the invalid attempt. Validation-model
+  spend ($0.52425255, harbor check) is a separate category.
+- Measured-set arithmetic: {02, G05, G10, G24} = 0/4; {02, G05, G08, G10, G24} = **1/5 = 20%**, below the <30%
+  target on 15 valid trials; adding an easy anchor pushes it to 2/6 = 33%.
 
 G25 design gate: `research/g25/G25_design_gate.md` - GO at design, stopped at Phase 0 after three iterations. The
 frame-restriction trap reached the required 2.5 tau, but condensed lists are not materially biased at k=10 and the
