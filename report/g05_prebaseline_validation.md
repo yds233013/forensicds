@@ -4,7 +4,18 @@
 
 **Status:** validated and frozen, with one documented criterion miss (§9.1). Ready for a baseline, which has **not** been run.
 
-**No model has been run on this task.** No Gemini, no Claude, no other model; $0 of model spend.
+**No baseline has been run on this task.** No Gemini trial, and no model has been run as a solver against G05.
+
+**Model use and cost, corrected 2026-09-18.** An earlier version of this line read "No model has been run on this
+task. No Gemini, no Claude, no other model; $0 of model spend." **That was incorrect accounting.** `harbor check`
+(§1, §12) is not a static linter: it invokes an evaluator agent. For G05 it ran `claude-code` on
+`claude-sonnet-4-6` once, on 2026-09-17 14:51–14:56, costing **$0.52425255** (reported as $0.5243 where rounded);
+740,684 input + 682,291 cache + 6,707 output tokens (`jobs/g05-check-prebaseline/result.json`).
+
+The task therefore remains **baseline-uncontaminated** — no model has attempted to solve it, and the check agent's
+role is to audit task quality, not to produce a solution — but the claim "no model was run / $0 model spend" was
+wrong. See `research/harbor_check_protocol.md` for the distinction between solver runs and validation runs, and for
+why the check does not contaminate a baseline.
 
 **Related documents:**
 - Re-audit of the old design and the redesign decision: `research/g05/G05_research_audit.md`
@@ -244,6 +255,12 @@ behave alike there; they are rejected by visible and hidden_b.
   what the task grades, it fails all four at 1.06–1.92 τ.
 - **Judgement:** the benchmark instance is not at risk, but the criterion as written is not met. Whether this blocks a
   freeze is a maintainer decision, recorded here rather than adjudicated away.
+- **Adjudicated 2026-09-18: `research/g05/G05_O1_adjudication.md`.** Outcome: keep G05 frozen as-is, keep the ≥99%
+  criterion as pre-registered, record this as one criterion miss (Option A). The memo establishes that at n = 60
+  worlds per regime the achievable pass rates adjacent to 100% are 100.00% and 98.33%, so a ≥99% threshold is not
+  resolvable — it is operationally "60/60", and the 20 analyses recorded as passing were not demonstrated to meet
+  ≥99% either (a 60/60 observation supports only a 95.1% lower bound). No tolerance, DGP, estimator, fixture or
+  criterion was changed in response, then or now.
 
 ### 9.2 Other risks
 

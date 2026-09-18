@@ -2,7 +2,12 @@
 
 **Task:** `candidates/g24-recommender-ope/`
 
-**Status:** validated. Ready for a baseline, which has **not** been run: no Gemini and no other model.
+**Status:** validated. Ready for a baseline, which has **not** been run: no Gemini and no other model as a solver.
+
+**Cost accounting, corrected 2026-09-18.** The status line originally ended "no Gemini and no other model", which
+was imprecise: `harbor check` invokes an evaluator agent (`claude-code` / `claude-sonnet-4-6`).
+`g24-check-prebaseline` cost **$0.594818**. That is a validation run, not a solver run, so the G24 baseline
+(run later, 0/3) remains uncontaminated. See `research/harbor_check_protocol.md`.
 
 **Task commit:** 2e21788. **Task checksum:** `2c9cc2055ef796a5`, computed with
 `git ls-files candidates/g24-recommender-ope | xargs shasum -a 256 | shasum -a 256 | cut -c1-16`.

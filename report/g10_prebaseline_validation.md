@@ -3,7 +3,11 @@
 - **Task:** `candidates/g10-censored-demand`.
 - **Design:** `research/g10/G10_build_design.md` (§0 as-built deltas).
 - **Tolerances:** `research/g10/recal/`.
-- **No model (Gemini or otherwise) has been run against this task.**
+- **No model (Gemini or otherwise) has been run as a solver against this task** before its baseline.
+- **Cost accounting, corrected 2026-09-18.** The line above originally read "No model (Gemini or otherwise) has been
+  run against this task", which was incorrect: `harbor check` invokes an evaluator agent (`claude-code` /
+  `claude-sonnet-4-6`). `g10-check-prebaseline` cost **$0.322628**. That is a validation run, not a solver run, so
+  the G10 baseline remains uncontaminated. See `research/harbor_check_protocol.md`.
 
 ## 1. Summary
 

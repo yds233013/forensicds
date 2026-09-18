@@ -73,7 +73,19 @@ G05 pre-baseline validation: `report/g05_prebaseline_validation.md`:
 - 38-case mutation suite: every wrong causal analysis fails, including four "correct method, wrong object" cases that
   keep the right business decision.
 - Known residual risk: kit-conditioned DiD separates at 98.3% against the pre-registered 99% bar (fails all four
-  frozen extracts deterministically).
+  frozen extracts deterministically). **Adjudicated 2026-09-18** (`research/g05/G05_O1_adjudication.md`): Option A —
+  keep G05 frozen as-is, keep the criterion as pre-registered, record the miss. A >=99% rule is not resolvable at
+  n=60 worlds per regime, and the improved criterion (analytic invalidity + joint pass probability + deterministic
+  failure on the shipped extracts) is to be pre-registered for the *next* gate, not applied retroactively.
+
+## Model-cost accounting (corrected 2026-09-18)
+
+`harbor check` is a model run: it invokes `claude-code` / `claude-sonnet-4-6` by default and costs ~$0.2-0.6 per
+invocation. Several reports claimed "no model was run / $0 model spend" for validation phases that included a check;
+those statements were corrected in `report/g05_`, `g08_`, `g10_` and `g24_prebaseline_validation.md` and in
+`research/overnight_2026-09-17.md`. Total recorded check spend across the project: **$7.604092** over 16 jobs.
+Baselines remain uncontaminated - the check agent audits task quality and is given the solution and tests
+deliberately; it never attempts a solution. Protocol: `research/harbor_check_protocol.md`.
 
 G25 design gate: `research/g25/G25_design_gate.md` - GO at design, stopped at Phase 0 after three iterations. The
 frame-restriction trap reached the required 2.5 tau, but condensed lists are not materially biased at k=10 and the

@@ -4,7 +4,13 @@
 - Design and revision log: `research/g08/G08_build_design.md` (§17 is the as-built record)
 - Dev tools: `tools/g08/`
 
-No model was run against the task. Tasks 01–06 are unchanged (checksums in §9).
+No model was run as a solver against the task before its baseline. Tasks 01–06 are unchanged (checksums in §9).
+
+**Cost accounting, corrected 2026-09-18.** The line above originally read "No model was run against the task",
+which was imprecise: `harbor check` invokes an evaluator agent (`claude-code` / `claude-sonnet-4-6`). G08 was
+checked four times (`g08-check-1` $0.586461, `-2` $0.552015, `-3` $0.234009, `-4` $0.416535), **$1.789020 total**.
+These are validation runs, not solver runs, so the G08 baseline remains uncontaminated. See
+`research/harbor_check_protocol.md`.
 
 ## 1. Final validation results (final version)
 

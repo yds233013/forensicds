@@ -1,10 +1,20 @@
 # Overnight log, 2026-09-17 (autonomous mode)
 
 Rules in force:
-- no Gemini, Claude or any other model; $0 API spend;
+- no Gemini, Claude or any other model **as a solver/baseline**; no baseline run;
 - no changes to frozen tasks (01–06, 02-explicit-invariant, G08, G10, G24);
 - no post-hoc tolerance tuning;
 - failed rounds are recorded.
+
+**Cost accounting, corrected 2026-09-18.** The rules line above originally read "no Gemini, Claude or any other
+model; $0 API spend". The first clause holds only for *solver* runs. The overnight work did incur model spend: the
+`harbor check` at 14:51–14:56 (row below) ran `claude-code` / `claude-sonnet-4-6` and cost **$0.52425255**
+($0.5243 rounded). Overnight totals: **1 validation model run, 0 solver/baseline runs, $0.5243**. Oracle and Nop
+cost $0.0000. See `research/harbor_check_protocol.md`.
+
+**Timestamps.** The times in the table below are narrative estimates written after the fact and drift from the git
+record by up to ~5 hours (e.g. the row logged 18:10 corresponds to commit 0b86b03 at 15:03). The ordering is
+accurate; for wall-clock times use `git log`.
 
 | Time (PDT) | Action | Result / decision | Next |
 |---|---|---|---|
