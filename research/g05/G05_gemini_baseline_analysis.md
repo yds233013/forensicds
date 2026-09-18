@@ -6,7 +6,17 @@
 **Run:** `g05-gemini3flash-baseline-1`, 2026-09-18 02:44:29–03:05:35 PDT (21m 05s wall clock), Harbor 0.21.0,
 `gemini-cli` / `google/gemini-3-flash-preview`, `-k 3 -n 3`, `--agent-setup-timeout-multiplier 3`.
 
-**Headline: 0 successes. Empirical success rate 0/3 (2/2 among unambiguously valid trials). pass@3 = 0.**
+> **BOOKKEEPING CORRECTION, 2026-09-18 (adjudication pending).** `JnK5hsR` has been adjudicated
+> **(B) INVALID INFRASTRUCTURE FAILURE, confidence MEDIUM** — see `research/g05/G05_JnK5hsR_validity_forensics.md`.
+> Until the maintainer confirms and one replacement trial is run, the official figure is:
+> **0/2 among definitively valid trials; one trial pending validity adjudication.**
+> Statements of "0/3" below predate that adjudication and are retained unedited as the original record.
+> **G05 must not yet be used in candidate-set pass@3 arithmetic as though three valid trials exist**, including the
+> arithmetic in §13. `JnK5hsR`'s trajectory findings remain usable qualitatively, labelled as coming from a trial
+> with unresolved verifier validity.
+
+**Headline (as written before adjudication): 0 successes. Empirical success rate 0/3 (2/2 among unambiguously valid
+trials). pass@3 = 0.**
 
 **The task was not modified before, during or after this run.** No tuning against model behaviour. One trial's
 verifier did not execute and is reported as **apparently invalid**; no replacement was launched.

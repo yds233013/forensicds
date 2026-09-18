@@ -88,8 +88,13 @@ Baselines remain uncontaminated - the check agent audits task quality and is giv
 deliberately; it never attempts a solution. Protocol: `research/harbor_check_protocol.md`.
 
 G05 baseline analysis: `research/g05/G05_gemini_baseline_analysis.md`, trials in `research/g05/g05_trials.csv`:
-- 0/3, pass@3 = 0, $0.4176. One trial (JnK5hsR) is apparently invalid: its verifier ran 2.18 s, produced no stdout
-  and collected no tests; no replacement was launched. Its own output would have failed at 4.9 tau regardless.
+- **Official figure pending adjudication: 0/2 among definitively valid trials; one trial pending validity
+  adjudication.** JnK5hsR was adjudicated **(B) INVALID INFRASTRUCTURE FAILURE, confidence MEDIUM**
+  (`research/g05/G05_JnK5hsR_validity_forensics.md`): test.sh started and wrote its reward line, then died within
+  ~2 s emitting zero bytes of stdout+stderr while its container stayed healthy; no agent action capable of causing
+  it was found; no kernel OOM. One replacement trial is warranted and has **not** been run.
+  **Do not use G05 in candidate-set pass@3 arithmetic until that trial completes.**
+- Baseline cost so far $0.4176.
 - **All three passed the analysis panel on all four extracts** (actual go-live, event-time origin, comparability,
   log net sales) and all three fixed the outcome, found the kit mix and transported to the waves 5-6 mix unprompted.
 - **All three omitted format conditioning** (store + calendar-week FE only), the pre-registered `imp_unconditional`
