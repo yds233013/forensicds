@@ -1,0 +1,12 @@
+# G35 first-and-only Gemini baseline. Sequential: one trial per job, three jobs.
+# agent_setup_timeout_multiplier 3.0 per the standing rule for gemini-cli Harbor runs.
+n_attempts: 1
+n_concurrent_trials: 1
+agent_setup_timeout_multiplier: 3.0
+agents:
+  - name: gemini-cli
+    model_name: google/gemini-3-flash-preview
+tasks:
+  - path: candidates/g35-dispatch-priority-gate
+artifacts:
+  - /workspace
