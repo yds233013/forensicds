@@ -1,0 +1,54 @@
+{
+ "visible": {
+  "direct_effect_50": 0.0063906915488688215,
+  "spillover_50": 0.0088463991456182,
+  "policy_effect_full": 0.004817199101195435,
+  "_truth": {
+   "policy_effect_full": 0.041965,
+   "direct_effect_50": 0.282915,
+   "spillover_50": -0.118078,
+   "fulfilment_none": 0.797165,
+   "fulfilment_full": 0.83913,
+   "decision": "launch"
+  }
+ },
+ "hidden_a": {
+  "direct_effect_50": 0.005614778105740393,
+  "spillover_50": 0.006875098193750587,
+  "policy_effect_full": 0.004531878654777959,
+  "_truth": {
+   "policy_effect_full": 0.005639,
+   "direct_effect_50": 0.47968,
+   "spillover_50": -0.232719,
+   "fulfilment_none": 0.642119,
+   "fulfilment_full": 0.647758,
+   "decision": "hold"
+  }
+ },
+ "hidden_b": {
+  "direct_effect_50": 0.0052185473730548245,
+  "spillover_50": 0.00748448969266464,
+  "policy_effect_full": 0.00439894993794906,
+  "_truth": {
+   "policy_effect_full": 0.007912,
+   "direct_effect_50": 0.135618,
+   "spillover_50": -0.06276,
+   "fulfilment_none": 0.909574,
+   "fulfilment_full": 0.917487,
+   "decision": "hold"
+  }
+ },
+ "hidden_c": {
+  "direct_effect_50": 0.004477012118839312,
+  "spillover_50": 0.005426449903610443,
+  "policy_effect_full": 0.004749987590650583,
+  "_truth": {
+   "policy_effect_full": 0.055466,
+   "direct_effect_50": 0.414398,
+   "spillover_50": -0.175382,
+   "fulfilment_none": 0.700773,
+   "fulfilment_full": 0.756239,
+   "decision": "launch"
+  }
+ }
+}
