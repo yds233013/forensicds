@@ -105,7 +105,8 @@ All `harbor check` jobs on this machine, from `jobs/*/result.json` (`stats.cost_
 | G10 | `g10-check-prebaseline` | $0.322628 |
 | G24 | `g24-check-prebaseline` | $0.594818 |
 | G05 | `g05-check-prebaseline` | $0.524253 |
-| **Total recorded** | 16 jobs with cost | **$7.604092** |
+| G34 | `jobs/2026-09-20__01-29-33` (11/11 pass, first and only invocation) | $0.419600 |
+| **Total recorded** | 17 jobs with cost | **$8.023692** |
 
 Oracle and Nop jobs cost **$0.0000** — they run no model. Gemini baselines are accounted separately and are already
 recorded per task ($0.96 G08, $0.58 G10, $0.51 G24).

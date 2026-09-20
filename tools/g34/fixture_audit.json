@@ -1,0 +1,66 @@
+{
+ "visible": {
+  "unplanned_failure_rate_36m": 0.002754682877660273,
+  "overhaul_rate_36m": 0.0033649289046195985,
+  "retirement_rate_36m": 0.0020413335858160578,
+  "still_original_assembly_36m": 0.002137125268531609,
+  "assembly_failure_rate_36m": 0.00980078846568802,
+  "_truth": {
+   "q1_crude_failure_36": 0.359778,
+   "q2_net_failure_36": 0.554667,
+   "cif_failure_36": 0.359778,
+   "cif_overhaul_36": 0.410444,
+   "cif_retirement_36": 0.173556,
+   "survival_36": 0.056222,
+   "decision": "expanded"
+  }
+ },
+ "hidden_a": {
+  "unplanned_failure_rate_36m": 0.0025997856559451544,
+  "overhaul_rate_36m": 0.003366417930435861,
+  "retirement_rate_36m": 0.0024185060989421804,
+  "still_original_assembly_36m": 0.002374402536206303,
+  "assembly_failure_rate_36m": 0.009220404631341713,
+  "_truth": {
+   "q1_crude_failure_36": 0.252317,
+   "q2_net_failure_36": 0.401098,
+   "cif_failure_36": 0.252317,
+   "cif_overhaul_36": 0.472073,
+   "cif_retirement_36": 0.196707,
+   "survival_36": 0.078902,
+   "decision": "baseline"
+  }
+ },
+ "hidden_b": {
+  "unplanned_failure_rate_36m": 0.002474151274190034,
+  "overhaul_rate_36m": 0.0026567957277238846,
+  "retirement_rate_36m": 0.0026880297266704987,
+  "still_original_assembly_36m": 0.0012654037319471544,
+  "assembly_failure_rate_36m": 0.016589431821547432,
+  "_truth": {
+   "q1_crude_failure_36": 0.252604,
+   "q2_net_failure_36": 0.554271,
+   "cif_failure_36": 0.252604,
+   "cif_overhaul_36": 0.219167,
+   "cif_retirement_36": 0.505,
+   "survival_36": 0.023229,
+   "decision": "baseline"
+  }
+ },
+ "hidden_c": {
+  "unplanned_failure_rate_36m": 0.0029937115910819365,
+  "overhaul_rate_36m": 0.0030922858505373833,
+  "retirement_rate_36m": 0.0022580024652755146,
+  "still_original_assembly_36m": 0.0015878925042657971,
+  "assembly_failure_rate_36m": 0.007901236137134149,
+  "_truth": {
+   "q1_crude_failure_36": 0.548409,
+   "q2_net_failure_36": 0.765909,
+   "cif_failure_36": 0.548409,
+   "cif_overhaul_36": 0.264432,
+   "cif_retirement_36": 0.157614,
+   "survival_36": 0.029545,
+   "decision": "expanded"
+  }
+ }
+}
