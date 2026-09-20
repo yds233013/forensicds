@@ -1,8 +1,10 @@
 # G34 — `fleet-reliability-gate` pre-baseline validation
 
 **Task:** `candidates/g34-fleet-reliability-gate`
-**Status:** built, validated locally and under Harbor, **FROZEN at `f14dd0c0dbcd763c`**, **no baseline run**.
-**Gemini baseline: NOT RUN.** No target-model trial of any kind has been executed against G34.
+**Status:** built, validated, **FROZEN at `f14dd0c0dbcd763c`**. Baseline complete: 2/3 on
+`gemini-3-flash-preview` -- see `research/g34/G34_gemini_baseline_analysis.md`.
+**Gemini baseline: RUN on 2026-09-20**, three valid sequential trials, result 2/3, $0.124406. The task
+was not modified before, during or after. This report describes the state at freeze, which is unchanged.
 
 ---
 

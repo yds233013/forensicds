@@ -1,0 +1,4 @@
+trial,job,reward,checksum,cost,tin,tcache,tout,steps,q1,q2,dec
+g34-fleet-reliability-gate__hLbWzqK,g34-gemini3flash-baseline-1,1.0,48b9cdb1bb48d5b5,0.0381325,151058,105170,3310,20,0.35703389233197597,0.5442477590942701,expanded
+g34-fleet-reliability-gate__UPCLpLx,g34-gemini3flash-baseline-2,0.0,48b9cdb1bb48d5b5,0.0527942,212821,144614,3820,26,0.27566666666666667,0.5442477590942701,baseline
+g34-fleet-reliability-gate__SdvVPQN,g34-gemini3flash-baseline-3,1.0,48b9cdb1bb48d5b5,0.03347935,143534,109197,3617,18,0.35703389233197597,0.5442477590942701,expanded

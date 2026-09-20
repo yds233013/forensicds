@@ -1,0 +1,19 @@
+# G34 first-and-only Gemini baseline.
+#
+# Sequential by construction: one trial per job, three jobs, adjudicated between each.
+# Mirrors the G05 baseline settings except n_concurrent_trials (3 -> 1), because the
+# authorisation for G34 asks for sequential trials.
+#
+# agent_setup_timeout_multiplier 3.0 is carried over from G05/task01: the gemini-cli
+# agent's npm install exceeded the default 360s setup timeout locally, which is what
+# made g08-gemini3flash-baseline-1 an INVALID agent-setup-timeout trial.
+n_attempts: 1
+n_concurrent_trials: 1
+agent_setup_timeout_multiplier: 3.0
+agents:
+  - name: gemini-cli
+    model_name: google/gemini-3-flash-preview
+tasks:
+  - path: candidates/g34-fleet-reliability-gate
+artifacts:
+  - /workspace
