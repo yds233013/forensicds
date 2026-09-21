@@ -1,5 +1,10 @@
 # G36 — Gemini baseline: trajectory and benchmark-validity analysis
 
+> **STATUS (adjudication, 2026-09-21): the frozen result 0/3 stands as recorded and is classified
+> CONTAMINATED BY AN F8 BENCHMARK DEFINITION DEFECT.** The adjudicated replay (2/3 under the
+> load-weighted response) is a counterfactual, not the official baseline. Neither number enters the
+> benchmark aggregate. See `adjudication/`.
+
 **Task:** `candidates/g36-tou-capacity-gate`, frozen at **`85197582fa38141d`** (commit `a2196df`)
 **Model:** `google/gemini-3-flash-preview` via `gemini-cli`
 **Trials:** 3 attempted, 3 valid, 0 invalid. No replacements. Run sequentially.
