@@ -1,0 +1,2236 @@
+{
+ "fixtures": {
+  "visible": {
+   "cif_failure_36": 0.35977777777777775,
+   "cif_overhaul_36": 0.41044444444444445,
+   "cif_retirement_36": 0.17355555555555555,
+   "survival_36": 0.05622222222222222,
+   "q2_net_failure_36": 0.5546666666666666,
+   "decision": "expanded",
+   "q1_tol": 0.013773399999999998,
+   "dist_to_gate": 0.07977777777777773,
+   "n": 9000,
+   "complete_cohort_n": 5055
+  },
+  "hidden_a": {
+   "cif_failure_36": 0.2523170731707317,
+   "cif_overhaul_36": 0.4720731707317073,
+   "cif_retirement_36": 0.19670731707317074,
+   "survival_36": 0.07890243902439024,
+   "q2_net_failure_36": 0.4010975609756098,
+   "decision": "baseline",
+   "q1_tol": 0.012998949999999999,
+   "dist_to_gate": 0.027682926829268317,
+   "n": 8200,
+   "complete_cohort_n": 4779
+  },
+  "hidden_b": {
+   "cif_failure_36": 0.2526041666666667,
+   "cif_overhaul_36": 0.21916666666666668,
+   "cif_retirement_36": 0.505,
+   "survival_36": 0.023229166666666665,
+   "q2_net_failure_36": 0.5542708333333334,
+   "decision": "baseline",
+   "q1_tol": 0.01237075,
+   "dist_to_gate": 0.02739583333333334,
+   "n": 9600,
+   "complete_cohort_n": 5516
+  },
+  "hidden_c": {
+   "cif_failure_36": 0.548409090909091,
+   "cif_overhaul_36": 0.26443181818181816,
+   "cif_retirement_36": 0.15761363636363637,
+   "survival_36": 0.029545454545454545,
+   "q2_net_failure_36": 0.7659090909090909,
+   "decision": "expanded",
+   "q1_tol": 0.01496855,
+   "dist_to_gate": 0.26840909090909093,
+   "n": 8800,
+   "complete_cohort_n": 4617
+  }
+ },
+ "methods": {
+  "V00_correct_aj_km": {
+   "kind": "legitimate",
+   "reward": 1,
+   "rejecting_fixtures": [],
+   "fixtures": {
+    "visible": {
+     "fails": [],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.19921627526985652,
+      "overhaul_rate_36m": 0.2980992058710143,
+      "retirement_rate_36m": 0.25141762234868603,
+      "still_original_assembly_36m": 0.02756990139944294,
+      "assembly_failure_rate_36m": 0.21261362752179153
+     },
+     "decision": "expanded",
+     "values": {
+      "unplanned_failure_rate_36m": 0.3570338923319759,
+      "overhaul_rate_36m": 0.4154598592485022,
+      "retirement_rate_36m": 0.17098942388041033,
+      "still_original_assembly_36m": 0.05651682453911118,
+      "assembly_failure_rate_36m": 0.5442477590942701
+     }
+    },
+    "hidden_a": {
+     "fails": [],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.35459642999302143,
+      "overhaul_rate_36m": 0.353571894047746,
+      "retirement_rate_36m": 0.06377632979824868,
+      "still_original_assembly_36m": 0.0480759566410014,
+      "assembly_failure_rate_36m": 0.01804910014595955
+     },
+     "decision": "baseline",
+     "values": {
+      "unplanned_failure_rate_36m": 0.2569264544343895,
+      "overhaul_rate_36m": 0.4661218132539062,
+      "retirement_rate_36m": 0.19747853553007255,
+      "still_original_assembly_36m": 0.07947319678163221,
+      "assembly_failure_rate_36m": 0.4019296605905388
+     }
+    },
+    "hidden_b": {
+     "fails": [],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.11062833264662332,
+      "overhaul_rate_36m": 0.27681863813375873,
+      "retirement_rate_36m": 0.0804122372364763,
+      "still_original_assembly_36m": 0.19408105146009202,
+      "assembly_failure_rate_36m": 0.08155161747216243
+     },
+     "decision": "baseline",
+     "values": {
+      "unplanned_failure_rate_36m": 0.2539727221127549,
+      "overhaul_rate_36m": 0.21548940787769783,
+      "retirement_rate_36m": 0.5060807525302938,
+      "still_original_assembly_36m": 0.024457117479254668,
+      "assembly_failure_rate_36m": 0.5475063713188699
+     }
+    },
+    "hidden_c": {
+     "fails": [],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.12272894451464954,
+      "overhaul_rate_36m": 0.06551392427090562,
+      "retirement_rate_36m": 0.019238011090484262,
+      "still_original_assembly_36m": 0.13115911344084413,
+      "assembly_failure_rate_36m": 0.07651207724222933
+     },
+     "decision": "expanded",
+     "values": {
+      "unplanned_failure_rate_36m": 0.5465720165666762,
+      "overhaul_rate_36m": 0.26544475844623655,
+      "retirement_rate_36m": 0.1573964392184248,
+      "still_original_assembly_36m": 0.030586785768662455,
+      "assembly_failure_rate_36m": 0.7628863894831439
+     }
+    }
+   }
+  },
+  "C01_crude_any_age": {
+   "kind": "wrong",
+   "reward": 0,
+   "rejecting_fixtures": [
+    "visible",
+    "hidden_a",
+    "hidden_b",
+    "hidden_c"
+   ],
+   "fixtures": {
+    "visible": {
+     "fails": [
+      "unplanned_failure_rate_36m",
+      "overhaul_rate_36m",
+      "retirement_rate_36m",
+      "still_original_assembly_36m"
+     ],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 5.630821406156472,
+      "overhaul_rate_36m": 6.7427521193275615,
+      "retirement_rate_36m": 3.3638199931743835,
+      "still_original_assembly_36m": 21.087470891647516,
+      "assembly_failure_rate_36m": 0.21261362752179153
+     },
+     "decision": "expanded",
+     "values": {
+      "unplanned_failure_rate_36m": 0.2822222222222222,
+      "overhaul_rate_36m": 0.297,
+      "retirement_rate_36m": 0.13922222222222222,
+      "still_original_assembly_36m": 0.28155555555555556,
+      "assembly_failure_rate_36m": 0.5442477590942701
+     }
+    },
+    "hidden_a": {
+     "fails": [
+      "unplanned_failure_rate_36m",
+      "overhaul_rate_36m",
+      "retirement_rate_36m",
+      "still_original_assembly_36m"
+     ],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 3.5181077946351964,
+      "overhaul_rate_36m": 7.788544565182579,
+      "retirement_rate_36m": 2.9145136831375016,
+      "still_original_assembly_36m": 17.863306160015775,
+      "assembly_failure_rate_36m": 0.01804910014595955
+     },
+     "decision": "baseline",
+     "values": {
+      "unplanned_failure_rate_36m": 0.20658536585365853,
+      "overhaul_rate_36m": 0.3409756097560976,
+      "retirement_rate_36m": 0.16146341463414635,
+      "still_original_assembly_36m": 0.29097560975609754,
+      "assembly_failure_rate_36m": 0.4019296605905388
+     }
+    },
+    "hidden_b": {
+     "fails": [
+      "unplanned_failure_rate_36m",
+      "overhaul_rate_36m",
+      "retirement_rate_36m",
+      "still_original_assembly_36m"
+     ],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 3.8986453260042184,
+      "overhaul_rate_36m": 4.932312054602027,
+      "retirement_rate_36m": 5.944564110767613,
+      "still_original_assembly_36m": 30.60626415889574,
+      "assembly_failure_rate_36m": 0.08155161747216243
+     },
+     "decision": "baseline",
+     "values": {
+      "unplanned_failure_rate_36m": 0.204375,
+      "overhaul_rate_36m": 0.15364583333333334,
+      "retirement_rate_36m": 0.42510416666666667,
+      "still_original_assembly_36m": 0.216875,
+      "assembly_failure_rate_36m": 0.5475063713188699
+     }
+    },
+    "hidden_c": {
+     "fails": [
+      "unplanned_failure_rate_36m",
+      "overhaul_rate_36m",
+      "retirement_rate_36m",
+      "still_original_assembly_36m"
+     ],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 8.168642071057471,
+      "overhaul_rate_36m": 5.431396972940616,
+      "retirement_rate_36m": 2.7075448908929873,
+      "still_original_assembly_36m": 29.828033657014252,
+      "assembly_failure_rate_36m": 0.07651207724222933
+     },
+     "decision": "expanded",
+     "values": {
+      "unplanned_failure_rate_36m": 0.42613636363636365,
+      "overhaul_rate_36m": 0.18045454545454545,
+      "retirement_rate_36m": 0.12704545454545454,
+      "still_original_assembly_36m": 0.26636363636363636,
+      "assembly_failure_rate_36m": 0.7628863894831439
+     }
+    }
+   }
+  },
+  "C02_admin_censored_as_surviving": {
+   "kind": "wrong",
+   "reward": 0,
+   "rejecting_fixtures": [
+    "visible",
+    "hidden_a",
+    "hidden_b",
+    "hidden_c"
+   ],
+   "fixtures": {
+    "visible": {
+     "fails": [
+      "unplanned_failure_rate_36m",
+      "overhaul_rate_36m",
+      "retirement_rate_36m",
+      "still_original_assembly_36m",
+      "recommendation"
+     ],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 6.106779089484883,
+      "overhaul_rate_36m": 7.957900395484535,
+      "retirement_rate_36m": 3.6142014166145486,
+      "still_original_assembly_36m": 23.85338176796815,
+      "assembly_failure_rate_36m": 0.21261362752179153
+     },
+     "decision": "baseline",
+     "values": {
+      "unplanned_failure_rate_36m": 0.27566666666666667,
+      "overhaul_rate_36m": 0.27655555555555555,
+      "retirement_rate_36m": 0.13666666666666666,
+      "still_original_assembly_36m": 0.3111111111111111,
+      "assembly_failure_rate_36m": 0.5442477590942701
+     }
+    },
+    "hidden_a": {
+     "fails": [
+      "unplanned_failure_rate_36m",
+      "overhaul_rate_36m",
+      "retirement_rate_36m",
+      "still_original_assembly_36m"
+     ],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 4.278019078276397,
+      "overhaul_rate_36m": 9.491156632920168,
+      "retirement_rate_36m": 3.2271431785605555,
+      "still_original_assembly_36m": 21.427749654855035,
+      "assembly_failure_rate_36m": 0.01804910014595955
+     },
+     "decision": "baseline",
+     "values": {
+      "unplanned_failure_rate_36m": 0.19670731707317074,
+      "overhaul_rate_36m": 0.3123170731707317,
+      "retirement_rate_36m": 0.1576829268292683,
+      "still_original_assembly_36m": 0.33329268292682923,
+      "assembly_failure_rate_36m": 0.4019296605905388
+     }
+    },
+    "hidden_b": {
+     "fails": [
+      "unplanned_failure_rate_36m",
+      "overhaul_rate_36m",
+      "retirement_rate_36m",
+      "still_original_assembly_36m"
+     ],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 4.109155332807901,
+      "overhaul_rate_36m": 5.520425574626116,
+      "retirement_rate_36m": 6.107322710932046,
+      "still_original_assembly_36m": 32.59838786154576,
+      "assembly_failure_rate_36m": 0.08155161747216243
+     },
+     "decision": "baseline",
+     "values": {
+      "unplanned_failure_rate_36m": 0.20177083333333334,
+      "overhaul_rate_36m": 0.14583333333333334,
+      "retirement_rate_36m": 0.42291666666666666,
+      "still_original_assembly_36m": 0.22947916666666668,
+      "assembly_failure_rate_36m": 0.5475063713188699
+     }
+    },
+    "hidden_c": {
+     "fails": [
+      "unplanned_failure_rate_36m",
+      "overhaul_rate_36m",
+      "retirement_rate_36m",
+      "still_original_assembly_36m"
+     ],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 8.502675761695508,
+      "overhaul_rate_36m": 5.9679219783867135,
+      "retirement_rate_36m": 2.858523230533861,
+      "still_original_assembly_36m": 31.717333293638955,
+      "assembly_failure_rate_36m": 0.07651207724222933
+     },
+     "decision": "expanded",
+     "values": {
+      "unplanned_failure_rate_36m": 0.42113636363636364,
+      "overhaul_rate_36m": 0.1721590909090909,
+      "retirement_rate_36m": 0.1253409090909091,
+      "still_original_assembly_36m": 0.28136363636363637,
+      "assembly_failure_rate_36m": 0.7628863894831439
+     }
+    }
+   }
+  },
+  "C03_incumbent_competing_as_censoring": {
+   "kind": "wrong",
+   "reward": 0,
+   "rejecting_fixtures": [
+    "visible",
+    "hidden_a",
+    "hidden_b",
+    "hidden_c"
+   ],
+   "fixtures": {
+    "visible": {
+     "fails": [
+      "unplanned_failure_rate_36m",
+      "overhaul_rate_36m",
+      "retirement_rate_36m",
+      "still_original_assembly_36m",
+      "sum_to_one",
+      "two_objects_gap"
+     ],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 13.393205839988124,
+      "overhaul_rate_36m": 24.76060992847032,
+      "retirement_rate_36m": 10.503666949340039,
+      "still_original_assembly_36m": 37.389397807668004,
+      "assembly_failure_rate_36m": 0.21261362752179153
+     },
+     "decision": "expanded",
+     "values": {
+      "unplanned_failure_rate_36m": 0.5442477590942701,
+      "overhaul_rate_36m": 0.8270330402774826,
+      "retirement_rate_36m": 0.28076280782403706,
+      "still_original_assembly_36m": 0.45575224090572986,
+      "assembly_failure_rate_36m": 0.5442477590942701
+     }
+    },
+    "hidden_a": {
+     "fails": [
+      "unplanned_failure_rate_36m",
+      "overhaul_rate_36m",
+      "retirement_rate_36m",
+      "still_original_assembly_36m",
+      "sum_to_one",
+      "recommendation"
+     ],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 11.50959019150063,
+      "overhaul_rate_36m": 20.176486158822186,
+      "retirement_rate_36m": 7.943388628227697,
+      "still_original_assembly_36m": 43.730449830278886,
+      "assembly_failure_rate_36m": 0.01804910014595955
+     },
+     "decision": "expanded",
+     "values": {
+      "unplanned_failure_rate_36m": 0.4019296605905388,
+      "overhaul_rate_36m": 0.8116858034056182,
+      "retirement_rate_36m": 0.2927631412294456,
+      "still_original_assembly_36m": 0.5980703394094612,
+      "assembly_failure_rate_36m": 0.4019296605905388
+     }
+    },
+    "hidden_b": {
+     "fails": [
+      "unplanned_failure_rate_36m",
+      "overhaul_rate_36m",
+      "retirement_rate_36m",
+      "still_original_assembly_36m",
+      "sum_to_one",
+      "recommendation"
+     ],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 23.838668201378514,
+      "overhaul_rate_36m": 45.486254737226375,
+      "retirement_rate_36m": 13.937162656865883,
+      "still_original_assembly_36m": 67.84644571115274,
+      "assembly_failure_rate_36m": 0.08155161747216243
+     },
+     "decision": "expanded",
+     "values": {
+      "unplanned_failure_rate_36m": 0.5475063713188699,
+      "overhaul_rate_36m": 0.8234060745959818,
+      "retirement_rate_36m": 0.692317556682676,
+      "still_original_assembly_36m": 0.4524936286811301,
+      "assembly_failure_rate_36m": 0.5475063713188699
+     }
+    },
+    "hidden_c": {
+     "fails": [
+      "unplanned_failure_rate_36m",
+      "overhaul_rate_36m",
+      "retirement_rate_36m",
+      "still_original_assembly_36m",
+      "sum_to_one"
+     ],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 14.328528720153452,
+      "overhaul_rate_36m": 35.746285988588596,
+      "retirement_rate_36m": 11.804968039167488,
+      "still_original_assembly_36m": 26.143896110108575,
+      "assembly_failure_rate_36m": 0.07651207724222933
+     },
+     "decision": "expanded",
+     "values": {
+      "unplanned_failure_rate_36m": 0.7628863894831439,
+      "overhaul_rate_36m": 0.8171212316800813,
+      "retirement_rate_36m": 0.2908917255258373,
+      "still_original_assembly_36m": 0.2371136105168561,
+      "assembly_failure_rate_36m": 0.7628863894831439
+     }
+    }
+   }
+  },
+  "C04_competing_as_censoring_forced_sum": {
+   "kind": "wrong",
+   "reward": 0,
+   "rejecting_fixtures": [
+    "visible",
+    "hidden_a",
+    "hidden_b",
+    "hidden_c"
+   ],
+   "fixtures": {
+    "visible": {
+     "fails": [
+      "unplanned_failure_rate_36m",
+      "overhaul_rate_36m",
+      "retirement_rate_36m",
+      "two_objects_gap"
+     ],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 13.393205839988124,
+      "overhaul_rate_36m": 7.584883700776732,
+      "retirement_rate_36m": 5.599444487379117,
+      "still_original_assembly_36m": 0.02756990139944294,
+      "assembly_failure_rate_36m": 0.21261362752179153
+     },
+     "decision": "expanded",
+     "values": {
+      "unplanned_failure_rate_36m": 0.5442477590942701,
+      "overhaul_rate_36m": 0.2828314308881712,
+      "retirement_rate_36m": 0.11640398547844748,
+      "still_original_assembly_36m": 0.05651682453911118,
+      "assembly_failure_rate_36m": 0.5442477590942701
+     }
+    },
+    "hidden_a": {
+     "fails": [
+      "unplanned_failure_rate_36m",
+      "overhaul_rate_36m",
+      "retirement_rate_36m",
+      "recommendation"
+     ],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 11.50959019150063,
+      "overhaul_rate_36m": 6.404641155667032,
+      "retirement_rate_36m": 3.50461935495375,
+      "still_original_assembly_36m": 0.0480759566410014,
+      "assembly_failure_rate_36m": 0.01804910014595955
+     },
+     "decision": "expanded",
+     "values": {
+      "unplanned_failure_rate_36m": 0.4019296605905388,
+      "overhaul_rate_36m": 0.3642696103354042,
+      "retirement_rate_36m": 0.15432753229242477,
+      "still_original_assembly_36m": 0.07947319678163221,
+      "assembly_failure_rate_36m": 0.4019296605905388
+     }
+    },
+    "hidden_b": {
+     "fails": [
+      "unplanned_failure_rate_36m",
+      "overhaul_rate_36m",
+      "retirement_rate_36m",
+      "recommendation"
+     ],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 23.838668201378514,
+      "overhaul_rate_36m": 6.875792215063708,
+      "retirement_rate_36m": 15.237339738015192,
+      "still_original_assembly_36m": 0.19408105146009202,
+      "assembly_failure_rate_36m": 0.08155161747216243
+     },
+     "decision": "expanded",
+     "values": {
+      "unplanned_failure_rate_36m": 0.5475063713188699,
+      "overhaul_rate_36m": 0.12782864288176038,
+      "retirement_rate_36m": 0.3002078683201151,
+      "still_original_assembly_36m": 0.024457117479254668,
+      "assembly_failure_rate_36m": 0.5475063713188699
+     }
+    },
+    "hidden_c": {
+     "fails": [
+      "unplanned_failure_rate_36m",
+      "overhaul_rate_36m",
+      "retirement_rate_36m"
+     ],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 14.328528720153452,
+      "overhaul_rate_36m": 8.717266320870523,
+      "retirement_rate_36m": 7.151200393307115,
+      "still_original_assembly_36m": 0.13115911344084413,
+      "assembly_failure_rate_36m": 0.07651207724222933
+     },
+     "decision": "expanded",
+     "values": {
+      "unplanned_failure_rate_36m": 0.7628863894831439,
+      "overhaul_rate_36m": 0.1296502408249946,
+      "retirement_rate_36m": 0.07687658392319904,
+      "still_original_assembly_36m": 0.030586785768662455,
+      "assembly_failure_rate_36m": 0.7628863894831439
+     }
+    }
+   }
+  },
+  "C05_complete_followup_cohort": {
+   "kind": "legitimate",
+   "reward": 1,
+   "rejecting_fixtures": [],
+   "fixtures": {
+    "visible": {
+     "fails": [],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.18207182715867154,
+      "overhaul_rate_36m": 0.22579245319766209,
+      "retirement_rate_36m": 0.27761294710937556,
+      "still_original_assembly_36m": 0.14434005353994786,
+      "assembly_failure_rate_36m": 0.21261362752179153
+     },
+     "decision": "expanded",
+     "values": {
+      "unplanned_failure_rate_36m": 0.3572700296735905,
+      "overhaul_rate_36m": 0.4142433234421365,
+      "retirement_rate_36m": 0.17072205736894164,
+      "still_original_assembly_36m": 0.057764589515331366,
+      "assembly_failure_rate_36m": 0.5442477590942701
+     }
+    },
+    "hidden_a": {
+     "fails": [],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.8399073177523175,
+      "overhaul_rate_36m": 0.46043515600656554,
+      "retirement_rate_36m": 0.29527912713593585,
+      "still_original_assembly_36m": 0.03393320166520385,
+      "assembly_failure_rate_36m": 0.01804910014595955
+     },
+     "decision": "baseline",
+     "values": {
+      "unplanned_failure_rate_36m": 0.2632349863988282,
+      "overhaul_rate_36m": 0.4643230801422892,
+      "retirement_rate_36m": 0.19313663946432308,
+      "still_original_assembly_36m": 0.07930529399455954,
+      "assembly_failure_rate_36m": 0.4019296605905388
+     }
+    },
+    "hidden_b": {
+     "fails": [],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.21051000680368492,
+      "overhaul_rate_36m": 0.053542923901830915,
+      "retirement_rate_36m": 0.1810189921646463,
+      "still_original_assembly_36m": 0.13948292401405601,
+      "assembly_failure_rate_36m": 0.08155161747216243
+     },
+     "decision": "baseline",
+     "values": {
+      "unplanned_failure_rate_36m": 0.25,
+      "overhaul_rate_36m": 0.21845540246555475,
+      "retirement_rate_36m": 0.5074329224075417,
+      "still_original_assembly_36m": 0.024111675126903598,
+      "assembly_failure_rate_36m": 0.5475063713188699
+     }
+    },
+    "hidden_c": {
+     "fails": [],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.0434782466371872,
+      "overhaul_rate_36m": 0.19777535433857918,
+      "retirement_rate_36m": 0.4738938775943015,
+      "still_original_assembly_36m": 0.3707025592959844,
+      "assembly_failure_rate_36m": 0.07651207724222933
+     },
+     "decision": "expanded",
+     "values": {
+      "unplanned_failure_rate_36m": 0.5477582846003899,
+      "overhaul_rate_36m": 0.2674897119341564,
+      "retirement_rate_36m": 0.1522633744855967,
+      "still_original_assembly_36m": 0.03248862897985705,
+      "assembly_failure_rate_36m": 0.7628863894831439
+     }
+    }
+   }
+  },
+  "C06_actuarial_monthly": {
+   "kind": "legitimate",
+   "reward": 1,
+   "rejecting_fixtures": [],
+   "fixtures": {
+    "visible": {
+     "fails": [],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.20132124758773662,
+      "overhaul_rate_36m": 0.30095242307831505,
+      "retirement_rate_36m": 0.2558410182590771,
+      "still_original_assembly_36m": 0.03001582642087949,
+      "assembly_failure_rate_36m": 0.21261362752179153
+     },
+     "decision": "expanded",
+     "values": {
+      "unplanned_failure_rate_36m": 0.3570048997062528,
+      "overhaul_rate_36m": 0.415507863629389,
+      "retirement_rate_36m": 0.17094427582654154,
+      "still_original_assembly_36m": 0.05654296083781649,
+      "assembly_failure_rate_36m": 0.5442477590942701
+     }
+    },
+    "hidden_a": {
+     "fails": [],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.35460246609779406,
+      "overhaul_rate_36m": 0.3600973460580974,
+      "retirement_rate_36m": 0.06384507191605202,
+      "still_original_assembly_36m": 0.057251102384111345,
+      "assembly_failure_rate_36m": 0.01804910014595955
+     },
+     "decision": "baseline",
+     "values": {
+      "unplanned_failure_rate_36m": 0.25692653289741363,
+      "overhaul_rate_36m": 0.4660119761931228,
+      "retirement_rate_36m": 0.1974793667975692,
+      "still_original_assembly_36m": 0.07958212411189441,
+      "assembly_failure_rate_36m": 0.4019296605905388
+     }
+    },
+    "hidden_b": {
+     "fails": [],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.11485973375292323,
+      "overhaul_rate_36m": 0.283331658129724,
+      "retirement_rate_36m": 0.08504401384037473,
+      "still_original_assembly_36m": 0.18964317886116933,
+      "assembly_failure_rate_36m": 0.08155161747216243
+     },
+     "decision": "baseline",
+     "values": {
+      "unplanned_failure_rate_36m": 0.25402506771799066,
+      "overhaul_rate_36m": 0.21540288892007142,
+      "retirement_rate_36m": 0.5061430043026167,
+      "still_original_assembly_36m": 0.024429039059321284,
+      "assembly_failure_rate_36m": 0.5475063713188699
+     }
+    },
+    "hidden_c": {
+     "fails": [],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.122962458420665,
+      "overhaul_rate_36m": 0.059591285898829185,
+      "retirement_rate_36m": 0.0190496547430204,
+      "still_original_assembly_36m": 0.14286539013166763,
+      "assembly_failure_rate_36m": 0.07651207724222933
+     },
+     "decision": "expanded",
+     "values": {
+      "unplanned_failure_rate_36m": 0.5465685212020983,
+      "overhaul_rate_36m": 0.2653531858691786,
+      "retirement_rate_36m": 0.15739856576158767,
+      "still_original_assembly_36m": 0.030679727167135414,
+      "assembly_failure_rate_36m": 0.7628863894831439
+     }
+    }
+   }
+  },
+  "C07_stratified_model_share_weights": {
+   "kind": "legitimate",
+   "reward": 1,
+   "rejecting_fixtures": [],
+   "fixtures": {
+    "visible": {
+     "fails": [],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.2095830933314317,
+      "overhaul_rate_36m": 0.3065637760596955,
+      "retirement_rate_36m": 0.24223733859643765,
+      "still_original_assembly_36m": 0.018836034756349047,
+      "assembly_failure_rate_36m": 0.21922775661714114
+     },
+     "decision": "expanded",
+     "values": {
+      "unplanned_failure_rate_36m": 0.3568911060000866,
+      "overhaul_rate_36m": 0.4156022726793272,
+      "retirement_rate_36m": 0.17108312382357022,
+      "still_original_assembly_36m": 0.0564234974970164,
+      "assembly_failure_rate_36m": 0.5439236406427881
+     }
+    },
+    "hidden_a": {
+     "fails": [],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.3507659218835249,
+      "overhaul_rate_36m": 0.35338684767470435,
+      "retirement_rate_36m": 0.06782694974324617,
+      "still_original_assembly_36m": 0.04788184782350225,
+      "assembly_failure_rate_36m": 0.026896441318409677
+     },
+     "decision": "baseline",
+     "values": {
+      "unplanned_failure_rate_36m": 0.25687666185099955,
+      "overhaul_rate_36m": 0.4661249279729619,
+      "retirement_rate_36m": 0.19752751785428843,
+      "still_original_assembly_36m": 0.07947089232175086,
+      "assembly_failure_rate_36m": 0.4023375407132711
+     }
+    },
+    "hidden_b": {
+     "fails": [],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.11898845317205428,
+      "overhaul_rate_36m": 0.28525221114656407,
+      "retirement_rate_36m": 0.07360901730596948,
+      "still_original_assembly_36m": 0.20989374614315137,
+      "assembly_failure_rate_36m": 0.05824999540518779
+     },
+     "decision": "baseline",
+     "values": {
+      "unplanned_failure_rate_36m": 0.2540761430737449,
+      "overhaul_rate_36m": 0.21537737629379572,
+      "retirement_rate_36m": 0.5059893162339448,
+      "still_original_assembly_36m": 0.024557164398514384,
+      "assembly_failure_rate_36m": 0.5494391709644593
+     }
+    },
+    "hidden_c": {
+     "fails": [],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.1167281686368463,
+      "overhaul_rate_36m": 0.059293856510673495,
+      "retirement_rate_36m": 0.021468972657349292,
+      "still_original_assembly_36m": 0.1351311655346634,
+      "assembly_failure_rate_36m": 0.05474207784834073
+     },
+     "decision": "expanded",
+     "values": {
+      "unplanned_failure_rate_36m": 0.5466618394804419,
+      "overhaul_rate_36m": 0.2653485871795651,
+      "retirement_rate_36m": 0.1573712516623349,
+      "still_original_assembly_36m": 0.030618321677658728,
+      "assembly_failure_rate_36m": 0.7637464394331988
+     }
+    }
+   }
+  },
+  "C08_stratified_model_equal_weights": {
+   "kind": "ambiguous",
+   "reward": 1,
+   "rejecting_fixtures": [],
+   "fixtures": {
+    "visible": {
+     "fails": [],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.1994189481546156,
+      "overhaul_rate_36m": 0.30590732031719703,
+      "retirement_rate_36m": 0.24961523581450173,
+      "still_original_assembly_36m": 0.013815602267007619,
+      "assembly_failure_rate_36m": 0.22221564837580235
+     },
+     "decision": "expanded",
+     "values": {
+      "unplanned_failure_rate_36m": 0.35703110083726497,
+      "overhaul_rate_36m": 0.4155912280412192,
+      "retirement_rate_36m": 0.17100782020892946,
+      "still_original_assembly_36m": 0.05636985091258667,
+      "assembly_failure_rate_36m": 0.5437772221444412
+     }
+    },
+    "hidden_a": {
+     "fails": [],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.35209650187721997,
+      "overhaul_rate_36m": 0.3805411947243612,
+      "retirement_rate_36m": 0.09338719949835428,
+      "still_original_assembly_36m": 0.05888925550454151,
+      "assembly_failure_rate_36m": 0.02849296774746441
+     },
+     "decision": "baseline",
+     "values": {
+      "unplanned_failure_rate_36m": 0.2568939579938086,
+      "overhaul_rate_36m": 0.46566786328798737,
+      "retirement_rate_36m": 0.19783660645246456,
+      "still_original_assembly_36m": 0.07960157226574016,
+      "assembly_failure_rate_36m": 0.4024111437747034
+     }
+    },
+    "hidden_b": {
+     "fails": [],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.12329819982521494,
+      "overhaul_rate_36m": 0.2867120833213197,
+      "retirement_rate_36m": 0.07223384660395125,
+      "still_original_assembly_36m": 0.20745351286839028,
+      "assembly_failure_rate_36m": 0.059411259104720456
+     },
+     "decision": "baseline",
+     "values": {
+      "unplanned_failure_rate_36m": 0.25412945787215446,
+      "overhaul_rate_36m": 0.21535798335182627,
+      "retirement_rate_36m": 0.5059708337334341,
+      "still_original_assembly_36m": 0.02454172504258497,
+      "assembly_failure_rate_36m": 0.5493428476243741
+     }
+    },
+    "hidden_c": {
+     "fails": [],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.07703082066927708,
+      "overhaul_rate_36m": 0.04287343788069923,
+      "retirement_rate_36m": 0.045434537933589064,
+      "still_original_assembly_36m": 0.1263450374873988,
+      "assembly_failure_rate_36m": 0.036092780303800996
+     },
+     "decision": "expanded",
+     "values": {
+      "unplanned_failure_rate_36m": 0.5472560512183618,
+      "overhaul_rate_36m": 0.2650947036979387,
+      "retirement_rate_36m": 0.15710068043036615,
+      "still_original_assembly_36m": 0.030548564653333873,
+      "assembly_failure_rate_36m": 0.7644832023118528
+     }
+    }
+   }
+  },
+  "C09_stratified_site_equal_weights": {
+   "kind": "ambiguous",
+   "reward": 1,
+   "rejecting_fixtures": [],
+   "fixtures": {
+    "visible": {
+     "fails": [],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.18031801112958906,
+      "overhaul_rate_36m": 0.27845265014241527,
+      "retirement_rate_36m": 0.24574367236942957,
+      "still_original_assembly_36m": 0.028724819534944882,
+      "assembly_failure_rate_36m": 0.22648252760672924
+     },
+     "decision": "expanded",
+     "values": {
+      "unplanned_failure_rate_36m": 0.35729418568328547,
+      "overhaul_rate_36m": 0.41512931282466303,
+      "retirement_rate_36m": 0.1710473359019661,
+      "still_original_assembly_36m": 0.056529165590085806,
+      "assembly_failure_rate_36m": 0.5435681282079529
+     }
+    },
+    "hidden_a": {
+     "fails": [],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.3827669125013437,
+      "overhaul_rate_36m": 0.3737844940767862,
+      "retirement_rate_36m": 0.0729329033309286,
+      "still_original_assembly_36m": 0.03656209950441754,
+      "assembly_failure_rate_36m": 0.0009012414155694811
+     },
+     "decision": "baseline",
+     "values": {
+      "unplanned_failure_rate_36m": 0.25729264112799105,
+      "overhaul_rate_36m": 0.4657815927489574,
+      "retirement_rate_36m": 0.19758926185334516,
+      "still_original_assembly_36m": 0.07933650426970669,
+      "assembly_failure_rate_36m": 0.4010560119438692
+     }
+    },
+    "hidden_b": {
+     "fails": [],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.09780887009632218,
+      "overhaul_rate_36m": 0.27111212551528285,
+      "retirement_rate_36m": 0.08362916848569464,
+      "still_original_assembly_36m": 0.20033125126885942,
+      "assembly_failure_rate_36m": 0.06856145860559489
+     },
+     "decision": "baseline",
+     "values": {
+      "unplanned_failure_rate_36m": 0.25381413574641076,
+      "overhaul_rate_36m": 0.21556521319132166,
+      "retirement_rate_36m": 0.506123988568823,
+      "still_original_assembly_36m": 0.02449666249344474,
+      "assembly_failure_rate_36m": 0.5485838660263751
+     }
+    },
+    "hidden_c": {
+     "fails": [],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.135330279050184,
+      "overhaul_rate_36m": 0.06770099072553543,
+      "retirement_rate_36m": 0.00046306730445273104,
+      "still_original_assembly_36m": 0.12264256788022578,
+      "assembly_failure_rate_36m": 0.12196108864075848
+     },
+     "decision": "expanded",
+     "values": {
+      "unplanned_failure_rate_36m": 0.5463833928606143,
+      "overhaul_rate_36m": 0.2654785736648715,
+      "retirement_rate_36m": 0.15761886439350364,
+      "still_original_assembly_36m": 0.030519169081011203,
+      "assembly_failure_rate_36m": 0.7610908717490313
+     }
+    }
+   }
+  },
+  "C10_today_running_forward_q1": {
+   "kind": "ambiguous",
+   "reward": 0,
+   "rejecting_fixtures": [
+    "visible",
+    "hidden_a",
+    "hidden_b",
+    "hidden_c"
+   ],
+   "fixtures": {
+    "visible": {
+     "fails": [
+      "unplanned_failure_rate_36m",
+      "sum_to_one"
+     ],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 5.139330364455587,
+      "overhaul_rate_36m": 0.2980992058710143,
+      "retirement_rate_36m": 0.25141762234868603,
+      "still_original_assembly_36m": 0.02756990139944294,
+      "assembly_failure_rate_36m": 0.21261362752179153
+     },
+     "decision": "expanded",
+     "values": {
+      "unplanned_failure_rate_36m": 0.2889917249359852,
+      "overhaul_rate_36m": 0.4154598592485022,
+      "retirement_rate_36m": 0.17098942388041033,
+      "still_original_assembly_36m": 0.05651682453911118,
+      "assembly_failure_rate_36m": 0.5442477590942701
+     }
+    },
+    "hidden_a": {
+     "fails": [
+      "unplanned_failure_rate_36m",
+      "sum_to_one"
+     ],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 3.4895980628474397,
+      "overhaul_rate_36m": 0.353571894047746,
+      "retirement_rate_36m": 0.06377632979824868,
+      "still_original_assembly_36m": 0.0480759566410014,
+      "assembly_failure_rate_36m": 0.01804910014595955
+     },
+     "decision": "baseline",
+     "values": {
+      "unplanned_failure_rate_36m": 0.206955962431681,
+      "overhaul_rate_36m": 0.4661218132539062,
+      "retirement_rate_36m": 0.19747853553007255,
+      "still_original_assembly_36m": 0.07947319678163221,
+      "assembly_failure_rate_36m": 0.4019296605905388
+     }
+    },
+    "hidden_b": {
+     "fails": [
+      "sum_to_one"
+     ],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.9622549114638713,
+      "overhaul_rate_36m": 0.27681863813375873,
+      "retirement_rate_36m": 0.0804122372364763,
+      "still_original_assembly_36m": 0.19408105146009202,
+      "assembly_failure_rate_36m": 0.08155161747216243
+     },
+     "decision": "baseline",
+     "values": {
+      "unplanned_failure_rate_36m": 0.240700351720675,
+      "overhaul_rate_36m": 0.21548940787769783,
+      "retirement_rate_36m": 0.5060807525302938,
+      "still_original_assembly_36m": 0.024457117479254668,
+      "assembly_failure_rate_36m": 0.5475063713188699
+     }
+    },
+    "hidden_c": {
+     "fails": [
+      "unplanned_failure_rate_36m",
+      "sum_to_one"
+     ],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 5.17687133238155,
+      "overhaul_rate_36m": 0.06551392427090562,
+      "retirement_rate_36m": 0.019238011090484262,
+      "still_original_assembly_36m": 0.13115911344084413,
+      "assembly_failure_rate_36m": 0.07651207724222933
+     },
+     "decision": "expanded",
+     "values": {
+      "unplanned_failure_rate_36m": 0.4709188335267711,
+      "overhaul_rate_36m": 0.26544475844623655,
+      "retirement_rate_36m": 0.1573964392184248,
+      "still_original_assembly_36m": 0.030586785768662455,
+      "assembly_failure_rate_36m": 0.7628863894831439
+     }
+    }
+   }
+  },
+  "C11_telemetry_gap_as_failure": {
+   "kind": "wrong",
+   "reward": 0,
+   "rejecting_fixtures": [
+    "visible",
+    "hidden_a",
+    "hidden_b",
+    "hidden_c"
+   ],
+   "fixtures": {
+    "visible": {
+     "fails": [
+      "unplanned_failure_rate_36m",
+      "overhaul_rate_36m",
+      "retirement_rate_36m"
+     ],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 4.8151091649476045,
+      "overhaul_rate_36m": 2.360911715841631,
+      "retirement_rate_36m": 2.016396694887374,
+      "still_original_assembly_36m": 0.5632091587015405,
+      "assembly_failure_rate_36m": 0.44769173984233296
+     },
+     "decision": "expanded",
+     "values": {
+      "unplanned_failure_rate_36m": 0.4260982023502671,
+      "overhaul_rate_36m": 0.37072293114450955,
+      "retirement_rate_36m": 0.15297490022968332,
+      "still_original_assembly_36m": 0.050203966275543105,
+      "assembly_failure_rate_36m": 0.5766053303013133
+     }
+    },
+    "hidden_a": {
+     "fails": [
+      "unplanned_failure_rate_36m",
+      "overhaul_rate_36m",
+      "retirement_rate_36m",
+      "assembly_failure_rate_36m",
+      "recommendation"
+     ],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 6.354188319265431,
+      "overhaul_rate_36m": 3.178706446383564,
+      "retirement_rate_36m": 1.7090872831173518,
+      "still_original_assembly_36m": 0.7097580905561741,
+      "assembly_failure_rate_36m": 1.277716962161904
+     },
+     "decision": "expanded",
+     "values": {
+      "unplanned_failure_rate_36m": 0.33491484942344707,
+      "overhaul_rate_36m": 0.4185688659555345,
+      "retirement_rate_36m": 0.17604009364771,
+      "still_original_assembly_36m": 0.07047619097330735,
+      "assembly_failure_rate_36m": 0.4600028683651979
+     }
+    },
+    "hidden_b": {
+     "fails": [
+      "unplanned_failure_rate_36m",
+      "overhaul_rate_36m",
+      "retirement_rate_36m",
+      "recommendation"
+     ],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 6.373528696017451,
+      "overhaul_rate_36m": 2.0868039246202925,
+      "retirement_rate_36m": 3.635055399013287,
+      "still_original_assembly_36m": 0.35854859499832653,
+      "assembly_failure_rate_36m": 0.36417535619223657
+     },
+     "decision": "expanded",
+     "values": {
+      "unplanned_failure_rate_36m": 0.33144949678292457,
+      "overhaul_rate_36m": 0.1914455633320107,
+      "retirement_rate_36m": 0.4561443101789516,
+      "still_original_assembly_36m": 0.020960629706112253,
+      "assembly_failure_rate_36m": 0.5844780866034108
+     }
+    },
+    "hidden_c": {
+     "fails": [
+      "unplanned_failure_rate_36m",
+      "overhaul_rate_36m",
+      "retirement_rate_36m"
+     ],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 2.879584158286678,
+      "overhaul_rate_36m": 1.3887796400274113,
+      "retirement_rate_36m": 1.5553372978683129,
+      "still_original_assembly_36m": 0.512742619990515,
+      "assembly_failure_rate_36m": 0.14264743211871636
+     },
+     "decision": "expanded",
+     "values": {
+      "unplanned_failure_rate_36m": 0.591512290361613,
+      "overhaul_rate_36m": 0.24295927121651634,
+      "retirement_rate_36m": 0.14005387827070312,
+      "still_original_assembly_36m": 0.02547456015117085,
+      "assembly_failure_rate_36m": 0.7715445488918593
+     }
+    }
+   }
+  },
+  "C12_telemetry_gap_as_censoring": {
+   "kind": "wrong",
+   "reward": 0,
+   "rejecting_fixtures": [
+    "visible",
+    "hidden_a",
+    "hidden_b",
+    "hidden_c"
+   ],
+   "fixtures": {
+    "visible": {
+     "fails": [
+      "unplanned_failure_rate_36m",
+      "overhaul_rate_36m",
+      "retirement_rate_36m",
+      "still_original_assembly_36m",
+      "assembly_failure_rate_36m",
+      "recommendation"
+     ],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 13.047535865454345,
+      "overhaul_rate_36m": 7.973047082187205,
+      "retirement_rate_36m": 1.7475522936200825,
+      "still_original_assembly_36m": 2.594933324622306,
+      "assembly_failure_rate_36m": 5.344588762910982
+     },
+     "decision": "baseline",
+     "values": {
+      "unplanned_failure_rate_36m": 0.1800688472885289,
+      "overhaul_rate_36m": 0.5445881710357654,
+      "retirement_rate_36m": 0.19139221017323296,
+      "still_original_assembly_36m": 0.08395077150247257,
+      "assembly_failure_rate_36m": 0.292760706158415
+     }
+    },
+    "hidden_a": {
+     "fails": [
+      "unplanned_failure_rate_36m",
+      "overhaul_rate_36m",
+      "retirement_rate_36m",
+      "still_original_assembly_36m",
+      "assembly_failure_rate_36m"
+     ],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 9.951980412448398,
+      "overhaul_rate_36m": 5.367614286974621,
+      "retirement_rate_36m": 1.0001501128305137,
+      "still_original_assembly_36m": 2.2677484918888595,
+      "assembly_failure_rate_36m": 4.58126274669296
+     },
+     "decision": "baseline",
+     "values": {
+      "unplanned_failure_rate_36m": 0.12295177738833563,
+      "overhaul_rate_36m": 0.5624213911714928,
+      "retirement_rate_36m": 0.20880168232007937,
+      "still_original_assembly_36m": 0.10582514912009479,
+      "assembly_failure_rate_36m": 0.18989218582757095
+     }
+    },
+    "hidden_b": {
+     "fails": [
+      "unplanned_failure_rate_36m",
+      "overhaul_rate_36m",
+      "retirement_rate_36m",
+      "still_original_assembly_36m",
+      "assembly_failure_rate_36m"
+     ],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 10.254494760867424,
+      "overhaul_rate_36m": 4.974375107778834,
+      "retirement_rate_36m": 3.6352625285991564,
+      "still_original_assembly_36m": 1.8836286482559899,
+      "assembly_failure_rate_36m": 3.013473697115483
+     },
+     "decision": "baseline",
+     "values": {
+      "unplanned_failure_rate_36m": 0.125748375603666,
+      "overhaul_rate_36m": 0.2852462655984007,
+      "retirement_rate_36m": 0.553858473673752,
+      "still_original_assembly_36m": 0.03514688512418231,
+      "assembly_failure_rate_36m": 0.3043122305786954
+     }
+    },
+    "hidden_c": {
+     "fails": [
+      "unplanned_failure_rate_36m",
+      "overhaul_rate_36m",
+      "retirement_rate_36m",
+      "still_original_assembly_36m",
+      "assembly_failure_rate_36m"
+     ],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 15.99760727308289,
+      "overhaul_rate_36m": 11.338888369466058,
+      "retirement_rate_36m": 3.1751604365866006,
+      "still_original_assembly_36m": 3.564197449238882,
+      "assembly_failure_rate_36m": 7.181114660334537
+     },
+     "decision": "expanded",
+     "values": {
+      "unplanned_failure_rate_36m": 0.30894810656158606,
+      "overhaul_rate_36m": 0.43974747376189915,
+      "retirement_rate_36m": 0.1934611976926991,
+      "still_original_assembly_36m": 0.05784322198381419,
+      "assembly_failure_rate_36m": 0.48221053891498256
+     }
+    }
+   }
+  },
+  "E02_q2_equals_cif": {
+   "kind": "wrong",
+   "reward": 0,
+   "rejecting_fixtures": [
+    "visible",
+    "hidden_a",
+    "hidden_b",
+    "hidden_c"
+   ],
+   "fixtures": {
+    "visible": {
+     "fails": [
+      "assembly_failure_rate_36m",
+      "two_objects_gap"
+     ],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.19921627526985652,
+      "overhaul_rate_36m": 0.2980992058710143,
+      "retirement_rate_36m": 0.25141762234868603,
+      "still_original_assembly_36m": 0.02756990139944294,
+      "assembly_failure_rate_36m": 4.032996816270744
+     },
+     "decision": "expanded",
+     "values": {
+      "unplanned_failure_rate_36m": 0.3570338923319759,
+      "overhaul_rate_36m": 0.4154598592485022,
+      "retirement_rate_36m": 0.17098942388041033,
+      "still_original_assembly_36m": 0.05651682453911118,
+      "assembly_failure_rate_36m": 0.3570338923319759
+     }
+    },
+    "hidden_a": {
+     "fails": [
+      "assembly_failure_rate_36m"
+     ],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.35459642999302143,
+      "overhaul_rate_36m": 0.353571894047746,
+      "retirement_rate_36m": 0.06377632979824868,
+      "still_original_assembly_36m": 0.0480759566410014,
+      "assembly_failure_rate_36m": 3.1272202191059013
+     },
+     "decision": "baseline",
+     "values": {
+      "unplanned_failure_rate_36m": 0.2569264544343895,
+      "overhaul_rate_36m": 0.4661218132539062,
+      "retirement_rate_36m": 0.19747853553007255,
+      "still_original_assembly_36m": 0.07947319678163221,
+      "assembly_failure_rate_36m": 0.2569264544343895
+     }
+    },
+    "hidden_b": {
+     "fails": [
+      "assembly_failure_rate_36m"
+     ],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.11062833264662332,
+      "overhaul_rate_36m": 0.27681863813375873,
+      "retirement_rate_36m": 0.0804122372364763,
+      "still_original_assembly_36m": 0.19408105146009202,
+      "assembly_failure_rate_36m": 3.620361329771763
+     },
+     "decision": "baseline",
+     "values": {
+      "unplanned_failure_rate_36m": 0.2539727221127549,
+      "overhaul_rate_36m": 0.21548940787769783,
+      "retirement_rate_36m": 0.5060807525302938,
+      "still_original_assembly_36m": 0.024457117479254668,
+      "assembly_failure_rate_36m": 0.2539727221127549
+     }
+    },
+    "hidden_c": {
+     "fails": [
+      "assembly_failure_rate_36m"
+     ],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.12272894451464954,
+      "overhaul_rate_36m": 0.06551392427090562,
+      "retirement_rate_36m": 0.019238011090484262,
+      "still_original_assembly_36m": 0.13115911344084413,
+      "assembly_failure_rate_36m": 5.55196587731583
+     },
+     "decision": "expanded",
+     "values": {
+      "unplanned_failure_rate_36m": 0.5465720165666762,
+      "overhaul_rate_36m": 0.26544475844623655,
+      "retirement_rate_36m": 0.1573964392184248,
+      "still_original_assembly_36m": 0.030586785768662455,
+      "assembly_failure_rate_36m": 0.5465720165666762
+     }
+    }
+   }
+  },
+  "E03_retired_as_never_failing": {
+   "kind": "wrong",
+   "reward": 0,
+   "rejecting_fixtures": [
+    "visible",
+    "hidden_a",
+    "hidden_b",
+    "hidden_c"
+   ],
+   "fixtures": {
+    "visible": {
+     "fails": [
+      "assembly_failure_rate_36m",
+      "two_objects_gap"
+     ],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.19921627526985652,
+      "overhaul_rate_36m": 0.2980992058710143,
+      "retirement_rate_36m": 0.25141762234868603,
+      "still_original_assembly_36m": 0.02756990139944294,
+      "assembly_failure_rate_36m": 3.2266670108607802
+     },
+     "decision": "expanded",
+     "values": {
+      "unplanned_failure_rate_36m": 0.3570338923319759,
+      "overhaul_rate_36m": 0.4154598592485022,
+      "retirement_rate_36m": 0.17098942388041033,
+      "still_original_assembly_36m": 0.05651682453911118,
+      "assembly_failure_rate_36m": 0.3965472377997955
+     }
+    },
+    "hidden_a": {
+     "fails": [
+      "assembly_failure_rate_36m"
+     ],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.35459642999302143,
+      "overhaul_rate_36m": 0.353571894047746,
+      "retirement_rate_36m": 0.06377632979824868,
+      "still_original_assembly_36m": 0.0480759566410014,
+      "assembly_failure_rate_36m": 2.4591897317922116
+     },
+     "decision": "baseline",
+     "values": {
+      "unplanned_failure_rate_36m": 0.2569264544343895,
+      "overhaul_rate_36m": 0.4661218132539062,
+      "retirement_rate_36m": 0.19747853553007255,
+      "still_original_assembly_36m": 0.07947319678163221,
+      "assembly_failure_rate_36m": 0.2877239959605252
+     }
+    },
+    "hidden_b": {
+     "fails": [
+      "assembly_failure_rate_36m"
+     ],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.11062833264662332,
+      "overhaul_rate_36m": 0.27681863813375873,
+      "retirement_rate_36m": 0.0804122372364763,
+      "still_original_assembly_36m": 0.19408105146009202,
+      "assembly_failure_rate_36m": 3.703417879640245
+     },
+     "decision": "baseline",
+     "values": {
+      "unplanned_failure_rate_36m": 0.2539727221127549,
+      "overhaul_rate_36m": 0.21548940787769783,
+      "retirement_rate_36m": 0.5060807525302938,
+      "still_original_assembly_36m": 0.024457117479254668,
+      "assembly_failure_rate_36m": 0.24708343047081394
+     }
+    },
+    "hidden_c": {
+     "fails": [
+      "assembly_failure_rate_36m"
+     ],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.12272894451464954,
+      "overhaul_rate_36m": 0.06551392427090562,
+      "retirement_rate_36m": 0.019238011090484262,
+      "still_original_assembly_36m": 0.13115911344084413,
+      "assembly_failure_rate_36m": 4.799079331601903
+     },
+     "decision": "expanded",
+     "values": {
+      "unplanned_failure_rate_36m": 0.5465720165666762,
+      "overhaul_rate_36m": 0.26544475844623655,
+      "retirement_rate_36m": 0.1573964392184248,
+      "still_original_assembly_36m": 0.030586785768662455,
+      "assembly_failure_rate_36m": 0.5763157030189597
+     }
+    }
+   }
+  },
+  "E04_overhauled_as_never_failing": {
+   "kind": "wrong",
+   "reward": 0,
+   "rejecting_fixtures": [
+    "visible",
+    "hidden_a",
+    "hidden_b",
+    "hidden_c"
+   ],
+   "fixtures": {
+    "visible": {
+     "fails": [
+      "assembly_failure_rate_36m",
+      "two_objects_gap"
+     ],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.19921627526985652,
+      "overhaul_rate_36m": 0.2980992058710143,
+      "retirement_rate_36m": 0.25141762234868603,
+      "still_original_assembly_36m": 0.02756990139944294,
+      "assembly_failure_rate_36m": 3.147661271446671
+     },
+     "decision": "expanded",
+     "values": {
+      "unplanned_failure_rate_36m": 0.3570338923319759,
+      "overhaul_rate_36m": 0.4154598592485022,
+      "retirement_rate_36m": 0.17098942388041033,
+      "still_original_assembly_36m": 0.05651682453911118,
+      "assembly_failure_rate_36m": 0.40041883110375753
+     }
+    },
+    "hidden_a": {
+     "fails": [
+      "assembly_failure_rate_36m"
+     ],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.35459642999302143,
+      "overhaul_rate_36m": 0.353571894047746,
+      "retirement_rate_36m": 0.06377632979824868,
+      "still_original_assembly_36m": 0.0480759566410014,
+      "assembly_failure_rate_36m": 2.331027797242734
+     },
+     "decision": "baseline",
+     "values": {
+      "unplanned_failure_rate_36m": 0.2569264544343895,
+      "overhaul_rate_36m": 0.4661218132539062,
+      "retirement_rate_36m": 0.19747853553007255,
+      "still_original_assembly_36m": 0.07947319678163221,
+      "assembly_failure_rate_36m": 0.29363251746712526
+     }
+    },
+    "hidden_b": {
+     "fails": [
+      "assembly_failure_rate_36m"
+     ],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.11062833264662332,
+      "overhaul_rate_36m": 0.27681863813375873,
+      "retirement_rate_36m": 0.0804122372364763,
+      "still_original_assembly_36m": 0.19408105146009202,
+      "assembly_failure_rate_36m": 1.7595077720959518
+     },
+     "decision": "baseline",
+     "values": {
+      "unplanned_failure_rate_36m": 0.2539727221127549,
+      "overhaul_rate_36m": 0.21548940787769783,
+      "retirement_rate_36m": 0.5060807525302938,
+      "still_original_assembly_36m": 0.024457117479254668,
+      "assembly_failure_rate_36m": 0.40832494216129045
+     }
+    },
+    "hidden_c": {
+     "fails": [
+      "assembly_failure_rate_36m"
+     ],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.12272894451464954,
+      "overhaul_rate_36m": 0.06551392427090562,
+      "retirement_rate_36m": 0.019238011090484262,
+      "still_original_assembly_36m": 0.13115911344084413,
+      "assembly_failure_rate_36m": 3.843355169474024
+     },
+     "decision": "expanded",
+     "values": {
+      "unplanned_failure_rate_36m": 0.5465720165666762,
+      "overhaul_rate_36m": 0.26544475844623655,
+      "retirement_rate_36m": 0.1573964392184248,
+      "still_original_assembly_36m": 0.030586785768662455,
+      "assembly_failure_rate_36m": 0.6140727329128162
+     }
+    }
+   }
+  },
+  "E05_nelson_aalen": {
+   "kind": "legitimate",
+   "reward": 1,
+   "rejecting_fixtures": [],
+   "fixtures": {
+    "visible": {
+     "fails": [],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.19921627526985652,
+      "overhaul_rate_36m": 0.2980992058710143,
+      "retirement_rate_36m": 0.25141762234868603,
+      "still_original_assembly_36m": 0.02756990139944294,
+      "assembly_failure_rate_36m": 0.21929902517143554
+     },
+     "decision": "expanded",
+     "values": {
+      "unplanned_failure_rate_36m": 0.3570338923319759,
+      "overhaul_rate_36m": 0.4154598592485022,
+      "retirement_rate_36m": 0.17098942388041033,
+      "still_original_assembly_36m": 0.05651682453911118,
+      "assembly_failure_rate_36m": 0.5439201482021169
+     }
+    },
+    "hidden_a": {
+     "fails": [],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.35459642999302143,
+      "overhaul_rate_36m": 0.353571894047746,
+      "retirement_rate_36m": 0.06377632979824868,
+      "still_original_assembly_36m": 0.0480759566410014,
+      "assembly_failure_rate_36m": 0.013883009750699404
+     },
+     "decision": "baseline",
+     "values": {
+      "unplanned_failure_rate_36m": 0.2569264544343895,
+      "overhaul_rate_36m": 0.4661218132539062,
+      "retirement_rate_36m": 0.19747853553007255,
+      "still_original_assembly_36m": 0.07947319678163221,
+      "assembly_failure_rate_36m": 0.4017375954911365
+     }
+    },
+    "hidden_b": {
+     "fails": [],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.11062833264662332,
+      "overhaul_rate_36m": 0.27681863813375873,
+      "retirement_rate_36m": 0.0804122372364763,
+      "still_original_assembly_36m": 0.19408105146009202,
+      "assembly_failure_rate_36m": 0.08670016075576431
+     },
+     "decision": "baseline",
+     "values": {
+      "unplanned_failure_rate_36m": 0.2539727221127549,
+      "overhaul_rate_36m": 0.21548940787769783,
+      "retirement_rate_36m": 0.5060807525302938,
+      "still_original_assembly_36m": 0.024457117479254668,
+      "assembly_failure_rate_36m": 0.547079315099125
+     }
+    },
+    "hidden_c": {
+     "fails": [],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.12272894451464954,
+      "overhaul_rate_36m": 0.06551392427090562,
+      "retirement_rate_36m": 0.019238011090484262,
+      "still_original_assembly_36m": 0.13115911344084413,
+      "assembly_failure_rate_36m": 0.08972449481899362
+     },
+     "decision": "expanded",
+     "values": {
+      "unplanned_failure_rate_36m": 0.5465720165666762,
+      "overhaul_rate_36m": 0.26544475844623655,
+      "retirement_rate_36m": 0.1573964392184248,
+      "still_original_assembly_36m": 0.030586785768662455,
+      "assembly_failure_rate_36m": 0.7623644170718727
+     }
+    }
+   }
+  },
+  "E06_weibull_mle": {
+   "kind": "legitimate",
+   "reward": 1,
+   "rejecting_fixtures": [],
+   "fixtures": {
+    "visible": {
+     "fails": [],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.19921627526985652,
+      "overhaul_rate_36m": 0.2980992058710143,
+      "retirement_rate_36m": 0.25141762234868603,
+      "still_original_assembly_36m": 0.02756990139944294,
+      "assembly_failure_rate_36m": 0.08430482575675714
+     },
+     "decision": "expanded",
+     "values": {
+      "unplanned_failure_rate_36m": 0.3570338923319759,
+      "overhaul_rate_36m": 0.4154598592485022,
+      "retirement_rate_36m": 0.17098942388041033,
+      "still_original_assembly_36m": 0.05651682453911118,
+      "assembly_failure_rate_36m": 0.5505353972005238
+     }
+    },
+    "hidden_a": {
+     "fails": [],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.35459642999302143,
+      "overhaul_rate_36m": 0.353571894047746,
+      "retirement_rate_36m": 0.06377632979824868,
+      "still_original_assembly_36m": 0.0480759566410014,
+      "assembly_failure_rate_36m": 0.4028192245502472
+     },
+     "decision": "baseline",
+     "values": {
+      "unplanned_failure_rate_36m": 0.2569264544343895,
+      "overhaul_rate_36m": 0.4661218132539062,
+      "retirement_rate_36m": 0.19747853553007255,
+      "still_original_assembly_36m": 0.07947319678163221,
+      "assembly_failure_rate_36m": 0.4196683328658253
+     }
+    },
+    "hidden_b": {
+     "fails": [],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.11062833264662332,
+      "overhaul_rate_36m": 0.27681863813375873,
+      "retirement_rate_36m": 0.0804122372364763,
+      "still_original_assembly_36m": 0.19408105146009202,
+      "assembly_failure_rate_36m": 0.04455898856230705
+     },
+     "decision": "baseline",
+     "values": {
+      "unplanned_failure_rate_36m": 0.2539727221127549,
+      "overhaul_rate_36m": 0.21548940787769783,
+      "retirement_rate_36m": 0.5060807525302938,
+      "still_original_assembly_36m": 0.024457117479254668,
+      "assembly_failure_rate_36m": 0.5579668677576111
+     }
+    },
+    "hidden_c": {
+     "fails": [],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.12272894451464954,
+      "overhaul_rate_36m": 0.06551392427090562,
+      "retirement_rate_36m": 0.019238011090484262,
+      "still_original_assembly_36m": 0.13115911344084413,
+      "assembly_failure_rate_36m": 0.25252817658616283
+     },
+     "decision": "expanded",
+     "values": {
+      "unplanned_failure_rate_36m": 0.5465720165666762,
+      "overhaul_rate_36m": 0.26544475844623655,
+      "retirement_rate_36m": 0.1573964392184248,
+      "still_original_assembly_36m": 0.030586785768662455,
+      "assembly_failure_rate_36m": 0.7758855195589391
+     }
+    }
+   }
+  },
+  "E07_fail_given_not_removed": {
+   "kind": "wrong",
+   "reward": 0,
+   "rejecting_fixtures": [
+    "visible",
+    "hidden_a",
+    "hidden_b",
+    "hidden_c"
+   ],
+   "fixtures": {
+    "visible": {
+     "fails": [
+      "assembly_failure_rate_36m"
+     ],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.19921627526985652,
+      "overhaul_rate_36m": 0.2980992058710143,
+      "retirement_rate_36m": 0.25141762234868603,
+      "still_original_assembly_36m": 0.02756990139944294,
+      "assembly_failure_rate_36m": 6.29889947597469
+     },
+     "decision": "expanded",
+     "values": {
+      "unplanned_failure_rate_36m": 0.3570338923319759,
+      "overhaul_rate_36m": 0.4154598592485022,
+      "retirement_rate_36m": 0.17098942388041033,
+      "still_original_assembly_36m": 0.05651682453911118,
+      "assembly_failure_rate_36m": 0.8633376216423566
+     }
+    },
+    "hidden_a": {
+     "fails": [
+      "assembly_failure_rate_36m"
+     ],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.35459642999302143,
+      "overhaul_rate_36m": 0.353571894047746,
+      "retirement_rate_36m": 0.06377632979824868,
+      "still_original_assembly_36m": 0.0480759566410014,
+      "assembly_failure_rate_36m": 7.866384714224866
+     },
+     "decision": "baseline",
+     "values": {
+      "unplanned_failure_rate_36m": 0.2569264544343895,
+      "overhaul_rate_36m": 0.4661218132539062,
+      "retirement_rate_36m": 0.19747853553007255,
+      "still_original_assembly_36m": 0.07947319678163221,
+      "assembly_failure_rate_36m": 0.7637536290708046
+     }
+    },
+    "hidden_b": {
+     "fails": [
+      "assembly_failure_rate_36m"
+     ],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.11062833264662332,
+      "overhaul_rate_36m": 0.27681863813375873,
+      "retirement_rate_36m": 0.0804122372364763,
+      "still_original_assembly_36m": 0.19408105146009202,
+      "assembly_failure_rate_36m": 4.314679735140026
+     },
+     "decision": "baseline",
+     "values": {
+      "unplanned_failure_rate_36m": 0.2539727221127549,
+      "overhaul_rate_36m": 0.21548940787769783,
+      "retirement_rate_36m": 0.5060807525302938,
+      "still_original_assembly_36m": 0.024457117479254668,
+      "assembly_failure_rate_36m": 0.9121605733239931
+     }
+    },
+    "hidden_c": {
+     "fails": [
+      "assembly_failure_rate_36m"
+     ],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.12272894451464954,
+      "overhaul_rate_36m": 0.06551392427090562,
+      "retirement_rate_36m": 0.019238011090484262,
+      "still_original_assembly_36m": 0.13115911344084413,
+      "assembly_failure_rate_36m": 4.583975862118635
+     },
+     "decision": "expanded",
+     "values": {
+      "unplanned_failure_rate_36m": 0.5465720165666762,
+      "overhaul_rate_36m": 0.26544475844623655,
+      "retirement_rate_36m": 0.1573964392184248,
+      "still_original_assembly_36m": 0.030586785768662455,
+      "assembly_failure_rate_36m": 0.9470045581131221
+     }
+    }
+   }
+  },
+  "E08_horizon_24": {
+   "kind": "wrong",
+   "reward": 0,
+   "rejecting_fixtures": [
+    "visible",
+    "hidden_a",
+    "hidden_b",
+    "hidden_c"
+   ],
+   "fixtures": {
+    "visible": {
+     "fails": [
+      "assembly_failure_rate_36m",
+      "two_objects_gap"
+     ],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.19921627526985652,
+      "overhaul_rate_36m": 0.2980992058710143,
+      "retirement_rate_36m": 0.25141762234868603,
+      "still_original_assembly_36m": 0.02756990139944294,
+      "assembly_failure_rate_36m": 5.469124957497255
+     },
+     "decision": "expanded",
+     "values": {
+      "unplanned_failure_rate_36m": 0.3570338923319759,
+      "overhaul_rate_36m": 0.4154598592485022,
+      "retirement_rate_36m": 0.17098942388041033,
+      "still_original_assembly_36m": 0.05651682453911118,
+      "assembly_failure_rate_36m": 0.28665794070571904
+     }
+    },
+    "hidden_a": {
+     "fails": [
+      "assembly_failure_rate_36m"
+     ],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.35459642999302143,
+      "overhaul_rate_36m": 0.353571894047746,
+      "retirement_rate_36m": 0.06377632979824868,
+      "still_original_assembly_36m": 0.0480759566410014,
+      "assembly_failure_rate_36m": 4.443957061721296
+     },
+     "decision": "baseline",
+     "values": {
+      "unplanned_failure_rate_36m": 0.2569264544343895,
+      "overhaul_rate_36m": 0.4661218132539062,
+      "retirement_rate_36m": 0.19747853553007255,
+      "still_original_assembly_36m": 0.07947319678163221,
+      "assembly_failure_rate_36m": 0.19622225251613457
+     }
+    },
+    "hidden_b": {
+     "fails": [
+      "assembly_failure_rate_36m"
+     ],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.11062833264662332,
+      "overhaul_rate_36m": 0.27681863813375873,
+      "retirement_rate_36m": 0.0804122372364763,
+      "still_original_assembly_36m": 0.19408105146009202,
+      "assembly_failure_rate_36m": 3.188701952596083
+     },
+     "decision": "baseline",
+     "values": {
+      "unplanned_failure_rate_36m": 0.2539727221127549,
+      "overhaul_rate_36m": 0.21548940787769783,
+      "retirement_rate_36m": 0.5060807525302938,
+      "still_original_assembly_36m": 0.024457117479254668,
+      "assembly_failure_rate_36m": 0.28977757247134606
+     }
+    },
+    "hidden_c": {
+     "fails": [
+      "assembly_failure_rate_36m"
+     ],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.12272894451464954,
+      "overhaul_rate_36m": 0.06551392427090562,
+      "retirement_rate_36m": 0.019238011090484262,
+      "still_original_assembly_36m": 0.13115911344084413,
+      "assembly_failure_rate_36m": 7.468505916059176
+     },
+     "decision": "expanded",
+     "values": {
+      "unplanned_failure_rate_36m": 0.5465720165666762,
+      "overhaul_rate_36m": 0.26544475844623655,
+      "retirement_rate_36m": 0.1573964392184248,
+      "still_original_assembly_36m": 0.030586785768662455,
+      "assembly_failure_rate_36m": 0.4708568024880738
+     }
+    }
+   }
+  },
+  "E09_complete_case_denominator": {
+   "kind": "wrong",
+   "reward": 0,
+   "rejecting_fixtures": [
+    "visible",
+    "hidden_a",
+    "hidden_b",
+    "hidden_c"
+   ],
+   "fixtures": {
+    "visible": {
+     "fails": [
+      "assembly_failure_rate_36m"
+     ],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.19921627526985652,
+      "overhaul_rate_36m": 0.2980992058710143,
+      "retirement_rate_36m": 0.25141762234868603,
+      "still_original_assembly_36m": 0.02756990139944294,
+      "assembly_failure_rate_36m": 6.938873609382632
+     },
+     "decision": "expanded",
+     "values": {
+      "unplanned_failure_rate_36m": 0.3570338923319759,
+      "overhaul_rate_36m": 0.4154598592485022,
+      "retirement_rate_36m": 0.17098942388041033,
+      "still_original_assembly_36m": 0.05651682453911118,
+      "assembly_failure_rate_36m": 0.8946988820771727
+     }
+    },
+    "hidden_a": {
+     "fails": [
+      "assembly_failure_rate_36m"
+     ],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.35459642999302143,
+      "overhaul_rate_36m": 0.353571894047746,
+      "retirement_rate_36m": 0.06377632979824868,
+      "still_original_assembly_36m": 0.0480759566410014,
+      "assembly_failure_rate_36m": 8.863853950971397
+     },
+     "decision": "baseline",
+     "values": {
+      "unplanned_failure_rate_36m": 0.2569264544343895,
+      "overhaul_rate_36m": 0.4661218132539062,
+      "retirement_rate_36m": 0.19747853553007255,
+      "still_original_assembly_36m": 0.07947319678163221,
+      "assembly_failure_rate_36m": 0.8097389558232931
+     }
+    },
+    "hidden_b": {
+     "fails": [
+      "assembly_failure_rate_36m"
+     ],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.11062833264662332,
+      "overhaul_rate_36m": 0.27681863813375873,
+      "retirement_rate_36m": 0.0804122372364763,
+      "still_original_assembly_36m": 0.19408105146009202,
+      "assembly_failure_rate_36m": 4.599056734266435
+     },
+     "decision": "baseline",
+     "values": {
+      "unplanned_failure_rate_36m": 0.2539727221127549,
+      "overhaul_rate_36m": 0.21548940787769783,
+      "retirement_rate_36m": 0.5060807525302938,
+      "still_original_assembly_36m": 0.024457117479254668,
+      "assembly_failure_rate_36m": 0.9357487922705314
+     }
+    },
+    "hidden_c": {
+     "fails": [
+      "assembly_failure_rate_36m"
+     ],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.12272894451464954,
+      "overhaul_rate_36m": 0.06551392427090562,
+      "retirement_rate_36m": 0.019238011090484262,
+      "still_original_assembly_36m": 0.13115911344084413,
+      "assembly_failure_rate_36m": 4.9407559864818635
+     },
+     "decision": "expanded",
+     "values": {
+      "unplanned_failure_rate_36m": 0.5465720165666762,
+      "overhaul_rate_36m": 0.26544475844623655,
+      "retirement_rate_36m": 0.1573964392184248,
+      "still_original_assembly_36m": 0.030586785768662455,
+      "assembly_failure_rate_36m": 0.9610995850622407
+     }
+    }
+   }
+  },
+  "E10_km_complete_cohort": {
+   "kind": "legitimate",
+   "reward": 1,
+   "rejecting_fixtures": [],
+   "fixtures": {
+    "visible": {
+     "fails": [],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.19921627526985652,
+      "overhaul_rate_36m": 0.2980992058710143,
+      "retirement_rate_36m": 0.25141762234868603,
+      "still_original_assembly_36m": 0.02756990139944294,
+      "assembly_failure_rate_36m": 0.24135956489344265
+     },
+     "decision": "expanded",
+     "values": {
+      "unplanned_failure_rate_36m": 0.3570338923319759,
+      "overhaul_rate_36m": 0.4154598592485022,
+      "retirement_rate_36m": 0.17098942388041033,
+      "still_original_assembly_36m": 0.05651682453911118,
+      "assembly_failure_rate_36m": 0.5428390946166066
+     }
+    },
+    "hidden_a": {
+     "fails": [],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.35459642999302143,
+      "overhaul_rate_36m": 0.353571894047746,
+      "retirement_rate_36m": 0.06377632979824868,
+      "still_original_assembly_36m": 0.0480759566410014,
+      "assembly_failure_rate_36m": 0.12584037872145662
+     },
+     "decision": "baseline",
+     "values": {
+      "unplanned_failure_rate_36m": 0.2569264544343895,
+      "overhaul_rate_36m": 0.4661218132539062,
+      "retirement_rate_36m": 0.19747853553007255,
+      "still_original_assembly_36m": 0.07947319678163221,
+      "assembly_failure_rate_36m": 0.4068990541154264
+     }
+    },
+    "hidden_b": {
+     "fails": [],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.11062833264662332,
+      "overhaul_rate_36m": 0.27681863813375873,
+      "retirement_rate_36m": 0.0804122372364763,
+      "still_original_assembly_36m": 0.19408105146009202,
+      "assembly_failure_rate_36m": 0.18875994396053442
+     },
+     "decision": "baseline",
+     "values": {
+      "unplanned_failure_rate_36m": 0.2539727221127549,
+      "overhaul_rate_36m": 0.21548940787769783,
+      "retirement_rate_36m": 0.5060807525302938,
+      "still_original_assembly_36m": 0.024457117479254668,
+      "assembly_failure_rate_36m": 0.5386137622616389
+     }
+    },
+    "hidden_c": {
+     "fails": [],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.12272894451464954,
+      "overhaul_rate_36m": 0.06551392427090562,
+      "retirement_rate_36m": 0.019238011090484262,
+      "still_original_assembly_36m": 0.13115911344084413,
+      "assembly_failure_rate_36m": 0.16059112709478152
+     },
+     "decision": "expanded",
+     "values": {
+      "unplanned_failure_rate_36m": 0.5465720165666762,
+      "overhaul_rate_36m": 0.26544475844623655,
+      "retirement_rate_36m": 0.1573964392184248,
+      "still_original_assembly_36m": 0.030586785768662455,
+      "assembly_failure_rate_36m": 0.759564745723859
+     }
+    }
+   }
+  },
+  "E11_one_minus_allcause_survival": {
+   "kind": "wrong",
+   "reward": 0,
+   "rejecting_fixtures": [
+    "visible",
+    "hidden_a",
+    "hidden_b",
+    "hidden_c"
+   ],
+   "fixtures": {
+    "visible": {
+     "fails": [
+      "assembly_failure_rate_36m"
+     ],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.19921627526985652,
+      "overhaul_rate_36m": 0.2980992058710143,
+      "retirement_rate_36m": 0.25141762234868603,
+      "still_original_assembly_36m": 0.02756990139944294,
+      "assembly_failure_rate_36m": 7.9343911826336875
+     },
+     "decision": "expanded",
+     "values": {
+      "unplanned_failure_rate_36m": 0.3570338923319759,
+      "overhaul_rate_36m": 0.4154598592485022,
+      "retirement_rate_36m": 0.17098942388041033,
+      "still_original_assembly_36m": 0.05651682453911118,
+      "assembly_failure_rate_36m": 0.9434831754608888
+     }
+    },
+    "hidden_a": {
+     "fails": [
+      "assembly_failure_rate_36m"
+     ],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.35459642999302143,
+      "overhaul_rate_36m": 0.353571894047746,
+      "retirement_rate_36m": 0.06377632979824868,
+      "still_original_assembly_36m": 0.0480759566410014,
+      "assembly_failure_rate_36m": 11.26695679672808
+     },
+     "decision": "baseline",
+     "values": {
+      "unplanned_failure_rate_36m": 0.2569264544343895,
+      "overhaul_rate_36m": 0.4661218132539062,
+      "retirement_rate_36m": 0.19747853553007255,
+      "still_original_assembly_36m": 0.07947319678163221,
+      "assembly_failure_rate_36m": 0.9205268032183678
+     }
+    },
+    "hidden_b": {
+     "fails": [
+      "assembly_failure_rate_36m"
+     ],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.11062833264662332,
+      "overhaul_rate_36m": 0.27681863813375873,
+      "retirement_rate_36m": 0.0804122372364763,
+      "still_original_assembly_36m": 0.19408105146009202,
+      "assembly_failure_rate_36m": 5.07880995319194
+     },
+     "decision": "baseline",
+     "values": {
+      "unplanned_failure_rate_36m": 0.2539727221127549,
+      "overhaul_rate_36m": 0.21548940787769783,
+      "retirement_rate_36m": 0.5060807525302938,
+      "still_original_assembly_36m": 0.024457117479254668,
+      "assembly_failure_rate_36m": 0.9755428825207453
+     }
+    },
+    "hidden_c": {
+     "fails": [
+      "assembly_failure_rate_36m"
+     ],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.12272894451464954,
+      "overhaul_rate_36m": 0.06551392427090562,
+      "retirement_rate_36m": 0.019238011090484262,
+      "still_original_assembly_36m": 0.13115911344084413,
+      "assembly_failure_rate_36m": 5.151194580148094
+     },
+     "decision": "expanded",
+     "values": {
+      "unplanned_failure_rate_36m": 0.5465720165666762,
+      "overhaul_rate_36m": 0.26544475844623655,
+      "retirement_rate_36m": 0.1573964392184248,
+      "still_original_assembly_36m": 0.030586785768662455,
+      "assembly_failure_rate_36m": 0.9694132142313375
+     }
+    }
+   }
+  },
+  "E12_crude_fail_over_N": {
+   "kind": "wrong",
+   "reward": 0,
+   "rejecting_fixtures": [
+    "visible",
+    "hidden_a",
+    "hidden_b",
+    "hidden_c"
+   ],
+   "fixtures": {
+    "visible": {
+     "fails": [
+      "assembly_failure_rate_36m",
+      "two_objects_gap"
+     ],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.19921627526985652,
+      "overhaul_rate_36m": 0.2980992058710143,
+      "retirement_rate_36m": 0.25141762234868603,
+      "still_original_assembly_36m": 0.02756990139944294,
+      "assembly_failure_rate_36m": 5.693418591766581
+     },
+     "decision": "expanded",
+     "values": {
+      "unplanned_failure_rate_36m": 0.3570338923319759,
+      "overhaul_rate_36m": 0.4154598592485022,
+      "retirement_rate_36m": 0.17098942388041033,
+      "still_original_assembly_36m": 0.05651682453911118,
+      "assembly_failure_rate_36m": 0.27566666666666667
+     }
+    },
+    "hidden_a": {
+     "fails": [
+      "assembly_failure_rate_36m"
+     ],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.35459642999302143,
+      "overhaul_rate_36m": 0.353571894047746,
+      "retirement_rate_36m": 0.06377632979824868,
+      "still_original_assembly_36m": 0.0480759566410014,
+      "assembly_failure_rate_36m": 4.4334355104429095
+     },
+     "decision": "baseline",
+     "values": {
+      "unplanned_failure_rate_36m": 0.2569264544343895,
+      "overhaul_rate_36m": 0.4661218132539062,
+      "retirement_rate_36m": 0.19747853553007255,
+      "still_original_assembly_36m": 0.07947319678163221,
+      "assembly_failure_rate_36m": 0.19670731707317074
+     }
+    },
+    "hidden_b": {
+     "fails": [
+      "assembly_failure_rate_36m"
+     ],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.11062833264662332,
+      "overhaul_rate_36m": 0.27681863813375873,
+      "retirement_rate_36m": 0.0804122372364763,
+      "still_original_assembly_36m": 0.19408105146009202,
+      "assembly_failure_rate_36m": 4.249701616694998
+     },
+     "decision": "baseline",
+     "values": {
+      "unplanned_failure_rate_36m": 0.2539727221127549,
+      "overhaul_rate_36m": 0.21548940787769783,
+      "retirement_rate_36m": 0.5060807525302938,
+      "still_original_assembly_36m": 0.024457117479254668,
+      "assembly_failure_rate_36m": 0.20177083333333334
+     }
+    },
+    "hidden_c": {
+     "fails": [
+      "assembly_failure_rate_36m"
+     ],
+     "err_tol": {
+      "unplanned_failure_rate_36m": 0.12272894451464954,
+      "overhaul_rate_36m": 0.06551392427090562,
+      "retirement_rate_36m": 0.019238011090484262,
+      "still_original_assembly_36m": 0.13115911344084413,
+      "assembly_failure_rate_36m": 8.727053659241516
+     },
+     "decision": "expanded",
+     "values": {
+      "unplanned_failure_rate_36m": 0.5465720165666762,
+      "overhaul_rate_36m": 0.26544475844623655,
+      "retirement_rate_36m": 0.1573964392184248,
+      "still_original_assembly_36m": 0.030586785768662455,
+      "assembly_failure_rate_36m": 0.42113636363636364
+     }
+    }
+   }
+  }
+ }
+}

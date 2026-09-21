@@ -89,6 +89,31 @@ as platform standard) each hide the defect in a change described as an improveme
 7. The verifier sandboxes the agent's pipeline (unprivileged uid, unreadable `/tests`, stripped env, fresh venv),
    and every mutation suite contains a reference-import cheat (03–05; 01/02 not yet hardened).
 
+### Added after G36 closure (2026-09-21) — see `research/g36/G36_FINAL_STATUS.md`
+
+8. **Independent Graded-Quantity Audit (IGQA).** Every independently graded scientific quantity needs
+   (A) *semantic independence*: a derivation from the contract / business question that never reads the
+   verifier implementation; and (B) *computational independence*: at least two implementations
+   sharing no defining helper, unless the quantity is algebraically forced by another independently
+   validated quantity. If the contract does not pin a weighting or aggregation, the quantity fails (A).
+9. **Natural implementation path.** Before building or freezing, answer: "What is the smallest
+   plausible edit a competent analyst would make to the provided scaffold?" The intended difficulty
+   must survive that route. G36's selection transport did not.
+10. **Counterexample search before freeze.** A wrong-method panel is insufficient. Actively search for
+    plausible *wrong scientific models* that accidentally fall inside tolerance (G36: CE06).
+11. **Identifiability before grading.** Do not grade an intermediate quantity only because it is
+    meaningful. There must be a non-trivial window, max(valid error) < tolerance < min(important
+    wrong error), with adequate margin. G36's 0.92 vs 0.99 SE_REF is not adequate.
+12. **Fixture coverage.** For every wrong method, record how many fixtures reject it. Flag any task
+    where one fixture rejects a large share of the important wrong methods without an explicit
+    scientific reason.
+13. **Decision / tolerance compatibility.** For every decision-bearing continuous quantity, check
+    whether tolerance > |truth − decision threshold|. If so, an accepted estimate can imply the wrong
+    business decision. This must be designed and adjudicated before freeze.
+14. **Recognition and execution.** Giving the key insight for free must not hand over the estimator.
+    Execution errors must also produce differences large enough for the data and verifier to
+    distinguish.
+
 ## 6. Predictions to check when baselines are run (pre-registered here, 2026-09-13)
 
 | Task | Expected dominant failure | Rationale |
