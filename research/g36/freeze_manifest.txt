@@ -1,0 +1,50 @@
+# G36 freeze manifest
+# generated 2026-09-21T02:11:22Z
+
+## files
+153a29d212662e3469de9db7b77dd31022ffefc2566beced5164ba6d21164420  candidates/g36-tou-capacity-gate/README.md
+11d1851f87a5f2e0a56eaf0d5cc2425f226b840ee4bb06d73d9c80bd195d9e91  candidates/g36-tou-capacity-gate/environment/Dockerfile
+22a10e096ffc8a48ec6526557342e4a7879efb95f8506ae46d756ea7c53c9d40  candidates/g36-tou-capacity-gate/environment/build/world.py
+ff260aea73dd33a3c846a515c1be831fedb4dfb6c11038f1e75656486ff0594d  candidates/g36-tou-capacity-gate/environment/workspace/README.md
+82bc27f6ffc47776082d33bec3fca2877fe0ce9b942b525d76f47143d6983e8b  candidates/g36-tou-capacity-gate/environment/workspace/capacity_forecast/__init__.py
+dc0f82bf1f0fa873bc299300a09b074276a75918f7fd2d2b6a925667d5733219  candidates/g36-tou-capacity-gate/environment/workspace/capacity_forecast/__main__.py
+c625231eb0b6b8ae108dbab97d74f5716b2f5731d4f2df37008ff1334d6f9f10  candidates/g36-tou-capacity-gate/environment/workspace/capacity_forecast/cli.py
+06bc38479dd2341ac361baa748069ab8d52e8b0bdb154a6cfcaf5e3f03e80828  candidates/g36-tou-capacity-gate/environment/workspace/capacity_forecast/incumbent.py
+f352e0ec6f31c192d797fd926a3a860c1acb046e0d044013aa7f7d38fb35b2b0  candidates/g36-tou-capacity-gate/environment/workspace/capacity_forecast/load.py
+d10c60d9eeb946dcf736870b53367a213781063cfae79c73b7e1a99851f27256  candidates/g36-tou-capacity-gate/environment/workspace/docs/extract_dictionary.md
+188f7037b4574e426a0738fe910866935baed1a461e7b26aea0ffc53c3399246  candidates/g36-tou-capacity-gate/environment/workspace/docs/load_research_note.md
+35f496726066df9a3952deaee02ca0e85343edb46a0240e792e467cef4ec01c5  candidates/g36-tou-capacity-gate/environment/workspace/docs/outputs/analysis_contract.md
+2043cb1f8b626ec2e0891f994bf046e731d55382b9329e966f9ac2172b066659  candidates/g36-tou-capacity-gate/environment/workspace/docs/pilot_design_note.md
+045c6e154daa88bd14ebc32c7958481d5be61b74db2b824bcddc6060ee53490f  candidates/g36-tou-capacity-gate/environment/workspace/docs/tou_programme_note.md
+4a320eb3a44832ec7cb89f9da2cbeace8be274ccac33ba855bebd4a829a8ceb4  candidates/g36-tou-capacity-gate/environment/workspace/reports/fy27_capacity_memo.md
+fb213dbbc4965b14cd94b9799b88db4cb25af2f11786d990b36c26192a8a3a87  candidates/g36-tou-capacity-gate/environment/workspace/reports/peak_forecast_backtest.md
+90901c12b55c622914bd35e4545ccaa3adca80cea337819ab5be58f36fe5d92a  candidates/g36-tou-capacity-gate/instruction.md
+82bc27f6ffc47776082d33bec3fca2877fe0ce9b942b525d76f47143d6983e8b  candidates/g36-tou-capacity-gate/solution/capacity_forecast/__init__.py
+dc0f82bf1f0fa873bc299300a09b074276a75918f7fd2d2b6a925667d5733219  candidates/g36-tou-capacity-gate/solution/capacity_forecast/__main__.py
+5eab241ed295aa16beaf2a7d47c2b1651bc3c6d39afe89e77a0981e4809b0cc4  candidates/g36-tou-capacity-gate/solution/capacity_forecast/cli.py
+20567fe9d6a10eb3c76ef0d8aa7028a383456434d1846335f7ba1e63332b12c0  candidates/g36-tou-capacity-gate/solution/capacity_forecast/estimators.py
+f352e0ec6f31c192d797fd926a3a860c1acb046e0d044013aa7f7d38fb35b2b0  candidates/g36-tou-capacity-gate/solution/capacity_forecast/load.py
+5446b0d3803cfff9f4972a6414f6249047948dfd7c00051795e7fee37438aff8  candidates/g36-tou-capacity-gate/solution/solve.sh
+f14f84b19c11b00a44266e1fbaa89dce1043a98f0e90d698d24ab85948dea635  candidates/g36-tou-capacity-gate/task.toml
+6d3a80f17701d6a4ea2bf5ff4c8cad5d647709151ffbe4e0f6b5003aae7f645d  candidates/g36-tou-capacity-gate/tests/runtime_manifest.sha256
+76d01e86bb2691f43c352d559012cdcac21c956a9887e102e3f0439fcc898873  candidates/g36-tou-capacity-gate/tests/scenarios.py
+0b816ff52572bd36bf211a5b08d6f51f08c153202aeb2058e9b52a5bbc956367  candidates/g36-tou-capacity-gate/tests/test.sh
+f2564ef5f1ffcf2a62672140214999dfdf7aada5048f336e40e7219a23442f13  candidates/g36-tou-capacity-gate/tests/test_capacity.py
+f631c04d2c48c52b84d0d0549c99ff3859c98df65b3101406327ecc7d53fbf12  candidates/g36-tou-capacity-gate/tests/wheels/iniconfig-2.3.0-py3-none-any.whl
+d7193f7c8e4e93f444fde0262bf90af30e16fa0ad0ad44cb553c87339b23cd1c  candidates/g36-tou-capacity-gate/tests/wheels/packaging-26.3-py3-none-any.whl
+e920276dd6813095e9377c0bc5566d94c932c33b27a3e3945d8389c374dd4746  candidates/g36-tou-capacity-gate/tests/wheels/pluggy-1.6.0-py3-none-any.whl
+2363c69b61c4a97c838da3b130dcd6468f4848992b21a82f2a63ec34377137d9  candidates/g36-tou-capacity-gate/tests/wheels/pygments-2.21.0-py3-none-any.whl
+539c70ba6fcead8e78eebbf1115e8b589e7565830d7d006a8723f19ac8a0afb7  candidates/g36-tou-capacity-gate/tests/wheels/pytest-8.4.1-py3-none-any.whl
+e82fd1d69be2f92385bc33540063e5ad7b17b36de67764c84f3ceb9815a895e9  candidates/g36-tou-capacity-gate/tests/wheels/pytest_json_ctrf-0.3.5-py3-none-any.whl
+bac688aaeaa13c4f22f1f2220b23c63d19eaa86f3d682eddf26793298815630d  candidates/g36-tou-capacity-gate/tests/wheels/requirements.txt
+22a10e096ffc8a48ec6526557342e4a7879efb95f8506ae46d756ea7c53c9d40  candidates/g36-tou-capacity-gate/tests/world.py
+
+## generator copies (must match)
+22a10e096ffc8a48 candidates/g36-tou-capacity-gate/tests/world.py
+22a10e096ffc8a48 candidates/g36-tou-capacity-gate/environment/build/world.py
+
+## verifier checksum
+776c3e59326665c1
+
+## frozen checksum
+85197582fa38141d
