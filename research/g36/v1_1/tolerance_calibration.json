@@ -1,0 +1,58 @@
+{
+ "lower": 0.923769316208275,
+ "upper": 0.9919527853129392,
+ "hardest": "segment_unweighted_mean",
+ "multiplier": 1.0,
+ "fixtures": {
+  "visible": {
+   "truth": 0.07637165291114563,
+   "se": 0.00565995633373372,
+   "spread": 0.0016993536224055583,
+   "bias": 0.0018089582019982185,
+   "worst_valid": 0.42407980903132775,
+   "tol": 0.00565995633373372,
+   "closest_wrong": "segment_unweighted_mean",
+   "closest_wrong_ratio": 0.5750899068599757
+  },
+  "hidden_a": {
+   "truth": 0.053401867346864904,
+   "se": 0.00822148013559501,
+   "spread": 0.005777682664160275,
+   "bias": -0.00041068601311713276,
+   "worst_valid": 0.38993491153495635,
+   "tol": 0.00822148013559501,
+   "closest_wrong": "segment_unweighted_mean",
+   "closest_wrong_ratio": 0.31321500458969037
+  },
+  "hidden_b": {
+   "truth": 0.17136852840153277,
+   "se": 0.005184976298865753,
+   "spread": 0.005638634322400055,
+   "bias": 0.0017124453112946914,
+   "worst_valid": 0.898829394493047,
+   "tol": 0.005184976298865753,
+   "closest_wrong": "segment_unweighted_mean",
+   "closest_wrong_ratio": 0.8178306319192081
+  },
+  "hidden_c": {
+   "truth": 0.053119098624582126,
+   "se": 0.01963067223276835,
+   "spread": 0.008026815648180488,
+   "bias": 0.014251870216285767,
+   "worst_valid": 0.923769316208275,
+   "tol": 0.01963067223276835,
+   "closest_wrong": "household_weighted",
+   "closest_wrong_ratio": 0.059171813120505595
+  },
+  "hidden_d": {
+   "truth": 0.1119853131045697,
+   "se": 0.0049206321629461855,
+   "spread": 0.005551286970218616,
+   "bias": -0.001226935141508595,
+   "worst_valid": 0.8287575895541589,
+   "tol": 0.0049206321629461855,
+   "closest_wrong": "segment_unweighted_mean",
+   "closest_wrong_ratio": 0.9919527853129392
+  }
+ }
+}

@@ -1,0 +1,298 @@
+{
+ "igqa": {
+  "visible": {
+   "A": 0.07637165291114563,
+   "B": 0.07637165291114567
+  },
+  "hidden_a": {
+   "A": 0.053401867346864904,
+   "B": 0.053401867346864945
+  },
+  "hidden_b": {
+   "A": 0.17136852840153277,
+   "B": 0.17136852840153285
+  },
+  "hidden_c": {
+   "A": 0.053119098624582126,
+   "B": 0.053119098624582216
+  },
+  "hidden_d": {
+   "A": 0.1119853131045697,
+   "B": 0.11198531310456966
+  }
+ },
+ "k9": [
+  {
+   "fixture": "visible",
+   "draw": 0,
+   "truth": 0.07637165291114563,
+   "F1_stratified_A": 0.07707257248987552,
+   "F1_stratified_B": 0.07707257248987558,
+   "F2_joint_nonlinear_A": 0.07869733473727494,
+   "F2_joint_nonlinear_B": 0.07869733473727508,
+   "F3_hierarchical_A": 0.07877192611228108,
+   "F3_hierarchical_B": 0.07877192611228123
+  },
+  {
+   "fixture": "visible",
+   "draw": 1,
+   "truth": 0.07090721635576995,
+   "F1_stratified_A": 0.07325395744562652,
+   "F1_stratified_B": 0.07325395744562659,
+   "F2_joint_nonlinear_A": 0.0697719432714028,
+   "F2_joint_nonlinear_B": 0.06977194327140283,
+   "F3_hierarchical_A": 0.07142320085327176,
+   "F3_hierarchical_B": 0.07142320085327175
+  },
+  {
+   "fixture": "visible",
+   "draw": 2,
+   "truth": 0.07245112740731974,
+   "F1_stratified_A": 0.07236221409548436,
+   "F1_stratified_B": 0.07236221409548445,
+   "F2_joint_nonlinear_A": 0.07410164947562724,
+   "F2_joint_nonlinear_B": 0.07410164947562721,
+   "F3_hierarchical_A": 0.07100614485336885,
+   "F3_hierarchical_B": 0.07100614485336892
+  },
+  {
+   "fixture": "visible",
+   "draw": 3,
+   "truth": 0.07252278997170276,
+   "F1_stratified_A": 0.07665443142016132,
+   "F1_stratified_B": 0.0766544314201612,
+   "F2_joint_nonlinear_A": 0.08296522304781866,
+   "F2_joint_nonlinear_B": 0.08296522304781866,
+   "F3_hierarchical_A": 0.07932784316815952,
+   "F3_hierarchical_B": 0.07932784316815952
+  },
+  {
+   "fixture": "hidden_a",
+   "draw": 0,
+   "truth": 0.053401867346864904,
+   "F1_stratified_A": 0.05019602521750526,
+   "F1_stratified_B": 0.05019602521750531,
+   "F2_joint_nonlinear_A": 0.05597370788166554,
+   "F2_joint_nonlinear_B": 0.055973707881665516,
+   "F3_hierarchical_A": 0.052803810902072514,
+   "F3_hierarchical_B": 0.05280381090207259
+  },
+  {
+   "fixture": "hidden_a",
+   "draw": 1,
+   "truth": 0.052631085600662736,
+   "F1_stratified_A": 0.06295532894556449,
+   "F1_stratified_B": 0.06295532894556452,
+   "F2_joint_nonlinear_A": 0.05475290134570695,
+   "F2_joint_nonlinear_B": 0.05475290134570684,
+   "F3_hierarchical_A": 0.06395187226248236,
+   "F3_hierarchical_B": 0.06395187226248233
+  },
+  {
+   "fixture": "hidden_a",
+   "draw": 2,
+   "truth": 0.05386928110538858,
+   "F1_stratified_A": 0.06028550269332006,
+   "F1_stratified_B": 0.06028550269332012,
+   "F2_joint_nonlinear_A": 0.06065873150317542,
+   "F2_joint_nonlinear_B": 0.06065873150317535,
+   "F3_hierarchical_A": 0.06002108626052371,
+   "F3_hierarchical_B": 0.060021086260523625
+  },
+  {
+   "fixture": "hidden_a",
+   "draw": 3,
+   "truth": 0.05355977844759029,
+   "F1_stratified_A": 0.05050700927685654,
+   "F1_stratified_B": 0.05050700927685664,
+   "F2_joint_nonlinear_A": 0.05127877271817428,
+   "F2_joint_nonlinear_B": 0.051278772718174194,
+   "F3_hierarchical_A": 0.05444448542229895,
+   "F3_hierarchical_B": 0.054444485422298974
+  },
+  {
+   "fixture": "hidden_b",
+   "draw": 0,
+   "truth": 0.17136852840153277,
+   "F1_stratified_A": 0.17039030318630302,
+   "F1_stratified_B": 0.17039030318630297,
+   "F2_joint_nonlinear_A": 0.1728236804434763,
+   "F2_joint_nonlinear_B": 0.1728236804434762,
+   "F3_hierarchical_A": 0.17602893750870308,
+   "F3_hierarchical_B": 0.1760289375087031
+  },
+  {
+   "fixture": "hidden_b",
+   "draw": 1,
+   "truth": 0.17218106848886683,
+   "F1_stratified_A": 0.1707858639546859,
+   "F1_stratified_B": 0.17078586395468578,
+   "F2_joint_nonlinear_A": 0.1726206708719204,
+   "F2_joint_nonlinear_B": 0.1726206708719205,
+   "F3_hierarchical_A": 0.17553654836771926,
+   "F3_hierarchical_B": 0.1755365483677192
+  },
+  {
+   "fixture": "hidden_b",
+   "draw": 2,
+   "truth": 0.17276967851099923,
+   "F1_stratified_A": 0.17383825988416285,
+   "F1_stratified_B": 0.17383825988416277,
+   "F2_joint_nonlinear_A": 0.17407076154265558,
+   "F2_joint_nonlinear_B": 0.1740707615426556,
+   "F3_hierarchical_A": 0.17930883880283696,
+   "F3_hierarchical_B": 0.17930883880283677
+  },
+  {
+   "fixture": "hidden_b",
+   "draw": 3,
+   "truth": 0.17130018212800321,
+   "F1_stratified_A": 0.17137034528866602,
+   "F1_stratified_B": 0.17137034528866607,
+   "F2_joint_nonlinear_A": 0.17125243910730736,
+   "F2_joint_nonlinear_B": 0.1712524391073074,
+   "F3_hierarchical_A": 0.1759376236014242,
+   "F3_hierarchical_B": 0.1759376236014242
+  },
+  {
+   "fixture": "hidden_c",
+   "draw": 0,
+   "truth": 0.053119098624582126,
+   "F1_stratified_A": 0.07125331128975532,
+   "F1_stratified_B": 0.0712533112897553,
+   "F2_joint_nonlinear_A": 0.06763309959127353,
+   "F2_joint_nonlinear_B": 0.06763309959127341,
+   "F3_hierarchical_A": 0.06322649564157483,
+   "F3_hierarchical_B": 0.06322649564157472
+  },
+  {
+   "fixture": "hidden_c",
+   "draw": 1,
+   "truth": 0.03256788667025635,
+   "F1_stratified_A": 0.05216040662054543,
+   "F1_stratified_B": 0.05216040662054554,
+   "F2_joint_nonlinear_A": 0.040643546735958894,
+   "F2_joint_nonlinear_B": 0.04064354673595874,
+   "F3_hierarchical_A": 0.04022124288522747,
+   "F3_hierarchical_B": 0.04022124288522755
+  },
+  {
+   "fixture": "hidden_c",
+   "draw": 2,
+   "truth": 0.06650518228155437,
+   "F1_stratified_A": 0.09037316672344509,
+   "F1_stratified_B": 0.09037316672344513,
+   "F2_joint_nonlinear_A": 0.08068221683343647,
+   "F2_joint_nonlinear_B": 0.0806822168334364,
+   "F3_hierarchical_A": 0.07370307866000783,
+   "F3_hierarchical_B": 0.07370307866000779
+  },
+  {
+   "fixture": "hidden_c",
+   "draw": 3,
+   "truth": 0.06343202462584815,
+   "F1_stratified_A": 0.06030728180213426,
+   "F1_stratified_B": 0.06030728180213417,
+   "F2_joint_nonlinear_A": 0.05831369020771857,
+   "F2_joint_nonlinear_B": 0.058313690207718816,
+   "F3_hierarchical_A": 0.05816472985663899,
+   "F3_hierarchical_B": 0.05816472985663886
+  },
+  {
+   "fixture": "hidden_d",
+   "draw": 0,
+   "truth": 0.1119853131045697,
+   "F1_stratified_A": 0.10790730185412375,
+   "F1_stratified_B": 0.10790730185412375,
+   "F2_joint_nonlinear_A": 0.11345858882434237,
+   "F2_joint_nonlinear_B": 0.11345858882434248,
+   "F3_hierarchical_A": 0.1109092432107172,
+   "F3_hierarchical_B": 0.11090924321071727
+  },
+  {
+   "fixture": "hidden_d",
+   "draw": 1,
+   "truth": 0.11170041645423115,
+   "F1_stratified_A": 0.11097593770189702,
+   "F1_stratified_B": 0.11097593770189704,
+   "F2_joint_nonlinear_A": 0.10829714542724167,
+   "F2_joint_nonlinear_B": 0.10829714542724167,
+   "F3_hierarchical_A": 0.1139519990374821,
+   "F3_hierarchical_B": 0.11395199903748203
+  },
+  {
+   "fixture": "hidden_d",
+   "draw": 2,
+   "truth": 0.12154331228781674,
+   "F1_stratified_A": 0.12119237770970194,
+   "F1_stratified_B": 0.12119237770970179,
+   "F2_joint_nonlinear_A": 0.11993558918841486,
+   "F2_joint_nonlinear_B": 0.11993558918841485,
+   "F3_hierarchical_A": 0.12030325386008649,
+   "F3_hierarchical_B": 0.12030325386008643
+  },
+  {
+   "fixture": "hidden_d",
+   "draw": 3,
+   "truth": 0.12158255262400205,
+   "F1_stratified_A": 0.12370115062984507,
+   "F1_stratified_B": 0.12370115062984513,
+   "F2_joint_nonlinear_A": 0.11467997016118563,
+   "F2_joint_nonlinear_B": 0.11467997016118558,
+   "F3_hierarchical_A": 0.1274967446293511,
+   "F3_hierarchical_B": 0.1274967446293511
+  }
+ ],
+ "panel": {
+  "visible": {
+   "truth": 0.07637165291114563,
+   "household_weighted": 0.05861595595862021,
+   "segment_unweighted_mean": 0.07311666915034717,
+   "zero": 0.0,
+   "sign_flipped": -0.07707257248987558,
+   "at_pilot_mean_cdd": 0.09058244729191255,
+   "enrolled_mix_weights": 0.10698899997593984,
+   "VARIANT_season_average": 0.07663467401165247
+  },
+  "hidden_a": {
+   "truth": 0.053401867346864904,
+   "household_weighted": 0.03999594348622165,
+   "segment_unweighted_mean": 0.050826776408460464,
+   "zero": 0.0,
+   "sign_flipped": -0.05019602521750531,
+   "at_pilot_mean_cdd": 0.06434096852928042,
+   "enrolled_mix_weights": 0.08052535761097375,
+   "VARIANT_season_average": 0.04955398352512452
+  },
+  "hidden_b": {
+   "truth": 0.17136852840153277,
+   "household_weighted": 0.13865532031969138,
+   "segment_unweighted_mean": 0.16712809595854528,
+   "zero": 0.0,
+   "sign_flipped": -0.17039030318630297,
+   "at_pilot_mean_cdd": 0.17937363353873217,
+   "enrolled_mix_weights": 0.22861063244268578,
+   "VARIANT_season_average": 0.16969574830919643
+  },
+  "hidden_c": {
+   "truth": 0.053119098624582126,
+   "household_weighted": 0.05428068109336939,
+   "segment_unweighted_mean": 0.06791994295183132,
+   "zero": 0.0,
+   "sign_flipped": -0.0712533112897553,
+   "at_pilot_mean_cdd": 0.23420159904002796,
+   "enrolled_mix_weights": 0.10132154087921544,
+   "VARIANT_season_average": 0.07708597865396061
+  },
+  "hidden_d": {
+   "truth": 0.1119853131045697,
+   "household_weighted": 0.08556435245303988,
+   "segment_unweighted_mean": 0.1071042783250348,
+   "zero": 0.0,
+   "sign_flipped": -0.10790730185412375,
+   "at_pilot_mean_cdd": 0.14271114958184247,
+   "enrolled_mix_weights": 0.15282100873875823,
+   "VARIANT_season_average": 0.10617088871168257
+  }
+ }
+}

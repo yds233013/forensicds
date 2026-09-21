@@ -1,0 +1,47 @@
+{
+ "visible": {
+  "target_peak_kw": 0.019352243675523066,
+  "estate_tou_response_at_target_cdd": 0.00565995633373372,
+  "_truth": {
+   "target_peak_kw": 3.009957,
+   "estate_tou_response_at_target_cdd": 0.076372
+  },
+  "_decision": "defer"
+ },
+ "hidden_a": {
+  "target_peak_kw": 0.027534966297492205,
+  "estate_tou_response_at_target_cdd": 0.00822148013559501,
+  "_truth": {
+   "target_peak_kw": 3.120893,
+   "estate_tou_response_at_target_cdd": 0.053402
+  },
+  "_decision": "procure"
+ },
+ "hidden_b": {
+  "target_peak_kw": 0.01782090470382687,
+  "estate_tou_response_at_target_cdd": 0.005184976298865753,
+  "_truth": {
+   "target_peak_kw": 2.727382,
+   "estate_tou_response_at_target_cdd": 0.171369
+  },
+  "_decision": "defer"
+ },
+ "hidden_c": {
+  "target_peak_kw": 0.039859375257069854,
+  "estate_tou_response_at_target_cdd": 0.01963067223276835,
+  "_truth": {
+   "target_peak_kw": 3.136587,
+   "estate_tou_response_at_target_cdd": 0.053119
+  },
+  "_decision": "procure"
+ },
+ "hidden_d": {
+  "target_peak_kw": 0.016938885515415714,
+  "estate_tou_response_at_target_cdd": 0.0049206321629461855,
+  "_truth": {
+   "target_peak_kw": 3.004656,
+   "estate_tou_response_at_target_cdd": 0.111985
+  },
+  "_decision": "defer"
+ }
+}
