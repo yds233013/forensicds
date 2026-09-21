@@ -1,3 +1,9 @@
+> **FINAL STATUS (after external decision O2): ABANDONED — DEVELOPMENT-ONLY.** The response was made
+> non-gradable (O2). The section-9 counterexample search then found a wrong modelling route (CE06,
+> segment-unweighted response inside the forecast) that passes the forecast-only verifier on every
+> graded extract. Per the authorisation, no new check was added. See `response_grading_decision.md`,
+> `counterexample_search.md`. The halted-calibration record below is preserved unchanged.
+
 # G36-v1.1 — verifier-only adjudicated revision: HALTED AT TOLERANCE CALIBRATION (NOT FROZEN)
 
 **Status: STOPPED WITHOUT FREEZE. Returned for external adjudication.**

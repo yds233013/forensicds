@@ -1,12 +1,12 @@
-# G36 accounting — kept separate
+# G36 accounting — kept permanently separate
 
 | ledger | status |
 |---|---|
-| **A. Original G36** | 0/3, rewards unchanged, flagged contaminated by verifier defect F8. **Aggregate: NO.** |
-| **B. v1.1 adjudicated replay** | **NONE.** v1.1 was not frozen, so no replay was performed. |
-| **C. Fresh v1.1 baseline** | **NOT RUN.** |
+| **ORIGINAL G36** (`85197582fa38141d`) | **0/3, pass@3 = 0**, rewards unchanged, **CONTAMINATED BY F8**, not aggregate-eligible |
+| **G36-v1.1 ADJUDICATED REPLAY** | **NONE.** v1.1 was abandoned (development-only) before freezing, so there is no replay |
+| **FRESH v1.1 BASELINE** | **NOT RUN** |
 
-Aggregate eligibility of any G36 result is an external decision.
+Aggregate eligibility is left to external review. Nothing here is a fresh baseline.
 
-Model spend this phase: $0.00 (no Gemini calls, no target-model calls, no Harbor check).
-Session total remains $1.92 of the $3.00 cap.
+Model spend in the v1.1 phases: $0.00 (no Gemini, no target-model calls, no Harbor check). Session
+total is $1.92 of the $3.00 cap.

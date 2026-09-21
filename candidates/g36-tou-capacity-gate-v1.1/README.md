@@ -1,6 +1,6 @@
 # G36-v1.1 - adjudicated verifier-only revision of G36
 
-> **STATUS: UNFROZEN — HALTED AT RESPONSE TOLERANCE CALIBRATION (degenerate window). Not runnable: response SE_REF/multiplier intentionally unset. See research/g36/v1_1/.**
+> **STATUS: ABANDONED — DEVELOPMENT-ONLY.** Halted at response tolerance calibration (degenerate window). After decision O2 (response report-only), the forecast-only verifier failed the counterexample search (CE06). Not runnable: response SE_REF/multiplier intentionally unset. See research/g36/v1_1/.
 
 v1.1 corrects the graded definition of `estate_tou_response_at_target_cdd` to the load-weighted estate
 reduction (L0 - L1) / L0 at the target mean CDD. Every agent-visible artefact is byte-identical to the

@@ -1,0 +1,2668 @@
+{
+ "V00_plugin_transport": {
+  "kind": "valid",
+  "reward": 1,
+  "fixtures": {
+   "visible": {
+    "forecast": 3.0046581587770125,
+    "truth": 3.009956872685239,
+    "err": -0.00529871390822656,
+    "err_tol": 0.1095214591846021,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.07707257248987558,
+    "failed": []
+   },
+   "hidden_a": {
+    "forecast": 3.1316360988267755,
+    "truth": 3.120893092030755,
+    "err": 0.01074300679602036,
+    "err_tol": 0.15606346106090344,
+    "decision": "procure",
+    "truth_decision": "procure",
+    "response": 0.05019602521750531,
+    "failed": []
+   },
+   "hidden_b": {
+    "forecast": 2.73114078794237,
+    "truth": 2.7273819270943225,
+    "err": 0.0037588608480474406,
+    "err_tol": 0.08436971977952719,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.17039030318630297,
+    "failed": []
+   },
+   "hidden_c": {
+    "forecast": 3.1178653965246927,
+    "truth": 3.13658654841409,
+    "err": -0.01872115188939727,
+    "err_tol": 0.18787198284968074,
+    "decision": "procure",
+    "truth_decision": "procure",
+    "response": 0.0712533112897553,
+    "failed": []
+   },
+   "hidden_d": {
+    "forecast": 3.020024483325442,
+    "truth": 3.004656316143759,
+    "err": 0.015368167181683212,
+    "err_tol": 0.36290848294506217,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.10790730185412375,
+    "failed": []
+   }
+  },
+  "max_err_tol": 0.36290848294506217,
+  "min_err_tol": 0.08436971977952719
+ },
+ "V01_explicit_loop": {
+  "kind": "valid",
+  "reward": 1,
+  "fixtures": {
+   "visible": {
+    "forecast": 3.0046581587770125,
+    "truth": 3.009956872685239,
+    "err": -0.00529871390822656,
+    "err_tol": 0.1095214591846021,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.07707257248987558,
+    "failed": []
+   },
+   "hidden_a": {
+    "forecast": 3.131636098826776,
+    "truth": 3.120893092030755,
+    "err": 0.010743006796020804,
+    "err_tol": 0.1560634610609099,
+    "decision": "procure",
+    "truth_decision": "procure",
+    "response": 0.05019602521750531,
+    "failed": []
+   },
+   "hidden_b": {
+    "forecast": 2.73114078794237,
+    "truth": 2.7273819270943225,
+    "err": 0.0037588608480474406,
+    "err_tol": 0.08436971977952719,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.17039030318630297,
+    "failed": []
+   },
+   "hidden_c": {
+    "forecast": 3.1178653965246923,
+    "truth": 3.13658654841409,
+    "err": -0.018721151889397714,
+    "err_tol": 0.1878719828496852,
+    "decision": "procure",
+    "truth_decision": "procure",
+    "response": 0.0712533112897553,
+    "failed": []
+   },
+   "hidden_d": {
+    "forecast": 3.020024483325442,
+    "truth": 3.004656316143759,
+    "err": 0.015368167181683212,
+    "err_tol": 0.36290848294506217,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.10790730185412375,
+    "failed": []
+   }
+  },
+  "max_err_tol": 0.36290848294506217,
+  "min_err_tol": 0.08436971977952719
+ },
+ "M03_historical_model": {
+  "kind": "wrong",
+  "reward": 0,
+  "fixtures": {
+   "visible": {
+    "forecast": 3.2540296610779706,
+    "truth": 3.009956872685239,
+    "err": 0.2440727883927316,
+    "err_tol": 5.044848315083559,
+    "decision": "procure",
+    "truth_decision": "defer",
+    "response": 0.0,
+    "failed": [
+     "forecast",
+     "decision"
+    ]
+   },
+   "hidden_a": {
+    "forecast": 3.294912119724328,
+    "truth": 3.120893092030755,
+    "err": 0.1740190276935727,
+    "err_tol": 2.527971197260396,
+    "decision": "procure",
+    "truth_decision": "procure",
+    "response": 0.0,
+    "failed": [
+     "forecast"
+    ]
+   },
+   "hidden_b": {
+    "forecast": 3.28932530741685,
+    "truth": 2.7273819270943225,
+    "err": 0.5619433803225276,
+    "err_tol": 12.613131330573149,
+    "decision": "procure",
+    "truth_decision": "defer",
+    "response": 0.0,
+    "failed": [
+     "forecast",
+     "decision"
+    ]
+   },
+   "hidden_c": {
+    "forecast": 3.3782837018527347,
+    "truth": 3.13658654841409,
+    "err": 0.24169715343864473,
+    "err_tol": 2.425498373919963,
+    "decision": "procure",
+    "truth_decision": "procure",
+    "response": 0.0,
+    "failed": [
+     "forecast"
+    ]
+   },
+   "hidden_d": {
+    "forecast": 3.378749299150192,
+    "truth": 3.004656316143759,
+    "err": 0.37409298300643323,
+    "err_tol": 8.833943263258295,
+    "decision": "procure",
+    "truth_decision": "defer",
+    "response": 0.0,
+    "failed": [
+     "forecast",
+     "decision"
+    ]
+   }
+  },
+  "max_err_tol": 12.613131330573149,
+  "min_err_tol": 2.425498373919963
+ },
+ "M05_historical_mean": {
+  "kind": "wrong",
+  "reward": 0,
+  "fixtures": {
+   "visible": {
+    "forecast": 3.1073589385185176,
+    "truth": 3.009956872685239,
+    "err": 0.0974020658332786,
+    "err_tol": 2.0132463390962205,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.07707257248987558,
+    "failed": [
+     "forecast",
+     "reconcile"
+    ]
+   },
+   "hidden_a": {
+    "forecast": 3.0774435287698405,
+    "truth": 3.120893092030755,
+    "err": -0.04344956326091465,
+    "err_tol": 0.6311910020009414,
+    "decision": "procure",
+    "truth_decision": "procure",
+    "response": 0.05019602521750531,
+    "failed": []
+   },
+   "hidden_b": {
+    "forecast": 3.0852413519097226,
+    "truth": 2.7273819270943225,
+    "err": 0.3578594248154001,
+    "err_tol": 8.032353580692336,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.17039030318630297,
+    "failed": [
+     "forecast"
+    ]
+   },
+   "hidden_c": {
+    "forecast": 3.1482232819923364,
+    "truth": 3.13658654841409,
+    "err": 0.01163673357824635,
+    "err_tol": 0.116777868378749,
+    "decision": "procure",
+    "truth_decision": "procure",
+    "response": 0.0712533112897553,
+    "failed": []
+   },
+   "hidden_d": {
+    "forecast": 3.108693068100357,
+    "truth": 3.004656316143759,
+    "err": 0.10403675195659812,
+    "err_tol": 2.4567548866920585,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.10790730185412375,
+    "failed": [
+     "forecast"
+    ]
+   }
+  },
+  "max_err_tol": 8.032353580692336,
+  "min_err_tol": 0.116777868378749
+ },
+ "M06_pilot_mean": {
+  "kind": "wrong",
+  "reward": 0,
+  "fixtures": {
+   "visible": {
+    "forecast": 3.1522268935837245,
+    "truth": 3.009956872685239,
+    "err": 0.1422700208984855,
+    "err_tol": 2.9406419287583354,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.07707257248987558,
+    "failed": [
+     "forecast",
+     "reconcile"
+    ]
+   },
+   "hidden_a": {
+    "forecast": 3.549712282390694,
+    "truth": 3.120893092030755,
+    "err": 0.42881919035993876,
+    "err_tol": 6.229448448426693,
+    "decision": "procure",
+    "truth_decision": "procure",
+    "response": 0.05019602521750531,
+    "failed": [
+     "forecast"
+    ]
+   },
+   "hidden_b": {
+    "forecast": 2.7505744233473983,
+    "truth": 2.7273819270943225,
+    "err": 0.023192496253075845,
+    "err_tol": 0.5205684618190067,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.17039030318630297,
+    "failed": []
+   },
+   "hidden_c": {
+    "forecast": 2.6447574046434497,
+    "truth": 3.13658654841409,
+    "err": -0.49182914377064035,
+    "err_tol": 4.935642689581628,
+    "decision": "procure",
+    "truth_decision": "procure",
+    "response": 0.0712533112897553,
+    "failed": [
+     "forecast"
+    ]
+   },
+   "hidden_d": {
+    "forecast": 3.049946296296296,
+    "truth": 3.004656316143759,
+    "err": 0.04528998015253727,
+    "err_tol": 1.069491097764665,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.10790730185412375,
+    "failed": [
+     "forecast"
+    ]
+   }
+  },
+  "max_err_tol": 6.229448448426693,
+  "min_err_tol": 0.5205684618190067
+ },
+ "M07_pilot_effect_flat": {
+  "kind": "wrong",
+  "reward": 0,
+  "fixtures": {
+   "visible": {
+    "forecast": 2.814209671913122,
+    "truth": 3.009956872685239,
+    "err": -0.19574720077211705,
+    "err_tol": 4.045985390262151,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.07707257248987558,
+    "failed": [
+     "forecast",
+     "reconcile"
+    ]
+   },
+   "hidden_a": {
+    "forecast": 2.9874749546360366,
+    "truth": 3.120893092030755,
+    "err": -0.13341813739471853,
+    "err_tol": 1.9381628147002672,
+    "decision": "defer",
+    "truth_decision": "procure",
+    "response": 0.05019602521750531,
+    "failed": [
+     "forecast",
+     "decision"
+    ]
+   },
+   "hidden_b": {
+    "forecast": 2.45829668143982,
+    "truth": 2.7273819270943225,
+    "err": -0.26908524565450254,
+    "err_tol": 6.039767815419031,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.17039030318630297,
+    "failed": [
+     "forecast"
+    ]
+   },
+   "hidden_c": {
+    "forecast": 2.395058788976884,
+    "truth": 3.13658654841409,
+    "err": -0.7415277594372061,
+    "err_tol": 7.441437969554028,
+    "decision": "defer",
+    "truth_decision": "procure",
+    "response": 0.0712533112897553,
+    "failed": [
+     "forecast",
+     "decision"
+    ]
+   },
+   "hidden_d": {
+    "forecast": 2.8168177694819034,
+    "truth": 3.004656316143759,
+    "err": -0.1878385466618555,
+    "err_tol": 4.435675458353068,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.10790730185412375,
+    "failed": [
+     "forecast"
+    ]
+   }
+  },
+  "max_err_tol": 7.441437969554028,
+  "min_err_tol": 1.9381628147002672
+ },
+ "M08_selection_fixed_only": {
+  "kind": "wrong",
+  "reward": 0,
+  "fixtures": {
+   "visible": {
+    "forecast": 2.9592716908170553,
+    "truth": 3.009956872685239,
+    "err": -0.050685181868183715,
+    "err_tol": 1.0476344209907218,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.09058244729191255,
+    "failed": [
+     "forecast"
+    ]
+   },
+   "hidden_a": {
+    "forecast": 3.0829142827224008,
+    "truth": 3.120893092030755,
+    "err": -0.0379788093083544,
+    "err_tol": 0.5517174604999301,
+    "decision": "procure",
+    "truth_decision": "procure",
+    "response": 0.06434096852928042,
+    "failed": []
+   },
+   "hidden_b": {
+    "forecast": 2.699307075134582,
+    "truth": 2.7273819270943225,
+    "err": -0.028074851959740688,
+    "err_tol": 0.6301556478009682,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.17937363353873217,
+    "failed": []
+   },
+   "hidden_c": {
+    "forecast": 2.5870842568679597,
+    "truth": 3.13658654841409,
+    "err": -0.5495022915461303,
+    "err_tol": 5.5144088196668415,
+    "decision": "defer",
+    "truth_decision": "procure",
+    "response": 0.23420159904002796,
+    "failed": [
+     "forecast",
+     "decision"
+    ]
+   },
+   "hidden_d": {
+    "forecast": 2.8965641025196236,
+    "truth": 3.004656316143759,
+    "err": -0.10809221362413535,
+    "err_tol": 2.552521767934861,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.14271114958184247,
+    "failed": [
+     "forecast"
+    ]
+   }
+  },
+  "max_err_tol": 5.5144088196668415,
+  "min_err_tol": 0.5517174604999301
+ },
+ "M09_temperature_fixed_only": {
+  "kind": "wrong",
+  "reward": 0,
+  "fixtures": {
+   "visible": {
+    "forecast": 3.7377442606096762,
+    "truth": 3.009956872685239,
+    "err": 0.7277873879244372,
+    "err_tol": 15.042959118416002,
+    "decision": "procure",
+    "truth_decision": "defer",
+    "response": 0.10698899997593984,
+    "failed": [
+     "forecast",
+     "decision",
+     "reconcile"
+    ]
+   },
+   "hidden_a": {
+    "forecast": 4.1692225704481505,
+    "truth": 3.120893092030755,
+    "err": 1.0483294784173953,
+    "err_tol": 15.229062946753098,
+    "decision": "procure",
+    "truth_decision": "procure",
+    "response": 0.08052535761097375,
+    "failed": [
+     "forecast"
+    ]
+   },
+   "hidden_b": {
+    "forecast": 3.2449680076639296,
+    "truth": 2.7273819270943225,
+    "err": 0.5175860805696071,
+    "err_tol": 11.617507097163601,
+    "decision": "procure",
+    "truth_decision": "defer",
+    "response": 0.22861063244268578,
+    "failed": [
+     "forecast",
+     "decision"
+    ]
+   },
+   "hidden_c": {
+    "forecast": 3.8498738526778142,
+    "truth": 3.13658654841409,
+    "err": 0.7132873042637242,
+    "err_tol": 7.158037122140126,
+    "decision": "procure",
+    "truth_decision": "procure",
+    "response": 0.10132154087921544,
+    "failed": [
+     "forecast"
+    ]
+   },
+   "hidden_d": {
+    "forecast": 3.6860732705899357,
+    "truth": 3.004656316143759,
+    "err": 0.6814169544461768,
+    "err_tol": 16.09118317543066,
+    "decision": "procure",
+    "truth_decision": "defer",
+    "response": 0.15282100873875823,
+    "failed": [
+     "forecast",
+     "decision"
+    ]
+   }
+  },
+  "max_err_tol": 16.09118317543066,
+  "min_err_tol": 7.158037122140126
+ },
+ "M10_pilot_population": {
+  "kind": "wrong",
+  "reward": 0,
+  "fixtures": {
+   "visible": {
+    "forecast": 3.6504539668987075,
+    "truth": 3.009956872685239,
+    "err": 0.6404970942134685,
+    "err_tol": 13.23871746554339,
+    "decision": "procure",
+    "truth_decision": "defer",
+    "response": 0.1262533609006268,
+    "failed": [
+     "forecast",
+     "decision",
+     "reconcile"
+    ]
+   },
+   "hidden_a": {
+    "forecast": 4.093050209313674,
+    "truth": 3.120893092030755,
+    "err": 0.9721571172829186,
+    "err_tol": 14.122508465168748,
+    "decision": "procure",
+    "truth_decision": "procure",
+    "response": 0.09652491164913933,
+    "failed": [
+     "forecast"
+    ]
+   },
+   "hidden_b": {
+    "forecast": 3.192143820517276,
+    "truth": 2.7273819270943225,
+    "err": 0.4647618934229536,
+    "err_tol": 10.431838872850497,
+    "decision": "procure",
+    "truth_decision": "defer",
+    "response": 0.24027188188394366,
+    "failed": [
+     "forecast",
+     "decision"
+    ]
+   },
+   "hidden_c": {
+    "forecast": 2.9563092483483593,
+    "truth": 3.13658654841409,
+    "err": -0.18027730006573073,
+    "err_tol": 1.8091330077460386,
+    "decision": "defer",
+    "truth_decision": "procure",
+    "response": 0.3132687265483498,
+    "failed": [
+     "forecast",
+     "decision"
+    ]
+   },
+   "hidden_d": {
+    "forecast": 3.4893824028517773,
+    "truth": 3.004656316143759,
+    "err": 0.4847260867080183,
+    "err_tol": 11.446466367229926,
+    "decision": "procure",
+    "truth_decision": "defer",
+    "response": 0.19595865133378557,
+    "failed": [
+     "forecast",
+     "decision"
+    ]
+   }
+  },
+  "max_err_tol": 14.122508465168748,
+  "min_err_tol": 1.8091330077460386
+ },
+ "M12_intercept_recalibration": {
+  "kind": "wrong",
+  "reward": 0,
+  "fixtures": {
+   "visible": {
+    "forecast": 3.7915447746040627,
+    "truth": 3.009956872685239,
+    "err": 0.7815879019188237,
+    "err_tol": 16.15498571573779,
+    "decision": "procure",
+    "truth_decision": "defer",
+    "response": 0.07707257248987558,
+    "failed": [
+     "forecast",
+     "decision",
+     "reconcile"
+    ]
+   },
+   "hidden_a": {
+    "forecast": 4.132477151154559,
+    "truth": 3.120893092030755,
+    "err": 1.0115840591238037,
+    "err_tol": 14.695262920189181,
+    "decision": "procure",
+    "truth_decision": "procure",
+    "response": 0.05019602521750531,
+    "failed": [
+     "forecast"
+    ]
+   },
+   "hidden_b": {
+    "forecast": 3.884491665837266,
+    "truth": 2.7273819270943225,
+    "err": 1.1571097387429434,
+    "err_tol": 25.971970859899184,
+    "decision": "procure",
+    "truth_decision": "defer",
+    "response": 0.17039030318630297,
+    "failed": [
+     "forecast",
+     "decision"
+    ]
+   },
+   "hidden_c": {
+    "forecast": 3.9605495738565,
+    "truth": 3.13658654841409,
+    "err": 0.82396302544241,
+    "err_tol": 8.268698865285009,
+    "decision": "procure",
+    "truth_decision": "procure",
+    "response": 0.0712533112897553,
+    "failed": [
+     "forecast"
+    ]
+   },
+   "hidden_d": {
+    "forecast": 3.9284412436352367,
+    "truth": 3.004656316143759,
+    "err": 0.9237849274914778,
+    "err_tol": 21.81453277024593,
+    "decision": "procure",
+    "truth_decision": "defer",
+    "response": 0.10790730185412375,
+    "failed": [
+     "forecast",
+     "decision"
+    ]
+   }
+  },
+  "max_err_tol": 25.971970859899184,
+  "min_err_tol": 8.268698865285009
+ },
+ "M13_equal_segment_weights": {
+  "kind": "wrong",
+  "reward": 0,
+  "fixtures": {
+   "visible": {
+    "forecast": 3.3787071906783708,
+    "truth": 3.009956872685239,
+    "err": 0.36875031799313174,
+    "err_tol": 7.621863267366089,
+    "decision": "procure",
+    "truth_decision": "defer",
+    "response": 0.07707257248987558,
+    "failed": [
+     "forecast",
+     "decision",
+     "reconcile"
+    ]
+   },
+   "hidden_a": {
+    "forecast": 3.5324087690946104,
+    "truth": 3.120893092030755,
+    "err": 0.4115156770638553,
+    "err_tol": 5.978080630759435,
+    "decision": "procure",
+    "truth_decision": "procure",
+    "response": 0.05019602521750531,
+    "failed": [
+     "forecast"
+    ]
+   },
+   "hidden_b": {
+    "forecast": 2.9947173236885836,
+    "truth": 2.7273819270943225,
+    "err": 0.2673353965942611,
+    "err_tol": 6.000491481221736,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.17039030318630297,
+    "failed": [
+     "forecast"
+    ]
+   },
+   "hidden_c": {
+    "forecast": 3.474811915497087,
+    "truth": 3.13658654841409,
+    "err": 0.3382253670829969,
+    "err_tol": 3.394185931472059,
+    "decision": "procure",
+    "truth_decision": "procure",
+    "response": 0.0712533112897553,
+    "failed": [
+     "forecast"
+    ]
+   },
+   "hidden_d": {
+    "forecast": 3.3494359946441206,
+    "truth": 3.004656316143759,
+    "err": 0.3447796785003616,
+    "err_tol": 8.141730148796329,
+    "decision": "procure",
+    "truth_decision": "defer",
+    "response": 0.10790730185412375,
+    "failed": [
+     "forecast",
+     "decision"
+    ]
+   }
+  },
+  "max_err_tol": 8.141730148796329,
+  "min_err_tol": 3.394185931472059
+ },
+ "M14_response_at_midpoint_cdd": {
+  "kind": "wrong",
+  "reward": 0,
+  "fixtures": {
+   "visible": {
+    "forecast": 2.98307151815069,
+    "truth": 3.009956872685239,
+    "err": -0.026885354534548878,
+    "err_tol": 0.5557052730753418,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.07707257248987558,
+    "failed": []
+   },
+   "hidden_a": {
+    "forecast": 3.1062174552977915,
+    "truth": 3.120893092030755,
+    "err": -0.014675636732963682,
+    "err_tol": 0.21319270343078178,
+    "decision": "procure",
+    "truth_decision": "procure",
+    "response": 0.05019602521750531,
+    "failed": []
+   },
+   "hidden_b": {
+    "forecast": 2.7140816230711473,
+    "truth": 2.7273819270943225,
+    "err": -0.013300304023175169,
+    "err_tol": 0.2985327121116255,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.17039030318630297,
+    "failed": []
+   },
+   "hidden_c": {
+    "forecast": 2.8623270292437377,
+    "truth": 3.13658654841409,
+    "err": -0.2742595191703523,
+    "err_tol": 2.752270799699868,
+    "decision": "defer",
+    "truth_decision": "procure",
+    "response": 0.0712533112897553,
+    "failed": [
+     "forecast",
+     "decision"
+    ]
+   },
+   "hidden_d": {
+    "forecast": 2.9553608405785035,
+    "truth": 3.004656316143759,
+    "err": -0.04929547556525549,
+    "err_tol": 1.1640780609651633,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.10790730185412375,
+    "failed": [
+     "forecast"
+    ]
+   }
+  },
+  "max_err_tol": 2.752270799699868,
+  "min_err_tol": 0.21319270343078178
+ },
+ "M15_target_weather_ignored": {
+  "kind": "wrong",
+  "reward": 0,
+  "fixtures": {
+   "visible": {
+    "forecast": 2.8556627639056305,
+    "truth": 3.009956872685239,
+    "err": -0.15429410877960859,
+    "err_tol": 3.1891731144220743,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.07707257248987558,
+    "failed": [
+     "forecast"
+    ]
+   },
+   "hidden_a": {
+    "forecast": 2.901471914108018,
+    "truth": 3.120893092030755,
+    "err": -0.21942117792273708,
+    "err_tol": 3.1875273940409175,
+    "decision": "defer",
+    "truth_decision": "procure",
+    "response": 0.05019602521750531,
+    "failed": [
+     "forecast",
+     "decision"
+    ]
+   },
+   "hidden_b": {
+    "forecast": 2.5470887948427468,
+    "truth": 2.7273819270943225,
+    "err": -0.18029313225157573,
+    "err_tol": 4.046779506120919,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.17039030318630297,
+    "failed": [
+     "forecast"
+    ]
+   },
+   "hidden_c": {
+    "forecast": 2.6535591097226554,
+    "truth": 3.13658654841409,
+    "err": -0.4830274386914346,
+    "err_tol": 4.847315123230062,
+    "decision": "defer",
+    "truth_decision": "procure",
+    "response": 0.0712533112897553,
+    "failed": [
+     "forecast",
+     "decision"
+    ]
+   },
+   "hidden_d": {
+    "forecast": 2.7125132115966797,
+    "truth": 3.004656316143759,
+    "err": -0.29214310454707926,
+    "err_tol": 6.898754394109159,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.10790730185412375,
+    "failed": [
+     "forecast"
+    ]
+   }
+  },
+  "max_err_tol": 6.898754394109159,
+  "min_err_tol": 3.1875273940409175
+ },
+ "M18_aggregate_effect_uniform": {
+  "kind": "wrong",
+  "reward": 0,
+  "fixtures": {
+   "visible": {
+    "forecast": 2.814209671913122,
+    "truth": 3.009956872685239,
+    "err": -0.19574720077211705,
+    "err_tol": 4.045985390262151,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.07707257248987558,
+    "failed": [
+     "forecast",
+     "reconcile"
+    ]
+   },
+   "hidden_a": {
+    "forecast": 2.9874749546360366,
+    "truth": 3.120893092030755,
+    "err": -0.13341813739471853,
+    "err_tol": 1.9381628147002672,
+    "decision": "defer",
+    "truth_decision": "procure",
+    "response": 0.05019602521750531,
+    "failed": [
+     "forecast",
+     "decision"
+    ]
+   },
+   "hidden_b": {
+    "forecast": 2.45829668143982,
+    "truth": 2.7273819270943225,
+    "err": -0.26908524565450254,
+    "err_tol": 6.039767815419031,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.17039030318630297,
+    "failed": [
+     "forecast"
+    ]
+   },
+   "hidden_c": {
+    "forecast": 2.395058788976884,
+    "truth": 3.13658654841409,
+    "err": -0.7415277594372061,
+    "err_tol": 7.441437969554028,
+    "decision": "defer",
+    "truth_decision": "procure",
+    "response": 0.0712533112897553,
+    "failed": [
+     "forecast",
+     "decision"
+    ]
+   },
+   "hidden_d": {
+    "forecast": 2.8168177694819034,
+    "truth": 3.004656316143759,
+    "err": -0.1878385466618555,
+    "err_tol": 4.435675458353068,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.10790730185412375,
+    "failed": [
+     "forecast"
+    ]
+   }
+  },
+  "max_err_tol": 7.441437969554028,
+  "min_err_tol": 1.9381628147002672
+ },
+ "M20_constant_procure": {
+  "kind": "wrong",
+  "reward": 0,
+  "fixtures": {
+   "visible": {
+    "forecast": 3.0046581587770125,
+    "truth": 3.009956872685239,
+    "err": -0.00529871390822656,
+    "err_tol": 0.1095214591846021,
+    "decision": "procure",
+    "truth_decision": "defer",
+    "response": 0.07707257248987558,
+    "failed": [
+     "decision"
+    ]
+   },
+   "hidden_a": {
+    "forecast": 3.1316360988267755,
+    "truth": 3.120893092030755,
+    "err": 0.01074300679602036,
+    "err_tol": 0.15606346106090344,
+    "decision": "procure",
+    "truth_decision": "procure",
+    "response": 0.05019602521750531,
+    "failed": []
+   },
+   "hidden_b": {
+    "forecast": 2.73114078794237,
+    "truth": 2.7273819270943225,
+    "err": 0.0037588608480474406,
+    "err_tol": 0.08436971977952719,
+    "decision": "procure",
+    "truth_decision": "defer",
+    "response": 0.17039030318630297,
+    "failed": [
+     "decision"
+    ]
+   },
+   "hidden_c": {
+    "forecast": 3.1178653965246927,
+    "truth": 3.13658654841409,
+    "err": -0.01872115188939727,
+    "err_tol": 0.18787198284968074,
+    "decision": "procure",
+    "truth_decision": "procure",
+    "response": 0.0712533112897553,
+    "failed": []
+   },
+   "hidden_d": {
+    "forecast": 3.020024483325442,
+    "truth": 3.004656316143759,
+    "err": 0.015368167181683212,
+    "err_tol": 0.36290848294506217,
+    "decision": "procure",
+    "truth_decision": "defer",
+    "response": 0.10790730185412375,
+    "failed": [
+     "decision"
+    ]
+   }
+  },
+  "max_err_tol": 0.36290848294506217,
+  "min_err_tol": 0.08436971977952719
+ },
+ "M21_constant_defer": {
+  "kind": "wrong",
+  "reward": 0,
+  "fixtures": {
+   "visible": {
+    "forecast": 3.0046581587770125,
+    "truth": 3.009956872685239,
+    "err": -0.00529871390822656,
+    "err_tol": 0.1095214591846021,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.07707257248987558,
+    "failed": []
+   },
+   "hidden_a": {
+    "forecast": 3.1316360988267755,
+    "truth": 3.120893092030755,
+    "err": 0.01074300679602036,
+    "err_tol": 0.15606346106090344,
+    "decision": "defer",
+    "truth_decision": "procure",
+    "response": 0.05019602521750531,
+    "failed": [
+     "decision"
+    ]
+   },
+   "hidden_b": {
+    "forecast": 2.73114078794237,
+    "truth": 2.7273819270943225,
+    "err": 0.0037588608480474406,
+    "err_tol": 0.08436971977952719,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.17039030318630297,
+    "failed": []
+   },
+   "hidden_c": {
+    "forecast": 3.1178653965246927,
+    "truth": 3.13658654841409,
+    "err": -0.01872115188939727,
+    "err_tol": 0.18787198284968074,
+    "decision": "defer",
+    "truth_decision": "procure",
+    "response": 0.0712533112897553,
+    "failed": [
+     "decision"
+    ]
+   },
+   "hidden_d": {
+    "forecast": 3.020024483325442,
+    "truth": 3.004656316143759,
+    "err": 0.015368167181683212,
+    "err_tol": 0.36290848294506217,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.10790730185412375,
+    "failed": []
+   }
+  },
+  "max_err_tol": 0.36290848294506217,
+  "min_err_tol": 0.08436971977952719
+ },
+ "M23_control_arm_level": {
+  "kind": "wrong",
+  "reward": 0,
+  "fixtures": {
+   "visible": {
+    "forecast": 3.6448740520446097,
+    "truth": 3.009956872685239,
+    "err": 0.6349171793593706,
+    "err_tol": 13.123383739750452,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.07707257248987558,
+    "failed": [
+     "forecast",
+     "reconcile"
+    ]
+   },
+   "hidden_a": {
+    "forecast": 3.9150085602000715,
+    "truth": 3.120893092030755,
+    "err": 0.7941154681693163,
+    "err_tol": 11.536100720927845,
+    "decision": "procure",
+    "truth_decision": "procure",
+    "response": 0.05019602521750531,
+    "failed": [
+     "forecast"
+    ]
+   },
+   "hidden_b": {
+    "forecast": 3.6804077103301385,
+    "truth": 2.7273819270943225,
+    "err": 0.953025783235816,
+    "err_tol": 21.39119311001837,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.17039030318630297,
+    "failed": [
+     "forecast"
+    ]
+   },
+   "hidden_c": {
+    "forecast": 3.7304891539961016,
+    "truth": 3.13658654841409,
+    "err": 0.5939026055820116,
+    "err_tol": 5.959978359743795,
+    "decision": "procure",
+    "truth_decision": "procure",
+    "response": 0.0712533112897553,
+    "failed": [
+     "forecast"
+    ]
+   },
+   "hidden_d": {
+    "forecast": 3.6583850125854016,
+    "truth": 3.004656316143759,
+    "err": 0.6537286964416427,
+    "err_tol": 15.437344393679695,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.10790730185412375,
+    "failed": [
+     "forecast"
+    ]
+   }
+  },
+  "max_err_tol": 21.39119311001837,
+  "min_err_tol": 5.959978359743795
+ },
+ "M24_latest_value": {
+  "kind": "wrong",
+  "reward": 0,
+  "fixtures": {
+   "visible": {
+    "forecast": 3.120157854074074,
+    "truth": 3.009956872685239,
+    "err": 0.11020098138883494,
+    "err_tol": 2.2777927803465636,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.07707257248987558,
+    "failed": [
+     "forecast",
+     "reconcile"
+    ]
+   },
+   "hidden_a": {
+    "forecast": 3.113598599206349,
+    "truth": 3.120893092030755,
+    "err": -0.007294492824406085,
+    "err_tol": 0.10596696236685328,
+    "decision": "procure",
+    "truth_decision": "procure",
+    "response": 0.05019602521750531,
+    "failed": []
+   },
+   "hidden_b": {
+    "forecast": 3.143808769097221,
+    "truth": 2.7273819270943225,
+    "err": 0.4164268420028985,
+    "err_tol": 9.346931793633283,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.17039030318630297,
+    "failed": [
+     "forecast"
+    ]
+   },
+   "hidden_c": {
+    "forecast": 3.106927716091954,
+    "truth": 3.13658654841409,
+    "err": -0.029658832322136064,
+    "err_tol": 0.29763465786107124,
+    "decision": "procure",
+    "truth_decision": "procure",
+    "response": 0.0712533112897553,
+    "failed": []
+   },
+   "hidden_d": {
+    "forecast": 3.0923533318996426,
+    "truth": 3.004656316143759,
+    "err": 0.08769701575588362,
+    "err_tol": 2.0709034831888893,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.10790730185412375,
+    "failed": [
+     "forecast"
+    ]
+   }
+  },
+  "max_err_tol": 9.346931793633283,
+  "min_err_tol": 0.10596696236685328
+ },
+ "M26_hardcoded_households": {
+  "kind": "wrong",
+  "reward": 0,
+  "fixtures": {
+   "visible": {
+    "forecast": 3.0046581587770125,
+    "truth": 3.009956872685239,
+    "err": -0.00529871390822656,
+    "err_tol": 0.1095214591846021,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.07707257248987558,
+    "failed": []
+   },
+   "hidden_a": {
+    "forecast": 3.1316360988267755,
+    "truth": 3.120893092030755,
+    "err": 0.01074300679602036,
+    "err_tol": 0.15606346106090344,
+    "decision": "procure",
+    "truth_decision": "procure",
+    "response": 0.05019602521750531,
+    "failed": [
+     "n_households"
+    ]
+   },
+   "hidden_b": {
+    "forecast": 2.73114078794237,
+    "truth": 2.7273819270943225,
+    "err": 0.0037588608480474406,
+    "err_tol": 0.08436971977952719,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.17039030318630297,
+    "failed": [
+     "n_households"
+    ]
+   },
+   "hidden_c": {
+    "forecast": 3.1178653965246927,
+    "truth": 3.13658654841409,
+    "err": -0.01872115188939727,
+    "err_tol": 0.18787198284968074,
+    "decision": "procure",
+    "truth_decision": "procure",
+    "response": 0.0712533112897553,
+    "failed": [
+     "n_households"
+    ]
+   },
+   "hidden_d": {
+    "forecast": 3.020024483325442,
+    "truth": 3.004656316143759,
+    "err": 0.015368167181683212,
+    "err_tol": 0.36290848294506217,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.10790730185412375,
+    "failed": [
+     "n_households"
+    ]
+   }
+  },
+  "max_err_tol": 0.36290848294506217,
+  "min_err_tol": 0.08436971977952719
+ },
+ "M27_hardcoded_forecast": {
+  "kind": "wrong",
+  "reward": 0,
+  "fixtures": {
+   "visible": {
+    "forecast": 2.98,
+    "truth": 3.009956872685239,
+    "err": -0.029956872685239055,
+    "err_tol": 0.6191918389858551,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.07707257248987558,
+    "failed": [
+     "reconcile"
+    ]
+   },
+   "hidden_a": {
+    "forecast": 2.98,
+    "truth": 3.120893092030755,
+    "err": -0.14089309203075517,
+    "err_tol": 2.0467513424674904,
+    "decision": "procure",
+    "truth_decision": "procure",
+    "response": 0.05019602521750531,
+    "failed": [
+     "forecast"
+    ]
+   },
+   "hidden_b": {
+    "forecast": 2.98,
+    "truth": 2.7273819270943225,
+    "err": 0.2526180729056775,
+    "err_tol": 5.670152975566386,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.17039030318630297,
+    "failed": [
+     "forecast"
+    ]
+   },
+   "hidden_c": {
+    "forecast": 2.98,
+    "truth": 3.13658654841409,
+    "err": -0.15658654841409003,
+    "err_tol": 1.5713897046475889,
+    "decision": "procure",
+    "truth_decision": "procure",
+    "response": 0.0712533112897553,
+    "failed": [
+     "forecast"
+    ]
+   },
+   "hidden_d": {
+    "forecast": 2.98,
+    "truth": 3.004656316143759,
+    "err": -0.02465631614375896,
+    "err_tol": 0.5822416024605853,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.10790730185412375,
+    "failed": []
+   }
+  },
+  "max_err_tol": 5.670152975566386,
+  "min_err_tol": 0.5822416024605853
+ },
+ "M28_response_reported_zero": {
+  "kind": "wrong",
+  "reward": 1,
+  "fixtures": {
+   "visible": {
+    "forecast": 3.0046581587770125,
+    "truth": 3.009956872685239,
+    "err": -0.00529871390822656,
+    "err_tol": 0.1095214591846021,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.0,
+    "failed": []
+   },
+   "hidden_a": {
+    "forecast": 3.1316360988267755,
+    "truth": 3.120893092030755,
+    "err": 0.01074300679602036,
+    "err_tol": 0.15606346106090344,
+    "decision": "procure",
+    "truth_decision": "procure",
+    "response": 0.0,
+    "failed": []
+   },
+   "hidden_b": {
+    "forecast": 2.73114078794237,
+    "truth": 2.7273819270943225,
+    "err": 0.0037588608480474406,
+    "err_tol": 0.08436971977952719,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.0,
+    "failed": []
+   },
+   "hidden_c": {
+    "forecast": 3.1178653965246927,
+    "truth": 3.13658654841409,
+    "err": -0.01872115188939727,
+    "err_tol": 0.18787198284968074,
+    "decision": "procure",
+    "truth_decision": "procure",
+    "response": 0.0,
+    "failed": []
+   },
+   "hidden_d": {
+    "forecast": 3.020024483325442,
+    "truth": 3.004656316143759,
+    "err": 0.015368167181683212,
+    "err_tol": 0.36290848294506217,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.0,
+    "failed": []
+   }
+  },
+  "max_err_tol": 0.36290848294506217,
+  "min_err_tol": 0.08436971977952719
+ },
+ "M29_response_sign_flipped": {
+  "kind": "wrong",
+  "reward": 1,
+  "fixtures": {
+   "visible": {
+    "forecast": 3.0046581587770125,
+    "truth": 3.009956872685239,
+    "err": -0.00529871390822656,
+    "err_tol": 0.1095214591846021,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": -0.07707257248987558,
+    "failed": []
+   },
+   "hidden_a": {
+    "forecast": 3.1316360988267755,
+    "truth": 3.120893092030755,
+    "err": 0.01074300679602036,
+    "err_tol": 0.15606346106090344,
+    "decision": "procure",
+    "truth_decision": "procure",
+    "response": -0.05019602521750531,
+    "failed": []
+   },
+   "hidden_b": {
+    "forecast": 2.73114078794237,
+    "truth": 2.7273819270943225,
+    "err": 0.0037588608480474406,
+    "err_tol": 0.08436971977952719,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": -0.17039030318630297,
+    "failed": []
+   },
+   "hidden_c": {
+    "forecast": 3.1178653965246927,
+    "truth": 3.13658654841409,
+    "err": -0.01872115188939727,
+    "err_tol": 0.18787198284968074,
+    "decision": "procure",
+    "truth_decision": "procure",
+    "response": -0.0712533112897553,
+    "failed": []
+   },
+   "hidden_d": {
+    "forecast": 3.020024483325442,
+    "truth": 3.004656316143759,
+    "err": 0.015368167181683212,
+    "err_tol": 0.36290848294506217,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": -0.10790730185412375,
+    "failed": []
+   }
+  },
+  "max_err_tol": 0.36290848294506217,
+  "min_err_tol": 0.08436971977952719
+ },
+ "M30_double_counted_response": {
+  "kind": "wrong",
+  "reward": 0,
+  "fixtures": {
+   "visible": {
+    "forecast": 2.7730814250273754,
+    "truth": 3.009956872685239,
+    "err": -0.2368754476578636,
+    "err_tol": 4.896083299046801,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.07707257248987558,
+    "failed": [
+     "forecast",
+     "reconcile"
+    ]
+   },
+   "hidden_a": {
+    "forecast": 2.9744404142380167,
+    "truth": 3.120893092030755,
+    "err": -0.1464526777927384,
+    "err_tol": 2.1275153420212685,
+    "decision": "defer",
+    "truth_decision": "procure",
+    "response": 0.05019602521750531,
+    "failed": [
+     "forecast",
+     "decision"
+    ]
+   },
+   "hidden_b": {
+    "forecast": 2.265780881040391,
+    "truth": 2.7273819270943225,
+    "err": -0.46160104605393126,
+    "err_tol": 10.360891897803842,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.17039030318630297,
+    "failed": [
+     "forecast"
+    ]
+   },
+   "hidden_c": {
+    "forecast": 2.8957071628665623,
+    "truth": 3.13658654841409,
+    "err": -0.24087938554752775,
+    "err_tol": 2.417291844956221,
+    "decision": "defer",
+    "truth_decision": "procure",
+    "response": 0.0712533112897553,
+    "failed": [
+     "forecast",
+     "decision"
+    ]
+   },
+   "hidden_d": {
+    "forecast": 2.6941417897963995,
+    "truth": 3.004656316143759,
+    "err": -0.31051452634735943,
+    "err_tol": 7.332582627252657,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.10790730185412375,
+    "failed": [
+     "forecast"
+    ]
+   }
+  },
+  "max_err_tol": 10.360891897803842,
+  "min_err_tol": 2.1275153420212685
+ },
+ "M31_shares_from_pilot": {
+  "kind": "wrong",
+  "reward": 0,
+  "fixtures": {
+   "visible": {
+    "forecast": 3.737744260609676,
+    "truth": 3.009956872685239,
+    "err": 0.7277873879244368,
+    "err_tol": 15.042959118415993,
+    "decision": "procure",
+    "truth_decision": "defer",
+    "response": 0.07707257248987558,
+    "failed": [
+     "forecast",
+     "decision",
+     "reconcile"
+    ]
+   },
+   "hidden_a": {
+    "forecast": 4.1692225704481505,
+    "truth": 3.120893092030755,
+    "err": 1.0483294784173953,
+    "err_tol": 15.229062946753098,
+    "decision": "procure",
+    "truth_decision": "procure",
+    "response": 0.05019602521750531,
+    "failed": [
+     "forecast"
+    ]
+   },
+   "hidden_b": {
+    "forecast": 3.2449680076639296,
+    "truth": 2.7273819270943225,
+    "err": 0.5175860805696071,
+    "err_tol": 11.617507097163601,
+    "decision": "procure",
+    "truth_decision": "defer",
+    "response": 0.17039030318630297,
+    "failed": [
+     "forecast",
+     "decision"
+    ]
+   },
+   "hidden_c": {
+    "forecast": 3.8498738526778142,
+    "truth": 3.13658654841409,
+    "err": 0.7132873042637242,
+    "err_tol": 7.158037122140126,
+    "decision": "procure",
+    "truth_decision": "procure",
+    "response": 0.0712533112897553,
+    "failed": [
+     "forecast"
+    ]
+   },
+   "hidden_d": {
+    "forecast": 3.6860732705899353,
+    "truth": 3.004656316143759,
+    "err": 0.6814169544461763,
+    "err_tol": 16.09118317543065,
+    "decision": "procure",
+    "truth_decision": "defer",
+    "response": 0.10790730185412375,
+    "failed": [
+     "forecast",
+     "decision"
+    ]
+   }
+  },
+  "max_err_tol": 16.09118317543065,
+  "min_err_tol": 7.158037122140126
+ },
+ "M32_cdd_mean_from_history": {
+  "kind": "wrong",
+  "reward": 0,
+  "fixtures": {
+   "visible": {
+    "forecast": 3.0046581587770125,
+    "truth": 3.009956872685239,
+    "err": -0.00529871390822656,
+    "err_tol": 0.1095214591846021,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.07707257248987558,
+    "failed": [
+     "target_cdd_mean"
+    ]
+   },
+   "hidden_a": {
+    "forecast": 3.1316360988267755,
+    "truth": 3.120893092030755,
+    "err": 0.01074300679602036,
+    "err_tol": 0.15606346106090344,
+    "decision": "procure",
+    "truth_decision": "procure",
+    "response": 0.05019602521750531,
+    "failed": [
+     "target_cdd_mean"
+    ]
+   },
+   "hidden_b": {
+    "forecast": 2.73114078794237,
+    "truth": 2.7273819270943225,
+    "err": 0.0037588608480474406,
+    "err_tol": 0.08436971977952719,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.17039030318630297,
+    "failed": [
+     "target_cdd_mean"
+    ]
+   },
+   "hidden_c": {
+    "forecast": 3.1178653965246927,
+    "truth": 3.13658654841409,
+    "err": -0.01872115188939727,
+    "err_tol": 0.18787198284968074,
+    "decision": "procure",
+    "truth_decision": "procure",
+    "response": 0.0712533112897553,
+    "failed": [
+     "target_cdd_mean"
+    ]
+   },
+   "hidden_d": {
+    "forecast": 3.020024483325442,
+    "truth": 3.004656316143759,
+    "err": 0.015368167181683212,
+    "err_tol": 0.36290848294506217,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.10790730185412375,
+    "failed": [
+     "target_cdd_mean"
+    ]
+   }
+  },
+  "max_err_tol": 0.36290848294506217,
+  "min_err_tol": 0.08436971977952719
+ },
+ "V02_response_as_load_ratio": {
+  "kind": "valid",
+  "reward": 1,
+  "fixtures": {
+   "visible": {
+    "forecast": 3.0046581587770125,
+    "truth": 3.009956872685239,
+    "err": -0.00529871390822656,
+    "err_tol": 0.1095214591846021,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.07707257248987552,
+    "failed": []
+   },
+   "hidden_a": {
+    "forecast": 3.1316360988267755,
+    "truth": 3.120893092030755,
+    "err": 0.01074300679602036,
+    "err_tol": 0.15606346106090344,
+    "decision": "procure",
+    "truth_decision": "procure",
+    "response": 0.05019602521750526,
+    "failed": []
+   },
+   "hidden_b": {
+    "forecast": 2.73114078794237,
+    "truth": 2.7273819270943225,
+    "err": 0.0037588608480474406,
+    "err_tol": 0.08436971977952719,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.17039030318630302,
+    "failed": []
+   },
+   "hidden_c": {
+    "forecast": 3.1178653965246927,
+    "truth": 3.13658654841409,
+    "err": -0.01872115188939727,
+    "err_tol": 0.18787198284968074,
+    "decision": "procure",
+    "truth_decision": "procure",
+    "response": 0.07125331128975532,
+    "failed": []
+   },
+   "hidden_d": {
+    "forecast": 3.020024483325442,
+    "truth": 3.004656316143759,
+    "err": 0.015368167181683212,
+    "err_tol": 0.36290848294506217,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.10790730185412375,
+    "failed": []
+   }
+  },
+  "max_err_tol": 0.36290848294506217,
+  "min_err_tol": 0.08436971977952719
+ },
+ "M33_household_weighted_response": {
+  "kind": "wrong",
+  "reward": 1,
+  "fixtures": {
+   "visible": {
+    "forecast": 3.0046581587770125,
+    "truth": 3.009956872685239,
+    "err": -0.00529871390822656,
+    "err_tol": 0.1095214591846021,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.05861595595862021,
+    "failed": []
+   },
+   "hidden_a": {
+    "forecast": 3.1316360988267755,
+    "truth": 3.120893092030755,
+    "err": 0.01074300679602036,
+    "err_tol": 0.15606346106090344,
+    "decision": "procure",
+    "truth_decision": "procure",
+    "response": 0.03999594348622165,
+    "failed": []
+   },
+   "hidden_b": {
+    "forecast": 2.73114078794237,
+    "truth": 2.7273819270943225,
+    "err": 0.0037588608480474406,
+    "err_tol": 0.08436971977952719,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.13865532031969138,
+    "failed": []
+   },
+   "hidden_c": {
+    "forecast": 3.1178653965246927,
+    "truth": 3.13658654841409,
+    "err": -0.01872115188939727,
+    "err_tol": 0.18787198284968074,
+    "decision": "procure",
+    "truth_decision": "procure",
+    "response": 0.05428068109336939,
+    "failed": []
+   },
+   "hidden_d": {
+    "forecast": 3.020024483325442,
+    "truth": 3.004656316143759,
+    "err": 0.015368167181683212,
+    "err_tol": 0.36290848294506217,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.08556435245303988,
+    "failed": []
+   }
+  },
+  "max_err_tol": 0.36290848294506217,
+  "min_err_tol": 0.08436971977952719
+ },
+ "M34_segment_unweighted_mean_response": {
+  "kind": "wrong",
+  "reward": 1,
+  "fixtures": {
+   "visible": {
+    "forecast": 3.0046581587770125,
+    "truth": 3.009956872685239,
+    "err": -0.00529871390822656,
+    "err_tol": 0.1095214591846021,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.07311666915034717,
+    "failed": []
+   },
+   "hidden_a": {
+    "forecast": 3.1316360988267755,
+    "truth": 3.120893092030755,
+    "err": 0.01074300679602036,
+    "err_tol": 0.15606346106090344,
+    "decision": "procure",
+    "truth_decision": "procure",
+    "response": 0.050826776408460464,
+    "failed": []
+   },
+   "hidden_b": {
+    "forecast": 2.73114078794237,
+    "truth": 2.7273819270943225,
+    "err": 0.0037588608480474406,
+    "err_tol": 0.08436971977952719,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.16712809595854528,
+    "failed": []
+   },
+   "hidden_c": {
+    "forecast": 3.1178653965246927,
+    "truth": 3.13658654841409,
+    "err": -0.01872115188939727,
+    "err_tol": 0.18787198284968074,
+    "decision": "procure",
+    "truth_decision": "procure",
+    "response": 0.06791994295183132,
+    "failed": []
+   },
+   "hidden_d": {
+    "forecast": 3.020024483325442,
+    "truth": 3.004656316143759,
+    "err": 0.015368167181683212,
+    "err_tol": 0.36290848294506217,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.1071042783250348,
+    "failed": []
+   }
+  },
+  "max_err_tol": 0.36290848294506217,
+  "min_err_tol": 0.08436971977952719
+ },
+ "CE01_constant_fraction_ratio_of_means": {
+  "kind": "wrong",
+  "reward": 0,
+  "fixtures": {
+   "visible": {
+    "forecast": 2.964743165967999,
+    "truth": 3.009956872685239,
+    "err": -0.04521370671724023,
+    "err_tol": 0.9345420833400213,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.07707257248987558,
+    "failed": []
+   },
+   "hidden_a": {
+    "forecast": 3.088502843505056,
+    "truth": 3.120893092030755,
+    "err": -0.03239024852569905,
+    "err_tol": 0.47053254135666833,
+    "decision": "procure",
+    "truth_decision": "procure",
+    "response": 0.05019602521750531,
+    "failed": []
+   },
+   "hidden_b": {
+    "forecast": 2.7027048926350754,
+    "truth": 2.7273819270943225,
+    "err": -0.02467703445924707,
+    "err_tol": 0.5538897465166646,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.17039030318630297,
+    "failed": []
+   },
+   "hidden_c": {
+    "forecast": 2.6392682482725704,
+    "truth": 3.13658654841409,
+    "err": -0.49731830014151956,
+    "err_tol": 4.990727905366511,
+    "decision": "defer",
+    "truth_decision": "procure",
+    "response": 0.0712533112897553,
+    "failed": [
+     "forecast",
+     "decision"
+    ]
+   },
+   "hidden_d": {
+    "forecast": 2.910779815695004,
+    "truth": 3.004656316143759,
+    "err": -0.09387650044875473,
+    "err_tol": 2.21682767758111,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.10790730185412375,
+    "failed": [
+     "forecast"
+    ]
+   }
+  },
+  "max_err_tol": 4.990727905366511,
+  "min_err_tol": 0.47053254135666833
+ },
+ "CE02_constant_absolute_kw": {
+  "kind": "wrong",
+  "reward": 0,
+  "fixtures": {
+   "visible": {
+    "forecast": 3.0035563653575412,
+    "truth": 3.009956872685239,
+    "err": -0.006400507327697813,
+    "err_tol": 0.1322949142362396,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.07707257248987558,
+    "failed": []
+   },
+   "hidden_a": {
+    "forecast": 3.116343894694873,
+    "truth": 3.120893092030755,
+    "err": -0.004549197335882216,
+    "err_tol": 0.06608610557240072,
+    "decision": "procure",
+    "truth_decision": "procure",
+    "response": 0.05019602521750531,
+    "failed": []
+   },
+   "hidden_b": {
+    "forecast": 2.781166732459383,
+    "truth": 2.7273819270943225,
+    "err": 0.053784805365060695,
+    "err_tol": 1.2072298338481378,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.17039030318630297,
+    "failed": [
+     "forecast"
+    ]
+   },
+   "hidden_c": {
+    "forecast": 2.736525961042557,
+    "truth": 3.13658654841409,
+    "err": -0.40006058737153305,
+    "err_tol": 4.014719620541344,
+    "decision": "defer",
+    "truth_decision": "procure",
+    "response": 0.0712533112897553,
+    "failed": [
+     "forecast",
+     "decision"
+    ]
+   },
+   "hidden_d": {
+    "forecast": 2.9777188604338063,
+    "truth": 3.004656316143759,
+    "err": -0.02693745570995265,
+    "err_tol": 0.6361091124613868,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.10790730185412375,
+    "failed": []
+   }
+  },
+  "max_err_tol": 4.014719620541344,
+  "min_err_tol": 0.06608610557240072
+ },
+ "CE03_plugin_at_target_mean_cdd": {
+  "kind": "wrong",
+  "reward": 1,
+  "fixtures": {
+   "visible": {
+    "forecast": 3.0032332241403337,
+    "truth": 3.009956872685239,
+    "err": -0.0067236485449053696,
+    "err_tol": 0.13897406284554906,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.07707257248987558,
+    "failed": []
+   },
+   "hidden_a": {
+    "forecast": 3.129520627873182,
+    "truth": 3.120893092030755,
+    "err": 0.008627535842427037,
+    "err_tol": 0.12533205363836658,
+    "decision": "procure",
+    "truth_decision": "procure",
+    "response": 0.05019602521750531,
+    "failed": []
+   },
+   "hidden_b": {
+    "forecast": 2.7288561710077133,
+    "truth": 2.7273819270943225,
+    "err": 0.0014742439133907936,
+    "err_tol": 0.03309022357772713,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.17039030318630297,
+    "failed": []
+   },
+   "hidden_c": {
+    "forecast": 3.1375698016195157,
+    "truth": 3.13658654841409,
+    "err": 0.0009832532054256937,
+    "err_tol": 0.009867220267105948,
+    "decision": "procure",
+    "truth_decision": "procure",
+    "response": 0.0712533112897553,
+    "failed": []
+   },
+   "hidden_d": {
+    "forecast": 3.0141575786373833,
+    "truth": 3.004656316143759,
+    "err": 0.009501262493624374,
+    "err_tol": 0.22436564600453449,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.10790730185412375,
+    "failed": []
+   }
+  },
+  "max_err_tol": 0.22436564600453449,
+  "min_err_tol": 0.009867220267105948
+ },
+ "CE04_pilot_mean_cdd_transported": {
+  "kind": "wrong",
+  "reward": 0,
+  "fixtures": {
+   "visible": {
+    "forecast": 2.9592716908170553,
+    "truth": 3.009956872685239,
+    "err": -0.050685181868183715,
+    "err_tol": 1.0476344209907218,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.07707257248987558,
+    "failed": [
+     "forecast"
+    ]
+   },
+   "hidden_a": {
+    "forecast": 3.0829142827224008,
+    "truth": 3.120893092030755,
+    "err": -0.0379788093083544,
+    "err_tol": 0.5517174604999301,
+    "decision": "procure",
+    "truth_decision": "procure",
+    "response": 0.05019602521750531,
+    "failed": []
+   },
+   "hidden_b": {
+    "forecast": 2.699307075134582,
+    "truth": 2.7273819270943225,
+    "err": -0.028074851959740688,
+    "err_tol": 0.6301556478009682,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.17039030318630297,
+    "failed": []
+   },
+   "hidden_c": {
+    "forecast": 2.5870842568679597,
+    "truth": 3.13658654841409,
+    "err": -0.5495022915461303,
+    "err_tol": 5.5144088196668415,
+    "decision": "defer",
+    "truth_decision": "procure",
+    "response": 0.0712533112897553,
+    "failed": [
+     "forecast",
+     "decision"
+    ]
+   },
+   "hidden_d": {
+    "forecast": 2.8965641025196236,
+    "truth": 3.004656316143759,
+    "err": -0.10809221362413535,
+    "err_tol": 2.552521767934861,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.10790730185412375,
+    "failed": [
+     "forecast"
+    ]
+   }
+  },
+  "max_err_tol": 5.5144088196668415,
+  "min_err_tol": 0.5517174604999301
+ },
+ "CE05_household_weighted_response_in_forecast": {
+  "kind": "wrong",
+  "reward": 0,
+  "fixtures": {
+   "visible": {
+    "forecast": 3.0632916017761804,
+    "truth": 3.009956872685239,
+    "err": 0.05333472909094139,
+    "err_tol": 1.1023990833297106,
+    "decision": "procure",
+    "truth_decision": "defer",
+    "response": 0.07707257248987558,
+    "failed": [
+     "forecast",
+     "decision",
+     "reconcile"
+    ]
+   },
+   "hidden_a": {
+    "forecast": 3.1631290007917676,
+    "truth": 3.120893092030755,
+    "err": 0.042235908761012464,
+    "err_tol": 0.6135602655243492,
+    "decision": "procure",
+    "truth_decision": "procure",
+    "response": 0.05019602521750531,
+    "failed": []
+   },
+   "hidden_b": {
+    "forecast": 2.833242853281299,
+    "truth": 2.7273819270943225,
+    "err": 0.10586092618697673,
+    "err_tol": 2.3761072939520838,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.17039030318630297,
+    "failed": [
+     "forecast"
+    ]
+   },
+   "hidden_c": {
+    "forecast": 3.1949081615895394,
+    "truth": 3.13658654841409,
+    "err": 0.05832161317544937,
+    "err_tol": 0.5852736613108319,
+    "decision": "procure",
+    "truth_decision": "procure",
+    "response": 0.0712533112897553,
+    "failed": []
+   },
+   "hidden_d": {
+    "forecast": 3.0896488032672442,
+    "truth": 3.004656316143759,
+    "err": 0.08499248712348528,
+    "err_tol": 2.0070379375150385,
+    "decision": "procure",
+    "truth_decision": "defer",
+    "response": 0.10790730185412375,
+    "failed": [
+     "forecast",
+     "decision"
+    ]
+   }
+  },
+  "max_err_tol": 2.3761072939520838,
+  "min_err_tol": 0.5852736613108319
+ },
+ "CE06_segment_unweighted_response_in_forecast": {
+  "kind": "wrong",
+  "reward": 1,
+  "fixtures": {
+   "visible": {
+    "forecast": 3.016105850943516,
+    "truth": 3.009956872685239,
+    "err": 0.0061489782582770935,
+    "err_tol": 0.12709594875377928,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.07707257248987558,
+    "failed": []
+   },
+   "hidden_a": {
+    "forecast": 3.1274423581295734,
+    "truth": 3.120893092030755,
+    "err": 0.006549266098818229,
+    "err_tol": 0.09514106750533202,
+    "decision": "procure",
+    "truth_decision": "procure",
+    "response": 0.05019602521750531,
+    "failed": []
+   },
+   "hidden_b": {
+    "forecast": 2.7395866318000155,
+    "truth": 2.7273819270943225,
+    "err": 0.012204704705693015,
+    "err_tol": 0.27394137682592945,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.17039030318630297,
+    "failed": []
+   },
+   "hidden_c": {
+    "forecast": 3.148830865547796,
+    "truth": 3.13658654841409,
+    "err": 0.012244317133705884,
+    "err_tol": 0.12287513888781897,
+    "decision": "procure",
+    "truth_decision": "procure",
+    "response": 0.0712533112897553,
+    "failed": []
+   },
+   "hidden_d": {
+    "forecast": 3.016870793823494,
+    "truth": 3.004656316143759,
+    "err": 0.012214477679735047,
+    "err_tol": 0.2884363185482649,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.10790730185412375,
+    "failed": []
+   }
+  },
+  "max_err_tol": 0.2884363185482649,
+  "min_err_tol": 0.09514106750533202
+ },
+ "CE07_pooled_response_curve": {
+  "kind": "wrong",
+  "reward": 0,
+  "fixtures": {
+   "visible": {
+    "forecast": 2.873600433766655,
+    "truth": 3.009956872685239,
+    "err": -0.13635643891858384,
+    "err_tol": 2.8184114897000834,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.07707257248987558,
+    "failed": [
+     "forecast"
+    ]
+   },
+   "hidden_a": {
+    "forecast": 3.035980482664555,
+    "truth": 3.120893092030755,
+    "err": -0.08491260936620026,
+    "err_tol": 1.233523906017697,
+    "decision": "defer",
+    "truth_decision": "procure",
+    "response": 0.05019602521750531,
+    "failed": [
+     "forecast",
+     "decision"
+    ]
+   },
+   "hidden_b": {
+    "forecast": 2.490752844123182,
+    "truth": 2.7273819270943225,
+    "err": -0.23662908297114038,
+    "err_tol": 5.311271214610718,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.17039030318630297,
+    "failed": [
+     "forecast"
+    ]
+   },
+   "hidden_c": {
+    "forecast": 3.0270002905139544,
+    "truth": 3.13658654841409,
+    "err": -0.10958625790013565,
+    "err_tol": 1.0997286751588775,
+    "decision": "defer",
+    "truth_decision": "procure",
+    "response": 0.0712533112897553,
+    "failed": [
+     "forecast",
+     "decision"
+    ]
+   },
+   "hidden_d": {
+    "forecast": 2.9596713445704967,
+    "truth": 3.004656316143759,
+    "err": -0.0449849715732622,
+    "err_tol": 1.0622885342135688,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.10790730185412375,
+    "failed": [
+     "forecast"
+    ]
+   }
+  },
+  "max_err_tol": 5.311271214610718,
+  "min_err_tol": 1.0622885342135688
+ },
+ "CE08_ratio_heat_adjustment": {
+  "kind": "wrong",
+  "reward": 0,
+  "fixtures": {
+   "visible": {
+    "forecast": 3.0472412692014976,
+    "truth": 3.009956872685239,
+    "err": 0.03728439651625859,
+    "err_tol": 0.7706476669627618,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.07707257248987558,
+    "failed": []
+   },
+   "hidden_a": {
+    "forecast": 3.146792700403921,
+    "truth": 3.120893092030755,
+    "err": 0.02589960837316596,
+    "err_tol": 0.37624313188888114,
+    "decision": "procure",
+    "truth_decision": "procure",
+    "response": 0.05019602521750531,
+    "failed": []
+   },
+   "hidden_b": {
+    "forecast": 2.876109320122468,
+    "truth": 2.7273819270943225,
+    "err": 0.14872739302814564,
+    "err_tol": 3.3382689545005166,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.17039030318630297,
+    "failed": [
+     "forecast"
+    ]
+   },
+   "hidden_c": {
+    "forecast": 2.8157461738936997,
+    "truth": 3.13658654841409,
+    "err": -0.32084037452039027,
+    "err_tol": 3.21972268028645,
+    "decision": "defer",
+    "truth_decision": "procure",
+    "response": 0.0712533112897553,
+    "failed": [
+     "forecast",
+     "decision"
+    ]
+   },
+   "hidden_d": {
+    "forecast": 3.047132044520103,
+    "truth": 3.004656316143759,
+    "err": 0.04247572837634417,
+    "err_tol": 1.0030345170514519,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.10790730185412375,
+    "failed": [
+     "forecast"
+    ]
+   }
+  },
+  "max_err_tol": 3.3382689545005166,
+  "min_err_tol": 0.37624313188888114
+ },
+ "CE09_loglinear_response_form": {
+  "kind": "alternative",
+  "reward": 0,
+  "fixtures": {
+   "visible": {
+    "forecast": 3.004440999574349,
+    "truth": 3.009956872685239,
+    "err": -0.00551587311089019,
+    "err_tol": 0.11401001870357522,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.07707257248987558,
+    "failed": []
+   },
+   "hidden_a": {
+    "forecast": 3.135963949905408,
+    "truth": 3.120893092030755,
+    "err": 0.015070857874652788,
+    "err_tol": 0.21893407364747866,
+    "decision": "procure",
+    "truth_decision": "procure",
+    "response": 0.05019602521750531,
+    "failed": []
+   },
+   "hidden_b": {
+    "forecast": 2.7299807403047875,
+    "truth": 2.7273819270943225,
+    "err": 0.0025988132104650674,
+    "err_tol": 0.058331806148175847,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.17039030318630297,
+    "failed": []
+   },
+   "hidden_c": {
+    "forecast": 3.255454003804272,
+    "truth": 3.13658654841409,
+    "err": 0.11886745539018184,
+    "err_tol": 1.1928680816428339,
+    "decision": "procure",
+    "truth_decision": "procure",
+    "response": 0.0712533112897553,
+    "failed": [
+     "forecast"
+    ]
+   },
+   "hidden_d": {
+    "forecast": 3.0031778252981587,
+    "truth": 3.004656316143759,
+    "err": -0.0014784908456002555,
+    "err_tol": 0.03491352374565879,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.10790730185412375,
+    "failed": []
+   }
+  },
+  "max_err_tol": 1.1928680816428339,
+  "min_err_tol": 0.03491352374565879
+ },
+ "CE10_incumbent_latest_window": {
+  "kind": "wrong",
+  "reward": 0,
+  "fixtures": {
+   "visible": {
+    "forecast": 3.257624330217441,
+    "truth": 3.009956872685239,
+    "err": 0.24766745753220176,
+    "err_tol": 5.119148119953076,
+    "decision": "procure",
+    "truth_decision": "defer",
+    "response": 0.0,
+    "failed": [
+     "forecast",
+     "decision"
+    ]
+   },
+   "hidden_a": {
+    "forecast": 3.29192121015779,
+    "truth": 3.120893092030755,
+    "err": 0.171028118127035,
+    "err_tol": 2.484522309296651,
+    "decision": "procure",
+    "truth_decision": "procure",
+    "response": 0.0,
+    "failed": [
+     "forecast"
+    ]
+   },
+   "hidden_b": {
+    "forecast": 3.288664082813401,
+    "truth": 2.7273819270943225,
+    "err": 0.5612821557190784,
+    "err_tol": 12.598289777038833,
+    "decision": "procure",
+    "truth_decision": "defer",
+    "response": 0.0,
+    "failed": [
+     "forecast",
+     "decision"
+    ]
+   },
+   "hidden_c": {
+    "forecast": 3.378844417955591,
+    "truth": 3.13658654841409,
+    "err": 0.24225786954150097,
+    "err_tol": 2.4311253164650424,
+    "decision": "procure",
+    "truth_decision": "procure",
+    "response": 0.0,
+    "failed": [
+     "forecast"
+    ]
+   },
+   "hidden_d": {
+    "forecast": 3.3774940165501075,
+    "truth": 3.004656316143759,
+    "err": 0.37283770040634856,
+    "err_tol": 8.804300645587723,
+    "decision": "procure",
+    "truth_decision": "defer",
+    "response": 0.0,
+    "failed": [
+     "forecast",
+     "decision"
+    ]
+   }
+  },
+  "max_err_tol": 12.598289777038833,
+  "min_err_tol": 2.4311253164650424
+ },
+ "CE11_latest_window_plus_response": {
+  "kind": "alternative",
+  "reward": 1,
+  "fixtures": {
+   "visible": {
+    "forecast": 3.007907293221167,
+    "truth": 3.009956872685239,
+    "err": -0.0020495794640722487,
+    "err_tol": 0.04236366361872835,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.07709550766238932,
+    "failed": []
+   },
+   "hidden_a": {
+    "forecast": 3.128861708290752,
+    "truth": 3.120893092030755,
+    "err": 0.007968616259996786,
+    "err_tol": 0.11575994104946236,
+    "decision": "procure",
+    "truth_decision": "procure",
+    "response": 0.050174364537308225,
+    "failed": []
+   },
+   "hidden_b": {
+    "forecast": 2.7306178354191264,
+    "truth": 2.7273819270943225,
+    "err": 0.0032359083248039155,
+    "err_tol": 0.0726317598954916,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.17038246328544143,
+    "failed": []
+   },
+   "hidden_c": {
+    "forecast": 3.118306179726223,
+    "truth": 3.13658654841409,
+    "err": -0.0182803686878672,
+    "err_tol": 0.18344860043349595,
+    "decision": "procure",
+    "truth_decision": "procure",
+    "response": 0.07125810499272739,
+    "failed": []
+   },
+   "hidden_d": {
+    "forecast": 3.019018027736457,
+    "truth": 3.004656316143759,
+    "err": 0.014361711592698168,
+    "err_tol": 0.3391417405201443,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.10786599174444153,
+    "failed": []
+   }
+  },
+  "max_err_tol": 0.3391417405201443,
+  "min_err_tol": 0.04236366361872835
+ },
+ "CE12_aggregate_pre_post": {
+  "kind": "wrong",
+  "reward": 0,
+  "fixtures": {
+   "visible": {
+    "forecast": 2.5973881898599416,
+    "truth": 3.009956872685239,
+    "err": -0.41256868282529746,
+    "err_tol": 8.527564412704628,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.07707257248987558,
+    "failed": [
+     "forecast"
+    ]
+   },
+   "hidden_a": {
+    "forecast": 2.7681330440097733,
+    "truth": 3.120893092030755,
+    "err": -0.3527600480209818,
+    "err_tol": 5.124538694191159,
+    "decision": "defer",
+    "truth_decision": "procure",
+    "response": 0.05019602521750531,
+    "failed": [
+     "forecast",
+     "decision"
+    ]
+   },
+   "hidden_b": {
+    "forecast": 2.3303287783471283,
+    "truth": 2.7273819270943225,
+    "err": -0.3970531487471942,
+    "err_tol": 8.912078486433215,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.17039030318630297,
+    "failed": [
+     "forecast"
+    ]
+   },
+   "hidden_c": {
+    "forecast": 2.2305776405994644,
+    "truth": 3.13658654841409,
+    "err": -0.9060089078146256,
+    "err_tol": 9.092052187611806,
+    "decision": "defer",
+    "truth_decision": "procure",
+    "response": 0.0712533112897553,
+    "failed": [
+     "forecast",
+     "decision"
+    ]
+   },
+   "hidden_d": {
+    "forecast": 2.5352471317425676,
+    "truth": 3.004656316143759,
+    "err": -0.4694091844011914,
+    "err_tol": 11.084768468328004,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.10790730185412375,
+    "failed": [
+     "forecast"
+    ]
+   }
+  },
+  "max_err_tol": 11.084768468328004,
+  "min_err_tol": 5.124538694191159
+ },
+ "CE13_rload_composed_at_mean": {
+  "kind": "alternative",
+  "reward": 1,
+  "fixtures": {
+   "visible": {
+    "forecast": 3.0032332241403337,
+    "truth": 3.009956872685239,
+    "err": -0.0067236485449053696,
+    "err_tol": 0.13897406284554906,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.07707257248987558,
+    "failed": []
+   },
+   "hidden_a": {
+    "forecast": 3.129520627873182,
+    "truth": 3.120893092030755,
+    "err": 0.008627535842427037,
+    "err_tol": 0.12533205363836658,
+    "decision": "procure",
+    "truth_decision": "procure",
+    "response": 0.05019602521750531,
+    "failed": []
+   },
+   "hidden_b": {
+    "forecast": 2.7288561710077137,
+    "truth": 2.7273819270943225,
+    "err": 0.0014742439133912377,
+    "err_tol": 0.033090223577737096,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.17039030318630297,
+    "failed": []
+   },
+   "hidden_c": {
+    "forecast": 3.1375698016195153,
+    "truth": 3.13658654841409,
+    "err": 0.0009832532054252496,
+    "err_tol": 0.009867220267101491,
+    "decision": "procure",
+    "truth_decision": "procure",
+    "response": 0.0712533112897553,
+    "failed": []
+   },
+   "hidden_d": {
+    "forecast": 3.0141575786373838,
+    "truth": 3.004656316143759,
+    "err": 0.009501262493624818,
+    "err_tol": 0.22436564600454498,
+    "decision": "defer",
+    "truth_decision": "defer",
+    "response": 0.10790730185412375,
+    "failed": []
+   }
+  },
+  "max_err_tol": 0.22436564600454498,
+  "min_err_tol": 0.009867220267101491
+ }
+}
