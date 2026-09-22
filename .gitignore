@@ -33,3 +33,6 @@ tools/task0*/.world
 tools/set_gemini_key.sh
 submission/
 submission.zip
+logs/final-*.log
+logs/tb3-check-*.log
+logs/run_*.out
