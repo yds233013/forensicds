@@ -31,3 +31,5 @@ tools/task0*/.ws
 tools/task0*/.oracle
 tools/task0*/.world
 tools/set_gemini_key.sh
+submission/
+submission.zip

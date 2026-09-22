@@ -1,0 +1,432 @@
+{
+ "pilot": {
+  "task01": {
+   "path": "candidates/01-revenue-reconciliation",
+   "name": "Revenue reconciliation",
+   "generation": "gen1",
+   "trials": [
+    {
+     "trial": "01-revenue-reconciliation__DuhAh5u",
+     "job": "task01-gemini3flash-diagnosis-paid",
+     "reward": 0.0,
+     "cost_usd": 0.259088,
+     "checksum": "d63b64c2c4079803"
+    },
+    {
+     "trial": "01-revenue-reconciliation__dT496ZB",
+     "job": "task01-gemini3flash-diagnosis-paid",
+     "reward": 1.0,
+     "cost_usd": 0.184539,
+     "checksum": "d63b64c2c4079803"
+    },
+    {
+     "trial": "01-revenue-reconciliation__wkRynfY",
+     "job": "task01-gemini3flash-diagnosis-paid",
+     "reward": 1.0,
+     "cost_usd": 0.227016,
+     "checksum": "d63b64c2c4079803"
+    }
+   ],
+   "n_valid": 3,
+   "successes": 2,
+   "pass_at_3": 1,
+   "invalid_runs": 9,
+   "model_cost_usd": 0.8166
+  },
+  "task02": {
+   "path": "candidates/02-renewal-risk-regression",
+   "name": "Renewal-risk point-in-time features",
+   "generation": "gen1",
+   "trials": [
+    {
+     "trial": "02-renewal-risk-regression__JctTpSi",
+     "job": "task02-gemini3flash-diagnosis",
+     "reward": 0.0,
+     "cost_usd": 0.259117,
+     "checksum": "6a7ce988f11b5b67"
+    },
+    {
+     "trial": "02-renewal-risk-regression__nXXMdDm",
+     "job": "task02-gemini3flash-diagnosis",
+     "reward": 0.0,
+     "cost_usd": 0.235287,
+     "checksum": "6a7ce988f11b5b67"
+    },
+    {
+     "trial": "02-renewal-risk-regression__pf9zaPc",
+     "job": "task02-gemini3flash-diagnosis",
+     "reward": 0.0,
+     "cost_usd": 0.207825,
+     "checksum": "6a7ce988f11b5b67"
+    }
+   ],
+   "n_valid": 3,
+   "successes": 0,
+   "pass_at_3": 0,
+   "invalid_runs": 0,
+   "model_cost_usd": 0.7022
+  },
+  "task03": {
+   "path": "candidates/03-lead-score-evaluation",
+   "name": "Lead-score evaluation",
+   "generation": "gen1",
+   "trials": [
+    {
+     "trial": "03-lead-score-evaluation__PQASiat",
+     "job": "task03-gemini3flash-diagnosis",
+     "reward": 1.0,
+     "cost_usd": 0.139396,
+     "checksum": "39a93ccee78e0e06"
+    },
+    {
+     "trial": "03-lead-score-evaluation__Ug5BWo4",
+     "job": "task03-gemini3flash-diagnosis",
+     "reward": 1.0,
+     "cost_usd": 0.155466,
+     "checksum": "39a93ccee78e0e06"
+    },
+    {
+     "trial": "03-lead-score-evaluation__r2pMM9b",
+     "job": "task03-gemini3flash-diagnosis",
+     "reward": 1.0,
+     "cost_usd": 0.187023,
+     "checksum": "39a93ccee78e0e06"
+    }
+   ],
+   "n_valid": 3,
+   "successes": 3,
+   "pass_at_3": 1,
+   "invalid_runs": 0,
+   "model_cost_usd": 0.4819
+  },
+  "task04": {
+   "path": "candidates/04-retention-metrics-regression",
+   "name": "Retention metrics",
+   "generation": "gen1",
+   "trials": [
+    {
+     "trial": "04-retention-metrics-regression__3SUW3gh",
+     "job": "task04-gemini3flash-diagnosis",
+     "reward": 0.0,
+     "cost_usd": 0.131351,
+     "checksum": "c8c054834b0cad27"
+    },
+    {
+     "trial": "04-retention-metrics-regression__AEZ8pU4",
+     "job": "task04-gemini3flash-diagnosis",
+     "reward": 0.0,
+     "cost_usd": 0.161139,
+     "checksum": "c8c054834b0cad27"
+    },
+    {
+     "trial": "04-retention-metrics-regression__ok6i587",
+     "job": "task04-gemini3flash-diagnosis",
+     "reward": 1.0,
+     "cost_usd": 0.127024,
+     "checksum": "c8c054834b0cad27"
+    }
+   ],
+   "n_valid": 3,
+   "successes": 1,
+   "pass_at_3": 1,
+   "invalid_runs": 0,
+   "model_cost_usd": 0.4195
+  },
+  "task05": {
+   "path": "candidates/05-onboarding-experiment-readout",
+   "name": "Onboarding experiment readout",
+   "generation": "gen1",
+   "trials": [
+    {
+     "trial": "05-onboarding-experiment-readout__MaomctL",
+     "job": "task05-gemini3flash-diagnosis",
+     "reward": 1.0,
+     "cost_usd": 0.087287,
+     "checksum": "3a93d8801f7c4d2f"
+    },
+    {
+     "trial": "05-onboarding-experiment-readout__axNEheD",
+     "job": "task05-gemini3flash-diagnosis",
+     "reward": 1.0,
+     "cost_usd": 0.087783,
+     "checksum": "3a93d8801f7c4d2f"
+    },
+    {
+     "trial": "05-onboarding-experiment-readout__okTydXM",
+     "job": "task05-gemini3flash-diagnosis",
+     "reward": 1.0,
+     "cost_usd": 0.082512,
+     "checksum": "3a93d8801f7c4d2f"
+    }
+   ],
+   "n_valid": 3,
+   "successes": 3,
+   "pass_at_3": 1,
+   "invalid_runs": 0,
+   "model_cost_usd": 0.2576
+  },
+  "task06": {
+   "path": "candidates/06-usage-statement-close",
+   "name": "Usage statement close",
+   "generation": "gen2",
+   "trials": [
+    {
+     "trial": "06-usage-statement-close__9fGwNFp",
+     "job": "task06-gemini3flash-diagnosis",
+     "reward": 1.0,
+     "cost_usd": 0.40522,
+     "checksum": "058c49f2a1c9c76c"
+    },
+    {
+     "trial": "06-usage-statement-close__Yav3hqK",
+     "job": "task06-gemini3flash-diagnosis",
+     "reward": 1.0,
+     "cost_usd": 0.20881,
+     "checksum": "058c49f2a1c9c76c"
+    },
+    {
+     "trial": "06-usage-statement-close__fiJFbgG",
+     "job": "task06-gemini3flash-diagnosis",
+     "reward": 1.0,
+     "cost_usd": 0.27376,
+     "checksum": "058c49f2a1c9c76c"
+    }
+   ],
+   "n_valid": 3,
+   "successes": 3,
+   "pass_at_3": 1,
+   "invalid_runs": 0,
+   "model_cost_usd": 0.8878
+  },
+  "g05": {
+   "path": "candidates/g05-sco-rollout-gate",
+   "name": "Staggered rollout causal gate",
+   "generation": "gen3",
+   "trials": [
+    {
+     "trial": "g05-sco-rollout-gate__MMGNYFS",
+     "job": "g05-gemini3flash-baseline-1",
+     "reward": 0.0,
+     "cost_usd": 0.155185,
+     "checksum": "56c1d86ea2ca9df1"
+    },
+    {
+     "trial": "g05-sco-rollout-gate__PYhR2eh",
+     "job": "g05-gemini3flash-baseline-1",
+     "reward": 0.0,
+     "cost_usd": 0.152483,
+     "checksum": "56c1d86ea2ca9df1"
+    },
+    {
+     "trial": "g05-sco-rollout-gate__rsDKTXQ",
+     "job": "g05-gemini3flash-baseline-2",
+     "reward": 0.0,
+     "cost_usd": 0.183307,
+     "checksum": "56c1d86ea2ca9df1"
+    }
+   ],
+   "n_valid": 3,
+   "successes": 0,
+   "pass_at_3": 0,
+   "invalid_runs": 1,
+   "model_cost_usd": 0.6009
+  },
+  "g08": {
+   "path": "candidates/g08-forecast-accuracy-vintages",
+   "name": "Forecast accuracy vintages",
+   "generation": "gen3",
+   "trials": [
+    {
+     "trial": "g08-forecast-accuracy-vintages__h7TpDUG",
+     "job": "g08-gemini3flash-baseline-2",
+     "reward": 0.0,
+     "cost_usd": 0.269222,
+     "checksum": "7ee0840d9d5ba54d"
+    },
+    {
+     "trial": "g08-forecast-accuracy-vintages__pXphfXM",
+     "job": "g08-gemini3flash-baseline-2",
+     "reward": 1.0,
+     "cost_usd": 0.36481,
+     "checksum": "7ee0840d9d5ba54d"
+    },
+    {
+     "trial": "g08-forecast-accuracy-vintages__wmwSU97",
+     "job": "g08-gemini3flash-baseline-2",
+     "reward": 0.0,
+     "cost_usd": 0.324234,
+     "checksum": "7ee0840d9d5ba54d"
+    }
+   ],
+   "n_valid": 3,
+   "successes": 1,
+   "pass_at_3": 1,
+   "invalid_runs": 3,
+   "model_cost_usd": 0.9583
+  },
+  "g10": {
+   "path": "candidates/g10-censored-demand",
+   "name": "Censored (lost) demand",
+   "generation": "gen3",
+   "trials": [
+    {
+     "trial": "g10-censored-demand__LhEU3ny",
+     "job": "g10-gemini3flash-baseline-1",
+     "reward": 0.0,
+     "cost_usd": 0.17923,
+     "checksum": "d72cc255793fc6f4"
+    },
+    {
+     "trial": "g10-censored-demand__cLtM9yi",
+     "job": "g10-gemini3flash-baseline-1",
+     "reward": 0.0,
+     "cost_usd": 0.243076,
+     "checksum": "d72cc255793fc6f4"
+    },
+    {
+     "trial": "g10-censored-demand__eMXZbBi",
+     "job": "g10-gemini3flash-baseline-1",
+     "reward": 0.0,
+     "cost_usd": 0.161972,
+     "checksum": "d72cc255793fc6f4"
+    }
+   ],
+   "n_valid": 3,
+   "successes": 0,
+   "pass_at_3": 0,
+   "invalid_runs": 0,
+   "model_cost_usd": 0.5843
+  },
+  "g24": {
+   "path": "candidates/g24-recommender-ope",
+   "name": "Recommender off-policy evaluation",
+   "generation": "gen3",
+   "trials": [
+    {
+     "trial": "g24-recommender-ope__a8zVL7h",
+     "job": "g24-gemini3flash-baseline-1",
+     "reward": 0.0,
+     "cost_usd": 0.176985,
+     "checksum": "cb3046e8da894df3"
+    },
+    {
+     "trial": "g24-recommender-ope__wVmAykK",
+     "job": "g24-gemini3flash-baseline-1",
+     "reward": 0.0,
+     "cost_usd": 0.15795,
+     "checksum": "cb3046e8da894df3"
+    },
+    {
+     "trial": "g24-recommender-ope__ykNY8fD",
+     "job": "g24-gemini3flash-baseline-1",
+     "reward": 0.0,
+     "cost_usd": 0.178671,
+     "checksum": "cb3046e8da894df3"
+    }
+   ],
+   "n_valid": 3,
+   "successes": 0,
+   "pass_at_3": 0,
+   "invalid_runs": 0,
+   "model_cost_usd": 0.5136
+  },
+  "g34": {
+   "path": "candidates/g34-fleet-reliability-gate",
+   "name": "Competing-risks fleet reliability",
+   "generation": "gen3",
+   "trials": [
+    {
+     "trial": "g34-fleet-reliability-gate__SdvVPQN",
+     "job": "g34-gemini3flash-baseline-3",
+     "reward": 1.0,
+     "cost_usd": 0.033479,
+     "checksum": "48b9cdb1bb48d5b5"
+    },
+    {
+     "trial": "g34-fleet-reliability-gate__UPCLpLx",
+     "job": "g34-gemini3flash-baseline-2",
+     "reward": 0.0,
+     "cost_usd": 0.052794,
+     "checksum": "48b9cdb1bb48d5b5"
+    },
+    {
+     "trial": "g34-fleet-reliability-gate__hLbWzqK",
+     "job": "g34-gemini3flash-baseline-1",
+     "reward": 1.0,
+     "cost_usd": 0.038132,
+     "checksum": "48b9cdb1bb48d5b5"
+    }
+   ],
+   "n_valid": 3,
+   "successes": 2,
+   "pass_at_3": 1,
+   "invalid_runs": 0,
+   "model_cost_usd": 0.1244
+  },
+  "g35": {
+   "path": "candidates/g35-dispatch-priority-gate",
+   "name": "Marketplace interference",
+   "generation": "gen3",
+   "trials": [
+    {
+     "trial": "g35-dispatch-priority-gate__7Xib8sH",
+     "job": "g35-gemini3flash-baseline-2",
+     "reward": 1.0,
+     "cost_usd": 0.084967,
+     "checksum": "2d0d174f177e6541"
+    },
+    {
+     "trial": "g35-dispatch-priority-gate__GxLG9yo",
+     "job": "g35-gemini3flash-baseline-1",
+     "reward": 1.0,
+     "cost_usd": 0.073123,
+     "checksum": "2d0d174f177e6541"
+    },
+    {
+     "trial": "g35-dispatch-priority-gate__NbUVHJu",
+     "job": "g35-gemini3flash-baseline-3",
+     "reward": 1.0,
+     "cost_usd": 0.029915,
+     "checksum": "2d0d174f177e6541"
+    }
+   ],
+   "n_valid": 3,
+   "successes": 3,
+   "pass_at_3": 1,
+   "invalid_runs": 0,
+   "model_cost_usd": 0.188
+  }
+ },
+ "final": [
+  "task02",
+  "g05",
+  "g10",
+  "g24",
+  "g34"
+ ],
+ "excluded": {
+  "g36": "contaminated by verifier definition defect (F8); development-only",
+  "g37": "research-only DROP (no tolerance window)",
+  "g38": "research-only DROP (no tolerance window)"
+ },
+ "costs": {
+  "gemini_all_runs_usd": 6.5351,
+  "gemini_excluded_g36_usd": 0.3554,
+  "gemini_task02_ablation_usd": 0.7474,
+  "harbor_check_usd": 9.4003
+ },
+ "final_summary": {
+  "tasks": 5,
+  "trials": 15,
+  "successful_trials": 2,
+  "tasks_with_pass3": 1,
+  "trial_success_rate": 0.13333333333333333,
+  "task_pass_at_3": 0.2
+ },
+ "pilot_summary": {
+  "tasks": 12,
+  "trials": 36,
+  "successful_trials": 18,
+  "tasks_with_pass3": 8
+ }
+}

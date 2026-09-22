@@ -1,0 +1,5 @@
+candidates/02-renewal-risk-regression f696367794c1a25f
+candidates/g05-sco-rollout-gate 77a6e432d9d2cba2
+candidates/g10-censored-demand 047195e7a12d34cd
+candidates/g24-recommender-ope 2c9cc2055ef796a5
+candidates/g34-fleet-reliability-gate f14dd0c0dbcd763c

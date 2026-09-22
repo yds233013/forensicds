@@ -1,0 +1,77 @@
+{
+ "tasks": [
+  {
+   "id": "task02",
+   "path": "candidates/02-renewal-risk-regression",
+   "valid_trials": [
+    "02-renewal-risk-regression__nXXMdDm",
+    "02-renewal-risk-regression__pf9zaPc",
+    "02-renewal-risk-regression__JctTpSi"
+   ],
+   "rewards": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "id": "g05",
+   "path": "candidates/g05-sco-rollout-gate",
+   "valid_trials": [
+    "g05-sco-rollout-gate__PYhR2eh",
+    "g05-sco-rollout-gate__MMGNYFS",
+    "g05-sco-rollout-gate__rsDKTXQ"
+   ],
+   "rewards": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "id": "g10",
+   "path": "candidates/g10-censored-demand",
+   "valid_trials": [
+    "g10-censored-demand__eMXZbBi",
+    "g10-censored-demand__cLtM9yi",
+    "g10-censored-demand__LhEU3ny"
+   ],
+   "rewards": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "id": "g24",
+   "path": "candidates/g24-recommender-ope",
+   "valid_trials": [
+    "g24-recommender-ope__wVmAykK",
+    "g24-recommender-ope__a8zVL7h",
+    "g24-recommender-ope__ykNY8fD"
+   ],
+   "rewards": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "id": "g34",
+   "path": "candidates/g34-fleet-reliability-gate",
+   "valid_trials": [
+    "g34-fleet-reliability-gate__hLbWzqK",
+    "g34-fleet-reliability-gate__UPCLpLx",
+    "g34-fleet-reliability-gate__SdvVPQN"
+   ],
+   "rewards": [
+    0.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "invalid_trials": {
+  "g05-sco-rollout-gate__JnK5hsR": "infrastructure-invalid, adjudicated before replacement (research/g05/G05_JnK5hsR_validity_forensics.md)"
+ }
+}
