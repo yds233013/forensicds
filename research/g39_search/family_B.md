@@ -1,0 +1,16 @@
+# Family B — unit / denominator normalisation across heterogeneous systems (before simulation)
+
+| id | incident | target object | reconciliation work | traps | CS attack | SEM | verdict |
+|---|---|---|---|---|---|---|---|
+| **B1 fleet OEE** | the board wants one fleet OEE for a capacity decision; plant dashboards disagree | Σ good_parts·ideal_cycle_time / Σ planned_production_time (PPT = calendar − planned downtime) | per-product ideal cycle times; multi-cavity strokes → parts; planned vs unplanned downtime; scrap | mean of plant OEEs; calendar denominator (TEEP); strokes as parts; plant-average cycle time | "average the dashboards" fails when plants differ in size or cavities | pinned (ISO 22400-style definition) | **top-12** |
+| **B2 warehouse labour hours** | next week's staffing plan uses "picks per hour" from sites that count differently | Σ_s F_units,s · direct_hours_s / units_s | per-site unit type (lines/units/cases) from order-line and case-pack tables; paid vs direct hours | picks ≠ units; paid hours; network-average rate | "network average rate" fails when sites differ | pinned | **top-12** |
+| **B3 data-centre usable power headroom** | sales asks whether a 1.2 MW pipeline fits | Σ_h max(0, usable_kW_h − peak_kW_h − reserved_kW_h); usable = modules·kVA·pf·derate·(1/2 for 2N; (n−1)/n for N+1) | topology per hall; kVA→kW; 15-min peak vs average; contracted-but-not-deployed | nameplate; kVA as kW; pooling halls; average load; ignoring reserved | "nameplate − load" fails | pinned by the engineering standard | **top-12** |
+| **B4 fleet capacity factor** | the renewables fleet CF is reported at 21 % vs 26 % | Σ E / Σ (effective_MW × hours in commercial operation); effective = AC export limit (solar) or permitted derate (wind) | COD dates, DC/AC ratio, derates | DC nameplate; full-year hours; average of unit CFs | "average CF" fails with mixed CODs and sizes | pinned (NERC-style) | **top-12** |
+| B5 cloud cost per 1k requests | unit economics disagree | allocated cost / requests | allocation rule | requested vs used | — | **low**: allocation rules legitimately differ | reject (SEM) |
+| B6 cost per package vs shipment | carrier invoices mismatch | cost / packages | multi-package shipments | shipment vs package | one join | pinned | reject: one join (CS) |
+| B7 readmission per episode vs visit | quality metric dispute | readmissions / index episodes | transfer chaining | visit vs episode | — | medium | reject: clinical-definition ambiguity |
+| B8 marketplace take rate | finance vs product disagree | net revenue / net GMV | refunds, cancellations timing | gross vs net | one filter | medium | reject: SEM (GMV definitions vary) |
+| B9 ad CPM (served vs viewable) | agency dispute | spend / viewable impressions × 1000 | viewability standards | served vs viewable | one column | pinned (MRC) | reject: one column (CS) |
+| B10 DSO gross vs net receivables | CFO dashboard | receivables / credit sales × days | credit memos | gross vs net | one filter | medium | reject: CS |
+| B11 telecom churn per member-month | churn "doubles" | churned lines / line-months | multi-line accounts | members vs lines | one aggregate | medium | reject: CS |
+| B12 GB vs GiB storage chargeback | invoice dispute | — | unit conversion | GB/GiB | one conversion | — | reject: trivial conversion |
