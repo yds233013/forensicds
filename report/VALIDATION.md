@@ -17,17 +17,24 @@ Identity = Harbor's durable `TrialLock` task digest (`lock.json`). The deprecate
 ## harbor check
 
 - **task02** `task02-check-1` (Harbor default rubric): 11 criteria, non-pass: none
+- **task02** `tb3-check-02-renewal-risk-regression` (TB3 task-implementation rubric): 35 criteria, non-pass: {'verifiable': 'fail', 'instruction_concision': 'fail', 'separate_verifier_configured': 'fail', 'environment_hygiene': 'fail', 'verification_explanation_quality': 'fail', 'category_and_tags': 'fail', 'task_name': 'fail', 'expert_time_estimate': 'fail', 'task_toml_schema': 'fail', 'verifier_execution_isolation': 'fail'}
 - **g05** `g05-check-prebaseline` (Harbor default rubric): 11 criteria, non-pass: none
+- **g05** `tb3-check-g05-sco-rollout-gate` (TB3 task-implementation rubric): 35 criteria, non-pass: {'separate_verifier_configured': 'fail', 'environment_hygiene': 'fail', 'difficulty_explanation_quality': 'fail', 'category_and_tags': 'fail', 'task_name': 'fail', 'expert_time_estimate': 'fail', 'task_toml_schema': 'fail', 'verifier_execution_isolation': 'fail'}
 - **g10** `g10-check-prebaseline` (Harbor default rubric): 11 criteria, non-pass: none
+- **g10** `tb3-check-g10-censored-demand` (TB3 task-implementation rubric): 35 criteria, non-pass: {'verifiable': 'fail', 'separate_verifier_configured': 'fail', 'category_and_tags': 'fail', 'expert_time_estimate': 'fail', 'task_toml_schema': 'fail'}
 - **g24** `g24-check-prebaseline` (Harbor default rubric): 11 criteria, non-pass: none
+- **g24** `tb3-check-g24-recommender-ope` (TB3 task-implementation rubric): 35 criteria, non-pass: {'verification_explanation_quality': 'fail', 'category_and_tags': 'fail', 'expert_time_estimate': 'fail', 'task_toml_schema': 'fail', 'verifier_execution_isolation': 'fail'}
 - **g34** `2026-09-20__01-29-33` (Harbor default rubric): 11 criteria, non-pass: none
+- **g34** `tb3-check-g34-fleet-reliability-gate` (TB3 task-implementation rubric): 35 criteria, non-pass: {'anti_cheat_robustness': 'fail', 'instruction_concision': 'fail', 'separate_verifier_configured': 'fail', 'difficulty_explanation_quality': 'fail', 'verification_explanation_quality': 'fail', 'category_and_tags': 'fail', 'task_name': 'fail', 'expert_time_estimate': 'fail', 'task_toml_schema': 'fail'}
+
+**Disputed TB3 finding (G34 `anti_cheat_robustness`).** The evaluator assumed `/tests` is readable during the agent session. In Harbor 0.21 shared-verifier mode, `tests/` is uploaded inside `Verifier.verify()` (harbor/verifier/verifier.py), after the agent session; no task image copies `tests/` or `solution/`. None of the 15 counted trajectories references `/tests`, `/solution`, `test.sh`, `reward.txt` or `/logs/verifier` (checked by pattern search of every ATIF trajectory).
 
 ## Mutation / wrong-method suites (pre-baseline, in the task image with the real test.sh)
 
 | task | cases as expected | report |
 |---|---|---|
-| task02 | 21 / 21 | report/task02_validation.md |
-| g05 | 38 / 38 | report/g05_prebaseline_validation.md |
-| g10 | 33 / 33 | report/g10_prebaseline_validation.md |
-| g24 | 30 / 30 | report/g24_prebaseline_validation.md |
-| g34 | 21 / 21 | report/g34_prebaseline_validation.md |
+| task02 | 21 / 21 | supporting/task02_validation.md |
+| g05 | 38 / 38 | supporting/g05_prebaseline_validation.md |
+| g10 | 33 / 33 | supporting/g10_prebaseline_validation.md |
+| g24 | 30 / 30 | supporting/g24_prebaseline_validation.md |
+| g34 | 21 / 21 | supporting/g34_prebaseline_validation.md |

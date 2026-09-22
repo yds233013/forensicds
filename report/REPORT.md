@@ -174,8 +174,24 @@ Short descriptions follow; full task details are in Appendix A.
     before any model run.
 - **Quality checks.** Oracle = 1 and Nop = 0 on the frozen checksum. Mutation suites of 21–38 cases,
   covering valid alternative estimators, wrong statistical objects, overfits and tamper attempts, all
-  behave as expected. `harbor check` was run on every task: all 11 default-rubric criteria pass. TB3
-  rubric results are in Appendix B.
+  behave as expected. `harbor check` was run on every task: all 11 default-rubric criteria pass. We also
+  ran the **TB3 task-implementation rubric** (35 criteria), recovered from the TB3 repository's git
+  history because the assignment's link now returns 404. Each task fails 5–10 TB3 criteria, all
+  reported in Appendix B:
+  - **TB3 platform conventions:** separate verifier image, `task.toml` schema, category/tags, task
+    name, expert-time field.
+  - **Instruction style:** memo framing, relative paths.
+  - **Verifier hardening:** no `--no-new-privs`; the reward directory is not explicitly `chmod 700`;
+    Task02's verifier runs the agent's pipeline as root; pytest is installed at verify time (from PyPI
+    for Task02 and G10).
+  - **Metadata explanation text.**
+
+  One TB3 finding is incorrect for this setup. It says G34's `/tests` is readable during the agent
+  session, but Harbor 0.21 uploads `tests/` only inside `verify()`, after the agent finishes, and no
+  task image copies `tests/` or `solution/`. **None of these gaps affected a measured result.** No
+  counted trajectory references `/tests`, `/solution`, `test.sh` or the reward files, and every
+  failure is a numeric failure. The tasks are frozen and baselined, so we report these gaps rather
+  than patch them; they would be fixed in a v2.
 
 **Terminology.** "Successes / 3" is an empirical per-attempt success rate from three trials (an estimate
 of pass@1 with wide uncertainty, not an exact pass@1). **pass@3** for a task is 1 iff at least one of
@@ -242,7 +258,7 @@ A decision-only grader would have scored those trials as successes.
 
 These trajectory findings come from full reading of every ATIF trajectory, re-running each agent's
 **submitted code** on pristine extracts, and targeted counterfactual patches on analysis copies. Per-task
-write-ups are in `research/`.
+write-ups are in `report/supporting/`.
 
 ### Task02 — found the leak, rebuilt the wrong state (0/3)
 All three trials went straight to the point-in-time hypothesis. One reasoned explicitly that
@@ -453,6 +469,8 @@ as a point estimate; with five tasks it cannot be established tightly.
   simulated.
 - **Binary reward.** All-or-nothing grading hides partial progress; the per-check results in the logs
   recover it.
+- **Verifier hardening below TB3's bar** (§3). This cannot create false failures, and no trajectory attempted
+  to exploit it, but a v2 would move to separate-verifier mode with pre-baked test dependencies.
 - **AI-assisted authoring.** Tasks, verifiers and much analysis were written with Claude Code under
   explicit gates (§7). The contamination found in G36 shows gates can still miss contract/verifier
   mismatches. That is why every graded quantity now needs an independent derivation from the contract

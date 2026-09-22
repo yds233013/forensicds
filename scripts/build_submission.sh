@@ -44,6 +44,16 @@ cp report/REPORT.md "$OUT/report/"; cp -r report/figures "$OUT/report/"; mkdir -
 cp report/data/results.json "$OUT/report/data/"
 cp report/LOGS_README.md "$OUT/logs/README.md"
 for f in report/TRIALS.md report/VALIDATION.md; do [ -f "$f" ] && cp "$f" "$OUT/report/"; done
+# supporting evidence referenced by the report (analyses, validation reports, adjudications)
+S="$OUT/report/supporting"; mkdir -p "$S"
+for f in research/task02_gemini_analysis.md research/g05/G05_gemini_baseline_analysis.md research/g05/G05_JnK5hsR_validity_forensics.md \
+         research/g10/g10_gemini_analysis.md research/g24/g24_gemini_analysis.md research/g34/G34_gemini_baseline_analysis.md \
+         research/g34/semantic_audit_baseline_and_decision.md research/g34/semantic_audit_igqa_counterexamples.md \
+         research/task_design_failure_analysis.md research/g36/G36_FINAL_STATUS.md research/g37/G37_FINAL_STATUS.md \
+         research/g38/G38_FINAL_STATUS.md report/task02_validation.md report/g05_prebaseline_validation.md \
+         report/g10_prebaseline_validation.md report/g24_prebaseline_validation.md report/g34_prebaseline_validation.md; do
+  cp "$f" "$S/"
+done
 # the report's sample paths refer to samples/<task-dir>; rename samples to match the task dirs (already named)
 find "$OUT" -name "__pycache__" -type d -prune -exec rm -rf {} + ; find "$OUT" -name ".DS_Store" -delete
 (cd "$OUT" && zip -qr ../submission.zip samples logs report)

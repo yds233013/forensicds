@@ -72,6 +72,6 @@
   }
  ],
  "invalid_trials": {
-  "g05-sco-rollout-gate__JnK5hsR": "infrastructure-invalid, adjudicated before replacement (research/g05/G05_JnK5hsR_validity_forensics.md)"
+  "g05-sco-rollout-gate__JnK5hsR": "infrastructure-invalid, adjudicated before replacement (supporting/G05_JnK5hsR_validity_forensics.md)"
  }
 }

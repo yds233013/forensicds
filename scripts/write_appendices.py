@@ -75,10 +75,14 @@ for t in cfg["tasks"]:
             rub = "TB3 task-implementation rubric" if len(ch) > 15 else "Harbor default rubric"
             V.append(f"- **{t['id']}** `{p.split(os.sep)[-2] if p.split(os.sep)[-2] != 'jobs' else ''}` ({rub}): "
                      f"{len(ch)} criteria, non-pass: {bad if bad else 'none'}")
+V += ["", "**Disputed TB3 finding (G34 `anti_cheat_robustness`).** The evaluator assumed `/tests` is readable during the agent "
+      "session. In Harbor 0.21 shared-verifier mode, `tests/` is uploaded inside `Verifier.verify()` (harbor/verifier/verifier.py), "
+      "after the agent session; no task image copies `tests/` or `solution/`. None of the 15 counted trajectories references "
+      "`/tests`, `/solution`, `test.sh`, `reward.txt` or `/logs/verifier` (checked by pattern search of every ATIF trajectory)."]
 V += ["", "## Mutation / wrong-method suites (pre-baseline, in the task image with the real test.sh)", "",
       "| task | cases as expected | report |", "|---|---|---|",
-      "| task02 | 21 / 21 | report/task02_validation.md |", "| g05 | 38 / 38 | report/g05_prebaseline_validation.md |",
-      "| g10 | 33 / 33 | report/g10_prebaseline_validation.md |", "| g24 | 30 / 30 | report/g24_prebaseline_validation.md |",
-      "| g34 | 21 / 21 | report/g34_prebaseline_validation.md |"]
+      "| task02 | 21 / 21 | supporting/task02_validation.md |", "| g05 | 38 / 38 | supporting/g05_prebaseline_validation.md |",
+      "| g10 | 33 / 33 | supporting/g10_prebaseline_validation.md |", "| g24 | 30 / 30 | supporting/g24_prebaseline_validation.md |",
+      "| g34 | 21 / 21 | supporting/g34_prebaseline_validation.md |"]
 open(os.path.join(ROOT, "report", "VALIDATION.md"), "w").write("\n".join(V) + "\n")
 print("wrote report/TRIALS.md and report/VALIDATION.md")
