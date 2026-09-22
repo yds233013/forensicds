@@ -20,19 +20,22 @@ Research question and hypotheses: [`research/hypothesis.md`](research/hypothesis
 | `logs/` | Curated run summaries (raw Harbor `jobs/` is git-ignored). |
 | `report/` | Validation reports and final write-up. |
 
-## Task status
+## Final submission (see `report/REPORT.md`)
 
-| Task | Oracle | Nop | Mutation suite | Model runs |
-|------|--------|-----|----------------|------------|
-| 01 revenue reconciliation | 1.0 | 0.0 | 28/28 as expected | Gemini 3 Flash: 2/3 pass (pass@3 = 1) |
-| 02 renewal-risk regression | 1.0 | 0.0 | 21/21 as expected | Gemini 3 Flash: diagnosis 0/3; explicit-invariant ablation 0/3 (confounded) |
-| 03 lead-score evaluation | 1.0 | 0.0 | 24/24 as expected | Gemini 3 Flash: 3/3 (pass@3 = 1) |
-| 04 retention metrics | 1.0 | 0.0 | 24/24 as expected | Gemini 3 Flash: 1/3 (pass@3 = 1) |
-| 05 experiment readout | 1.0 | 0.0 | 27/27 as expected (1 informational) | Gemini 3 Flash: 3/3 (pass@3 = 1) |
-| 06 usage statement close (gen 2) | 1.0 | 0.0 | 29/29 as expected | not run |
+Final suite (5 tasks; `scripts/final_tasks.json`): Task02, G05, G10, G24, G34.
+- gemini-3-flash-preview: 2/15 successful trials; task-level pass@3 = 1/5 (20 %).
+- Full pilot pool (12 measured tasks) and all rejected designs: `report/TRIALS.md`, `research/task_design_failure_analysis.md`.
+- Excluded: G36 (contaminated, F8), G37/G38 (research-only drops), G39/G40 searches (dropped at gates).
 
-Benchmark-level docs: `research/benchmark_hypothesis.md`, `research/distribution_matrix.md`,
-`research/cross_task_review.md`, `research/failure_taxonomy.md`.
+| Script | Purpose |
+|--------|---------|
+| `scripts/build_results.py` | `report/data/results.json` from raw `jobs/` (read-only) |
+| `scripts/check_final_tasks.py` | Oracle=1 / Nop=0 / 3 valid trials on one frozen checksum, per final task |
+| `scripts/run_validation.sh` | re-run Oracle + Nop for the final tasks (free, sequential) |
+| `scripts/run_tb3_checks.sh` | `harbor check` with the TB3 rubric (paid evaluator) |
+| `scripts/make_figures.py`, `scripts/write_appendices.py` | figures, `TRIALS.md`, `VALIDATION.md` |
+| `scripts/build_submission.sh` | `submission/{samples,logs,report}` + `submission.zip` |
+| `scripts/secret_scan.sh`, `scripts/final_audit.sh` | secret scan; end-to-end audit (never runs a model) |
 
 ## Common commands
 

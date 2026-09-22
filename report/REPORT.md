@@ -158,13 +158,13 @@ Short descriptions follow; full task details are in Appendix A.
 - **Command.** `harbor run -p samples/<task> -a gemini-cli -m google/gemini-3-flash-preview -k 3 -n 3`.
   Exactly three valid trials per task.
 - **Invalid runs** (infrastructure failures: API key or quota errors, agent-setup timeout, a verifier
-  that never executed) are recorded separately and never counted. Such runs occurred during G08, Task01
-  and G05 development. For G05, one trial whose verifier never ran was adjudicated invalid *before*
+  that never executed) are recorded separately and never counted. Such runs occurred during the Task01,
+  G08 and G05 baselines. For G05, one trial whose verifier never ran was adjudicated invalid *before*
   its replacement was launched. The adjudication records its outcome as "would have scored 0", so it
   cannot change any conclusion (Appendix C).
 - **Freezing.** Each task was frozen (content checksum recorded) before its baseline, and none was
-  modified afterwards. The Harbor task checksum recorded in every trial matches the checksum on which
-  Oracle and Nop were re-run for this report (Appendix B).
+  modified afterwards. Harbor's durable task content digest (`lock.json`) is identical across all three
+  counted trials and the Oracle and Nop runs repeated for this report (Appendix B).
 - **Verifier hardening.**
   - the agent's pipeline runs as uid 65534 with `/tests` unreadable;
   - interpreter and standard-library hashes are checked against a manifest;
@@ -214,7 +214,7 @@ the other anchor candidates on validity grounds: its failing trial is a clean, i
 the target failure (§6), and its verifier passed a post-baseline semantic audit.
 
 **Selection caveat.** The suite was selected using the same trials we report. The 20 % figure is
-therefore an optimistic (low) estimate of the suite's pass@3 on fresh draws. §7 discusses this.
+therefore an optimistic (low) estimate of the suite's pass@3 on fresh draws (§10).
 
 ---
 
@@ -250,7 +250,7 @@ All three trials went straight to the point-in-time hypothesis. One reasoned exp
 `synced_at < prediction_date`." All three then implemented history reconstruction with
 **grouping-key errors**:
 - expansion-opportunity state keyed once per opportunity instead of per (entity, prediction date);
-- record existence tested on CRM time rather than load time.
+- in two trials, record existence also tested on CRM time rather than load time.
 
 Validation stopped at "AUC 0.77, close to the previous model version"; no example-level check was
 done. **Why these are genuine failures:**
@@ -262,8 +262,8 @@ done. **Why these are genuine failures:**
 ### G05 — rebuilt the panel exactly, never asked what identifies the effect (0/3)
 All three valid trials reconstructed the analysis panel **exactly** on all four extracts: actual
 go-live, event time, comparability, log net sales. All three then fit store + week fixed effects with
-no format conditioning. None opened the wave-sequencing document; none ran a pre-trend or placebo
-check.
+no format conditioning. None discovered that waves were sequenced by format; none ran a pre-trend or
+placebo check.
 
 In `rsDKTXQ` the agent wrote that including kit type "seems essential" and then chose the pooled
 estimate because "the 'stop' recommendation based on this is safe." That is estimand selection
@@ -289,8 +289,9 @@ exploration stream. They then applied it to the wrong object:
 
 Two submissions are numerically identical to pre-registered mutations
 (`wrong_weight_pre_filter_pool`, `wrong_keep_first_serve`). Patching ykNY8fD's decision grouping
-(~25 lines) makes it pass every check on all four extracts. Each failure is one semantic step from
-correct, which shows the verifier is not over-strict.
+(~25 lines) makes it pass every check on all four extracts. a8zVL7h needs two such patches (action
+space and decision anchor). The failures are one or two semantic steps from correct, which shows the
+verifier is not over-strict.
 
 ### G34 — the discriminator is whether the agent reasons about the risk set (2/3)
 The failing trial (UPCLpLx) reached the right framing: it said Kaplan–Meier answers engineering's
@@ -307,8 +308,8 @@ semantic audit confirmed the grading:
   contract rules out.
 
 ### Cross-task findings
-1. **Recognition is not the bottleneck; object preservation is.** In 13 of 13 failed trials the agent
-   named the right problem class. The failures appear at the step where a named concept must be turned
+1. **Recognition is not the bottleneck; object preservation is.** In every failed trial the agent
+   identified the broad problem class. The failures appear at the step where a named concept must be turned
    into a specific estimand: conditioning set, action space, decision unit, risk set, or as-of key.
 2. **Agents stop when the analysis is coherent or decision-plausible, not when it has been tested.**
    The failed trials include no pre-trend, placebo or held-out check, and no assumption test. Across
@@ -341,8 +342,8 @@ because it shows what makes a DS task *gradable*.
 
 | design | intended phenomenon | failure | caught by |
 |---|---|---|---|
-| G31 | selective labels in fraud chargebacks | a label-free heuristic recovered every decision; one of three mechanisms inert | adversarial review, cheap-solve search |
-| G33 | entity resolution | constant decision correct in 54/60 worlds; wrong mappings within 0.4–1.6 % | kill criteria |
+| G31 | selective labels in fraud chargebacks | a label-free heuristic recovered every decision; two of three intended mechanisms inert | adversarial review, cheap-solve search |
+| G33 | entity resolution | constant decision correct in 54/60 worlds; wrong entity mappings within 0.004–0.016 (absolute share) of truth | kill criteria |
 | G37 | measurement-system change (errors-in-variables) | valid-estimator noise ≈ size of subtle wrong methods (window ratio 0.01) | pre-registered tolerance window |
 | G38 | regression to the mean under threshold-triggered intervention | irreducible counterfactual noise; naive dashboard only ~2 SE away at a realistic trigger (ratio ≈ 0) | pre-registered tolerance window |
 | G39 (12 concepts) | deterministic optimisation, normalisation, aggregation | wrong objects coincide exactly whenever their trap is inactive; pinning the definition pins the computation | separation and counterexample gates |
@@ -350,11 +351,16 @@ because it shows what makes a DS task *gradable*.
 
 **The general lesson.** A statistical phenomenon can be real, industry-relevant and identifiable, and
 still be **ungradable**. That happens when plausible wrong analyses land inside the uncertainty of
-correct ones. We therefore required, *before building*:
+correct ones. The gates we developed during the project (mostly after G36) now apply to any new
+task *before it is built*:
 - a measured valid/wrong separation (worst plausible wrong error ≥ 3× the valid bound);
 - a counterexample search;
 - a natural-implementation-path audit;
 - an independent derivation of every graded quantity.
+
+The shipped tasks predate the strictest form of these gates. Each was built with a pre-registered
+wrong-method panel, Monte-Carlo tolerance calibration and a mutation suite. G34 additionally passed a
+post-baseline, zero-model-call semantic audit against the full gate set.
 
 The surviving tasks are the ones where the wrong analysis computes a *different object* with a large
 error (G10: 9.7–68× tolerance; G05: wrong routes ≥ 4.6τ vs ≤ 0.54τ for valid ones).
@@ -367,8 +373,10 @@ error (G10: 9.7–68× tolerance; G05: wrong routes ≥ 4.6τ vs ≤ 0.54τ for 
   leaderboards. It measures modelling skill against a score. We measure whether the *quantity* is the
   right one.
 - **DSBench** (Jing et al., ICLR 2025; arXiv:2409.07703) and **InfiAgent-DABench** (Hu et al., 2024;
-  arXiv:2401.05507): analysis and modelling tasks with closed-form answers. Useful formats, but
-  mostly single-step questions over clean files.
+  arXiv:2401.05507): data-analysis questions with closed-form answers (DABench) and analysis plus
+  Kaggle-style modelling tasks with long contexts and multiple tables (DSBench, whose best agent solved
+  34 % of analysis tasks). Both grade an answer to a stated question; neither asks whether an
+  organisation's existing number estimates the right quantity.
 - **DSAEval** (2026; arXiv:2601.13591): 641 problems over 285 datasets with multi-dimensional
   evaluation. It finds agents strong on structured, routine analysis. Our results locate the weakness
   *inside* structured analysis, at estimand choice.
@@ -426,7 +434,7 @@ The design already factors each task into reusable parts:
 5. **Human review on a sample**, focused on contract wording: the one place where an automated gate
    missed a defect (G36).
 
-At our observed costs (≈ $0.10–0.30 per trial, ≈ $0.50 per `harbor check`), piloting 1,000 tasks × 3
+At our observed costs (≈ $0.04–0.30 per trial, ≈ $0.50 per `harbor check`), piloting 1,000 tasks × 3
 trials is a few hundred dollars. The binding cost is generator and verifier engineering, which the
 mechanism library amortises.
 
@@ -435,7 +443,8 @@ mechanism library amortises.
 ## 10. Limitations
 
 - **Small n.** Three trials per task gives wide intervals: the aggregate trial rate has a 95 % Wilson
-  interval of 3.7–37.9 %.
+  interval of 3.7–37.9 %, and the task-level pass@3 of 1/5 has 3.6–62.4 %. The < 30 % bar is met
+as a point estimate; with five tasks it cannot be established tightly.
 - **Selection on the reported trials.** The suite was chosen with the same trials, so its pass@3 is
   biased low. Fresh draws would likely come out somewhat higher.
 - **One model, one harness** (gemini-cli). The findings are about this configuration.
@@ -481,13 +490,13 @@ Reproduce a baseline with:
 See each task's `instruction.md`, `task.toml` (difficulty and verification explanations) and
 `tests/`. Key facts:
 
-| task | `samples/` directory | Harbor task checksum (all trials) | expert time estimate |
+| task | `samples/` directory | Harbor task digest (all trials, Oracle, Nop) | expert time estimate |
 |---|---|---|---|
-| Task02 | `02-renewal-risk-regression` | 6a7ce988f11b5b67 | 120 min |
-| G05 | `g05-sco-rollout-gate` | 56c1d86ea2ca9df1 | 300 min |
-| G10 | `g10-censored-demand` | d72cc255793fc6f4 | 240 min |
-| G24 | `g24-recommender-ope` | cb3046e8da894df3 | 240 min |
-| G34 | `g34-fleet-reliability-gate` | 48b9cdb1bb48d5b5 | 240 min |
+| Task02 | `02-renewal-risk-regression` | 165ade77dd2e05fe | 120 min |
+| G05 | `g05-sco-rollout-gate` | d516b423252435b5 | 300 min |
+| G10 | `g10-censored-demand` | b6753d713539dd54 | 240 min |
+| G24 | `g24-recommender-ope` | 3db8174c4d56b0ea | 240 min |
+| G34 | `g34-fleet-reliability-gate` | d364e09a2f2e2f32 | 240 min |
 
 ## Appendix B — validation evidence
 See `VALIDATION.md` (generated): Oracle/Nop on the frozen checksum, `harbor check` outcomes, mutation

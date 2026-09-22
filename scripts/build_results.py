@@ -30,12 +30,14 @@ EXCLUDED = {"g36": "contaminated by verifier definition defect (F8); development
 rows = []
 for p in glob.glob(os.path.join(ROOT, "jobs", "*", "*", "result.json")):
     r = json.load(open(p)); job = p.split(os.sep)[-3]
+    lk = os.path.join(os.path.dirname(p), "lock.json")
+    dg = ((json.load(open(lk)).get("task") or {}).get("digest") if os.path.exists(lk) else None) or ""
     rows.append(dict(path=(r.get("config", {}).get("task", {}) or {}).get("path"), job=job, trial=r.get("trial_name"),
                      agent=(r.get("agent_info") or {}).get("name"),
                      model=((r.get("agent_info") or {}).get("model_info") or {}).get("name"),
                      reward=((r.get("verifier_result") or {}).get("rewards") or {}).get("reward"),
                      cost=(r.get("agent_result") or {}).get("cost_usd") or 0.0, exc=r.get("exception_info"),
-                     checksum=(r.get("task_checksum") or "")[:16]))
+                     checksum=(dg[7:23] if dg.startswith("sha256:") else (r.get("task_checksum") or "")[:16])))
 
 out = {"pilot": {}, "final": [t["id"] for t in cfg["tasks"]], "excluded": EXCLUDED, "costs": {}}
 tot_model = 0.0

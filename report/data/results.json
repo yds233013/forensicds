@@ -10,21 +10,21 @@
      "job": "task01-gemini3flash-diagnosis-paid",
      "reward": 0.0,
      "cost_usd": 0.259088,
-     "checksum": "d63b64c2c4079803"
+     "checksum": "42153cd1f3e8e81e"
     },
     {
      "trial": "01-revenue-reconciliation__dT496ZB",
      "job": "task01-gemini3flash-diagnosis-paid",
      "reward": 1.0,
      "cost_usd": 0.184539,
-     "checksum": "d63b64c2c4079803"
+     "checksum": "42153cd1f3e8e81e"
     },
     {
      "trial": "01-revenue-reconciliation__wkRynfY",
      "job": "task01-gemini3flash-diagnosis-paid",
      "reward": 1.0,
      "cost_usd": 0.227016,
-     "checksum": "d63b64c2c4079803"
+     "checksum": "42153cd1f3e8e81e"
     }
    ],
    "n_valid": 3,
@@ -43,21 +43,21 @@
      "job": "task02-gemini3flash-diagnosis",
      "reward": 0.0,
      "cost_usd": 0.259117,
-     "checksum": "6a7ce988f11b5b67"
+     "checksum": "165ade77dd2e05fe"
     },
     {
      "trial": "02-renewal-risk-regression__nXXMdDm",
      "job": "task02-gemini3flash-diagnosis",
      "reward": 0.0,
      "cost_usd": 0.235287,
-     "checksum": "6a7ce988f11b5b67"
+     "checksum": "165ade77dd2e05fe"
     },
     {
      "trial": "02-renewal-risk-regression__pf9zaPc",
      "job": "task02-gemini3flash-diagnosis",
      "reward": 0.0,
      "cost_usd": 0.207825,
-     "checksum": "6a7ce988f11b5b67"
+     "checksum": "165ade77dd2e05fe"
     }
    ],
    "n_valid": 3,
@@ -76,21 +76,21 @@
      "job": "task03-gemini3flash-diagnosis",
      "reward": 1.0,
      "cost_usd": 0.139396,
-     "checksum": "39a93ccee78e0e06"
+     "checksum": "41a7539aafc5803c"
     },
     {
      "trial": "03-lead-score-evaluation__Ug5BWo4",
      "job": "task03-gemini3flash-diagnosis",
      "reward": 1.0,
      "cost_usd": 0.155466,
-     "checksum": "39a93ccee78e0e06"
+     "checksum": "41a7539aafc5803c"
     },
     {
      "trial": "03-lead-score-evaluation__r2pMM9b",
      "job": "task03-gemini3flash-diagnosis",
      "reward": 1.0,
      "cost_usd": 0.187023,
-     "checksum": "39a93ccee78e0e06"
+     "checksum": "41a7539aafc5803c"
     }
    ],
    "n_valid": 3,
@@ -109,21 +109,21 @@
      "job": "task04-gemini3flash-diagnosis",
      "reward": 0.0,
      "cost_usd": 0.131351,
-     "checksum": "c8c054834b0cad27"
+     "checksum": "0eabf8349797dd86"
     },
     {
      "trial": "04-retention-metrics-regression__AEZ8pU4",
      "job": "task04-gemini3flash-diagnosis",
      "reward": 0.0,
      "cost_usd": 0.161139,
-     "checksum": "c8c054834b0cad27"
+     "checksum": "0eabf8349797dd86"
     },
     {
      "trial": "04-retention-metrics-regression__ok6i587",
      "job": "task04-gemini3flash-diagnosis",
      "reward": 1.0,
      "cost_usd": 0.127024,
-     "checksum": "c8c054834b0cad27"
+     "checksum": "0eabf8349797dd86"
     }
    ],
    "n_valid": 3,
@@ -142,21 +142,21 @@
      "job": "task05-gemini3flash-diagnosis",
      "reward": 1.0,
      "cost_usd": 0.087287,
-     "checksum": "3a93d8801f7c4d2f"
+     "checksum": "55ba18e422f13929"
     },
     {
      "trial": "05-onboarding-experiment-readout__axNEheD",
      "job": "task05-gemini3flash-diagnosis",
      "reward": 1.0,
      "cost_usd": 0.087783,
-     "checksum": "3a93d8801f7c4d2f"
+     "checksum": "55ba18e422f13929"
     },
     {
      "trial": "05-onboarding-experiment-readout__okTydXM",
      "job": "task05-gemini3flash-diagnosis",
      "reward": 1.0,
      "cost_usd": 0.082512,
-     "checksum": "3a93d8801f7c4d2f"
+     "checksum": "55ba18e422f13929"
     }
    ],
    "n_valid": 3,
@@ -175,21 +175,21 @@
      "job": "task06-gemini3flash-diagnosis",
      "reward": 1.0,
      "cost_usd": 0.40522,
-     "checksum": "058c49f2a1c9c76c"
+     "checksum": "ab200dfa6395ddef"
     },
     {
      "trial": "06-usage-statement-close__Yav3hqK",
      "job": "task06-gemini3flash-diagnosis",
      "reward": 1.0,
      "cost_usd": 0.20881,
-     "checksum": "058c49f2a1c9c76c"
+     "checksum": "ab200dfa6395ddef"
     },
     {
      "trial": "06-usage-statement-close__fiJFbgG",
      "job": "task06-gemini3flash-diagnosis",
      "reward": 1.0,
      "cost_usd": 0.27376,
-     "checksum": "058c49f2a1c9c76c"
+     "checksum": "ab200dfa6395ddef"
     }
    ],
    "n_valid": 3,
@@ -208,21 +208,21 @@
      "job": "g05-gemini3flash-baseline-1",
      "reward": 0.0,
      "cost_usd": 0.155185,
-     "checksum": "56c1d86ea2ca9df1"
+     "checksum": "d516b423252435b5"
     },
     {
      "trial": "g05-sco-rollout-gate__PYhR2eh",
      "job": "g05-gemini3flash-baseline-1",
      "reward": 0.0,
      "cost_usd": 0.152483,
-     "checksum": "56c1d86ea2ca9df1"
+     "checksum": "d516b423252435b5"
     },
     {
      "trial": "g05-sco-rollout-gate__rsDKTXQ",
      "job": "g05-gemini3flash-baseline-2",
      "reward": 0.0,
      "cost_usd": 0.183307,
-     "checksum": "56c1d86ea2ca9df1"
+     "checksum": "d516b423252435b5"
     }
    ],
    "n_valid": 3,
@@ -241,21 +241,21 @@
      "job": "g08-gemini3flash-baseline-2",
      "reward": 0.0,
      "cost_usd": 0.269222,
-     "checksum": "7ee0840d9d5ba54d"
+     "checksum": "e87bac57be7b1476"
     },
     {
      "trial": "g08-forecast-accuracy-vintages__pXphfXM",
      "job": "g08-gemini3flash-baseline-2",
      "reward": 1.0,
      "cost_usd": 0.36481,
-     "checksum": "7ee0840d9d5ba54d"
+     "checksum": "e87bac57be7b1476"
     },
     {
      "trial": "g08-forecast-accuracy-vintages__wmwSU97",
      "job": "g08-gemini3flash-baseline-2",
      "reward": 0.0,
      "cost_usd": 0.324234,
-     "checksum": "7ee0840d9d5ba54d"
+     "checksum": "e87bac57be7b1476"
     }
    ],
    "n_valid": 3,
@@ -274,21 +274,21 @@
      "job": "g10-gemini3flash-baseline-1",
      "reward": 0.0,
      "cost_usd": 0.17923,
-     "checksum": "d72cc255793fc6f4"
+     "checksum": "b6753d713539dd54"
     },
     {
      "trial": "g10-censored-demand__cLtM9yi",
      "job": "g10-gemini3flash-baseline-1",
      "reward": 0.0,
      "cost_usd": 0.243076,
-     "checksum": "d72cc255793fc6f4"
+     "checksum": "b6753d713539dd54"
     },
     {
      "trial": "g10-censored-demand__eMXZbBi",
      "job": "g10-gemini3flash-baseline-1",
      "reward": 0.0,
      "cost_usd": 0.161972,
-     "checksum": "d72cc255793fc6f4"
+     "checksum": "b6753d713539dd54"
     }
    ],
    "n_valid": 3,
@@ -307,21 +307,21 @@
      "job": "g24-gemini3flash-baseline-1",
      "reward": 0.0,
      "cost_usd": 0.176985,
-     "checksum": "cb3046e8da894df3"
+     "checksum": "3db8174c4d56b0ea"
     },
     {
      "trial": "g24-recommender-ope__wVmAykK",
      "job": "g24-gemini3flash-baseline-1",
      "reward": 0.0,
      "cost_usd": 0.15795,
-     "checksum": "cb3046e8da894df3"
+     "checksum": "3db8174c4d56b0ea"
     },
     {
      "trial": "g24-recommender-ope__ykNY8fD",
      "job": "g24-gemini3flash-baseline-1",
      "reward": 0.0,
      "cost_usd": 0.178671,
-     "checksum": "cb3046e8da894df3"
+     "checksum": "3db8174c4d56b0ea"
     }
    ],
    "n_valid": 3,
@@ -340,21 +340,21 @@
      "job": "g34-gemini3flash-baseline-3",
      "reward": 1.0,
      "cost_usd": 0.033479,
-     "checksum": "48b9cdb1bb48d5b5"
+     "checksum": "d364e09a2f2e2f32"
     },
     {
      "trial": "g34-fleet-reliability-gate__UPCLpLx",
      "job": "g34-gemini3flash-baseline-2",
      "reward": 0.0,
      "cost_usd": 0.052794,
-     "checksum": "48b9cdb1bb48d5b5"
+     "checksum": "d364e09a2f2e2f32"
     },
     {
      "trial": "g34-fleet-reliability-gate__hLbWzqK",
      "job": "g34-gemini3flash-baseline-1",
      "reward": 1.0,
      "cost_usd": 0.038132,
-     "checksum": "48b9cdb1bb48d5b5"
+     "checksum": "d364e09a2f2e2f32"
     }
    ],
    "n_valid": 3,
@@ -373,21 +373,21 @@
      "job": "g35-gemini3flash-baseline-2",
      "reward": 1.0,
      "cost_usd": 0.084967,
-     "checksum": "2d0d174f177e6541"
+     "checksum": "021245963e86738f"
     },
     {
      "trial": "g35-dispatch-priority-gate__GxLG9yo",
      "job": "g35-gemini3flash-baseline-1",
      "reward": 1.0,
      "cost_usd": 0.073123,
-     "checksum": "2d0d174f177e6541"
+     "checksum": "021245963e86738f"
     },
     {
      "trial": "g35-dispatch-priority-gate__NbUVHJu",
      "job": "g35-gemini3flash-baseline-3",
      "reward": 1.0,
      "cost_usd": 0.029915,
-     "checksum": "2d0d174f177e6541"
+     "checksum": "021245963e86738f"
     }
    ],
    "n_valid": 3,

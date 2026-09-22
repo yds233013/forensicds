@@ -29,7 +29,7 @@ for lab in ax.get_yticklabels():
         lab.set_fontweight("bold"); lab.set_color(ACCENT)
 ax.set_xlim(0, 4.0); ax.set_xticks([0, 1, 2, 3]); ax.set_xlabel("successful trials out of 3 (gemini-3-flash-preview)")
 ax.grid(axis="x", color=GRID); ax.set_axisbelow(True)
-ax.set_title("All 12 measured pilot tasks (blue = final suite)", loc="left", color=INK, fontsize=11)
+fig.suptitle("All 12 measured pilot tasks (blue = final suite)", x=0.02, ha="left", color=INK, fontsize=11)
 fig.tight_layout(); fig.savefig(os.path.join(FIG, "pilot_successes.png"), dpi=180); plt.close(fig)
 
 # 2. Difficulty curve: empirical per-attempt success vs task rank, pilot vs final
