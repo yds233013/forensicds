@@ -1,4 +1,4 @@
-# Development pool snapshot — 2026-09-21 (after G36 closure and the G34 semantic audit)
+# Development pool snapshot — 2026-09-21 (after G36 closure, the G34 semantic audit, and G37/G38 research drops)
 
 No task was selected or dropped to reach the < 30 % target. All figures come from existing frozen
 records. No trial was run.
@@ -13,8 +13,10 @@ records. No trial was run.
 | G34 | 3 | 2 | 1 | **semantic audit B**: minor documentation risk, baseline valid; frozen `f14dd0c0dbcd763c` | execution: administrative censoring counted as survival (1 trial) | candidate |
 | G35 | 3 | 3 | 1 | clean but easy once interference is named; frozen `3b7c6a4bd0f403a7` | none observed | candidate (easy anchor) or development-only: **maintainer decision, still open** |
 | **G36** | 3 | 0 | **0** | **CONTAMINATED F8 · DEVELOPMENT-ONLY** | (not interpretable: verifier defect) | **EXCLUDED FROM AGGREGATE** |
+| **G37** | 0 (none run) | — | — | **RESEARCH-ONLY DROP**: no valid/wrong window (ratio ≈ 0.01) | pre-build: tolerance-window gate | **EXCLUDED** (no trials) |
+| **G38** | 0 (none run) | — | — | **RESEARCH-ONLY DROP**: no valid/wrong window (ratio ≈ 0.00 at 3 scales) | pre-build: tolerance-window gate | **EXCLUDED** (no trials) |
 
-## Arithmetic (G36 excluded; its 0/3 is not used)
+## Arithmetic (G36, G37 and G38 excluded; G36's 0/3 is not used, G37/G38 have no trials)
 - **Seven eligible tasks:** pass@3 = 3/7 = **42.9 %**. Task successes are 0+0+0+0+1+2+3 = 6 of 21
   trials (28.6 %).
 - The G35 inclusion question is unchanged and remains open. It is recorded, not resolved by

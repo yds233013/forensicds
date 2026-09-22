@@ -1,0 +1,11 @@
+/Users/yashshah2311/forensicds/research/g38/sim/g38_sim.py:105: RuntimeWarning: Mean of empty slice.
+  q1 = float(av.mean()); q2 = float(av.sum() / cf.sum())
+/opt/anaconda3/lib/python3.13/site-packages/numpy/_core/_methods.py:147: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+/Users/yashshah2311/forensicds/research/g38/sim/g38_sim.py:105: RuntimeWarning: invalid value encountered in scalar divide
+  q1 = float(av.mean()); q2 = float(av.sum() / cf.sum())
+visible   enrollees 24  truth Q1 1907.5 [1565.6, 2314.7]  Q2 0.250  SE_REF {'q1': 403.1996, 'q2': 0.0403}  expand-share 1.00
+hidden_a  enrollees 32  truth Q1 0.0 [0.0, 0.0]  Q2 0.000  SE_REF {'q1': 331.9426, 'q2': 0.0459}  expand-share 0.00
+hidden_b  enrollees 26  truth Q1 1749.2 [1336.6, 2183.3]  Q2 0.199  SE_REF {'q1': 457.7919, 'q2': 0.0422}  expand-share 1.00
+hidden_c  enrollees 61  truth Q1 4185.3 [3485.1, 5020.7]  Q2 0.300  SE_REF {'q1': 313.5649, 'q2': 0.0153}  expand-share 1.00
+hidden_d  enrollees 42  truth Q1 19.6 [11.0, 29.6]  Q2 0.121  SE_REF {'q1': 44.974, 'q2': 0.1641}  expand-share 0.00

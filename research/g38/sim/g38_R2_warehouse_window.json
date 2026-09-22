@@ -1,0 +1,230 @@
+{
+ "VALID_BOUND": 9.163727946884507,
+ "VALID_BOUND_from": [
+  "L1_pseudo_S_only",
+  "visible"
+ ],
+ "WRONG_BOUND": 0.020175012236407244,
+ "WRONG_BOUND_method": "W14_v2_no_measurement_noise",
+ "ratio": 0.002201616236683059,
+ "detect": {
+  "W01_pre_post_trigger_window": {
+   "visible": 0.015332051273851274,
+   "hidden_a": 0.48079378598209005,
+   "hidden_b": 0.020678604264515153,
+   "hidden_c": 0.07631101934585452,
+   "hidden_d": 0.008831309014766912
+  },
+  "W02_dashboard_ppm_change": {
+   "visible": 0.07991090502038208,
+   "hidden_a": 0.48079378598209005,
+   "hidden_b": 0.06490463080294939,
+   "hidden_c": 0.23014211376738536,
+   "hidden_d": 0.18381149654722362
+  },
+  "W03_all_pre_mean": {
+   "visible": 0.01825407623523136,
+   "hidden_a": 0.03443464506650428,
+   "hidden_b": 0.024555786733738944,
+   "hidden_c": 0.023241349042829224,
+   "hidden_d": 0.027139569177230084
+  },
+  "W04_pre_mean_excluding_trigger": {
+   "visible": 0.02802288251694325,
+   "hidden_a": 0.04961318468944562,
+   "hidden_b": 0.14431578596869366,
+   "hidden_c": 0.06834067601554195,
+   "hidden_d": 0.003627725415894241
+  },
+  "W04b_pre_mean_excl_trigger_seasonal": {
+   "visible": 0.040040341973242646,
+   "hidden_a": 0.012317615612125651,
+   "hidden_b": 0.048374101874621454,
+   "hidden_c": 0.02776882612398057,
+   "hidden_d": 0.03858283293743126
+  },
+  "W05_did_never_enrolled": {
+   "visible": 0.025214553627622083,
+   "hidden_a": 0.05303469791333559,
+   "hidden_b": 0.06538503191189476,
+   "hidden_c": 0.027831513839764226,
+   "hidden_d": 0.01492733503638312
+  },
+  "W06_event_study_ref_trigger_window": {
+   "visible": 0.17503444840628893,
+   "hidden_a": 0.9193306961882663,
+   "hidden_b": 0.10185567442702272,
+   "hidden_c": 0.045674986627571544,
+   "hidden_d": 0.06721121529978473
+  },
+  "W07_did_excluding_trigger_window": {
+   "visible": 0.17878380721622844,
+   "hidden_a": 0.05587008336305044,
+   "hidden_b": 0.31925162405306057,
+   "hidden_c": 0.06912551910273083,
+   "hidden_d": 0.015202844976550965
+  },
+  "W08_match_trigger_value_contemporaneous": {
+   "visible": 0.04317860050933786,
+   "hidden_a": 0.04342148592056936,
+   "hidden_b": 0.04001564335099399,
+   "hidden_c": 0.09964199493395458,
+   "hidden_d": 0.012195070902834407
+  },
+  "W09_match_S_historical_any_month": {
+   "visible": 0.0332273433672393,
+   "hidden_a": 0.036739720125612225,
+   "hidden_b": 0.024248326407979623,
+   "hidden_c": 0.024992668407645566,
+   "hidden_d": 0.0033830667314584304
+  },
+  "W10_match_H_only_historical": {
+   "visible": 0.1905930142710268,
+   "hidden_a": 0.11224616978515091,
+   "hidden_b": 0.12480636449352547,
+   "hidden_c": 0.043390011086126154,
+   "hidden_d": 0.06211485756278891
+  },
+  "W11_rd_extrapolation": {
+   "visible": 0.048053802910457896,
+   "hidden_a": 0.21316888333150488,
+   "hidden_b": 0.14230060467793862,
+   "hidden_c": 0.030078818768132776,
+   "hidden_d": 0.1448594192801273
+  },
+  "W12_raw_counts": {
+   "visible": 0.05725910670433237,
+   "hidden_a": 0.0263123407340433,
+   "hidden_b": 0.047112310721256365,
+   "hidden_c": 0.03695678086895183,
+   "hidden_d": 0.007103130125259712
+  },
+  "W13_q2_supplier_average": {
+   "visible": 0.045227754417675126,
+   "hidden_a": 0.01762740002203049,
+   "hidden_b": 0.04559632491742151,
+   "hidden_c": 0.03723511167121573,
+   "hidden_d": 0.0791979106047819
+  },
+  "W14_v2_no_measurement_noise": {
+   "visible": 0.03060381645256946,
+   "hidden_a": 0.01763836824236662,
+   "hidden_b": 0.020175012236407244,
+   "hidden_c": 0.011937150229071786,
+   "hidden_d": 0.006913586619587483
+  },
+  "W15_population_mean_cf": {
+   "visible": 3.348993172365714,
+   "hidden_a": 1.9096049458536197,
+   "hidden_b": 4.590125865503106,
+   "hidden_c": 12.958202030089323,
+   "hidden_d": 0.5302215366972588
+  },
+  "W16_v2_no_seasonality": {
+   "visible": 0.027439047941507196,
+   "hidden_a": 0.05363803912998336,
+   "hidden_b": 0.03803542232067738,
+   "hidden_c": 0.036579883476669656,
+   "hidden_d": 0.029828289895153397
+  },
+  "W17_wrong_time_zero": {
+   "visible": 0.04654613376437601,
+   "hidden_a": 0.013271032500901664,
+   "hidden_b": 0.029662131767644755,
+   "hidden_c": 0.08545507799695987,
+   "hidden_d": 0.05706368399806716
+  },
+  "W18_future_info_filter": {
+   "visible": 2.373686294227195,
+   "hidden_a": 0.059548137209772284,
+   "hidden_b": 2.2947233124504036,
+   "hidden_c": 6.514566532783041,
+   "hidden_d": 0.03223219721353024
+  },
+  "W20_treated_trend_extrapolation": {
+   "visible": 0.05991478778053403,
+   "hidden_a": 0.09209207291603388,
+   "hidden_b": 0.03687075082512872,
+   "hidden_c": 0.45875528611604394,
+   "hidden_d": 0.04037295231043197
+  },
+  "W21_v2_iid_transient": {
+   "visible": 0.02617658237770996,
+   "hidden_a": 0.015681838698656858,
+   "hidden_b": 0.08909425179537882,
+   "hidden_c": 0.05770946340655602,
+   "hidden_d": 0.04001336151696579
+  },
+  "W22_v1_no_seasonal_adjustment": {
+   "visible": 0.04549868948913888,
+   "hidden_a": 0.03267767017395804,
+   "hidden_b": 0.05073785656112909,
+   "hidden_c": 0.04734082187733119,
+   "hidden_d": 0.009449964857318572
+  },
+  "W23_launch_cohort_only": {
+   "visible": 0.08613144394377772,
+   "hidden_a": 0.06798308964321881,
+   "hidden_b": 0.025673898447890725,
+   "hidden_c": 0.06219898746997344,
+   "hidden_d": 0.035344395268259166
+  },
+  "W24_hyperparameters_from_all_months": {
+   "visible": 0.01627344546518123,
+   "hidden_a": 0.03124283041538725,
+   "hidden_b": 0.035080403434357976,
+   "hidden_c": 0.018570221261967328,
+   "hidden_d": 0.02004815492103905
+  },
+  "W26_v2_fixed_rho_half": {
+   "visible": 0.08048697278716002,
+   "hidden_a": 0.036143100883008525,
+   "hidden_b": 0.10669079506033699,
+   "hidden_c": 0.026308846667439028,
+   "hidden_d": 0.020769946016924765
+  },
+  "W27_v1_fit_all_unit_months": {
+   "visible": 0.05236694967751993,
+   "hidden_a": 0.02864867081105364,
+   "hidden_b": 0.06893160706794685,
+   "hidden_c": 0.0983709697473529,
+   "hidden_d": 0.02615934652291828
+  },
+  "W28_pre_mean_excl_trigger_shrunk_to_fleet": {
+   "visible": 0.004382134468653633,
+   "hidden_a": 0.009590758364037472,
+   "hidden_b": 0.10622185629937504,
+   "hidden_c": 0.036525820270773474,
+   "hidden_d": 0.03583678960540783
+  }
+ },
+ "wrong_bound": {
+  "W01_pre_post_trigger_window": 0.07631101934585452,
+  "W02_dashboard_ppm_change": 0.23014211376738536,
+  "W03_all_pre_mean": 0.027139569177230084,
+  "W04_pre_mean_excluding_trigger": 0.06834067601554195,
+  "W04b_pre_mean_excl_trigger_seasonal": 0.040040341973242646,
+  "W05_did_never_enrolled": 0.05303469791333559,
+  "W06_event_study_ref_trigger_window": 0.17503444840628893,
+  "W07_did_excluding_trigger_window": 0.17878380721622844,
+  "W08_match_trigger_value_contemporaneous": 0.04342148592056936,
+  "W09_match_S_historical_any_month": 0.0332273433672393,
+  "W10_match_H_only_historical": 0.12480636449352547,
+  "W11_rd_extrapolation": 0.1448594192801273,
+  "W12_raw_counts": 0.047112310721256365,
+  "W13_q2_supplier_average": 0.04559632491742151,
+  "W14_v2_no_measurement_noise": 0.020175012236407244,
+  "W15_population_mean_cf": 4.590125865503106,
+  "W16_v2_no_seasonality": 0.03803542232067738,
+  "W17_wrong_time_zero": 0.05706368399806716,
+  "W18_future_info_filter": 2.373686294227195,
+  "W20_treated_trend_extrapolation": 0.09209207291603388,
+  "W21_v2_iid_transient": 0.05770946340655602,
+  "W22_v1_no_seasonal_adjustment": 0.04734082187733119,
+  "W23_launch_cohort_only": 0.06798308964321881,
+  "W24_hyperparameters_from_all_months": 0.03124283041538725,
+  "W26_v2_fixed_rho_half": 0.08048697278716002,
+  "W27_v1_fit_all_unit_months": 0.06893160706794685,
+  "W28_pre_mean_excl_trigger_shrunk_to_fleet": 0.036525820270773474
+ }
+}

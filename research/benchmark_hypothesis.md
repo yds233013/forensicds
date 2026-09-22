@@ -114,6 +114,20 @@ as platform standard) each hide the defect in a change described as an improveme
     Execution errors must also produce differences large enough for the data and verifier to
     distinguish.
 
+### Added after G37/G38 closure (2026-09-21) — see `research/task_design_failure_analysis.md`
+
+15. **Separability is a property of the business setting, not a parameter to tune.** Realistic
+    operational policy (trigger windows, thresholds, study designs) and realistic sample scale are
+    fixed from domain considerations *before* any valid/wrong separation is measured. If separation
+    then fails, the task is rejected. Operational policy, sample size, fixture composition and noise
+    levels are never altered to create verifier headroom. (G37: realistic gauges; G38: the rolling
+    quarter, where a 1-month trigger would have separated.)
+16. **Identifiability is not gradability.** A target can be identifiable asymptotically or in
+    expectation, with correct estimators unbiased and wrong ones biased, and still be unsuitable
+    for finite-sample deterministic grading. That happens when legitimate estimator uncertainty
+    (including irreducible uncertainty about unobservable future realisations) is as large as the
+    biases of plausible wrong methods. The window gate (principle 11) is decisive, not advisory.
+
 ## 6. Predictions to check when baselines are run (pre-registered here, 2026-09-13)
 
 | Task | Expected dominant failure | Rationale |
