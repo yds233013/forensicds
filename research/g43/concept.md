@@ -44,3 +44,18 @@ hours double counted.
    three must change the decision or the first breach month somewhere;
 3. two independent computational routes must agree on the truth;
 4. the construction must be derivable from the shop-floor documents alone.
+
+---
+
+## Screen result (2026-09-23): REJECTED pre-build, on principle 17
+
+Not rejected for separation — the panel would almost certainly separate, since ignoring changeovers,
+yield or maintenance moves available or required hours by 8–30 %. Rejected because **every one of those
+rules is stated in the shop-floor documents the workspace would have to contain**: the shift calendar,
+the maintenance schedule, the routing with its cycle times and changeover times, the yield table, the
+supply agreement's firm window. That is the same shape as G42, which the target model solved 3/3 at six
+cents a trial by reading two policy documents and applying them (`research/g42/baseline.md`).
+
+A capacity rollforward can only be made hard by hiding a rule the analyst must infer, and a hidden
+shop-floor rule is a puzzle rather than a realistic forensic situation. The coverage area is dropped
+rather than filled with a task that measures reading speed.
