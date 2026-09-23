@@ -7,6 +7,25 @@ PY=python3; FAIL=0
 ok()  { echo "  PASS  $1"; }
 bad() { echo "  FAIL  $1"; FAIL=1; }
 
+# A Harbor job writing into jobs/ while section 3 regenerates results.json makes that check fail for
+# a reason that has nothing to do with the submission. Refuse to audit mid-run instead.
+running=$($PY - <<'RUNNING'
+import glob, json
+n = 0
+for p in glob.glob("jobs/*/result.json"):
+    try:
+        if not json.load(open(p)).get("finished_at"):
+            n += 1
+    except Exception:
+        n += 1
+print(n)
+RUNNING
+)
+if [ "${running:-0}" != "0" ]; then
+  echo "  SKIP  $running Harbor job(s) still running; re-run the audit when they finish"
+  exit 2
+fi
+
 echo "== 1. final tasks: Oracle=1, Nop=0, 3 valid trials, single checksum, rewards match record"
 if $PY scripts/check_final_tasks.py; then ok "check_final_tasks"; else bad "check_final_tasks"; fi
 
