@@ -257,13 +257,13 @@
    "id": "g42",
    "domain": "Industrial services HSE",
    "object": "trailing-twelve-month recordable incident rate: constructed exposure hours and recordable cases, pooled",
-   "stage": "built",
+   "stage": "baselined",
    "built": true,
-   "frozen": false,
-   "baseline": null,
+   "frozen": true,
+   "baseline": "3/3",
    "f8": false,
    "final": false,
-   "disposition": "in progress: gate passed (12/12 wrong objects separated on >=3 of 4 extracts, decisions 2 suspend / 2 clear)"
+   "disposition": "development-only: solved 3/3 - the object was fully determined by rules stated in the workspace (recognition = execution)"
   },
   {
    "id": "g42-v1",

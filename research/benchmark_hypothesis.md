@@ -128,6 +128,22 @@ as platform standard) each hide the defect in a change described as an improveme
     (including irreducible uncertainty about unobservable future realisations) is as large as the
     biases of plausible wrong methods. The window gate (principle 11) is decisive, not advisory.
 
+17. **Stated rules are not difficulty.** If everything that distinguishes the correct object from the
+    plausible wrong ones is written down somewhere in the workspace, the task measures reading, and
+    this model class reads well. A wrong-object panel that separates cleanly is necessary and not
+    sufficient: what must be checked in addition is whether the information that resolves the object
+    is *stated* or must be *derived* from the structure of the situation. Evidence: G42, where twelve
+    wrong constructions each move the graded rate materially and the model still scored 3/3 at six
+    cents a trial, because the recordability standard and the hours policy state every rule; against
+    Task02, G05, G10, G24 and G34, where the object follows from how the data came to exist and no
+    document states it, and the model scored 0/3, 0/3, 0/3, 0/3 and 2/3.
+18. **Execution difficulty is a second, independent axis.** A task can be hard because the object is
+    hard to identify, or because the object is easy to name and hard to compute. G41 is the second
+    kind: all three trials named minimum-cost maximum flow and reconstructed the feasible set, and two
+    of the three then implemented a greedy augmentation without residual arcs and reported a
+    non-optimal plan. Designs in this family need an exactly gradable optimum and a natural wrong
+    algorithm that looks right - not a tolerance.
+
 ## 6. Predictions to check when baselines are run (pre-registered here, 2026-09-13)
 
 | Task | Expected dominant failure | Rationale |
