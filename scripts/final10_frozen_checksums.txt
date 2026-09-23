@@ -1,2 +1,3 @@
 candidates/g41-service-parts-rebalancing 3f31849e44d9e392
 candidates/g42-contractor-safety-rate 4b4ded75469d229a
+candidates/g44-screening-precision e688a53ec78348cb
