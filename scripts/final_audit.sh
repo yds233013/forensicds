@@ -10,11 +10,14 @@ bad() { echo "  FAIL  $1"; FAIL=1; }
 # A Harbor job writing into jobs/ while section 3 regenerates results.json makes that check fail for
 # a reason that has nothing to do with the submission. Refuse to audit mid-run instead.
 running=$($PY - <<'RUNNING'
-import glob, json
+import glob, json, os, time
 n = 0
 for p in glob.glob("jobs/*/result.json"):
     try:
-        if not json.load(open(p)).get("finished_at"):
+        d = json.load(open(p))
+        # Historic interrupted jobs also lack finished_at; only a job whose file was touched in the
+        # last few minutes can still be writing.
+        if not d.get("finished_at") and (time.time() - os.path.getmtime(p)) < 300:
             n += 1
     except Exception:
         n += 1
