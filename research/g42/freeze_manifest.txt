@@ -1,0 +1,49 @@
+# G42 freeze manifest
+# generated 2026-09-23T01:25:25Z
+
+## files
+ac824649e9c0ac22be1fe5e3463339c668acd2f83b40cd63c74bec8f77d163eb  candidates/g42-contractor-safety-rate/README.md
+8e4eaf0d1dc4a2b538690afa7de0c57c951145cbdd6ad4857947e872936bda95  candidates/g42-contractor-safety-rate/environment/Dockerfile
+268385252b5096f4199dee0da5028fd590b8002a50a430498690638c1a8e1064  candidates/g42-contractor-safety-rate/environment/build/scenarios.py
+484aa6eaf3c5bdb737ee832c3e903dd212600a30cc4af67cdeb2ef7ff81a7f2e  candidates/g42-contractor-safety-rate/environment/build/world.py
+66a4615d28ccae75b424f9f770d1e58dbd7f666e3a4c0ea7f0efab9980c46704  candidates/g42-contractor-safety-rate/environment/workspace/README.md
+1d4ae6d42c581ca8eea745bad6b8668e084a7f49db545787d351325da12b5344  candidates/g42-contractor-safety-rate/environment/workspace/docs/hours_worked_policy.md
+fbf090a122d5b3050fdd7c1a5cc22aa8e87ba5d45d9bb93af0d502ed00bba8c0  candidates/g42-contractor-safety-rate/environment/workspace/docs/outputs/rate_contract.md
+95d8b5a9bbc353ecfe0294b841dde14b2fdcc1d38b31ae7d4fbd8053ef790503  candidates/g42-contractor-safety-rate/environment/workspace/docs/recordable_case_standard.md
+7f0ca56bdf1d0065fc8c02f51b6210e25cd10c68c2e1a852cd0ee46efa2367aa  candidates/g42-contractor-safety-rate/environment/workspace/docs/table_dictionary.md
+9ee45e925601f62ff1a9b538aea64c1746751b77d29fd7c039345168b2fe4a9a  candidates/g42-contractor-safety-rate/environment/workspace/notes/hse_notes.md
+fd07fc6f3ecf67791d8baaa3c9b8dec6615005e7ce7d960a48e2b10f8e2963e1  candidates/g42-contractor-safety-rate/environment/workspace/reports/safety_report_2026-07.md
+6d7f4f5872fbf141163f9e89466a358b14d67eb34c8ff8e2755b44e04c938694  candidates/g42-contractor-safety-rate/environment/workspace/safety_rate/__init__.py
+4532278e10d5b8e485a5e6f9345302eb9f14e705e9aafb5a32c1da4e685d47bf  candidates/g42-contractor-safety-rate/environment/workspace/safety_rate/__main__.py
+78668e4f83141f8a3d3d5d25e792bf414f272beda408fe29f1fb38b42547dbbb  candidates/g42-contractor-safety-rate/environment/workspace/safety_rate/cases.py
+58e4d7779916f118695047296956f948d70c58699e54ca35cc168dbfe7242905  candidates/g42-contractor-safety-rate/environment/workspace/safety_rate/cli.py
+832ebe9fe4642301dbea491626bfb52bd512af288d36d3a41432066461687259  candidates/g42-contractor-safety-rate/environment/workspace/safety_rate/exposure.py
+ff86941344aa25a58159d84e33509c7846d30c96357cb7a67ffb8cfe417a08d9  candidates/g42-contractor-safety-rate/environment/workspace/safety_rate/report.py
+ed6af6cf0cb16e50ce6ffee093b0dc0707f6c31372b631cf3190b957256c4ffb  candidates/g42-contractor-safety-rate/instruction.md
+6d7f4f5872fbf141163f9e89466a358b14d67eb34c8ff8e2755b44e04c938694  candidates/g42-contractor-safety-rate/solution/safety_rate/__init__.py
+4532278e10d5b8e485a5e6f9345302eb9f14e705e9aafb5a32c1da4e685d47bf  candidates/g42-contractor-safety-rate/solution/safety_rate/__main__.py
+80ab210f2a4c9fd75c705e67dc0adbf410b60a317e3bcac0cd83178c0a3fee15  candidates/g42-contractor-safety-rate/solution/safety_rate/cases.py
+d16e1af5c3bffdeb74d4cb2f233e5cc3dd6bdef8e428c005e29476ce7923629f  candidates/g42-contractor-safety-rate/solution/safety_rate/cli.py
+fc00dc721c7157b0b4e0dfedc2871257ec85bf214a2c3a80b4d2a87298110e60  candidates/g42-contractor-safety-rate/solution/safety_rate/exposure.py
+ff86941344aa25a58159d84e33509c7846d30c96357cb7a67ffb8cfe417a08d9  candidates/g42-contractor-safety-rate/solution/safety_rate/report.py
+7b54d71cf7a98f2f0c7fa7deac2fa3c89cb9f55d6e595393c74b97b8cbf79201  candidates/g42-contractor-safety-rate/solution/solve.sh
+4d7de93f4ea3aaa1c31756411b594ffbc1c8e5289457fa822c3c778554bd2283  candidates/g42-contractor-safety-rate/task.toml
+6d3a80f17701d6a4ea2bf5ff4c8cad5d647709151ffbe4e0f6b5003aae7f645d  candidates/g42-contractor-safety-rate/tests/runtime_manifest.sha256
+268385252b5096f4199dee0da5028fd590b8002a50a430498690638c1a8e1064  candidates/g42-contractor-safety-rate/tests/scenarios.py
+b5d0dec35fc6ba666edb3f6b596a387141a27083e8be759bcf266a9a316112c1  candidates/g42-contractor-safety-rate/tests/test.sh
+e7f09e0a0cadb232d5fc476c8d406befae329a615c4392f331e48a40d964dff9  candidates/g42-contractor-safety-rate/tests/test_safety.py
+f631c04d2c48c52b84d0d0549c99ff3859c98df65b3101406327ecc7d53fbf12  candidates/g42-contractor-safety-rate/tests/wheels/iniconfig-2.3.0-py3-none-any.whl
+d7193f7c8e4e93f444fde0262bf90af30e16fa0ad0ad44cb553c87339b23cd1c  candidates/g42-contractor-safety-rate/tests/wheels/packaging-26.3-py3-none-any.whl
+e920276dd6813095e9377c0bc5566d94c932c33b27a3e3945d8389c374dd4746  candidates/g42-contractor-safety-rate/tests/wheels/pluggy-1.6.0-py3-none-any.whl
+2363c69b61c4a97c838da3b130dcd6468f4848992b21a82f2a63ec34377137d9  candidates/g42-contractor-safety-rate/tests/wheels/pygments-2.21.0-py3-none-any.whl
+539c70ba6fcead8e78eebbf1115e8b589e7565830d7d006a8723f19ac8a0afb7  candidates/g42-contractor-safety-rate/tests/wheels/pytest-8.4.1-py3-none-any.whl
+e82fd1d69be2f92385bc33540063e5ad7b17b36de67764c84f3ceb9815a895e9  candidates/g42-contractor-safety-rate/tests/wheels/pytest_json_ctrf-0.3.5-py3-none-any.whl
+bac688aaeaa13c4f22f1f2220b23c63d19eaa86f3d682eddf26793298815630d  candidates/g42-contractor-safety-rate/tests/wheels/requirements.txt
+484aa6eaf3c5bdb737ee832c3e903dd212600a30cc4af67cdeb2ef7ff81a7f2e  candidates/g42-contractor-safety-rate/tests/world.py
+
+## generator copies (must match)
+484aa6eaf3c5bdb7 candidates/g42-contractor-safety-rate/tests/world.py
+484aa6eaf3c5bdb7 candidates/g42-contractor-safety-rate/environment/build/world.py
+
+## frozen checksum
+4b4ded75469d229a
