@@ -496,3 +496,204 @@ error rather than a contrived one.
 **Just outside:** bucket-reuse carryover (retrospective A/A at p<0.2); delayed conversion labels (plot your own
 CDF); randomization- vs analysis-unit variance (delta method; FPR 0.62); incorrectly aggregated p99 as an
 experiment guardrail.
+
+---
+
+# Part 2 — feature-store point-in-time correctness, time semantics, semantic-layer mismatch
+
+Separate review, separate fetches. **Method caveat that governs every quote in this part:** WebFetch answers each
+page through a summarizing model, so a returned "quote" is that summarizer's transcription. Everything below was
+returned inside quotation marks by the fetch; the Kapoor & Narayanan quotes are highest-confidence because they
+come from locally extracted PDF text. **Before any of this appears in a published spec, re-verify the
+load-bearing strings by opening the URLs directly** — specifically Uber's "over 10%", GA's "flat spot or a spike",
+Chronon's leakage sentence, and Rules of ML #29.
+
+## Sources that must NOT be cited (unreachable; `web.archive.org` is blocked in this environment)
+
+Netflix *Distributed Time Travel for Feature Generation*; **Airbnb Minerva** (airbnb.tech's own search returns
+**zero** results for "Minerva"); Airbnb's Zipline Medium post; DoorDash and Lyft engineering blogs; Airbnb *How
+Airbnb Achieved Metric Consistency at Scale*. All 403.
+
+**And a correction that matters.** **Kaufman, Rosset, Perlich, Stitelman is closed access** from every route
+tried (OpenAlex `best_oa_location: null`, Semantic Scholar `status: CLOSED`, dl.acm.org 403, the dstillery and
+cs.umb.edu mirrors 404, tau.ac.il 403). Verified bibliographic facts only: **KDD 2011 Best Paper**, extended in
+*ACM TKDD* 6(4), Dec 2012, fourth author Ori Stitelman. **The phrases "legitimately available to mine from",
+"learn-predict separation" and the causal-graph framing are paraphrase from a reconstructed abstract and are
+UNVERIFIED against the published text; the KDD Cup 2008 patient-ID and INFORMS 2010 anecdotes could not be
+sourced at all and must not be reproduced.** Use Kapoor & Narayanan instead, which is fully verified.
+
+## A. Feature-store point-in-time correctness
+
+**A1. The as-of join that isn't — and the default is not safe.** Feast's own docs
+(`docs.feast.dev/getting-started/concepts/point-in-time-joins`): point-in-time joins keep *"backfilled values from
+leaking into training data, and … reproduce what the online store would have served at each event time"* — but a
+`created_timestamp_column` *"is used to deduplicate rows… but it is not otherwise filtered. This means a value
+that was backfilled or corrected **after** an entity dataframe timestamp can still be returned for it."*
+**Discriminating test:** re-run the training set with a strict `feature.created_ts <= label_ts` filter and diff
+row-by-row; the count of rows whose value changes **is** the leakage magnitude.
+
+**A2. The realistic leak is two minutes, not a year.** Databricks time-series feature tables: *"Data leakage
+occurs when you use feature values for model training that were not available at the time the label was
+recorded"*; the AS OF join *"ensures that the most recent value of the feature at the time of the timestamp is
+used"*. Their worked example pairs a CO₂ reading timestamped **8:52** with ground truth observed at **8:50** —
+*"future data is 'leaking' into the training set."* **Off-by-one-window leakage is the realistic version and it is
+invisible to every aggregate QA check.**
+
+**A3. Point-in-time correctness as an advertised platform guarantee.** Airbnb **Chronon** (the open-sourced
+successor to Zipline; `chronon.ai` + `github.com/airbnb/chronon`): *"Eliminate data leakage with guaranteed
+point-in-time correctness"*; *"Backfills are automatically point-in-time correct, which avoids label leakage and
+inconsistencies between training data and online inference"*; and on the hand-rolled alternative, *"Often very
+error prone, resulting in inconsistent data between training and serving."* (Cite this lineage to chronon.ai and
+the repo, not to the unreachable Medium post.)
+
+**A4. The discriminating audit, fully specified — and nobody runs it.** `chronon.ai/test_deploy_serve/Online_Offline_Consistency.html`
+logs inference queries and responses with timestamps, replaces the join's left source with the **logged table**,
+recomputes offline, and reports **mismatch** `count(a≠b)/count(*)`, **missing**, **extra**, and for numerics
+**smape** `sum(|a−b|)/sum(a+b)`. The platform does not merely claim correctness — **it measures it as a rate.**
+That rate is the artefact a benchmark should demand.
+
+**A5. A real, quantified skew rate — and it is a string-formatting bug.** Uber, *Taming the ML Firehose*: training
+saw fixed vocabularies like `en-US`/`fr-FR` while serving delivered `en`, so *"the serving layer is passing values
+the model was never trained on"*; offline produced `jp_JA` while online served `jp-JA` — *"a subtle formatting
+mismatch."* After logging features at inference time as a single source of truth: **"0% mismatch on key features
+that previously experienced mismatch rates of over 10%"**, with priority-feature SLAs improving from multi-day to
+hours. **Both sides are non-null, correctly typed, and pass schema validation**; a categorical whose *spelling*
+differs silently becomes an unseen category, and the offline eval never sees it.
+
+**A6. The canonical prescriptions.** Google *Rules of ML* — **#29** *"save the set of features used at serving
+time, and then pipe those features to a log to use them at training time"*; **#31** *"Beware that if you join data
+from a table at training and serving time, the data in the table may change"* (A1 stated as a first-class
+hazard); **#32** re-use code between pipelines; **#33** test on data collected *after* the training period; **#37**
+decomposes the gap into training-vs-holdout, holdout-vs-next-day and next-day-vs-live, attributing the last to
+engineering error. Uber Michelangelo corroborates: *"the same expressions are applied at training time and at
+prediction time"* (note: that post says **"Feature Store"**, not "Palette" — do not cite "Palette" to it).
+**And the trap:** TFDV-style **distribution-skew** checks do **not** catch a point-in-time violation, because a PIT
+violation can leave the marginal distribution unchanged.
+
+**A7. The verified leakage-magnitude study** — Kapoor & Narayanan, *Leakage and the Reproducibility Crisis in
+ML-based Science*, arXiv:2207.07048. **17 fields, 329 affected papers, an 8-type taxonomy.** Verbatim: *"[L2] Model
+uses features that are not legitimate… The judgement of whether the use of a given feature is legitimate for a
+modeling task requires domain knowledge and can be highly problem specific"*; *"[L3.1] Temporal leakage… the test
+set should not contain any data from a date before the training set"*; and on the standard tooling, *"k−fold cross
+validation shuffles the dataset before it is divided into training and test datasets."* Magnitude: *"We found
+errors in 4 of the 12 papers—exactly the 4 papers that claimed superior performance of complex ML models over
+baseline LR models"*, and *"the difference between the AUC of the complex ML models and LR models drops from 0.14
+to 0.01."* A proxy-variable case used *"several proxy variables for the outcome as predictors (e.g., colwars,
+cowwars, sdwars, all proxies for civil war), leading to near perfect accuracy."* Uncertainty as the second
+failure: a smoothed AUC of **0.85** against a bootstrapped 95% CI of **[0.66–0.95]** on a test set with *"only
+11"* positives. **The sentence that makes this the strongest item in the whole review:** *"while none of these
+errors could have been caught by reading the paper, model info sheets enable the detection of leakage in each
+case."* And *"None of the models outperform a baseline model that predicts the outcome of the previous year."*
+
+## B. Timezone and operational-day semantics
+
+- **B1. A timezone change is a permanent, unmarked level shift.** GA: the reporting timezone is the day boundary
+  *"regardless of where the data originates"*; **"Changing the time zone only affects data going forward, and is
+  not applied retroactively"**; and **"If you change the time zone for an existing view, you may see a flat spot
+  or a spike in your data."** There is **no marker in the data at the cutover**, so the step is read as a product
+  or seasonality effect. Tests: the view change-history log; an hour-of-day histogram before vs after (the
+  distribution shifts by the offset while the aggregate total does not).
+- **B2. "Yesterday" means different things in two tools that are both right.** **"Google Ads reports conversions
+  against the date/time of the click that led to the conversion. Analytics uses the date/time of the conversion
+  itself."** Both label the column "Conversions"; the *event being dated* differs (cause vs effect), so the
+  disagreement is largest exactly where it matters — recent days and campaign start/stop dates. It **systematically
+  penalises campaigns with long click→conversion lag** in any CAC/ROAS comparison. Test: join at click/conversion-ID
+  grain and compare the two date fields; the gap should sit in the lag distribution, not in volume.
+- **B3. Partial last day, restatement window, hard loss past a cutoff.** GA4 BigQuery export: daily tables are
+  keyed to the app's registered timezone; the intraday table is deleted once the daily table completes; **"Analytics
+  will update the daily tables … for up to three days after the dates of the events"**, events keep the correct
+  timestamp regardless of arriving late, and **"Events that arrive after that three-day window are not
+  recorded."** Separately, **"Attribution credit for key events can change for up to 12 days."** A query rerun days
+  later returns different numbers — which reads as a pipeline bug rather than designed restatement. Test: snapshot
+  the same range on consecutive days and plot the **revision curve**.
+- **B4. Choosing the robust field is what makes the analysis wrong.** Mozilla telemetry: `submission_date` is
+  server receipt time and is the *recommended* field precisely because client clocks are untrustworthy — **"Do not
+  assume that the time reported by an instance of Firefox desktop is correct"**. But users who shut Firefox down
+  for the weekend mean Friday's pings arrive Monday, so **weekend activity appears artificially low** and Monday
+  spikes. Test: cross-tab submission date against activity date and inspect the delay distribution by weekday.
+- **B5. Day arithmetic is not 24-hour arithmetic.** PostgreSQL docs: `'2005-04-02 12:00:00-07' + interval '1 day'`
+  → `2005-04-03 12:00:00-06`, while `+ interval '24 hours'` → `2005-04-03 **13**:00:00-06`, *"because an hour was
+  skipped due to a change in daylight saving time"*; the days field keeps local time-of-day, microseconds are added
+  literally. Two analysts writing the "same" 30-day window get windows differing by an hour twice a year — small
+  enough to dismiss as rounding, large enough to break an exact reconciliation. **Note: no equivalent DST language
+  exists in Snowflake's or BigQuery's datetime docs; PostgreSQL is the citable source.**
+- **B6. Airflow** — the logical date *"denotes the start of the data interval, not when the Dag is actually
+  executed"*, and a run is scheduled *after* its interval ends. Timezone-aware **cron** schedules respect DST, but
+  **"Dags that use `timedelta` or `relativedelta` schedules respect daylight savings time for the start date but
+  do not adjust for daylight savings time when scheduling subsequent runs"** — so two DAGs in one pipeline drift by
+  an hour after each transition. With `catchup=False` (the default) missed intervals are **never created**. A
+  one-day misalignment inverts or nulls an event-study effect, and a missing interval undercounts a period that
+  then becomes the baseline.
+- **B7. Existence proofs that this is a senior-engineer failure class.** Azure's 2012 leap-day outage: the guest
+  agent *"calculated the valid-to date by simply taking the current date and adding one to its year"*, producing
+  29 Feb 2013. Cloudflare's leap second: **"The root cause of the bug that affected our DNS service was the belief
+  that *time cannot go backwards*"** — *"some code assumed that the difference between two times would always be,
+  at worst, zero."*
+- **B8. Watermarks make a daily total legitimately nondeterministic.** Spark: late data within the threshold is
+  aggregated, later data is dropped — but **"the guarantee is strict only in one direction. Data delayed by more
+  than 2 hours is not guaranteed to be dropped; it may or may not get aggregated."** So an analyst reconciling a
+  streaming dashboard against a batch rollup finds a gap that **has no single correct value**.
+
+## C. Semantic-layer / definition mismatch
+
+- **C1. Uber uMetric, root cause published.** 6.53M (iHub) vs 6.20M (Summary) shopping sessions, same city, same
+  window: **"One of the tools (Summary) used stale filters in their static query that did not capture the latest
+  and complete list of rider states during a session."** Also two "Completed Trips" — Operations in Presto/Hive
+  for 18-month dashboarding, Pricing Engineering off Cassandra for real-time services — both valid, structurally
+  incompatible; and sliced variants producing *"10X or 100X instances"* per metric. **Discriminating test: diff the
+  enumerated rider-state list, not the totals.** Corroborating: *"We didn't have source-of-truth for some critical
+  data and metrics, which lead to duplication, inconsistency, and a lot of confusion at the time of
+  consumption"*, and *"inaccurate measurement in experiments led to extensive manual labor and lost productivity."*
+- **C2. UA vs GA4 — the cleanest specimen of the target failure, because it is simultaneously a day-boundary and a
+  definition problem.** UA sessions restart *"at midnight and when new campaign parameters are encountered"*,
+  whereas in GA4 **"Sessions aren't restarted at midnight or when new campaign parameters are encountered."** UA
+  headlines Total Users, GA4 Active Users. UA *"counts only one conversion per session for each goal"*; GA4
+  *"usually counts every instance."* **Conversion rate per session moves in both numerator and denominator, in
+  opposite directions, so the ratio can shift far more than either component.** Test: sessionize the raw stream
+  once and apply both rule sets; the gap decomposes into midnight-spanning sessions + campaign-param changes +
+  per-session vs per-event dedup.
+- **C3. Fan-out and chasm joins — and the inverted coherence that makes this the best scenario in the set.** dbt:
+  **"Fan-out joins are when one row in a table is joined to multiple rows in another table"**; **"Chasm joins are
+  when two tables have a many-to-many relationship through an intermediate table"**; MetricFlow *restricts* both by
+  typing identifiers. Looker: **"When `symmetric_aggregates` is on, aggregate functions return correct results,
+  even when joins result in a fanout"**, and it is **on by default for every Explore**. Two documented holes:
+  `percentile`/`median` are silently converted to their `_distinct` forms under fanout, and decimal overflow above
+  14 digits. **The sharp point: in the BI tool the number is right *because of a default the analyst does not know
+  is on*, and the hand-written SQL "verification" is the inflated one — so the analyst's own independent
+  replication is what fails to tie out, and the analyst will trust it over the tool.** Exporting the fanned-out row
+  set to pandas reproduces the inflation with no warning.
+- **C4. Approximation as a definition choice disguised as an optimisation.** Uber: **"HyperLogLog bypasses these
+  constraints but introduces a 1-5% error, unacceptable for metrics like MAU that underpin financial reporting."**
+  `COUNT(DISTINCT)` in one engine and `APPROX_COUNT_DISTINCT` in another produces a **stable, reproducible,
+  1–5% wrong number** that ties out against every other query using the same function — and MAU is exactly the
+  metric reconciled against finance.
+- **C5. The definition version lives in a wiki, not in the data.** Wikimedia pageviews carry a dated definition
+  changelog (2015-02-27 excluded edit attempts; 2015-03-02 added wikidata.org and mediawiki.org; 2017-02-09
+  excluded `action=submit` previews; 2016-03-23 added `pageview=1` app tagging), state that the new definition
+  *"very definitely includes some hits to things that aren't 'pages'"*, publish an estimated maximum daily
+  difference between implementations, and flag a 2016-07-20 Chrome 41 user-agent artifact that *"continues to
+  affect historical data."* **The table name and column name never changed.** Any multi-year trend claim spanning a
+  change is non-comparable.
+
+## Additional "internally coherent but wrong" entries from this part
+
+1. **Kapoor & Narayanan** — four papers in top-10 political-science journals, peer-reviewed, internally
+   consistent, each reporting the headline result; the ML-vs-LR AUC gap collapses from 0.14 to 0.01 on correction,
+   and none beat a previous-year baseline. **"None of these errors could have been caught by reading the paper."**
+2. **Uber uMetric** — a stale filter list that had been *correct earlier* and continued to reconcile with itself;
+   the gap surfaced only when two dashboards were placed side by side.
+3. **UA vs GA4** — neither product is broken; a reconciliation that does not decompose by rule will "find" a
+   tracking bug that does not exist.
+4. **Looker symmetric aggregates** — inverted coherence: the tool is right, the analyst's replication is wrong.
+5. **Uber MAU with HyperLogLog** — deterministic, reproducible wrongness that ties out everywhere.
+6. **GA timezone change** — each side of the cutover is internally correct for its own day boundary; only the
+   joint series contains the artifact, which the docs attribute to the shift rather than behaviour.
+7. **Mozilla `submission_date`** — the defensible, robustness-motivated field choice is what manufactures the
+   weekend artifact.
+
+## Unexplored but fetchable, if this is picked up again
+
+Grab's data-mesh DPI post; Shopify's *A Data Scientist's Guide to Measuring Product Success* and *Lessons Learned
+from Online Experiments*; LinkedIn's *ValiData*. Mixpanel and Amplitude publish `llms.txt` indexes and **neither
+lists any timezone or data-latency page**, so vendor timezone semantics for those two are unavailable via fetch;
+Google and Stripe are the usable vendor sources.
