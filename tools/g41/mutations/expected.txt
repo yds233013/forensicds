@@ -1,0 +1,14 @@
+M00_alternate_optimal_vertex 1
+M01_open_allocations_ignored 0
+M02_quarantine_counted 0
+M03_consignment_counted 0
+M04_safety_stock_shippable 0
+M05_cancelled_pos_counted 0
+M06_dock_to_stock_ignored 0
+M07_inbound_usable_immediately 0
+M08_transit_time_ignored 0
+M09_no_transfers_local_only 0
+M10_pooled_network_netting 0
+M11_cancelled_jobs_in_demand 0
+M12_cheapest_shortfall_wrong_lanes 0
+M13_plan_directions_reversed 0

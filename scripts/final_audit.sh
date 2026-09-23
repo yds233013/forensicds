@@ -46,6 +46,23 @@ chk(not excl, "no excluded task (G36/G37/G38) in final set")
 sys.exit(1 if bad else 0)
 PY
 
+echo "== 4b. no trial shows the container-teardown signature (research/harness_process_sweep_defect.md)"
+$PY - <<'TEARDOWN' || FAIL=1
+import json, pathlib, sys
+tasks = json.load(open("scripts/final_tasks.json"))["tasks"]
+bad = 0
+for t in tasks:
+    for tr in t["valid_trials"]:
+        hits = list(pathlib.Path("jobs").glob(f"*/*{tr}*/verifier/test-stdout.txt"))
+        if not hits:
+            print(f"  FAIL  {tr}: no verifier stdout found"); bad = 1; continue
+        if all(h.stat().st_size == 0 for h in hits):
+            print(f"  FAIL  {tr}: empty verifier stdout (container-teardown signature)"); bad = 1
+if not bad:
+    print("  PASS  every valid trial carries a full grading report")
+sys.exit(bad)
+TEARDOWN
+
 echo "== 5. submission structure"
 if [ -d submission ]; then
   n=$(ls submission/samples | wc -l | tr -d ' '); [ "$n" -ge 5 ] && [ "$n" -le 10 ] && ok "$n tasks in samples/" || bad "$n tasks in samples/"

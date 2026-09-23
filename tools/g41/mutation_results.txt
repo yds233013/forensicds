@@ -1,0 +1,15 @@
+M00_alternate_optimal_vertex           want=1 got=1 OK
+M01_open_allocations_ignored           want=0 got=0 OK
+M02_quarantine_counted                 want=0 got=0 OK
+M03_consignment_counted                want=0 got=0 OK
+M04_safety_stock_shippable             want=0 got=0 OK
+M05_cancelled_pos_counted              want=0 got=0 OK
+M06_dock_to_stock_ignored              want=0 got=0 OK
+M07_inbound_usable_immediately         want=0 got=0 OK
+M08_transit_time_ignored               want=0 got=0 OK
+M09_no_transfers_local_only            want=0 got=0 OK
+M10_pooled_network_netting             want=0 got=0 OK
+M11_cancelled_jobs_in_demand           want=0 got=0 OK
+M12_cheapest_shortfall_wrong_lanes     want=0 got=0 OK
+M13_plan_directions_reversed           want=0 got=0 OK
+--- mutation suite: 14 as expected, 0 unexpected ---

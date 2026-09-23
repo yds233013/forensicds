@@ -346,3 +346,31 @@ conditioning — but must be labelled as coming from a trial with unresolved ver
 - **Model / API spend during this investigation: $0.00.** No model was run. All evidence came from existing job
   artifacts, the Docker daemon and VM logs, the installed Harbor source, and the frozen `test.sh` (read only).
 - **Secrets:** none exposed; no key was read or printed during this investigation.
+
+---
+
+## Addendum, 2026-09-22: the mechanism has been reproduced
+
+Written four days after the adjudication above, while validating G41. **Nothing in this file has been
+edited; this section only adds what was since established.** No G05 file was touched, no G05 trial was
+re-run, and the G05 checksum is unchanged.
+
+The stray-process sweep — listed as stage **UNKNOWN** in §1 — is the cause. It kills processes that
+started before the verifier, sparing only those from the container's first three seconds. Harbor's
+container runs `sh -c sleep infinity` as PID 1 and the real `sleep infinity` as PID 7; under load PID 7
+starts *after* that three-second grace and is killed, which ends the container's main command mid-grading.
+
+Reproduced directly with dry-run instrumentation on G41 (`jobs/g41-oracle-diag`, PID 7 starting 5.98 s
+after PID 1, marked `WOULD_KILL`), and reproduced as a failure 3 times in 6 Oracle trials while the
+machine was loaded — each with `JnK5hsR`'s exact signature: verifier ≈ 2 s, empty stdout, container
+stopped ~3 s later. With the sweep corrected, the same task passed 3/3 under the same load.
+
+Consequences for this adjudication:
+
+- the conclusion is unchanged — **(B) invalid infrastructure failure** — and its confidence rises from
+  **MEDIUM to HIGH**;
+- the failure is independent of what the agent did, which is what §1's structural comparison argued;
+- the defect can only convert a pass into a 0, never the reverse, so excluding `JnK5hsR` remains correct
+  and is conservative in the direction of the model's measured performance.
+
+Full write-up: `research/harness_process_sweep_defect.md`.

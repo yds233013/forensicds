@@ -1,0 +1,58 @@
+{
+ "W01_on_hand_ignores_open_allocations": {
+  "rejected_on": 4,
+  "n_fixtures": 4
+ },
+ "W02_quarantine_counted_as_available": {
+  "rejected_on": 4,
+  "n_fixtures": 4
+ },
+ "W03_consignment_counted_as_available": {
+  "rejected_on": 3,
+  "n_fixtures": 4
+ },
+ "W04_safety_stock_shippable": {
+  "rejected_on": 3,
+  "n_fixtures": 4
+ },
+ "W05_cancelled_pos_counted": {
+  "rejected_on": 3,
+  "n_fixtures": 4
+ },
+ "W06_no_dock_to_stock_delay": {
+  "rejected_on": 4,
+  "n_fixtures": 4
+ },
+ "W07_all_inbound_available_now": {
+  "rejected_on": 4,
+  "n_fixtures": 4
+ },
+ "W08_transfers_ignore_transit_time": {
+  "rejected_on": 4,
+  "n_fixtures": 4
+ },
+ "W09_no_transfers_local_only": {
+  "rejected_on": 4,
+  "n_fixtures": 4
+ },
+ "W10_pooled_network_netting": {
+  "rejected_on": 4,
+  "n_fixtures": 4
+ },
+ "W11_cancelled_jobs_in_demand": {
+  "rejected_on": 4,
+  "n_fixtures": 4
+ },
+ "W12_need_by_ignored_horizon_end": {
+  "rejected_on": 4,
+  "n_fixtures": 4
+ },
+ "W13_on_hand_and_quarantine": {
+  "rejected_on": 4,
+  "n_fixtures": 4
+ },
+ "W14_min_shortfall_but_fastest_lanes": {
+  "rejected_on": 4,
+  "n_fixtures": 4
+ }
+}
