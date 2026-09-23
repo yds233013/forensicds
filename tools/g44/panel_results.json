@@ -1,0 +1,62 @@
+{
+ "W01_benchmark_panel_precision": {
+  "separated_on": 4,
+  "decision_flips": 2,
+  "n": 4
+ },
+ "W02_benchmark_panel_rates_transported": {
+  "separated_on": 4,
+  "decision_flips": 2,
+  "n": 4
+ },
+ "W03_own_traffic_precision": {
+  "separated_on": 4,
+  "decision_flips": 2,
+  "n": 4
+ },
+ "W04_sample_weights_ignored": {
+  "separated_on": 4,
+  "decision_flips": 2,
+  "n": 4
+ },
+ "W05_ad_hoc_reviews_included": {
+  "separated_on": 4,
+  "decision_flips": 0,
+  "n": 4
+ },
+ "W06_pending_counted_as_legitimate": {
+  "separated_on": 4,
+  "decision_flips": 2,
+  "n": 4
+ },
+ "W07_unsampled_passes_are_true_negatives": {
+  "separated_on": 4,
+  "decision_flips": 0,
+  "n": 4
+ },
+ "W08_transported_at_own_book_rate": {
+  "separated_on": 4,
+  "decision_flips": 2,
+  "n": 4
+ },
+ "W09_npv_reported": {
+  "separated_on": 4,
+  "decision_flips": 2,
+  "n": 4
+ },
+ "W10_sensitivity_and_specificity_swapped": {
+  "separated_on": 4,
+  "decision_flips": 2,
+  "n": 4
+ },
+ "W11_prevalence_omitted_from_transport": {
+  "separated_on": 4,
+  "decision_flips": 2,
+  "n": 4
+ },
+ "W12_flag_rate_used_as_prevalence": {
+  "separated_on": 4,
+  "decision_flips": 2,
+  "n": 4
+ }
+}

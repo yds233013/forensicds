@@ -1,0 +1,13 @@
+M00_equivalent_rate_algebra            want=1 got=1 OK
+M01_sample_weights_ignored             want=0 got=0 OK
+M02_ad_hoc_reviews_included            want=0 got=0 OK
+M03_pending_counted_as_legitimate      want=0 got=0 OK
+M04_benchmark_panel_rates              want=0 got=0 OK
+M05_transport_skipped                  want=0 got=0 OK
+M06_transport_at_own_book_rate         want=0 got=0 OK
+M07_rates_swapped                      want=0 got=0 OK
+M08_flag_rate_as_prevalence            want=0 got=0 OK
+M09_flagged_counted_from_reviews       want=0 got=0 OK
+M10_npv_reported_as_precision          want=0 got=0 OK
+M11_hardcoded_sampling_fraction        want=0 got=0 OK
+--- mutation suite: 12 as expected, 0 unexpected ---

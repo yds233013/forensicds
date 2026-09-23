@@ -1,0 +1,12 @@
+M00_equivalent_rate_algebra 1
+M01_sample_weights_ignored 0
+M02_ad_hoc_reviews_included 0
+M03_pending_counted_as_legitimate 0
+M04_benchmark_panel_rates 0
+M05_transport_skipped 0
+M06_transport_at_own_book_rate 0
+M07_rates_swapped 0
+M08_flag_rate_as_prevalence 0
+M09_flagged_counted_from_reviews 0
+M10_npv_reported_as_precision 0
+M11_hardcoded_sampling_fraction 0
