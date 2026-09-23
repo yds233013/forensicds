@@ -1,0 +1,62 @@
+{
+ "W01_payroll_hours_include_paid_nonwork": {
+  "separated_on": 4,
+  "decision_flips": 0,
+  "n": 4
+ },
+ "W02_scheduled_hours": {
+  "separated_on": 4,
+  "decision_flips": 0,
+  "n": 4
+ },
+ "W03_agency_hours_dropped_cases_kept": {
+  "separated_on": 4,
+  "decision_flips": 1,
+  "n": 4
+ },
+ "W04_agency_excluded_entirely": {
+  "separated_on": 4,
+  "decision_flips": 0,
+  "n": 4
+ },
+ "W05_first_aid_counted": {
+  "separated_on": 4,
+  "decision_flips": 1,
+  "n": 4
+ },
+ "W06_under_review_counted": {
+  "separated_on": 4,
+  "decision_flips": 0,
+  "n": 4
+ },
+ "W07_cases_by_record_date": {
+  "separated_on": 4,
+  "decision_flips": 0,
+  "n": 4
+ },
+ "W08_one_case_per_event": {
+  "separated_on": 3,
+  "decision_flips": 2,
+  "n": 4
+ },
+ "W09_headcount_x_2000": {
+  "separated_on": 4,
+  "decision_flips": 0,
+  "n": 4
+ },
+ "W10_mean_of_site_rates": {
+  "separated_on": 4,
+  "decision_flips": 1,
+  "n": 4
+ },
+ "W11_home_site_attribution_worst_site": {
+  "separated_on": 4,
+  "decision_flips": 0,
+  "n": 4
+ },
+ "W12_calendar_year_window": {
+  "separated_on": 4,
+  "decision_flips": 3,
+  "n": 4
+ }
+}

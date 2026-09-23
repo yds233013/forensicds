@@ -1,0 +1,13 @@
+M00_equivalent_aggregation 1
+M01_payroll_hours 0
+M02_scheduled_hours 0
+M03_agency_hours_dropped 0
+M04_agency_excluded_entirely 0
+M05_first_aid_counted 0
+M06_under_review_counted 0
+M07_window_on_record_date 0
+M08_one_case_per_event 0
+M09_headcount_x_2000 0
+M10_mean_of_site_rates 0
+M11_home_site_attribution 0
+M12_calendar_year_window 0

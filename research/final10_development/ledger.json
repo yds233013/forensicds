@@ -245,13 +245,37 @@
    "id": "g41",
    "domain": "Field service spare-parts logistics",
    "object": "minimum weekly shortfall and the cheapest plan achieving it, under the availability policy's feasible set",
+   "stage": "baselined",
+   "built": true,
+   "frozen": true,
+   "baseline": "1/3",
+   "f8": false,
+   "final": true,
+   "disposition": "FINAL (pass@3 = 1/3; the second and last task allowed to be solved)"
+  },
+  {
+   "id": "g42",
+   "domain": "Industrial services HSE",
+   "object": "trailing-twelve-month recordable incident rate: constructed exposure hours and recordable cases, pooled",
    "stage": "built",
    "built": true,
    "frozen": false,
    "baseline": null,
    "f8": false,
    "final": false,
-   "disposition": "in progress: Oracle=1, Nop=0, 14/14 wrong objects separated pre-build"
+   "disposition": "in progress: gate passed (12/12 wrong objects separated on >=3 of 4 extracts, decisions 2 suspend / 2 clear)"
+  },
+  {
+   "id": "g42-v1",
+   "domain": "Grocery/retail estate",
+   "object": "comparable-store sales growth for a covenant test",
+   "stage": "separation_gate",
+   "built": false,
+   "frozen": false,
+   "baseline": null,
+   "f8": false,
+   "final": false,
+   "disposition": "REJECTED pre-build: every material mechanism collapsed to a population filter; the aggregation and calendar traps moved the number by under a basis point"
   }
  ]
 }

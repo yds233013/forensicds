@@ -1,0 +1,14 @@
+M00_equivalent_aggregation             want=1 got=1 OK
+M01_payroll_hours                      want=0 got=0 OK
+M02_scheduled_hours                    want=0 got=0 OK
+M03_agency_hours_dropped               want=0 got=0 OK
+M04_agency_excluded_entirely           want=0 got=0 OK
+M05_first_aid_counted                  want=0 got=0 OK
+M06_under_review_counted               want=0 got=0 OK
+M07_window_on_record_date              want=0 got=0 OK
+M08_one_case_per_event                 want=0 got=0 OK
+M09_headcount_x_2000                   want=0 got=0 OK
+M10_mean_of_site_rates                 want=0 got=0 OK
+M11_home_site_attribution              want=0 got=0 OK
+M12_calendar_year_window               want=0 got=0 OK
+--- mutation suite: 13 as expected, 0 unexpected ---
