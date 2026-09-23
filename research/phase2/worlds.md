@@ -97,3 +97,75 @@ APR under committee-driven (endogenous) rate changes · early-payment/attrition 
 change · dispute-win-rate model evaluated on the wrong operational population · funding cost
 allocation to product margin (economic object) · model-monitoring drift alarm caused by an upstream
 feature backfill.
+
+---
+
+## Mapping the 36 candidates onto the three worlds
+
+This is the test of whether the world architecture is real: do the candidates actually *fit* an
+organisation, and does each world satisfy the anti-clone and archetype rules?
+
+### Meridian Retail Group (12 incidents)
+
+| candidate | mechanism | discriminating-test class | decision |
+|---|---|---|---|
+| P01 promo incrementality | economic object + substitution | extended-window + basket switching | promo calendar |
+| P02 price elasticity | policy-induced variation | randomised price test (in-log) | price change |
+| P03 availability instrument | non-stationary measurement | dual-instrumented overlap | supplier penalty |
+| P04 hierarchical forecast | reconciliation choice | held-out vintage backtest | seasonal buy |
+| P05 supplier scorecard | multi-stage selection | random audit stratum | delist |
+| P06 loyalty cohorts | identity × survival | known-merge-free subset | CRM budget |
+| P07 rapid-delivery margin | economic object + non-linearity | capacity natural experiment | site closure |
+| P28 safety stock | mis-specified uncertainty | live-region validation | working capital |
+| P31 **defer-or-overturn** | metric-definition dispute | the contract + hidden extracts that flip | no-rebuild verdict |
+| P34 procurement savings | counterfactual baseline | general-ledger reconciliation | budget/comp |
+| P36 bullwhip | policy-generated data | POS variance ratios + policy simulation | capacity buffer |
+| P12 surrogate validity | proxy-outcome validity | stratify historical launches by mechanism | launch gate |
+
+Anti-clone check: 12 distinct mechanisms, 12 distinct discriminating-test classes, 9 distinct decision
+types. Required archetypes: **P31 present**; an identifiability-verdict incident would be added from the
+P32 family (a promo whose incrementality is not identified without a holdout).
+
+### Halcyon Health Partners (8 incidents)
+
+| candidate | mechanism | discriminating-test class | decision |
+|---|---|---|---|
+| P18 return-visit rate | definition change (numerator + attribution) | re-coded validation sample | penalty/remediation |
+| P19 site comparison | stacked selection (referral + response) | response-propensity + provider-closure experiment | referral redirection |
+| P20 no-show model | policy feedback on evaluation | holdback clinics | retrain / do not |
+| P21 assay sensitivity | outcome-dependent verification | systematic audit stratum | drop confirmation |
+| P25 capacity sizing (clinic variant) | aggregation object (peak vs average) | measured aggregate | capacity investment |
+| P29 label maturity (care-pathway variant) | delayed labels | maturity profile by month | programme |
+| P32 **identifiability verdict** | no counterfactual exists | placebo-in-time + design specification | commission a trial |
+| P33 deemed vs realised | RTM from self-selected enrolment | waiting-list cohort | programme funding |
+
+### Lattice Financial (9 incidents)
+
+| candidate | mechanism | discriminating-test class | decision |
+|---|---|---|---|
+| P13 limit increase | selective labels + performativity | random-approval stratum + pilot dose-response | programme go/no-go |
+| P14 fraud threshold | policy-induced missing labels | random-release stratum + maturation | threshold |
+| P15 authorisation rate | compositional + mediator over-adjustment | ramp dose-response | revert routing |
+| P16 collections treatment | endogenous assignment | randomised pilot + pre-offer placebo | rollout |
+| P17 definition of default | measurement change × seasoning | parallel-run period | provision release |
+| P26 IBNR (credit-loss variant) | truncation + pattern break | calendar-year diagonals + matured backtest | reserve/rate |
+| P29 churn/attrition labels | delayed labels | matured-cohort restriction | programme |
+| P30 retargeting (card-marketing variant) | endogenous exposure | ghost-ad holdout in the logs | spend |
+| P35 model-monitoring drift alarm | survivorship/backfill | full-cohort reconstruction | retrain |
+
+### Worlds not yet authored, for the remaining candidates
+
+P08–P11, P22–P24, P27, P36 sit in three further worlds — a **delivery marketplace**, an **industrial OEM**,
+and an **energy retailer/network** — which would be authored next. P27 (roster) is deliberately placed in a
+**freight/logistics** world rather than in Meridian, so that the constrained-optimisation archetype does not
+inherit retail's document estate.
+
+### What the world layer buys, concretely
+
+- **Point-in-time structure is authored once.** Meridian's migration calendar, price-change reason codes and
+  instrument-change dates serve P02, P03, P06 and P31 without re-invention — the single most expensive piece
+  of a forensic task.
+- **Independent aggregates are shared.** The general ledger (P34), DC shipments (P01), goods-receipt
+  confirmations (P31) and POS feeds (P36) each serve as an independent system for more than one incident.
+- **The organisational cast is reused.** The same buyer, the same commercial director, the same reporting
+  team — which is what makes an artefact "authoritative" in a way a solver must weigh rather than dismiss.
