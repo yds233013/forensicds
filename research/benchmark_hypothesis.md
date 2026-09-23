@@ -144,6 +144,15 @@ as platform standard) each hide the defect in a change described as an improveme
     non-optimal plan. Designs in this family need an exactly gradable optimum and a natural wrong
     algorithm that looks right - not a tolerance.
 
+19. **Unstated is not the same as hard.** Principle 17 rules out tasks whose object is written down,
+    but it does not select for difficulty. G44's object was stated nowhere - that a one-in-N sample
+    needs weighting, and that precision depends on the base rate while sensitivity and specificity do
+    not - and the target model derived both in three trials out of three. What distinguishes the tasks
+    this model class does not pass (Task02, G05, G10, G24, G34) is that the object requires
+    reconstructing a process the data only partially records: feature state as of a prediction time,
+    staggered exposure, censoring, a logging policy, competing risks. Applying a standard identity to
+    quantities the extract hands over cleanly is not that, however unstated the identity is.
+
 ## 6. Predictions to check when baselines are run (pre-registered here, 2026-09-13)
 
 | Task | Expected dominant failure | Rationale |

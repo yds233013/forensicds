@@ -276,6 +276,42 @@
    "f8": false,
    "final": false,
    "disposition": "REJECTED pre-build: every material mechanism collapsed to a population filter; the aggregation and calendar traps moved the number by under a basis point"
+  },
+  {
+   "id": "g43",
+   "domain": "Contract manufacturing",
+   "object": "line capacity rollforward and first breach month",
+   "stage": "concept",
+   "built": false,
+   "frozen": false,
+   "baseline": null,
+   "f8": false,
+   "final": false,
+   "disposition": "REJECTED pre-build on principle 17: every rule that resolves the object is stated in the shop-floor documents"
+  },
+  {
+   "id": "g44",
+   "domain": "Payments fraud screening",
+   "object": "contract precision at the merchant's fraud rate, from design-weighted review evidence",
+   "stage": "baselined",
+   "built": true,
+   "frozen": true,
+   "baseline": "2/3",
+   "f8": false,
+   "final": false,
+   "disposition": "development-only: solved on its object in 3/3 trials (the one reward-0 was an incidental count); the suite's two permitted solved tasks are already used"
+  },
+  {
+   "id": "g44-v1",
+   "domain": "Clinical diagnostics",
+   "object": "assay PPV transported to the routine population",
+   "stage": "separation_gate",
+   "built": false,
+   "frozen": false,
+   "baseline": null,
+   "f8": false,
+   "final": false,
+   "disposition": "REJECTED in screening: every screen-positive is confirmed, so the routine PPV is directly countable and two defensible estimators disagree (principle 16)"
   }
  ]
 }
