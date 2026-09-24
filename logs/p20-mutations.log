@@ -1,0 +1,16 @@
+M00_ten_week_window                      want=1 got=1 OK  all criteria pass
+M01_population_all_clinics               want=0 got=0 OK  failed: decision,estimator_implementation,identification,independent_validation,quantitative_results,scientific_object
+M02_population_programme_only            want=0 got=0 OK  failed: decision,estimator_implementation,identification,independent_validation,quantitative_results,scientific_object
+M03_basis_feature_store_current          want=0 got=0 OK  failed: decision
+M04_as_served_is_candidate               want=0 got=0 OK  failed: decision,identification,independent_validation,quantitative_results
+M05_reconstruct_with_current_window      want=0 got=0 OK  failed: quantitative_results
+M06_reconstruction_ignores_booking_date  want=0 got=0 OK  failed: decision,identification,quantitative_results
+M07_feed_audit_decile_only               want=0 got=0 OK  failed: quantitative_results
+M08_decision_skips_feed_clause           want=0 got=0 OK  failed: decision
+M09_absolute_floor_only                  want=0 got=0 OK  failed: evidence_reconstruction
+M10_floor_applied_to_dashboard           want=0 got=0 OK  failed: decision
+M11_effect_unstratified_all_bands        want=0 got=0 OK  failed: quantitative_results
+M12_attribution_all_drift                want=0 got=0 OK  failed: quantitative_results
+M13_attribution_hedged                   want=0 got=0 OK  failed: quantitative_results
+M14_declared_population_not_evaluated    want=0 got=0 OK  failed: decision,identification,independent_validation,quantitative_results
+--- mutation suite: 15 as expected, 0 unexpected ---

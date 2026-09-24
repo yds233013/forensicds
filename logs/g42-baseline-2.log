@@ -1,0 +1,20 @@
+  1/1 Mean: 1.000 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 0:07:03 0:00:00
+adhoc • gemini-cli • gemini-3-flash-preview
+┏━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━┓
+┃ Trials ┃ Exceptions ┃  Mean ┃
+┡━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━┩
+│      1 │          0 │ 1.000 │
+└────────┴────────────┴───────┘
+
+┏━━━━━━━━┳━━━━━━━┓
+┃ Reward ┃ Count ┃
+┡━━━━━━━━╇━━━━━━━┩
+│ 1.0    │     1 │
+└────────┴───────┘
+
+Job Info
+Total runtime: 7m 4s
+Results written to jobs/g42-gemini3flash-baseline-2/result.json
+Inspect results by running `harbor view jobs`
+Share results by running `harbor upload jobs/g42-gemini3flash-baseline-2`
+

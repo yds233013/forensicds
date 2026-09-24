@@ -1,0 +1,14 @@
+M00_offset_from_certified_departure      want=1 got=1 OK  all criteria pass
+M01_no_offset_at_all                     want=0 got=0 OK  failed: decision,identification,independent_validation,quantitative_results,scientific_object
+M02_offset_from_certificate              want=0 got=0 OK  failed: quantitative_results,scientific_object
+M03_offset_on_wrong_machine              want=0 got=0 OK  failed: decision,identification,independent_validation,quantitative_results,scientific_object
+M04_offset_sign_reversed                 want=0 got=0 OK  failed: decision,identification,independent_validation,quantitative_results,scientific_object
+M05_offset_applied_to_baseline           want=0 got=0 OK  failed: evidence_reconstruction,quantitative_results
+M06_all_material                         want=0 got=0 OK  failed: quantitative_results
+M08_wear_slope_on_week                   want=0 got=0 OK  failed: decision,quantitativeM08_wear_M09_operator_absolute_not_contrast       want=0 got=0 OK  failed: decision,quantitativeM09_operaM10_decision_on_corrected_rate           want=0 got=0 OK  failed: decision
+M11_decision_on_reported_rate            want=0 got=0 OK  failed: decision
+M12_correcteM11_decision_on_reported_rate            want=0 got=0 OK  failed: decision
+M12_corrected_on_cmm1_only               want=0 got=0 OK  failed: estimator_implementation
+M13_window_off_by_one       M14_hedged_attribution                   want=0 got=0 OK  failed: quantitative_results
+M14_hedged_attribution                   want=0 got=0 OK  failed: quantitative_results
+--- mutation suite: 15 as expected, 0 unexpected ---

@@ -1,0 +1,16 @@
+M00_filled_by_shortfall_test             want=1 got=1 OK  all criteria pass
+M01_reproduce_supplier_as_contract       want=0 got=0 OK  failed: decision,independent_validation,scientific_object
+M02_denominator_requested                want=0 got=0 OK  failed: decision,estimator_implementation,identification,quantitative_results,scientific_object
+M03_null_confirmation_excluded           want=0 got=0 OK  failed: decision,estimator_implementation,identification,quantitative_results,scientific_object
+M04_returns_deducted                     want=0 got=0 OK  failed: decision,estimator_implementation,identification,quantitative_results,scientific_object
+M05_window_on_despatch                   want=0 got=0 OK  failed: estimator_implementation,quantitative_results
+M06_cancelled_lines_counted              want=0 got=0 OK  failed: decision,estimator_implementation,identification,quantitative_results,scientific_object
+M07_always_overturn                      want=0 got=0 OK  failed: decision
+M08_always_defer                         want=0 got=0 OK  failed: decision
+M09_always_accept                        want=0 got=0 OK  failed: decision
+M10_ignore_schedule_four                 want=0 got=0 OK  failed: decision,scientific_object
+M11_amended_basis_preferred              want=0 got=0 OK  failed: decision,independent_validation,scientific_object
+M12_consequences_from_point_estimate     want=0 got=0 OK  failed: decision
+M13_tickets_all_shortfalls               want=0 got=0 OK  failed: quantitative_results
+M14_governing_definition_supplier        want=0 got=0 OK  failed: scientific_object
+--- mutation suite: 15 as expected, 0 unexpected ---
