@@ -1,0 +1,80 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 6,
+            "passed": 5,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1790238080.4721704,
+            "stop": 1790238086.8793359
+        },
+        "tests": [
+            {
+                "name": "test_gauge.py::test_database_unmodified",
+                "status": "passed",
+                "duration": 0.7694874170010735,
+                "start": 1790238080.5064182,
+                "stop": 1790238081.276397,
+                "retries": 0,
+                "file_path": "test_gauge.py"
+            },
+            {
+                "name": "test_gauge.py::test_pipeline_runs",
+                "status": "passed",
+                "duration": 0.4521910419989581,
+                "start": 1790238081.276689,
+                "stop": 1790238081.729531,
+                "retries": 0,
+                "file_path": "test_gauge.py"
+            },
+            {
+                "name": "test_gauge.py::test_rerun_is_deterministic",
+                "status": "passed",
+                "duration": 0.7070345000011002,
+                "start": 1790238081.7299056,
+                "stop": 1790238082.437632,
+                "retries": 0,
+                "file_path": "test_gauge.py"
+            },
+            {
+                "name": "test_gauge.py::test_output_schema",
+                "status": "passed",
+                "duration": 0.022356000999934622,
+                "start": 1790238082.4379914,
+                "stop": 1790238082.4608054,
+                "retries": 0,
+                "file_path": "test_gauge.py"
+            },
+            {
+                "name": "test_gauge.py::test_visible_extract",
+                "status": "passed",
+                "duration": 1.058717917998365,
+                "start": 1790238082.4611197,
+                "stop": 1790238083.5223503,
+                "retries": 0,
+                "file_path": "test_gauge.py"
+            },
+            {
+                "name": "test_gauge.py::test_hidden_extract",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.8986657499990542,
+                "start": 1790238083.523071,
+                "stop": 1790238084.4221098,
+                "retries": 2,
+                "file_path": "test_gauge.py",
+                "tags": [
+                    "parametrize::fixture::['hidden_a', 'hidden_b', 'hidden_c']"
+                ],
+                "trace": "fixture = 'hidden_c'\n\n    @pytest.mark.parametrize(\"fixture\", [s[\"name\"] for s in scenarios.HIDDEN_SPECS])\n    def test_hidden_extract(fixture):\n        root = Path(tempfile.mkdtemp())\n        bad = _check_extract(fixture, root)\n        shutil.rmtree(root, ignore_errors=True)\n>       assert not bad, f\"{fixture}:\\n  \" + \"\\n  \".join(bad)\nE       AssertionError: hidden_c:\nE           attribution_pp[material] = 3.92 pp, expected 0.817 pp +/- 0.8\nE           attribution_pp[tooling] = 0.0 pp, expected 3.083 pp +/- 0.8\nE           supplier_decision = 'raise_supplier_nonconformance', expected 'no_supplier_action'\nE       assert not ['attribution_pp[material] = 3.92 pp, expected 0.817 pp +/- 0.8', 'attribution_pp[tooling] = 0.0 pp, expected 3.083 pp +/- 0.8', \"supplier_decision = 'raise_supplier_nonconformance', expected 'no_supplier_action'\"]\n\ntest_gauge.py:320: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

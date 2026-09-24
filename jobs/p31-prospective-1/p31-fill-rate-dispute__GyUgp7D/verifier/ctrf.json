@@ -1,0 +1,86 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 6,
+            "passed": 3,
+            "failed": 3,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1790239510.6263769,
+            "stop": 1790239514.5627205
+        },
+        "tests": [
+            {
+                "name": "test_fill.py::test_database_unmodified",
+                "status": "passed",
+                "duration": 0.8368602090013155,
+                "start": 1790239510.667582,
+                "stop": 1790239511.5054936,
+                "retries": 0,
+                "file_path": "test_fill.py"
+            },
+            {
+                "name": "test_fill.py::test_pipeline_runs",
+                "status": "passed",
+                "duration": 0.08865520899962576,
+                "start": 1790239511.5062182,
+                "stop": 1790239511.595396,
+                "retries": 0,
+                "file_path": "test_fill.py"
+            },
+            {
+                "name": "test_fill.py::test_rerun_is_deterministic",
+                "status": "passed",
+                "duration": 0.1278246259989828,
+                "start": 1790239511.5956821,
+                "stop": 1790239511.7238526,
+                "retries": 0,
+                "file_path": "test_fill.py"
+            },
+            {
+                "name": "test_fill.py::test_output_schema",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0010842489973583724,
+                "start": 1790239511.7240746,
+                "stop": 1790239511.7416174,
+                "retries": 0,
+                "file_path": "test_fill.py",
+                "trace": "def test_output_schema():\n        readout, rows = _read_outputs(WORKSPACE / \"out\")\n        required = (\"period\", \"fill_rate_contract_pct\", \"fill_rate_contract_low_pct\",\n                    \"fill_rate_contract_high_pct\", \"fill_rate_supplier_definition_pct\", \"published_rate_pct\",\n                    \"bridge_pp\", \"account_fill_pct\", \"accounts_below_floor\",\n                    \"returns_driven_ticket_share_pct\", \"governing_definition\", \"incumbent_verdict\",\n                    \"bonus_gate_met\", \"supplier_claim_payable\")\n        missing = [k for k in required if k not in readout]\n        if missing:\n            _fail(\"evidence_reconstruction\", f\"readout.json is missing {missing}\")\n>       assert not missing, f\"readout.json is missing {missing}\"\nE       AssertionError: readout.json is missing ['fill_rate_contract_low_pct', 'fill_rate_contract_high_pct', 'fill_rate_supplier_definition_pct', 'published_rate_pct', 'bridge_pp', 'returns_driven_ticket_share_pct', 'governing_definition', 'incumbent_verdict', 'bonus_gate_met', 'supplier_claim_payable']\nE       assert not ['fill_rate_contract_low_pct', 'fill_rate_contract_high_pct', 'fill_rate_supplier_definition_pct', 'published_rate_pct', 'bridge_pp', 'returns_driven_ticket_share_pct', ...]\n\ntest_fill.py:283: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_fill.py::test_visible_extract",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.6955750830002216,
+                "start": 1790239511.7418957,
+                "stop": 1790239512.4460907,
+                "retries": 0,
+                "file_path": "test_fill.py",
+                "trace": "def test_visible_extract():\n        root = Path(tempfile.mkdtemp())\n        bad = _check_extract(\"visible\", root)\n        shutil.rmtree(root, ignore_errors=True)\n>       assert not bad, \"visible extract:\\n  \" + \"\\n  \".join(bad)\nE       AssertionError: visible extract:\nE           published_rate_pct: missing or not a number\nE           fill_rate_supplier_definition_pct: missing or not a number\nE           fill_rate_contract_low_pct: missing or not a number\nE           fill_rate_contract_high_pct: missing or not a number\nE           governing_definition = None, expected 'contract_line_fill_confirmed'\nE           bridge_pp must have exactly ['aggregation', 'date_window', 'denominator', 'other', 'returns_treatment']\nE           out/account_fill.csv was not written\nE           returns_driven_ticket_share_pct: missing or not a number\nE           incumbent_verdict = None, expected 'incumbent_correct'\nE           bonus_gate_met = None, expected 'yes'\nE           supplier_claim_payable = None, expected 'no'\nE       assert not ['published_rate_pct: missing or not a number', 'fill_rate_supplier_definition_pct: missing or not a number', 'fill_ra...rmed'\", \"bridge_pp must have exactly ['aggregation', 'date_window', 'denominator', 'other', 'returns_treatment']\", ...]\n\ntest_fill.py:301: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_fill.py::test_hidden_extract",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.680769083000996,
+                "start": 1790239512.4464,
+                "stop": 1790239513.1366322,
+                "retries": 2,
+                "file_path": "test_fill.py",
+                "tags": [
+                    "parametrize::fixture::['hidden_a', 'hidden_b', 'hidden_c']"
+                ],
+                "trace": "fixture = 'hidden_c'\n\n    @pytest.mark.parametrize(\"fixture\", [s[\"name\"] for s in scenarios.HIDDEN_SPECS])\n    def test_hidden_extract(fixture):\n        root = Path(tempfile.mkdtemp())\n        bad = _check_extract(fixture, root)\n        shutil.rmtree(root, ignore_errors=True)\n>       assert not bad, f\"{fixture}:\\n  \" + \"\\n  \".join(bad)\nE       AssertionError: hidden_c:\nE           published_rate_pct: missing or not a number\nE           fill_rate_supplier_definition_pct: missing or not a number\nE           fill_rate_contract_low_pct: missing or not a number\nE           fill_rate_contract_high_pct: missing or not a number\nE           governing_definition = None, expected 'contract_line_fill_confirmed'\nE           bridge_pp must have exactly ['aggregation', 'date_window', 'denominator', 'other', 'returns_treatment']\nE           out/account_fill.csv was not written\nE           returns_driven_ticket_share_pct: missing or not a number\nE           incumbent_verdict = None, expected 'not_determinable_from_available_evidence'\nE           bonus_gate_met = None, expected 'no'\nE           supplier_claim_payable = None, expected 'not_determinable'\nE       assert not ['published_rate_pct: missing or not a number', 'fill_rate_supplier_definition_pct: missing or not a number', 'fill_ra...rmed'\", \"bridge_pp must have exactly ['aggregation', 'date_window', 'denominator', 'other', 'returns_treatment']\", ...]\n\ntest_fill.py:309: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

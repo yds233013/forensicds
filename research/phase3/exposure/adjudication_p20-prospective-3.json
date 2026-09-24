@@ -1,0 +1,31 @@
+{
+ "job": "jobs/p20-prospective-3",
+ "task": "p20-noshow-monitoring",
+ "task_digest": "sha256:f033ea1f5a8876514566174e8a99cf36d24e09cd54e9bba7ddfb5c16ffe60d8a",
+ "model": "google/gemini-3-flash-preview",
+ "agent": "gemini-cli",
+ "digest_matches_freeze": true,
+ "started_at": "2026-09-24T01:36:40.022421",
+ "finished_at": "2026-09-24T01:42:50.715248",
+ "trial_name": "p20-noshow-monitoring__c654dzn",
+ "exception_info": null,
+ "failure_mode": null,
+ "rewards": {
+  "criterion_decision": 0,
+  "criterion_estimator_implementation": 1,
+  "criterion_evidence_reconstruction": 1,
+  "criterion_identification": 0,
+  "criterion_independent_validation": 1,
+  "criterion_quantitative_results": 0,
+  "criterion_scientific_object": 1,
+  "reward": 0
+ },
+ "verifier_stdout_bytes": 4702,
+ "verifier_reward_txt_present": true,
+ "exception_files": [],
+ "usage_keys_present": [
+  "cost_usd"
+ ],
+ "verdict": "VALID",
+ "invalid_reasons": []
+}

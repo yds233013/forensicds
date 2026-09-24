@@ -1,0 +1,16 @@
+{
+    "task": {
+        "path": "candidates/p20-noshow-monitoring"
+    },
+    "trial_name": "p20-noshow-monitoring__iwPaF7u",
+    "trials_dir": "jobs/p20-prospective-2",
+    "agent_setup_timeout_multiplier": 3.0,
+    "agent": {
+        "name": "gemini-cli",
+        "model_name": "google/gemini-3-flash-preview"
+    },
+    "artifacts": [
+        "/workspace"
+    ],
+    "job_id": "c69039b9-1e54-4de0-801e-44379ea87b15"
+}

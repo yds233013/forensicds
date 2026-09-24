@@ -1,0 +1,81 @@
+{
+    "id": "22b29b2c-9097-4d29-bac8-cb650f0a9dc2",
+    "started_at": "2026-09-24T01:26:39.736478",
+    "updated_at": "2026-09-24T01:31:36.232535",
+    "finished_at": "2026-09-24T01:31:36.232535",
+    "n_total_trials": 1,
+    "stats": {
+        "n_completed_trials": 1,
+        "n_errored_trials": 0,
+        "n_running_trials": 0,
+        "n_pending_trials": 0,
+        "n_cancelled_trials": 0,
+        "n_retries": 0,
+        "evals": {
+            "gemini-cli__gemini-3-flash-preview__adhoc": {
+                "n_trials": 1,
+                "n_errors": 0,
+                "metrics": [
+                    {
+                        "criterion_decision": 1.0,
+                        "criterion_estimator_implementation": 1.0,
+                        "criterion_evidence_reconstruction": 1.0,
+                        "criterion_identification": 1.0,
+                        "criterion_independent_validation": 1.0,
+                        "criterion_quantitative_results": 0.0,
+                        "criterion_scientific_object": 1.0,
+                        "reward": 0.0
+                    }
+                ],
+                "pass_at_k": {},
+                "reward_stats": {
+                    "criterion_decision": {
+                        "1": [
+                            "p20-noshow-monitoring__TirBLuz"
+                        ]
+                    },
+                    "criterion_estimator_implementation": {
+                        "1": [
+                            "p20-noshow-monitoring__TirBLuz"
+                        ]
+                    },
+                    "criterion_evidence_reconstruction": {
+                        "1": [
+                            "p20-noshow-monitoring__TirBLuz"
+                        ]
+                    },
+                    "criterion_identification": {
+                        "1": [
+                            "p20-noshow-monitoring__TirBLuz"
+                        ]
+                    },
+                    "criterion_independent_validation": {
+                        "1": [
+                            "p20-noshow-monitoring__TirBLuz"
+                        ]
+                    },
+                    "criterion_quantitative_results": {
+                        "0": [
+                            "p20-noshow-monitoring__TirBLuz"
+                        ]
+                    },
+                    "criterion_scientific_object": {
+                        "1": [
+                            "p20-noshow-monitoring__TirBLuz"
+                        ]
+                    },
+                    "reward": {
+                        "0": [
+                            "p20-noshow-monitoring__TirBLuz"
+                        ]
+                    }
+                },
+                "exception_stats": {}
+            }
+        },
+        "n_input_tokens": 855092,
+        "n_cache_tokens": 701534,
+        "n_output_tokens": 19034,
+        "cost_usd": 0.1689577
+    }
+}

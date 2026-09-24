@@ -1,0 +1,81 @@
+{
+    "id": "5f91a2e3-c21a-48c2-8e4d-12833ca62d23",
+    "started_at": "2026-09-24T01:17:01.932544",
+    "updated_at": "2026-09-24T01:21:42.567241",
+    "finished_at": "2026-09-24T01:21:42.567241",
+    "n_total_trials": 1,
+    "stats": {
+        "n_completed_trials": 1,
+        "n_errored_trials": 0,
+        "n_running_trials": 0,
+        "n_pending_trials": 0,
+        "n_cancelled_trials": 0,
+        "n_retries": 0,
+        "evals": {
+            "gemini-cli__gemini-3-flash-preview__adhoc": {
+                "n_trials": 1,
+                "n_errors": 0,
+                "metrics": [
+                    {
+                        "criterion_decision": 0.0,
+                        "criterion_estimator_implementation": 1.0,
+                        "criterion_evidence_reconstruction": 1.0,
+                        "criterion_identification": 1.0,
+                        "criterion_independent_validation": 1.0,
+                        "criterion_quantitative_results": 0.0,
+                        "criterion_scientific_object": 1.0,
+                        "reward": 0.0
+                    }
+                ],
+                "pass_at_k": {},
+                "reward_stats": {
+                    "criterion_decision": {
+                        "0": [
+                            "p22-gauge-recalibration__nt5YXX8"
+                        ]
+                    },
+                    "criterion_estimator_implementation": {
+                        "1": [
+                            "p22-gauge-recalibration__nt5YXX8"
+                        ]
+                    },
+                    "criterion_evidence_reconstruction": {
+                        "1": [
+                            "p22-gauge-recalibration__nt5YXX8"
+                        ]
+                    },
+                    "criterion_identification": {
+                        "1": [
+                            "p22-gauge-recalibration__nt5YXX8"
+                        ]
+                    },
+                    "criterion_independent_validation": {
+                        "1": [
+                            "p22-gauge-recalibration__nt5YXX8"
+                        ]
+                    },
+                    "criterion_quantitative_results": {
+                        "0": [
+                            "p22-gauge-recalibration__nt5YXX8"
+                        ]
+                    },
+                    "criterion_scientific_object": {
+                        "1": [
+                            "p22-gauge-recalibration__nt5YXX8"
+                        ]
+                    },
+                    "reward": {
+                        "0": [
+                            "p22-gauge-recalibration__nt5YXX8"
+                        ]
+                    }
+                },
+                "exception_stats": {}
+            }
+        },
+        "n_input_tokens": 1621279,
+        "n_cache_tokens": 1337074,
+        "n_output_tokens": 21178,
+        "cost_usd": 0.2724902
+    }
+}

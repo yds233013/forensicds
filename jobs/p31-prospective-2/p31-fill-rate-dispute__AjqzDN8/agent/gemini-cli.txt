@@ -1,0 +1,29 @@
+Warning: 256-color support not detected. Using a terminal with at least 256-color support is recommended for a better visual experience.
+YOLO mode is enabled. All tool calls will be automatically approved.
+YOLO mode is enabled. All tool calls will be automatically approved.
+Ripgrep is not available. Falling back to GrepTool.
+The investigation into the ambient-grocery service-level discrepancy is complete. The **97.65 %** figure published by the demand-science team is correct under the executed Customer Supply Agreement (§7.1, §7.2).
+
+### Root Cause of Discrepancy
+The gap between Meridian's 97.65% and Brendale's 91.51% (a **-6.14 pp** difference) is fully explained by the differing methodologies:
+*   **Denominator (Requested vs. Confirmed): -6.43 pp.** Brendale measures against what was *requested*; the contract permits measurement against what they *confirmed*. This is the largest factor, as Brendale frequently confirms less than requested.
+*   **Aggregation (Line vs. Case): +1.83 pp.** Moving from line-based fill to unit-based case-fill actually improves the figure.
+*   **Returns Treatment: -1.52 pp.** Brendale deducts returns from their performance; the contract (§7.4) explicitly excludes returns from the fill-rate metric.
+*   **Date Window: -0.02 pp.** Negligible impact from using despatch date vs. requested delivery date.
+
+### Strategic Findings
+1.  **Bonus Gate:** The category fill rate (97.65%) exceeds the **96.0%** bonus gate. The gate is **met**.
+2.  **Account Floor Breach:** While the category average is high, **three accounts** (ACC-001, ACC-002, and ACC-003) fell below the contractual **95.0% floor** (93.56%, 93.20%, and 94.02% respectively). Under §7.5, Schedule 5 remedies are applicable for these specific accounts.
+3.  **£1.8m Claim:** Per the logic defined in the readout contract, the claim is not payable because the *category* figure remained above 95.0%. However, the breach of individual account floors provides a defensible basis for the £1.8m claim if it pertains to remedies for those accounts.
+4.  **Shortfall Tickets:** 42% of shortfall tickets are associated with lines carrying returns, suggesting that quality issues (dealt with in Schedule 5) are a significant driver of customer dissatisfaction, separate from the fill-rate metric.
+
+### Package Updates
+The `service` package has been repaired to correctly implement the contractual basis (handling missing confirmations and the Schedule 4 amendment ambiguity) and to produce the required bridge analysis.
+
+*   **`out/readout.json`**: Contains the full decomposed analysis and decision verdicts.
+*   **`out/account_fill.csv`**: Details the performance and floor-breach status for each account.
+
+To reproduce the results:
+```bash
+python -m service fill --db data/service.sqlite --out out
+```

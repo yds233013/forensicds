@@ -1,0 +1,30 @@
+
+### p22-gauge-recalibration — frozen truth
+  visible   {"baseline_nonconforming_rate_pct": 2.75, "reported_nonconforming_rate_pct": 6.6917, "corrected_nonconforming_rate_pct": 3.8333, "material_attributable_rate_pct": 3.6667, "supplier_decision": "no_supplier_action"}
+            attribution_pp: {'material': 0.917, 'measurement_system': 2.858, 'tooling': 0.167, 'operator': 0.0, 'other': 0.0}
+  hidden_a  {"baseline_nonconforming_rate_pct": 2.9833, "reported_nonconforming_rate_pct": 8.1583, "corrected_nonconforming_rate_pct": 3.1167, "material_attributable_rate_pct": 2.9833, "supplier_decision": "no_supplier_action"}
+            attribution_pp: {'material': 0.0, 'measurement_system': 5.042, 'tooling': 0.133, 'operator': 0.0, 'other': 0.0}
+  hidden_b  {"baseline_nonconforming_rate_pct": 2.9167, "reported_nonconforming_rate_pct": 11.6333, "corrected_nonconforming_rate_pct": 8.75, "material_attributable_rate_pct": 8.6333, "supplier_decision": "raise_supplier_nonconformance"}
+            attribution_pp: {'material': 5.717, 'measurement_system': 2.883, 'tooling': 0.183, 'operator': -0.067, 'other': 0.0}
+  hidden_c  {"baseline_nonconforming_rate_pct": 3.0333, "reported_nonconforming_rate_pct": 11.625, "corrected_nonconforming_rate_pct": 6.9333, "material_attributable_rate_pct": 3.85, "supplier_decision": "no_supplier_action"}
+            attribution_pp: {'material': 0.817, 'measurement_system': 4.692, 'tooling': 3.083, 'operator': 0.0, 'other': 0.0}
+
+### p20-noshow-monitoring — frozen truth
+  visible   {"deployed_auc_v31": 0.7099, "validation_auc": 0.7704, "retention_floor_auc": 0.7304, "holdback_auc_v31_asof_features": 0.7904, "holdback_auc_v40": 0.7641, "feed_defect_share": 0.0, "reminder_effect_pp": 10.849, "decision": "retain_model"}
+            attribution_auc: {'population_drift': -0.0112, 'feature_feed_defect': -0.0089, 'feature_vintage': 0.0139, 'policy_feedback': 0.0666, 'other': 0.0}
+  hidden_a  {"deployed_auc_v31": 0.6011, "validation_auc": 0.7673, "retention_floor_auc": 0.7273, "holdback_auc_v31_asof_features": 0.691, "holdback_auc_v40": 0.8561, "feed_defect_share": 0.0, "reminder_effect_pp": 10.431, "decision": "replace_with_v4"}
+            attribution_auc: {'population_drift': 0.0933, 'feature_feed_defect': -0.0171, 'feature_vintage': 0.0177, 'policy_feedback': 0.0723, 'other': 0.0}
+  hidden_b  {"deployed_auc_v31": 0.6666, "validation_auc": 0.7728, "retention_floor_auc": 0.7328, "holdback_auc_v31_asof_features": 0.6791, "holdback_auc_v40": 0.7848, "feed_defect_share": 87.9071, "reminder_effect_pp": 9.9805, "decision": "remediate_feature_pipeline"}
+            attribution_auc: {'population_drift': 0.0005, 'feature_feed_defect': 0.0932, 'feature_vintage': -0.0086, 'policy_feedback': 0.0211, 'other': 0.0}
+  hidden_c  {"deployed_auc_v31": 0.7034, "validation_auc": 0.7747, "retention_floor_auc": 0.7347, "holdback_auc_v31_asof_features": 0.781, "holdback_auc_v40": 0.7477, "feed_defect_share": 0.0, "reminder_effect_pp": 11.4751, "decision": "retain_model"}
+            attribution_auc: {'population_drift': 0.0181, 'feature_feed_defect': -0.0245, 'feature_vintage': 0.0505, 'policy_feedback': 0.0272, 'other': 0.0}
+
+### p31-fill-rate-dispute — frozen truth
+  visible   {"fill_rate_contract_pct": 97.6548, "fill_rate_contract_low_pct": 97.6548, "fill_rate_contract_high_pct": 97.6992, "fill_rate_supplier_definition_pct": 91.5114, "published_rate_pct": 97.6548, "accounts_below_floor": 3, "returns_driven_ticket_share_pct": 42.0, "incumbent_verdict": "incumbent_correct", "bonus_gate_met": "yes", "supplier_claim_payable": "no"}
+            bridge_pp: {'aggregation': 1.831, 'denominator': -6.429, 'returns_treatment': -1.521, 'date_window': -0.025, 'other': 0.0}
+  hidden_a  {"fill_rate_contract_pct": 93.1805, "fill_rate_contract_low_pct": 93.1805, "fill_rate_contract_high_pct": 93.3226, "fill_rate_supplier_definition_pct": 91.7094, "published_rate_pct": 97.6536, "accounts_below_floor": 21, "returns_driven_ticket_share_pct": 43.1373, "incumbent_verdict": "incumbent_incorrect", "bonus_gate_met": "no", "supplier_claim_payable": "yes"}
+            bridge_pp: {'aggregation': 6.336, 'denominator': -6.238, 'returns_treatment': -1.533, 'date_window': -0.036, 'other': 0.0}
+  hidden_b  {"fill_rate_contract_pct": 97.6541, "fill_rate_contract_low_pct": 97.6541, "fill_rate_contract_high_pct": 97.6981, "fill_rate_supplier_definition_pct": 88.0931, "published_rate_pct": 97.6541, "accounts_below_floor": 5, "returns_driven_ticket_share_pct": 60.8696, "incumbent_verdict": "incumbent_correct", "bonus_gate_met": "yes", "supplier_claim_payable": "no"}
+            bridge_pp: {'aggregation': 1.887, 'denominator': -9.195, 'returns_treatment': -2.278, 'date_window': 0.025, 'other': 0.0}
+  hidden_c  {"fill_rate_contract_pct": 94.2912, "fill_rate_contract_low_pct": 94.2912, "fill_rate_contract_high_pct": 95.7393, "fill_rate_supplier_definition_pct": 90.6563, "published_rate_pct": 94.2912, "accounts_below_floor": 14, "returns_driven_ticket_share_pct": 31.4815, "incumbent_verdict": "not_determinable_from_available_evidence", "bonus_gate_met": "no", "supplier_claim_payable": "not_determinable"}
+            bridge_pp: {'aggregation': 4.474, 'denominator': -6.5, 'returns_treatment': -1.575, 'date_window': -0.033, 'other': 0.0}

@@ -1,0 +1,59 @@
+PER-TASK RESULTS (mechanical, no interpretation)
+
+p22-gauge-recalibration
+  successes / 3        : 0/3
+  pass@1 (successes/3) : 0.000
+  pass@3               : 0
+    criterion evidence_reconstruction    3/3
+    criterion scientific_object          3/3
+    criterion identification             3/3
+    criterion estimator_implementation   3/3
+    criterion quantitative_results       0/3
+    criterion independent_validation     3/3
+    criterion decision                   0/3
+    p22-gauge-recalibration__rBUvW2D  reward=0  failed: quantitative_results,decision
+    p22-gauge-recalibration__nt5YXX8  reward=0  failed: quantitative_results,decision
+    p22-gauge-recalibration__DxMjiB7  reward=0  failed: quantitative_results,decision
+
+p20-noshow-monitoring
+  successes / 3        : 0/3
+  pass@1 (successes/3) : 0.000
+  pass@3               : 0
+    criterion evidence_reconstruction    3/3
+    criterion scientific_object          3/3
+    criterion identification             1/3
+    criterion estimator_implementation   3/3
+    criterion quantitative_results       0/3
+    criterion independent_validation     3/3
+    criterion decision                   2/3
+    p20-noshow-monitoring__TirBLuz  reward=0  failed: quantitative_results
+    p20-noshow-monitoring__iwPaF7u  reward=0  failed: identification,quantitative_results
+    p20-noshow-monitoring__c654dzn  reward=0  failed: identification,quantitative_results,decision
+
+p31-fill-rate-dispute
+  successes / 3        : 0/3
+  pass@1 (successes/3) : 0.000
+  pass@3               : 0
+    criterion evidence_reconstruction    2/3
+    criterion scientific_object          2/3
+    criterion identification             0/3
+    criterion estimator_implementation   2/3
+    criterion quantitative_results       2/3
+    criterion independent_validation     2/3
+    criterion decision                   0/3
+    p31-fill-rate-dispute__GyUgp7D  reward=0  failed: evidence_reconstruction,scientific_object,identification,estimator_implementation,quantitative_results,independent_validation,decision
+    p31-fill-rate-dispute__AjqzDN8  reward=0  failed: identification,decision
+    p31-fill-rate-dispute__3fnpGae  reward=0  failed: identification,decision
+
+PROSPECTIVE SET AGGREGATE
+  total successful trials / 9 : 0/9  (0.000)
+  tasks with pass@3 = 1 / 3   : 0/3
+
+SEVEN-CRITERION TOTALS ACROSS ALL 9 VALID TRIALS
+  evidence_reconstruction      8/9
+  scientific_object            8/9
+  identification               4/9
+  estimator_implementation     8/9
+  quantitative_results         2/9
+  independent_validation       8/9
+  decision                     2/9

@@ -1,0 +1,53 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+configfile: ../dev/null
+plugins: json-ctrf-0.3.5
+collected 8 items
+
+test_fill.py .....F.F                                                    [100%]
+
+=================================== FAILURES ===================================
+________________________ test_hidden_extract[hidden_a] _________________________
+
+fixture = 'hidden_a'
+
+    @pytest.mark.parametrize("fixture", [s["name"] for s in scenarios.HIDDEN_SPECS])
+    def test_hidden_extract(fixture):
+        root = Path(tempfile.mkdtemp())
+        bad = _check_extract(fixture, root)
+        shutil.rmtree(root, ignore_errors=True)
+>       assert not bad, f"{fixture}:\n  " + "\n  ".join(bad)
+E       AssertionError: hidden_a:
+E           bridge_pp[aggregation] = 11.1657, expected 6.336 +/- 0.4
+E           bridge_pp[denominator] = -11.068, expected -6.238 +/- 0.4
+E       assert not ['bridge_pp[aggregation] = 11.1657, expected 6.336 +/- 0.4', 'bridge_pp[denominator] = -11.068, expected -6.238 +/- 0.4']
+
+test_fill.py:309: AssertionError
+________________________ test_hidden_extract[hidden_c] _________________________
+
+fixture = 'hidden_c'
+
+    @pytest.mark.parametrize("fixture", [s["name"] for s in scenarios.HIDDEN_SPECS])
+    def test_hidden_extract(fixture):
+        root = Path(tempfile.mkdtemp())
+        bad = _check_extract(fixture, root)
+        shutil.rmtree(root, ignore_errors=True)
+>       assert not bad, f"{fixture}:\n  " + "\n  ".join(bad)
+E       AssertionError: hidden_c:
+E           incumbent_verdict = 'incumbent_correct', expected 'not_determinable_from_available_evidence'
+E           supplier_claim_payable = 'yes', expected 'not_determinable'
+E       assert not ["incumbent_verdict = 'incumbent_correct', expected 'not_determinable_from_available_evidence'", "supplier_claim_payable = 'yes', expected 'not_determinable'"]
+
+test_fill.py:309: AssertionError
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED test_fill.py::test_database_unmodified
+PASSED test_fill.py::test_pipeline_runs
+PASSED test_fill.py::test_rerun_is_deterministic
+PASSED test_fill.py::test_output_schema
+PASSED test_fill.py::test_visible_extract
+PASSED test_fill.py::test_hidden_extract[hidden_b]
+FAILED test_fill.py::test_hidden_extract[hidden_a] - AssertionError: hidden_a:
+FAILED test_fill.py::test_hidden_extract[hidden_c] - AssertionError: hidden_c:
+========================= 2 failed, 6 passed in 5.18s ==========================

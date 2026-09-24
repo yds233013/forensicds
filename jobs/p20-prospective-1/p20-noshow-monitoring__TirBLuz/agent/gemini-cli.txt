@@ -1,0 +1,27 @@
+Warning: 256-color support not detected. Using a terminal with at least 256-color support is recommended for a better visual experience.
+YOLO mode is enabled. All tool calls will be automatically approved.
+YOLO mode is enabled. All tool calls will be automatically approved.
+Ripgrep is not available. Falling back to GrepTool.
+The monitoring submission for `noshow-v3.1` has been completed following the MRM-04 standard. The investigation revealed that the reported drop in discrimination from 0.77 to 0.71 AUC is an artifact of the reminder programme's success rather than model degradation.
+
+### Monitoring Summary
+*   **Model Version:** `noshow-v3.1`
+*   **Evaluation Population:** Excluded clinics (`CL-001`, `CL-005`, `CL-012`, `CL-028`, `CL-038`) as per MRM-04 §4.1.
+*   **Validation AUC:** 0.770
+*   **Monitored AUC (Programme Clinics):** 0.711
+*   **Evaluation AUC (Excluded Clinics):** **0.790**
+*   **Retention Floor:** 0.730
+*   **Action:** `retain_model`
+
+### Analysis and Attribution
+The gap between the validation figure and the vendor's reported monitoring series decomposes as follows:
+*   **Policy Feedback (+0.066):** The primary driver. The reminder programme effectively reduces no-shows among high-risk patients, "squashing" the outcome distribution and mechanically reducing AUC in the intervened population. The programme effect is measured at **-10.59 percentage points** in the targeted score band.
+*   **Population Drift (-0.011):** The model actually performs slightly better on the current population than at validation when measured on a control group.
+*   **Feature Vintage (+0.014):** A minor loss due to the transition from a 365-day to a 730-day feature window.
+*   **Feed Integrity:** The feature feed is healthy, with a defect share of **0.01%**, well below the 5% threshold for remediation.
+
+### Candidate Comparison
+`noshow-v4.0` achieved **0.764 AUC** on the evaluation population. Since the incumbent `noshow-v3.1` (0.790 AUC) outperforms the candidate and remains well above the retention floor, adoption of v4.0 is not recommended at this time.
+
+The `mlops` package has been repaired to correctly reconstruct features from the 365-day window and handle the `DID_NOT_ATTEND` event type. The results are reproducible by running:
+`python -m mlops monitor --db data/appointments.sqlite --out out`

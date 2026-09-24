@@ -1,0 +1,28 @@
+  1/1 Criterion_Decision: 1.000 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 0:04:56 0:00:00
+adhoc • gemini-cli • gemini-3-flash-preview
+┏━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━┳━━━━━━━┓
+┃ Tria… ┃ Exce… ┃ Crit… ┃ Crit… ┃ Crit… ┃ Crit… ┃ Crit… ┃ Crit… ┃ Cri… ┃ Rewa… ┃
+┡━━━━━━━╇━━━━━━━╇━━━━━━━╇━━━━━━━╇━━━━━━━╇━━━━━━━╇━━━━━━━╇━━━━━━━╇━━━━━━╇━━━━━━━┩
+│     1 │     0 │ 1.000 │ 1.000 │ 1.000 │ 1.000 │ 1.000 │ 0.000 │ 1.0… │ 0.000 │
+└───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┴──────┴───────┘
+
+┏━━━━━━━━┳━━━━━━━┓
+┃ Reward ┃ Count ┃
+┡━━━━━━━━╇━━━━━━━┩
+│ 1      │     1 │
+│ 1      │     1 │
+│ 1      │     1 │
+│ 1      │     1 │
+│ 1      │     1 │
+│ 0      │     1 │
+│ 1      │     1 │
+│ 0      │     1 │
+└────────┴───────┘
+
+Job Info
+Total runtime: 4m 56s
+Results written to jobs/p20-prospective-1/result.json
+Inspect results by running `harbor view jobs`
+Share results by running `harbor upload jobs/p20-prospective-1`
+
+exit=0

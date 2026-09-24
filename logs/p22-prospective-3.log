@@ -1,0 +1,28 @@
+  1/1 Criterion_Decision: 0.000 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 0:03:50 0:00:00
+adhoc • gemini-cli • gemini-3-flash-preview
+┏━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━┳━━━━━━━┓
+┃ Tria… ┃ Exce… ┃ Crit… ┃ Crit… ┃ Crit… ┃ Crit… ┃ Crit… ┃ Crit… ┃ Cri… ┃ Rewa… ┃
+┡━━━━━━━╇━━━━━━━╇━━━━━━━╇━━━━━━━╇━━━━━━━╇━━━━━━━╇━━━━━━━╇━━━━━━━╇━━━━━━╇━━━━━━━┩
+│     1 │     0 │ 0.000 │ 1.000 │ 1.000 │ 1.000 │ 1.000 │ 0.000 │ 1.0… │ 0.000 │
+└───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┴──────┴───────┘
+
+┏━━━━━━━━┳━━━━━━━┓
+┃ Reward ┃ Count ┃
+┡━━━━━━━━╇━━━━━━━┩
+│ 0      │     1 │
+│ 1      │     1 │
+│ 1      │     1 │
+│ 1      │     1 │
+│ 1      │     1 │
+│ 0      │     1 │
+│ 1      │     1 │
+│ 0      │     1 │
+└────────┴───────┘
+
+Job Info
+Total runtime: 3m 50s
+Results written to jobs/p22-prospective-3/result.json
+Inspect results by running `harbor view jobs`
+Share results by running `harbor upload jobs/p22-prospective-3`
+
+exit=0

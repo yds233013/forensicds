@@ -1,0 +1,16 @@
+{
+    "task": {
+        "path": "candidates/p22-gauge-recalibration"
+    },
+    "trial_name": "p22-gauge-recalibration__rBUvW2D",
+    "trials_dir": "jobs/p22-prospective-1",
+    "agent_setup_timeout_multiplier": 3.0,
+    "agent": {
+        "name": "gemini-cli",
+        "model_name": "google/gemini-3-flash-preview"
+    },
+    "artifacts": [
+        "/workspace"
+    ],
+    "job_id": "f348ab74-4635-4958-99b1-c5695f3f177d"
+}

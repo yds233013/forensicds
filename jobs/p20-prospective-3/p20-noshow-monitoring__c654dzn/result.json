@@ -1,0 +1,124 @@
+{
+    "id": "acbecfe4-fc38-4bb1-be1a-9ce2b8d3dc8c",
+    "task_name": "forensicds/noshow-monitoring-p20",
+    "trial_name": "p20-noshow-monitoring__c654dzn",
+    "trial_uri": "file:///Users/yashshah2311/forensicds/jobs/p20-prospective-3/p20-noshow-monitoring__c654dzn",
+    "task_id": {
+        "path": "candidates/p20-noshow-monitoring"
+    },
+    "source": null,
+    "task_checksum": "98be3815436c4db6dbcbb70aa983167974d215d5858ef233ad5592953dbdef42",
+    "config": {
+        "task": {
+            "path": "candidates/p20-noshow-monitoring",
+            "git_url": null,
+            "git_commit_id": null,
+            "name": null,
+            "ref": null,
+            "overwrite": false,
+            "download_dir": null,
+            "source": null
+        },
+        "trial_name": "p20-noshow-monitoring__c654dzn",
+        "trials_dir": "jobs/p20-prospective-3",
+        "install_only": false,
+        "timeout_multiplier": 1.0,
+        "agent_timeout_multiplier": null,
+        "verifier_timeout_multiplier": null,
+        "agent_setup_timeout_multiplier": 3.0,
+        "environment_build_timeout_multiplier": null,
+        "agent": {
+            "name": "gemini-cli",
+            "import_path": null,
+            "model_name": "google/gemini-3-flash-preview",
+            "n_concurrent": null,
+            "concurrency_group": null,
+            "skills": [],
+            "override_timeout_sec": null,
+            "override_setup_timeout_sec": null,
+            "max_timeout_sec": null,
+            "resume_trajectory": false,
+            "load_trajectory": null,
+            "extra_allowed_hosts": [],
+            "kwargs": {},
+            "mcp_servers": []
+        },
+        "environment": {
+            "type": "docker",
+            "import_path": null,
+            "force_build": false,
+            "delete": true,
+            "cpu_enforcement_policy": "auto",
+            "memory_enforcement_policy": "auto",
+            "override_cpus": null,
+            "override_memory_mb": null,
+            "override_storage_mb": null,
+            "override_gpus": null,
+            "override_tpu": null,
+            "mounts": null,
+            "extra_docker_compose": [],
+            "kwargs": {},
+            "extra_allowed_hosts": []
+        },
+        "verifier": {
+            "override_timeout_sec": null,
+            "max_timeout_sec": null,
+            "disable": false
+        },
+        "artifacts": [
+            "/workspace"
+        ],
+        "extra_instruction_paths": [],
+        "job_id": "774c3fec-f222-4b88-afe7-47f57c3f0185",
+        "source_trial": null
+    },
+    "agent_info": {
+        "name": "gemini-cli",
+        "version": "0.61.0",
+        "model_info": {
+            "name": "gemini-3-flash-preview",
+            "provider": "google"
+        }
+    },
+    "agent_result": {
+        "n_input_tokens": 1014985,
+        "n_cache_tokens": 827503,
+        "n_output_tokens": 29854,
+        "cost_usd": 0.22467815,
+        "rollout_details": null,
+        "metadata": null
+    },
+    "verifier_result": {
+        "rewards": {
+            "criterion_decision": 0,
+            "criterion_estimator_implementation": 1,
+            "criterion_evidence_reconstruction": 1,
+            "criterion_identification": 0,
+            "criterion_independent_validation": 1,
+            "criterion_quantitative_results": 0,
+            "criterion_scientific_object": 1,
+            "reward": 0
+        }
+    },
+    "verifier_environment_mode": "shared",
+    "exception_info": null,
+    "started_at": "2026-09-24T08:36:40.103304Z",
+    "finished_at": "2026-09-24T08:42:50.665857Z",
+    "environment_setup": {
+        "started_at": "2026-09-24T08:36:40.211610Z",
+        "finished_at": "2026-09-24T08:36:44.040151Z"
+    },
+    "agent_setup": {
+        "started_at": "2026-09-24T08:36:44.040590Z",
+        "finished_at": "2026-09-24T08:37:09.477106Z"
+    },
+    "agent_execution": {
+        "started_at": "2026-09-24T08:37:09.478039Z",
+        "finished_at": "2026-09-24T08:40:26.714023Z"
+    },
+    "verifier": {
+        "started_at": "2026-09-24T08:40:35.799076Z",
+        "finished_at": "2026-09-24T08:42:33.571011Z"
+    },
+    "step_results": null
+}

@@ -1,0 +1,16 @@
+TARGET-EVALUATION COST LEDGER — google/gemini-3-flash-preview
+
+job                      trial                                cost USD  tokens
+p20-prospective-1        p20-noshow-monitoring__TirBLuz         0.1690  {'n_input_tokens': 855092, 'n_output_tokens': 19034}
+p20-prospective-2        p20-noshow-monitoring__iwPaF7u         0.1476  {'n_input_tokens': 704291, 'n_output_tokens': 17520}
+p20-prospective-3        p20-noshow-monitoring__c654dzn         0.2247  {'n_input_tokens': 1014985, 'n_output_tokens': 29854}
+p22-prospective-1        p22-gauge-recalibration__rBUvW2D       0.1683  {'n_input_tokens': 850103, 'n_output_tokens': 18819}
+p22-prospective-2        p22-gauge-recalibration__nt5YXX8       0.2725  {'n_input_tokens': 1621279, 'n_output_tokens': 21178}
+p22-prospective-3        p22-gauge-recalibration__DxMjiB7       0.1520  {'n_input_tokens': 876554, 'n_output_tokens': 15012}
+p31-prospective-1        p31-fill-rate-dispute__GyUgp7D         0.0068  {'n_input_tokens': 23987, 'n_output_tokens': 693}
+p31-prospective-2        p31-fill-rate-dispute__AjqzDN8         0.1315  {'n_input_tokens': 476203, 'n_output_tokens': 18027}
+p31-prospective-3        p31-fill-rate-dispute__3fnpGae         0.1944  {'n_input_tokens': 843568, 'n_output_tokens': 24395}
+
+valid trials: 9   invalid/replacement trials: 0
+cumulative reported spend: $1.4667
+stop threshold: $10.00 — NOT reached

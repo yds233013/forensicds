@@ -1,0 +1,36 @@
+{
+  "attribution_auc": {
+    "feature_feed_defect": -0.0271,
+    "feature_vintage": 0.0139,
+    "other": 0.0,
+    "policy_feedback": 0.0659,
+    "population_drift": 0.0071
+  },
+  "auc_by_scoring": {
+    "as_served": 0.7904,
+    "candidate_v4": 0.7641,
+    "feature_store_current": 0.7765,
+    "record_features_asof_window": 0.7633
+  },
+  "decision": "retain_model",
+  "evaluation_population": {
+    "clinic_ids": [
+      "CL-001",
+      "CL-005",
+      "CL-012",
+      "CL-028",
+      "CL-038"
+    ],
+    "n_appointments": 4136
+  },
+  "feed_defect_share_pct": 51.15,
+  "model_version": "noshow-v3.1",
+  "monitored_auc": 0.7105,
+  "programme_effect_pp": 10.56,
+  "retention_floor_auc": 0.7304,
+  "validation_auc": 0.7704,
+  "window_weeks": [
+    41,
+    52
+  ]
+}

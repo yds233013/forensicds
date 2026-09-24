@@ -1,0 +1,16 @@
+{
+    "task": {
+        "path": "candidates/p31-fill-rate-dispute"
+    },
+    "trial_name": "p31-fill-rate-dispute__3fnpGae",
+    "trials_dir": "jobs/p31-prospective-3",
+    "agent_setup_timeout_multiplier": 3.0,
+    "agent": {
+        "name": "gemini-cli",
+        "model_name": "google/gemini-3-flash-preview"
+    },
+    "artifacts": [
+        "/workspace"
+    ],
+    "job_id": "f2ebb0cd-ed77-4edc-9c97-36a123b61674"
+}

@@ -1,0 +1,23 @@
+Warning: 256-color support not detected. Using a terminal with at least 256-color support is recommended for a better visual experience.
+YOLO mode is enabled. All tool calls will be automatically approved.
+YOLO mode is enabled. All tool calls will be automatically approved.
+Ripgrep is not available. Falling back to GrepTool.
+The monitoring submission for `noshow-v3.1` is complete. The investigation identified that the model's performance has not declined; rather, the reported fall in AUC was an artifact of evaluating the model on the population intervened upon by the reminder programme.
+
+### Key Findings
+*   **Evaluation Population:** Per MRM-04 §4.1, the model was evaluated on the `excluded_clinics` (`CL-001, CL-005, CL-012, CL-028, CL-038`), which are not influenced by the model's output.
+*   **Actual Performance:** On this clean population, `noshow-v3.1` achieves **0.790 AUC**, which is better than its validation figure of **0.770 AUC**.
+*   **Gap Decomposition:** The gap between the validation figure (0.770) and the monitored dashboard figure (0.711) is primarily due to **Policy Feedback (+0.080 AUC)**. The programme effectively reduces no-shows among high-risk patients (reducing the rate by ~10.6 percentage points), which masks the model's discrimination in the monitored clinics.
+*   **Feed Integrity:** A feed defect share of **63.8%** was identified. The serving pipeline continues to provide 365-day no-show counts despite the policy configuration moving to a 730-day window. However, because the model was trained on a 365-day window, it performs better with the "defective" feed than it would with the "corrected" one.
+*   **Candidate Comparison:** The candidate `noshow-v4.0` achieves only **0.764 AUC** on the clean evaluation population, underperforming the incumbent `noshow-v3.1`.
+
+### Decision
+**`retain_model`**
+The model meets the retention criteria of MRM-04 §4.3: its discrimination on the evaluation population (0.790 AUC) is within 0.04 of the validation figure and is not below 0.70 AUC. The vendor's recommendation to replace the model was based on an invalid evaluation population that did not account for policy feedback.
+
+### Reproducibility
+The `mlops` package has been repaired to correctly implement the MRM-04 standard. The required outputs `out/readout.json` and `out/evaluation_population.csv` can be reproduced by running:
+
+```bash
+python -m mlops monitor --db data/appointments.sqlite --out out
+```

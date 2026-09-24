@@ -1,0 +1,38 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+configfile: ../dev/null
+plugins: json-ctrf-0.3.5
+collected 8 items
+
+test_gauge.py .......F                                                   [100%]
+
+=================================== FAILURES ===================================
+________________________ test_hidden_extract[hidden_c] _________________________
+
+fixture = 'hidden_c'
+
+    @pytest.mark.parametrize("fixture", [s["name"] for s in scenarios.HIDDEN_SPECS])
+    def test_hidden_extract(fixture):
+        root = Path(tempfile.mkdtemp())
+        bad = _check_extract(fixture, root)
+        shutil.rmtree(root, ignore_errors=True)
+>       assert not bad, f"{fixture}:\n  " + "\n  ".join(bad)
+E       AssertionError: hidden_c:
+E           attribution_pp[material] = 3.92 pp, expected 0.817 pp +/- 0.8
+E           attribution_pp[tooling] = 0.0 pp, expected 3.083 pp +/- 0.8
+E           supplier_decision = 'raise_supplier_nonconformance', expected 'no_supplier_action'
+E       assert not ['attribution_pp[material] = 3.92 pp, expected 0.817 pp +/- 0.8', 'attribution_pp[tooling] = 0.0 pp, expected 3.083 pp +/- 0.8', "supplier_decision = 'raise_supplier_nonconformance', expected 'no_supplier_action'"]
+
+test_gauge.py:320: AssertionError
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED test_gauge.py::test_database_unmodified
+PASSED test_gauge.py::test_pipeline_runs
+PASSED test_gauge.py::test_rerun_is_deterministic
+PASSED test_gauge.py::test_output_schema
+PASSED test_gauge.py::test_visible_extract
+PASSED test_gauge.py::test_hidden_extract[hidden_a]
+PASSED test_gauge.py::test_hidden_extract[hidden_b]
+FAILED test_gauge.py::test_hidden_extract[hidden_c] - AssertionError: hidden_c:
+========================= 1 failed, 7 passed in 17.20s =========================

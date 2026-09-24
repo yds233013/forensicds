@@ -1,0 +1,31 @@
+{
+ "job": "jobs/p22-prospective-3",
+ "task": "p22-gauge-recalibration",
+ "task_digest": "sha256:72fedb37da7b48c8488ad8afbcdf0d46b501dcdb52a6b05698a20370425629a7",
+ "model": "google/gemini-3-flash-preview",
+ "agent": "gemini-cli",
+ "digest_matches_freeze": true,
+ "started_at": "2026-09-24T01:22:21.365746",
+ "finished_at": "2026-09-24T01:26:12.135740",
+ "trial_name": "p22-gauge-recalibration__DxMjiB7",
+ "exception_info": null,
+ "failure_mode": null,
+ "rewards": {
+  "criterion_decision": 0,
+  "criterion_estimator_implementation": 1,
+  "criterion_evidence_reconstruction": 1,
+  "criterion_identification": 1,
+  "criterion_independent_validation": 1,
+  "criterion_quantitative_results": 0,
+  "criterion_scientific_object": 1,
+  "reward": 0
+ },
+ "verifier_stdout_bytes": 2001,
+ "verifier_reward_txt_present": true,
+ "exception_files": [],
+ "usage_keys_present": [
+  "cost_usd"
+ ],
+ "verdict": "VALID",
+ "invalid_reasons": []
+}

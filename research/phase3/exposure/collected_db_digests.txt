@@ -1,0 +1,13 @@
+Extract digest of the database each agent actually worked on, vs the frozen extract digest
+
+  p20-prospective-1      appointments.sqlite    9540a0115be159bb  expected 9540a0115be159bb  MATCH
+  p20-prospective-2      appointments.sqlite    9540a0115be159bb  expected 9540a0115be159bb  MATCH
+  p20-prospective-3      appointments.sqlite    9540a0115be159bb  expected 9540a0115be159bb  MATCH
+  p22-prospective-1      inspection.sqlite      0ddb25a0799f1be0  expected 0ddb25a0799f1be0  MATCH
+  p22-prospective-2      inspection.sqlite      0ddb25a0799f1be0  expected 0ddb25a0799f1be0  MATCH
+  p22-prospective-3      inspection.sqlite      0ddb25a0799f1be0  expected 0ddb25a0799f1be0  MATCH
+  p31-prospective-1      service.sqlite         5065cf4081dce124  expected 5065cf4081dce124  MATCH
+  p31-prospective-2      service.sqlite         5065cf4081dce124  expected 5065cf4081dce124  MATCH
+  p31-prospective-3      service.sqlite         5065cf4081dce124  expected 5065cf4081dce124  MATCH
+
+  -> every agent worked on the frozen extract, unmodified

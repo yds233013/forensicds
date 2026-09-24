@@ -36,3 +36,12 @@ submission.zip
 logs/final-*.log
 logs/tb3-check-*.log
 logs/run_*.out
+
+# `/jobs/` above has been ignored since the project began, so no Harbor job artefact has ever been
+# tracked. For the nine phase-3 prospective trials that is deliberately overridden with `git add -f`,
+# because the trajectories are the primary evidence for the frozen trajectory analysis and belong in
+# version control. The only thing still excluded is the collected copy of each task's read-only input
+# database: it is byte-reproducible from the frozen generator, it is 250 MB across the nine trials, and
+# its digest is verified against the frozen extract digest for every trial in
+# research/phase3/exposure/collected_db_digests.txt.
+jobs/*-prospective-*/**/artifacts/workspace/data/*.sqlite

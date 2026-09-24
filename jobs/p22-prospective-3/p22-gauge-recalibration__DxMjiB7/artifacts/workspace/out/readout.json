@@ -1,0 +1,45 @@
+{
+  "attribution_pp": {
+    "material": 1.06,
+    "measurement_system": 2.88,
+    "operator": 0.0,
+    "other": 0.0,
+    "tooling": 0.0
+  },
+  "baseline_nonconforming_rate_pct": 2.75,
+  "conformance_reference_offset_um": {
+    "CMM-1": 7.81,
+    "CMM-2": 0.303
+  },
+  "corrected_nonconforming_rate_pct": 3.81,
+  "part_number": "MAN-4471",
+  "reported_nonconforming_rate_pct": 6.69,
+  "strata_nonconforming_rate_pct": {
+    "by_heat_family": {
+      "H3": 6.69
+    },
+    "by_machine": {
+      "CMM-1": 7.6,
+      "CMM-2": 3.97
+    },
+    "by_operator": {
+      "OP-114": 6.2,
+      "OP-207": 7.01,
+      "OP-318": 6.59,
+      "OP-421": 6.96
+    },
+    "by_shift": {
+      "DAY": 6.36,
+      "NIGHT": 7.24
+    }
+  },
+  "supplier_decision": "no_supplier_action",
+  "window_post": [
+    19,
+    24
+  ],
+  "window_pre": [
+    13,
+    18
+  ]
+}

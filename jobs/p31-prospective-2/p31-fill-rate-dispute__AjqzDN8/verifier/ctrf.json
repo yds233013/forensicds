@@ -1,0 +1,80 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 6,
+            "passed": 5,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1790239727.546928,
+            "stop": 1790239732.731619
+        },
+        "tests": [
+            {
+                "name": "test_fill.py::test_database_unmodified",
+                "status": "passed",
+                "duration": 1.6445414169975265,
+                "start": 1790239727.6117122,
+                "stop": 1790239729.2571046,
+                "retries": 0,
+                "file_path": "test_fill.py"
+            },
+            {
+                "name": "test_fill.py::test_pipeline_runs",
+                "status": "passed",
+                "duration": 0.26878341699921293,
+                "start": 1790239729.25768,
+                "stop": 1790239729.5353198,
+                "retries": 0,
+                "file_path": "test_fill.py"
+            },
+            {
+                "name": "test_fill.py::test_rerun_is_deterministic",
+                "status": "passed",
+                "duration": 0.39959504299804394,
+                "start": 1790239729.5362372,
+                "stop": 1790239729.9367669,
+                "retries": 0,
+                "file_path": "test_fill.py"
+            },
+            {
+                "name": "test_fill.py::test_output_schema",
+                "status": "passed",
+                "duration": 0.004176833997917129,
+                "start": 1790239729.9371343,
+                "stop": 1790239729.9417386,
+                "retries": 0,
+                "file_path": "test_fill.py"
+            },
+            {
+                "name": "test_fill.py::test_visible_extract",
+                "status": "passed",
+                "duration": 1.0150264169988077,
+                "start": 1790239729.9422686,
+                "stop": 1790239730.9576962,
+                "retries": 0,
+                "file_path": "test_fill.py"
+            },
+            {
+                "name": "test_fill.py::test_hidden_extract",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.5488766250000481,
+                "start": 1790239730.958055,
+                "stop": 1790239731.5260563,
+                "retries": 2,
+                "file_path": "test_fill.py",
+                "tags": [
+                    "parametrize::fixture::['hidden_a', 'hidden_b', 'hidden_c']"
+                ],
+                "trace": "fixture = 'hidden_c'\n\n    @pytest.mark.parametrize(\"fixture\", [s[\"name\"] for s in scenarios.HIDDEN_SPECS])\n    def test_hidden_extract(fixture):\n        root = Path(tempfile.mkdtemp())\n        bad = _check_extract(fixture, root)\n        shutil.rmtree(root, ignore_errors=True)\n>       assert not bad, f\"{fixture}:\\n  \" + \"\\n  \".join(bad)\nE       AssertionError: hidden_c:\nE           incumbent_verdict = 'incumbent_correct', expected 'not_determinable_from_available_evidence'\nE           supplier_claim_payable = 'yes', expected 'not_determinable'\nE       assert not [\"incumbent_verdict = 'incumbent_correct', expected 'not_determinable_from_available_evidence'\", \"supplier_claim_payable = 'yes', expected 'not_determinable'\"]\n\ntest_fill.py:309: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

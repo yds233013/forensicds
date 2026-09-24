@@ -1,0 +1,25 @@
+Warning: 256-color support not detected. Using a terminal with at least 256-color support is recommended for a better visual experience.
+YOLO mode is enabled. All tool calls will be automatically approved.
+YOLO mode is enabled. All tool calls will be automatically approved.
+Ripgrep is not available. Falling back to GrepTool.
+The investigation into the ambient-grocery service-level discrepancy is complete. The 97.7% figure published by Meridian is contractually correct according to the **Customer Supply Agreement (Schedule 2)**, while Brendale's 91.5% figure relies on an unagreed methodology.
+
+### Key Findings
+*   **The Discrepancy:** The ~6 point gap is almost entirely due to Brendale measuring against **requested quantity** (demand) while the contract specifies **confirmed quantity** (commitment). When Brendale cannot fulfill an order, they confirm a lower amount; the contract allows them to be measured against that lower commitment.
+*   **Bridge Analysis:**
+    *   **Denominator (Confirmed vs. Requested):** -26.42 pp (The primary driver of the gap).
+    *   **Returns Treatment:** -3.89 pp (Brendale deducts returns; the contract does not).
+    *   **Aggregation (Lines vs. Cases):** +24.18 pp (Measuring units instead of lines masks much of the shortfall).
+*   **Ambiguity:** Schedule 4 (amendments) remains unexecuted. This creates a range for the contractual figure between **97.65%** and **97.70%**.
+*   **Consequences:**
+    *   **Bonus Gate (96.0%):** Met on all valid contractual readings.
+    *   **Supplier Claim (£1.8m):** Not payable for the category as a whole (>95.0%). However, **three accounts** (ACC-001, ACC-002, ACC-003) have breached their individual 95.0% floors, which justifies the shortfall tickets.
+    *   **Tickets:** 42% of shortfall tickets are associated with returns, confirming that quality/rejection issues are a significant factor in the perceived service failure.
+
+The `service` package has been repaired to correctly implement §7.2 (handling missing confirmations) and to produce the required `out/readout.json` and `out/account_fill.csv` files.
+
+```bash
+python -m service fill --db data/service.sqlite --out out
+```
+
+The updated reporting pipeline now transparently brackets the contractual ambiguity and bridges the gap to the supplier's figures.

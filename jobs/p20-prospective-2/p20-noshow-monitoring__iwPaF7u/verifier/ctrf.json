@@ -1,0 +1,83 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 6,
+            "passed": 4,
+            "failed": 2,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1790238896.840608,
+            "stop": 1790238948.7223077
+        },
+        "tests": [
+            {
+                "name": "test_monitoring.py::test_database_unmodified",
+                "status": "passed",
+                "duration": 12.027697506002369,
+                "start": 1790238896.8709493,
+                "stop": 1790238908.9006603,
+                "retries": 0,
+                "file_path": "test_monitoring.py"
+            },
+            {
+                "name": "test_monitoring.py::test_pipeline_runs",
+                "status": "passed",
+                "duration": 0.9762044579983922,
+                "start": 1790238908.9017322,
+                "stop": 1790238909.8787713,
+                "retries": 0,
+                "file_path": "test_monitoring.py"
+            },
+            {
+                "name": "test_monitoring.py::test_rerun_is_deterministic",
+                "status": "passed",
+                "duration": 1.6642682499987131,
+                "start": 1790238909.8791776,
+                "stop": 1790238911.5438087,
+                "retries": 0,
+                "file_path": "test_monitoring.py"
+            },
+            {
+                "name": "test_monitoring.py::test_output_schema",
+                "status": "passed",
+                "duration": 0.0006599169992114184,
+                "start": 1790238911.5440784,
+                "stop": 1790238911.5449057,
+                "retries": 0,
+                "file_path": "test_monitoring.py"
+            },
+            {
+                "name": "test_monitoring.py::test_visible_extract",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 8.667806169998585,
+                "start": 1790238911.5450606,
+                "stop": 1790238920.2321427,
+                "retries": 0,
+                "file_path": "test_monitoring.py",
+                "trace": "def test_visible_extract():\n        root = Path(tempfile.mkdtemp())\n        bad = _check_extract(\"visible\", root)\n        shutil.rmtree(root, ignore_errors=True)\n>       assert not bad, \"visible extract:\\n  \" + \"\\n  \".join(bad)\nE       AssertionError: visible extract:\nE           feed_defect_share_pct = 51.15, expected 0.0000 +/- 3.0\nE       assert not ['feed_defect_share_pct = 51.15, expected 0.0000 +/- 3.0']\n\ntest_monitoring.py:306: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_monitoring.py::test_hidden_extract",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 8.510684087998015,
+                "start": 1790238920.2324588,
+                "stop": 1790238928.7517831,
+                "retries": 2,
+                "file_path": "test_monitoring.py",
+                "tags": [
+                    "parametrize::fixture::['hidden_a', 'hidden_b', 'hidden_c']"
+                ],
+                "trace": "fixture = 'hidden_c'\n\n    @pytest.mark.parametrize(\"fixture\", [s[\"name\"] for s in scenarios.HIDDEN_SPECS])\n    def test_hidden_extract(fixture):\n        root = Path(tempfile.mkdtemp())\n        bad = _check_extract(fixture, root)\n        shutil.rmtree(root, ignore_errors=True)\n>       assert not bad, f\"{fixture}:\\n  \" + \"\\n  \".join(bad)\nE       AssertionError: hidden_c:\nE           auc_by_scoring[record_features_asof_window] = 0.7238, expected 0.7566 +/- 0.02\nE           feed_defect_share_pct = 50.56, expected 0.0000 +/- 3.0\nE           attribution_auc[population_drift] = 0.0509, expected 0.0181 +/- 0.025\nE           attribution_auc[feature_feed_defect] = -0.0572, expected -0.0245 +/- 0.025\nE       assert not ['auc_by_scoring[record_features_asof_window] = 0.7238, expected 0.7566 +/- 0.02', 'feed_defect_share_pct = 50.56, exp...ft] = 0.0509, expected 0.0181 +/- 0.025', 'attribution_auc[feature_feed_defect] = -0.0572, expected -0.0245 +/- 0.025']\n\ntest_monitoring.py:314: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

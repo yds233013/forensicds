@@ -1,0 +1,22 @@
+Warning: 256-color support not detected. Using a terminal with at least 256-color support is recommended for a better visual experience.
+YOLO mode is enabled. All tool calls will be automatically approved.
+YOLO mode is enabled. All tool calls will be automatically approved.
+Ripgrep is not available. Falling back to GrepTool.
+I have investigated the yield drop for the MAN-4471 bore and determined that the apparent increase in nonconformance was primarily due to a measurement system offset, not the supplied material.
+
+### Summary of Findings
+1.  **Measurement Offset:** Following an adjustment on 2026-05-04 (Week 19), **CMM-1** developed a significant offset of **+7.81 µm**. This offset caused many parts within the ±30 µm tolerance to be incorrectly dispositioned as `FAIL`. **CMM-2** maintained a negligible offset of **+0.30 µm**.
+2.  **Corrected Yield:** When measured against the drawing's **conformance reference** (by removing machine offsets), the true nonconforming rate in weeks 19–24 is **3.81%**, not the reported 6.69%. 
+3.  **Attribution:** The 3.94 percentage-point increase in the reported nonconforming rate is attributed as:
+    *   **Measurement System:** 2.88 pp
+    *   **Material:** 1.06 pp (associated with the harder H3 heat family)
+4.  **Escalation Rule:** Schedule 3 §3.2 of the supply quality agreement requires the nonconforming rate to exceed **5.5%** when measured against the conformance reference for an escalation to be valid. Since the corrected rate is 3.81%, the escalation threshold has not been met.
+
+### Implementation
+I have repaired the `quality` package to correctly calculate machine offsets from the `reference_measurements` and `reference_parts` tables and to produce the outputs required by `docs/outputs/readout_contract.md`.
+
+*   **Repaired Package:** The `quality` package now correctly implements QP-07 §5 to establish the conformance reference.
+*   **Reproducible Outputs:** Running `python -m quality report --db data/inspection.sqlite --out out` produces the validated `out/readout.json` and `out/part_dispositions.csv`.
+*   **Recommendation:** A formal restatement withdrawing the escalation has been drafted in `recommendation.md`.
+
+The evidence supports Brendale's refusal of the draft claim; the escalation should be rescinded, and CMM-1 should be re-adjusted immediately.

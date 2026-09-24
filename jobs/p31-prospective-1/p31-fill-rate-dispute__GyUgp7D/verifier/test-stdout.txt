@@ -1,0 +1,140 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+configfile: ../dev/null
+plugins: json-ctrf-0.3.5
+collected 8 items
+
+test_fill.py ...FFFFF                                                    [100%]
+
+=================================== FAILURES ===================================
+______________________________ test_output_schema ______________________________
+
+    def test_output_schema():
+        readout, rows = _read_outputs(WORKSPACE / "out")
+        required = ("period", "fill_rate_contract_pct", "fill_rate_contract_low_pct",
+                    "fill_rate_contract_high_pct", "fill_rate_supplier_definition_pct", "published_rate_pct",
+                    "bridge_pp", "account_fill_pct", "accounts_below_floor",
+                    "returns_driven_ticket_share_pct", "governing_definition", "incumbent_verdict",
+                    "bonus_gate_met", "supplier_claim_payable")
+        missing = [k for k in required if k not in readout]
+        if missing:
+            _fail("evidence_reconstruction", f"readout.json is missing {missing}")
+>       assert not missing, f"readout.json is missing {missing}"
+E       AssertionError: readout.json is missing ['fill_rate_contract_low_pct', 'fill_rate_contract_high_pct', 'fill_rate_supplier_definition_pct', 'published_rate_pct', 'bridge_pp', 'returns_driven_ticket_share_pct', 'governing_definition', 'incumbent_verdict', 'bonus_gate_met', 'supplier_claim_payable']
+E       assert not ['fill_rate_contract_low_pct', 'fill_rate_contract_high_pct', 'fill_rate_supplier_definition_pct', 'published_rate_pct', 'bridge_pp', 'returns_driven_ticket_share_pct', ...]
+
+test_fill.py:283: AssertionError
+_____________________________ test_visible_extract _____________________________
+
+    def test_visible_extract():
+        root = Path(tempfile.mkdtemp())
+        bad = _check_extract("visible", root)
+        shutil.rmtree(root, ignore_errors=True)
+>       assert not bad, "visible extract:\n  " + "\n  ".join(bad)
+E       AssertionError: visible extract:
+E           published_rate_pct: missing or not a number
+E           fill_rate_supplier_definition_pct: missing or not a number
+E           fill_rate_contract_low_pct: missing or not a number
+E           fill_rate_contract_high_pct: missing or not a number
+E           governing_definition = None, expected 'contract_line_fill_confirmed'
+E           bridge_pp must have exactly ['aggregation', 'date_window', 'denominator', 'other', 'returns_treatment']
+E           out/account_fill.csv was not written
+E           returns_driven_ticket_share_pct: missing or not a number
+E           incumbent_verdict = None, expected 'incumbent_correct'
+E           bonus_gate_met = None, expected 'yes'
+E           supplier_claim_payable = None, expected 'no'
+E       assert not ['published_rate_pct: missing or not a number', 'fill_rate_supplier_definition_pct: missing or not a number', 'fill_ra...rmed'", "bridge_pp must have exactly ['aggregation', 'date_window', 'denominator', 'other', 'returns_treatment']", ...]
+
+test_fill.py:301: AssertionError
+________________________ test_hidden_extract[hidden_a] _________________________
+
+fixture = 'hidden_a'
+
+    @pytest.mark.parametrize("fixture", [s["name"] for s in scenarios.HIDDEN_SPECS])
+    def test_hidden_extract(fixture):
+        root = Path(tempfile.mkdtemp())
+        bad = _check_extract(fixture, root)
+        shutil.rmtree(root, ignore_errors=True)
+>       assert not bad, f"{fixture}:\n  " + "\n  ".join(bad)
+E       AssertionError: hidden_a:
+E           published_rate_pct: missing or not a number
+E           fill_rate_supplier_definition_pct: missing or not a number
+E           fill_rate_contract_pct = 97.65, expected 93.180 +/- 0.15
+E           fill_rate_contract_low_pct: missing or not a number
+E           fill_rate_contract_high_pct: missing or not a number
+E           governing_definition = None, expected 'contract_line_fill_confirmed'
+E           bridge_pp must have exactly ['aggregation', 'date_window', 'denominator', 'other', 'returns_treatment']
+E           out/account_fill.csv was not written
+E           accounts_below_floor = 3, expected 21 +/- 1
+E           account_fill_pct[ACC-001] = 93.43, expected 88.305 +/- 0.3
+E           account_fill_pct[ACC-002] = 92.44, expected 88.493 +/- 0.3
+E           account_fill_pct[ACC-003] = 93.44, expected 89.089 +/- 0.3
+E           returns_driven_ticket_share_pct: missing or not a number
+E           incumbent_verdict = None, expected 'incumbent_incorrect'
+E           bonus_gate_met = None, expected 'no'
+E           supplier_claim_payable = None, expected 'yes'
+E       assert not ['published_rate_pct: missing or not a number', 'fill_rate_supplier_definition_pct: missing or not a number', 'fill_ra...ntract_high_pct: missing or not a number', "governing_definition = None, expected 'contract_line_fill_confirmed'", ...]
+
+test_fill.py:309: AssertionError
+________________________ test_hidden_extract[hidden_b] _________________________
+
+fixture = 'hidden_b'
+
+    @pytest.mark.parametrize("fixture", [s["name"] for s in scenarios.HIDDEN_SPECS])
+    def test_hidden_extract(fixture):
+        root = Path(tempfile.mkdtemp())
+        bad = _check_extract(fixture, root)
+        shutil.rmtree(root, ignore_errors=True)
+>       assert not bad, f"{fixture}:\n  " + "\n  ".join(bad)
+E       AssertionError: hidden_b:
+E           published_rate_pct: missing or not a number
+E           fill_rate_supplier_definition_pct: missing or not a number
+E           fill_rate_contract_low_pct: missing or not a number
+E           fill_rate_contract_high_pct: missing or not a number
+E           governing_definition = None, expected 'contract_line_fill_confirmed'
+E           bridge_pp must have exactly ['aggregation', 'date_window', 'denominator', 'other', 'returns_treatment']
+E           out/account_fill.csv was not written
+E           returns_driven_ticket_share_pct: missing or not a number
+E           incumbent_verdict = None, expected 'incumbent_correct'
+E           bonus_gate_met = None, expected 'yes'
+E           supplier_claim_payable = None, expected 'no'
+E       assert not ['published_rate_pct: missing or not a number', 'fill_rate_supplier_definition_pct: missing or not a number', 'fill_ra...rmed'", "bridge_pp must have exactly ['aggregation', 'date_window', 'denominator', 'other', 'returns_treatment']", ...]
+
+test_fill.py:309: AssertionError
+________________________ test_hidden_extract[hidden_c] _________________________
+
+fixture = 'hidden_c'
+
+    @pytest.mark.parametrize("fixture", [s["name"] for s in scenarios.HIDDEN_SPECS])
+    def test_hidden_extract(fixture):
+        root = Path(tempfile.mkdtemp())
+        bad = _check_extract(fixture, root)
+        shutil.rmtree(root, ignore_errors=True)
+>       assert not bad, f"{fixture}:\n  " + "\n  ".join(bad)
+E       AssertionError: hidden_c:
+E           published_rate_pct: missing or not a number
+E           fill_rate_supplier_definition_pct: missing or not a number
+E           fill_rate_contract_low_pct: missing or not a number
+E           fill_rate_contract_high_pct: missing or not a number
+E           governing_definition = None, expected 'contract_line_fill_confirmed'
+E           bridge_pp must have exactly ['aggregation', 'date_window', 'denominator', 'other', 'returns_treatment']
+E           out/account_fill.csv was not written
+E           returns_driven_ticket_share_pct: missing or not a number
+E           incumbent_verdict = None, expected 'not_determinable_from_available_evidence'
+E           bonus_gate_met = None, expected 'no'
+E           supplier_claim_payable = None, expected 'not_determinable'
+E       assert not ['published_rate_pct: missing or not a number', 'fill_rate_supplier_definition_pct: missing or not a number', 'fill_ra...rmed'", "bridge_pp must have exactly ['aggregation', 'date_window', 'denominator', 'other', 'returns_treatment']", ...]
+
+test_fill.py:309: AssertionError
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED test_fill.py::test_database_unmodified
+PASSED test_fill.py::test_pipeline_runs
+PASSED test_fill.py::test_rerun_is_deterministic
+FAILED test_fill.py::test_output_schema - AssertionError: readout.json is mis...
+FAILED test_fill.py::test_visible_extract - AssertionError: visible extract:
+FAILED test_fill.py::test_hidden_extract[hidden_a] - AssertionError: hidden_a:
+FAILED test_fill.py::test_hidden_extract[hidden_b] - AssertionError: hidden_b:
+FAILED test_fill.py::test_hidden_extract[hidden_c] - AssertionError: hidden_c:
+========================= 5 failed, 3 passed in 3.94s ==========================

@@ -1,0 +1,87 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+configfile: ../dev/null
+plugins: json-ctrf-0.3.5
+collected 8 items
+
+test_monitoring.py ....FFFF                                              [100%]
+
+=================================== FAILURES ===================================
+_____________________________ test_visible_extract _____________________________
+
+    def test_visible_extract():
+        root = Path(tempfile.mkdtemp())
+        bad = _check_extract("visible", root)
+        shutil.rmtree(root, ignore_errors=True)
+>       assert not bad, "visible extract:\n  " + "\n  ".join(bad)
+E       AssertionError: visible extract:
+E           feed_defect_share_pct = 51.15, expected 0.0000 +/- 3.0
+E       assert not ['feed_defect_share_pct = 51.15, expected 0.0000 +/- 3.0']
+
+test_monitoring.py:306: AssertionError
+________________________ test_hidden_extract[hidden_a] _________________________
+
+fixture = 'hidden_a'
+
+    @pytest.mark.parametrize("fixture", [s["name"] for s in scenarios.HIDDEN_SPECS])
+    def test_hidden_extract(fixture):
+        root = Path(tempfile.mkdtemp())
+        bad = _check_extract(fixture, root)
+        shutil.rmtree(root, ignore_errors=True)
+>       assert not bad, f"{fixture}:\n  " + "\n  ".join(bad)
+E       AssertionError: hidden_a:
+E           feed_defect_share_pct = 58.88, expected 0.0000 +/- 3.0
+E       assert not ['feed_defect_share_pct = 58.88, expected 0.0000 +/- 3.0']
+
+test_monitoring.py:314: AssertionError
+________________________ test_hidden_extract[hidden_b] _________________________
+
+fixture = 'hidden_b'
+
+    @pytest.mark.parametrize("fixture", [s["name"] for s in scenarios.HIDDEN_SPECS])
+    def test_hidden_extract(fixture):
+        root = Path(tempfile.mkdtemp())
+        bad = _check_extract(fixture, root)
+        shutil.rmtree(root, ignore_errors=True)
+>       assert not bad, f"{fixture}:\n  " + "\n  ".join(bad)
+E       AssertionError: hidden_b:
+E           auc_by_scoring[record_features_asof_window] = 0.738, expected 0.7723 +/- 0.02
+E           auc_by_scoring[feature_store_current] = 0.7629, expected 0.6877 +/- 0.02
+E           feed_defect_share_pct = 6.1, expected 87.9071 +/- 3.0
+E           attribution_auc[population_drift] = 0.0348, expected 0.0005 +/- 0.025
+E           attribution_auc[feature_feed_defect] = 0.0589, expected 0.0932 +/- 0.025
+E           attribution_auc[feature_vintage] = -0.0838, expected -0.0086 +/- 0.025
+E           attribution_auc[policy_feedback] = 0.0967, expected 0.0211 +/- 0.025
+E       assert not ['auc_by_scoring[record_features_asof_window] = 0.738, expected 0.7723 +/- 0.02', 'auc_by_scoring[feature_store_curren...t] = 0.0589, expected 0.0932 +/- 0.025', 'attribution_auc[feature_vintage] = -0.0838, expected -0.0086 +/- 0.025', ...]
+
+test_monitoring.py:314: AssertionError
+________________________ test_hidden_extract[hidden_c] _________________________
+
+fixture = 'hidden_c'
+
+    @pytest.mark.parametrize("fixture", [s["name"] for s in scenarios.HIDDEN_SPECS])
+    def test_hidden_extract(fixture):
+        root = Path(tempfile.mkdtemp())
+        bad = _check_extract(fixture, root)
+        shutil.rmtree(root, ignore_errors=True)
+>       assert not bad, f"{fixture}:\n  " + "\n  ".join(bad)
+E       AssertionError: hidden_c:
+E           auc_by_scoring[record_features_asof_window] = 0.7238, expected 0.7566 +/- 0.02
+E           feed_defect_share_pct = 50.56, expected 0.0000 +/- 3.0
+E           attribution_auc[population_drift] = 0.0509, expected 0.0181 +/- 0.025
+E           attribution_auc[feature_feed_defect] = -0.0572, expected -0.0245 +/- 0.025
+E       assert not ['auc_by_scoring[record_features_asof_window] = 0.7238, expected 0.7566 +/- 0.02', 'feed_defect_share_pct = 50.56, exp...ft] = 0.0509, expected 0.0181 +/- 0.025', 'attribution_auc[feature_feed_defect] = -0.0572, expected -0.0245 +/- 0.025']
+
+test_monitoring.py:314: AssertionError
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED test_monitoring.py::test_database_unmodified
+PASSED test_monitoring.py::test_pipeline_runs
+PASSED test_monitoring.py::test_rerun_is_deterministic
+PASSED test_monitoring.py::test_output_schema
+FAILED test_monitoring.py::test_visible_extract - AssertionError: visible ext...
+FAILED test_monitoring.py::test_hidden_extract[hidden_a] - AssertionError: hi...
+FAILED test_monitoring.py::test_hidden_extract[hidden_b] - AssertionError: hi...
+FAILED test_monitoring.py::test_hidden_extract[hidden_c] - AssertionError: hi...
+========================= 4 failed, 4 passed in 51.90s =========================

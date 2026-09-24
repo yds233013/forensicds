@@ -1,0 +1,12 @@
+quantitative_results: visible: feed_defect_share_pct 63.8 vs 0.0000 (tol 3.0)
+quantitative_results: visible: programme_effect_pp -10.56 vs 10.8490 (tol 3.0)
+quantitative_results: hidden_a: feed_defect_share_pct 63.8 vs 0.0000 (tol 3.0)
+quantitative_results: hidden_a: programme_effect_pp -10.6 vs 10.4310 (tol 3.0)
+decision: hidden_a: decision 'remediate_feature_pipeline' vs 'replace_with_v4'
+identification: hidden_b: auc_by_scoring[feature_store_current] 0.7629 vs 0.6877 (tol 0.02)
+quantitative_results: hidden_b: feed_defect_share_pct 95.4 vs 87.9071 (tol 3.0)
+quantitative_results: hidden_b: programme_effect_pp -9.3 vs 9.9805 (tol 3.0)
+quantitative_results: hidden_c: feed_defect_share_pct 62.4 vs 0.0000 (tol 3.0)
+quantitative_results: hidden_c: programme_effect_pp -11.15 vs 11.4751 (tol 3.0)
+quantitative_results: hidden_c: attribution_auc[feature_feed_defect] -0.0505 vs -0.0245 (tol 0.025)
+quantitative_results: hidden_c: attribution_auc[policy_feedback] 0.0774 vs 0.0272 (tol 0.025)

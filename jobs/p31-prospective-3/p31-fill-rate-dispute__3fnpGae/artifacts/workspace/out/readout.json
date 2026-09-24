@@ -1,0 +1,48 @@
+{
+  "account_fill_pct": {
+    "ACC-001": 93.56,
+    "ACC-002": 93.2,
+    "ACC-003": 94.02,
+    "ACC-004": 98.67,
+    "ACC-005": 98.17,
+    "ACC-006": 98.16,
+    "ACC-007": 97.95,
+    "ACC-008": 98.78,
+    "ACC-009": 98.4,
+    "ACC-010": 98.06,
+    "ACC-011": 97.98,
+    "ACC-012": 97.97,
+    "ACC-013": 97.49,
+    "ACC-014": 98.47,
+    "ACC-015": 97.56,
+    "ACC-016": 98.29,
+    "ACC-017": 98.58,
+    "ACC-018": 98.07,
+    "ACC-019": 98.81,
+    "ACC-020": 98.3,
+    "ACC-021": 98.85,
+    "ACC-022": 98.74
+  },
+  "accounts_below_floor": 3,
+  "bonus_gate_met": "not_determinable",
+  "bridge_pp": {
+    "aggregation": 24.18,
+    "date_window": -0.02,
+    "denominator": -26.42,
+    "other": 0.0,
+    "returns_treatment": -3.89
+  },
+  "fill_rate_contract_high_pct": 97.7,
+  "fill_rate_contract_low_pct": 97.65,
+  "fill_rate_contract_pct": 97.65,
+  "fill_rate_supplier_definition_pct": 91.51,
+  "governing_definition": "contract_line_fill_confirmed",
+  "incumbent_verdict": "not_determinable_from_available_evidence",
+  "period": [
+    "2026-04-06",
+    "2026-07-06"
+  ],
+  "published_rate_pct": 97.65,
+  "returns_driven_ticket_share_pct": 42.0,
+  "supplier_claim_payable": "not_determinable"
+}

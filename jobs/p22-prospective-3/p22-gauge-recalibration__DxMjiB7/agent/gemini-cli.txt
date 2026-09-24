@@ -1,0 +1,52 @@
+Warning: 256-color support not detected. Using a terminal with at least 256-color support is recommended for a better visual experience.
+YOLO mode is enabled. All tool calls will be automatically approved.
+YOLO mode is enabled. All tool calls will be automatically approved.
+Ripgrep is not available. Falling back to GrepTool.
+The investigation into the first-pass yield drop for the MAN-4471 bore (feature `BORE_DIA_42`) confirms that the escalation to change supplier is not justified under the terms of the supply quality agreement.
+
+### Analysis of the Yield Drop
+
+The reported nonconforming rate rose from a baseline of **2.75%** (weeks 13–18) to **6.69%** (weeks 19–24), an increase of **3.94 percentage points**. However, the "step" in week 19 coincided exactly with a calibration event on **CMM-1** (`2026-05-04`), which introduced a significant measurement offset.
+
+*   **Measurement System Effect:** Using the retained-artefact programme (QP-07 §5), I established a **+7.81 µm** offset for CMM-1. Because CMM-1 reads "large," it has been incorrectly dispositioning parts as `FAIL` when they are actually within the ±30 µm tolerance. This accounts for **2.88 percentage points** of the reported nonconforming rate.
+*   **Material Effect:** After correcting for the instrument offset, the nonconforming rate for the post-window is **3.81%**. The increase attributable to the change in heat family (H2 to H3) is approximately **1.06 percentage points** (3.81% corrected vs. 2.75% baseline).
+
+### Restatement (Schedule 3 §3.2)
+
+Per the requirements of the supply quality agreement:
+
+*   **Window:** Weeks 19–24 (inclusive).
+*   **Population:** 12,000 parts machined and inspected during the window.
+*   **Reference:** Conformance reference established per QP-07 §3 (corrected for machine offsets).
+*   **Nonconforming Rate:** The rate measured against the conformance reference is **3.81%**.
+
+### Recommendation
+
+**Withdraw the escalation to change supplier.** Schedule 3 §3.2 stipulates that escalation may only be pursued if the material-attributable nonconforming rate, measured against the conformance reference, exceeds **5.5%**. The evidence shows a corrected rate of **3.81%**, which is well below the threshold. The matter should be redirected to the corrective-action process in Schedule 5, focusing on the material's interaction with the process and the immediate remediation of the CMM-1 instrument offset.
+
+---
+
+### Technical Summary
+
+The `quality` package has been repaired to correctly attribute defects by accounting for instrument offsets. The reporting tool now produces the mandated outputs:
+
+*   **`out/readout.json`**: Contains the baseline, reported, and corrected rates, as well as the strata breakdown and attribution.
+*   **`out/part_dispositions.csv`**: Contains the individual part dispositions against the drawing's conformance reference.
+
+You can reproduce these results by running:
+`python -m quality report --db data/inspection.sqlite --out out`
+
+**Machine Offsets Established:**
+*   **CMM-1:** +7.810 µm
+*   **CMM-2:** +0.303 µm
+
+**Attribution Breakdown (pp):**
+*   **Measurement System:** 2.88
+*   **Material:** 1.06
+*   **Total Change:** 3.94 (6.69% reported - 2.75% baseline)
+
+The investigation into the MAN-4471 bore yield drop is complete. The reported yield drop was largely driven by a **+7.81 µm instrument offset** on CMM-1, rather than a significant deterioration in material quality. 
+
+After correcting for this offset, the nonconforming rate is **3.81%**, which is below the **5.5%** threshold required for a supplier escalation under Schedule 3 §3.2. 
+
+The `quality` package has been repaired and produces the required outputs in `out/`. The recommendation is to **withdraw the escalation** and handle the matter through standard corrective-action processes.

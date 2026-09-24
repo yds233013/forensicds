@@ -1,0 +1,4 @@
+identification: hidden_a: bridge_pp[aggregation] 11.1657 vs 6.336 (tol 0.4)
+identification: hidden_a: bridge_pp[denominator] -11.068 vs -6.238 (tol 0.4)
+decision: hidden_c: incumbent_verdict 'incumbent_correct' vs 'not_determinable_from_available_evidence'
+decision: hidden_c: supplier_claim_payable 'yes' vs 'not_determinable'

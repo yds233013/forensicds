@@ -1,0 +1,30 @@
+Warning: 256-color support not detected. Using a terminal with at least 256-color support is recommended for a better visual experience.
+YOLO mode is enabled. All tool calls will be automatically approved.
+YOLO mode is enabled. All tool calls will be automatically approved.
+Ripgrep is not available. Falling back to GrepTool.
+I have completed the monitoring review for `noshow-v3.1` in accordance with MRM-04.
+
+### Monitoring Findings
+
+The reported fall in discrimination from 0.77 to 0.71 AUC is an artifact of monitoring the intervened population. Under MRM-04 §4.1, performance must be computed on a population not influenced by the model's use. Evaluating on the **excluded clinics** (CL-001, CL-005, CL-012, CL-028, CL-038) reveals that the model's actual discrimination in service stands at **0.790 AUC**, which is above the validation figure of 0.770 and comfortably exceeds the retention floor of 0.730.
+
+The gap between validation and the vendor's dashboard figure (0.711) decomposes as follows:
+*   **Population Drift (+0.007):** Negligible impact from underlying population changes.
+*   **Feature Feed Defect (-0.027):** A platform change in week 33 widened the no-show count window to 730 days. While this constitutes a defect (affecting 51% of records), it unintentionally improved discrimination by 2.7 points.
+*   **Feature Vintage (+0.014):** Drift in other feature values since booking.
+*   **Policy Feedback (+0.066):** The primary cause of the reported decline. The reminder programme reduces no-shows from **21.2% to 10.4%** in the targeted score band, which suppresses the variance of the outcome and artificially lowers the AUC on the intervened population.
+
+### Decision and Action
+**Required Action: `retain_model`**
+
+The incumbent `noshow-v3.1` remains within the retention floor on the required evaluation population. Furthermore, the proposed `noshow-v4.0` achieves only **0.764 AUC** on the same clean population—failing the candidate comparison test (§4.4.2) as it is likely overfitted to the intervened distribution.
+
+### Reproducibility
+The `mlops` package has been repaired to comply with MRM-04 and the readout contract. The figures above are reproducible by running:
+
+```bash
+python -m mlops monitor --db data/appointments.sqlite --out out
+```
+
+The resulting `out/readout.json` and `out/evaluation_population.csv` contain the evidence supporting this submission.
+

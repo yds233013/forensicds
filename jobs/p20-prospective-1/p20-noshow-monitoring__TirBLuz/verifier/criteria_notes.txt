@@ -1,0 +1,4 @@
+quantitative_results: visible: programme_effect_pp -10.59 vs 10.8490 (tol 3.0)
+quantitative_results: hidden_a: programme_effect_pp -10.73 vs 10.4310 (tol 3.0)
+quantitative_results: hidden_b: programme_effect_pp -5.28 vs 9.9805 (tol 3.0)
+quantitative_results: hidden_c: programme_effect_pp -11.14 vs 11.4751 (tol 3.0)
