@@ -1,0 +1,15 @@
+M00_offset_from_certified_departure 1
+M01_no_offset_at_all 0
+M02_offset_from_certificate 0
+M03_offset_on_wrong_machine 0
+M04_offset_sign_reversed 0
+M05_offset_applied_to_baseline 0
+M06_all_material 0
+M07_all_measurement 0
+M08_wear_slope_on_week 0
+M09_operator_absolute_not_contrast 0
+M10_decision_on_corrected_rate 0
+M11_decision_on_reported_rate 0
+M12_corrected_on_cmm1_only 0
+M13_window_off_by_one 0
+M14_hedged_attribution 0

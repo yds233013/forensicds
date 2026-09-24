@@ -1,0 +1,15 @@
+M00_filled_by_shortfall_test 1
+M01_reproduce_supplier_as_contract 0
+M02_denominator_requested 0
+M03_null_confirmation_excluded 0
+M04_returns_deducted 0
+M05_window_on_despatch 0
+M06_cancelled_lines_counted 0
+M07_always_overturn 0
+M08_always_defer 0
+M09_always_accept 0
+M10_ignore_schedule_four 0
+M11_amended_basis_preferred 0
+M12_consequences_from_point_estimate 0
+M13_tickets_all_shortfalls 0
+M14_governing_definition_supplier 0

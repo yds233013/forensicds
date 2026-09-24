@@ -1,0 +1,122 @@
+[
+ {
+  "id": "M00_filled_by_shortfall_test",
+  "file": "definitions.py",
+  "expected_reward": 1,
+  "why_plausible": "the same predicate written the other way round",
+  "disproved_by": "nothing - it is valid",
+  "criterion": "none (must pass)"
+ },
+ {
+  "id": "M01_reproduce_supplier_as_contract",
+  "file": "report.py",
+  "expected_reward": 0,
+  "why_plausible": "the socially endorsed move: rebuild the metric, reproduce the supplier's figure, present it as corrected",
+  "disproved_by": "Schedule 2 section 7.1-7.2 measures line fill at confirmed quantity; the supplier's appendix says it uses a different basis",
+  "criterion": "scientific_object, identification, decision"
+ },
+ {
+  "id": "M02_denominator_requested",
+  "file": "definitions.py",
+  "expected_reward": 0,
+  "why_plausible": "taking the requested quantity as the denominator, which is what the complainant's evidence implies",
+  "disproved_by": "section 7.2 states it is the confirmed quantity, not the requested quantity, against which delivery is measured",
+  "criterion": "scientific_object, identification, decision"
+ },
+ {
+  "id": "M03_null_confirmation_excluded",
+  "file": "definitions.py",
+  "expected_reward": 0,
+  "why_plausible": "dropping lines with no confirmation from the denominator - the incumbent's own defect, reproduced",
+  "disproved_by": "section 7.2 says such a line shall be treated as not filled and shall not be excluded",
+  "criterion": "scientific_object, decision"
+ },
+ {
+  "id": "M04_returns_deducted",
+  "file": "definitions.py",
+  "expected_reward": 0,
+  "why_plausible": "treating a returned case as not having served the customer, which is the supplier's stated view",
+  "disproved_by": "section 7.4 states returns are not a fill-rate event and are recoverable separately",
+  "criterion": "scientific_object, identification"
+ },
+ {
+  "id": "M05_window_on_despatch",
+  "file": "definitions.py",
+  "expected_reward": 0,
+  "why_plausible": "using despatch date, which is the date the supplier's system records",
+  "disproved_by": "section 7.3 assigns a line to the period by requested delivery date and says despatch date is not used",
+  "criterion": "scientific_object"
+ },
+ {
+  "id": "M06_cancelled_lines_counted",
+  "file": "definitions.py",
+  "expected_reward": 0,
+  "why_plausible": "counting every line on the book, including those the customer cancelled",
+  "disproved_by": "section 7.4 excludes customer-cancelled lines from both numerator and denominator",
+  "criterion": "scientific_object, identification"
+ },
+ {
+  "id": "M07_always_overturn",
+  "file": "adjudicate.py",
+  "expected_reward": 0,
+  "why_plausible": "the suite's own pattern: the published number is always the thing that is wrong",
+  "disproved_by": "on two of the four extracts the published figure is exactly the figure the agreement defines",
+  "criterion": "decision"
+ },
+ {
+  "id": "M08_always_defer",
+  "file": "adjudicate.py",
+  "expected_reward": 0,
+  "why_plausible": "hedging: never commit, so never be wrong",
+  "disproved_by": "on three of the four extracts the agreement does settle it, and the consequences follow",
+  "criterion": "decision"
+ },
+ {
+  "id": "M09_always_accept",
+  "file": "adjudicate.py",
+  "expected_reward": 0,
+  "why_plausible": "deference: the reporting team implements the contract, so the published figure stands",
+  "disproved_by": "on one extract the reporting code drops lines the agreement counts as unfilled, and the figure is over four points too high",
+  "criterion": "decision"
+ },
+ {
+  "id": "M10_ignore_schedule_four",
+  "file": "report.py",
+  "expected_reward": 0,
+  "why_plausible": "measuring amended lines against the original confirmation without noticing the schedule is unexecuted",
+  "disproved_by": "Schedule 4 leaves the basis to be agreed and the correspondence confirms it never was; both readings are available",
+  "criterion": "scientific_object, decision"
+ },
+ {
+  "id": "M11_amended_basis_preferred",
+  "file": "report.py",
+  "expected_reward": 0,
+  "why_plausible": "choosing the amended quantity as the basis, as the customer's own amendment implies",
+  "disproved_by": "the schedule that would settle the basis was never executed, so neither reading can be preferred",
+  "criterion": "scientific_object, decision"
+ },
+ {
+  "id": "M12_consequences_from_point_estimate",
+  "file": "report.py",
+  "expected_reward": 0,
+  "why_plausible": "settling both consequences from one reading and reporting them as determined",
+  "disproved_by": "where the two readings the schedule admits fall on opposite sides of the threshold, the consequence does not follow",
+  "criterion": "decision"
+ },
+ {
+  "id": "M13_tickets_all_shortfalls",
+  "file": "report.py",
+  "expected_reward": 0,
+  "why_plausible": "taking the ticket log at face value: every ticket is a shortfall",
+  "disproved_by": "around two fifths of the tickets point at a line that carries a return, which section 7.4 excludes from fill",
+  "criterion": "quantitative_results"
+ },
+ {
+  "id": "M14_governing_definition_supplier",
+  "file": "report.py",
+  "expected_reward": 0,
+  "why_plausible": "conceding the counterparty's definition because it is the one the claim is framed on",
+  "disproved_by": "the customer supply agreement is the instrument that governs the measurement",
+  "criterion": "scientific_object"
+ }
+]

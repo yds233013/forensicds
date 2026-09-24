@@ -1,0 +1,85 @@
+schema_version = "1.4"
+artifacts = []
+
+[task]
+name = "forensicds/fill-rate-dispute-p31"
+version = "1.0.0"
+description = "Settle a disputed category service-level figure where the escalation is socially endorsed and externally corroborated, the published number may or may not be the one the contract defines, and one consequence turns on a schedule that was never executed."
+authors = [{ name = "Yash Shah", email = "yshah231103@gmail.com" }]
+keywords = ["metric-definition", "contract-adjudication", "identifiability", "abstention", "supply-chain", "sqlite"]
+
+[metadata]
+author_name = "Yash Shah"
+author_email = "yshah231103@gmail.com"
+difficulty = "hard"
+category = "data-analysis"
+tags = ["forensic-debugging", "defer-or-overturn", "definitional-bridge", "non-identifiability", "decision-linked"]
+expert_time_estimate_min = 180.0
+junior_time_estimate_min = 660.0
+difficulty_explanation = """
+A Commercial Director escalates that a published 97.7% fill rate is "obviously wrong": the supplier's own
+report shows 91.5% for the same category and period, and three key accounts have logged shortfall tickets. A
+bonus gate and a 1.8m pound claim both turn on the answer, and the socially endorsed move - rebuild the metric
+from the order lines and reproduce the supplier's figure - ties to the order ledger, agrees with an external
+party, explains the tickets, and vindicates the stakeholder who raised it.
+
+It is also wrong on two of the four graded extracts. The agreement measures a line fill at the confirmed
+quantity; the supplier measures a case fill at the requested quantity, nets returns off delivered quantity,
+and windows the period on despatch. Those four differences bridge the gap exactly, and the contract adjudicates
+which one governs. The escalation is nonetheless right that there is a problem: the aggregate is correct and
+three accounts really are several points below the contractual floor, which is a different finding with a
+different remedy. Roughly two fifths of the tickets carry return reason codes, which the agreement excludes
+from fill by name.
+
+This is the suite's defer-or-overturn control, so the graded verdict is not constant. On one extract the
+reporting code carries a latent defect - it counts the denominator with a construct that skips lines where no
+confirmation was recorded, which the agreement says count as unfilled - and the published figure is more than
+four points too high, flipping the bonus gate. On another, lines the customer amended after confirmation are
+material, and the schedule that would say which quantity such a line is measured against was never executed,
+so the two readings it admits fall on opposite sides of the account floor and the claim cannot be settled from
+the evidence available. Always overturning fails on three extracts, always accepting on two, always deferring
+on three.
+
+The count of accounts below the floor is graded to within one, because on two extracts an account sits within
+0.07 pp of it; the substantive tail is graded through the escalating accounts' own rates, which sit 1 to 7 pp
+below the floor.
+"""
+solution_explanation = """
+1. The governing definition is Schedule 2 section 7: line fill at confirmed quantity, period by requested
+   delivery date, customer-cancelled lines excluded, returns not deducted, and a line with no confirmation
+   recorded counted as not filled (section 7.2).
+2. The supplier's appendix defines a case fill at requested quantity, net of returns, windowed on despatch.
+   Parameterise both and step between them one change at a time: aggregation, denominator, returns treatment,
+   date window. The four steps sum to the gap.
+3. Audit the reporting code against section 7.2. Counting the denominator over a nullable confirmation column
+   drops exactly the lines the agreement counts as unfilled.
+4. Decompose to account level against the section 7.5 floor, and reconcile the tickets: those whose line
+   carries a return are excluded from fill by section 7.4.
+5. Schedule 4 is unexecuted on the basis for amended lines, so compute both readings. Settle each consequence
+   only where the two readings agree; where they do not, report the range and say the evidence does not settle
+   it.
+6. Corroborate the contractual figure against the customers' own goods-receipt confirmations, which are a
+   different system from the despatch records.
+"""
+
+[verifier]
+timeout_sec = 5400.0
+collect = []
+
+[verifier.env]
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+network_mode = "public"
+build_timeout_sec = 1200.0
+os = "linux"
+cpus = 2
+memory_mb = 4096
+storage_mb = 10240
+mcp_servers = []
+
+[environment.env]
+
+[solution.env]

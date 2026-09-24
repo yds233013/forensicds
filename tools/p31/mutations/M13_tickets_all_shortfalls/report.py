@@ -1,0 +1,109 @@
+"""Writes out/readout.json and out/account_fill.csv for the category service-level report."""
+import csv
+import json
+import os
+
+from service import adjudicate, definitions, metrics
+
+BONUS_GATE_PCT = 96.0          # reporting gate on the category figure
+ACCOUNT_FLOOR_PCT = 95.0       # customer supply agreement, Schedule 2 section 7.5
+
+
+def write_report(db_path, out_dir):
+    os.makedirs(out_dir, exist_ok=True)
+    con = metrics.connect(db_path)
+    try:
+        lo, hi = metrics.period(con)
+        period = (lo, hi)
+        lines = definitions.load(con)
+
+        c_conf = definitions.contract_pct(lines, period, "confirmed")[0]
+        c_amend = definitions.contract_pct(lines, period, "amended")[0]
+        low, high = min(c_conf, c_amend), max(c_conf, c_amend)
+        supplier = definitions.supplier_pct(lines, period, "confirmed")[0]
+        bridge = definitions.bridge_pp(lines, period, "confirmed")
+
+        published = _published(con)
+        gate = adjudicate.settle(low, high, lambda v: v >= BONUS_GATE_PCT)
+        payable = adjudicate.settle(low, high, lambda v: v < ACCOUNT_FLOOR_PCT)
+        ambiguity_material = "not_determinable" in (gate, payable)
+        verdict = adjudicate.verdict(published, c_conf, ambiguity_material)
+
+        per_account, rows_out, below = {}, [], 0
+        for a in metrics.accounts(con):
+            r, n, f = definitions.contract_pct(lines, period, "confirmed", account_id=a["account_id"])
+            if r is None:
+                continue
+            per_account[a["account_id"]] = round(r, 2)
+            is_below = r < a["service_floor_pct"]
+            below += 1 if is_below else 0
+            rows_out.append([a["account_id"], n, f, round(r, 2), 1 if is_below else 0])
+
+        readout = {
+            "period": [lo, hi],
+            "fill_rate_contract_pct": round(c_conf, 2),
+            "fill_rate_contract_low_pct": round(low, 2),
+            "fill_rate_contract_high_pct": round(high, 2),
+            "fill_rate_supplier_definition_pct": round(supplier, 2),
+            "published_rate_pct": round(published, 2),
+            "bridge_pp": {k: round(v, 3) for k, v in bridge.items()},
+            "account_fill_pct": per_account,
+            "accounts_below_floor": below,
+            "returns_driven_ticket_share_pct": round(_returns_driven_share(con), 2),
+            "governing_definition": "contract_line_fill_confirmed",
+            "incumbent_verdict": verdict,
+            "bonus_gate_met": gate,
+            "supplier_claim_payable": payable,
+            "diagnostics": {
+                "amended_lines_in_period": _amended_count(con, lo, hi),
+                "lines_without_confirmation": _null_confirm_count(con, lo, hi),
+                "contract_rate_from_goods_receipts_pct": round(_grn_rate(con, lines, period), 2),
+            },
+        }
+        with open(os.path.join(out_dir, "readout.json"), "w") as fh:
+            json.dump(readout, fh, indent=2, sort_keys=True)
+            fh.write("\n")
+        with open(os.path.join(out_dir, "account_fill.csv"), "w", newline="") as fh:
+            wr = csv.writer(fh)
+            wr.writerow(["account_id", "lines", "lines_filled", "fill_rate_pct", "below_floor"])
+            wr.writerows(rows_out)
+    finally:
+        con.close()
+
+
+def _published(con):
+    row = con.execute(
+        "SELECT value FROM published_metrics WHERE source LIKE '%demand science%' "
+        "AND metric = 'category_fill_rate_pct'").fetchone()
+    return row["value"]
+
+
+def _returns_driven_share(con):
+    row = con.execute(
+        "SELECT COUNT(*) AS n, 0 AS ret FROM shortfall_tickets").fetchone()
+    return 100.0 * row["ret"] / row["n"] if row["n"] else 0.0
+
+
+def _amended_count(con, lo, hi):
+    return con.execute(
+        "SELECT COUNT(*) AS n FROM order_lines WHERE amended_qty IS NOT NULL AND cancelled_by_customer = 0 "
+        "AND requested_delivery_date >= ? AND requested_delivery_date < ?", (lo, hi)).fetchone()["n"]
+
+
+def _null_confirm_count(con, lo, hi):
+    return con.execute(
+        "SELECT COUNT(*) AS n FROM order_lines WHERE confirmed_qty IS NULL AND cancelled_by_customer = 0 "
+        "AND requested_delivery_date >= ? AND requested_delivery_date < ?", (lo, hi)).fetchone()["n"]
+
+
+def _grn_rate(con, lines, period):
+    """The agreement's rate recomputed from the customers' own goods-receipt confirmations - a different
+    system, so it corroborates the figure without relying on the despatch records."""
+    got = {r["line_id"]: r["received_qty"]
+           for r in con.execute("SELECT line_id, received_qty FROM goods_receipts")}
+    alt = []
+    for ln in lines:
+        c = dict(ln)
+        c["delivered_qty"] = got.get(ln["line_id"], 0 if ln["cancelled_by_customer"] else ln["delivered_qty"])
+        alt.append(c)
+    return definitions.contract_pct(alt, period, "confirmed")[0]

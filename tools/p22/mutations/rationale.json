@@ -1,0 +1,122 @@
+[
+ {
+  "id": "M00_offset_from_certified_departure",
+  "file": "conformance.py",
+  "expected_reward": 1,
+  "why_plausible": "the same physical quantity from the certified values rather than the paired rounds",
+  "disproved_by": "nothing - it is valid",
+  "criterion": "none (must pass)"
+ },
+ {
+  "id": "M01_no_offset_at_all",
+  "file": "conformance.py",
+  "expected_reward": 0,
+  "why_plausible": "the incumbent's frame: dispositions are taken as measured, so the readings need no correction",
+  "disproved_by": "the retained artefacts read systematically larger on CMM-1 after the adjustment",
+  "criterion": "scientific_object, identification, decision"
+ },
+ {
+  "id": "M02_offset_from_certificate",
+  "file": "conformance.py",
+  "expected_reward": 0,
+  "why_plausible": "the certificate is the obvious document and a length ratio is the obvious scaling",
+  "disproved_by": "QP-07 section 4 states the figure does not map to a feature offset by a fixed factor, and the artefacts show it does not",
+  "criterion": "scientific_object"
+ },
+ {
+  "id": "M03_offset_on_wrong_machine",
+  "file": "report.py",
+  "expected_reward": 0,
+  "why_plausible": "a transcription slip when the machine that was adjusted is not the machine named first in the table",
+  "disproved_by": "the calibration event names CMM-1; the artefact rounds show the change on CMM-1 only",
+  "criterion": "scientific_object, identification, independent_validation"
+ },
+ {
+  "id": "M04_offset_sign_reversed",
+  "file": "report.py",
+  "expected_reward": 0,
+  "why_plausible": "confusing 'the machine reads large' with 'the part is large', a standard sign trap in gauge work",
+  "disproved_by": "correcting in the wrong direction makes the corrected rate worse than the reported one, which the second machine contradicts",
+  "criterion": "scientific_object, identification, independent_validation, decision"
+ },
+ {
+  "id": "M05_offset_applied_to_baseline",
+  "file": "attribution.py",
+  "expected_reward": 0,
+  "why_plausible": "treating the offset as a standing property of the machine rather than as something the adjustment created",
+  "disproved_by": "the pre-adjustment artefact round reads the certified values, so the baseline window carries no offset",
+  "criterion": "evidence_reconstruction, quantitative_results"
+ },
+ {
+  "id": "M06_all_material",
+  "file": "attribution.py",
+  "expected_reward": 0,
+  "why_plausible": "the week-19 heat changeover is real and significant, so the whole step is credited to material",
+  "disproved_by": "the artefacts and the un-adjusted machine both show most of the step is not in the parts",
+  "criterion": "quantitative_results"
+ },
+ {
+  "id": "M07_all_measurement",
+  "file": "attribution.py",
+  "expected_reward": 0,
+  "why_plausible": "having found the gauge offset, crediting the entire step to it and stopping",
+  "disproved_by": "the un-adjusted machine's own rate rose too, so part of the step is in the parts",
+  "criterion": "quantitative_results"
+ },
+ {
+  "id": "M08_wear_slope_on_week",
+  "file": "attribution.py",
+  "expected_reward": 0,
+  "why_plausible": "wear is naturally thought of as a trend over time, so the slope is fitted on production week",
+  "disproved_by": "inserts are changed weekly, so a slope on week absorbs any step at the window boundary; tool_hours identifies it within week",
+  "criterion": "quantitative_results"
+ },
+ {
+  "id": "M09_operator_absolute_not_contrast",
+  "file": "attribution.py",
+  "expected_reward": 0,
+  "why_plausible": "taking each operator's own before/after change as that operator's effect",
+  "disproved_by": "a shift common to every operator is not separable from a shift in the material, so only contrasts are identifiable",
+  "criterion": "quantitative_results"
+ },
+ {
+  "id": "M10_decision_on_corrected_rate",
+  "file": "report.py",
+  "expected_reward": 0,
+  "why_plausible": "reading Schedule 3 as the rate against the conformance reference rather than the rate attributable to material",
+  "disproved_by": "Schedule 3 section 3.2 names the rate attributable to the supplied material",
+  "criterion": "decision"
+ },
+ {
+  "id": "M11_decision_on_reported_rate",
+  "file": "report.py",
+  "expected_reward": 0,
+  "why_plausible": "the incumbent's reading: the rate as currently dispositioned",
+  "disproved_by": "the agreement names a rate measured against the drawing's conformance reference",
+  "criterion": "decision"
+ },
+ {
+  "id": "M12_corrected_on_cmm1_only",
+  "file": "report.py",
+  "expected_reward": 0,
+  "why_plausible": "restricting to the machine that was adjusted, as though the correction only applied there",
+  "disproved_by": "the agreement's population is the affected feature, not one machine's share of it; the csv covers all parts",
+  "criterion": "identification, estimator_implementation"
+ },
+ {
+  "id": "M13_window_off_by_one",
+  "file": "dispositions.py",
+  "expected_reward": 0,
+  "why_plausible": "reading 'since week 19' as 'after week 19'",
+  "disproved_by": "the report, the calibration event and the notes all place the step at the start of week 19",
+  "criterion": "evidence_reconstruction, estimator_implementation"
+ },
+ {
+  "id": "M14_hedged_attribution",
+  "file": "attribution.py",
+  "expected_reward": 0,
+  "why_plausible": "hedging: name every cause so that the right one is always included",
+  "disproved_by": "each component is graded against its own value, and the sum constraint prevents inflating them all",
+  "criterion": "quantitative_results"
+ }
+]

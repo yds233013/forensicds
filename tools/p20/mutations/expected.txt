@@ -1,0 +1,15 @@
+M00_ten_week_window 1
+M01_population_all_clinics 0
+M02_population_programme_only 0
+M03_basis_feature_store_current 0
+M04_as_served_is_candidate 0
+M05_reconstruct_with_current_window 0
+M06_reconstruction_ignores_booking_date 0
+M07_feed_audit_decile_only 0
+M08_decision_skips_feed_clause 0
+M09_absolute_floor_only 0
+M10_floor_applied_to_dashboard 0
+M11_effect_unstratified_all_bands 0
+M12_attribution_all_drift 0
+M13_attribution_hedged 0
+M14_declared_population_not_evaluated 0

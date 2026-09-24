@@ -1,0 +1,122 @@
+[
+ {
+  "id": "M00_ten_week_window",
+  "file": "data.py",
+  "expected_reward": 1,
+  "why_plausible": "a ten-week window is as defensible as twelve; the contract does not fix it",
+  "disproved_by": "nothing - it is valid",
+  "criterion": "none (must pass)"
+ },
+ {
+  "id": "M01_population_all_clinics",
+  "file": "monitor.py",
+  "expected_reward": 0,
+  "why_plausible": "the dashboard has always reported on the whole network, so the monitoring population is the network",
+  "disproved_by": "MRM-04 section 4.1 requires a population the model's own use has not influenced",
+  "criterion": "scientific_object, identification, decision"
+ },
+ {
+  "id": "M02_population_programme_only",
+  "file": "monitor.py",
+  "expected_reward": 0,
+  "why_plausible": "reading the excluded clinics as the ones to exclude from the evaluation",
+  "disproved_by": "those are exactly the clinics whose outcomes the programme did not touch",
+  "criterion": "scientific_object, identification, decision"
+ },
+ {
+  "id": "M03_basis_feature_store_current",
+  "file": "monitor.py",
+  "expected_reward": 0,
+  "why_plausible": "using the rebuilt feature store, which is what the monitoring pipeline already computes",
+  "disproved_by": "MRM-04 section 4.2 requires the scores the model produced in service",
+  "criterion": "decision"
+ },
+ {
+  "id": "M04_as_served_is_candidate",
+  "file": "monitor.py",
+  "expected_reward": 0,
+  "why_plausible": "confusing the candidate's batch rescore with the incumbent's served scores",
+  "disproved_by": "model_scores carries a model_version; the registry says which is the incumbent",
+  "criterion": "identification, independent_validation, decision"
+ },
+ {
+  "id": "M05_reconstruct_with_current_window",
+  "file": "monitor.py",
+  "expected_reward": 0,
+  "why_plausible": "using the window the feature store now configures rather than the one the model was fitted on",
+  "disproved_by": "the registry records the window the model's coefficients were estimated on",
+  "criterion": "identification, quantitative_results"
+ },
+ {
+  "id": "M06_reconstruction_ignores_booking_date",
+  "file": "population.py",
+  "expected_reward": 0,
+  "why_plausible": "counting the patient's whole recent history rather than what was known at booking",
+  "disproved_by": "a count that includes events after the booking date could not have been available to the scorer",
+  "criterion": "identification, quantitative_results"
+ },
+ {
+  "id": "M07_feed_audit_decile_only",
+  "file": "population.py",
+  "expected_reward": 0,
+  "why_plausible": "auditing the one column the analyst thought of",
+  "disproved_by": "the join that failed supplies several columns; the event log and the record disagree on all of them",
+  "criterion": "quantitative_results, decision"
+ },
+ {
+  "id": "M08_decision_skips_feed_clause",
+  "file": "monitor.py",
+  "expected_reward": 0,
+  "why_plausible": "comparing candidates first, which is the order a vendor proposal invites",
+  "disproved_by": "MRM-04 section 4.4 states feed integrity first and forbids retraining around a defective feed",
+  "criterion": "decision"
+ },
+ {
+  "id": "M09_absolute_floor_only",
+  "file": "monitor.py",
+  "expected_reward": 0,
+  "why_plausible": "using the absolute floor and missing the clause relative to the validation figure",
+  "disproved_by": "section 4.3 imposes both conditions and the floor is the lower of the two",
+  "criterion": "evidence_reconstruction"
+ },
+ {
+  "id": "M10_floor_applied_to_dashboard",
+  "file": "monitor.py",
+  "expected_reward": 0,
+  "why_plausible": "applying the standard's test to the number the dashboard reports",
+  "disproved_by": "the dashboard figure is computed on the intervened population, which section 4.1 excludes",
+  "criterion": "decision"
+ },
+ {
+  "id": "M11_effect_unstratified_all_bands",
+  "file": "programme.py",
+  "expected_reward": 0,
+  "why_plausible": "comparing the arms over the whole book rather than inside the band the programme acts on",
+  "disproved_by": "no patient outside the called band was ever called, so including them dilutes the effect",
+  "criterion": "quantitative_results"
+ },
+ {
+  "id": "M12_attribution_all_drift",
+  "file": "monitor.py",
+  "expected_reward": 0,
+  "why_plausible": "the vendor's account: drift explains the gap",
+  "disproved_by": "the same model on an untouched population has not lost discrimination",
+  "criterion": "quantitative_results"
+ },
+ {
+  "id": "M13_attribution_hedged",
+  "file": "monitor.py",
+  "expected_reward": 0,
+  "why_plausible": "hedging: name every cause so the right one is covered",
+  "disproved_by": "each term is graded against its own value and the sum constraint prevents inflating them all",
+  "criterion": "quantitative_results"
+ },
+ {
+  "id": "M14_declared_population_not_evaluated",
+  "file": "monitor.py",
+  "expected_reward": 0,
+  "why_plausible": "declaring the right population but computing the headline figure on the whole extract",
+  "disproved_by": "the figure must be the one the shipped scores give on the population declared",
+  "criterion": "independent_validation, identification, decision"
+ }
+]

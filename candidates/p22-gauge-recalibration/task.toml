@@ -1,0 +1,82 @@
+schema_version = "1.4"
+artifacts = []
+
+[task]
+name = "forensicds/man4471-yield-step-p22"
+version = "1.0.0"
+description = "Restate a supplier escalation on the basis the supply quality agreement requires, where the yield step being escalated was produced by an instrument whose bias moved at a recalibration."
+authors = [{ name = "Yash Shah", email = "yshah231103@gmail.com" }]
+keywords = ["measurement-system", "gauge-bias", "quality-engineering", "spc", "attribution", "sqlite", "pandas"]
+
+[metadata]
+author_name = "Yash Shah"
+author_email = "yshah231103@gmail.com"
+difficulty = "hard"
+category = "data-analysis"
+tags = ["forensic-debugging", "measurement-system-change", "conformance-reference", "attribution", "decision-linked"]
+expert_time_estimate_min = 210.0
+junior_time_estimate_min = 780.0
+difficulty_explanation = """
+A machining cell's first-pass yield falls from 97.0% to 92.8% at week 19. Purchasing wants to change bar-stock
+supplier on the strength of it. Week 19 is also the week the bar changed from the H2 heat family to H3, and the
+heat-family effect on the measured deviation is real and highly significant, so a textbook SPC and capability
+investigation - control charts by shift and lot, Cp/Cpk either side of the step, an ANOVA on family - reaches
+"the material is out of specification" with every one of its own checks passing.
+
+Week 19 is also the week the contracted metrology supplier wrote CMM-1's compensation table. The drawing
+tolerance did not change, so the disposition rate before and after the step is not measured against the same
+reference. The offset the adjustment left on the bore feature cannot be read off the calibration certificate -
+QP-07 states, and the numbers bear out, that a deviation at the length standard does not map to a feature
+offset by any fixed factor. It has to be established from the retained reference artefacts, which are measured
+on both machines before and after the write, or from the second machine, which was not adjusted and which the
+inspection rota feeds a comparable population.
+
+Three commitments are needed and the wrong first one makes the rest look clean: which reference the
+conformance decision is made against; how the remaining change is allocated between material, tooling and
+operator; and which rate the agreement's escalation rule actually names. The four graded extracts differ in
+which cause is active - one is almost pure measurement, one has a genuinely bad heat family where the correct
+answer IS to escalate, and one has a real tool-wear contribution from an extended insert-change interval - so
+neither "blame the gauge" nor "blame the supplier" passes as a habit.
+
+Tolerances were set from the measured spread of the legitimate estimators of each quantity across the four
+extracts, at roughly 1.5-2x the worst case, before any target model saw the task. The operator component is
+graded as an operator *contrast*, because a shift common to every operator is not separable from a shift in the
+material and grading it as though it were would grade an unidentifiable quantity.
+"""
+solution_explanation = """
+1. Conformance reference (QP-07 section 3): the drawing tolerance is stated against a reading traceable to the
+   works length standard and free of instrument offset. Establish each machine's offset over the post window
+   from the retained artefacts - the paired difference of artefact means across the two measurement rounds -
+   or equivalently from the departure of the post-round readings from the NML certified values. CMM-1 carries
+   a positive offset; CMM-2 carries none.
+2. Re-disposition the post window against that reference. This is the rate Schedule 3 needs, and it is
+   corroborated by the un-adjusted machine's own rate on the same weeks.
+3. Allocate the rest of the change. Tool wear is a within-week effect carried by tool_hours, so its slope is
+   identified from variation inside every week; only the increment in mean wear over the baseline window can
+   have moved the rate. An operator effect is a per-operator difference in differences across the two windows.
+   What remains after the offset, the wear increment and the operator contrasts is the material component.
+4. Apply Schedule 3 section 3.2 to the rate it names - the rate attributable to the supplied material - against
+   the 5.5% limit.
+"""
+
+[verifier]
+timeout_sec = 5400.0
+collect = []
+
+[verifier.env]
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+network_mode = "public"
+build_timeout_sec = 1200.0
+os = "linux"
+cpus = 2
+memory_mb = 4096
+storage_mb = 10240
+mcp_servers = []
+
+[environment.env]
+
+[solution.env]
