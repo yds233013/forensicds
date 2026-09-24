@@ -1,0 +1,27 @@
+  1/1 Criterion_Decision: 1.000 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 0:00:33 0:00:00
+adhoc • oracle
+┏━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━┳━━━━━━━┓
+┃ Tria… ┃ Exce… ┃ Crit… ┃ Crit… ┃ Crit… ┃ Crit… ┃ Crit… ┃ Crit… ┃ Cri… ┃ Rewa… ┃
+┡━━━━━━━╇━━━━━━━╇━━━━━━━╇━━━━━━━╇━━━━━━━╇━━━━━━━╇━━━━━━━╇━━━━━━━╇━━━━━━╇━━━━━━━┩
+│     1 │     0 │ 1.000 │ 1.000 │ 1.000 │ 1.000 │ 1.000 │ 1.000 │ 1.0… │ 1.000 │
+└───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┴──────┴───────┘
+
+┏━━━━━━━━┳━━━━━━━┓
+┃ Reward ┃ Count ┃
+┡━━━━━━━━╇━━━━━━━┩
+│ 1      │     1 │
+│ 1      │     1 │
+│ 1      │     1 │
+│ 1      │     1 │
+│ 1      │     1 │
+│ 1      │     1 │
+│ 1      │     1 │
+│ 1      │     1 │
+└────────┴───────┘
+
+Job Info
+Total runtime: 33s
+Results written to jobs/validate-p31-oracle-14645/result.json
+Inspect results by running `harbor view jobs`
+Share results by running `harbor upload jobs/validate-p31-oracle-14645`
+

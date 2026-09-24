@@ -42,3 +42,14 @@ neither can be closed by me in this phase.
 Freezing. The manifest in `proposed_freeze_manifest.txt` is a **proposal**: the checksums record the current
 content so that a later freeze can be shown to be of the reviewed artefact. Nothing has been frozen, no target
 model has been run, and the exposure procedure in the phase-2 handoff §29 has not been started.
+
+## Validation script result (2026-09-24)
+
+`bash scripts/validate_phase3.sh` → **phase 3 validation: PASS**, all 24 checks. The decisions it prints per
+task confirm the anti-constant property:
+
+```
+p22: visible=no_supplier_action  hidden_a=no_supplier_action  hidden_b=raise_supplier_nonconformance  hidden_c=no_supplier_action
+p20: visible=retain_model        hidden_a=replace_with_v4     hidden_b=remediate_feature_pipeline     hidden_c=retain_model
+p31: visible=incumbent_correct   hidden_a=incumbent_incorrect hidden_b=incumbent_correct              hidden_c=not_determinable_from_available_evidence
+```
