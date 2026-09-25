@@ -1,0 +1,587 @@
+[
+ {
+  "task": "p22",
+  "mutation": "M00_offset_from_certified_departure",
+  "expected_reward": 1,
+  "visible_pass": true,
+  "family_pass": true,
+  "mismatches_per_extract": {
+   "visible": 0,
+   "hidden_a": 0,
+   "hidden_b": 0,
+   "hidden_c": 0
+  }
+ },
+ {
+  "task": "p22",
+  "mutation": "M01_no_offset_at_all",
+  "expected_reward": 0,
+  "visible_pass": false,
+  "family_pass": false,
+  "mismatches_per_extract": {
+   "visible": 5,
+   "hidden_a": 5,
+   "hidden_b": 4,
+   "hidden_c": 5
+  }
+ },
+ {
+  "task": "p22",
+  "mutation": "M02_offset_from_certificate",
+  "expected_reward": 0,
+  "visible_pass": false,
+  "family_pass": false,
+  "mismatches_per_extract": {
+   "visible": 1,
+   "hidden_a": 1,
+   "hidden_b": 2,
+   "hidden_c": 0
+  }
+ },
+ {
+  "task": "p22",
+  "mutation": "M03_offset_on_wrong_machine",
+  "expected_reward": 0,
+  "visible_pass": false,
+  "family_pass": false,
+  "mismatches_per_extract": {
+   "visible": 6,
+   "hidden_a": 6,
+   "hidden_b": 5,
+   "hidden_c": 7
+  }
+ },
+ {
+  "task": "p22",
+  "mutation": "M04_offset_sign_reversed",
+  "expected_reward": 0,
+  "visible_pass": false,
+  "family_pass": false,
+  "mismatches_per_extract": {
+   "visible": 5,
+   "hidden_a": 5,
+   "hidden_b": 4,
+   "hidden_c": 6
+  }
+ },
+ {
+  "task": "p22",
+  "mutation": "M05_offset_applied_to_baseline",
+  "expected_reward": 0,
+  "visible_pass": false,
+  "family_pass": false,
+  "mismatches_per_extract": {
+   "visible": 2,
+   "hidden_a": 2,
+   "hidden_b": 2,
+   "hidden_c": 2
+  }
+ },
+ {
+  "task": "p22",
+  "mutation": "M06_all_material",
+  "expected_reward": 0,
+  "visible_pass": false,
+  "family_pass": false,
+  "mismatches_per_extract": {
+   "visible": 2,
+   "hidden_a": 2,
+   "hidden_b": 2,
+   "hidden_c": 3
+  }
+ },
+ {
+  "task": "p22",
+  "mutation": "M07_all_measurement",
+  "expected_reward": 0,
+  "visible_pass": false,
+  "family_pass": false,
+  "mismatches_per_extract": {
+   "visible": 2,
+   "hidden_a": 0,
+   "hidden_b": 2,
+   "hidden_c": 3
+  }
+ },
+ {
+  "task": "p22",
+  "mutation": "M08_wear_slope_on_week",
+  "expected_reward": 0,
+  "visible_pass": false,
+  "family_pass": false,
+  "mismatches_per_extract": {
+   "visible": 3,
+   "hidden_a": 3,
+   "hidden_b": 2,
+   "hidden_c": 3
+  }
+ },
+ {
+  "task": "p22",
+  "mutation": "M09_operator_absolute_not_contrast",
+  "expected_reward": 0,
+  "visible_pass": false,
+  "family_pass": false,
+  "mismatches_per_extract": {
+   "visible": 2,
+   "hidden_a": 3,
+   "hidden_b": 1,
+   "hidden_c": 2
+  }
+ },
+ {
+  "task": "p22",
+  "mutation": "M10_decision_on_corrected_rate",
+  "expected_reward": 0,
+  "visible_pass": true,
+  "family_pass": false,
+  "mismatches_per_extract": {
+   "visible": 0,
+   "hidden_a": 0,
+   "hidden_b": 0,
+   "hidden_c": 1
+  }
+ },
+ {
+  "task": "p22",
+  "mutation": "M11_decision_on_reported_rate",
+  "expected_reward": 0,
+  "visible_pass": false,
+  "family_pass": false,
+  "mismatches_per_extract": {
+   "visible": 1,
+   "hidden_a": 1,
+   "hidden_b": 0,
+   "hidden_c": 1
+  }
+ },
+ {
+  "task": "p22",
+  "mutation": "M12_corrected_on_cmm1_only",
+  "expected_reward": 0,
+  "visible_pass": true,
+  "family_pass": true,
+  "mismatches_per_extract": {
+   "visible": 0,
+   "hidden_a": 0,
+   "hidden_b": 0,
+   "hidden_c": 0
+  }
+ },
+ {
+  "task": "p22",
+  "mutation": "M13_window_off_by_one",
+  "expected_reward": 0,
+  "visible_pass": true,
+  "family_pass": true,
+  "mismatches_per_extract": {
+   "visible": 0,
+   "hidden_a": 0,
+   "hidden_b": 0,
+   "hidden_c": 0
+  }
+ },
+ {
+  "task": "p22",
+  "mutation": "M14_hedged_attribution",
+  "expected_reward": 0,
+  "visible_pass": false,
+  "family_pass": false,
+  "mismatches_per_extract": {
+   "visible": 3,
+   "hidden_a": 4,
+   "hidden_b": 3,
+   "hidden_c": 4
+  }
+ },
+ {
+  "task": "p20",
+  "mutation": "M00_ten_week_window",
+  "expected_reward": 1,
+  "visible_pass": true,
+  "family_pass": true,
+  "mismatches_per_extract": {
+   "visible": 0,
+   "hidden_a": 0,
+   "hidden_b": 0,
+   "hidden_c": 0
+  }
+ },
+ {
+  "task": "p20",
+  "mutation": "M01_population_all_clinics",
+  "expected_reward": 0,
+  "visible_pass": false,
+  "family_pass": false,
+  "mismatches_per_extract": {
+   "visible": 7,
+   "hidden_a": 5,
+   "hidden_b": 4,
+   "hidden_c": 7
+  }
+ },
+ {
+  "task": "p20",
+  "mutation": "M02_population_programme_only",
+  "expected_reward": 0,
+  "visible_pass": false,
+  "family_pass": false,
+  "mismatches_per_extract": {
+   "visible": 7,
+   "hidden_a": 5,
+   "hidden_b": 4,
+   "hidden_c": 8
+  }
+ },
+ {
+  "task": "p20",
+  "mutation": "M03_basis_feature_store_current",
+  "expected_reward": 0,
+  "visible_pass": true,
+  "family_pass": false,
+  "mismatches_per_extract": {
+   "visible": 0,
+   "hidden_a": 0,
+   "hidden_b": 0,
+   "hidden_c": 1
+  }
+ },
+ {
+  "task": "p20",
+  "mutation": "M04_as_served_is_candidate",
+  "expected_reward": 0,
+  "visible_pass": false,
+  "family_pass": false,
+  "mismatches_per_extract": {
+   "visible": 3,
+   "hidden_a": 4,
+   "hidden_b": 4,
+   "hidden_c": 3
+  }
+ },
+ {
+  "task": "p20",
+  "mutation": "M05_reconstruct_with_current_window",
+  "expected_reward": 0,
+  "visible_pass": false,
+  "family_pass": false,
+  "mismatches_per_extract": {
+   "visible": 1,
+   "hidden_a": 1,
+   "hidden_b": 1,
+   "hidden_c": 0
+  }
+ },
+ {
+  "task": "p20",
+  "mutation": "M06_reconstruction_ignores_booking_date",
+  "expected_reward": 0,
+  "visible_pass": false,
+  "family_pass": false,
+  "mismatches_per_extract": {
+   "visible": 4,
+   "hidden_a": 5,
+   "hidden_b": 3,
+   "hidden_c": 4
+  }
+ },
+ {
+  "task": "p20",
+  "mutation": "M07_feed_audit_decile_only",
+  "expected_reward": 0,
+  "visible_pass": true,
+  "family_pass": false,
+  "mismatches_per_extract": {
+   "visible": 0,
+   "hidden_a": 0,
+   "hidden_b": 1,
+   "hidden_c": 0
+  }
+ },
+ {
+  "task": "p20",
+  "mutation": "M08_decision_skips_feed_clause",
+  "expected_reward": 0,
+  "visible_pass": true,
+  "family_pass": false,
+  "mismatches_per_extract": {
+   "visible": 0,
+   "hidden_a": 0,
+   "hidden_b": 1,
+   "hidden_c": 0
+  }
+ },
+ {
+  "task": "p20",
+  "mutation": "M09_absolute_floor_only",
+  "expected_reward": 0,
+  "visible_pass": false,
+  "family_pass": false,
+  "mismatches_per_extract": {
+   "visible": 1,
+   "hidden_a": 1,
+   "hidden_b": 1,
+   "hidden_c": 1
+  }
+ },
+ {
+  "task": "p20",
+  "mutation": "M10_floor_applied_to_dashboard",
+  "expected_reward": 0,
+  "visible_pass": false,
+  "family_pass": false,
+  "mismatches_per_extract": {
+   "visible": 1,
+   "hidden_a": 0,
+   "hidden_b": 0,
+   "hidden_c": 1
+  }
+ },
+ {
+  "task": "p20",
+  "mutation": "M11_effect_unstratified_all_bands",
+  "expected_reward": 0,
+  "visible_pass": false,
+  "family_pass": false,
+  "mismatches_per_extract": {
+   "visible": 1,
+   "hidden_a": 1,
+   "hidden_b": 1,
+   "hidden_c": 1
+  }
+ },
+ {
+  "task": "p20",
+  "mutation": "M12_attribution_all_drift",
+  "expected_reward": 0,
+  "visible_pass": false,
+  "family_pass": false,
+  "mismatches_per_extract": {
+   "visible": 2,
+   "hidden_a": 2,
+   "hidden_b": 2,
+   "hidden_c": 3
+  }
+ },
+ {
+  "task": "p20",
+  "mutation": "M13_attribution_hedged",
+  "expected_reward": 0,
+  "visible_pass": false,
+  "family_pass": false,
+  "mismatches_per_extract": {
+   "visible": 2,
+   "hidden_a": 3,
+   "hidden_b": 3,
+   "hidden_c": 2
+  }
+ },
+ {
+  "task": "p20",
+  "mutation": "M14_declared_population_not_evaluated",
+  "expected_reward": 0,
+  "visible_pass": false,
+  "family_pass": false,
+  "mismatches_per_extract": {
+   "visible": 4,
+   "hidden_a": 3,
+   "hidden_b": 3,
+   "hidden_c": 4
+  }
+ },
+ {
+  "task": "p31",
+  "mutation": "M00_filled_by_shortfall_test",
+  "expected_reward": 1,
+  "visible_pass": true,
+  "family_pass": true,
+  "mismatches_per_extract": {
+   "visible": 0,
+   "hidden_a": 0,
+   "hidden_b": 0,
+   "hidden_c": 0
+  }
+ },
+ {
+  "task": "p31",
+  "mutation": "M01_reproduce_supplier_as_contract",
+  "expected_reward": 0,
+  "visible_pass": false,
+  "family_pass": false,
+  "mismatches_per_extract": {
+   "visible": 5,
+   "hidden_a": 2,
+   "hidden_b": 5,
+   "hidden_c": 2
+  }
+ },
+ {
+  "task": "p31",
+  "mutation": "M02_denominator_requested",
+  "expected_reward": 0,
+  "visible_pass": false,
+  "family_pass": false,
+  "mismatches_per_extract": {
+   "visible": 11,
+   "hidden_a": 8,
+   "hidden_b": 13,
+   "hidden_c": 10
+  }
+ },
+ {
+  "task": "p31",
+  "mutation": "M03_null_confirmation_excluded",
+  "expected_reward": 0,
+  "visible_pass": true,
+  "family_pass": false,
+  "mismatches_per_extract": {
+   "visible": 0,
+   "hidden_a": 10,
+   "hidden_b": 0,
+   "hidden_c": 0
+  }
+ },
+ {
+  "task": "p31",
+  "mutation": "M04_returns_deducted",
+  "expected_reward": 0,
+  "visible_pass": false,
+  "family_pass": false,
+  "mismatches_per_extract": {
+   "visible": 11,
+   "hidden_a": 8,
+   "hidden_b": 13,
+   "hidden_c": 10
+  }
+ },
+ {
+  "task": "p31",
+  "mutation": "M05_window_on_despatch",
+  "expected_reward": 0,
+  "visible_pass": true,
+  "family_pass": false,
+  "mismatches_per_extract": {
+   "visible": 0,
+   "hidden_a": 1,
+   "hidden_b": 0,
+   "hidden_c": 0
+  }
+ },
+ {
+  "task": "p31",
+  "mutation": "M06_cancelled_lines_counted",
+  "expected_reward": 0,
+  "visible_pass": false,
+  "family_pass": false,
+  "mismatches_per_extract": {
+   "visible": 10,
+   "hidden_a": 7,
+   "hidden_b": 12,
+   "hidden_c": 9
+  }
+ },
+ {
+  "task": "p31",
+  "mutation": "M07_always_overturn",
+  "expected_reward": 0,
+  "visible_pass": false,
+  "family_pass": false,
+  "mismatches_per_extract": {
+   "visible": 1,
+   "hidden_a": 0,
+   "hidden_b": 1,
+   "hidden_c": 1
+  }
+ },
+ {
+  "task": "p31",
+  "mutation": "M08_always_defer",
+  "expected_reward": 0,
+  "visible_pass": false,
+  "family_pass": false,
+  "mismatches_per_extract": {
+   "visible": 1,
+   "hidden_a": 1,
+   "hidden_b": 1,
+   "hidden_c": 0
+  }
+ },
+ {
+  "task": "p31",
+  "mutation": "M09_always_accept",
+  "expected_reward": 0,
+  "visible_pass": true,
+  "family_pass": false,
+  "mismatches_per_extract": {
+   "visible": 0,
+   "hidden_a": 1,
+   "hidden_b": 0,
+   "hidden_c": 1
+  }
+ },
+ {
+  "task": "p31",
+  "mutation": "M10_ignore_schedule_four",
+  "expected_reward": 0,
+  "visible_pass": true,
+  "family_pass": false,
+  "mismatches_per_extract": {
+   "visible": 0,
+   "hidden_a": 0,
+   "hidden_b": 0,
+   "hidden_c": 3
+  }
+ },
+ {
+  "task": "p31",
+  "mutation": "M11_amended_basis_preferred",
+  "expected_reward": 0,
+  "visible_pass": true,
+  "family_pass": false,
+  "mismatches_per_extract": {
+   "visible": 0,
+   "hidden_a": 0,
+   "hidden_b": 0,
+   "hidden_c": 4
+  }
+ },
+ {
+  "task": "p31",
+  "mutation": "M12_consequences_from_point_estimate",
+  "expected_reward": 0,
+  "visible_pass": true,
+  "family_pass": false,
+  "mismatches_per_extract": {
+   "visible": 0,
+   "hidden_a": 0,
+   "hidden_b": 0,
+   "hidden_c": 2
+  }
+ },
+ {
+  "task": "p31",
+  "mutation": "M13_tickets_all_shortfalls",
+  "expected_reward": 0,
+  "visible_pass": false,
+  "family_pass": false,
+  "mismatches_per_extract": {
+   "visible": 1,
+   "hidden_a": 1,
+   "hidden_b": 1,
+   "hidden_c": 1
+  }
+ },
+ {
+  "task": "p31",
+  "mutation": "M14_governing_definition_supplier",
+  "expected_reward": 0,
+  "visible_pass": false,
+  "family_pass": false,
+  "mismatches_per_extract": {
+   "visible": 1,
+   "hidden_a": 1,
+   "hidden_b": 1,
+   "hidden_c": 1
+  }
+ }
+]
