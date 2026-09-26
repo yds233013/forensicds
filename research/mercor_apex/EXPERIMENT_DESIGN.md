@@ -59,7 +59,8 @@ constraint on power. This is why H1 is tested on defects rather than on rollouts
 
 ## 4. Materials
 
-**Six world families in production data science and analytics** (domain rationale in `METHODOLOGY.md` §8), each:
+**Five to six world families in production data science and analytics** (domain rationale in `METHODOLOGY.md` §8) —
+six is the planned ceiling, five the week-6 acceptance floor — each:
 - a fixed artifact corpus: data dictionary, the governing contract or policy with its amending schedule, a
   model-governance or quality standard with a written threshold, an incident log, the incumbent analysis and its
   documentation;
@@ -76,7 +77,8 @@ drift, policy-feedback on an evaluation population, definition change under a go
 treatment, delayed-label maturity, aggregation object. This anti-clone rule is inherited from the pilot's world
 architecture.
 
-**Defect bank for H1: 150 defects, 25 per family, authored by experts who did not author the world**, each a
+**Defect bank for H1: 150 defects, 25 per family (25 × 6, or 30 × 5 if the study runs on five families), authored by
+experts who did not author the world**, each a
 single-step modification of the reference analysis with a written rationale for why a practitioner might make it.
 Independent authorship is a requirement, not a nicety — the pilot's 45 defects were author-written and that is
 its main internal-validity weakness.
@@ -98,7 +100,7 @@ better than that, the method's marginal value shrinks and the report says so.
 
 Six frontier agents spanning at least four developers, at the configuration each vendor recommends for
 long-horizon agentic work, on one harness, with web search off for reproducibility (APEX's own choice). Five
-rollouts per (model, family) → **180 primary rollouts**. Plus the H3 arm: 3 families × 6 models × 3 siblings × 3
+rollouts per (model, family) → **up to 180 primary rollouts** (150 if the study runs on five families). Plus the H3 arm: 3 families × 6 models × 3 siblings × 3
 rollouts = **162 fresh-rollout runs**. Total ≈ 342 rollouts.
 
 At the pilot's measured $0.163 per rollout for a flash-class model and an allowance of $3 for frontier
@@ -158,7 +160,7 @@ a difference of two detection rates; τ is a rank correlation; the rest are cost
 - **H1.** Per defect, a paired binary outcome (caught by best visible rubric / caught by family). **Exact McNemar**
   on discordant pairs, plus a mixed-effects logistic model with a random intercept per family to respect clustering.
   Δ reported with a 95 % CI from a cluster bootstrap over families (families resampled, not defects).
-- **H2.** `d` estimated from the 180 rollouts with a family-and-model random-effects logistic model; McNemar for the
+- **H2.** `d` estimated from the 150–180 rollouts with a family-and-model random-effects logistic model; McNemar for the
   within-rollout `VP`-vs-`CC` contrast. Composition tested against a pre-registered 50 % threshold on the
   expert classification, with inter-rater κ reported.
 - **H3.** P(fresh failure ∣ replay failure) with a Clopper–Pearson CI, stratified by sibling type; discordant cases
@@ -224,6 +226,7 @@ before the first model call; invalid trials preserved rather than retried; infra
 applied before any scientific reading of a trajectory. The pilot ran under exactly this protocol with 9/9 valid
 trials and zero protocol violations, so it is a demonstrated procedure rather than an aspiration.
 
-**Release**: the generator, the six families with all siblings, the defect bank with independent-author attributions,
-the expert rubrics from the control arm, the adjudication records, and a family verifier implemented against
-Archipelago's verifier interface — so the result is usable by the benchmark it is aimed at, not only readable.
+**Release**: the generator, the five-to-six families with all siblings, the defect bank with independent-author
+attributions, the expert rubrics from the control arm, the adjudication records, and a family verifier implemented
+against Archipelago's verifier interface — so the result is usable by the benchmark it is aimed at, not only readable.
+Nothing released modifies or claims compatibility with any existing APEX dataset.

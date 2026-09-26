@@ -42,12 +42,15 @@ This is a serious benchmark programme. Any proposal that treats it as naive is w
 | hidden task variants (same task, different latent value, different correct answer) | **no** |
 | counterfactual worlds | **no** — the word appears zero times in all four papers |
 | robustness / invariance / perturbation evaluation | **no.** APEX-SWE's "Robustness Criteria" means defensive coding; APEX-Agents' "Sensitivity Analysis" is the finance workflow the agent performs, not a property of the benchmark |
-| "would this analysis still be right under a different latent value?" | **no** |
+| "would this analysis still be right under a different latent value?" | **not found** |
 
 ## 3. The direct answer to the question I was told to ask first
 
-**Does Mercor already do anything equivalent to the proposed method? No. Definitively not — and this must be
-stated carefully, because the reason is not oversight.**
+**In the APEX materials I reviewed — the four papers, the product and methodology pages, the blog, the released
+datasets and the Archipelago harness — I did not find anything equivalent to the proposed method.** Keyword searches and
+a documentation audit are evidence of absence *in those materials*, not proof that nothing equivalent exists anywhere;
+unpublished or in-progress work could change this. The finding should be read with that limit, and it must be stated
+carefully for a second reason: the absence is not oversight.
 
 Across the four papers: `counterfactual` 0 hits, `latent` 0 hits, `perturb` 0 hits, `invarian` 0 hits,
 `what-if` 0 hits. The only `variant` matches are MathML attributes. The only `sensitivity` matches are finance
@@ -88,7 +91,7 @@ conditional-correctness verifier is a contribution to a repository Mercor alread
 
 ## 5. Two further gaps that compose with it
 
-**No APEX benchmark covers data science, analytics or quantitative analysis.** The four cover IB, consulting, law,
+**I found no APEX benchmark covering data science, analytics or quantitative analysis.** The four cover IB, consulting, law,
 medicine, accounting and software engineering. The closest adjacencies — APEX-Accounting's Variance Analysis
 category (28/160 tasks) and APEX-Agents' Sensitivity Analysis / Market Sizing / Variance-Performance workflow tags
 — are analytics-shaped content graded as one-shot deliverables. Analytics is precisely the domain where a
@@ -131,6 +134,6 @@ APEX measures whether a frontier agent can produce the professional deliverable 
 it was shown. It does not measure whether the deliverable is correct *because* the agent identified the mechanism
 that makes it correct. Those two come apart exactly when a decision-relevant latent quantity is small, absent or
 conventional in the observed world and large in a neighbouring one — which is the ordinary condition of
-professional analysis, and the condition under which an analysis is redeployed next month. No APEX benchmark,
-blog, dataset or harness tests it, and APEX's own design decisions — one defensible answer per task, one world per
-task, final-output-only grading, incomplete-information tasks removed — guarantee that it cannot.
+professional analysis, and the condition under which an analysis is redeployed next month. I found no APEX benchmark,
+blog, dataset or harness that tests it, and APEX's own published design decisions — one defensible answer per task, one
+world per task, final-output-only grading, incomplete-information tasks removed — mean that as published it does not.

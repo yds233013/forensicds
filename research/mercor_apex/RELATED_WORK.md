@@ -207,8 +207,9 @@ of the case.
 | BLADE / AvalancheBench | yes | single world | no | no |
 | **APEX (all four)** | **yes, best in class** | **no** | **no** | **no** |
 
-**No row is complete.** The final column is where we are least crowded and it is also the column that makes the
-other three affordable.
+**No row in this table is complete on the evidence I gathered.** The final column is where the space looks least
+crowded, and it is also the column that makes the other three affordable. This is a survey of what I found, not a proof
+of absence.
 
 ## 9. Explicit negative findings
 
@@ -222,17 +223,17 @@ hidden variants of a shared professional artifact corpus.
 
 Three moves survive the audit, and only three:
 
-1. **The decision-flip contrast.** Nobody builds paired variants in which the same surface world and the same
-   professional artifacts yield an *opposite correct decision* because one latent mechanism differs. CausalDS
+1. **The decision-flip contrast.** I did not find work that builds paired variants in which the same surface world and
+   the same professional artifacts yield an *opposite correct decision* because one latent mechanism differs. CausalDS
    deliberately holds the conceptual SCM fixed; Turk perturbs case inputs; RE-IMAGINE mutates symbolically but
    discloses. Lead with this rather than with "invariance and sensitivity", which is CheckList's.
 2. **Re-execution of a professional deliverable, not re-prompting.** ReplaySCM has replay for Boolean mechanisms;
-   nobody has it for a professional analysis against a professional document estate. This is what makes N siblings
+   I did not find it applied to a professional analysis against a professional document estate. This is what makes N siblings
    cost seconds of CPU instead of N rollouts, which is what makes the design a candidate for a real benchmark
    rather than a paper-scale demonstration — and it is what makes contamination resistance structural rather than
    rhetorical.
 3. **A shared professional rule corpus persisting across a variant family.** TheAgentCompany has the artifacts and
    one world; METR has the family container and no mechanism contrast; APEX has the best artifacts in the field and
-   one world per task. Nobody has combined them.
+   one world per task. I did not find a work that combines them.
 
 Everything else in the design is borrowed, and the write-up should say so.

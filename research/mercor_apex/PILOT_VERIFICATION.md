@@ -63,8 +63,17 @@ incumbent pipeline's own docstring asserting *"Tooling was on schedule and no op
 significance, so those are reported as zero."*
 
 Against a frozen tolerance of ±0.8 pp, a hard-coded zero is **correct on the visible world** (|0 − 0.167| = 0.167)
-and **wrong by 3.08 pp on hidden_c**, which pushes the material-attributable rate above the supply agreement's
-5.5 % limit and flips the supplier decision from `no_supplier_action` to `raise_supplier_nonconformance`.
+and **wrong by 3.08 pp on hidden_c**. Replayed there, the analysis charges the missing wear to material — reporting
+`attribution_pp[material] = 3.92` against a frozen truth of `0.817` — which pushes the material-attributable rate above
+the supply agreement's 5.5 % limit and makes it output `raise_supplier_nonconformance`.
+
+**Note carefully which decision moves.** The *correct* decision on hidden_c is still `no_supplier_action` (frozen
+`material_attributable_rate_pct = 3.85`). It is the **analysis's output** that changes, not the right answer — so
+hidden_c is an *invariance* sibling with respect to the decision, and the failure is a false contractual accusation
+against the supplier. The genuine decision-flip sibling in this family is hidden_b, where the frozen truth is
+`material = 5.717` and `raise_supplier_nonconformance` is correct. Anything that describes hidden_c as "the correct
+decision flipped" is wrong; the verifier's own note reads
+`decision: hidden_c: supplier_decision 'raise_supplier_nonconformance' vs 'no_supplier_action'`.
 
 The token `wear` appears **zero times** in all three trajectories; `tool_hours` and `tool_changes` appear 2–4
 times each, always inside documentation the agent was reading rather than in a query or a computation. Trial 1
@@ -95,6 +104,13 @@ rather than re-querying the model, and it is the main reason the method is affor
 ---
 
 # Model-free calibration: how much does the family add over the visible instance?
+
+> **Read this section as PILOT CALIBRATION, not as a prevalence estimate.** The 23.8 % below says that on three
+> synthetic worlds, with defects written by the worlds' own author, roughly a quarter of injected defects were reachable
+> by a sibling and not by the visible world's numbers. It is evidence that **the instrument may add information**. It is
+> **not** an estimate of how often this occurs in professional AI deployment, and it must never be quoted as one. The
+> fellowship experiment replaces the author-written defects with 150 written by practitioners who did not author the
+> worlds, which is the only way to turn a calibration into an estimate.
 
 The nine-trial result above is nine trials of one model. The stronger and cheaper measurement is model-free:
 take the expert reference procedure, inject exactly one defect, and ask **which world the defect becomes visible

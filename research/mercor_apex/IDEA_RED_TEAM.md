@@ -143,7 +143,9 @@ step from a trap register — the trap register already enumerates the mechanism
 **Changes made:**
 - **Scope limit stated in the proposal, not in an appendix:** applies where the deliverable is re-executable and
   the world is generatively authored. Natural in data science, analytics, accounting close, actuarial and financial
-  modelling. Not applicable to legal drafting, consulting narrative, or any prose deliverable.
+  modelling. Not applicable to legal drafting, consulting narrative, or any prose deliverable. And explicitly: **no
+  existing static world can be converted into a family.** The accounting probe therefore authors a new small
+  parameterised family, using a public accounting task's workflow only as a reference — it does not transform that task.
 - **A construct-validity check becomes a deliverable, not an assumption.** For every sibling, independent experts
   who did not author the world are shown the sibling and asked what the correct decision is, blind to our label.
   If experts do not agree that the decision differs, the sibling is not a valid flip sibling and is discarded. This
@@ -227,7 +229,7 @@ figure with a self-authorship bias stated, not as an expected effect size.
 ## J. "This is prohibitively expensive."
 
 **Strongest form.** You want N worlds per task. APEX-Agents worlds take teams of professionals 5–10 days each and
-average 166 files. Multiply by N and the benchmark is unaffordable, which is why nobody has built it.
+average 166 files. Multiply by N and the benchmark is unaffordable, which is plausibly why it has not been built.
 
 **Verdict: answerable on the runtime cost, which is measured, and conceded on the authoring cost, which is the
 real one.**
@@ -344,6 +346,6 @@ non-gameable in the obvious direction.
 | M deferral gaming | answerable | asymmetric three-valued scoring with a penalty for over-deferral |
 
 Two objections (G, K) were strong enough that a different project would have been the right response. The reason
-the project survives is narrow and should be stated narrowly: **nobody has re-executed a professional deliverable
-against mechanism-flipping siblings of a fixed artifact corpus**, and that specific combination is what makes the
-measurement both valid and cheap.
+the project survives is narrow and should be stated narrowly: **I did not find work that re-executes a professional
+deliverable against mechanism-flipping siblings of a fixed artifact corpus**, and that specific combination is what makes
+the measurement both valid and cheap. That is a claim about what my audit found, not a proof of absence.

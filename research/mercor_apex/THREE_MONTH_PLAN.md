@@ -31,6 +31,7 @@ One family per week with the sixth week as slack, each on a different mechanism 
 and identification-removed siblings runs in parallel and continuously, not in a batch at the end — a sibling that
 two experts do not agree on is discarded that week, not in month 3. Leak check and seed-only control per family.
 *Gate at week 6: at least 5 valid families, each with ≥2 validated flip siblings — a floor, not a target of eight.
+Five to six families is the planned scale; six is the ceiling, not a promise.
 Fewer than 5 means the model study narrows rather than the adjudication standard loosening. **The discard rate is
 recorded per family and reported as a finding**, because it is the number a future benchmark team needs in order to
 budget this.*
@@ -58,12 +59,14 @@ gradings are compute-only. Expert baseline solves collected in parallel.
 Sibling-count curve, sibling-type ablation, tolerance sensitivity, judge-with-trajectory arm. Two independent
 experts code every family-only failure; κ reported. All five controls re-verified against the final data.
 
-**Weeks 11–12, in parallel — the accounting transfer probe (committed).**
-Two weeks, scoped to a yes/no engineering question: can a family be authored from an existing trap register? Uses
-APEX-Accounting's public dev-set world. Deliverable is one family plus a written account of what the trap register
-did and did not supply. **Accounting is the intended application** — the corpus, the world architecture and the
-enumerated mechanisms already exist there — so this is the bridge from the validation domain to the applied one and
-is not droppable slack. If week 11 overruns, the fresh-rollout arm narrows to two families first.
+**Weeks 11–12, in parallel — the accounting probe (small, secondary).**
+Two weeks, scoped to one question: can this method's authoring pattern be applied to an accounting close workflow?
+**It does not convert an existing APEX world into a family** — the method requires parameterisation at authoring
+time, so no shipped static world can be transformed, and claiming otherwise would be unsupported. Instead it uses the
+structure and professional workflow represented in a **public APEX-Accounting dev-set task** as a reference for
+authoring **one small new parameterised accounting family of my own**, with no modification of the original benchmark
+and no claim of compatibility with it. Deliverable: that one family, plus a written account of which parts of the
+workflow parameterised cleanly and which did not. Secondary throughout, and dropped if the schedule slips.
 
 **Week 13 — deliverables.**
 Paper draft; released generator, families, defect bank, rubrics and adjudication records; the family verifier
@@ -98,7 +101,7 @@ is the measured basis for this estimate.
 | fresh rollouts succeed where replay fails (H3 null) | medium | the metric survives, the interpretation changes to artifact brittleness, and the paper says so in the abstract |
 | six families is too few for the Δ CI | high | acknowledged in the design; the deliverable is the generator that makes family 7 cheap |
 | a frontier vendor's agent harness is unavailable | low | the model sample is specified as ≥4 developers, not as named models |
-| authoring runs long | medium | the fresh-rollout arm narrows to 2 families first, then the model count to 4; the transfer probe is no longer the first thing to drop |
+| authoring runs long | medium | the accounting probe drops first, then the fresh-rollout arm narrows to 2 families, then the model count to 4 |
 
 ## The authoring-rate assumption, and its weakness
 

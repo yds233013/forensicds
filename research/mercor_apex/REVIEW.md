@@ -72,7 +72,7 @@ The pilot's three parameterised families, their verifiers, and 45 defect suites 
 single implementation phase — days, not weeks — but with heavy tooling assistance and a single author, which is the
 easy case. The plan's one-family-per-week rate therefore assumes **expert review, not engineering, is the
 bottleneck**, and the week-6 gate accepts five families rather than six precisely because that assumption may be
-wrong. If authoring runs long the transfer probe drops first, then the fresh-rollout arm narrows.
+wrong. If authoring runs long the accounting probe drops first, then the fresh-rollout arm narrows.
 
 **Q9. Your H3 arm may show that fresh rollouts succeed where replay fails. Then your metric measured code
 brittleness and your framing collapses.**
@@ -86,12 +86,13 @@ most decision-relevant number for anyone considering replay as a cheap proxy.
 **Q10. We have no APEX data-science benchmark because our demand is in law, finance, consulting and software. Why
 should we fund a domain we did not pick?**
 
-Because the method needs a re-executable deliverable to be measurable at all, and data science is where that is
-native — so it is the cleanest place to establish whether the method detects anything. **The intended application is
-accounting**, where you already have the corpus, the world architecture and a trap register that enumerates
-mechanisms and fixes each at one value. That is why the transfer probe into APEX-Accounting's public dev-set world
-is now a committed deliverable rather than droppable slack: the probe is the bridge from the validation domain to
-the domain you actually sell.
+Because the method needs a re-executable deliverable to be measurable at all, and data science is where that is native —
+so it is the cleanest place to establish whether the method detects anything. **Accounting close is the natural applied
+target**: it has the document corpus, the written thresholds and the re-executable deliverables, and it is where your
+demand is. To be precise about what is and is not claimed: the method requires parameterisation at authoring time, so no
+shipped static world can be converted into a family. The probe therefore uses the workflow of a *public*
+APEX-Accounting dev-set task as a reference for authoring one small new parameterised family of my own, without
+modifying the benchmark or claiming compatibility with it. It stays small and secondary.
 
 ---
 
@@ -108,7 +109,16 @@ the domain you actually sell.
 | R7 | deliverable reframed as **method + generator + evidence**, explicitly not a benchmark | `PROPOSAL_FULL.md`, `THREE_MONTH_PLAN.md` |
 | R8 | authoring-rate assumption stated with its **evidence and its weakness** | `THREE_MONTH_PLAN.md` |
 | R9 | H3's null **pre-committed to the abstract** | `EXPERIMENT_DESIGN.md` H3 |
-| R10 | accounting transfer probe promoted from droppable to **committed deliverable**; "intended application is accounting" stated | `METHODOLOGY.md` §8, `THREE_MONTH_PLAN.md`, `PROPOSAL_FULL.md` |
+| R10 | accounting named as the natural applied target, with the probe scoped as **authoring one new parameterised family using a public task's workflow as a reference** — no conversion of an existing APEX world, no compatibility claim | `METHODOLOGY.md` §8, `THREE_MONTH_PLAN.md`, `PROPOSAL_FULL.md` |
+
+### Second pass (editorial only, 2026-09-25)
+
+Applied after review feedback, without reopening the design: absolute absence claims across all files restated as
+findings of the audit rather than proofs of absence ("I did not find…"); the accounting probe reframed so it no longer
+contradicts the generative-authoring requirement (it authors a new family using a public task's workflow as a
+reference, rather than converting an APEX world); the pilot's 23.8 % labelled explicitly as calibration and not a
+prevalence estimate; scale stated as five to six families; and the full and short proposals rewritten for a single-read
+APEX audience with the statistical apparatus moved to `EXPERIMENT_DESIGN.md`.
 
 No further revision. The remaining weaknesses — six families is a small sample, the flip-sibling construction cost is
 unknown until it is attempted, and the method does not reach prose deliverables — are real, stated, and not fixable

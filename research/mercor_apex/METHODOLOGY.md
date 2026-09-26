@@ -20,10 +20,15 @@ Two agents that are indistinguishable under single-instance grading:
   action.
 
 Both are correct. Both reach the correct decision. Both pass every rubric criterion that grades the deliverable's
-conclusions. On a sibling world in which the insert-change interval was extended and a faster-wearing grade fitted,
-so that the wear contribution is 3.08 pp, A still recommends correctly and B's analysis pushes the
-material-attributable rate above the supply agreement's 5.5 % limit — the decision flips, and B does not flip with
-it. **Conditional correctness separates A from B. Nothing that grades one world can.**
+conclusions. On a sibling world in which the insert-change interval was extended and a faster-wearing grade fitted, so
+that the wear contribution is 3.08 pp, A still recommends correctly; B charges the unmodelled wear to material, reports
+3.92 pp against a true 0.82, pushes the material-attributable rate above the supply agreement's 5.5 % limit and raises a
+contractual nonconformance where the correct decision has not changed. **Conditional correctness separates A from B.
+Nothing that grades one world can.**
+
+This is the *invariance* leg: the mechanism moved, the correct decision did not, and B's output did. The same family's
+decision-*flip* leg is a different sibling, where the true material contribution genuinely crosses the threshold and a
+correct analysis must change its recommendation.
 
 This is not a claim that B reasoned badly. It is a claim that B's *deliverable* is conditionally incorrect, which is
 the property that matters when the analysis is re-run next month. See objection E in `IDEA_RED_TEAM.md`; the
@@ -54,7 +59,7 @@ document, and are regenerated at grading time by the shipped generator.
 | **identification-removed sibling** | the evidence that identifies the estimand is withdrawn — an instrument's dual-measurement overlap removed, a holdback stratum absent, a parallel-run period deleted | the estimand is reported as not identified from the available evidence | **declines**, and names what evidence would identify it |
 
 Every sibling requires a pre-registered expectation *before* any agent is run. The flip sibling is the design's
-centre of gravity and the only one no prior work builds (see `RELATED_WORK.md` §10).
+centre of gravity and the one I did not find in prior work (see `RELATED_WORK.md` §10).
 
 ### 3.3 The graded object
 
@@ -99,10 +104,13 @@ Stated here rather than in an appendix, because two of these are hard limits (ob
 1. **It requires a re-executable deliverable.** Natural in production data science, analytics, accounting close,
    actuarial work and financial modelling. It does not apply to legal drafting, consulting narrative, or any prose
    deliverable, and no extension to those is proposed.
-2. **It requires a generatively authored world.** It cannot be applied retroactively to an expert-authored estate
-   whose latent mechanisms were never parameterised. It cannot be retrofitted to existing APEX-Agents worlds. What
-   it can build on is APEX-Accounting's **trap register**, which already enumerates seeded mechanisms and merely
-   fixes each at one value.
+2. **It requires a generatively authored world.** It cannot be applied retroactively to an expert-authored estate whose
+   latent mechanisms were never parameterised, and no existing static world — APEX-Agents, APEX-Accounting or otherwise
+   — can be converted into a family. **What transfers is the construction pattern, not the artifact.** The
+   trap-register practice described in the APEX-Accounting paper already requires an author to enumerate the seeded
+   mechanisms of a world, which is the same enumeration a family needs; a family additionally requires each of those
+   mechanisms to be *parameterised at authoring time*. So the pattern is a short conceptual step away, and an existing
+   world is not.
 3. **It measures a property of the artifact, not of the agent's understanding.** The fresh-rollout arm quantifies
    the difference rather than assuming it away, but the metric's claim is about conditional correctness of a
    submitted analysis, full stop.
@@ -116,7 +124,9 @@ This is an addition to APEX's construction pipeline, not a competitor to it:
 
 - APEX-Agents' world-first authoring supplies exactly the artifact corpus the method needs. The change is to author
   the world as a generator rather than as a fixed instance.
-- APEX-Accounting's trap register is one parameter away from a variant axis.
+- APEX-Accounting's trap-register practice — enumerating a world's seeded mechanisms during authoring — is the same
+  enumeration a family needs; the additional requirement is that each mechanism be parameterised as the world is built.
+  That is a change to the authoring process, not a transformation applicable to worlds already shipped.
 - Archipelago's verifier types are `output`, with `trajectory` and `value` marked COMING SOON. A **family verifier**
   — regenerate sibling, re-execute submitted artifact, compare against generated truth, aggregate the profile — is
   a well-specified addition to an Apache-2.0 repository Mercor actively maintains.
@@ -148,8 +158,8 @@ an applicant, and borrowing the benchmark's name implies an affiliation that doe
 
 ## 8. Domain decision
 
-**Option A: one domain — production data science and analytics — with a scoped two-week transfer probe into
-accounting reconciliation in month 3.**
+**Option A: one domain — production data science and analytics — plus a small, secondary two-week accounting probe in
+month 3.**
 
 Reasons, in order of weight:
 1. **The method needs a re-executable deliverable**, and in production data science the deliverable natively *is*
@@ -158,13 +168,16 @@ Reasons, in order of weight:
    project addresses two of the fellowship's openings rather than one.
 3. **Three months at 30+ h/week buys one domain done properly.** The expensive item is not compute; it is
    generatively parameterising worlds and paying experts to adjudicate each sibling's correct decision.
-4. **The intended application is accounting; data science is the validation domain.** APEX-Accounting already
-   supplies the corpus, the world architecture and a trap register that enumerates mechanisms and fixes each at one
-   value — it is where this method would actually be used, and where Mercor's demand is. The transfer probe is
-   therefore a **committed deliverable, not slack**: one family built from APEX-Accounting's public dev-set trap
-   register, answering the yes/no engineering question of whether a family can be authored from an existing trap
-   register. Data science is chosen to *validate* the method because the deliverable there is natively
+4. **Accounting close is the natural applied target; data science is the validation domain.** Month-end close has the
+   document corpus, the written thresholds and the re-executable deliverables the method needs, and it is where
+   Mercor's demand is. Data science is chosen to *validate* the method because the deliverable there is natively
    re-executable, which is the precondition from §4.1.
+5. **What the accounting probe is, stated precisely.** It **does not convert an APEX world into a family** — §4.2 rules
+   that out, and claiming otherwise would be unsupported. It uses the *structure and professional workflow* represented
+   in a public APEX-Accounting dev-set task as a reference for authoring **one small new parameterised accounting
+   family of my own**, with no modification of the original benchmark and no claim of compatibility with it. It answers
+   one question — can this method's authoring pattern be applied to an accounting workflow at all — and it stays small
+   and secondary to the data-science study.
 
 Option B (two full domains) fails on item 3; option C (several) fails on 3 and would produce a shallow result in
 each.
