@@ -1,0 +1,13 @@
+{
+    "task": {
+        "path": "candidates/g36-tou-capacity-gate"
+    },
+    "trial_name": "g36-tou-capacity-gate__uKBELHi",
+    "trials_dir": "crossmodel_logs/claude/claude-g36-tou-capacity-gate-2",
+    "agent_setup_timeout_multiplier": 3.0,
+    "agent": {
+        "name": "claude-code",
+        "model_name": "claude-opus-5-5"
+    },
+    "job_id": "6c8b3c72-3684-40d4-917a-7404ef938864"
+}

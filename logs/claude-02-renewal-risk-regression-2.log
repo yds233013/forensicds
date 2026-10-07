@@ -1,0 +1,22 @@
+  1/1 Mean: 1.000 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 0:08:18 0:00:00
+adhoc • claude-code • claude-opus-5-5
+┏━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━┓
+┃ Trials ┃ Exceptions ┃  Mean ┃
+┡━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━┩
+│      1 │          0 │ 1.000 │
+└────────┴────────────┴───────┘
+
+┏━━━━━━━━┳━━━━━━━┓
+┃ Reward ┃ Count ┃
+┡━━━━━━━━╇━━━━━━━┩
+│ 1.0    │     1 │
+└────────┴───────┘
+
+Job Info
+Total runtime: 8m 18s
+Results written to 
+crossmodel_logs/claude/claude-02-renewal-risk-regression-2/result.json
+Inspect results by running `harbor view crossmodel_logs/claude`
+Share results by running `harbor upload 
+crossmodel_logs/claude/claude-02-renewal-risk-regression-2`
+

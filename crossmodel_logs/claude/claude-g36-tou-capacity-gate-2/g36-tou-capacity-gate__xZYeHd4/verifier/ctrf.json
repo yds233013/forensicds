@@ -1,0 +1,116 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 10,
+            "passed": 9,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1790835896.0604875,
+            "stop": 1790835926.8061786
+        },
+        "tests": [
+            {
+                "name": "test_capacity.py::test_warehouse_unmodified",
+                "status": "passed",
+                "duration": 0.06087983300676569,
+                "start": 1790835896.0914357,
+                "stop": 1790835896.1527476,
+                "retries": 0,
+                "file_path": "test_capacity.py"
+            },
+            {
+                "name": "test_capacity.py::test_pipeline_runs",
+                "status": "passed",
+                "duration": 2.681974834005814,
+                "start": 1790835896.1530185,
+                "stop": 1790835898.8361254,
+                "retries": 0,
+                "file_path": "test_capacity.py"
+            },
+            {
+                "name": "test_capacity.py::test_rerun_is_deterministic",
+                "status": "passed",
+                "duration": 3.5720480019808747,
+                "start": 1790835898.8369145,
+                "stop": 1790835902.4123416,
+                "retries": 0,
+                "file_path": "test_capacity.py"
+            },
+            {
+                "name": "test_capacity.py::test_output_schema",
+                "status": "passed",
+                "duration": 0.0017727489466778934,
+                "start": 1790835902.4144042,
+                "stop": 1790835902.416488,
+                "retries": 0,
+                "file_path": "test_capacity.py"
+            },
+            {
+                "name": "test_capacity.py::test_bookkeeping",
+                "status": "passed",
+                "duration": 0.0071773340459913015,
+                "start": 1790835902.4168115,
+                "stop": 1790835902.4242296,
+                "retries": 0,
+                "file_path": "test_capacity.py"
+            },
+            {
+                "name": "test_capacity.py::test_target_peak_forecast",
+                "status": "passed",
+                "duration": 0.7198713760008104,
+                "start": 1790835902.424413,
+                "stop": 1790835903.144654,
+                "retries": 0,
+                "file_path": "test_capacity.py"
+            },
+            {
+                "name": "test_capacity.py::test_estate_tou_response",
+                "status": "passed",
+                "duration": 0.0006511660176329315,
+                "start": 1790835903.1449506,
+                "stop": 1790835903.1457899,
+                "retries": 0,
+                "file_path": "test_capacity.py"
+            },
+            {
+                "name": "test_capacity.py::test_segment_forecasts_reconcile",
+                "status": "passed",
+                "duration": 0.0005602490855380893,
+                "start": 1790835903.1459353,
+                "stop": 1790835903.1466577,
+                "retries": 0,
+                "file_path": "test_capacity.py"
+            },
+            {
+                "name": "test_capacity.py::test_procurement_decision",
+                "status": "passed",
+                "duration": 0.0005908330203965306,
+                "start": 1790835903.1468065,
+                "stop": 1790835903.1475835,
+                "retries": 0,
+                "file_path": "test_capacity.py"
+            },
+            {
+                "name": "test_capacity.py::test_hidden_extract",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 5.60127562697744,
+                "start": 1790835903.1477776,
+                "stop": 1790835908.7838593,
+                "retries": 3,
+                "file_path": "test_capacity.py",
+                "tags": [
+                    "parametrize::fixture::['hidden_a', 'hidden_b', 'hidden_c', 'hidden_d']"
+                ],
+                "trace": "fixture = 'hidden_d'\n\n    @pytest.mark.parametrize(\"fixture\", [s[\"name\"] for s in scenarios.HIDDEN_SPECS])\n    def test_hidden_extract(fixture):\n        spec = scenarios.by_name(fixture)\n        w = world.build(spec)\n        truth = world.truth(w)\n        tv = _truth_values(truth)\n    \n        root = Path(tempfile.mkdtemp())\n        (root / \"data\").mkdir(parents=True, exist_ok=True)\n        world.write_sqlite(w, str(root / \"data\"))\n        shutil.copytree(WORKSPACE / \"capacity_forecast\", root / \"capacity_forecast\")\n        _open_up(root)\n    \n        r = _run_pipeline(root)\n        assert r.returncode == 0, \"%s: pipeline failed:\\n%s\\n%s\" % (\n            fixture, r.stdout[-2000:], r.stderr[-2000:])\n        got = _read_results(root / \"out\")\n    \n        bad = []\n        for q in QUANT:\n            tol = _tol(fixture, q)\n            err = abs(float(got.get(q, 1e9)) - tv[q])\n            if err > tol:\n                bad.append(\"%s: reported %s, expected %.5f, error %.5f > tolerance %.5f (%.1f x)\"\n                           % (q, got.get(q), tv[q], err, tol, err / tol))\n        # bookkeeping is re-checked on every extract, so constants from the visible one cannot survive\n        _bookkeeping(got, root / \"data\" / \"warehouse.sqlite\", bad)\n        if got.get(\"procurement_decision\") != truth[\"decision\"]:\n            bad.append(\"procurement_decision %r, expected %r\"\n                       % (got.get(\"procurement_decision\"), truth[\"decision\"]))\n>       assert not bad, \"%s:\\n  %s\" % (fixture, \"\\n  \".join(bad))\nE       AssertionError: hidden_d:\nE           estate_tou_response_at_target_cdd: reported 0.1081663384993321, expected 0.09116, error 0.01701 > tolerance 0.01545 (1.1 x)\nE       assert not ['estate_tou_response_at_target_cdd: reported 0.1081663384993321, expected 0.09116, error 0.01701 > tolerance 0.01545 (1.1 x)']\n\ntest_capacity.py:250: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

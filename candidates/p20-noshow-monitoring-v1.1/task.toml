@@ -1,0 +1,83 @@
+schema_version = "1.4"
+artifacts = []
+
+[task]
+name = "forensicds/noshow-monitoring-p20-v1_1"
+version = "1.1.0"
+description = "Produce the monitoring submission a model risk standard requires for a deployed no-show model, where the metric that triggered a retrain proposal is computed on the population the model's own output intervened on."
+authors = [{ name = "Yash Shah", email = "yshah231103@gmail.com" }]
+keywords = ["policy-feedback", "performativity", "model-monitoring", "mlops", "auc", "attribution", "sqlite"]
+
+[metadata]
+author_name = "Yash Shah"
+author_email = "yshah231103@gmail.com"
+difficulty = "hard"
+category = "data-analysis"
+tags = ["forensic-debugging", "policy-feedback", "evaluation-population", "feature-vintage", "decision-linked"]
+expert_time_estimate_min = 240.0
+junior_time_estimate_min = 900.0
+difficulty_explanation = """
+A no-show risk model has driven reminder calls for six months. The vendor's dashboard shows discrimination
+falling from 0.77 to 0.71 AUC, reports elevated drift metrics on four features, reproduces the decline under
+temporal validation, and supplies a retrained candidate that scores 0.79 on a recent holdout drawn from the
+clinics the programme covers. Every one of those checks is computed inside the same frame and none of them can
+fail.
+
+The metric is computed on the population the model's own output intervened on. Reminded patients attend, so
+the appointments the model ranks highest are exactly the ones whose outcomes the programme changed. The
+standard governing the decision requires a population whose outcomes the model's use has not influenced, and
+names no such population; the reminder programme's configuration records a set of clinics left outside the
+programme, drawn stratified by clinic size. On those clinics the model has not degraded at all, and the
+retrained candidate is worse, because it was fitted on outcomes the programme had already changed.
+
+Two further mechanisms are genuinely active and must be separated: an upstream job widened the window of the
+no-show-count feature after deployment, so the figure computed on the rebuilt feature store is not the figure
+the model achieved in service; and the append-only event log makes the serving vintage reconstructible, which
+is what allows the feed to be audited at all. Three commitments are needed - the evaluation population, the
+scoring basis, and the order in which the standard's clauses apply - and the wrong first one makes the rest
+look clean.
+
+The four graded extracts require three different actions, including one where the retrained candidate
+legitimately wins and one where the honest finding is a defective feature feed rather than a model problem, so
+neither scepticism about retraining nor deference to it passes as a habit.
+"""
+solution_explanation = """
+1. Population: MRM-04 section 4.1 requires a population whose outcomes the model's use has not influenced.
+   The reminder programme configuration lists the clinics left outside the programme; they were never called on
+   the strength of a score, and the set was drawn stratified by clinic size band.
+2. Scoring basis: section 4.2 requires the scores the model produced in service. Report also the model rescored
+   from the published coefficients over the source record and the event log on the window the registry records,
+   the rescore over the feature store as it now stands, and the candidate.
+3. Feed audit: reconstruct the as-of no-show count from the append-only event log and compare it, with the
+   record values, against what the serving snapshot holds. A disagreement is a feed defect under section
+   4.4(1).
+4. Decomposition: a single chain on one population - validation to the record-feature rescore (drift), to the
+   served scores (feed defect), to the current feature store (vintage), to the dashboard population (policy
+   feedback).
+5. Effect: the programme's effect from the excluded clinics, inside the score band the programme acts on,
+   stratified by size band.
+6. Decision: apply section 4.3 then section 4.4 in the order stated - feed integrity before any comparison of
+   candidates.
+"""
+
+[verifier]
+timeout_sec = 5400.0
+collect = []
+
+[verifier.env]
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+network_mode = "public"
+build_timeout_sec = 1200.0
+os = "linux"
+cpus = 2
+memory_mb = 4096
+storage_mb = 10240
+mcp_servers = []
+
+[environment.env]
+
+[solution.env]

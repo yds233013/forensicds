@@ -1,0 +1,13 @@
+{
+    "task": {
+        "path": "candidates/p22-gauge-recalibration"
+    },
+    "trial_name": "p22-gauge-recalibration__wZe47bz",
+    "trials_dir": "crossmodel_logs/claude/claude-p22-gauge-recalibration-3",
+    "agent_setup_timeout_multiplier": 3.0,
+    "agent": {
+        "name": "claude-code",
+        "model_name": "claude-opus-5-5"
+    },
+    "job_id": "df264210-431e-43da-9998-bca927d18da4"
+}

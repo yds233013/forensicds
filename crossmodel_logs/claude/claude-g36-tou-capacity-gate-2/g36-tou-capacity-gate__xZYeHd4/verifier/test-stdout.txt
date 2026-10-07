@@ -1,0 +1,106 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+configfile: ../dev/null
+plugins: json-ctrf-0.3.5
+collected 13 items
+
+test_capacity.py ..........F.F                                           [100%]
+
+=================================== FAILURES ===================================
+________________________ test_hidden_extract[hidden_b] _________________________
+
+fixture = 'hidden_b'
+
+    @pytest.mark.parametrize("fixture", [s["name"] for s in scenarios.HIDDEN_SPECS])
+    def test_hidden_extract(fixture):
+        spec = scenarios.by_name(fixture)
+        w = world.build(spec)
+        truth = world.truth(w)
+        tv = _truth_values(truth)
+    
+        root = Path(tempfile.mkdtemp())
+        (root / "data").mkdir(parents=True, exist_ok=True)
+        world.write_sqlite(w, str(root / "data"))
+        shutil.copytree(WORKSPACE / "capacity_forecast", root / "capacity_forecast")
+        _open_up(root)
+    
+        r = _run_pipeline(root)
+        assert r.returncode == 0, "%s: pipeline failed:\n%s\n%s" % (
+            fixture, r.stdout[-2000:], r.stderr[-2000:])
+        got = _read_results(root / "out")
+    
+        bad = []
+        for q in QUANT:
+            tol = _tol(fixture, q)
+            err = abs(float(got.get(q, 1e9)) - tv[q])
+            if err > tol:
+                bad.append("%s: reported %s, expected %.5f, error %.5f > tolerance %.5f (%.1f x)"
+                           % (q, got.get(q), tv[q], err, tol, err / tol))
+        # bookkeeping is re-checked on every extract, so constants from the visible one cannot survive
+        _bookkeeping(got, root / "data" / "warehouse.sqlite", bad)
+        if got.get("procurement_decision") != truth["decision"]:
+            bad.append("procurement_decision %r, expected %r"
+                       % (got.get("procurement_decision"), truth["decision"]))
+>       assert not bad, "%s:\n  %s" % (fixture, "\n  ".join(bad))
+E       AssertionError: hidden_b:
+E           estate_tou_response_at_target_cdd: reported 0.1699083465929948, expected 0.13924, error 0.03067 > tolerance 0.01460 (2.1 x)
+E       assert not ['estate_tou_response_at_target_cdd: reported 0.1699083465929948, expected 0.13924, error 0.03067 > tolerance 0.01460 (2.1 x)']
+
+test_capacity.py:250: AssertionError
+________________________ test_hidden_extract[hidden_d] _________________________
+
+fixture = 'hidden_d'
+
+    @pytest.mark.parametrize("fixture", [s["name"] for s in scenarios.HIDDEN_SPECS])
+    def test_hidden_extract(fixture):
+        spec = scenarios.by_name(fixture)
+        w = world.build(spec)
+        truth = world.truth(w)
+        tv = _truth_values(truth)
+    
+        root = Path(tempfile.mkdtemp())
+        (root / "data").mkdir(parents=True, exist_ok=True)
+        world.write_sqlite(w, str(root / "data"))
+        shutil.copytree(WORKSPACE / "capacity_forecast", root / "capacity_forecast")
+        _open_up(root)
+    
+        r = _run_pipeline(root)
+        assert r.returncode == 0, "%s: pipeline failed:\n%s\n%s" % (
+            fixture, r.stdout[-2000:], r.stderr[-2000:])
+        got = _read_results(root / "out")
+    
+        bad = []
+        for q in QUANT:
+            tol = _tol(fixture, q)
+            err = abs(float(got.get(q, 1e9)) - tv[q])
+            if err > tol:
+                bad.append("%s: reported %s, expected %.5f, error %.5f > tolerance %.5f (%.1f x)"
+                           % (q, got.get(q), tv[q], err, tol, err / tol))
+        # bookkeeping is re-checked on every extract, so constants from the visible one cannot survive
+        _bookkeeping(got, root / "data" / "warehouse.sqlite", bad)
+        if got.get("procurement_decision") != truth["decision"]:
+            bad.append("procurement_decision %r, expected %r"
+                       % (got.get("procurement_decision"), truth["decision"]))
+>       assert not bad, "%s:\n  %s" % (fixture, "\n  ".join(bad))
+E       AssertionError: hidden_d:
+E           estate_tou_response_at_target_cdd: reported 0.1081663384993321, expected 0.09116, error 0.01701 > tolerance 0.01545 (1.1 x)
+E       assert not ['estate_tou_response_at_target_cdd: reported 0.1081663384993321, expected 0.09116, error 0.01701 > tolerance 0.01545 (1.1 x)']
+
+test_capacity.py:250: AssertionError
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED test_capacity.py::test_warehouse_unmodified
+PASSED test_capacity.py::test_pipeline_runs
+PASSED test_capacity.py::test_rerun_is_deterministic
+PASSED test_capacity.py::test_output_schema
+PASSED test_capacity.py::test_bookkeeping
+PASSED test_capacity.py::test_target_peak_forecast
+PASSED test_capacity.py::test_estate_tou_response
+PASSED test_capacity.py::test_segment_forecasts_reconcile
+PASSED test_capacity.py::test_procurement_decision
+PASSED test_capacity.py::test_hidden_extract[hidden_a]
+PASSED test_capacity.py::test_hidden_extract[hidden_c]
+FAILED test_capacity.py::test_hidden_extract[hidden_b] - AssertionError: hidd...
+FAILED test_capacity.py::test_hidden_extract[hidden_d] - AssertionError: hidd...
+======================== 2 failed, 11 passed in 30.73s =========================

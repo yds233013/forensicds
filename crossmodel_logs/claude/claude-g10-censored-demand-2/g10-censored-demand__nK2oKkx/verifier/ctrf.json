@@ -1,0 +1,130 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 11,
+            "passed": 9,
+            "failed": 2,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1790822919.4440734,
+            "stop": 1790823082.8548868
+        },
+        "tests": [
+            {
+                "name": "test_demand_review.py::test_warehouse_unmodified",
+                "status": "passed",
+                "duration": 154.39516998798354,
+                "start": 1790822919.4901094,
+                "stop": 1790823073.8887455,
+                "retries": 0,
+                "file_path": "test_demand_review.py"
+            },
+            {
+                "name": "test_demand_review.py::test_review_succeeds",
+                "status": "passed",
+                "duration": 0.000789875048212707,
+                "start": 1790823073.8905714,
+                "stop": 1790823073.8916175,
+                "retries": 0,
+                "file_path": "test_demand_review.py"
+            },
+            {
+                "name": "test_demand_review.py::test_build_time",
+                "status": "passed",
+                "duration": 0.0005721249617636204,
+                "start": 1790823073.8918905,
+                "stop": 1790823073.8926697,
+                "retries": 0,
+                "file_path": "test_demand_review.py"
+            },
+            {
+                "name": "test_demand_review.py::test_demand_history_structure",
+                "status": "passed",
+                "duration": 0.742438165936619,
+                "start": 1790823073.8928835,
+                "stop": 1790823074.6356685,
+                "retries": 0,
+                "file_path": "test_demand_review.py"
+            },
+            {
+                "name": "test_demand_review.py::test_expected_demand_strata",
+                "status": "passed",
+                "duration": 0.30631275102496147,
+                "start": 1790823074.6359546,
+                "stop": 1790823074.9428465,
+                "retries": 0,
+                "file_path": "test_demand_review.py"
+            },
+            {
+                "name": "test_demand_review.py::test_lost_units_strata",
+                "status": "passed",
+                "duration": 0.30241562594892457,
+                "start": 1790823074.9432812,
+                "stop": 1790823075.2460766,
+                "retries": 0,
+                "file_path": "test_demand_review.py"
+            },
+            {
+                "name": "test_demand_review.py::test_category_trends",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.22501629195176065,
+                "start": 1790823075.2463431,
+                "stop": 1790823076.2739964,
+                "retries": 0,
+                "file_path": "test_demand_review.py",
+                "trace": "ctx = {'agent_digest': 'ffcb4fccfdcceedb475a76fb9022c17899fdb1bab81393b7183305358e877632', 'hidden': {'hidden_a': ({'bias': ...26': 61111.12989713647}, 'pre': {'holdout': 7225.073165486374, 'lean26': 21691.34894801869}}}, 'output': '', ...}, ...}\n\n    def test_category_trends(ctx):\n        \"\"\"Category baselines implied by the history; baseline change within tolerance; buy-plan actions.\"\"\"\n        require_run(ctx[\"run1\"])\n>       check_trends(ctx[\"run1\"], ctx[\"truth\"])\n\ntest_demand_review.py:354: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nrun = {'_strata': {'dem': defaultdict(<class 'float'>, {('pre', 'holdout'): 102762.07316548628, ('post', 'holdout'): 99666.1... 'lean26': 61111.12989713647}, 'pre': {'holdout': 7225.073165486374, 'lean26': 21691.34894801869}}}, 'output': '', ...}\nt = {'bias': {'v3_pre_all_stores': -5.145182897050237, 'v4_post_lean26': -17.935913257505625}, 'cat_of': {'K101': 'Soups &... '2026-04-08'), ('S01', 'K101', '2026-04-09'), ('S01', 'K101', '2026-04-10'), ('S01', 'K101', '2026-04-11'), ...}, ...}\n\n    def check_trends(run: dict, t: dict) -> None:\n        got = trends_map(run)\n        assert set(got) == set(t[\"category_change\"]), f\"categories {sorted(got)} expected {sorted(t['category_change'])}\"\n        # baselines must be the ones implied by the submitted demand history\n        meta = t[\"meta\"]\n        series = defaultdict(lambda: [0.0, 0])\n        for k, r in history_map(run).items():\n            if k in meta and meta[k][2] == \"nonpromo\":\n                acc = series[(t[\"cat_of\"][k[1]], meta[k][0], k[0], k[1])]\n                acc[0] += num(r[\"expected_demand\"])\n                acc[1] += 1\n        base = defaultdict(float)\n        for (cat, post, _s, _k), (sm, n) in series.items():\n            base[(cat, post)] += sm / n\n        bad_cons, bad_tol, bad_act, bad_rule = [], [], [], []\n        for cat, want in t[\"category_change\"].items():\n            r = got[cat]\n            pre, post, ch = num(r[\"baseline_pre\"]), num(r[\"baseline_post\"]), num(r[\"baseline_change_pct\"])\n            if abs(pre - base[(cat, \"pre\")]) > 1e-6 * max(1, pre) or abs(post - base[(cat, \"post\")]) > 1e-6 * max(1, post) \\\n                    or abs(ch - 100 * (post / pre - 1)) > 1e-6:\n                bad_cons.append((cat, pre, post, ch))\n            if abs(ch - want) > TOL[f\"cat_change::{cat}\"]:\n                bad_tol.append((cat, round(ch, 2), round(want, 2), TOL[f\"cat_change::{cat}\"]))\n            rule_act = \"reduce\" if ch <= -5 else \"increase\" if ch >= 5 else \"maintain\"\n            if (r[\"action\"] or \"\").strip() != rule_act:\n                bad_rule.append((cat, r[\"action\"], round(ch, 3)))\n            if min(abs(want - 5), abs(want + 5)) >= ACTION_MARGIN_PP:\n                want_act = \"reduce\" if want <= -5 else \"increase\" if want >= 5 else \"maintain\"\n                if (r[\"action\"] or \"\").strip() != want_act:\n                    bad_act.append((cat, r[\"action\"], want_act))\n        assert not bad_cons, f\"category baselines are not the ones implied by demand_history.csv: {bad_cons[:4]}\"\n>       assert not bad_tol, f\"baseline change outside tolerance (category, got pp, truth pp, tolerance): {bad_tol}\"\nE       AssertionError: baseline change outside tolerance (category, got pp, truth pp, tolerance): [('Snacks & crisps', -2.64, -0.8, 1.79)]\nE       assert not [('Snacks & crisps', -2.64, -0.8, 1.79)]\n\ntest_demand_review.py:276: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_demand_review.py::test_programme_impact",
+                "status": "passed",
+                "duration": 0.41146762401331216,
+                "start": 1790823076.2744124,
+                "stop": 1790823076.686265,
+                "retries": 0,
+                "file_path": "test_demand_review.py"
+            },
+            {
+                "name": "test_demand_review.py::test_rerun_is_deterministic",
+                "status": "passed",
+                "duration": 0.0062897500465624034,
+                "start": 1790823076.686553,
+                "stop": 1790823076.6930656,
+                "retries": 0,
+                "file_path": "test_demand_review.py"
+            },
+            {
+                "name": "test_demand_review.py::test_hidden_demand_history",
+                "status": "passed",
+                "duration": 1.2690587919787504,
+                "start": 1790823076.6932518,
+                "stop": 1790823077.9634109,
+                "retries": 2,
+                "file_path": "test_demand_review.py",
+                "tags": [
+                    "parametrize::name::['hidden_a', 'hidden_b', 'hidden_c']"
+                ]
+            },
+            {
+                "name": "test_demand_review.py::test_hidden_trends_and_impact",
+                "status": "failed",
+                "duration": 0.21587858494604006,
+                "start": 1790823080.4336782,
+                "stop": 1790823081.0946946,
+                "retries": 2,
+                "file_path": "test_demand_review.py",
+                "tags": [
+                    "parametrize::name::['hidden_a', 'hidden_b', 'hidden_c']"
+                ],
+                "trace": "ctx = {'agent_digest': 'ffcb4fccfdcceedb475a76fb9022c17899fdb1bab81393b7183305358e877632', 'hidden': {'hidden_a': ({'bias': ...26': 61111.12989713647}, 'pre': {'holdout': 7225.073165486374, 'lean26': 21691.34894801869}}}, 'output': '', ...}, ...}\nname = 'hidden_a'\n\n    @pytest.mark.parametrize(\"name\", HIDDEN)\n    def test_hidden_trends_and_impact(ctx, name):\n        \"\"\"Other extracts: category trends, actions and programme impact.\"\"\"\n        t, run = ctx[\"hidden\"][name]\n        require_run(run)\n>       check_trends(run, t)\n\ntest_demand_review.py:389: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nrun = {'_strata': {'dem': defaultdict(<class 'float'>, {('pre', 'lean26'): 293687.54636714584, ('post', 'lean26'): 326568.86...'lean26': 92326.86945937721}, 'pre': {'holdout': 9306.654354854181, 'lean26': 28833.546367147246}}}, 'output': '', ...}\nt = {'bias': {'v3_pre_all_stores': -8.901458943613415, 'v4_post_lean26': -22.1317774850269}, 'cat_of': {'K101': 'Soups & b... '2025-10-08'), ('S01', 'K101', '2025-10-09'), ('S01', 'K101', '2025-10-10'), ('S01', 'K101', '2025-10-14'), ...}, ...}\n\n    def check_trends(run: dict, t: dict) -> None:\n        got = trends_map(run)\n        assert set(got) == set(t[\"category_change\"]), f\"categories {sorted(got)} expected {sorted(t['category_change'])}\"\n        # baselines must be the ones implied by the submitted demand history\n        meta = t[\"meta\"]\n        series = defaultdict(lambda: [0.0, 0])\n        for k, r in history_map(run).items():\n            if k in meta and meta[k][2] == \"nonpromo\":\n                acc = series[(t[\"cat_of\"][k[1]], meta[k][0], k[0], k[1])]\n                acc[0] += num(r[\"expected_demand\"])\n                acc[1] += 1\n        base = defaultdict(float)\n        for (cat, post, _s, _k), (sm, n) in series.items():\n            base[(cat, post)] += sm / n\n        bad_cons, bad_tol, bad_act, bad_rule = [], [], [], []\n        for cat, want in t[\"category_change\"].items():\n            r = got[cat]\n            pre, post, ch = num(r[\"baseline_pre\"]), num(r[\"baseline_post\"]), num(r[\"baseline_change_pct\"])\n            if abs(pre - base[(cat, \"pre\")]) > 1e-6 * max(1, pre) or abs(post - base[(cat, \"post\")]) > 1e-6 * max(1, post) \\\n                    or abs(ch - 100 * (post / pre - 1)) > 1e-6:\n                bad_cons.append((cat, pre, post, ch))\n            if abs(ch - want) > TOL[f\"cat_change::{cat}\"]:\n                bad_tol.append((cat, round(ch, 2), round(want, 2), TOL[f\"cat_change::{cat}\"]))\n            rule_act = \"reduce\" if ch <= -5 else \"increase\" if ch >= 5 else \"maintain\"\n            if (r[\"action\"] or \"\").strip() != rule_act:\n                bad_rule.append((cat, r[\"action\"], round(ch, 3)))\n            if min(abs(want - 5), abs(want + 5)) >= ACTION_MARGIN_PP:\n                want_act = \"reduce\" if want <= -5 else \"increase\" if want >= 5 else \"maintain\"\n                if (r[\"action\"] or \"\").strip() != want_act:\n                    bad_act.append((cat, r[\"action\"], want_act))\n        assert not bad_cons, f\"category baselines are not the ones implied by demand_history.csv: {bad_cons[:4]}\"\n>       assert not bad_tol, f\"baseline change outside tolerance (category, got pp, truth pp, tolerance): {bad_tol}\"\nE       AssertionError: baseline change outside tolerance (category, got pp, truth pp, tolerance): [('Snacks & crisps', -2.81, 0.07, 1.79)]\nE       assert not [('Snacks & crisps', -2.81, 0.07, 1.79)]\n\ntest_demand_review.py:276: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

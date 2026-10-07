@@ -1,0 +1,92 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+configfile: ../dev/null
+plugins: json-ctrf-0.3.5
+collected 8 items
+
+test_fill.py ....FFFF                                                    [100%]
+
+=================================== FAILURES ===================================
+_____________________________ test_visible_extract _____________________________
+
+    def test_visible_extract():
+        root = Path(tempfile.mkdtemp())
+        bad = _check_extract("visible", root)
+        shutil.rmtree(root, ignore_errors=True)
+>       assert not bad, "visible extract:\n  " + "\n  ".join(bad)
+E       AssertionError: visible extract:
+E           bridge_pp[aggregation] = 13.22, expected 1.831 +/- 0.4
+E           bridge_pp[denominator] = -16.17, expected -6.429 +/- 0.4
+E           bridge_pp[returns_treatment] = -3.18, expected -1.521 +/- 0.4
+E           account_fill.csv marks 0 accounts below the floor but the readout claims 3
+E       assert not ['bridge_pp[aggregation] = 13.22, expected 1.831 +/- 0.4', 'bridge_pp[denominator] = -16.17, expected -6.429 +/- 0.4',...tment] = -3.18, expected -1.521 +/- 0.4', 'account_fill.csv marks 0 accounts below the floor but the readout claims 3']
+
+test_fill.py:301: AssertionError
+________________________ test_hidden_extract[hidden_a] _________________________
+
+fixture = 'hidden_a'
+
+    @pytest.mark.parametrize("fixture", [s["name"] for s in scenarios.HIDDEN_SPECS])
+    def test_hidden_extract(fixture):
+        root = Path(tempfile.mkdtemp())
+        bad = _check_extract(fixture, root)
+        shutil.rmtree(root, ignore_errors=True)
+>       assert not bad, f"{fixture}:\n  " + "\n  ".join(bad)
+E       AssertionError: hidden_a:
+E           bridge_pp[aggregation] = 17.78, expected 6.336 +/- 0.4
+E           bridge_pp[denominator] = -16.14, expected -6.238 +/- 0.4
+E           bridge_pp[returns_treatment] = -3.11, expected -1.533 +/- 0.4
+E           account_fill.csv marks 0 accounts below the floor but the readout claims 20
+E       assert not ['bridge_pp[aggregation] = 17.78, expected 6.336 +/- 0.4', 'bridge_pp[denominator] = -16.14, expected -6.238 +/- 0.4',...ment] = -3.11, expected -1.533 +/- 0.4', 'account_fill.csv marks 0 accounts below the floor but the readout claims 20']
+
+test_fill.py:309: AssertionError
+________________________ test_hidden_extract[hidden_b] _________________________
+
+fixture = 'hidden_b'
+
+    @pytest.mark.parametrize("fixture", [s["name"] for s in scenarios.HIDDEN_SPECS])
+    def test_hidden_extract(fixture):
+        root = Path(tempfile.mkdtemp())
+        bad = _check_extract(fixture, root)
+        shutil.rmtree(root, ignore_errors=True)
+>       assert not bad, f"{fixture}:\n  " + "\n  ".join(bad)
+E       AssertionError: hidden_b:
+E           bridge_pp[aggregation] = 15.0, expected 1.887 +/- 0.4
+E           bridge_pp[denominator] = -19.83, expected -9.195 +/- 0.4
+E           bridge_pp[returns_treatment] = -4.75, expected -2.278 +/- 0.4
+E           account_fill.csv marks 0 accounts below the floor but the readout claims 5
+E       assert not ['bridge_pp[aggregation] = 15.0, expected 1.887 +/- 0.4', 'bridge_pp[denominator] = -19.83, expected -9.195 +/- 0.4', ...tment] = -4.75, expected -2.278 +/- 0.4', 'account_fill.csv marks 0 accounts below the floor but the readout claims 5']
+
+test_fill.py:309: AssertionError
+________________________ test_hidden_extract[hidden_c] _________________________
+
+fixture = 'hidden_c'
+
+    @pytest.mark.parametrize("fixture", [s["name"] for s in scenarios.HIDDEN_SPECS])
+    def test_hidden_extract(fixture):
+        root = Path(tempfile.mkdtemp())
+        bad = _check_extract(fixture, root)
+        shutil.rmtree(root, ignore_errors=True)
+>       assert not bad, f"{fixture}:\n  " + "\n  ".join(bad)
+E       AssertionError: hidden_c:
+E           bridge_pp[aggregation] = 15.17, expected 4.474 +/- 0.4
+E           bridge_pp[denominator] = -15.6, expected -6.500 +/- 0.4
+E           bridge_pp[returns_treatment] = -3.19, expected -1.575 +/- 0.4
+E           account_fill.csv marks 0 accounts below the floor but the readout claims 4
+E           accounts_below_floor = 4, expected 14 +/- 1
+E           bonus_gate_met = 'not_determinable', expected 'no'
+E       assert not ['bridge_pp[aggregation] = 15.17, expected 4.474 +/- 0.4', 'bridge_pp[denominator] = -15.6, expected -6.500 +/- 0.4', ...readout claims 4', 'accounts_below_floor = 4, expected 14 +/- 1', "bonus_gate_met = 'not_determinable', expected 'no'"]
+
+test_fill.py:309: AssertionError
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED test_fill.py::test_database_unmodified
+PASSED test_fill.py::test_pipeline_runs
+PASSED test_fill.py::test_rerun_is_deterministic
+PASSED test_fill.py::test_output_schema
+FAILED test_fill.py::test_visible_extract - AssertionError: visible extract:
+FAILED test_fill.py::test_hidden_extract[hidden_a] - AssertionError: hidden_a:
+FAILED test_fill.py::test_hidden_extract[hidden_b] - AssertionError: hidden_b:
+FAILED test_fill.py::test_hidden_extract[hidden_c] - AssertionError: hidden_c:
+========================= 4 failed, 4 passed in 4.78s ==========================

@@ -1,0 +1,41 @@
+evidence_reconstruction: readout.json is missing ['retention_floor_auc', 'evaluation_population', 'feed_defect_share_pct', 'programme_effect_pp']
+evidence_reconstruction: visible: retention_floor_auc missing or not a number
+scientific_object: visible: evaluation_population.clinic_ids missing
+identification: visible: auc_by_scoring must have exactly the four named keys
+estimator_implementation: visible: out/evaluation_population.csv was not written
+quantitative_results: visible: feed_defect_share_pct missing or not a number
+quantitative_results: visible: programme_effect_pp missing or not a number
+quantitative_results: visible: attribution_auc[population_drift] 0.0605 vs -0.0112 (tol 0.025)
+quantitative_results: visible: attribution_auc[policy_feedback] 0.0 vs 0.0666 (tol 0.025)
+independent_validation: visible: no declared population to validate against
+decision: visible: decision 'replace_with_v4' vs 'retain_model'
+evidence_reconstruction: hidden_a: retention_floor_auc missing or not a number
+scientific_object: hidden_a: evaluation_population.clinic_ids missing
+identification: hidden_a: auc_by_scoring must have exactly the four named keys
+estimator_implementation: hidden_a: out/evaluation_population.csv was not written
+quantitative_results: hidden_a: feed_defect_share_pct missing or not a number
+quantitative_results: hidden_a: programme_effect_pp missing or not a number
+quantitative_results: hidden_a: attribution_auc[population_drift] 0.1662 vs 0.0933 (tol 0.025)
+quantitative_results: hidden_a: attribution_auc[policy_feedback] 0.0 vs 0.0723 (tol 0.025)
+independent_validation: hidden_a: no declared population to validate against
+evidence_reconstruction: hidden_b: retention_floor_auc missing or not a number
+scientific_object: hidden_b: evaluation_population.clinic_ids missing
+identification: hidden_b: auc_by_scoring must have exactly the four named keys
+estimator_implementation: hidden_b: out/evaluation_population.csv was not written
+quantitative_results: hidden_b: feed_defect_share_pct missing or not a number
+quantitative_results: hidden_b: programme_effect_pp missing or not a number
+quantitative_results: hidden_b: attribution_auc[population_drift] 0.1062 vs 0.0005 (tol 0.025)
+quantitative_results: hidden_b: attribution_auc[feature_feed_defect] 0.0 vs 0.0932 (tol 0.025)
+independent_validation: hidden_b: no declared population to validate against
+decision: hidden_b: decision 'replace_with_v4' vs 'remediate_feature_pipeline'
+evidence_reconstruction: hidden_c: retention_floor_auc missing or not a number
+scientific_object: hidden_c: evaluation_population.clinic_ids missing
+identification: hidden_c: auc_by_scoring must have exactly the four named keys
+estimator_implementation: hidden_c: out/evaluation_population.csv was not written
+quantitative_results: hidden_c: feed_defect_share_pct missing or not a number
+quantitative_results: hidden_c: programme_effect_pp missing or not a number
+quantitative_results: hidden_c: attribution_auc[population_drift] 0.0713 vs 0.0181 (tol 0.025)
+quantitative_results: hidden_c: attribution_auc[feature_vintage] 0.0 vs 0.0505 (tol 0.025)
+quantitative_results: hidden_c: attribution_auc[policy_feedback] 0.0 vs 0.0272 (tol 0.025)
+independent_validation: hidden_c: no declared population to validate against
+decision: hidden_c: decision 'replace_with_v4' vs 'retain_model'

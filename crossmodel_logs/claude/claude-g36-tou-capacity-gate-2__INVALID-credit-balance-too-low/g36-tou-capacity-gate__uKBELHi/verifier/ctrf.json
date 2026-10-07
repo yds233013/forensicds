@@ -1,0 +1,125 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 10,
+            "passed": 6,
+            "failed": 4,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1790825514.6515863,
+            "stop": 1790825544.9409184
+        },
+        "tests": [
+            {
+                "name": "test_capacity.py::test_warehouse_unmodified",
+                "status": "passed",
+                "duration": 0.0686858759727329,
+                "start": 1790825514.7000346,
+                "stop": 1790825514.769316,
+                "retries": 0,
+                "file_path": "test_capacity.py"
+            },
+            {
+                "name": "test_capacity.py::test_pipeline_runs",
+                "status": "passed",
+                "duration": 3.9087388760526665,
+                "start": 1790825514.7695944,
+                "stop": 1790825518.7334409,
+                "retries": 0,
+                "file_path": "test_capacity.py"
+            },
+            {
+                "name": "test_capacity.py::test_rerun_is_deterministic",
+                "status": "passed",
+                "duration": 2.5165631269919686,
+                "start": 1790825518.7349768,
+                "stop": 1790825521.2536948,
+                "retries": 0,
+                "file_path": "test_capacity.py"
+            },
+            {
+                "name": "test_capacity.py::test_output_schema",
+                "status": "passed",
+                "duration": 0.0016826249193400145,
+                "start": 1790825521.254914,
+                "stop": 1790825521.2569232,
+                "retries": 0,
+                "file_path": "test_capacity.py"
+            },
+            {
+                "name": "test_capacity.py::test_bookkeeping",
+                "status": "passed",
+                "duration": 0.007477582956198603,
+                "start": 1790825521.2572167,
+                "stop": 1790825521.2650065,
+                "retries": 0,
+                "file_path": "test_capacity.py"
+            },
+            {
+                "name": "test_capacity.py::test_target_peak_forecast",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.9371812089229934,
+                "start": 1790825521.265246,
+                "stop": 1790825522.2306557,
+                "retries": 0,
+                "file_path": "test_capacity.py",
+                "trace": "visible_run = {'estate_segment_shares': {'APT_ELECTRIC': 0.307, 'HOUSE_LARGE_POOL': 0.11833333333333333, 'HOUSE_SMART_HVAC': 0.24733...3333333333333}, 'estate_tou_response_at_target_cdd': 0.0, 'n_households': 6000, 'procurement_decision': 'procure', ...}\nvisible_truth = {'decision': 'defer', 'estate_shares': [0.307, 0.3273333333333333, 0.24733333333333332, 0.11833333333333333], 'respons...5281426236, 0.04396559056285247, 0.10363317775529511, 0.12875637236263937], 'target_cdd_mean': 11.868055449776449, ...}\n\n    def test_target_peak_forecast(visible_run, visible_truth):\n        \"\"\"The headline quantity: expected peak-window load with the whole estate on the tariff.\"\"\"\n        tv = _truth_values(visible_truth)[\"target_peak_kw\"]\n        got = float(visible_run[\"target_peak_kw\"])\n        tol = _tol(\"visible\", \"target_peak_kw\")\n>       assert abs(got - tv) <= tol, (\n            \"target_peak_kw is wrong: reported %.5f, expected %.5f (error %.5f, tolerance %.5f). \"\n            \"The flat-tariff historical relationship does not by itself answer this.\"\n            % (got, tv, abs(got - tv), tol))\nE       AssertionError: target_peak_kw is wrong: reported 3.25403, expected 3.00996 (error 0.24407, tolerance 0.04838). The flat-tariff historical relationship does not by itself answer this.\nE       assert 0.24407278839273117 <= 0.048380599999999996\nE        +  where 0.24407278839273117 = abs((3.25402966107797 - 3.009956872685239))\n\ntest_capacity.py:174: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_capacity.py::test_estate_tou_response",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0007017090101726353,
+                "start": 1790825522.2309074,
+                "stop": 1790825522.2364006,
+                "retries": 0,
+                "file_path": "test_capacity.py",
+                "trace": "visible_run = {'estate_segment_shares': {'APT_ELECTRIC': 0.307, 'HOUSE_LARGE_POOL': 0.11833333333333333, 'HOUSE_SMART_HVAC': 0.24733...3333333333333}, 'estate_tou_response_at_target_cdd': 0.0, 'n_households': 6000, 'procurement_decision': 'procure', ...}\nvisible_truth = {'decision': 'defer', 'estate_shares': [0.307, 0.3273333333333333, 0.24733333333333332, 0.11833333333333333], 'respons...5281426236, 0.04396559056285247, 0.10363317775529511, 0.12875637236263937], 'target_cdd_mean': 11.868055449776449, ...}\n\n    def test_estate_tou_response(visible_run, visible_truth):\n        \"\"\"The estate-wide tariff response at the target season's weather.\n    \n        Graded because it isolates the transport work: it requires both reweighting the pilot's response\n        to the estate and evaluating it at the target season's cooling demand. Per-segment responses are\n        deliberately NOT graded - the smallest-response segment has roughly fifty enrolled households\n        and its own response is not estimable to any useful tolerance.\n        \"\"\"\n        tv = _truth_values(visible_truth)[\"estate_tou_response_at_target_cdd\"]\n        got = float(visible_run[\"estate_tou_response_at_target_cdd\"])\n        tol = _tol(\"visible\", \"estate_tou_response_at_target_cdd\")\n>       assert abs(got - tv) <= tol, (\n            \"estate_tou_response_at_target_cdd is wrong: reported %.5f, expected %.5f \"\n            \"(error %.5f, tolerance %.5f)\" % (got, tv, abs(got - tv), tol))\nE       AssertionError: estate_tou_response_at_target_cdd is wrong: reported 0.00000, expected 0.06201 (error 0.06201, tolerance 0.01726)\nE       assert 0.06200823149002688 <= 0.01726155\nE        +  where 0.06200823149002688 = abs((0.0 - 0.06200823149002688))\n\ntest_capacity.py:191: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_capacity.py::test_segment_forecasts_reconcile",
+                "status": "passed",
+                "duration": 0.0005154170212335885,
+                "start": 1790825522.2365475,
+                "stop": 1790825522.2372267,
+                "retries": 0,
+                "file_path": "test_capacity.py"
+            },
+            {
+                "name": "test_capacity.py::test_procurement_decision",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0010866659577004611,
+                "start": 1790825522.237349,
+                "stop": 1790825522.2428193,
+                "retries": 0,
+                "file_path": "test_capacity.py",
+                "trace": "visible_run = {'estate_segment_shares': {'APT_ELECTRIC': 0.307, 'HOUSE_LARGE_POOL': 0.11833333333333333, 'HOUSE_SMART_HVAC': 0.24733...3333333333333}, 'estate_tou_response_at_target_cdd': 0.0, 'n_households': 6000, 'procurement_decision': 'procure', ...}\nvisible_truth = {'decision': 'defer', 'estate_shares': [0.307, 0.3273333333333333, 0.24733333333333332, 0.11833333333333333], 'respons...5281426236, 0.04396559056285247, 0.10363317775529511, 0.12875637236263937], 'target_cdd_mean': 11.868055449776449, ...}\n\n    def test_procurement_decision(visible_run, visible_truth):\n>       assert visible_run[\"procurement_decision\"] == visible_truth[\"decision\"], (\n            \"procurement_decision %r does not follow from the target-season forecast\"\n            % visible_run[\"procurement_decision\"])\nE       AssertionError: procurement_decision 'procure' does not follow from the target-season forecast\nE       assert 'procure' == 'defer'\nE         \nE         - defer\nE         + procure\n\ntest_capacity.py:214: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_capacity.py::test_hidden_extract",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 4.558186417969409,
+                "start": 1790825522.242975,
+                "stop": 1790825526.8482149,
+                "retries": 3,
+                "file_path": "test_capacity.py",
+                "tags": [
+                    "parametrize::fixture::['hidden_a', 'hidden_b', 'hidden_c', 'hidden_d']"
+                ],
+                "trace": "fixture = 'hidden_d'\n\n    @pytest.mark.parametrize(\"fixture\", [s[\"name\"] for s in scenarios.HIDDEN_SPECS])\n    def test_hidden_extract(fixture):\n        spec = scenarios.by_name(fixture)\n        w = world.build(spec)\n        truth = world.truth(w)\n        tv = _truth_values(truth)\n    \n        root = Path(tempfile.mkdtemp())\n        (root / \"data\").mkdir(parents=True, exist_ok=True)\n        world.write_sqlite(w, str(root / \"data\"))\n        shutil.copytree(WORKSPACE / \"capacity_forecast\", root / \"capacity_forecast\")\n        _open_up(root)\n    \n        r = _run_pipeline(root)\n        assert r.returncode == 0, \"%s: pipeline failed:\\n%s\\n%s\" % (\n            fixture, r.stdout[-2000:], r.stderr[-2000:])\n        got = _read_results(root / \"out\")\n    \n        bad = []\n        for q in QUANT:\n            tol = _tol(fixture, q)\n            err = abs(float(got.get(q, 1e9)) - tv[q])\n            if err > tol:\n                bad.append(\"%s: reported %s, expected %.5f, error %.5f > tolerance %.5f (%.1f x)\"\n                           % (q, got.get(q), tv[q], err, tol, err / tol))\n        # bookkeeping is re-checked on every extract, so constants from the visible one cannot survive\n        _bookkeeping(got, root / \"data\" / \"warehouse.sqlite\", bad)\n        if got.get(\"procurement_decision\") != truth[\"decision\"]:\n            bad.append(\"procurement_decision %r, expected %r\"\n                       % (got.get(\"procurement_decision\"), truth[\"decision\"]))\n>       assert not bad, \"%s:\\n  %s\" % (fixture, \"\\n  \".join(bad))\nE       AssertionError: hidden_d:\nE           target_peak_kw: reported 3.378749299150192, expected 3.00466, error 0.37409 > tolerance 0.04235 (8.8 x)\nE           estate_tou_response_at_target_cdd: reported 0.0, expected 0.09116, error 0.09116 > tolerance 0.01545 (5.9 x)\nE           procurement_decision 'procure', expected 'defer'\nE       assert not ['target_peak_kw: reported 3.378749299150192, expected 3.00466, error 0.37409 > tolerance 0.04235 (8.8 x)', 'estate_to... 0.0, expected 0.09116, error 0.09116 > tolerance 0.01545 (5.9 x)', \"procurement_decision 'procure', expected 'defer'\"]\n\ntest_capacity.py:250: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

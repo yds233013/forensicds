@@ -1,0 +1,241 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+configfile: ../dev/null
+plugins: json-ctrf-0.3.5
+collected 15 items
+
+test_ope.py ...F.F...FFFFFF                                              [100%]
+
+=================================== FAILURES ===================================
+_____________________________ test_decision_table ______________________________
+
+ctx = {'agent_digest': 'f79dca072f4f5206f8184e2f04c7f54f3acee0b0a98c47e77498783fc8fee0ce', 'hidden': {'hidden_a': {'decision...0000007', 4), ('R000000007', 5), ('R000000008', 1), ...})", 'intervals': None, 'launch': None, 'output': '', ...}, ...}
+
+    def test_decision_table(ctx):
+        """One row per decision and slot, with the decision's slate and the click outcome merged over its serves."""
+>       _verdict(ctx["run1"], "decisions")
+
+test_ope.py:313: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+run = {'decisions': "decision rows differ: 0 missing (e.g. []), 178890 unexpected (e.g. [('R000000007', 1), ('R000000007', 2... ('R000000007', 4), ('R000000007', 5), ('R000000008', 1), ...})", 'intervals': None, 'launch': None, 'output': '', ...}
+name = 'decisions'
+
+    def _verdict(run: dict, name: str) -> None:
+        require_run(run)
+>       assert run.get(name) is None, run.get(name)
+E       AssertionError: decision rows differ: 0 missing (e.g. []), 178890 unexpected (e.g. [('R000000007', 1), ('R000000007', 2), ('R000000007', 3)]); decision_id must be the serve_id of the response that created the decision
+E         assert (not set() and not {('R000000007', 1), ('R000000007', 2), ('R000000007', 3), ('R000000007', 4), ('R000000007', 5), ('R000000008', 1), ...})
+E       assert "decision rows differ: 0 missing (e.g. []), 178890 unexpected (e.g. [('R000000007', 1), ('R000000007', 2), ('R00000000...'R000000007', 1), ('R000000007', 2), ('R000000007', 3), ('R000000007', 4), ('R000000007', 5), ('R000000008', 1), ...})" is None
+E        +  where "decision rows differ: 0 missing (e.g. []), 178890 unexpected (e.g. [('R000000007', 1), ('R000000007', 2), ('R00000000...'R000000007', 1), ('R000000007', 2), ('R000000007', 3), ('R000000007', 4), ('R000000007', 5), ('R000000008', 1), ...})" = <built-in method get of dict object at 0xffffa3c11400>('decisions')
+E        +    where <built-in method get of dict object at 0xffffa3c11400> = {'decisions': "decision rows differ: 0 missing (e.g. []), 178890 unexpected (e.g. [('R000000007', 1), ('R000000007', 2... ('R000000007', 4), ('R000000007', 5), ('R000000008', 1), ...})", 'intervals': None, 'launch': None, 'output': '', ...}.get
+
+test_ope.py:308: AssertionError
+______________________________ test_policy_values ______________________________
+
+ctx = {'agent_digest': 'f79dca072f4f5206f8184e2f04c7f54f3acee0b0a98c47e77498783fc8fee0ce', 'hidden': {'hidden_a': {'decision...0000007', 4), ('R000000007', 5), ('R000000008', 1), ...})", 'intervals': None, 'launch': None, 'output': '', ...}, ...}
+
+    def test_policy_values(ctx):
+        """Policy values and lifts within tolerance of the generator's exact values."""
+>       _verdict(ctx["run1"], "values")
+
+test_ope.py:323: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+run = {'decisions': "decision rows differ: 0 missing (e.g. []), 178890 unexpected (e.g. [('R000000007', 1), ('R000000007', 2... ('R000000007', 4), ('R000000007', 5), ('R000000008', 1), ...})", 'intervals': None, 'launch': None, 'output': '', ...}
+name = 'values'
+
+    def _verdict(run: dict, name: str) -> None:
+        require_run(run)
+>       assert run.get(name) is None, run.get(name)
+E       AssertionError: policy values outside tolerance (quantity, policy, error, tolerance): [('value', 'v7', 0.04855, 0.03316), ('lift', 'v7', 0.0568, 0.0423)]
+E         assert not [('value', 'v7', 0.04855, 0.03316), ('lift', 'v7', 0.0568, 0.0423)]
+E       assert "policy values outside tolerance (quantity, policy, error, tolerance): [('value', 'v7', 0.04855, 0.03316), ('lift', 'v7', 0.0568, 0.0423)]\nassert not [('value', 'v7', 0.04855, 0.03316), ('lift', 'v7', 0.0568, 0.0423)]" is None
+E        +  where "policy values outside tolerance (quantity, policy, error, tolerance): [('value', 'v7', 0.04855, 0.03316), ('lift', 'v7', 0.0568, 0.0423)]\nassert not [('value', 'v7', 0.04855, 0.03316), ('lift', 'v7', 0.0568, 0.0423)]" = <built-in method get of dict object at 0xffffa3c11400>('values')
+E        +    where <built-in method get of dict object at 0xffffa3c11400> = {'decisions': "decision rows differ: 0 missing (e.g. []), 178890 unexpected (e.g. [('R000000007', 1), ('R000000007', 2... ('R000000007', 4), ('R000000007', 5), ('R000000008', 1), ...})", 'intervals': None, 'launch': None, 'output': '', ...}.get
+
+test_ope.py:308: AssertionError
+_________________________ test_hidden_tables[hidden_a] _________________________
+
+ctx = {'agent_digest': 'f79dca072f4f5206f8184e2f04c7f54f3acee0b0a98c47e77498783fc8fee0ce', 'hidden': {'hidden_a': {'decision...0000007', 4), ('R000000007', 5), ('R000000008', 1), ...})", 'intervals': None, 'launch': None, 'output': '', ...}, ...}
+name = 'hidden_a'
+
+    @pytest.mark.parametrize("name", HIDDEN)
+    def test_hidden_tables(ctx, name):
+        """Other extracts: decision table and target slates."""
+        run = ctx["hidden"][name]
+>       _verdict(run, "decisions")
+
+test_ope.py:352: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+run = {'decisions': "decision rows differ: 0 missing (e.g. []), 338710 unexpected (e.g. [('R000000008', 1), ('R000000008', 2...58), ('lift interval does not cover truth when doubled', 'v7', 0.03891, -0.02284)]", 'launch': None, 'output': '', ...}
+name = 'decisions'
+
+    def _verdict(run: dict, name: str) -> None:
+        require_run(run)
+>       assert run.get(name) is None, run.get(name)
+E       AssertionError: decision rows differ: 0 missing (e.g. []), 338710 unexpected (e.g. [('R000000008', 1), ('R000000008', 2), ('R000000008', 3)]); decision_id must be the serve_id of the response that created the decision
+E         assert (not set() and not {('R000000008', 1), ('R000000008', 2), ('R000000008', 3), ('R000000008', 4), ('R000000008', 5), ('R000000017', 1), ...})
+E       assert "decision rows differ: 0 missing (e.g. []), 338710 unexpected (e.g. [('R000000008', 1), ('R000000008', 2), ('R00000000...'R000000008', 1), ('R000000008', 2), ('R000000008', 3), ('R000000008', 4), ('R000000008', 5), ('R000000017', 1), ...})" is None
+E        +  where "decision rows differ: 0 missing (e.g. []), 338710 unexpected (e.g. [('R000000008', 1), ('R000000008', 2), ('R00000000...'R000000008', 1), ('R000000008', 2), ('R000000008', 3), ('R000000008', 4), ('R000000008', 5), ('R000000017', 1), ...})" = <built-in method get of dict object at 0xffffa3029ec0>('decisions')
+E        +    where <built-in method get of dict object at 0xffffa3029ec0> = {'decisions': "decision rows differ: 0 missing (e.g. []), 338710 unexpected (e.g. [('R000000008', 1), ('R000000008', 2...58), ('lift interval does not cover truth when doubled', 'v7', 0.03891, -0.02284)]", 'launch': None, 'output': '', ...}.get
+
+test_ope.py:308: AssertionError
+_________________________ test_hidden_tables[hidden_b] _________________________
+
+ctx = {'agent_digest': 'f79dca072f4f5206f8184e2f04c7f54f3acee0b0a98c47e77498783fc8fee0ce', 'hidden': {'hidden_a': {'decision...0000007', 4), ('R000000007', 5), ('R000000008', 1), ...})", 'intervals': None, 'launch': None, 'output': '', ...}, ...}
+name = 'hidden_b'
+
+    @pytest.mark.parametrize("name", HIDDEN)
+    def test_hidden_tables(ctx, name):
+        """Other extracts: decision table and target slates."""
+        run = ctx["hidden"][name]
+>       _verdict(run, "decisions")
+
+test_ope.py:352: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+run = {'decisions': "decision rows differ: 0 missing (e.g. []), 180135 unexpected (e.g. [('R000000005', 1), ('R000000005', 2....04302)]", 'launch': "launch decision 'v7', expected 'v6'\nassert 'v7' == 'v6'\n  \n  - v6\n  + v7", 'output': '', ...}
+name = 'decisions'
+
+    def _verdict(run: dict, name: str) -> None:
+        require_run(run)
+>       assert run.get(name) is None, run.get(name)
+E       AssertionError: decision rows differ: 0 missing (e.g. []), 180135 unexpected (e.g. [('R000000005', 1), ('R000000005', 2), ('R000000005', 3)]); decision_id must be the serve_id of the response that created the decision
+E         assert (not set() and not {('R000000005', 1), ('R000000005', 2), ('R000000005', 3), ('R000000005', 4), ('R000000005', 5), ('R000000013', 1), ...})
+E       assert "decision rows differ: 0 missing (e.g. []), 180135 unexpected (e.g. [('R000000005', 1), ('R000000005', 2), ('R00000000...'R000000005', 1), ('R000000005', 2), ('R000000005', 3), ('R000000005', 4), ('R000000005', 5), ('R000000013', 1), ...})" is None
+E        +  where "decision rows differ: 0 missing (e.g. []), 180135 unexpected (e.g. [('R000000005', 1), ('R000000005', 2), ('R00000000...'R000000005', 1), ('R000000005', 2), ('R000000005', 3), ('R000000005', 4), ('R000000005', 5), ('R000000013', 1), ...})" = <built-in method get of dict object at 0xffffa3c41780>('decisions')
+E        +    where <built-in method get of dict object at 0xffffa3c41780> = {'decisions': "decision rows differ: 0 missing (e.g. []), 180135 unexpected (e.g. [('R000000005', 1), ('R000000005', 2....04302)]", 'launch': "launch decision 'v7', expected 'v6'\nassert 'v7' == 'v6'\n  \n  - v6\n  + v7", 'output': '', ...}.get
+
+test_ope.py:308: AssertionError
+_________________________ test_hidden_tables[hidden_c] _________________________
+
+ctx = {'agent_digest': 'f79dca072f4f5206f8184e2f04c7f54f3acee0b0a98c47e77498783fc8fee0ce', 'hidden': {'hidden_a': {'decision...0000007', 4), ('R000000007', 5), ('R000000008', 1), ...})", 'intervals': None, 'launch': None, 'output': '', ...}, ...}
+name = 'hidden_c'
+
+    @pytest.mark.parametrize("name", HIDDEN)
+    def test_hidden_tables(ctx, name):
+        """Other extracts: decision table and target slates."""
+        run = ctx["hidden"][name]
+>       _verdict(run, "decisions")
+
+test_ope.py:352: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+run = {'decisions': "decision rows differ: 0 missing (e.g. []), 203900 unexpected (e.g. [('R000000003', 1), ('R000000003', 2... ('R000000003', 4), ('R000000003', 5), ('R000000005', 1), ...})", 'intervals': None, 'launch': None, 'output': '', ...}
+name = 'decisions'
+
+    def _verdict(run: dict, name: str) -> None:
+        require_run(run)
+>       assert run.get(name) is None, run.get(name)
+E       AssertionError: decision rows differ: 0 missing (e.g. []), 203900 unexpected (e.g. [('R000000003', 1), ('R000000003', 2), ('R000000003', 3)]); decision_id must be the serve_id of the response that created the decision
+E         assert (not set() and not {('R000000003', 1), ('R000000003', 2), ('R000000003', 3), ('R000000003', 4), ('R000000003', 5), ('R000000005', 1), ...})
+E       assert "decision rows differ: 0 missing (e.g. []), 203900 unexpected (e.g. [('R000000003', 1), ('R000000003', 2), ('R00000000...'R000000003', 1), ('R000000003', 2), ('R000000003', 3), ('R000000003', 4), ('R000000003', 5), ('R000000005', 1), ...})" is None
+E        +  where "decision rows differ: 0 missing (e.g. []), 203900 unexpected (e.g. [('R000000003', 1), ('R000000003', 2), ('R00000000...'R000000003', 1), ('R000000003', 2), ('R000000003', 3), ('R000000003', 4), ('R000000003', 5), ('R000000005', 1), ...})" = <built-in method get of dict object at 0xffff72201100>('decisions')
+E        +    where <built-in method get of dict object at 0xffff72201100> = {'decisions': "decision rows differ: 0 missing (e.g. []), 203900 unexpected (e.g. [('R000000003', 1), ('R000000003', 2... ('R000000003', 4), ('R000000003', 5), ('R000000005', 1), ...})", 'intervals': None, 'launch': None, 'output': '', ...}.get
+
+test_ope.py:308: AssertionError
+___________________ test_hidden_values_and_launch[hidden_a] ____________________
+
+ctx = {'agent_digest': 'f79dca072f4f5206f8184e2f04c7f54f3acee0b0a98c47e77498783fc8fee0ce', 'hidden': {'hidden_a': {'decision...0000007', 4), ('R000000007', 5), ('R000000008', 1), ...})", 'intervals': None, 'launch': None, 'output': '', ...}, ...}
+name = 'hidden_a'
+
+    @pytest.mark.parametrize("name", HIDDEN)
+    def test_hidden_values_and_launch(ctx, name):
+        """Other extracts: values, intervals and launch decision."""
+        run = ctx["hidden"][name]
+        for k in ("values", "intervals", "launch", "time"):
+>           _verdict(run, k)
+
+test_ope.py:361: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+run = {'decisions': "decision rows differ: 0 missing (e.g. []), 338710 unexpected (e.g. [('R000000008', 1), ('R000000008', 2...58), ('lift interval does not cover truth when doubled', 'v7', 0.03891, -0.02284)]", 'launch': None, 'output': '', ...}
+name = 'values'
+
+    def _verdict(run: dict, name: str) -> None:
+        require_run(run)
+>       assert run.get(name) is None, run.get(name)
+E       AssertionError: policy values outside tolerance (quantity, policy, error, tolerance): [('value', 'v6', -0.04878, 0.03275), ('value', 'v7_pd', -0.08103, 0.03601), ('lift', 'v7', 0.06175, 0.04089)]
+E         assert not [('value', 'v6', -0.04878, 0.03275), ('value', 'v7_pd', -0.08103, 0.03601), ('lift', 'v7', 0.06175, 0.04089)]
+E       assert "policy values outside tolerance (quantity, policy, error, tolerance): [('value', 'v6', -0.04878, 0.03275), ('value', ...sert not [('value', 'v6', -0.04878, 0.03275), ('value', 'v7_pd', -0.08103, 0.03601), ('lift', 'v7', 0.06175, 0.04089)]" is None
+E        +  where "policy values outside tolerance (quantity, policy, error, tolerance): [('value', 'v6', -0.04878, 0.03275), ('value', ...sert not [('value', 'v6', -0.04878, 0.03275), ('value', 'v7_pd', -0.08103, 0.03601), ('lift', 'v7', 0.06175, 0.04089)]" = <built-in method get of dict object at 0xffffa3029ec0>('values')
+E        +    where <built-in method get of dict object at 0xffffa3029ec0> = {'decisions': "decision rows differ: 0 missing (e.g. []), 338710 unexpected (e.g. [('R000000008', 1), ('R000000008', 2...58), ('lift interval does not cover truth when doubled', 'v7', 0.03891, -0.02284)]", 'launch': None, 'output': '', ...}.get
+
+test_ope.py:308: AssertionError
+___________________ test_hidden_values_and_launch[hidden_b] ____________________
+
+ctx = {'agent_digest': 'f79dca072f4f5206f8184e2f04c7f54f3acee0b0a98c47e77498783fc8fee0ce', 'hidden': {'hidden_a': {'decision...0000007', 4), ('R000000007', 5), ('R000000008', 1), ...})", 'intervals': None, 'launch': None, 'output': '', ...}, ...}
+name = 'hidden_b'
+
+    @pytest.mark.parametrize("name", HIDDEN)
+    def test_hidden_values_and_launch(ctx, name):
+        """Other extracts: values, intervals and launch decision."""
+        run = ctx["hidden"][name]
+        for k in ("values", "intervals", "launch", "time"):
+>           _verdict(run, k)
+
+test_ope.py:361: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+run = {'decisions': "decision rows differ: 0 missing (e.g. []), 180135 unexpected (e.g. [('R000000005', 1), ('R000000005', 2....04302)]", 'launch': "launch decision 'v7', expected 'v6'\nassert 'v7' == 'v6'\n  \n  - v6\n  + v7", 'output': '', ...}
+name = 'values'
+
+    def _verdict(run: dict, name: str) -> None:
+        require_run(run)
+>       assert run.get(name) is None, run.get(name)
+E       AssertionError: policy values outside tolerance (quantity, policy, error, tolerance): [('value', 'v7', 0.05207, 0.03209), ('lift', 'v7', 0.0792, 0.04273)]
+E         assert not [('value', 'v7', 0.05207, 0.03209), ('lift', 'v7', 0.0792, 0.04273)]
+E       assert "policy values outside tolerance (quantity, policy, error, tolerance): [('value', 'v7', 0.05207, 0.03209), ('lift', 'v7', 0.0792, 0.04273)]\nassert not [('value', 'v7', 0.05207, 0.03209), ('lift', 'v7', 0.0792, 0.04273)]" is None
+E        +  where "policy values outside tolerance (quantity, policy, error, tolerance): [('value', 'v7', 0.05207, 0.03209), ('lift', 'v7', 0.0792, 0.04273)]\nassert not [('value', 'v7', 0.05207, 0.03209), ('lift', 'v7', 0.0792, 0.04273)]" = <built-in method get of dict object at 0xffffa3c41780>('values')
+E        +    where <built-in method get of dict object at 0xffffa3c41780> = {'decisions': "decision rows differ: 0 missing (e.g. []), 180135 unexpected (e.g. [('R000000005', 1), ('R000000005', 2....04302)]", 'launch': "launch decision 'v7', expected 'v6'\nassert 'v7' == 'v6'\n  \n  - v6\n  + v7", 'output': '', ...}.get
+
+test_ope.py:308: AssertionError
+___________________ test_hidden_values_and_launch[hidden_c] ____________________
+
+ctx = {'agent_digest': 'f79dca072f4f5206f8184e2f04c7f54f3acee0b0a98c47e77498783fc8fee0ce', 'hidden': {'hidden_a': {'decision...0000007', 4), ('R000000007', 5), ('R000000008', 1), ...})", 'intervals': None, 'launch': None, 'output': '', ...}, ...}
+name = 'hidden_c'
+
+    @pytest.mark.parametrize("name", HIDDEN)
+    def test_hidden_values_and_launch(ctx, name):
+        """Other extracts: values, intervals and launch decision."""
+        run = ctx["hidden"][name]
+        for k in ("values", "intervals", "launch", "time"):
+>           _verdict(run, k)
+
+test_ope.py:361: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+run = {'decisions': "decision rows differ: 0 missing (e.g. []), 203900 unexpected (e.g. [('R000000003', 1), ('R000000003', 2... ('R000000003', 4), ('R000000003', 5), ('R000000005', 1), ...})", 'intervals': None, 'launch': None, 'output': '', ...}
+name = 'values'
+
+    def _verdict(run: dict, name: str) -> None:
+        require_run(run)
+>       assert run.get(name) is None, run.get(name)
+E       AssertionError: policy values outside tolerance (quantity, policy, error, tolerance): [('value', 'v7', -0.04153, 0.03834)]
+E         assert not [('value', 'v7', -0.04153, 0.03834)]
+E       assert "policy values outside tolerance (quantity, policy, error, tolerance): [('value', 'v7', -0.04153, 0.03834)]\nassert not [('value', 'v7', -0.04153, 0.03834)]" is None
+E        +  where "policy values outside tolerance (quantity, policy, error, tolerance): [('value', 'v7', -0.04153, 0.03834)]\nassert not [('value', 'v7', -0.04153, 0.03834)]" = <built-in method get of dict object at 0xffff72201100>('values')
+E        +    where <built-in method get of dict object at 0xffff72201100> = {'decisions': "decision rows differ: 0 missing (e.g. []), 203900 unexpected (e.g. [('R000000003', 1), ('R000000003', 2... ('R000000003', 4), ('R000000003', 5), ('R000000005', 1), ...})", 'intervals': None, 'launch': None, 'output': '', ...}.get
+
+test_ope.py:308: AssertionError
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED test_ope.py::test_logs_unmodified
+PASSED test_ope.py::test_ope_succeeds
+PASSED test_ope.py::test_run_time
+PASSED test_ope.py::test_target_slates
+PASSED test_ope.py::test_intervals
+PASSED test_ope.py::test_launch_decision
+PASSED test_ope.py::test_rerun_is_deterministic
+FAILED test_ope.py::test_decision_table - AssertionError: decision rows diffe...
+FAILED test_ope.py::test_policy_values - AssertionError: policy values outsid...
+FAILED test_ope.py::test_hidden_tables[hidden_a] - AssertionError: decision r...
+FAILED test_ope.py::test_hidden_tables[hidden_b] - AssertionError: decision r...
+FAILED test_ope.py::test_hidden_tables[hidden_c] - AssertionError: decision r...
+FAILED test_ope.py::test_hidden_values_and_launch[hidden_a] - AssertionError:...
+FAILED test_ope.py::test_hidden_values_and_launch[hidden_b] - AssertionError:...
+FAILED test_ope.py::test_hidden_values_and_launch[hidden_c] - AssertionError:...
+=================== 8 failed, 7 passed in 291.20s (0:04:51) ====================

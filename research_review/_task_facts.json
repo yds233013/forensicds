@@ -1,0 +1,582 @@
+{
+ "02-renewal-risk-regression": {
+  "workspace": [
+   "CHANGELOG.md",
+   "README.md",
+   "config/pipeline.toml",
+   "docs/data/warehouse_data_dictionary.md",
+   "docs/feature_dictionary.md",
+   "docs/model_card_renewal_risk.md",
+   "docs/ops/2025-11_inc1874_crm_replication.md",
+   "docs/ops/2026-01_crm_v3_migration.md",
+   "docs/process/model_retraining_runbook.md",
+   "logs/deployments.csv",
+   "logs/scheduler/training_runs.csv",
+   "requirements.lock",
+   "src/renewal_risk/__init__.py",
+   "src/renewal_risk/__main__.py",
+   "src/renewal_risk/cli.py",
+   "src/renewal_risk/config.py",
+   "src/renewal_risk/examples.py",
+   "src/renewal_risk/features/__init__.py",
+   "src/renewal_risk/features/build.py",
+   "src/renewal_risk/features/contract.py",
+   "src/renewal_risk/features/health.py",
+   "src/renewal_risk/features/pipeline_signals.py",
+   "src/renewal_risk/features/registry.py",
+   "src/renewal_risk/features/support.py",
+   "src/renewal_risk/features/usage.py",
+   "src/renewal_risk/model/__init__.py",
+   "src/renewal_risk/model/evaluate.py",
+   "src/renewal_risk/model/train.py",
+   "src/renewal_risk/model/transforms.py",
+   "src/renewal_risk/pipeline.py",
+   "src/renewal_risk/reporting.py",
+   "src/renewal_risk/scoring.py",
+   "src/renewal_risk/sources/__init__.py",
+   "src/renewal_risk/sources/warehouse.py"
+  ],
+  "n_workspace": 34,
+  "tests": [
+   "reference.py",
+   "reference_model.py",
+   "scenarios.py",
+   "test.sh",
+   "test_renewal_risk.py",
+   "world.py"
+  ],
+  "solution": [
+   "audit_point_in_time.py",
+   "renewal_risk/features/health.py",
+   "renewal_risk/features/pipeline_signals.py",
+   "renewal_risk/sources/history.py",
+   "renewal_risk/sources/warehouse.py",
+   "solve.sh"
+  ],
+  "build": [
+   "history_artifacts.py",
+   "pit_reference.py",
+   "world.py"
+  ],
+  "hidden": [
+   "hidden_a",
+   "hidden_b",
+   "hidden_c"
+  ],
+  "criteria": [],
+  "toml_name": "forensicds/renewal-risk-regression-02",
+  "difficulty": "hard",
+  "verifier_timeout": "2700.0",
+  "agent_timeout": "3600.0",
+  "network": "public",
+  "instruction_lines": 17,
+  "has_provenance": true
+ },
+ "g05-sco-rollout-gate": {
+  "workspace": [
+   "README.md",
+   "RELEASES.md",
+   "docs/finance/glossary.md",
+   "docs/finance/sco2_business_case.md",
+   "docs/kpi_handbook.md",
+   "docs/outputs/readout_contract.md",
+   "docs/programmes/sco2_programme_brief.md",
+   "docs/store_ops/wave_sequencing_2024-11.md",
+   "notes/2026-09-03_tranche2_prep.md",
+   "sco_readout/__init__.py",
+   "sco_readout/__main__.py",
+   "sco_readout/cli.py",
+   "sco_readout/estimate.py",
+   "sco_readout/panel.py",
+   "sco_readout/report.py"
+  ],
+  "n_workspace": 15,
+  "tests": [
+   "runtime_manifest.sha256",
+   "scenarios.py",
+   "test.sh",
+   "test_readout.py",
+   "world.py"
+  ],
+  "solution": [
+   "sco_readout/cli.py",
+   "sco_readout/estimate.py",
+   "sco_readout/panel.py",
+   "sco_readout/report.py",
+   "solve.sh"
+  ],
+  "build": [
+   "history.py",
+   "world.py"
+  ],
+  "hidden": [
+   "hidden_a",
+   "hidden_b",
+   "hidden_c"
+  ],
+  "criteria": [],
+  "toml_name": "forensicds/sco-rollout-gate-g05",
+  "difficulty": "hard",
+  "verifier_timeout": "7200.0",
+  "agent_timeout": "5400.0",
+  "network": "public",
+  "instruction_lines": 26,
+  "has_provenance": true
+ },
+ "g10-censored-demand": {
+  "workspace": [
+   "README.md",
+   "RELEASES.md",
+   "demandsci/__init__.py",
+   "demandsci/__main__.py",
+   "demandsci/cli.py",
+   "demandsci/demand.py",
+   "demandsci/impact.py",
+   "demandsci/outputs.py",
+   "demandsci/trends.py",
+   "demandsci/warehouse.py",
+   "docs/data/data_dictionary.md",
+   "docs/models/v3_model_card.md",
+   "docs/models/v4_model_card.md",
+   "docs/outputs/review_outputs.md",
+   "docs/planning/buy_plan_process.md",
+   "docs/planning/demand_definitions.md",
+   "docs/programmes/lean26.md",
+   "docs/replenishment/order_up_to_policy.md",
+   "docs/stores/store_operations.md",
+   "notes/2026-09-16_category_managers.md",
+   "requirements.txt",
+   "sql/availability_kpi.sql"
+  ],
+  "n_workspace": 22,
+  "tests": [
+   "runtime_manifest.sha256",
+   "scenarios.py",
+   "test.sh",
+   "test_demand_review.py",
+   "tolerances.json",
+   "truth.py",
+   "world.py"
+  ],
+  "solution": [
+   "demandsci/demand.py",
+   "demandsci/trends.py",
+   "demandsci/warehouse.py",
+   "solve.sh"
+  ],
+  "build": [
+   "history.py",
+   "world.py"
+  ],
+  "hidden": [
+   "hidden_a",
+   "hidden_b",
+   "hidden_c"
+  ],
+  "criteria": [],
+  "toml_name": "forensicds/censored-demand-g10",
+  "difficulty": "hard",
+  "verifier_timeout": "7200.0",
+  "agent_timeout": "5400.0",
+  "network": "public",
+  "instruction_lines": 19,
+  "has_provenance": true
+ },
+ "g24-recommender-ope": {
+  "workspace": [
+   "README.md",
+   "RELEASES.md",
+   "docs/data/logging_schema.md",
+   "docs/launch_policy.md",
+   "docs/metrics/home_row.md",
+   "docs/models/v6.md",
+   "docs/models/v7.md",
+   "docs/models/v7_pd.md",
+   "docs/outputs/ope_outputs.md",
+   "notes/2026-09-02_recs_sync.md",
+   "recs_eval/__init__.py",
+   "recs_eval/__main__.py",
+   "recs_eval/cli.py",
+   "recs_eval/logs.py",
+   "recs_eval/metrics.py",
+   "recs_eval/replay.py",
+   "recs_eval/report.py",
+   "serving/config/serving.yaml",
+   "serving/ranker/serve.py"
+  ],
+  "n_workspace": 19,
+  "tests": [
+   "runtime_manifest.sha256",
+   "scenarios.py",
+   "test.sh",
+   "test_ope.py",
+   "truth.py",
+   "world.py"
+  ],
+  "solution": [
+   "recs_eval/cli.py",
+   "recs_eval/ope.py",
+   "recs_eval/yaml_lite.py",
+   "solve.sh"
+  ],
+  "build": [
+   "history.py",
+   "world.py"
+  ],
+  "hidden": [
+   "hidden_a",
+   "hidden_b",
+   "hidden_c"
+  ],
+  "criteria": [],
+  "toml_name": "forensicds/recommender-ope-g24",
+  "difficulty": "hard",
+  "verifier_timeout": "7200.0",
+  "agent_timeout": "5400.0",
+  "network": "public",
+  "instruction_lines": 27,
+  "has_provenance": true
+ },
+ "g36-tou-capacity-gate": {
+  "workspace": [
+   "README.md",
+   "capacity_forecast/__init__.py",
+   "capacity_forecast/__main__.py",
+   "capacity_forecast/__pycache__/__init__.cpython-313.pyc",
+   "capacity_forecast/__pycache__/load.cpython-313.pyc",
+   "capacity_forecast/cli.py",
+   "capacity_forecast/incumbent.py",
+   "capacity_forecast/load.py",
+   "docs/extract_dictionary.md",
+   "docs/load_research_note.md",
+   "docs/outputs/analysis_contract.md",
+   "docs/pilot_design_note.md",
+   "docs/tou_programme_note.md",
+   "reports/fy27_capacity_memo.md",
+   "reports/peak_forecast_backtest.md"
+  ],
+  "n_workspace": 15,
+  "tests": [
+   "runtime_manifest.sha256",
+   "scenarios.py",
+   "test.sh",
+   "test_capacity.py",
+   "world.py"
+  ],
+  "solution": [
+   "capacity_forecast/__init__.py",
+   "capacity_forecast/__main__.py",
+   "capacity_forecast/__pycache__/__init__.cpython-313.pyc",
+   "capacity_forecast/__pycache__/estimators.cpython-313.pyc",
+   "capacity_forecast/__pycache__/load.cpython-313.pyc",
+   "capacity_forecast/cli.py",
+   "capacity_forecast/estimators.py",
+   "capacity_forecast/load.py",
+   "solve.sh"
+  ],
+  "build": [
+   "__pycache__",
+   "world.py"
+  ],
+  "hidden": [
+   "hidden_a",
+   "hidden_b",
+   "hidden_c",
+   "hidden_d"
+  ],
+  "criteria": [],
+  "toml_name": "forensicds/tou-capacity-gate-g36",
+  "difficulty": "hard",
+  "verifier_timeout": "7200.0",
+  "agent_timeout": "7200.0",
+  "network": "public",
+  "instruction_lines": 31,
+  "has_provenance": true
+ },
+ "p20-noshow-monitoring": {
+  "workspace": [
+   "README.md",
+   "docs/model_risk_standard.md",
+   "docs/outputs/readout_contract.md",
+   "docs/reminder_programme_sop.md",
+   "docs/table_dictionary.md",
+   "mlops/__init__.py",
+   "mlops/__main__.py",
+   "mlops/cli.py",
+   "mlops/data.py",
+   "mlops/metrics.py",
+   "mlops/monitor.py",
+   "mlops/scoring.py",
+   "notes/ops_notes.md",
+   "reports/vendor_monitoring_report.md"
+  ],
+  "n_workspace": 14,
+  "tests": [
+   "runtime_manifest.sha256",
+   "scenarios.py",
+   "test.sh",
+   "test_monitoring.py",
+   "tolerances.py",
+   "world.py"
+  ],
+  "solution": [
+   "mlops/__init__.py",
+   "mlops/__main__.py",
+   "mlops/cli.py",
+   "mlops/data.py",
+   "mlops/metrics.py",
+   "mlops/monitor.py",
+   "mlops/population.py",
+   "mlops/programme.py",
+   "mlops/scoring.py",
+   "solve.sh"
+  ],
+  "build": [
+   "world.py"
+  ],
+  "hidden": [
+   "hidden_a",
+   "hidden_b",
+   "hidden_c"
+  ],
+  "criteria": [],
+  "toml_name": "forensicds/noshow-monitoring-p20",
+  "difficulty": "hard",
+  "verifier_timeout": "5400.0",
+  "agent_timeout": "5400.0",
+  "network": "public",
+  "instruction_lines": 18,
+  "has_provenance": true
+ },
+ "p22-gauge-recalibration": {
+  "workspace": [
+   "README.md",
+   "docs/QP-07_calibration.md",
+   "docs/drawing_MAN-4471.md",
+   "docs/outputs/readout_contract.md",
+   "docs/supply_quality_agreement.md",
+   "docs/table_dictionary.md",
+   "notes/plant_notes.md",
+   "quality/__init__.py",
+   "quality/__main__.py",
+   "quality/__pycache__/__init__.cpython-314.pyc",
+   "quality/__pycache__/__main__.cpython-314.pyc",
+   "quality/__pycache__/attribution.cpython-314.pyc",
+   "quality/__pycache__/cli.cpython-314.pyc",
+   "quality/__pycache__/dispositions.cpython-314.pyc",
+   "quality/__pycache__/report.cpython-314.pyc",
+   "quality/attribution.py",
+   "quality/cli.py",
+   "quality/dispositions.py",
+   "quality/report.py",
+   "reports/quality_report_w24.md"
+  ],
+  "n_workspace": 20,
+  "tests": [
+   "runtime_manifest.sha256",
+   "scenarios.py",
+   "test.sh",
+   "test_gauge.py",
+   "tolerances.py",
+   "world.py"
+  ],
+  "solution": [
+   "quality/__init__.py",
+   "quality/__main__.py",
+   "quality/__pycache__/__init__.cpython-314.pyc",
+   "quality/__pycache__/__main__.cpython-314.pyc",
+   "quality/__pycache__/attribution.cpython-314.pyc",
+   "quality/__pycache__/cli.cpython-314.pyc",
+   "quality/__pycache__/dispositions.cpython-314.pyc",
+   "quality/__pycache__/report.cpython-314.pyc",
+   "quality/attribution.py",
+   "quality/cli.py",
+   "quality/conformance.py",
+   "quality/dispositions.py",
+   "quality/report.py",
+   "solve.sh"
+  ],
+  "build": [
+   "__pycache__",
+   "world.py"
+  ],
+  "hidden": [
+   "hidden_a",
+   "hidden_b",
+   "hidden_c"
+  ],
+  "criteria": [],
+  "toml_name": "forensicds/man4471-yield-step-p22",
+  "difficulty": "hard",
+  "verifier_timeout": "5400.0",
+  "agent_timeout": "5400.0",
+  "network": "public",
+  "instruction_lines": 19,
+  "has_provenance": true
+ },
+ "p31-fill-rate-dispute": {
+  "workspace": [
+   "README.md",
+   "docs/customer_supply_agreement.md",
+   "docs/outputs/readout_contract.md",
+   "docs/supplier_report_methodology.md",
+   "docs/table_dictionary.md",
+   "notes/correspondence.md",
+   "reports/commercial_escalation.md",
+   "reports/demand_science_response.md",
+   "service/__init__.py",
+   "service/__main__.py",
+   "service/cli.py",
+   "service/metrics.py",
+   "service/report.py"
+  ],
+  "n_workspace": 13,
+  "tests": [
+   "runtime_manifest.sha256",
+   "scenarios.py",
+   "test.sh",
+   "test_fill.py",
+   "tolerances.py",
+   "world.py"
+  ],
+  "solution": [
+   "service/__init__.py",
+   "service/__main__.py",
+   "service/adjudicate.py",
+   "service/cli.py",
+   "service/definitions.py",
+   "service/metrics.py",
+   "service/report.py",
+   "solve.sh"
+  ],
+  "build": [
+   "world.py"
+  ],
+  "hidden": [
+   "hidden_a",
+   "hidden_b",
+   "hidden_c"
+  ],
+  "criteria": [],
+  "toml_name": "forensicds/fill-rate-dispute-p31",
+  "difficulty": "hard",
+  "verifier_timeout": "5400.0",
+  "agent_timeout": "5400.0",
+  "network": "public",
+  "instruction_lines": 20,
+  "has_provenance": true
+ },
+ "g50-courier-boost-rollout": {
+  "workspace": [
+   "README.md",
+   "docs/boost_programme_brief.md",
+   "docs/courier_supply_note.md",
+   "docs/data_dictionary.md",
+   "docs/dispatch_offer_queue.md",
+   "docs/experiment_plan.md",
+   "docs/metric_definitions.md",
+   "docs/outputs/readout_contract.md",
+   "docs/rollout_decision_memo.md",
+   "northline_eval/__init__.py",
+   "northline_eval/__main__.py",
+   "northline_eval/cli.py",
+   "northline_eval/effects.py",
+   "northline_eval/panel.py",
+   "northline_eval/report.py",
+   "northline_eval/warehouse.py",
+   "notebooks/analyst_note.md",
+   "reports/boost_readout_2026-06.md"
+  ],
+  "n_workspace": 18,
+  "tests": [
+   "runtime_manifest.aarch64.sha256",
+   "runtime_manifest.x86_64.sha256",
+   "scenarios.py",
+   "test.sh",
+   "test_boost.py",
+   "world.py"
+  ],
+  "solution": [
+   "northline_eval/effects.py",
+   "northline_eval/report.py",
+   "solve.sh"
+  ],
+  "build": [
+   "world.py"
+  ],
+  "hidden": [
+   "hidden_a",
+   "hidden_b",
+   "hidden_c",
+   "hidden_d"
+  ],
+  "criteria": [],
+  "toml_name": "forensicds/courier-boost-rollout-g50",
+  "difficulty": "hard",
+  "verifier_timeout": "5400.0",
+  "agent_timeout": "5400.0",
+  "network": "public",
+  "instruction_lines": 24,
+  "has_provenance": true
+ },
+ "g08-forecast-accuracy-vintages": {
+  "workspace": [
+   "README.md",
+   "RELEASES.md",
+   "docs/data/data_dictionary.md",
+   "docs/finance/billing_feed_retirement_2026.md",
+   "docs/finance/scorecard_policy.md",
+   "docs/forecasting/forecast_store.md",
+   "docs/kpi/forecast_accuracy_kpi.md",
+   "docs/mart/accuracy_mart.md",
+   "docs/models/v4_release_note.md",
+   "docs/portfolio/portfolio_restructure_2026.md",
+   "docs/settlement/settlement_process.md",
+   "docs/trading/day_ahead_process.md",
+   "fcaccuracy/__init__.py",
+   "fcaccuracy/__main__.py",
+   "fcaccuracy/cli.py",
+   "fcaccuracy/kpi.py",
+   "fcaccuracy/mart.py",
+   "fcaccuracy/outputs.py",
+   "fcaccuracy/warehouse.py",
+   "notebooks/kpi_pack_legacy.ipynb",
+   "notes/2026-09-22_accuracy_thread.md",
+   "ops/settlement_incidents.md",
+   "requirements.txt",
+   "sql/accuracy_examples.sql"
+  ],
+  "n_workspace": 24,
+  "tests": [
+   "reference.py",
+   "scenarios.py",
+   "test.sh",
+   "test_accuracy_mart.py",
+   "world.py"
+  ],
+  "solution": [
+   "fcaccuracy/kpi.py",
+   "fcaccuracy/mart.py",
+   "solve.sh"
+  ],
+  "build": [
+   "history.py",
+   "world.py"
+  ],
+  "hidden": [
+   "hidden_a",
+   "hidden_b",
+   "hidden_c"
+  ],
+  "criteria": [
+   "artifacts"
+  ],
+  "toml_name": "forensicds/forecast-accuracy-vintages-g08",
+  "difficulty": "hard",
+  "verifier_timeout": "4800.0",
+  "agent_timeout": "3600.0",
+  "network": "public",
+  "instruction_lines": 19,
+  "has_provenance": true
+ }
+}

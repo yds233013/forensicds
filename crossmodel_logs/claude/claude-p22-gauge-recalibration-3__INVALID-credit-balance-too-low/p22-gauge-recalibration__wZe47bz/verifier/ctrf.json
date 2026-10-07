@@ -1,0 +1,86 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 6,
+            "passed": 3,
+            "failed": 3,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1790827414.5582588,
+            "stop": 1790827419.4439466
+        },
+        "tests": [
+            {
+                "name": "test_gauge.py::test_database_unmodified",
+                "status": "passed",
+                "duration": 0.7682555849314667,
+                "start": 1790827414.5879254,
+                "stop": 1790827415.3641262,
+                "retries": 0,
+                "file_path": "test_gauge.py"
+            },
+            {
+                "name": "test_gauge.py::test_pipeline_runs",
+                "status": "passed",
+                "duration": 0.5388173329993151,
+                "start": 1790827415.3682318,
+                "stop": 1790827415.9079893,
+                "retries": 0,
+                "file_path": "test_gauge.py"
+            },
+            {
+                "name": "test_gauge.py::test_rerun_is_deterministic",
+                "status": "passed",
+                "duration": 0.600954958004877,
+                "start": 1790827415.908797,
+                "stop": 1790827416.5102003,
+                "retries": 0,
+                "file_path": "test_gauge.py"
+            },
+            {
+                "name": "test_gauge.py::test_output_schema",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0014202930615283549,
+                "start": 1790827416.5104866,
+                "stop": 1790827416.53228,
+                "retries": 0,
+                "file_path": "test_gauge.py",
+                "trace": "def test_output_schema():\n        readout, rows = _read_outputs(WORKSPACE / \"out\")\n        required = (\"part_number\", \"window_pre\", \"window_post\", \"baseline_nonconforming_rate_pct\",\n                    \"reported_nonconforming_rate_pct\", \"corrected_nonconforming_rate_pct\",\n                    \"conformance_reference_offset_um\", \"strata_nonconforming_rate_pct\", \"attribution_pp\",\n                    \"supplier_decision\")\n        missing = [k for k in required if k not in readout]\n        if missing:\n            _fail(\"evidence_reconstruction\", f\"readout.json is missing {missing}\")\n>       assert not missing, f\"readout.json is missing {missing}\"\nE       AssertionError: readout.json is missing ['corrected_nonconforming_rate_pct', 'conformance_reference_offset_um', 'strata_nonconforming_rate_pct']\nE       assert not ['corrected_nonconforming_rate_pct', 'conformance_reference_offset_um', 'strata_nonconforming_rate_pct']\n\ntest_gauge.py:299: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_gauge.py::test_visible_extract",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.692084793059621,
+                "start": 1790827416.5325084,
+                "stop": 1790827417.231563,
+                "retries": 0,
+                "file_path": "test_gauge.py",
+                "trace": "def test_visible_extract():\n        root = Path(tempfile.mkdtemp())\n        bad = _check_extract(\"visible\", root)\n        shutil.rmtree(root, ignore_errors=True)\n>       assert not bad, \"visible extract:\\n  \" + \"\\n  \".join(bad)\nE       AssertionError: visible extract:\nE           strata_nonconforming_rate_pct missing or not an object\nE           conformance_reference_offset_um missing or not an object\nE           corrected_nonconforming_rate_pct: missing or not a number\nE           out/part_dispositions.csv was not written\nE           attribution_pp[material] = 3.9416666666666664 pp, expected 0.917 pp +/- 0.8\nE           attribution_pp[measurement_system] = 0.0 pp, expected 2.858 pp +/- 0.8\nE           supplier_decision = 'raise_supplier_nonconformance', expected 'no_supplier_action'\nE       assert not ['strata_nonconforming_rate_pct missing or not an object', 'conformance_reference_offset_um missing or not an object',...66666664 pp, expected 0.917 pp +/- 0.8', 'attribution_pp[measurement_system] = 0.0 pp, expected 2.858 pp +/- 0.8', ...]\n\ntest_gauge.py:312: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_gauge.py::test_hidden_extract",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.5701223340001889,
+                "start": 1790827417.2317636,
+                "stop": 1790827417.809278,
+                "retries": 2,
+                "file_path": "test_gauge.py",
+                "tags": [
+                    "parametrize::fixture::['hidden_a', 'hidden_b', 'hidden_c']"
+                ],
+                "trace": "fixture = 'hidden_c'\n\n    @pytest.mark.parametrize(\"fixture\", [s[\"name\"] for s in scenarios.HIDDEN_SPECS])\n    def test_hidden_extract(fixture):\n        root = Path(tempfile.mkdtemp())\n        bad = _check_extract(fixture, root)\n        shutil.rmtree(root, ignore_errors=True)\n>       assert not bad, f\"{fixture}:\\n  \" + \"\\n  \".join(bad)\nE       AssertionError: hidden_c:\nE           strata_nonconforming_rate_pct missing or not an object\nE           conformance_reference_offset_um missing or not an object\nE           corrected_nonconforming_rate_pct: missing or not a number\nE           out/part_dispositions.csv was not written\nE           attribution_pp[material] = 8.591666666666667 pp, expected 0.817 pp +/- 0.8\nE           attribution_pp[measurement_system] = 0.0 pp, expected 4.692 pp +/- 0.8\nE           attribution_pp[tooling] = 0.0 pp, expected 3.083 pp +/- 0.8\nE           supplier_decision = 'raise_supplier_nonconformance', expected 'no_supplier_action'\nE       assert not ['strata_nonconforming_rate_pct missing or not an object', 'conformance_reference_offset_um missing or not an object',...66666667 pp, expected 0.817 pp +/- 0.8', 'attribution_pp[measurement_system] = 0.0 pp, expected 4.692 pp +/- 0.8', ...]\n\ntest_gauge.py:320: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

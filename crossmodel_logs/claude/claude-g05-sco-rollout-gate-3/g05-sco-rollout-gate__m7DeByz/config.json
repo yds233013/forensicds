@@ -1,0 +1,13 @@
+{
+    "task": {
+        "path": "candidates/g05-sco-rollout-gate"
+    },
+    "trial_name": "g05-sco-rollout-gate__m7DeByz",
+    "trials_dir": "crossmodel_logs/claude/claude-g05-sco-rollout-gate-3",
+    "agent_setup_timeout_multiplier": 3.0,
+    "agent": {
+        "name": "claude-code",
+        "model_name": "claude-opus-5-5"
+    },
+    "job_id": "6bd58e74-ac9c-4353-974f-d7272d06f27d"
+}

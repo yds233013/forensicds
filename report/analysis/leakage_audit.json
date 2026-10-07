@@ -1,0 +1,72 @@
+[
+ {
+  "task": "02-renewal-risk-regression",
+  "hits": [],
+  "multistage": false,
+  "gen_in_tests": true,
+  "sol_outside_ws": true
+ },
+ {
+  "task": "g05-sco-rollout-gate",
+  "hits": [],
+  "multistage": true,
+  "gen_in_tests": true,
+  "sol_outside_ws": true
+ },
+ {
+  "task": "g10-censored-demand",
+  "hits": [],
+  "multistage": true,
+  "gen_in_tests": true,
+  "sol_outside_ws": true
+ },
+ {
+  "task": "g24-recommender-ope",
+  "hits": [],
+  "multistage": true,
+  "gen_in_tests": true,
+  "sol_outside_ws": true
+ },
+ {
+  "task": "g36-tou-capacity-gate",
+  "hits": [],
+  "multistage": true,
+  "gen_in_tests": true,
+  "sol_outside_ws": true
+ },
+ {
+  "task": "p20-noshow-monitoring",
+  "hits": [],
+  "multistage": true,
+  "gen_in_tests": true,
+  "sol_outside_ws": true
+ },
+ {
+  "task": "p22-gauge-recalibration",
+  "hits": [],
+  "multistage": true,
+  "gen_in_tests": true,
+  "sol_outside_ws": true
+ },
+ {
+  "task": "p31-fill-rate-dispute",
+  "hits": [],
+  "multistage": true,
+  "gen_in_tests": true,
+  "sol_outside_ws": true
+ },
+ {
+  "task": "g08-forecast-accuracy-vintages",
+  "hits": [],
+  "multistage": true,
+  "gen_in_tests": true,
+  "sol_outside_ws": true
+ },
+ {
+  "task": "g50-courier-boost-rollout",
+  "hits": [],
+  "multistage": true,
+  "gen_in_tests": true,
+  "sol_outside_ws": true
+ }
+]

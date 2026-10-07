@@ -1,0 +1,81 @@
+{
+    "id": "f4f8b5d4-7266-4a82-a2ae-c73a01a398e8",
+    "started_at": "2026-10-01T00:11:21.559971",
+    "updated_at": "2026-10-01T00:18:28.747326",
+    "finished_at": "2026-10-01T00:18:28.747326",
+    "n_total_trials": 1,
+    "stats": {
+        "n_completed_trials": 1,
+        "n_errored_trials": 0,
+        "n_running_trials": 0,
+        "n_pending_trials": 0,
+        "n_cancelled_trials": 0,
+        "n_retries": 0,
+        "evals": {
+            "claude-code__claude-opus-5-5__adhoc": {
+                "n_trials": 1,
+                "n_errors": 0,
+                "metrics": [
+                    {
+                        "criterion_decision": 1.0,
+                        "criterion_estimator_implementation": 1.0,
+                        "criterion_evidence_reconstruction": 1.0,
+                        "criterion_identification": 1.0,
+                        "criterion_independent_validation": 1.0,
+                        "criterion_quantitative_results": 1.0,
+                        "criterion_scientific_object": 1.0,
+                        "reward": 1.0
+                    }
+                ],
+                "pass_at_k": {},
+                "reward_stats": {
+                    "criterion_decision": {
+                        "1": [
+                            "p22-gauge-recalibration__2koWTjr"
+                        ]
+                    },
+                    "criterion_estimator_implementation": {
+                        "1": [
+                            "p22-gauge-recalibration__2koWTjr"
+                        ]
+                    },
+                    "criterion_evidence_reconstruction": {
+                        "1": [
+                            "p22-gauge-recalibration__2koWTjr"
+                        ]
+                    },
+                    "criterion_identification": {
+                        "1": [
+                            "p22-gauge-recalibration__2koWTjr"
+                        ]
+                    },
+                    "criterion_independent_validation": {
+                        "1": [
+                            "p22-gauge-recalibration__2koWTjr"
+                        ]
+                    },
+                    "criterion_quantitative_results": {
+                        "1": [
+                            "p22-gauge-recalibration__2koWTjr"
+                        ]
+                    },
+                    "criterion_scientific_object": {
+                        "1": [
+                            "p22-gauge-recalibration__2koWTjr"
+                        ]
+                    },
+                    "reward": {
+                        "1": [
+                            "p22-gauge-recalibration__2koWTjr"
+                        ]
+                    }
+                },
+                "exception_stats": {}
+            }
+        },
+        "n_input_tokens": 576802,
+        "n_cache_tokens": 532550,
+        "n_output_tokens": 19570,
+        "cost_usd": 0.7191379999999999
+    }
+}

@@ -1,0 +1,155 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 14,
+            "passed": 14,
+            "failed": 0,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1790841894.7053237,
+            "stop": 1790841976.5755
+        },
+        "tests": [
+            {
+                "name": "test_accuracy_mart.py::test_warehouse_unmodified",
+                "status": "passed",
+                "duration": 76.50850970105967,
+                "start": 1790841894.7546968,
+                "stop": 1790841971.2779055,
+                "retries": 0,
+                "file_path": "test_accuracy_mart.py"
+            },
+            {
+                "name": "test_accuracy_mart.py::test_build_succeeds",
+                "status": "passed",
+                "duration": 0.007528916001319885,
+                "start": 1790841971.2875524,
+                "stop": 1790841971.2959619,
+                "retries": 0,
+                "file_path": "test_accuracy_mart.py"
+            },
+            {
+                "name": "test_accuracy_mart.py::test_example_set",
+                "status": "passed",
+                "duration": 0.916407499986235,
+                "start": 1790841971.2963138,
+                "stop": 1790841972.2132094,
+                "retries": 0,
+                "file_path": "test_accuracy_mart.py"
+            },
+            {
+                "name": "test_accuracy_mart.py::test_forecast_in_force",
+                "status": "passed",
+                "duration": 0.30442516709445044,
+                "start": 1790841972.2137153,
+                "stop": 1790841972.5185575,
+                "retries": 0,
+                "file_path": "test_accuracy_mart.py"
+            },
+            {
+                "name": "test_accuracy_mart.py::test_kpi_month_and_status",
+                "status": "passed",
+                "duration": 0.14706195902545005,
+                "start": 1790841972.5189168,
+                "stop": 1790841972.6662793,
+                "retries": 0,
+                "file_path": "test_accuracy_mart.py"
+            },
+            {
+                "name": "test_accuracy_mart.py::test_settlement_runs",
+                "status": "passed",
+                "duration": 0.18903783400310203,
+                "start": 1790841972.6664853,
+                "stop": 1790841972.8560717,
+                "retries": 0,
+                "file_path": "test_accuracy_mart.py"
+            },
+            {
+                "name": "test_accuracy_mart.py::test_actuals_and_errors",
+                "status": "passed",
+                "duration": 0.2327626679907553,
+                "start": 1790841972.8565545,
+                "stop": 1790841973.0897992,
+                "retries": 0,
+                "file_path": "test_accuracy_mart.py"
+            },
+            {
+                "name": "test_accuracy_mart.py::test_monthly_kpi",
+                "status": "passed",
+                "duration": 0.0029134589713066816,
+                "start": 1790841973.090231,
+                "stop": 1790841973.0933726,
+                "retries": 0,
+                "file_path": "test_accuracy_mart.py"
+            },
+            {
+                "name": "test_accuracy_mart.py::test_summary_head_to_head",
+                "status": "passed",
+                "duration": 0.0008921670378185809,
+                "start": 1790841973.0935931,
+                "stop": 1790841973.0946596,
+                "retries": 0,
+                "file_path": "test_accuracy_mart.py"
+            },
+            {
+                "name": "test_accuracy_mart.py::test_build_time",
+                "status": "passed",
+                "duration": 0.0007096250774338841,
+                "start": 1790841973.0948846,
+                "stop": 1790841973.095771,
+                "retries": 0,
+                "file_path": "test_accuracy_mart.py"
+            },
+            {
+                "name": "test_accuracy_mart.py::test_rerun_is_deterministic",
+                "status": "passed",
+                "duration": 0.009541126026306301,
+                "start": 1790841973.0959735,
+                "stop": 1790841973.1057544,
+                "retries": 0,
+                "file_path": "test_accuracy_mart.py"
+            },
+            {
+                "name": "test_accuracy_mart.py::test_hidden_examples",
+                "status": "passed",
+                "duration": 0.7951209590537474,
+                "start": 1790841973.1059937,
+                "stop": 1790841973.9026675,
+                "retries": 2,
+                "file_path": "test_accuracy_mart.py",
+                "tags": [
+                    "parametrize::name::['hidden_a', 'hidden_b', 'hidden_c']"
+                ]
+            },
+            {
+                "name": "test_accuracy_mart.py::test_hidden_monthly_kpi",
+                "status": "passed",
+                "duration": 0.0023880830267444253,
+                "start": 1790841975.7965028,
+                "stop": 1790841975.7990901,
+                "retries": 2,
+                "file_path": "test_accuracy_mart.py",
+                "tags": [
+                    "parametrize::name::['hidden_a', 'hidden_b', 'hidden_c']"
+                ]
+            },
+            {
+                "name": "test_accuracy_mart.py::test_hidden_head_to_head",
+                "status": "passed",
+                "duration": 0.0006627089460380375,
+                "start": 1790841975.805451,
+                "stop": 1790841975.8062816,
+                "retries": 2,
+                "file_path": "test_accuracy_mart.py",
+                "tags": [
+                    "parametrize::name::['hidden_a', 'hidden_b', 'hidden_c']"
+                ]
+            }
+        ]
+    }
+}

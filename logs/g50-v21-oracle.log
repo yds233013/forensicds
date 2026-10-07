@@ -1,0 +1,26 @@
+  1/1 Criterion_Courier_Supply_Response: 1.000 ━━━━━━━━━━━━━━━━━ 0:03:14 0:00:00
+adhoc • oracle
+┏━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━┳━━━━━━━━┳━━━━━━━┓
+┃ Trials ┃ Excep… ┃ Crite… ┃ Crite… ┃ Crite… ┃ Crite… ┃ Crit… ┃ Crite… ┃ Rewa… ┃
+┡━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━╇━━━━━━━━╇━━━━━━━┩
+│      1 │      0 │  1.000 │  1.000 │  1.000 │  1.000 │ 1.000 │  1.000 │ 1.000 │
+└────────┴────────┴────────┴────────┴────────┴────────┴───────┴────────┴───────┘
+
+┏━━━━━━━━┳━━━━━━━┓
+┃ Reward ┃ Count ┃
+┡━━━━━━━━╇━━━━━━━┩
+│ 1      │     1 │
+│ 1      │     1 │
+│ 1      │     1 │
+│ 1      │     1 │
+│ 1      │     1 │
+│ 1      │     1 │
+│ 1      │     1 │
+└────────┴───────┘
+
+Job Info
+Total runtime: 3m 14s
+Results written to jobs/g50-v21-oracle/result.json
+Inspect results by running `harbor view jobs`
+Share results by running `harbor upload jobs/g50-v21-oracle`
+

@@ -1,0 +1,83 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 6,
+            "passed": 4,
+            "failed": 2,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1790840267.203072,
+            "stop": 1790840271.6314256
+        },
+        "tests": [
+            {
+                "name": "test_fill.py::test_database_unmodified",
+                "status": "passed",
+                "duration": 0.9110721669276245,
+                "start": 1790840267.2334924,
+                "stop": 1790840268.1454473,
+                "retries": 0,
+                "file_path": "test_fill.py"
+            },
+            {
+                "name": "test_fill.py::test_pipeline_runs",
+                "status": "passed",
+                "duration": 0.28484137501800433,
+                "start": 1790840268.145911,
+                "stop": 1790840268.431135,
+                "retries": 0,
+                "file_path": "test_fill.py"
+            },
+            {
+                "name": "test_fill.py::test_rerun_is_deterministic",
+                "status": "passed",
+                "duration": 0.5080044170026667,
+                "start": 1790840268.4313915,
+                "stop": 1790840268.9397829,
+                "retries": 0,
+                "file_path": "test_fill.py"
+            },
+            {
+                "name": "test_fill.py::test_output_schema",
+                "status": "passed",
+                "duration": 0.0009024579776450992,
+                "start": 1790840268.9401126,
+                "stop": 1790840268.9412253,
+                "retries": 0,
+                "file_path": "test_fill.py"
+            },
+            {
+                "name": "test_fill.py::test_visible_extract",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.6997309170546941,
+                "start": 1790840268.9413838,
+                "stop": 1790840269.660323,
+                "retries": 0,
+                "file_path": "test_fill.py",
+                "trace": "def test_visible_extract():\n        root = Path(tempfile.mkdtemp())\n        bad = _check_extract(\"visible\", root)\n        shutil.rmtree(root, ignore_errors=True)\n>       assert not bad, \"visible extract:\\n  \" + \"\\n  \".join(bad)\nE       AssertionError: visible extract:\nE           account_fill.csv marks 0 accounts below the floor but the readout claims 3\nE       assert not ['account_fill.csv marks 0 accounts below the floor but the readout claims 3']\n\ntest_fill.py:301: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_fill.py::test_hidden_extract",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.6634667499456555,
+                "start": 1790840269.6605556,
+                "stop": 1790840270.330553,
+                "retries": 2,
+                "file_path": "test_fill.py",
+                "tags": [
+                    "parametrize::fixture::['hidden_a', 'hidden_b', 'hidden_c']"
+                ],
+                "trace": "fixture = 'hidden_c'\n\n    @pytest.mark.parametrize(\"fixture\", [s[\"name\"] for s in scenarios.HIDDEN_SPECS])\n    def test_hidden_extract(fixture):\n        root = Path(tempfile.mkdtemp())\n        bad = _check_extract(fixture, root)\n        shutil.rmtree(root, ignore_errors=True)\n>       assert not bad, f\"{fixture}:\\n  \" + \"\\n  \".join(bad)\nE       AssertionError: hidden_c:\nE           account_fill.csv marks 0 accounts below the floor but the readout claims 14\nE           bonus_gate_met = 'not_determinable', expected 'no'\nE       assert not ['account_fill.csv marks 0 accounts below the floor but the readout claims 14', \"bonus_gate_met = 'not_determinable', expected 'no'\"]\n\ntest_fill.py:309: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

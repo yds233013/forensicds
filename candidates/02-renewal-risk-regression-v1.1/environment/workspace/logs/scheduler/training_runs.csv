@@ -1,0 +1,6 @@
+run_id,dag,as_of,started_at,finished_at,status,code_version,model_version,notes
+tr-0412,renewal_risk_quarterly_retrain,2025-08-15,2025-08-16T03:00:04Z,2025-08-16T03:04:51Z,success,2.3.4,renewal-risk-v2.3,promoted 2025-08-18
+tr-0457,renewal_risk_quarterly_retrain,2025-11-15,2025-11-16T03:00:02Z,2025-11-16T03:05:07Z,skipped,2.3.4,,retrain skipped: CRM replication incident INC-1874
+tr-0488,renewal_risk_quarterly_retrain,2026-02-15,2026-02-16T03:00:03Z,2026-02-16T03:03:58Z,success,2.4.0,renewal-risk-v2.4,promoted 2026-03-02 after review
+tr-0521,renewal_risk_quarterly_retrain,2026-05-15,2026-05-16T03:00:05Z,2026-05-16T03:00:09Z,skipped,2.4.1,,retrain paused by owner (Q2 renewals under review)
+tr-0549,renewal_risk_quarterly_retrain,2026-08-15,,,pending,2.4.1,,blocked: renewal-risk incident review

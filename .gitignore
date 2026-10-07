@@ -45,3 +45,15 @@ logs/run_*.out
 # its digest is verified against the frozen extract digest for every trial in
 # research/phase3/exposure/collected_db_digests.txt.
 jobs/*-prospective-*/**/artifacts/workspace/data/*.sqlite
+
+# ---- publication exclusions (added when the project was published) ----
+# Raw Harbor job trees for the Gemini arm total ~1.8 GB. A curated subset is tracked;
+# the rest is reproducible by re-running the task with `harbor run`.
+# submission_final10.zip is 131 MB, above GitHub's 100 MB per-file hard limit.
+submission_final10.zip
+submission.zip
+submission_5task_fallback.zip
+research_review.zip
+/submission/
+*.bundle
+/submission_final10/

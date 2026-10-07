@@ -1,0 +1,13 @@
+{
+    "task": {
+        "path": "candidates/p31-fill-rate-dispute"
+    },
+    "trial_name": "p31-fill-rate-dispute__Rzuodrc",
+    "trials_dir": "crossmodel_logs/claude/claude-p31-fill-rate-dispute-3",
+    "agent_setup_timeout_multiplier": 3.0,
+    "agent": {
+        "name": "claude-code",
+        "model_name": "claude-opus-5-5"
+    },
+    "job_id": "9745326c-4e97-41be-bc0f-c4f9d0cfd23e"
+}

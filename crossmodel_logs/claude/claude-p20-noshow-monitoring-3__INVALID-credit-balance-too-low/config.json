@@ -1,0 +1,17 @@
+{
+    "job_name": "claude-p20-noshow-monitoring-3",
+    "jobs_dir": "crossmodel_logs/claude",
+    "agent_setup_timeout_multiplier": 3.0,
+    "n_concurrent_trials": 1,
+    "agents": [
+        {
+            "name": "claude-code",
+            "model_name": "claude-opus-5-5"
+        }
+    ],
+    "tasks": [
+        {
+            "path": "candidates/p20-noshow-monitoring"
+        }
+    ]
+}

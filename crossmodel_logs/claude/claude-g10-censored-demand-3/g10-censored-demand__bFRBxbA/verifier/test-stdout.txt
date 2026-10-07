@@ -1,0 +1,533 @@
+
+[notice] A new release of pip is available: 25.0.1 -> 26.2.1
+[notice] To update, run: python3.12 -m pip install --upgrade pip
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 15 items
+
+test_demand_review.py ...FFFFF.FFFFFF                                    [100%]
+
+=================================== FAILURES ===================================
+________________________ test_demand_history_structure _________________________
+
+ctx = {'agent_digest': 'ffcb4fccfdcceedb475a76fb9022c17899fdb1bab81393b7183305358e877632', 'hidden': {'hidden_a': ({'bias': ..._pct": {\n    "v3_pre_all_stores": -16.76506244130354,\n    "v4_post_lean26": -18.72555812996252\n  }\n}\n', ...}, ...}
+
+    def test_demand_history_structure(ctx):
+        """One row per trading store-SKU-day; units sold as recorded; lost = expected - sold >= 0; expected demand equals
+        sales on days the item was on shelf for all trading hours."""
+        require_run(ctx["run1"])
+>       check_history_structure(ctx["run1"], ctx["truth"])
+
+test_demand_review.py:335: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+run = {'history': [{'date': '2026-04-06', 'expected_demand': '4.000003000002678', 'lost_units': '1.0000030000026783', 'sku_i...t_bias_pct": {\n    "v3_pre_all_stores": -16.76506244130354,\n    "v4_post_lean26": -18.72555812996252\n  }\n}\n', ...}
+t = {'bias': {'v3_pre_all_stores': -5.145182897050237, 'v4_post_lean26': -17.935913257505625}, 'cat_of': {'K101': 'Soups &... '2026-04-08'), ('S01', 'K101', '2026-04-09'), ('S01', 'K101', '2026-04-10'), ('S01', 'K101', '2026-04-11'), ...}, ...}
+
+    def check_history_structure(run: dict, t: dict) -> None:
+        got = history_map(run)
+        missing, extra = set(t["keys"]) - set(got), set(got) - set(t["keys"])
+        assert not missing and not extra, (f"demand history rows differ from the trading store-SKU-days: {len(missing)} "
+                                           f"missing (e.g. {sorted(missing)[:3]}), {len(extra)} unexpected (e.g. {sorted(extra)[:3]})")
+        bad_sold, bad_neg, bad_cons, bad_ident = [], [], [], []
+        for k, r in got.items():
+            sold, exp_d, lost = num(r["units_sold"]), num(r["expected_demand"]), num(r["lost_units"])
+            if sold is None or exp_d is None or lost is None:
+                bad_cons.append((k, "empty value"))
+                continue
+            if abs(sold - t["keys"][k]) > 1e-9:
+                bad_sold.append((k, sold, t["keys"][k]))
+            if exp_d < sold - 1e-6 or lost < -1e-6:
+                bad_neg.append((k, sold, exp_d, lost))
+            if abs(lost - (exp_d - sold)) > 1e-6 * max(1.0, exp_d):
+                bad_cons.append((k, exp_d, sold, lost))
+            if k in t["full_in_stock"] and abs(exp_d - sold) > 1e-6:
+                bad_ident.append((k, sold, exp_d))
+        assert not bad_sold, f"{len(bad_sold)} rows with units_sold different from the warehouse, e.g. {bad_sold[:3]}"
+        assert not bad_neg, f"{len(bad_neg)} rows with expected demand below sales or negative lost units, e.g. {bad_neg[:3]}"
+        assert not bad_cons, f"{len(bad_cons)} rows where lost_units != expected_demand - units_sold, e.g. {bad_cons[:3]}"
+>       assert not bad_ident, (f"{len(bad_ident)} rows that were on shelf for all trading hours have expected demand "
+                               f"different from units sold, e.g. {bad_ident[:3]}")
+E       AssertionError: 120067 rows that were on shelf for all trading hours have expected demand different from units sold, e.g. [(('S01', 'K101', '2026-04-06'), 3.0, 4.000003000002678), (('S01', 'K101', '2026-04-07'), 1.0, 2.0000010000008928), (('S01', 'K101', '2026-04-08'), 7.0, 8.00000700000625)]
+E       assert not [(('S01', 'K101', '2026-04-06'), 3.0, 4.000003000002678), (('S01', 'K101', '2026-04-07'), 1.0, 2.0000010000008928), ((...'S01', 'K101', '2026-04-10'), 6.0, 7.0000060000053566), (('S01', 'K101', '2026-04-11'), 14.0, 15.000014000012499), ...]
+
+test_demand_review.py:206: AssertionError
+_________________________ test_expected_demand_strata __________________________
+
+ctx = {'agent_digest': 'ffcb4fccfdcceedb475a76fb9022c17899fdb1bab81393b7183305358e877632', 'hidden': {'hidden_a': ({'bias': ...ntimeWarning: Mean of empty slice\n  pooled = np.nanmean(np.where(np.isnan(prof), np.nan, prof), axis=0)\n', ...}, ...}
+
+    def test_expected_demand_strata(ctx):
+        """Expected demand by period x programme arm x promotion within tolerance of realised demand."""
+        require_run(ctx["run1"])
+>       check_demand_strata(ctx["run1"], ctx["truth"])
+
+test_demand_review.py:341: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+run = {'_strata': {'dem': defaultdict(<class 'float'>, {('pre', 'holdout'): 117041.09553709376, ('post', 'holdout'): 114608....47: RuntimeWarning: Mean of empty slice\n  pooled = np.nanmean(np.where(np.isnan(prof), np.nan, prof), axis=0)\n', ...}
+t = {'bias': {'v3_pre_all_stores': -5.145182897050237, 'v4_post_lean26': -17.935913257505625}, 'cat_of': {'K101': 'Soups &... '2026-04-08'), ('S01', 'K101', '2026-04-09'), ('S01', 'K101', '2026-04-10'), ('S01', 'K101', '2026-04-11'), ...}, ...}
+
+    def check_demand_strata(run: dict, t: dict) -> None:
+        st = strata_from_history(run, t)
+        bad = []
+        for (post, arm, promo), want in t["totals"].items():
+            key = f"total::post{int(post == 'post')}_lean{int(arm == 'lean26')}_promo{int(promo == 'promo')}"
+            e = rel_err(st["totals"][(post, arm, promo)], want)
+            if abs(e) > TOL[key]:
+                bad.append((post, arm, promo, round(e, 2), TOL[key]))
+>       assert not bad, f"expected-demand totals outside tolerance (period, arm, promo, error %, tolerance %): {bad}"
+E       AssertionError: expected-demand totals outside tolerance (period, arm, promo, error %, tolerance %): [('pre', 'holdout', 'nonpromo', 16.72, 1.5), ('pre', 'holdout', 'promo', 3.34, 1.5), ('post', 'holdout', 'promo', 2.1, 1.5), ('post', 'holdout', 'nonpromo', 16.58, 1.5), ('pre', 'lean26', 'nonpromo', 16.48, 1.5), ('pre', 'lean26', 'promo', 3.23, 1.5), ('post', 'lean26', 'promo', -14.9, 1.63), ('post', 'lean26', 'nonpromo', 3.34, 1.5)]
+E       assert not [('pre', 'holdout', 'nonpromo', 16.72, 1.5), ('pre', 'holdout', 'promo', 3.34, 1.5), ('post', 'holdout', 'promo', 2.1,...ldout', 'nonpromo', 16.58, 1.5), ('pre', 'lean26', 'nonpromo', 16.48, 1.5), ('pre', 'lean26', 'promo', 3.23, 1.5), ...]
+
+test_demand_review.py:218: AssertionError
+____________________________ test_lost_units_strata ____________________________
+
+ctx = {'agent_digest': 'ffcb4fccfdcceedb475a76fb9022c17899fdb1bab81393b7183305358e877632', 'hidden': {'hidden_a': ({'bias': ...ntimeWarning: Mean of empty slice\n  pooled = np.nanmean(np.where(np.isnan(prof), np.nan, prof), axis=0)\n', ...}, ...}
+
+    def test_lost_units_strata(ctx):
+        """Lost units within tolerance of realised lost demand: before go-live overall and by promotion; from go-live by
+        programme arm and by promotion."""
+        require_run(ctx["run1"])
+>       check_lost_strata(ctx["run1"], ctx["truth"])
+
+test_demand_review.py:348: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+run = {'_strata': {'dem': defaultdict(<class 'float'>, {('pre', 'holdout'): 117041.09553709376, ('post', 'holdout'): 114608....47: RuntimeWarning: Mean of empty slice\n  pooled = np.nanmean(np.where(np.isnan(prof), np.nan, prof), axis=0)\n', ...}
+t = {'bias': {'v3_pre_all_stores': -5.145182897050237, 'v4_post_lean26': -17.935913257505625}, 'cat_of': {'K101': 'Soups &... '2026-04-08'), ('S01', 'K101', '2026-04-09'), ('S01', 'K101', '2026-04-10'), ('S01', 'K101', '2026-04-11'), ...}, ...}
+
+    def check_lost_strata(run: dict, t: dict) -> None:
+        """Lost units before go-live (all stores; by promotion) and from go-live (by arm; by promotion)."""
+        st = strata_from_history(run, t)
+        got, want = dict(st["lost"]), dict(t["lost"])
+        got[("pre", "all")] = got.get(("pre", "lean26"), 0.0) + got.get(("pre", "holdout"), 0.0)
+        want[("pre", "all")] = want[("pre", "lean26")] + want[("pre", "holdout")]
+        graded = [(("pre", "all"), "lost::pre_all")]
+        graded += [((p, pr), f"lost::post{int(p == 'post')}_promo{int(pr == 'promo')}") for p in PERIODS for pr in ("nonpromo", "promo")]
+        graded += [(("post", a), f"lost::post1_lean{int(a == 'lean26')}") for a in ARMS]
+        bad = []
+        for key, tk in graded:
+            e = rel_err(got.get(key, 0.0), want[key])
+            if abs(e) > TOL[tk]:
+                bad.append((*key, round(e, 2), TOL[tk]))
+>       assert not bad, f"lost units outside tolerance (period, group, error %, tolerance %): {bad}"
+E       AssertionError: lost units outside tolerance (period, group, error %, tolerance %): [('pre', 'all', 198.63, 6.0), ('pre', 'nonpromo', 246.49, 6.0), ('pre', 'promo', 39.0, 7.1), ('post', 'nonpromo', 39.82, 6.0), ('post', 'promo', -49.58, 6.0), ('post', 'holdout', 217.22, 6.0)]
+E       assert not [('pre', 'all', 198.63, 6.0), ('pre', 'nonpromo', 246.49, 6.0), ('pre', 'promo', 39.0, 7.1), ('post', 'nonpromo', 39.82, 6.0), ('post', 'promo', -49.58, 6.0), ('post', 'holdout', 217.22, 6.0)]
+
+test_demand_review.py:235: AssertionError
+_____________________________ test_category_trends _____________________________
+
+ctx = {'agent_digest': 'ffcb4fccfdcceedb475a76fb9022c17899fdb1bab81393b7183305358e877632', 'hidden': {'hidden_a': ({'bias': ...ntimeWarning: Mean of empty slice\n  pooled = np.nanmean(np.where(np.isnan(prof), np.nan, prof), axis=0)\n', ...}, ...}
+
+    def test_category_trends(ctx):
+        """Category baselines implied by the history; baseline change within tolerance; buy-plan actions."""
+        require_run(ctx["run1"])
+>       check_trends(ctx["run1"], ctx["truth"])
+
+test_demand_review.py:354: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+run = {'_strata': {'dem': defaultdict(<class 'float'>, {('pre', 'holdout'): 117041.09553709376, ('post', 'holdout'): 114608....47: RuntimeWarning: Mean of empty slice\n  pooled = np.nanmean(np.where(np.isnan(prof), np.nan, prof), axis=0)\n', ...}
+t = {'bias': {'v3_pre_all_stores': -5.145182897050237, 'v4_post_lean26': -17.935913257505625}, 'cat_of': {'K101': 'Soups &... '2026-04-08'), ('S01', 'K101', '2026-04-09'), ('S01', 'K101', '2026-04-10'), ('S01', 'K101', '2026-04-11'), ...}, ...}
+
+    def check_trends(run: dict, t: dict) -> None:
+        got = trends_map(run)
+        assert set(got) == set(t["category_change"]), f"categories {sorted(got)} expected {sorted(t['category_change'])}"
+        # baselines must be the ones implied by the submitted demand history
+        meta = t["meta"]
+        series = defaultdict(lambda: [0.0, 0])
+        for k, r in history_map(run).items():
+            if k in meta and meta[k][2] == "nonpromo":
+                acc = series[(t["cat_of"][k[1]], meta[k][0], k[0], k[1])]
+                acc[0] += num(r["expected_demand"])
+                acc[1] += 1
+        base = defaultdict(float)
+        for (cat, post, _s, _k), (sm, n) in series.items():
+            base[(cat, post)] += sm / n
+        bad_cons, bad_tol, bad_act, bad_rule = [], [], [], []
+        for cat, want in t["category_change"].items():
+            r = got[cat]
+            pre, post, ch = num(r["baseline_pre"]), num(r["baseline_post"]), num(r["baseline_change_pct"])
+            if abs(pre - base[(cat, "pre")]) > 1e-6 * max(1, pre) or abs(post - base[(cat, "post")]) > 1e-6 * max(1, post) \
+                    or abs(ch - 100 * (post / pre - 1)) > 1e-6:
+                bad_cons.append((cat, pre, post, ch))
+            if abs(ch - want) > TOL[f"cat_change::{cat}"]:
+                bad_tol.append((cat, round(ch, 2), round(want, 2), TOL[f"cat_change::{cat}"]))
+            rule_act = "reduce" if ch <= -5 else "increase" if ch >= 5 else "maintain"
+            if (r["action"] or "").strip() != rule_act:
+                bad_rule.append((cat, r["action"], round(ch, 3)))
+            if min(abs(want - 5), abs(want + 5)) >= ACTION_MARGIN_PP:
+                want_act = "reduce" if want <= -5 else "increase" if want >= 5 else "maintain"
+                if (r["action"] or "").strip() != want_act:
+                    bad_act.append((cat, r["action"], want_act))
+        assert not bad_cons, f"category baselines are not the ones implied by demand_history.csv: {bad_cons[:4]}"
+>       assert not bad_tol, f"baseline change outside tolerance (category, got pp, truth pp, tolerance): {bad_tol}"
+E       AssertionError: baseline change outside tolerance (category, got pp, truth pp, tolerance): [('Breakfast cereals', -9.94, -2.35, 1.5), ('Hot beverages', -18.62, -12.66, 1.5), ('Household cleaning', -7.29, -0.11, 1.69), ('Ice cream & frozen desserts', 3.11, 16.17, 1.5), ('Pasta & sauces', -8.9, -1.72, 1.5), ('Snacks & crisps', -10.26, -0.8, 1.79), ('Soft drinks', -9.9, -1.91, 1.5), ('Soups & broths', -20.74, -14.05, 1.77)]
+E       assert not [('Breakfast cereals', -9.94, -2.35, 1.5), ('Hot beverages', -18.62, -12.66, 1.5), ('Household cleaning', -7.29, -0.11...rozen desserts', 3.11, 16.17, 1.5), ('Pasta & sauces', -8.9, -1.72, 1.5), ('Snacks & crisps', -10.26, -0.8, 1.79), ...]
+
+test_demand_review.py:276: AssertionError
+____________________________ test_programme_impact _____________________________
+
+ctx = {'agent_digest': 'ffcb4fccfdcceedb475a76fb9022c17899fdb1bab81393b7183305358e877632', 'hidden': {'hidden_a': ({'bias': ...ntimeWarning: Mean of empty slice\n  pooled = np.nanmean(np.where(np.isnan(prof), np.nan, prof), axis=0)\n', ...}, ...}
+
+    def test_programme_impact(ctx):
+        """Lost units and lost share by period x arm, and production forecast bias against demand."""
+        require_run(ctx["run1"])
+>       check_impact(ctx["run1"], ctx["truth"])
+
+test_demand_review.py:360: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+run = {'_strata': {'dem': defaultdict(<class 'float'>, {('pre', 'holdout'): 117041.09553709376, ('post', 'holdout'): 114608....47: RuntimeWarning: Mean of empty slice\n  pooled = np.nanmean(np.where(np.isnan(prof), np.nan, prof), axis=0)\n', ...}
+t = {'bias': {'v3_pre_all_stores': -5.145182897050237, 'v4_post_lean26': -17.935913257505625}, 'cat_of': {'K101': 'Soups &... '2026-04-08'), ('S01', 'K101', '2026-04-09'), ('S01', 'K101', '2026-04-10'), ('S01', 'K101', '2026-04-11'), ...}, ...}
+
+    def check_impact(run: dict, t: dict) -> None:
+        imp = run["impact"]
+        st = strata_from_history(run, t)
+        assert imp.get("go_live_date") == t["go_live_date"], f"go_live_date {imp.get('go_live_date')} expected {t['go_live_date']}"
+        bad = []
+        for p in PERIODS:
+            for a in ARMS:
+                lu = num((imp.get("lost_units") or {}).get(p, {}).get(a))
+                ls = num((imp.get("lost_share") or {}).get(p, {}).get(a))
+                if lu is None or ls is None:
+                    bad.append((p, a, "missing"))
+                    continue
+                if abs(lu - st["lost"][(p, a)]) > 1e-6 * max(1, lu) or abs(ls - st["lost"][(p, a)] / st["dem"][(p, a)]) > 1e-9:
+                    bad.append((p, a, "not consistent with demand_history.csv", lu, ls))
+                    continue
+                if p == "post":                                    # before go-live the arms are consistency-checked only
+                    key = f"lost::post1_lean{int(a == 'lean26')}"
+                    e = rel_err(ls, t["lost_share"][(p, a)])
+                    if abs(e) > TOL[key]:
+                        bad.append((p, a, "lost_share", round(ls, 5), round(t["lost_share"][(p, a)], 5)))
+        fb = imp.get("forecast_bias_pct") or {}
+        for k, tk in (("v3_pre_all_stores", "bias::v3_pre"), ("v4_post_lean26", "bias::v4_post_lean")):
+            v = num(fb.get(k))
+            if v is None or abs(v - t["bias"][k]) > TOL[tk]:
+                bad.append((k, v, round(t["bias"][k], 3), TOL[tk]))
+>       assert not bad, f"programme impact differs: {bad}"
+E       AssertionError: programme impact differs: [('post', 'holdout', 'lost_share', 0.18763, 0.06787), ('v3_pre_all_stores', -16.76506244130354, -5.145, 1.0)]
+E       assert not [('post', 'holdout', 'lost_share', 0.18763, 0.06787), ('v3_pre_all_stores', -16.76506244130354, -5.145, 1.0)]
+
+test_demand_review.py:306: AssertionError
+_____________________ test_hidden_demand_history[hidden_a] _____________________
+
+ctx = {'agent_digest': 'ffcb4fccfdcceedb475a76fb9022c17899fdb1bab81393b7183305358e877632', 'hidden': {'hidden_a': ({'bias': ...ntimeWarning: Mean of empty slice\n  pooled = np.nanmean(np.where(np.isnan(prof), np.nan, prof), axis=0)\n', ...}, ...}
+name = 'hidden_a'
+
+    @pytest.mark.parametrize("name", HIDDEN)
+    def test_hidden_demand_history(ctx, name):
+        """Other extracts: demand history structure, demand and lost-units strata."""
+        t, run = ctx["hidden"][name]
+        require_run(run)
+>       check_history_structure(run, t)
+
+test_demand_review.py:379: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+run = {'history': [{'date': '2025-10-06', 'expected_demand': '5.000004000003571', 'lost_units': '1.000004000003571', 'sku_id...t_bias_pct": {\n    "v3_pre_all_stores": -16.06953626577808,\n    "v4_post_lean26": -14.52888001815528\n  }\n}\n', ...}
+t = {'bias': {'v3_pre_all_stores': -8.901458943613415, 'v4_post_lean26': -22.1317774850269}, 'cat_of': {'K101': 'Soups & b... '2025-10-08'), ('S01', 'K101', '2025-10-09'), ('S01', 'K101', '2025-10-10'), ('S01', 'K101', '2025-10-14'), ...}, ...}
+
+    def check_history_structure(run: dict, t: dict) -> None:
+        got = history_map(run)
+        missing, extra = set(t["keys"]) - set(got), set(got) - set(t["keys"])
+        assert not missing and not extra, (f"demand history rows differ from the trading store-SKU-days: {len(missing)} "
+                                           f"missing (e.g. {sorted(missing)[:3]}), {len(extra)} unexpected (e.g. {sorted(extra)[:3]})")
+        bad_sold, bad_neg, bad_cons, bad_ident = [], [], [], []
+        for k, r in got.items():
+            sold, exp_d, lost = num(r["units_sold"]), num(r["expected_demand"]), num(r["lost_units"])
+            if sold is None or exp_d is None or lost is None:
+                bad_cons.append((k, "empty value"))
+                continue
+            if abs(sold - t["keys"][k]) > 1e-9:
+                bad_sold.append((k, sold, t["keys"][k]))
+            if exp_d < sold - 1e-6 or lost < -1e-6:
+                bad_neg.append((k, sold, exp_d, lost))
+            if abs(lost - (exp_d - sold)) > 1e-6 * max(1.0, exp_d):
+                bad_cons.append((k, exp_d, sold, lost))
+            if k in t["full_in_stock"] and abs(exp_d - sold) > 1e-6:
+                bad_ident.append((k, sold, exp_d))
+        assert not bad_sold, f"{len(bad_sold)} rows with units_sold different from the warehouse, e.g. {bad_sold[:3]}"
+        assert not bad_neg, f"{len(bad_neg)} rows with expected demand below sales or negative lost units, e.g. {bad_neg[:3]}"
+        assert not bad_cons, f"{len(bad_cons)} rows where lost_units != expected_demand - units_sold, e.g. {bad_cons[:3]}"
+>       assert not bad_ident, (f"{len(bad_ident)} rows that were on shelf for all trading hours have expected demand "
+                               f"different from units sold, e.g. {bad_ident[:3]}")
+E       AssertionError: 101393 rows that were on shelf for all trading hours have expected demand different from units sold, e.g. [(('S01', 'K101', '2025-10-06'), 4.0, 5.000004000003571), (('S01', 'K101', '2025-10-07'), 0.0, 1.0), (('S01', 'K101', '2025-10-08'), 1.0, 2.0000010000008928)]
+E       assert not [(('S01', 'K101', '2025-10-06'), 4.0, 5.000004000003571), (('S01', 'K101', '2025-10-07'), 0.0, 1.0), (('S01', 'K101', ...10000008928), (('S01', 'K101', '2025-10-10'), 2.0, 3.0000020000017855), (('S01', 'K101', '2025-10-14'), 0.0, 1.0), ...]
+
+test_demand_review.py:206: AssertionError
+_____________________ test_hidden_demand_history[hidden_b] _____________________
+
+ctx = {'agent_digest': 'ffcb4fccfdcceedb475a76fb9022c17899fdb1bab81393b7183305358e877632', 'hidden': {'hidden_a': ({'bias': ...ntimeWarning: Mean of empty slice\n  pooled = np.nanmean(np.where(np.isnan(prof), np.nan, prof), axis=0)\n', ...}, ...}
+name = 'hidden_b'
+
+    @pytest.mark.parametrize("name", HIDDEN)
+    def test_hidden_demand_history(ctx, name):
+        """Other extracts: demand history structure, demand and lost-units strata."""
+        t, run = ctx["hidden"][name]
+        require_run(run)
+>       check_history_structure(run, t)
+
+test_demand_review.py:379: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+run = {'history': [{'date': '2026-01-05', 'expected_demand': '1.0', 'lost_units': '1.0', 'sku_id': 'K101', ...}, {'date': '2...bias_pct": {\n    "v3_pre_all_stores": -18.163960770018342,\n    "v4_post_lean26": -23.884331465300434\n  }\n}\n', ...}
+t = {'bias': {'v3_pre_all_stores': -2.4057520635177725, 'v4_post_lean26': -12.133399192217274}, 'cat_of': {'K101': 'Soups ... '2026-01-07'), ('S01', 'K101', '2026-01-10'), ('S01', 'K101', '2026-01-11'), ('S01', 'K101', '2026-01-12'), ...}, ...}
+
+    def check_history_structure(run: dict, t: dict) -> None:
+        got = history_map(run)
+        missing, extra = set(t["keys"]) - set(got), set(got) - set(t["keys"])
+        assert not missing and not extra, (f"demand history rows differ from the trading store-SKU-days: {len(missing)} "
+                                           f"missing (e.g. {sorted(missing)[:3]}), {len(extra)} unexpected (e.g. {sorted(extra)[:3]})")
+        bad_sold, bad_neg, bad_cons, bad_ident = [], [], [], []
+        for k, r in got.items():
+            sold, exp_d, lost = num(r["units_sold"]), num(r["expected_demand"]), num(r["lost_units"])
+            if sold is None or exp_d is None or lost is None:
+                bad_cons.append((k, "empty value"))
+                continue
+            if abs(sold - t["keys"][k]) > 1e-9:
+                bad_sold.append((k, sold, t["keys"][k]))
+            if exp_d < sold - 1e-6 or lost < -1e-6:
+                bad_neg.append((k, sold, exp_d, lost))
+            if abs(lost - (exp_d - sold)) > 1e-6 * max(1.0, exp_d):
+                bad_cons.append((k, exp_d, sold, lost))
+            if k in t["full_in_stock"] and abs(exp_d - sold) > 1e-6:
+                bad_ident.append((k, sold, exp_d))
+        assert not bad_sold, f"{len(bad_sold)} rows with units_sold different from the warehouse, e.g. {bad_sold[:3]}"
+        assert not bad_neg, f"{len(bad_neg)} rows with expected demand below sales or negative lost units, e.g. {bad_neg[:3]}"
+        assert not bad_cons, f"{len(bad_cons)} rows where lost_units != expected_demand - units_sold, e.g. {bad_cons[:3]}"
+>       assert not bad_ident, (f"{len(bad_ident)} rows that were on shelf for all trading hours have expected demand "
+                               f"different from units sold, e.g. {bad_ident[:3]}")
+E       AssertionError: 162911 rows that were on shelf for all trading hours have expected demand different from units sold, e.g. [(('S01', 'K101', '2026-01-05'), 0.0, 1.0), (('S01', 'K101', '2026-01-06'), 2.0, 3.0000020000017855), (('S01', 'K101', '2026-01-07'), 2.0, 3.0000020000017855)]
+E       assert not [(('S01', 'K101', '2026-01-05'), 0.0, 1.0), (('S01', 'K101', '2026-01-06'), 2.0, 3.0000020000017855), (('S01', 'K101',...10000008928), (('S01', 'K101', '2026-01-11'), 1.0, 2.0000010000008928), (('S01', 'K101', '2026-01-12'), 0.0, 1.0), ...]
+
+test_demand_review.py:206: AssertionError
+_____________________ test_hidden_demand_history[hidden_c] _____________________
+
+ctx = {'agent_digest': 'ffcb4fccfdcceedb475a76fb9022c17899fdb1bab81393b7183305358e877632', 'hidden': {'hidden_a': ({'bias': ...ntimeWarning: Mean of empty slice\n  pooled = np.nanmean(np.where(np.isnan(prof), np.nan, prof), axis=0)\n', ...}, ...}
+name = 'hidden_c'
+
+    @pytest.mark.parametrize("name", HIDDEN)
+    def test_hidden_demand_history(ctx, name):
+        """Other extracts: demand history structure, demand and lost-units strata."""
+        t, run = ctx["hidden"][name]
+        require_run(run)
+>       check_history_structure(run, t)
+
+test_demand_review.py:379: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+run = {'history': [{'date': '2026-05-04', 'expected_demand': '2.0000010000008928', 'lost_units': '1.0000010000008928', 'sku_...st_bias_pct": {\n    "v3_pre_all_stores": -13.7084117111888,\n    "v4_post_lean26": -18.09643616105819\n  }\n}\n', ...}
+t = {'bias': {'v3_pre_all_stores': -5.989601976718782, 'v4_post_lean26': -23.740644368752903}, 'cat_of': {'K101': 'Soups &... '2026-05-06'), ('S01', 'K101', '2026-05-07'), ('S01', 'K101', '2026-05-09'), ('S01', 'K101', '2026-05-10'), ...}, ...}
+
+    def check_history_structure(run: dict, t: dict) -> None:
+        got = history_map(run)
+        missing, extra = set(t["keys"]) - set(got), set(got) - set(t["keys"])
+        assert not missing and not extra, (f"demand history rows differ from the trading store-SKU-days: {len(missing)} "
+                                           f"missing (e.g. {sorted(missing)[:3]}), {len(extra)} unexpected (e.g. {sorted(extra)[:3]})")
+        bad_sold, bad_neg, bad_cons, bad_ident = [], [], [], []
+        for k, r in got.items():
+            sold, exp_d, lost = num(r["units_sold"]), num(r["expected_demand"]), num(r["lost_units"])
+            if sold is None or exp_d is None or lost is None:
+                bad_cons.append((k, "empty value"))
+                continue
+            if abs(sold - t["keys"][k]) > 1e-9:
+                bad_sold.append((k, sold, t["keys"][k]))
+            if exp_d < sold - 1e-6 or lost < -1e-6:
+                bad_neg.append((k, sold, exp_d, lost))
+            if abs(lost - (exp_d - sold)) > 1e-6 * max(1.0, exp_d):
+                bad_cons.append((k, exp_d, sold, lost))
+            if k in t["full_in_stock"] and abs(exp_d - sold) > 1e-6:
+                bad_ident.append((k, sold, exp_d))
+        assert not bad_sold, f"{len(bad_sold)} rows with units_sold different from the warehouse, e.g. {bad_sold[:3]}"
+        assert not bad_neg, f"{len(bad_neg)} rows with expected demand below sales or negative lost units, e.g. {bad_neg[:3]}"
+        assert not bad_cons, f"{len(bad_cons)} rows where lost_units != expected_demand - units_sold, e.g. {bad_cons[:3]}"
+>       assert not bad_ident, (f"{len(bad_ident)} rows that were on shelf for all trading hours have expected demand "
+                               f"different from units sold, e.g. {bad_ident[:3]}")
+E       AssertionError: 116376 rows that were on shelf for all trading hours have expected demand different from units sold, e.g. [(('S01', 'K101', '2026-05-04'), 1.0, 2.0000010000008928), (('S01', 'K101', '2026-05-05'), 1.0, 2.0000010000008928), (('S01', 'K101', '2026-05-06'), 2.0, 3.0000020000017855)]
+E       assert not [(('S01', 'K101', '2026-05-04'), 1.0, 2.0000010000008928), (('S01', 'K101', '2026-05-05'), 1.0, 2.0000010000008928), (... (('S01', 'K101', '2026-05-09'), 3.0, 4.000003000002678), (('S01', 'K101', '2026-05-10'), 3.0, 4.000003000002678), ...]
+
+test_demand_review.py:206: AssertionError
+___________________ test_hidden_trends_and_impact[hidden_a] ____________________
+
+ctx = {'agent_digest': 'ffcb4fccfdcceedb475a76fb9022c17899fdb1bab81393b7183305358e877632', 'hidden': {'hidden_a': ({'bias': ...ntimeWarning: Mean of empty slice\n  pooled = np.nanmean(np.where(np.isnan(prof), np.nan, prof), axis=0)\n', ...}, ...}
+name = 'hidden_a'
+
+    @pytest.mark.parametrize("name", HIDDEN)
+    def test_hidden_trends_and_impact(ctx, name):
+        """Other extracts: category trends, actions and programme impact."""
+        t, run = ctx["hidden"][name]
+        require_run(run)
+>       check_trends(run, t)
+
+test_demand_review.py:389: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+run = {'history': [{'date': '2025-10-06', 'expected_demand': '5.000004000003571', 'lost_units': '1.000004000003571', 'sku_id...t_bias_pct": {\n    "v3_pre_all_stores": -16.06953626577808,\n    "v4_post_lean26": -14.52888001815528\n  }\n}\n', ...}
+t = {'bias': {'v3_pre_all_stores': -8.901458943613415, 'v4_post_lean26': -22.1317774850269}, 'cat_of': {'K101': 'Soups & b... '2025-10-08'), ('S01', 'K101', '2025-10-09'), ('S01', 'K101', '2025-10-10'), ('S01', 'K101', '2025-10-14'), ...}, ...}
+
+    def check_trends(run: dict, t: dict) -> None:
+        got = trends_map(run)
+        assert set(got) == set(t["category_change"]), f"categories {sorted(got)} expected {sorted(t['category_change'])}"
+        # baselines must be the ones implied by the submitted demand history
+        meta = t["meta"]
+        series = defaultdict(lambda: [0.0, 0])
+        for k, r in history_map(run).items():
+            if k in meta and meta[k][2] == "nonpromo":
+                acc = series[(t["cat_of"][k[1]], meta[k][0], k[0], k[1])]
+                acc[0] += num(r["expected_demand"])
+                acc[1] += 1
+        base = defaultdict(float)
+        for (cat, post, _s, _k), (sm, n) in series.items():
+            base[(cat, post)] += sm / n
+        bad_cons, bad_tol, bad_act, bad_rule = [], [], [], []
+        for cat, want in t["category_change"].items():
+            r = got[cat]
+            pre, post, ch = num(r["baseline_pre"]), num(r["baseline_post"]), num(r["baseline_change_pct"])
+            if abs(pre - base[(cat, "pre")]) > 1e-6 * max(1, pre) or abs(post - base[(cat, "post")]) > 1e-6 * max(1, post) \
+                    or abs(ch - 100 * (post / pre - 1)) > 1e-6:
+                bad_cons.append((cat, pre, post, ch))
+            if abs(ch - want) > TOL[f"cat_change::{cat}"]:
+                bad_tol.append((cat, round(ch, 2), round(want, 2), TOL[f"cat_change::{cat}"]))
+            rule_act = "reduce" if ch <= -5 else "increase" if ch >= 5 else "maintain"
+            if (r["action"] or "").strip() != rule_act:
+                bad_rule.append((cat, r["action"], round(ch, 3)))
+            if min(abs(want - 5), abs(want + 5)) >= ACTION_MARGIN_PP:
+                want_act = "reduce" if want <= -5 else "increase" if want >= 5 else "maintain"
+                if (r["action"] or "").strip() != want_act:
+                    bad_act.append((cat, r["action"], want_act))
+        assert not bad_cons, f"category baselines are not the ones implied by demand_history.csv: {bad_cons[:4]}"
+>       assert not bad_tol, f"baseline change outside tolerance (category, got pp, truth pp, tolerance): {bad_tol}"
+E       AssertionError: baseline change outside tolerance (category, got pp, truth pp, tolerance): [('Breakfast cereals', -11.73, -2.74, 1.5), ('Hot beverages', -3.76, 10.97, 1.5), ('Household cleaning', -10.18, -1.26, 1.69), ('Ice cream & frozen desserts', -25.4, -14.58, 1.5), ('Pasta & sauces', -10.59, -0.19, 1.5), ('Snacks & crisps', -17.34, 0.07, 1.79), ('Soft drinks', -15.24, -0.8, 1.5), ('Soups & broths', -4.79, 15.97, 1.77)]
+E       assert not [('Breakfast cereals', -11.73, -2.74, 1.5), ('Hot beverages', -3.76, 10.97, 1.5), ('Household cleaning', -10.18, -1.26...n desserts', -25.4, -14.58, 1.5), ('Pasta & sauces', -10.59, -0.19, 1.5), ('Snacks & crisps', -17.34, 0.07, 1.79), ...]
+
+test_demand_review.py:276: AssertionError
+___________________ test_hidden_trends_and_impact[hidden_b] ____________________
+
+ctx = {'agent_digest': 'ffcb4fccfdcceedb475a76fb9022c17899fdb1bab81393b7183305358e877632', 'hidden': {'hidden_a': ({'bias': ...ntimeWarning: Mean of empty slice\n  pooled = np.nanmean(np.where(np.isnan(prof), np.nan, prof), axis=0)\n', ...}, ...}
+name = 'hidden_b'
+
+    @pytest.mark.parametrize("name", HIDDEN)
+    def test_hidden_trends_and_impact(ctx, name):
+        """Other extracts: category trends, actions and programme impact."""
+        t, run = ctx["hidden"][name]
+        require_run(run)
+>       check_trends(run, t)
+
+test_demand_review.py:389: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+run = {'history': [{'date': '2026-01-05', 'expected_demand': '1.0', 'lost_units': '1.0', 'sku_id': 'K101', ...}, {'date': '2...bias_pct": {\n    "v3_pre_all_stores": -18.163960770018342,\n    "v4_post_lean26": -23.884331465300434\n  }\n}\n', ...}
+t = {'bias': {'v3_pre_all_stores': -2.4057520635177725, 'v4_post_lean26': -12.133399192217274}, 'cat_of': {'K101': 'Soups ... '2026-01-07'), ('S01', 'K101', '2026-01-10'), ('S01', 'K101', '2026-01-11'), ('S01', 'K101', '2026-01-12'), ...}, ...}
+
+    def check_trends(run: dict, t: dict) -> None:
+        got = trends_map(run)
+        assert set(got) == set(t["category_change"]), f"categories {sorted(got)} expected {sorted(t['category_change'])}"
+        # baselines must be the ones implied by the submitted demand history
+        meta = t["meta"]
+        series = defaultdict(lambda: [0.0, 0])
+        for k, r in history_map(run).items():
+            if k in meta and meta[k][2] == "nonpromo":
+                acc = series[(t["cat_of"][k[1]], meta[k][0], k[0], k[1])]
+                acc[0] += num(r["expected_demand"])
+                acc[1] += 1
+        base = defaultdict(float)
+        for (cat, post, _s, _k), (sm, n) in series.items():
+            base[(cat, post)] += sm / n
+        bad_cons, bad_tol, bad_act, bad_rule = [], [], [], []
+        for cat, want in t["category_change"].items():
+            r = got[cat]
+            pre, post, ch = num(r["baseline_pre"]), num(r["baseline_post"]), num(r["baseline_change_pct"])
+            if abs(pre - base[(cat, "pre")]) > 1e-6 * max(1, pre) or abs(post - base[(cat, "post")]) > 1e-6 * max(1, post) \
+                    or abs(ch - 100 * (post / pre - 1)) > 1e-6:
+                bad_cons.append((cat, pre, post, ch))
+            if abs(ch - want) > TOL[f"cat_change::{cat}"]:
+                bad_tol.append((cat, round(ch, 2), round(want, 2), TOL[f"cat_change::{cat}"]))
+            rule_act = "reduce" if ch <= -5 else "increase" if ch >= 5 else "maintain"
+            if (r["action"] or "").strip() != rule_act:
+                bad_rule.append((cat, r["action"], round(ch, 3)))
+            if min(abs(want - 5), abs(want + 5)) >= ACTION_MARGIN_PP:
+                want_act = "reduce" if want <= -5 else "increase" if want >= 5 else "maintain"
+                if (r["action"] or "").strip() != want_act:
+                    bad_act.append((cat, r["action"], want_act))
+        assert not bad_cons, f"category baselines are not the ones implied by demand_history.csv: {bad_cons[:4]}"
+>       assert not bad_tol, f"baseline change outside tolerance (category, got pp, truth pp, tolerance): {bad_tol}"
+E       AssertionError: baseline change outside tolerance (category, got pp, truth pp, tolerance): [('Ice cream & frozen desserts', 14.35, 19.75, 1.5), ('Soft drinks', 12.01, 16.63, 1.5)]
+E       assert not [('Ice cream & frozen desserts', 14.35, 19.75, 1.5), ('Soft drinks', 12.01, 16.63, 1.5)]
+
+test_demand_review.py:276: AssertionError
+___________________ test_hidden_trends_and_impact[hidden_c] ____________________
+
+ctx = {'agent_digest': 'ffcb4fccfdcceedb475a76fb9022c17899fdb1bab81393b7183305358e877632', 'hidden': {'hidden_a': ({'bias': ...ntimeWarning: Mean of empty slice\n  pooled = np.nanmean(np.where(np.isnan(prof), np.nan, prof), axis=0)\n', ...}, ...}
+name = 'hidden_c'
+
+    @pytest.mark.parametrize("name", HIDDEN)
+    def test_hidden_trends_and_impact(ctx, name):
+        """Other extracts: category trends, actions and programme impact."""
+        t, run = ctx["hidden"][name]
+        require_run(run)
+>       check_trends(run, t)
+
+test_demand_review.py:389: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+run = {'history': [{'date': '2026-05-04', 'expected_demand': '2.0000010000008928', 'lost_units': '1.0000010000008928', 'sku_...st_bias_pct": {\n    "v3_pre_all_stores": -13.7084117111888,\n    "v4_post_lean26": -18.09643616105819\n  }\n}\n', ...}
+t = {'bias': {'v3_pre_all_stores': -5.989601976718782, 'v4_post_lean26': -23.740644368752903}, 'cat_of': {'K101': 'Soups &... '2026-05-06'), ('S01', 'K101', '2026-05-07'), ('S01', 'K101', '2026-05-09'), ('S01', 'K101', '2026-05-10'), ...}, ...}
+
+    def check_trends(run: dict, t: dict) -> None:
+        got = trends_map(run)
+        assert set(got) == set(t["category_change"]), f"categories {sorted(got)} expected {sorted(t['category_change'])}"
+        # baselines must be the ones implied by the submitted demand history
+        meta = t["meta"]
+        series = defaultdict(lambda: [0.0, 0])
+        for k, r in history_map(run).items():
+            if k in meta and meta[k][2] == "nonpromo":
+                acc = series[(t["cat_of"][k[1]], meta[k][0], k[0], k[1])]
+                acc[0] += num(r["expected_demand"])
+                acc[1] += 1
+        base = defaultdict(float)
+        for (cat, post, _s, _k), (sm, n) in series.items():
+            base[(cat, post)] += sm / n
+        bad_cons, bad_tol, bad_act, bad_rule = [], [], [], []
+        for cat, want in t["category_change"].items():
+            r = got[cat]
+            pre, post, ch = num(r["baseline_pre"]), num(r["baseline_post"]), num(r["baseline_change_pct"])
+            if abs(pre - base[(cat, "pre")]) > 1e-6 * max(1, pre) or abs(post - base[(cat, "post")]) > 1e-6 * max(1, post) \
+                    or abs(ch - 100 * (post / pre - 1)) > 1e-6:
+                bad_cons.append((cat, pre, post, ch))
+            if abs(ch - want) > TOL[f"cat_change::{cat}"]:
+                bad_tol.append((cat, round(ch, 2), round(want, 2), TOL[f"cat_change::{cat}"]))
+            rule_act = "reduce" if ch <= -5 else "increase" if ch >= 5 else "maintain"
+            if (r["action"] or "").strip() != rule_act:
+                bad_rule.append((cat, r["action"], round(ch, 3)))
+            if min(abs(want - 5), abs(want + 5)) >= ACTION_MARGIN_PP:
+                want_act = "reduce" if want <= -5 else "increase" if want >= 5 else "maintain"
+                if (r["action"] or "").strip() != want_act:
+                    bad_act.append((cat, r["action"], want_act))
+        assert not bad_cons, f"category baselines are not the ones implied by demand_history.csv: {bad_cons[:4]}"
+>       assert not bad_tol, f"baseline change outside tolerance (category, got pp, truth pp, tolerance): {bad_tol}"
+E       AssertionError: baseline change outside tolerance (category, got pp, truth pp, tolerance): [('Breakfast cereals', -9.38, -2.46, 1.5), ('Hot beverages', -9.19, -2.54, 1.5), ('Household cleaning', -10.06, -3.38, 1.69), ('Ice cream & frozen desserts', -19.42, -14.48, 1.5), ('Pasta & sauces', -9.25, -1.87, 1.5), ('Snacks & crisps', -10.64, -0.7, 1.79), ('Soft drinks', -9.97, -1.22, 1.5), ('Soups & broths', 1.79, 16.27, 1.77)]
+E       assert not [('Breakfast cereals', -9.38, -2.46, 1.5), ('Hot beverages', -9.19, -2.54, 1.5), ('Household cleaning', -10.06, -3.38,...n desserts', -19.42, -14.48, 1.5), ('Pasta & sauces', -9.25, -1.87, 1.5), ('Snacks & crisps', -10.64, -0.7, 1.79), ...]
+
+test_demand_review.py:276: AssertionError
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED test_demand_review.py::test_warehouse_unmodified
+PASSED test_demand_review.py::test_review_succeeds
+PASSED test_demand_review.py::test_build_time
+PASSED test_demand_review.py::test_rerun_is_deterministic
+FAILED test_demand_review.py::test_demand_history_structure - AssertionError:...
+FAILED test_demand_review.py::test_expected_demand_strata - AssertionError: e...
+FAILED test_demand_review.py::test_lost_units_strata - AssertionError: lost u...
+FAILED test_demand_review.py::test_category_trends - AssertionError: baseline...
+FAILED test_demand_review.py::test_programme_impact - AssertionError: program...
+FAILED test_demand_review.py::test_hidden_demand_history[hidden_a] - Assertio...
+FAILED test_demand_review.py::test_hidden_demand_history[hidden_b] - Assertio...
+FAILED test_demand_review.py::test_hidden_demand_history[hidden_c] - Assertio...
+FAILED test_demand_review.py::test_hidden_trends_and_impact[hidden_a] - Asser...
+FAILED test_demand_review.py::test_hidden_trends_and_impact[hidden_b] - Asser...
+FAILED test_demand_review.py::test_hidden_trends_and_impact[hidden_c] - Asser...
+=================== 11 failed, 4 passed in 156.47s (0:02:36) ===================

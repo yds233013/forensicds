@@ -1,0 +1,2 @@
+verifier: WARNING /logs/verifier is writable by the pipeline user (mode-ignoring mount); reward is still taken from the test exit status, but criterion_* values are not protected
+verifier: interpreter, library tree or sandbox tools differ from the pinned image; refusing to grade

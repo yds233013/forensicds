@@ -1,0 +1,118 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+configfile: ../dev/null
+plugins: json-ctrf-0.3.5
+collected 8 items
+
+test_gauge.py ...FFFFF                                                   [100%]
+
+=================================== FAILURES ===================================
+______________________________ test_output_schema ______________________________
+
+    def test_output_schema():
+        readout, rows = _read_outputs(WORKSPACE / "out")
+        required = ("part_number", "window_pre", "window_post", "baseline_nonconforming_rate_pct",
+                    "reported_nonconforming_rate_pct", "corrected_nonconforming_rate_pct",
+                    "conformance_reference_offset_um", "strata_nonconforming_rate_pct", "attribution_pp",
+                    "supplier_decision")
+        missing = [k for k in required if k not in readout]
+        if missing:
+            _fail("evidence_reconstruction", f"readout.json is missing {missing}")
+>       assert not missing, f"readout.json is missing {missing}"
+E       AssertionError: readout.json is missing ['corrected_nonconforming_rate_pct', 'conformance_reference_offset_um', 'strata_nonconforming_rate_pct']
+E       assert not ['corrected_nonconforming_rate_pct', 'conformance_reference_offset_um', 'strata_nonconforming_rate_pct']
+
+test_gauge.py:299: AssertionError
+_____________________________ test_visible_extract _____________________________
+
+    def test_visible_extract():
+        root = Path(tempfile.mkdtemp())
+        bad = _check_extract("visible", root)
+        shutil.rmtree(root, ignore_errors=True)
+>       assert not bad, "visible extract:\n  " + "\n  ".join(bad)
+E       AssertionError: visible extract:
+E           strata_nonconforming_rate_pct missing or not an object
+E           conformance_reference_offset_um missing or not an object
+E           corrected_nonconforming_rate_pct: missing or not a number
+E           out/part_dispositions.csv was not written
+E           attribution_pp[material] = 3.9416666666666664 pp, expected 0.917 pp +/- 0.8
+E           attribution_pp[measurement_system] = 0.0 pp, expected 2.858 pp +/- 0.8
+E           supplier_decision = 'raise_supplier_nonconformance', expected 'no_supplier_action'
+E       assert not ['strata_nonconforming_rate_pct missing or not an object', 'conformance_reference_offset_um missing or not an object',...66666664 pp, expected 0.917 pp +/- 0.8', 'attribution_pp[measurement_system] = 0.0 pp, expected 2.858 pp +/- 0.8', ...]
+
+test_gauge.py:312: AssertionError
+________________________ test_hidden_extract[hidden_a] _________________________
+
+fixture = 'hidden_a'
+
+    @pytest.mark.parametrize("fixture", [s["name"] for s in scenarios.HIDDEN_SPECS])
+    def test_hidden_extract(fixture):
+        root = Path(tempfile.mkdtemp())
+        bad = _check_extract(fixture, root)
+        shutil.rmtree(root, ignore_errors=True)
+>       assert not bad, f"{fixture}:\n  " + "\n  ".join(bad)
+E       AssertionError: hidden_a:
+E           strata_nonconforming_rate_pct missing or not an object
+E           conformance_reference_offset_um missing or not an object
+E           corrected_nonconforming_rate_pct: missing or not a number
+E           out/part_dispositions.csv was not written
+E           attribution_pp[material] = 5.175 pp, expected 0.000 pp +/- 0.8
+E           attribution_pp[measurement_system] = 0.0 pp, expected 5.042 pp +/- 0.8
+E           supplier_decision = 'raise_supplier_nonconformance', expected 'no_supplier_action'
+E       assert not ['strata_nonconforming_rate_pct missing or not an object', 'conformance_reference_offset_um missing or not an object',... = 5.175 pp, expected 0.000 pp +/- 0.8', 'attribution_pp[measurement_system] = 0.0 pp, expected 5.042 pp +/- 0.8', ...]
+
+test_gauge.py:320: AssertionError
+________________________ test_hidden_extract[hidden_b] _________________________
+
+fixture = 'hidden_b'
+
+    @pytest.mark.parametrize("fixture", [s["name"] for s in scenarios.HIDDEN_SPECS])
+    def test_hidden_extract(fixture):
+        root = Path(tempfile.mkdtemp())
+        bad = _check_extract(fixture, root)
+        shutil.rmtree(root, ignore_errors=True)
+>       assert not bad, f"{fixture}:\n  " + "\n  ".join(bad)
+E       AssertionError: hidden_b:
+E           strata_nonconforming_rate_pct missing or not an object
+E           conformance_reference_offset_um missing or not an object
+E           corrected_nonconforming_rate_pct: missing or not a number
+E           out/part_dispositions.csv was not written
+E           attribution_pp[material] = 8.716666666666667 pp, expected 5.717 pp +/- 0.8
+E           attribution_pp[measurement_system] = 0.0 pp, expected 2.883 pp +/- 0.8
+E       assert not ['strata_nonconforming_rate_pct missing or not an object', 'conformance_reference_offset_um missing or not an object',...6666666666667 pp, expected 5.717 pp +/- 0.8', 'attribution_pp[measurement_system] = 0.0 pp, expected 2.883 pp +/- 0.8']
+
+test_gauge.py:320: AssertionError
+________________________ test_hidden_extract[hidden_c] _________________________
+
+fixture = 'hidden_c'
+
+    @pytest.mark.parametrize("fixture", [s["name"] for s in scenarios.HIDDEN_SPECS])
+    def test_hidden_extract(fixture):
+        root = Path(tempfile.mkdtemp())
+        bad = _check_extract(fixture, root)
+        shutil.rmtree(root, ignore_errors=True)
+>       assert not bad, f"{fixture}:\n  " + "\n  ".join(bad)
+E       AssertionError: hidden_c:
+E           strata_nonconforming_rate_pct missing or not an object
+E           conformance_reference_offset_um missing or not an object
+E           corrected_nonconforming_rate_pct: missing or not a number
+E           out/part_dispositions.csv was not written
+E           attribution_pp[material] = 8.591666666666667 pp, expected 0.817 pp +/- 0.8
+E           attribution_pp[measurement_system] = 0.0 pp, expected 4.692 pp +/- 0.8
+E           attribution_pp[tooling] = 0.0 pp, expected 3.083 pp +/- 0.8
+E           supplier_decision = 'raise_supplier_nonconformance', expected 'no_supplier_action'
+E       assert not ['strata_nonconforming_rate_pct missing or not an object', 'conformance_reference_offset_um missing or not an object',...66666667 pp, expected 0.817 pp +/- 0.8', 'attribution_pp[measurement_system] = 0.0 pp, expected 4.692 pp +/- 0.8', ...]
+
+test_gauge.py:320: AssertionError
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED test_gauge.py::test_database_unmodified
+PASSED test_gauge.py::test_pipeline_runs
+PASSED test_gauge.py::test_rerun_is_deterministic
+FAILED test_gauge.py::test_output_schema - AssertionError: readout.json is mi...
+FAILED test_gauge.py::test_visible_extract - AssertionError: visible extract:
+FAILED test_gauge.py::test_hidden_extract[hidden_a] - AssertionError: hidden_a:
+FAILED test_gauge.py::test_hidden_extract[hidden_b] - AssertionError: hidden_b:
+FAILED test_gauge.py::test_hidden_extract[hidden_c] - AssertionError: hidden_c:
+========================= 5 failed, 3 passed in 3.78s ==========================

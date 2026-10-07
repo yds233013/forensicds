@@ -1,0 +1,80 @@
+schema_version = "1.4"
+artifacts = []
+
+[task]
+name = "forensicds/courier-boost-rollout-g50"
+version = "0.1.0"
+description = "Decide whether a delivery marketplace should roll out a courier incentive, where the order-randomised arm contrast is technically correct and measures a redistribution of a shared courier pool rather than the effect of turning the incentive on for everyone."
+authors = [{ name = "Yash Shah", email = "yshah231103@gmail.com" }]
+keywords = ["interference", "unit-of-intervention", "marketplace", "experimentation", "sqlite", "pandas"]
+
+[metadata]
+author_name = "Yash Shah"
+author_email = "yshah231103@gmail.com"
+difficulty = "hard"
+category = "data-analysis"
+tags = ["forensic-debugging", "interference", "estimand-selection", "experimentation", "marketplace"]
+expert_time_estimate_min = 240.0
+junior_time_estimate_min = 900.0
+difficulty_explanation = """
+A delivery marketplace randomised a courier incentive per order and measured a 4.0 point reduction in the
+late-delivery rate over 120,671 orders. The rollout decision is written on a different quantity: the change
+in the late-delivery rate if the incentive were on for every order rather than none.
+
+The incumbent analysis is not incompetent. Assignment is clean, the realised share tracks the configured
+target in every market-week, the enrolled and never-enrolled markets were balanced before the programme, the
+effect is present in all sixteen markets, and the interval is four tenths of a point wide. It is the correct
+estimate of the arm contrast.
+
+The incentive works by placing a boosted offer ahead of unboosted offers in the same market-hour offer queue.
+A courier who takes a boosted order is unavailable to an unboosted one. The arm contrast therefore measures
+how much better it is to be boosted than not boosted while both arms draw on one courier pool, which is
+almost entirely a redistribution: with the incentive on for everyone there is no queue position to gain. What
+survives a full rollout is the part that is not redistribution - a faster acceptance decision on every order,
+a courier-supply response to higher expected earnings, and an offsetting cost from couriers holding out for
+boosted offers.
+
+The capacity check the incumbent runs cannot fail. Courier hours available to each arm are identical to
+within 0.08 percent, because the arms share the same couriers. Reading that as evidence that capacity is not
+confounding the comparison is the designed trap.
+
+The market-level variation the rollout quantity needs is in the phase-1 soak, where the incentive was set at
+the market level for three weeks across eight on and eight off markets, and in four never-enrolled markets
+that ran through phase 2. The soak is the design the analyst rejected for being underpowered.
+"""
+solution_explanation = """
+1. Build the market-week panel over the whole window from orders joined through zones, on the metric
+   population in docs/metric_definitions.md, with courier hours from courier_shifts.
+2. The rollout quantity is a market-level contrast. Phase 1 assigned the incentive at the market level, so
+   contrast the phase-1 on markets against the phase-1 off markets on market-week late rate, taking the
+   market as the unit of inference, with a two-group interval on 14 degrees of freedom.
+3. Report the arm contrast separately; it is not the rollout quantity.
+4. Compute the control-arm against never-enrolled-market comparison the memo requires, differenced against
+   the pre-programme weeks in market_week_baseline.
+5. Estimate the courier-hours response from phase 1 as courier hours per order with the incentive on for
+   every order against off for all of them.
+6. Apply the memo rule: roll out only if the estimated reduction reaches the 1.4961 point break-even and the
+   95 percent interval excludes zero.
+"""
+
+[verifier]
+timeout_sec = 5400.0
+collect = []
+
+[verifier.env]
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+network_mode = "public"
+build_timeout_sec = 1800.0
+os = "linux"
+cpus = 2
+memory_mb = 6144
+storage_mb = 12288
+mcp_servers = []
+
+[environment.env]
+
+[solution.env]

@@ -1,0 +1,251 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+configfile: ../dev/null
+plugins: json-ctrf-0.3.5
+collected 13 items
+
+test_capacity.py .....FF.FFFFF                                           [100%]
+
+=================================== FAILURES ===================================
+__________________________ test_target_peak_forecast ___________________________
+
+visible_run = {'estate_segment_shares': {'APT_ELECTRIC': 0.307, 'HOUSE_LARGE_POOL': 0.11833333333333333, 'HOUSE_SMART_HVAC': 0.24733...3333333333333}, 'estate_tou_response_at_target_cdd': 0.0, 'n_households': 6000, 'procurement_decision': 'procure', ...}
+visible_truth = {'decision': 'defer', 'estate_shares': [0.307, 0.3273333333333333, 0.24733333333333332, 0.11833333333333333], 'respons...5281426236, 0.04396559056285247, 0.10363317775529511, 0.12875637236263937], 'target_cdd_mean': 11.868055449776449, ...}
+
+    def test_target_peak_forecast(visible_run, visible_truth):
+        """The headline quantity: expected peak-window load with the whole estate on the tariff."""
+        tv = _truth_values(visible_truth)["target_peak_kw"]
+        got = float(visible_run["target_peak_kw"])
+        tol = _tol("visible", "target_peak_kw")
+>       assert abs(got - tv) <= tol, (
+            "target_peak_kw is wrong: reported %.5f, expected %.5f (error %.5f, tolerance %.5f). "
+            "The flat-tariff historical relationship does not by itself answer this."
+            % (got, tv, abs(got - tv), tol))
+E       AssertionError: target_peak_kw is wrong: reported 3.25403, expected 3.00996 (error 0.24407, tolerance 0.04838). The flat-tariff historical relationship does not by itself answer this.
+E       assert 0.24407278839273117 <= 0.048380599999999996
+E        +  where 0.24407278839273117 = abs((3.25402966107797 - 3.009956872685239))
+
+test_capacity.py:174: AssertionError
+___________________________ test_estate_tou_response ___________________________
+
+visible_run = {'estate_segment_shares': {'APT_ELECTRIC': 0.307, 'HOUSE_LARGE_POOL': 0.11833333333333333, 'HOUSE_SMART_HVAC': 0.24733...3333333333333}, 'estate_tou_response_at_target_cdd': 0.0, 'n_households': 6000, 'procurement_decision': 'procure', ...}
+visible_truth = {'decision': 'defer', 'estate_shares': [0.307, 0.3273333333333333, 0.24733333333333332, 0.11833333333333333], 'respons...5281426236, 0.04396559056285247, 0.10363317775529511, 0.12875637236263937], 'target_cdd_mean': 11.868055449776449, ...}
+
+    def test_estate_tou_response(visible_run, visible_truth):
+        """The estate-wide tariff response at the target season's weather.
+    
+        Graded because it isolates the transport work: it requires both reweighting the pilot's response
+        to the estate and evaluating it at the target season's cooling demand. Per-segment responses are
+        deliberately NOT graded - the smallest-response segment has roughly fifty enrolled households
+        and its own response is not estimable to any useful tolerance.
+        """
+        tv = _truth_values(visible_truth)["estate_tou_response_at_target_cdd"]
+        got = float(visible_run["estate_tou_response_at_target_cdd"])
+        tol = _tol("visible", "estate_tou_response_at_target_cdd")
+>       assert abs(got - tv) <= tol, (
+            "estate_tou_response_at_target_cdd is wrong: reported %.5f, expected %.5f "
+            "(error %.5f, tolerance %.5f)" % (got, tv, abs(got - tv), tol))
+E       AssertionError: estate_tou_response_at_target_cdd is wrong: reported 0.00000, expected 0.06201 (error 0.06201, tolerance 0.01726)
+E       assert 0.06200823149002688 <= 0.01726155
+E        +  where 0.06200823149002688 = abs((0.0 - 0.06200823149002688))
+
+test_capacity.py:191: AssertionError
+__________________________ test_procurement_decision ___________________________
+
+visible_run = {'estate_segment_shares': {'APT_ELECTRIC': 0.307, 'HOUSE_LARGE_POOL': 0.11833333333333333, 'HOUSE_SMART_HVAC': 0.24733...3333333333333}, 'estate_tou_response_at_target_cdd': 0.0, 'n_households': 6000, 'procurement_decision': 'procure', ...}
+visible_truth = {'decision': 'defer', 'estate_shares': [0.307, 0.3273333333333333, 0.24733333333333332, 0.11833333333333333], 'respons...5281426236, 0.04396559056285247, 0.10363317775529511, 0.12875637236263937], 'target_cdd_mean': 11.868055449776449, ...}
+
+    def test_procurement_decision(visible_run, visible_truth):
+>       assert visible_run["procurement_decision"] == visible_truth["decision"], (
+            "procurement_decision %r does not follow from the target-season forecast"
+            % visible_run["procurement_decision"])
+E       AssertionError: procurement_decision 'procure' does not follow from the target-season forecast
+E       assert 'procure' == 'defer'
+E         
+E         - defer
+E         + procure
+
+test_capacity.py:214: AssertionError
+________________________ test_hidden_extract[hidden_a] _________________________
+
+fixture = 'hidden_a'
+
+    @pytest.mark.parametrize("fixture", [s["name"] for s in scenarios.HIDDEN_SPECS])
+    def test_hidden_extract(fixture):
+        spec = scenarios.by_name(fixture)
+        w = world.build(spec)
+        truth = world.truth(w)
+        tv = _truth_values(truth)
+    
+        root = Path(tempfile.mkdtemp())
+        (root / "data").mkdir(parents=True, exist_ok=True)
+        world.write_sqlite(w, str(root / "data"))
+        shutil.copytree(WORKSPACE / "capacity_forecast", root / "capacity_forecast")
+        _open_up(root)
+    
+        r = _run_pipeline(root)
+        assert r.returncode == 0, "%s: pipeline failed:\n%s\n%s" % (
+            fixture, r.stdout[-2000:], r.stderr[-2000:])
+        got = _read_results(root / "out")
+    
+        bad = []
+        for q in QUANT:
+            tol = _tol(fixture, q)
+            err = abs(float(got.get(q, 1e9)) - tv[q])
+            if err > tol:
+                bad.append("%s: reported %s, expected %.5f, error %.5f > tolerance %.5f (%.1f x)"
+                           % (q, got.get(q), tv[q], err, tol, err / tol))
+        # bookkeeping is re-checked on every extract, so constants from the visible one cannot survive
+        _bookkeeping(got, root / "data" / "warehouse.sqlite", bad)
+        if got.get("procurement_decision") != truth["decision"]:
+            bad.append("procurement_decision %r, expected %r"
+                       % (got.get("procurement_decision"), truth["decision"]))
+>       assert not bad, "%s:\n  %s" % (fixture, "\n  ".join(bad))
+E       AssertionError: hidden_a:
+E           target_peak_kw: reported 3.2949121197243274, expected 3.12089, error 0.17402 > tolerance 0.06884 (2.5 x)
+E           estate_tou_response_at_target_cdd: reported 0.0, expected 0.04347, error 0.04347 > tolerance 0.02805 (1.5 x)
+E       assert not ['target_peak_kw: reported 3.2949121197243274, expected 3.12089, error 0.17402 > tolerance 0.06884 (2.5 x)', 'estate_tou_response_at_target_cdd: reported 0.0, expected 0.04347, error 0.04347 > tolerance 0.02805 (1.5 x)']
+
+test_capacity.py:250: AssertionError
+________________________ test_hidden_extract[hidden_b] _________________________
+
+fixture = 'hidden_b'
+
+    @pytest.mark.parametrize("fixture", [s["name"] for s in scenarios.HIDDEN_SPECS])
+    def test_hidden_extract(fixture):
+        spec = scenarios.by_name(fixture)
+        w = world.build(spec)
+        truth = world.truth(w)
+        tv = _truth_values(truth)
+    
+        root = Path(tempfile.mkdtemp())
+        (root / "data").mkdir(parents=True, exist_ok=True)
+        world.write_sqlite(w, str(root / "data"))
+        shutil.copytree(WORKSPACE / "capacity_forecast", root / "capacity_forecast")
+        _open_up(root)
+    
+        r = _run_pipeline(root)
+        assert r.returncode == 0, "%s: pipeline failed:\n%s\n%s" % (
+            fixture, r.stdout[-2000:], r.stderr[-2000:])
+        got = _read_results(root / "out")
+    
+        bad = []
+        for q in QUANT:
+            tol = _tol(fixture, q)
+            err = abs(float(got.get(q, 1e9)) - tv[q])
+            if err > tol:
+                bad.append("%s: reported %s, expected %.5f, error %.5f > tolerance %.5f (%.1f x)"
+                           % (q, got.get(q), tv[q], err, tol, err / tol))
+        # bookkeeping is re-checked on every extract, so constants from the visible one cannot survive
+        _bookkeeping(got, root / "data" / "warehouse.sqlite", bad)
+        if got.get("procurement_decision") != truth["decision"]:
+            bad.append("procurement_decision %r, expected %r"
+                       % (got.get("procurement_decision"), truth["decision"]))
+>       assert not bad, "%s:\n  %s" % (fixture, "\n  ".join(bad))
+E       AssertionError: hidden_b:
+E           target_peak_kw: reported 3.289325307416849, expected 2.72738, error 0.56194 > tolerance 0.04455 (12.6 x)
+E           estate_tou_response_at_target_cdd: reported 0.0, expected 0.13924, error 0.13924 > tolerance 0.01460 (9.5 x)
+E           procurement_decision 'procure', expected 'defer'
+E       assert not ['target_peak_kw: reported 3.289325307416849, expected 2.72738, error 0.56194 > tolerance 0.04455 (12.6 x)', 'estate_t... 0.0, expected 0.13924, error 0.13924 > tolerance 0.01460 (9.5 x)', "procurement_decision 'procure', expected 'defer'"]
+
+test_capacity.py:250: AssertionError
+________________________ test_hidden_extract[hidden_c] _________________________
+
+fixture = 'hidden_c'
+
+    @pytest.mark.parametrize("fixture", [s["name"] for s in scenarios.HIDDEN_SPECS])
+    def test_hidden_extract(fixture):
+        spec = scenarios.by_name(fixture)
+        w = world.build(spec)
+        truth = world.truth(w)
+        tv = _truth_values(truth)
+    
+        root = Path(tempfile.mkdtemp())
+        (root / "data").mkdir(parents=True, exist_ok=True)
+        world.write_sqlite(w, str(root / "data"))
+        shutil.copytree(WORKSPACE / "capacity_forecast", root / "capacity_forecast")
+        _open_up(root)
+    
+        r = _run_pipeline(root)
+        assert r.returncode == 0, "%s: pipeline failed:\n%s\n%s" % (
+            fixture, r.stdout[-2000:], r.stderr[-2000:])
+        got = _read_results(root / "out")
+    
+        bad = []
+        for q in QUANT:
+            tol = _tol(fixture, q)
+            err = abs(float(got.get(q, 1e9)) - tv[q])
+            if err > tol:
+                bad.append("%s: reported %s, expected %.5f, error %.5f > tolerance %.5f (%.1f x)"
+                           % (q, got.get(q), tv[q], err, tol, err / tol))
+        # bookkeeping is re-checked on every extract, so constants from the visible one cannot survive
+        _bookkeeping(got, root / "data" / "warehouse.sqlite", bad)
+        if got.get("procurement_decision") != truth["decision"]:
+            bad.append("procurement_decision %r, expected %r"
+                       % (got.get("procurement_decision"), truth["decision"]))
+>       assert not bad, "%s:\n  %s" % (fixture, "\n  ".join(bad))
+E       AssertionError: hidden_c:
+E           target_peak_kw: reported 3.3782837018527347, expected 3.13659, error 0.24170 > tolerance 0.09965 (2.4 x)
+E           estate_tou_response_at_target_cdd: reported 0.0, expected 0.04309, error 0.04309 > tolerance 0.04125 (1.0 x)
+E       assert not ['target_peak_kw: reported 3.3782837018527347, expected 3.13659, error 0.24170 > tolerance 0.09965 (2.4 x)', 'estate_tou_response_at_target_cdd: reported 0.0, expected 0.04309, error 0.04309 > tolerance 0.04125 (1.0 x)']
+
+test_capacity.py:250: AssertionError
+________________________ test_hidden_extract[hidden_d] _________________________
+
+fixture = 'hidden_d'
+
+    @pytest.mark.parametrize("fixture", [s["name"] for s in scenarios.HIDDEN_SPECS])
+    def test_hidden_extract(fixture):
+        spec = scenarios.by_name(fixture)
+        w = world.build(spec)
+        truth = world.truth(w)
+        tv = _truth_values(truth)
+    
+        root = Path(tempfile.mkdtemp())
+        (root / "data").mkdir(parents=True, exist_ok=True)
+        world.write_sqlite(w, str(root / "data"))
+        shutil.copytree(WORKSPACE / "capacity_forecast", root / "capacity_forecast")
+        _open_up(root)
+    
+        r = _run_pipeline(root)
+        assert r.returncode == 0, "%s: pipeline failed:\n%s\n%s" % (
+            fixture, r.stdout[-2000:], r.stderr[-2000:])
+        got = _read_results(root / "out")
+    
+        bad = []
+        for q in QUANT:
+            tol = _tol(fixture, q)
+            err = abs(float(got.get(q, 1e9)) - tv[q])
+            if err > tol:
+                bad.append("%s: reported %s, expected %.5f, error %.5f > tolerance %.5f (%.1f x)"
+                           % (q, got.get(q), tv[q], err, tol, err / tol))
+        # bookkeeping is re-checked on every extract, so constants from the visible one cannot survive
+        _bookkeeping(got, root / "data" / "warehouse.sqlite", bad)
+        if got.get("procurement_decision") != truth["decision"]:
+            bad.append("procurement_decision %r, expected %r"
+                       % (got.get("procurement_decision"), truth["decision"]))
+>       assert not bad, "%s:\n  %s" % (fixture, "\n  ".join(bad))
+E       AssertionError: hidden_d:
+E           target_peak_kw: reported 3.378749299150192, expected 3.00466, error 0.37409 > tolerance 0.04235 (8.8 x)
+E           estate_tou_response_at_target_cdd: reported 0.0, expected 0.09116, error 0.09116 > tolerance 0.01545 (5.9 x)
+E           procurement_decision 'procure', expected 'defer'
+E       assert not ['target_peak_kw: reported 3.378749299150192, expected 3.00466, error 0.37409 > tolerance 0.04235 (8.8 x)', 'estate_to... 0.0, expected 0.09116, error 0.09116 > tolerance 0.01545 (5.9 x)', "procurement_decision 'procure', expected 'defer'"]
+
+test_capacity.py:250: AssertionError
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED test_capacity.py::test_warehouse_unmodified
+PASSED test_capacity.py::test_pipeline_runs
+PASSED test_capacity.py::test_rerun_is_deterministic
+PASSED test_capacity.py::test_output_schema
+PASSED test_capacity.py::test_bookkeeping
+PASSED test_capacity.py::test_segment_forecasts_reconcile
+FAILED test_capacity.py::test_target_peak_forecast - AssertionError: target_p...
+FAILED test_capacity.py::test_estate_tou_response - AssertionError: estate_to...
+FAILED test_capacity.py::test_procurement_decision - AssertionError: procurem...
+FAILED test_capacity.py::test_hidden_extract[hidden_a] - AssertionError: hidd...
+FAILED test_capacity.py::test_hidden_extract[hidden_b] - AssertionError: hidd...
+FAILED test_capacity.py::test_hidden_extract[hidden_c] - AssertionError: hidd...
+FAILED test_capacity.py::test_hidden_extract[hidden_d] - AssertionError: hidd...
+========================= 7 failed, 6 passed in 35.69s =========================

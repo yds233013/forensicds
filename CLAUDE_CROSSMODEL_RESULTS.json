@@ -1,0 +1,334 @@
+{
+ "experiment": "ForensicDS cross-model evaluation: Claude vs gemini-3-flash-preview on the frozen final ten",
+ "status": "COMPLETE_9_OF_10_TASKS",
+ "timestamp_utc": "2026-09-30T22:51:56.096385+00:00",
+ "repository_head": "7e6d4d760995c7bd3729a8cbba31e5a31a8801fe",
+ "harbor_version": "0.21.0",
+ "claude_agent_planned": {
+  "agent": "claude-code",
+  "model_identifier": "claude-opus-5-5",
+  "rationale": "Harbor passes model_name through as ANTHROPIC_MODEL with no whitelist. The repository does not designate a Claude comparison model; its only prior claude-code use is claude-sonnet-4-6 for `harbor check` (task quality checking, not evaluation). The assignment directs using the strongest appropriate model, which also best answers the research question: if the strongest Claude fails in the same place, the gap is cross-model rather than scale-specific.",
+  "command": "harbor run -p candidates/<task> -a claude-code -m claude-opus-5-5 -k 1 -n 1 -o crossmodel_logs/claude --job-name claude-<task>-<i> -y --agent-setup-timeout-multiplier 3.0"
+ },
+ "frozen_verification": {
+  "method": "Each task directory diffed against samples/<task>/ inside the delivered submission ZIP (submission_final10.zip, sha256 629476cd886bd16eeb206e952c26be41370f9f79b149fa21cda0ecdf7779af7e, verified intact), which is the authoritative record of the versions Gemini was evaluated on.",
+  "result": "all 10 byte-identical (excluding __pycache__)",
+  "tasks": {
+   "02-renewal-risk-regression": {
+    "version": "v1 (exposed; v1.1 fork exists separately)",
+    "aggregate_sha256": "b31eb4fe580477cf08a453a38ffaa8b545da19e5f7e9fc4096910f25f665cf88",
+    "files": 55,
+    "matches_evaluated_version": true
+   },
+   "g05-sco-rollout-gate": {
+    "version": "v1",
+    "aggregate_sha256": "7525ddb2ff902b42ad20a51c92f0fb392abd484a218ae6cf5d2c9bbb1c23bcc3",
+    "files": 39,
+    "matches_evaluated_version": true
+   },
+   "g10-censored-demand": {
+    "version": "v1",
+    "aggregate_sha256": "7c72dd098ce3bfcd3f1283adadf926837ef5969399d44f6b3fa33a6161802194",
+    "files": 40,
+    "matches_evaluated_version": true
+   },
+   "g24-recommender-ope": {
+    "version": "v1",
+    "aggregate_sha256": "505e59ccf71f93da82752cc73ba0546998ef41b72c0a8f9277e31ca820c5cce5",
+    "files": 43,
+    "matches_evaluated_version": true
+   },
+   "g36-tou-capacity-gate": {
+    "version": "v1",
+    "aggregate_sha256": "6cb3dd64e37a12864354194f836e2e9dbdf70a072af415abe4c15d9e68554512",
+    "files": 37,
+    "matches_evaluated_version": true
+   },
+   "p20-noshow-monitoring": {
+    "version": "v1 (exposed; v1.1 fork exists separately)",
+    "aggregate_sha256": "62943714d631e6a9466b309a183f038ecd3628eed0fd0eed15225101552833eb",
+    "files": 43,
+    "matches_evaluated_version": true
+   },
+   "p22-gauge-recalibration": {
+    "version": "v1",
+    "aggregate_sha256": "8da6ed0e70dff9aaa459e1dbab019d37e998f534f6bdc128901233e97cef6a03",
+    "files": 41,
+    "matches_evaluated_version": true
+   },
+   "p31-fill-rate-dispute": {
+    "version": "v1",
+    "aggregate_sha256": "67fb8e658f8a468c8021263e4546f22213ce46c8b1fd8fda47185ea7eaa764e3",
+    "files": 40,
+    "matches_evaluated_version": true
+   },
+   "g50-courier-boost-rollout": {
+    "version": "v2.3 (five worlds)",
+    "aggregate_sha256": "656a5a166d37962f2bf867818876bf1b544c81895c886ae25d4ac7da687390e9",
+    "files": 43,
+    "matches_evaluated_version": true
+   },
+   "g08-forecast-accuracy-vintages": {
+    "version": "v1",
+    "aggregate_sha256": "a7f073a3402b1bc18ec3ba8278c0b1d79fbd0bfe7a936743f6d4f8da4da15e12",
+    "files": 39,
+    "matches_evaluated_version": true
+   }
+  }
+ },
+ "gemini_baseline": {
+  "02-renewal-risk-regression": {
+   "valid_trials": 3,
+   "passes": 0,
+   "pass_at_1": 0.0,
+   "pass_at_3": 0
+  },
+  "g05-sco-rollout-gate": {
+   "valid_trials": 4,
+   "passes": 0,
+   "pass_at_1": 0.0,
+   "pass_at_3": 0
+  },
+  "g10-censored-demand": {
+   "valid_trials": 3,
+   "passes": 0,
+   "pass_at_1": 0.0,
+   "pass_at_3": 0
+  },
+  "g24-recommender-ope": {
+   "valid_trials": 3,
+   "passes": 0,
+   "pass_at_1": 0.0,
+   "pass_at_3": 0
+  },
+  "g36-tou-capacity-gate": {
+   "valid_trials": 3,
+   "passes": 0,
+   "pass_at_1": 0.0,
+   "pass_at_3": 0
+  },
+  "p20-noshow-monitoring": {
+   "valid_trials": 3,
+   "passes": 0,
+   "pass_at_1": 0.0,
+   "pass_at_3": 0
+  },
+  "p22-gauge-recalibration": {
+   "valid_trials": 3,
+   "passes": 0,
+   "pass_at_1": 0.0,
+   "pass_at_3": 0
+  },
+  "p31-fill-rate-dispute": {
+   "valid_trials": 3,
+   "passes": 0,
+   "pass_at_1": 0.0,
+   "pass_at_3": 0
+  },
+  "g50-courier-boost-rollout": {
+   "valid_trials": 3,
+   "passes": 0,
+   "pass_at_1": 0.0,
+   "pass_at_3": 0
+  },
+  "g08-forecast-accuracy-vintages": {
+   "valid_trials": 3,
+   "passes": 1,
+   "pass_at_1": 0.3333,
+   "pass_at_3": 1
+  },
+  "_suite": {
+   "total_valid_trials": 31,
+   "total_passes": 1,
+   "aggregate_trial_pass_rate": 0.0323,
+   "task_level_pass_at_3": 0.1,
+   "model": "google/gemini-3-flash-preview",
+   "agent": "gemini-cli"
+  }
+ },
+ "claude_results": {
+  "02-renewal-risk-regression": {
+   "valid_trials": 3,
+   "passes": 3,
+   "pass_at_1": 1.0,
+   "pass_at_3": 1
+  },
+  "g05-sco-rollout-gate": {
+   "valid_trials": 3,
+   "passes": 3,
+   "pass_at_1": 1.0,
+   "pass_at_3": 1
+  },
+  "g10-censored-demand": {
+   "valid_trials": 3,
+   "passes": 0,
+   "pass_at_1": 0.0,
+   "pass_at_3": 0
+  },
+  "g24-recommender-ope": {
+   "valid_trials": 3,
+   "passes": 3,
+   "pass_at_1": 1.0,
+   "pass_at_3": 1
+  },
+  "g36-tou-capacity-gate": {
+   "valid_trials": 3,
+   "passes": 0,
+   "pass_at_1": 0.0,
+   "pass_at_3": 0
+  },
+  "p20-noshow-monitoring": {
+   "valid_trials": 3,
+   "passes": 0,
+   "pass_at_1": 0.0,
+   "pass_at_3": 0
+  },
+  "p22-gauge-recalibration": {
+   "valid_trials": 3,
+   "passes": 1,
+   "pass_at_1": 0.3333,
+   "pass_at_3": 1
+  },
+  "p31-fill-rate-dispute": {
+   "valid_trials": 3,
+   "passes": 0,
+   "pass_at_1": 0.0,
+   "pass_at_3": 0
+  },
+  "g50-courier-boost-rollout": {
+   "valid_trials": 0,
+   "passes": 0,
+   "pass_at_1": null,
+   "pass_at_3": null
+  },
+  "g08-forecast-accuracy-vintages": {
+   "valid_trials": 3,
+   "passes": 3,
+   "pass_at_1": 1.0,
+   "pass_at_3": 1
+  },
+  "_suite": {
+   "total_valid_trials": 27,
+   "total_passes": 13,
+   "aggregate_trial_pass_rate": 0.4815,
+   "task_level_pass_at_3": 0.5556,
+   "model": "claude-opus-5-5",
+   "agent": "claude-code"
+  }
+ },
+ "first_consequential_error": {
+  "gemini": {
+   "unobservable-binary-reward": 18,
+   "none": 1,
+   "scientific_object": 3,
+   "quantitative_result": 6,
+   "evidence_reconstruction": 1,
+   "uncertainty": 2
+  },
+  "claude": {
+   "none": 13,
+   "unobservable-binary-reward": 6,
+   "quantitative_result": 6,
+   "uncertainty": 2
+  }
+ },
+ "matched_subset": {
+  "tasks": [
+   "02-renewal-risk-regression",
+   "g05-sco-rollout-gate",
+   "g10-censored-demand",
+   "p22-gauge-recalibration"
+  ],
+  "gemini_passes": 0,
+  "gemini_valid": 13,
+  "claude_passes": 6,
+  "claude_valid": 10,
+  "gemini_tasks_passed": 0,
+  "claude_tasks_passed": 2
+ },
+ "tasks_without_claude_data": [
+  "g24-recommender-ope",
+  "g36-tou-capacity-gate",
+  "p20-noshow-monitoring",
+  "p31-fill-rate-dispute",
+  "g50-courier-boost-rollout",
+  "g08-forecast-accuracy-vintages"
+ ],
+ "cost_usd": {
+  "total": 23.0708,
+  "median_per_valid_trial": 0.8,
+  "most_expensive": "g10-censored-demand-1 $3.08"
+ },
+ "behavioural_comparison_withdrawn": {
+  "reason": "scaffold reasoning-text asymmetry",
+  "median_reasoning_chars": {
+   "gemini-cli": 10199,
+   "claude-code": 1003
+  }
+ },
+ "behavioural_comparison": {
+  "recognition": {
+   "gemini": 0.7857142857142857,
+   "claude": 0.8888888888888888
+  },
+  "revision": {
+   "gemini": 0.8387096774193549,
+   "claude": 0.8888888888888888
+  },
+  "anomaly": {
+   "gemini": 0.9032258064516129,
+   "claude": 0.18518518518518517
+  },
+  "governing": {
+   "gemini": 1.0,
+   "claude": 1.0
+  },
+  "correct_quantity": {
+   "gemini": 0.16666666666666666,
+   "claude": 0.3333333333333333
+  },
+  "correct_decision": {
+   "gemini": 0.16666666666666666,
+   "claude": 0.4444444444444444
+  },
+  "correct_object": {
+   "gemini": 0.6666666666666666,
+   "claude": 1.0
+  }
+ },
+ "blocker": "g50 cannot be measured for claude-code: its frozen verifier's runtime hash-pin refuses any scaffold that installs tooling. Confirmed de-confounded (agent ran 16 steps, $0.66, verifier still refused). Fixing it would require modifying a frozen verifier, which is prohibited.",
+ "criterion_comparison": {
+  "evidence_reconstruction": {
+   "gemini": "14/15",
+   "claude": "9/9"
+  },
+  "scientific_object": {
+   "gemini": "11/15",
+   "claude": "9/9"
+  },
+  "independent_validation": {
+   "gemini": "11/12",
+   "claude": "9/9"
+  },
+  "estimator_implementation": {
+   "gemini": "11/12",
+   "claude": "7/9"
+  },
+  "identification": {
+   "gemini": "5/12",
+   "claude": "4/9"
+  },
+  "decision": {
+   "gemini": "4/15",
+   "claude": "4/9"
+  },
+  "quantitative_results": {
+   "gemini": "2/12",
+   "claude": "3/9"
+  }
+ },
+ "decision_only_over_credit": {
+  "gemini": "4/15 (27%)",
+  "claude": "3/9 (33%)"
+ }
+}

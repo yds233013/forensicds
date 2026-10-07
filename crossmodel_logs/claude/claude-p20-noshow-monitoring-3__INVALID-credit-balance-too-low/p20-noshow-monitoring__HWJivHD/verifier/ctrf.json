@@ -1,0 +1,86 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 6,
+            "passed": 3,
+            "failed": 3,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1790826475.8883195,
+            "stop": 1790827099.4465272
+        },
+        "tests": [
+            {
+                "name": "test_monitoring.py::test_database_unmodified",
+                "status": "passed",
+                "duration": 201.48887363495305,
+                "start": 1790826476.010776,
+                "stop": 1790827003.7654788,
+                "retries": 0,
+                "file_path": "test_monitoring.py"
+            },
+            {
+                "name": "test_monitoring.py::test_pipeline_runs",
+                "status": "passed",
+                "duration": 2.8791306689963676,
+                "start": 1790827003.779603,
+                "stop": 1790827006.661604,
+                "retries": 0,
+                "file_path": "test_monitoring.py"
+            },
+            {
+                "name": "test_monitoring.py::test_rerun_is_deterministic",
+                "status": "passed",
+                "duration": 5.136944168014452,
+                "start": 1790827006.6623325,
+                "stop": 1790827011.8037522,
+                "retries": 0,
+                "file_path": "test_monitoring.py"
+            },
+            {
+                "name": "test_monitoring.py::test_output_schema",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.11876325093908235,
+                "start": 1790827011.8068752,
+                "stop": 1790827012.187739,
+                "retries": 0,
+                "file_path": "test_monitoring.py",
+                "trace": "def test_output_schema():\n        readout, rows = _read_outputs(WORKSPACE / \"out\")\n        required = (\"model_version\", \"window_weeks\", \"monitored_auc\", \"validation_auc\", \"retention_floor_auc\",\n                    \"evaluation_population\", \"auc_by_scoring\", \"feed_defect_share_pct\", \"programme_effect_pp\",\n                    \"attribution_auc\", \"decision\")\n        missing = [k for k in required if k not in readout]\n        if missing:\n            _fail(\"evidence_reconstruction\", f\"readout.json is missing {missing}\")\n>       assert not missing, f\"readout.json is missing {missing}\"\nE       AssertionError: readout.json is missing ['retention_floor_auc', 'evaluation_population', 'feed_defect_share_pct', 'programme_effect_pp']\nE       assert not ['retention_floor_auc', 'evaluation_population', 'feed_defect_share_pct', 'programme_effect_pp']\n\ntest_monitoring.py:294: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_monitoring.py::test_visible_extract",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 46.401236437028274,
+                "start": 1790827012.190888,
+                "stop": 1790827058.748314,
+                "retries": 0,
+                "file_path": "test_monitoring.py",
+                "trace": "def test_visible_extract():\n        root = Path(tempfile.mkdtemp())\n        bad = _check_extract(\"visible\", root)\n        shutil.rmtree(root, ignore_errors=True)\n>       assert not bad, \"visible extract:\\n  \" + \"\\n  \".join(bad)\nE       AssertionError: visible extract:\nE           retention_floor_auc: missing or not a number\nE           evaluation_population.clinic_ids missing or not a list\nE           auc_by_scoring must have exactly ['as_served', 'candidate_v4', 'feature_store_current', 'record_features_asof_window']\nE           out/evaluation_population.csv was not written\nE           feed_defect_share_pct: missing or not a number\nE           programme_effect_pp: missing or not a number\nE           attribution_auc[population_drift] = 0.0605, expected -0.0112 +/- 0.025\nE           attribution_auc[policy_feedback] = 0.0, expected 0.0666 +/- 0.025\nE           decision = 'replace_with_v4', expected 'retain_model'\nE       assert not ['retention_floor_auc: missing or not a number', 'evaluation_population.clinic_ids missing or not a list', \"auc_by_sco...as not written', 'feed_defect_share_pct: missing or not a number', 'programme_effect_pp: missing or not a number', ...]\n\ntest_monitoring.py:306: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_monitoring.py::test_hidden_extract",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 16.400029301003087,
+                "start": 1790827058.752137,
+                "stop": 1790827075.1657844,
+                "retries": 2,
+                "file_path": "test_monitoring.py",
+                "tags": [
+                    "parametrize::fixture::['hidden_a', 'hidden_b', 'hidden_c']"
+                ],
+                "trace": "fixture = 'hidden_c'\n\n    @pytest.mark.parametrize(\"fixture\", [s[\"name\"] for s in scenarios.HIDDEN_SPECS])\n    def test_hidden_extract(fixture):\n        root = Path(tempfile.mkdtemp())\n        bad = _check_extract(fixture, root)\n        shutil.rmtree(root, ignore_errors=True)\n>       assert not bad, f\"{fixture}:\\n  \" + \"\\n  \".join(bad)\nE       AssertionError: hidden_c:\nE           retention_floor_auc: missing or not a number\nE           evaluation_population.clinic_ids missing or not a list\nE           auc_by_scoring must have exactly ['as_served', 'candidate_v4', 'feature_store_current', 'record_features_asof_window']\nE           out/evaluation_population.csv was not written\nE           feed_defect_share_pct: missing or not a number\nE           programme_effect_pp: missing or not a number\nE           attribution_auc[population_drift] = 0.0713, expected 0.0181 +/- 0.025\nE           attribution_auc[feature_vintage] = 0.0, expected 0.0505 +/- 0.025\nE           attribution_auc[policy_feedback] = 0.0, expected 0.0272 +/- 0.025\nE           decision = 'replace_with_v4', expected 'retain_model'\nE       assert not ['retention_floor_auc: missing or not a number', 'evaluation_population.clinic_ids missing or not a list', \"auc_by_sco...as not written', 'feed_defect_share_pct: missing or not a number', 'programme_effect_pp: missing or not a number', ...]\n\ntest_monitoring.py:314: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

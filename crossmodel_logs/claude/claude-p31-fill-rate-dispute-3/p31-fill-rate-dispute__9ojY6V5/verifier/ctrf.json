@@ -1,0 +1,83 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 6,
+            "passed": 4,
+            "failed": 2,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1790840568.3205981,
+            "stop": 1790840574.2704256
+        },
+        "tests": [
+            {
+                "name": "test_fill.py::test_database_unmodified",
+                "status": "passed",
+                "duration": 0.7414130000397563,
+                "start": 1790840568.351882,
+                "stop": 1790840569.0937574,
+                "retries": 0,
+                "file_path": "test_fill.py"
+            },
+            {
+                "name": "test_fill.py::test_pipeline_runs",
+                "status": "passed",
+                "duration": 0.4909061660291627,
+                "start": 1790840569.094018,
+                "stop": 1790840569.5852332,
+                "retries": 0,
+                "file_path": "test_fill.py"
+            },
+            {
+                "name": "test_fill.py::test_rerun_is_deterministic",
+                "status": "passed",
+                "duration": 0.8703434580238536,
+                "start": 1790840569.5854533,
+                "stop": 1790840570.456257,
+                "retries": 0,
+                "file_path": "test_fill.py"
+            },
+            {
+                "name": "test_fill.py::test_output_schema",
+                "status": "passed",
+                "duration": 0.0010615420178510249,
+                "start": 1790840570.4565778,
+                "stop": 1790840570.4578586,
+                "retries": 0,
+                "file_path": "test_fill.py"
+            },
+            {
+                "name": "test_fill.py::test_visible_extract",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.8987076249904931,
+                "start": 1790840570.4580476,
+                "stop": 1790840571.3708897,
+                "retries": 0,
+                "file_path": "test_fill.py",
+                "trace": "def test_visible_extract():\n        root = Path(tempfile.mkdtemp())\n        bad = _check_extract(\"visible\", root)\n        shutil.rmtree(root, ignore_errors=True)\n>       assert not bad, \"visible extract:\\n  \" + \"\\n  \".join(bad)\nE       AssertionError: visible extract:\nE           bridge_pp[aggregation] = 13.22, expected 1.831 +/- 0.4\nE           bridge_pp[denominator] = -16.17, expected -6.429 +/- 0.4\nE           bridge_pp[returns_treatment] = -3.18, expected -1.521 +/- 0.4\nE       assert not ['bridge_pp[aggregation] = 13.22, expected 1.831 +/- 0.4', 'bridge_pp[denominator] = -16.17, expected -6.429 +/- 0.4', 'bridge_pp[returns_treatment] = -3.18, expected -1.521 +/- 0.4']\n\ntest_fill.py:301: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_fill.py::test_hidden_extract",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.8278967090300284,
+                "start": 1790840571.3710697,
+                "stop": 1790840572.205427,
+                "retries": 2,
+                "file_path": "test_fill.py",
+                "tags": [
+                    "parametrize::fixture::['hidden_a', 'hidden_b', 'hidden_c']"
+                ],
+                "trace": "fixture = 'hidden_c'\n\n    @pytest.mark.parametrize(\"fixture\", [s[\"name\"] for s in scenarios.HIDDEN_SPECS])\n    def test_hidden_extract(fixture):\n        root = Path(tempfile.mkdtemp())\n        bad = _check_extract(fixture, root)\n        shutil.rmtree(root, ignore_errors=True)\n>       assert not bad, f\"{fixture}:\\n  \" + \"\\n  \".join(bad)\nE       AssertionError: hidden_c:\nE           bridge_pp[aggregation] = 15.17, expected 4.474 +/- 0.4\nE           bridge_pp[denominator] = -15.6, expected -6.500 +/- 0.4\nE           bridge_pp[returns_treatment] = -3.19, expected -1.575 +/- 0.4\nE           bonus_gate_met = 'not_determinable', expected 'no'\nE       assert not ['bridge_pp[aggregation] = 15.17, expected 4.474 +/- 0.4', 'bridge_pp[denominator] = -15.6, expected -6.500 +/- 0.4', 'bridge_pp[returns_treatment] = -3.19, expected -1.575 +/- 0.4', \"bonus_gate_met = 'not_determinable', expected 'no'\"]\n\ntest_fill.py:309: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

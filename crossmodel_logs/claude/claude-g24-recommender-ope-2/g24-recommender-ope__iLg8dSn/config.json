@@ -1,0 +1,13 @@
+{
+    "task": {
+        "path": "candidates/g24-recommender-ope"
+    },
+    "trial_name": "g24-recommender-ope__iLg8dSn",
+    "trials_dir": "crossmodel_logs/claude/claude-g24-recommender-ope-2",
+    "agent_setup_timeout_multiplier": 3.0,
+    "agent": {
+        "name": "claude-code",
+        "model_name": "claude-opus-5-5"
+    },
+    "job_id": "50f2ffbc-daae-4e27-b5a5-85c3dddddc81"
+}

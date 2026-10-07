@@ -1,0 +1,54 @@
+credential: present, not the exposed key (sha256 b8934a4292cf)
+frozen-integrity gate: all 10 tasks byte-identical to the evaluated versions
+
+=== STEP 4: smoke test (one trial, p22) ===
+claude-p22-gauge-recalibration-1 rc=0 reward=0
+      {"criterion_decision": 0, "criterion_estimator_implementation": 1, "criterion_evidence_reconstruction": 1, "criterion_identification": 1, "criterion_independent_validation": 1, "criterion_quantitative_results": 0, "criterion_scientific_object": 1, "reward": 0}smoke test infrastructure-valid; it counts as p22 trial 1
+
+=== STEP 5: remaining trials, model=claude-opus-5-5, 3 per task ===
+claude-02-renewal-risk-regression-1 rc=0 reward=1
+claude-02-renewal-risk-regression-2 rc=0 reward=1
+claude-02-renewal-risk-regression-3 rc=0 reward=1
+claude-g05-sco-rollout-gate-1 rc=0 reward=1
+claude-g05-sco-rollout-gate-2 rc=0 reward=1
+claude-g05-sco-rollout-gate-3 rc=0 reward=1
+claude-g10-censored-demand-1 rc=0 reward=0
+claude-g10-censored-demand-2 rc=0 reward=0
+claude-g10-censored-demand-3 rc=0 reward=0
+claude-g24-recommender-ope-1 rc=0 reward=0
+claude-g24-recommender-ope-2 rc=0 reward=0
+claude-g24-recommender-ope-3 rc=0 reward=0
+claude-g36-tou-capacity-gate-1 rc=0 reward=0
+claude-g36-tou-capacity-gate-2 rc=0 reward=0
+claude-g36-tou-capacity-gate-3 rc=0 reward=0
+claude-p20-noshow-monitoring-1 rc=0 reward=0
+      {"criterion_decision": 0, "criterion_estimator_implementation": 0, "criterion_evidence_reconstruction": 0, "criterion_identification": 0, "criterion_independent_validation": 0, "criterion_quantitative_results": 0, "criterion_scientific_object": 0, "reward": 0}claude-p20-noshow-monitoring-2 rc=0 reward=0
+      {"criterion_decision": 0, "criterion_estimator_implementation": 0, "criterion_evidence_reconstruction": 0, "criterion_identification": 0, "criterion_independent_validation": 0, "criterion_quantitative_results": 0, "criterion_scientific_object": 0, "reward": 0}claude-p20-noshow-monitoring-3 rc=0 reward=0
+      {"criterion_decision": 0, "criterion_estimator_implementation": 0, "criterion_evidence_reconstruction": 0, "criterion_identification": 0, "criterion_independent_validation": 0, "criterion_quantitative_results": 0, "criterion_scientific_object": 0, "reward": 0}claude-p22-gauge-recalibration-2 rc=0 reward=0
+      {"criterion_decision": 0, "criterion_estimator_implementation": 0, "criterion_evidence_reconstruction": 0, "criterion_identification": 0, "criterion_independent_validation": 0, "criterion_quantitative_results": 0, "criterion_scientific_object": 0, "reward": 0}claude-p22-gauge-recalibration-3 rc=0 reward=0
+      {"criterion_decision": 0, "criterion_estimator_implementation": 0, "criterion_evidence_reconstruction": 0, "criterion_identification": 0, "criterion_independent_validation": 0, "criterion_quantitative_results": 0, "criterion_scientific_object": 0, "reward": 0}claude-p31-fill-rate-dispute-1 rc=0 reward=0
+      {"criterion_decision": 0, "criterion_estimator_implementation": 0, "criterion_evidence_reconstruction": 0, "criterion_identification": 0, "criterion_independent_validation": 0, "criterion_quantitative_results": 0, "criterion_scientific_object": 0, "reward": 0}claude-p31-fill-rate-dispute-2 rc=0 reward=0
+      {"criterion_decision": 0, "criterion_estimator_implementation": 0, "criterion_evidence_reconstruction": 0, "criterion_identification": 0, "criterion_independent_validation": 0, "criterion_quantitative_results": 0, "criterion_scientific_object": 0, "reward": 0}claude-p31-fill-rate-dispute-3 rc=0 reward=0
+      {"criterion_decision": 0, "criterion_estimator_implementation": 0, "criterion_evidence_reconstruction": 0, "criterion_identification": 0, "criterion_independent_validation": 0, "criterion_quantitative_results": 0, "criterion_scientific_object": 0, "reward": 0}claude-g50-courier-boost-rollout-1 -> INVALID (verifier refused to grade)
+  retrying g50-courier-boost-rollout trial 1 (invalid attempt 1)
+claude-g50-courier-boost-rollout-1 -> INVALID (verifier refused to grade)
+  retrying g50-courier-boost-rollout trial 1 (invalid attempt 2)
+claude-g50-courier-boost-rollout-1 -> INVALID (verifier refused to grade)
+  giving up on g50-courier-boost-rollout trial 1 after 3 invalid attempts
+claude-g50-courier-boost-rollout-2 -> INVALID (verifier refused to grade)
+  retrying g50-courier-boost-rollout trial 2 (invalid attempt 1)
+claude-g50-courier-boost-rollout-2 -> INVALID (verifier refused to grade)
+  retrying g50-courier-boost-rollout trial 2 (invalid attempt 2)
+claude-g50-courier-boost-rollout-2 -> INVALID (verifier refused to grade)
+  giving up on g50-courier-boost-rollout trial 2 after 3 invalid attempts
+claude-g50-courier-boost-rollout-3 -> INVALID (verifier refused to grade)
+  retrying g50-courier-boost-rollout trial 3 (invalid attempt 1)
+claude-g50-courier-boost-rollout-3 -> INVALID (verifier refused to grade)
+  retrying g50-courier-boost-rollout trial 3 (invalid attempt 2)
+claude-g50-courier-boost-rollout-3 -> INVALID (verifier refused to grade)
+  giving up on g50-courier-boost-rollout trial 3 after 3 invalid attempts
+claude-g08-forecast-accuracy-vintages-1 rc=0 reward=0
+claude-g08-forecast-accuracy-vintages-2 rc=0 reward=0
+claude-g08-forecast-accuracy-vintages-3 rc=0 reward=0
+
+ALL CLAUDE TRIALS COMPLETE

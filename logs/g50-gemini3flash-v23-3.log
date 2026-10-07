@@ -1,0 +1,26 @@
+  1/1 Criterion_Courier_Supply_Response: 1.000 ━━━━━━━━━━━━━━━━━ 0:10:48 0:00:00
+adhoc • gemini-cli • gemini-3-flash-preview
+┏━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━┳━━━━━━━━┳━━━━━━━┓
+┃ Trials ┃ Excep… ┃ Crite… ┃ Crite… ┃ Crite… ┃ Crite… ┃ Crit… ┃ Crite… ┃ Rewa… ┃
+┡━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━╇━━━━━━━━╇━━━━━━━┩
+│      1 │      0 │  1.000 │  0.000 │  1.000 │  0.000 │ 0.000 │  0.000 │ 0.000 │
+└────────┴────────┴────────┴────────┴────────┴────────┴───────┴────────┴───────┘
+
+┏━━━━━━━━┳━━━━━━━┓
+┃ Reward ┃ Count ┃
+┡━━━━━━━━╇━━━━━━━┩
+│ 1      │     1 │
+│ 0      │     1 │
+│ 1      │     1 │
+│ 0      │     1 │
+│ 0      │     1 │
+│ 0      │     1 │
+│ 0      │     1 │
+└────────┴───────┘
+
+Job Info
+Total runtime: 10m 48s
+Results written to jobs/g50-gemini3flash-v23-3/result.json
+Inspect results by running `harbor view jobs`
+Share results by running `harbor upload jobs/g50-gemini3flash-v23-3`
+

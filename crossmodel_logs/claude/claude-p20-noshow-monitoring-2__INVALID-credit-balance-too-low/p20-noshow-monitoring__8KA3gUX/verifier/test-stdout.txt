@@ -1,0 +1,125 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+configfile: ../dev/null
+plugins: json-ctrf-0.3.5
+collected 8 items
+
+test_monitoring.py ...FFFFF                                              [100%]
+
+=================================== FAILURES ===================================
+______________________________ test_output_schema ______________________________
+
+    def test_output_schema():
+        readout, rows = _read_outputs(WORKSPACE / "out")
+        required = ("model_version", "window_weeks", "monitored_auc", "validation_auc", "retention_floor_auc",
+                    "evaluation_population", "auc_by_scoring", "feed_defect_share_pct", "programme_effect_pp",
+                    "attribution_auc", "decision")
+        missing = [k for k in required if k not in readout]
+        if missing:
+            _fail("evidence_reconstruction", f"readout.json is missing {missing}")
+>       assert not missing, f"readout.json is missing {missing}"
+E       AssertionError: readout.json is missing ['retention_floor_auc', 'evaluation_population', 'feed_defect_share_pct', 'programme_effect_pp']
+E       assert not ['retention_floor_auc', 'evaluation_population', 'feed_defect_share_pct', 'programme_effect_pp']
+
+test_monitoring.py:294: AssertionError
+_____________________________ test_visible_extract _____________________________
+
+    def test_visible_extract():
+        root = Path(tempfile.mkdtemp())
+        bad = _check_extract("visible", root)
+        shutil.rmtree(root, ignore_errors=True)
+>       assert not bad, "visible extract:\n  " + "\n  ".join(bad)
+E       AssertionError: visible extract:
+E           retention_floor_auc: missing or not a number
+E           evaluation_population.clinic_ids missing or not a list
+E           auc_by_scoring must have exactly ['as_served', 'candidate_v4', 'feature_store_current', 'record_features_asof_window']
+E           out/evaluation_population.csv was not written
+E           feed_defect_share_pct: missing or not a number
+E           programme_effect_pp: missing or not a number
+E           attribution_auc[population_drift] = 0.0605, expected -0.0112 +/- 0.025
+E           attribution_auc[policy_feedback] = 0.0, expected 0.0666 +/- 0.025
+E           decision = 'replace_with_v4', expected 'retain_model'
+E       assert not ['retention_floor_auc: missing or not a number', 'evaluation_population.clinic_ids missing or not a list', "auc_by_sco...as not written', 'feed_defect_share_pct: missing or not a number', 'programme_effect_pp: missing or not a number', ...]
+
+test_monitoring.py:306: AssertionError
+________________________ test_hidden_extract[hidden_a] _________________________
+
+fixture = 'hidden_a'
+
+    @pytest.mark.parametrize("fixture", [s["name"] for s in scenarios.HIDDEN_SPECS])
+    def test_hidden_extract(fixture):
+        root = Path(tempfile.mkdtemp())
+        bad = _check_extract(fixture, root)
+        shutil.rmtree(root, ignore_errors=True)
+>       assert not bad, f"{fixture}:\n  " + "\n  ".join(bad)
+E       AssertionError: hidden_a:
+E           retention_floor_auc: missing or not a number
+E           evaluation_population.clinic_ids missing or not a list
+E           auc_by_scoring must have exactly ['as_served', 'candidate_v4', 'feature_store_current', 'record_features_asof_window']
+E           out/evaluation_population.csv was not written
+E           feed_defect_share_pct: missing or not a number
+E           programme_effect_pp: missing or not a number
+E           attribution_auc[population_drift] = 0.1662, expected 0.0933 +/- 0.025
+E           attribution_auc[policy_feedback] = 0.0, expected 0.0723 +/- 0.025
+E       assert not ['retention_floor_auc: missing or not a number', 'evaluation_population.clinic_ids missing or not a list', "auc_by_sco...as not written', 'feed_defect_share_pct: missing or not a number', 'programme_effect_pp: missing or not a number', ...]
+
+test_monitoring.py:314: AssertionError
+________________________ test_hidden_extract[hidden_b] _________________________
+
+fixture = 'hidden_b'
+
+    @pytest.mark.parametrize("fixture", [s["name"] for s in scenarios.HIDDEN_SPECS])
+    def test_hidden_extract(fixture):
+        root = Path(tempfile.mkdtemp())
+        bad = _check_extract(fixture, root)
+        shutil.rmtree(root, ignore_errors=True)
+>       assert not bad, f"{fixture}:\n  " + "\n  ".join(bad)
+E       AssertionError: hidden_b:
+E           retention_floor_auc: missing or not a number
+E           evaluation_population.clinic_ids missing or not a list
+E           auc_by_scoring must have exactly ['as_served', 'candidate_v4', 'feature_store_current', 'record_features_asof_window']
+E           out/evaluation_population.csv was not written
+E           feed_defect_share_pct: missing or not a number
+E           programme_effect_pp: missing or not a number
+E           attribution_auc[population_drift] = 0.1062, expected 0.0005 +/- 0.025
+E           attribution_auc[feature_feed_defect] = 0.0, expected 0.0932 +/- 0.025
+E           decision = 'replace_with_v4', expected 'remediate_feature_pipeline'
+E       assert not ['retention_floor_auc: missing or not a number', 'evaluation_population.clinic_ids missing or not a list', "auc_by_sco...as not written', 'feed_defect_share_pct: missing or not a number', 'programme_effect_pp: missing or not a number', ...]
+
+test_monitoring.py:314: AssertionError
+________________________ test_hidden_extract[hidden_c] _________________________
+
+fixture = 'hidden_c'
+
+    @pytest.mark.parametrize("fixture", [s["name"] for s in scenarios.HIDDEN_SPECS])
+    def test_hidden_extract(fixture):
+        root = Path(tempfile.mkdtemp())
+        bad = _check_extract(fixture, root)
+        shutil.rmtree(root, ignore_errors=True)
+>       assert not bad, f"{fixture}:\n  " + "\n  ".join(bad)
+E       AssertionError: hidden_c:
+E           retention_floor_auc: missing or not a number
+E           evaluation_population.clinic_ids missing or not a list
+E           auc_by_scoring must have exactly ['as_served', 'candidate_v4', 'feature_store_current', 'record_features_asof_window']
+E           out/evaluation_population.csv was not written
+E           feed_defect_share_pct: missing or not a number
+E           programme_effect_pp: missing or not a number
+E           attribution_auc[population_drift] = 0.0713, expected 0.0181 +/- 0.025
+E           attribution_auc[feature_vintage] = 0.0, expected 0.0505 +/- 0.025
+E           attribution_auc[policy_feedback] = 0.0, expected 0.0272 +/- 0.025
+E           decision = 'replace_with_v4', expected 'retain_model'
+E       assert not ['retention_floor_auc: missing or not a number', 'evaluation_population.clinic_ids missing or not a list', "auc_by_sco...as not written', 'feed_defect_share_pct: missing or not a number', 'programme_effect_pp: missing or not a number', ...]
+
+test_monitoring.py:314: AssertionError
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED test_monitoring.py::test_database_unmodified
+PASSED test_monitoring.py::test_pipeline_runs
+PASSED test_monitoring.py::test_rerun_is_deterministic
+FAILED test_monitoring.py::test_output_schema - AssertionError: readout.json ...
+FAILED test_monitoring.py::test_visible_extract - AssertionError: visible ext...
+FAILED test_monitoring.py::test_hidden_extract[hidden_a] - AssertionError: hi...
+FAILED test_monitoring.py::test_hidden_extract[hidden_b] - AssertionError: hi...
+FAILED test_monitoring.py::test_hidden_extract[hidden_c] - AssertionError: hi...
+==================== 5 failed, 3 passed in 65.42s (0:01:05) ====================

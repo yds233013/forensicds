@@ -1,0 +1,85 @@
+{
+    "id": "9745326c-4e97-41be-bc0f-c4f9d0cfd23e",
+    "started_at": "2026-09-30T21:09:44.883784",
+    "updated_at": "2026-09-30T21:12:04.912846",
+    "finished_at": "2026-09-30T21:12:04.912846",
+    "n_total_trials": 1,
+    "stats": {
+        "n_completed_trials": 1,
+        "n_errored_trials": 1,
+        "n_running_trials": 0,
+        "n_pending_trials": 0,
+        "n_cancelled_trials": 0,
+        "n_retries": 0,
+        "evals": {
+            "claude-code__claude-opus-5-5__adhoc": {
+                "n_trials": 1,
+                "n_errors": 1,
+                "metrics": [
+                    {
+                        "criterion_decision": 0.0,
+                        "criterion_estimator_implementation": 0.0,
+                        "criterion_evidence_reconstruction": 0.0,
+                        "criterion_identification": 0.0,
+                        "criterion_independent_validation": 0.0,
+                        "criterion_quantitative_results": 0.0,
+                        "criterion_scientific_object": 0.0,
+                        "reward": 0.0
+                    }
+                ],
+                "pass_at_k": {},
+                "reward_stats": {
+                    "criterion_decision": {
+                        "0": [
+                            "p31-fill-rate-dispute__Rzuodrc"
+                        ]
+                    },
+                    "criterion_estimator_implementation": {
+                        "0": [
+                            "p31-fill-rate-dispute__Rzuodrc"
+                        ]
+                    },
+                    "criterion_evidence_reconstruction": {
+                        "0": [
+                            "p31-fill-rate-dispute__Rzuodrc"
+                        ]
+                    },
+                    "criterion_identification": {
+                        "0": [
+                            "p31-fill-rate-dispute__Rzuodrc"
+                        ]
+                    },
+                    "criterion_independent_validation": {
+                        "0": [
+                            "p31-fill-rate-dispute__Rzuodrc"
+                        ]
+                    },
+                    "criterion_quantitative_results": {
+                        "0": [
+                            "p31-fill-rate-dispute__Rzuodrc"
+                        ]
+                    },
+                    "criterion_scientific_object": {
+                        "0": [
+                            "p31-fill-rate-dispute__Rzuodrc"
+                        ]
+                    },
+                    "reward": {
+                        "0": [
+                            "p31-fill-rate-dispute__Rzuodrc"
+                        ]
+                    }
+                },
+                "exception_stats": {
+                    "NonZeroAgentExitCodeError": [
+                        "p31-fill-rate-dispute__Rzuodrc"
+                    ]
+                }
+            }
+        },
+        "n_input_tokens": 0,
+        "n_cache_tokens": 0,
+        "n_output_tokens": 0,
+        "cost_usd": 0.0
+    }
+}

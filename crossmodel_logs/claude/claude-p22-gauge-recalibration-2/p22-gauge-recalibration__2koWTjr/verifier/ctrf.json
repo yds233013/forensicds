@@ -1,0 +1,77 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 6,
+            "passed": 6,
+            "failed": 0,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1790839074.2339063,
+            "stop": 1790839081.1066148
+        },
+        "tests": [
+            {
+                "name": "test_gauge.py::test_database_unmodified",
+                "status": "passed",
+                "duration": 0.6644385010004044,
+                "start": 1790839074.2657335,
+                "stop": 1790839074.9305558,
+                "retries": 0,
+                "file_path": "test_gauge.py"
+            },
+            {
+                "name": "test_gauge.py::test_pipeline_runs",
+                "status": "passed",
+                "duration": 0.37767608294961974,
+                "start": 1790839074.9307916,
+                "stop": 1790839075.3094065,
+                "retries": 0,
+                "file_path": "test_gauge.py"
+            },
+            {
+                "name": "test_gauge.py::test_rerun_is_deterministic",
+                "status": "passed",
+                "duration": 1.587384708924219,
+                "start": 1790839075.31013,
+                "stop": 1790839076.8993623,
+                "retries": 0,
+                "file_path": "test_gauge.py"
+            },
+            {
+                "name": "test_gauge.py::test_output_schema",
+                "status": "passed",
+                "duration": 0.024880957964342088,
+                "start": 1790839076.900894,
+                "stop": 1790839076.9267087,
+                "retries": 0,
+                "file_path": "test_gauge.py"
+            },
+            {
+                "name": "test_gauge.py::test_visible_extract",
+                "status": "passed",
+                "duration": 1.147304666985292,
+                "start": 1790839076.927653,
+                "stop": 1790839078.0759199,
+                "retries": 0,
+                "file_path": "test_gauge.py"
+            },
+            {
+                "name": "test_gauge.py::test_hidden_extract",
+                "status": "passed",
+                "duration": 0.7882020830293186,
+                "start": 1790839078.076581,
+                "stop": 1790839078.8651304,
+                "retries": 2,
+                "file_path": "test_gauge.py",
+                "tags": [
+                    "parametrize::fixture::['hidden_a', 'hidden_b', 'hidden_c']"
+                ]
+            }
+        ]
+    }
+}

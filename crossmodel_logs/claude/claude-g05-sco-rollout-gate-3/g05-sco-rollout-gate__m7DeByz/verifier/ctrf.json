@@ -1,0 +1,116 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 10,
+            "passed": 10,
+            "failed": 0,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1790818649.9067748,
+            "stop": 1790818871.13682
+        },
+        "tests": [
+            {
+                "name": "test_readout.py::test_warehouse_unmodified",
+                "status": "passed",
+                "duration": 221.17431989102624,
+                "start": 1790818649.939062,
+                "stop": 1790818871.112537,
+                "retries": 0,
+                "file_path": "test_readout.py"
+            },
+            {
+                "name": "test_readout.py::test_gate_succeeds",
+                "status": "passed",
+                "duration": 0.00043224997352808714,
+                "start": 1790818871.1130016,
+                "stop": 1790818871.1135828,
+                "retries": 0,
+                "file_path": "test_readout.py"
+            },
+            {
+                "name": "test_readout.py::test_run_time",
+                "status": "passed",
+                "duration": 0.0004204989527352154,
+                "start": 1790818871.1137211,
+                "stop": 1790818871.114287,
+                "retries": 0,
+                "file_path": "test_readout.py"
+            },
+            {
+                "name": "test_readout.py::test_analysis_panel",
+                "status": "passed",
+                "duration": 0.00038300000596791506,
+                "start": 1790818871.114421,
+                "stop": 1790818871.1149144,
+                "retries": 0,
+                "file_path": "test_readout.py"
+            },
+            {
+                "name": "test_readout.py::test_effects",
+                "status": "passed",
+                "duration": 0.00033433304633945227,
+                "start": 1790818871.1150663,
+                "stop": 1790818871.1155102,
+                "retries": 0,
+                "file_path": "test_readout.py"
+            },
+            {
+                "name": "test_readout.py::test_intervals",
+                "status": "passed",
+                "duration": 0.00033912400249391794,
+                "start": 1790818871.1156113,
+                "stop": 1790818871.116075,
+                "retries": 0,
+                "file_path": "test_readout.py"
+            },
+            {
+                "name": "test_readout.py::test_decision",
+                "status": "passed",
+                "duration": 0.0003059169976040721,
+                "start": 1790818871.1161726,
+                "stop": 1790818871.1165833,
+                "retries": 0,
+                "file_path": "test_readout.py"
+            },
+            {
+                "name": "test_readout.py::test_rerun_is_deterministic",
+                "status": "passed",
+                "duration": 0.0003427910269238055,
+                "start": 1790818871.1166751,
+                "stop": 1790818871.117117,
+                "retries": 0,
+                "file_path": "test_readout.py"
+            },
+            {
+                "name": "test_readout.py::test_hidden_panel",
+                "status": "passed",
+                "duration": 0.0003988749231211841,
+                "start": 1790818871.1172237,
+                "stop": 1790818871.1177363,
+                "retries": 2,
+                "file_path": "test_readout.py",
+                "tags": [
+                    "parametrize::name::['hidden_a', 'hidden_b', 'hidden_c']"
+                ]
+            },
+            {
+                "name": "test_readout.py::test_hidden_effects_and_decision",
+                "status": "passed",
+                "duration": 0.0003548329696059227,
+                "start": 1790818871.1191378,
+                "stop": 1790818871.1195972,
+                "retries": 2,
+                "file_path": "test_readout.py",
+                "tags": [
+                    "parametrize::name::['hidden_a', 'hidden_b', 'hidden_c']"
+                ]
+            }
+        ]
+    }
+}

@@ -1,0 +1,54 @@
+evidence_reconstruction: readout.json is missing ['fill_rate_contract_low_pct', 'fill_rate_contract_high_pct', 'fill_rate_supplier_definition_pct', 'published_rate_pct', 'bridge_pp', 'returns_driven_ticket_share_pct', 'governing_definition', 'incumbent_verdict', 'bonus_gate_met', 'supplier_claim_payable']
+evidence_reconstruction: visible: published_rate_pct missing or not a number
+evidence_reconstruction: visible: fill_rate_supplier_definition_pct missing or not a number
+scientific_object: visible: fill_rate_contract_low_pct missing or not a number
+scientific_object: visible: fill_rate_contract_high_pct missing or not a number
+scientific_object: visible: governing_definition None vs 'contract_line_fill_confirmed'
+identification: visible: bridge_pp must have exactly the five named keys
+estimator_implementation: visible: out/account_fill.csv was not written
+quantitative_results: visible: returns_driven_ticket_share_pct missing or not a number
+independent_validation: visible: no bridge to close
+decision: visible: incumbent_verdict None vs 'incumbent_correct'
+decision: visible: bonus_gate_met None vs 'yes'
+decision: visible: supplier_claim_payable None vs 'no'
+evidence_reconstruction: hidden_a: published_rate_pct missing or not a number
+evidence_reconstruction: hidden_a: fill_rate_supplier_definition_pct missing or not a number
+scientific_object: hidden_a: fill_rate_contract_pct 97.65 vs 93.180 (tol 0.15)
+scientific_object: hidden_a: fill_rate_contract_low_pct missing or not a number
+scientific_object: hidden_a: fill_rate_contract_high_pct missing or not a number
+scientific_object: hidden_a: governing_definition None vs 'contract_line_fill_confirmed'
+identification: hidden_a: bridge_pp must have exactly the five named keys
+estimator_implementation: hidden_a: out/account_fill.csv was not written
+quantitative_results: hidden_a: accounts_below_floor 3 vs 21
+quantitative_results: hidden_a: account_fill_pct[ACC-001] 93.43 vs 88.305 (tol 0.3)
+quantitative_results: hidden_a: account_fill_pct[ACC-002] 92.44 vs 88.493 (tol 0.3)
+quantitative_results: hidden_a: account_fill_pct[ACC-003] 93.44 vs 89.089 (tol 0.3)
+quantitative_results: hidden_a: returns_driven_ticket_share_pct missing or not a number
+independent_validation: hidden_a: no bridge to close
+decision: hidden_a: incumbent_verdict None vs 'incumbent_incorrect'
+decision: hidden_a: bonus_gate_met None vs 'no'
+decision: hidden_a: supplier_claim_payable None vs 'yes'
+evidence_reconstruction: hidden_b: published_rate_pct missing or not a number
+evidence_reconstruction: hidden_b: fill_rate_supplier_definition_pct missing or not a number
+scientific_object: hidden_b: fill_rate_contract_low_pct missing or not a number
+scientific_object: hidden_b: fill_rate_contract_high_pct missing or not a number
+scientific_object: hidden_b: governing_definition None vs 'contract_line_fill_confirmed'
+identification: hidden_b: bridge_pp must have exactly the five named keys
+estimator_implementation: hidden_b: out/account_fill.csv was not written
+quantitative_results: hidden_b: returns_driven_ticket_share_pct missing or not a number
+independent_validation: hidden_b: no bridge to close
+decision: hidden_b: incumbent_verdict None vs 'incumbent_correct'
+decision: hidden_b: bonus_gate_met None vs 'yes'
+decision: hidden_b: supplier_claim_payable None vs 'no'
+evidence_reconstruction: hidden_c: published_rate_pct missing or not a number
+evidence_reconstruction: hidden_c: fill_rate_supplier_definition_pct missing or not a number
+scientific_object: hidden_c: fill_rate_contract_low_pct missing or not a number
+scientific_object: hidden_c: fill_rate_contract_high_pct missing or not a number
+scientific_object: hidden_c: governing_definition None vs 'contract_line_fill_confirmed'
+identification: hidden_c: bridge_pp must have exactly the five named keys
+estimator_implementation: hidden_c: out/account_fill.csv was not written
+quantitative_results: hidden_c: returns_driven_ticket_share_pct missing or not a number
+independent_validation: hidden_c: no bridge to close
+decision: hidden_c: incumbent_verdict None vs 'not_determinable_from_available_evidence'
+decision: hidden_c: bonus_gate_met None vs 'no'
+decision: hidden_c: supplier_claim_payable None vs 'not_determinable'

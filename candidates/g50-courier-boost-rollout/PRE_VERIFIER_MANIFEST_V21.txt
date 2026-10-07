@@ -1,0 +1,38 @@
+# G50 v2.1 PRE-VERIFIER SCIENTIFIC MANIFEST  (not the benchmark freeze)
+# generated 2026-09-30T06:22:51Z
+# supersedes the v2 manifest whose body digest was 0dbc9470ed483848
+# the only change from v2 is the authorised execution-contract sentence in instruction.md
+## data-generating process
+9f8e76a0ddc1153fcf19a4af9d54ad07b675000b61a332e35f4a6143e4d35a3e  candidates/g50-courier-boost-rollout/environment/build/world.py
+9f8e76a0ddc1153fcf19a4af9d54ad07b675000b61a332e35f4a6143e4d35a3e  candidates/g50-courier-boost-rollout/tests/world.py
+69191a9be6d0eb85315ac293a4b95812c944c32a49022a3805e5020c923942fa  candidates/g50-courier-boost-rollout/tests/scenarios.py
+## task instruction and metadata
+6a9ebdd6246b9a56b197a92df27eced4005989152c85a257f86f61e6ca5909da  candidates/g50-courier-boost-rollout/instruction.md
+e3ea6e44b8fca3cee3369329f2a274def80ea48d84be086d28770628e0a9f7ff  candidates/g50-courier-boost-rollout/task.toml
+178471b75e373dd0a7b3a1228ce872c72d9cef9146653cc57a075d054edb67c9  candidates/g50-courier-boost-rollout/README.md
+## agent-visible documentation
+f150e537679965cc38dd1dc911c082aa0c883c92b24885fc87e15f2c3b3a2a79  candidates/g50-courier-boost-rollout/environment/workspace/README.md
+d7152b2cc2d0da0ac3eb738858dfb98b63323446d88e443f4a5277450ed2ae03  candidates/g50-courier-boost-rollout/environment/workspace/docs/boost_programme_brief.md
+74ed72e23742fb5dab969eaf307fb76022f1268be9ae38448b34e8a51ba42748  candidates/g50-courier-boost-rollout/environment/workspace/docs/courier_supply_note.md
+5770c95e6c57bd4b4f7c80dfa98a82224f7e45286f12c93b235697d9771f342b  candidates/g50-courier-boost-rollout/environment/workspace/docs/data_dictionary.md
+2a308b9b8ae50a22e932da5bf6a272b4581f131952bff75bd0d542dba7325d3e  candidates/g50-courier-boost-rollout/environment/workspace/docs/dispatch_offer_queue.md
+58dee9e89641d5ef89bae5152372e0284f759c5cc9d3495dfa501795837d1869  candidates/g50-courier-boost-rollout/environment/workspace/docs/experiment_plan.md
+5407b056a8110ca341db45b7f66fdbc93d51890e468f6228fc4d10900344677f  candidates/g50-courier-boost-rollout/environment/workspace/docs/metric_definitions.md
+b87b6291c351a274a7399a7b95ff46696c907ccbeb90a645f5afeeb7b8002cfd  candidates/g50-courier-boost-rollout/environment/workspace/docs/outputs/readout_contract.md
+85be2630e8ed239ad77202649abc4a28a73b2548a2f5c54c721498dea8bdb8a0  candidates/g50-courier-boost-rollout/environment/workspace/docs/rollout_decision_memo.md
+2e2cb61038550cd9c67ad6905827c97d41b77c530b643840ec22dc2392d86e6f  candidates/g50-courier-boost-rollout/environment/workspace/notebooks/analyst_note.md
+ed2721773b93eda6fa381edaeda57db4dc28ee4d3db8e6834d94e340137cccbb  candidates/g50-courier-boost-rollout/environment/workspace/reports/boost_readout_2026-06.md
+## agent-visible incumbent package
+2d8d61cc7c9769bcd3e9943f926c00fe34d0f20b50ee3485095746e74d6f81ec  candidates/g50-courier-boost-rollout/environment/workspace/northline_eval/__init__.py
+692ea27ba2cca6aeb886ef6a7b9432f06df5dfb74635e9352245d9947754d466  candidates/g50-courier-boost-rollout/environment/workspace/northline_eval/__main__.py
+453404d0f0c911a2c4f1fee3f02f1d40d163d7e63a5da69b43afe3cdbc2927c5  candidates/g50-courier-boost-rollout/environment/workspace/northline_eval/cli.py
+6e9027e35e1c9f6392ddfb5a6925a19dd8c47e3421ce71f002d0f14ceae9596a  candidates/g50-courier-boost-rollout/environment/workspace/northline_eval/effects.py
+80f11a81f021cbc3c4d54569cad117dee4c3e36a7290f13e1ef1cf7c71181b58  candidates/g50-courier-boost-rollout/environment/workspace/northline_eval/panel.py
+01cf1a50ab5b332a8ef3cea4c02283e1700d2b330125b04e3bff005b82928b60  candidates/g50-courier-boost-rollout/environment/workspace/northline_eval/report.py
+6b70102d2a2aa26d102a29ab1a5ae0caa0a71ffef74c930137284a17a479e2b3  candidates/g50-courier-boost-rollout/environment/workspace/northline_eval/warehouse.py
+## reference estimator specification
+9f06eae8cba92abe68f1f1dd850d8e3d9eeb4a29404abe65f6ce09d84af6d863  candidates/g50-courier-boost-rollout/solution/northline_eval/effects.py
+dec94dc2de1de1233154782a4457fec770801496866ecc02ce546c171017d5bc  candidates/g50-courier-boost-rollout/solution/northline_eval/report.py
+7d2d5c31ba43a9fdbc3831a1e823e7b1e670babd9bc77037b22aed5cb45e932a  candidates/g50-courier-boost-rollout/solution/solve.sh
+## environment build
+09221160080e4a60531294ec6e1ffdbace97542f73e23d61cc7a7b35fb390f66  candidates/g50-courier-boost-rollout/environment/Dockerfile

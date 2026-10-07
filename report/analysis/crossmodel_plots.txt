@@ -1,0 +1,73 @@
+Per-task trial pass rate, Gemini (G) vs Claude (C)
+================================================================
+
+02-renewal-risk-regression     G |......................| 0/3
+                               C |######################| 3/3
+
+g05-sco-rollout-gate           G |......................| 0/4
+                               C |######################| 3/3
+
+g10-censored-demand            G |......................| 0/3
+                               C |......................| 0/3
+
+g24-recommender-ope            G |......................| 0/3
+                               C |######################| 3/3
+
+g36-tou-capacity-gate          G |......................| 0/3
+                               C |......................| 0/3
+
+p20-noshow-monitoring          G |......................| 0/3
+                               C |......................| 0/3
+
+p22-gauge-recalibration        G |......................| 0/3
+                               C |#######...............| 1/3
+
+p31-fill-rate-dispute          G |......................| 0/3
+                               C |......................| 0/3
+
+g50-courier-boost-rollout      G |......................| 0/3
+                               C |  (no data - verifier refusal)| 0/0
+
+g08-forecast-accuracy-vintages G |#######...............| 1/3
+                               C |######################| 3/3
+
+Criterion-level pass rate
+================================================================
+
+evidence_reconstruction    G |#####################.|  93%
+                           C |######################| 100%
+
+scientific_object          G |################......|  73%
+                           C |######################| 100%
+
+independent_validation     G |####################..|  92%
+                           C |######################| 100%
+
+estimator_implementation   G |####################..|  92%
+                           C |#################.....|  78%
+
+identification             G |#########.............|  42%
+                           C |##########............|  44%
+
+decision                   G |######................|  27%
+                           C |##########............|  44%
+
+quantitative_results       G |####..................|  17%
+                           C |#######...............|  33%
+
+Both models: upstream criteria near ceiling, quantitative_results the floor.
+Claude is uniformly better; the ORDER of the bottleneck is unchanged.
+
+Framing vs number (the core finding)
+================================================================
+
+scientific_object (did it frame the right thing?)
+  Gemini |################......| 73%
+  Claude |######################| 100%
+
+quantitative_results (did it get the number right?)
+  Gemini |####..................| 17%
+  Claude |#######...............| 33%
+
+Claude never mis-frames and still misses the number two times in three.
+

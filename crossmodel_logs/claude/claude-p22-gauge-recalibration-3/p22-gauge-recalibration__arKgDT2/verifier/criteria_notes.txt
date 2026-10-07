@@ -1,0 +1,3 @@
+decision: hidden_b: supplier_decision 'no_supplier_action' vs 'raise_supplier_nonconformance'
+quantitative_results: hidden_c: attribution_pp[material] 3.93 vs 0.817 (tol 0.8)
+quantitative_results: hidden_c: attribution_pp[tooling] 0.0 vs 3.083 (tol 0.8)

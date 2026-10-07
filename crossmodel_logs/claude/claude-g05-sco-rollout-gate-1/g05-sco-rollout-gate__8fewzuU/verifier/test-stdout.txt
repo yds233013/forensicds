@@ -1,0 +1,26 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+configfile: ../dev/null
+plugins: json-ctrf-0.3.5
+collected 14 items
+
+test_readout.py ..............                                           [100%]
+
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED test_readout.py::test_warehouse_unmodified
+PASSED test_readout.py::test_gate_succeeds
+PASSED test_readout.py::test_run_time
+PASSED test_readout.py::test_analysis_panel
+PASSED test_readout.py::test_effects
+PASSED test_readout.py::test_intervals
+PASSED test_readout.py::test_decision
+PASSED test_readout.py::test_rerun_is_deterministic
+PASSED test_readout.py::test_hidden_panel[hidden_a]
+PASSED test_readout.py::test_hidden_panel[hidden_b]
+PASSED test_readout.py::test_hidden_panel[hidden_c]
+PASSED test_readout.py::test_hidden_effects_and_decision[hidden_a]
+PASSED test_readout.py::test_hidden_effects_and_decision[hidden_b]
+PASSED test_readout.py::test_hidden_effects_and_decision[hidden_c]
+======================== 14 passed in 264.38s (0:04:24) ========================

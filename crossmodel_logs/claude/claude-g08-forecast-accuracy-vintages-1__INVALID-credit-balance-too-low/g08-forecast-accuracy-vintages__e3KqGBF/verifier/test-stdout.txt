@@ -1,0 +1,656 @@
+
+[notice] A new release of pip is available: 25.0.1 -> 26.2.1
+[notice] To update, run: python3 -m pip install --upgrade pip
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 20 items
+
+test_accuracy_mart.py ..FFFFFFF..FFFFFFFFF                               [100%]
+
+=================================== FAILURES ===================================
+_______________________________ test_example_set _______________________________
+
+ctx = {'agent_digest': '57aa0924865c98a2e2a643f07baeedb377bddd2730ead62842594ac4a08130e6', 'hidden': {'hidden_a': ({'closed_..._error_mwh': 16739.400999999987, 'actual_mwh': 471449.0240000002, 'n_examples': 186, 'n_scored': 183, ...}, ...}}, ...}
+
+    def test_example_set(ctx):
+        """One example per model, region, portfolio, delivery day and horizon for every forecast in closed KPI months."""
+        require_run(ctx["run1"])
+>       check_example_set(ctx["run1"], ctx["ref"])
+
+test_accuracy_mart.py:265: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+run = {'examples': [{'abs_error_mwh': '141.7170000000001', 'actual_mwh': '1564.672', 'actual_run_ids': 'SR0044770;SR0044909'...416911564,\n      "wape_b": 0.03331508565047627,\n      "relative_change": -0.29655252008990796\n    }\n  ]\n}\n', ...}
+want = {'closed_months': ['2025-07', '2025-08', '2025-09', '2025-10', '2025-11', '2025-12', ...], 'examples': {('v3', 'EAST',... {'abs_error_mwh': 16739.400999999987, 'actual_mwh': 471449.0240000002, 'n_examples': 186, 'n_scored': 183, ...}, ...}}
+
+    def check_example_set(run, want):
+        got = example_map(run)
+        missing, extra = set(want["examples"]) - set(got), set(got) - set(want["examples"])
+>       assert not missing and not extra, (f"example set differs: {len(missing)} missing (e.g. {sample(missing, 4)}), "
+                                           f"{len(extra)} unexpected (e.g. {sample(extra, 4)})")
+E       AssertionError: example set differs: 13370 missing (e.g. [('v3', 'EAST', 'BUSINESS', '2025-07-01', 1), ('v3', 'EAST', 'BUSINESS', '2025-07-01', 2), ('v3', 'EAST', 'BUSINESS', '2025-07-01', 3), ('v3', 'EAST', 'BUSINESS', '2025-07-01', 4)]), 1002 unexpected (e.g. [('v3', 'EAST', 'IC', '2026-09-01', 1), ('v3', 'EAST', 'IC', '2026-09-01', 2), ('v3', 'EAST', 'IC', '2026-09-01', 3), ('v3', 'EAST', 'IC', '2026-09-01', 4)])
+E       assert (not {('v3', 'EAST', 'BUSINESS', '2025-07-01', 1), ('v3', 'EAST', 'BUSINESS', '2025-07-01', 2), ('v3', 'EAST', 'BUSINESS', ...NESS', '2025-07-01', 4), ('v3', 'EAST', 'BUSINESS', '2025-07-01', 5), ('v3', 'EAST', 'BUSINESS', '2025-07-01', 6), ...})
+
+test_accuracy_mart.py:161: AssertionError
+____________________________ test_forecast_in_force ____________________________
+
+ctx = {'agent_digest': '57aa0924865c98a2e2a643f07baeedb377bddd2730ead62842594ac4a08130e6', 'hidden': {'hidden_a': ({'closed_..._error_mwh': 16739.400999999987, 'actual_mwh': 471449.0240000002, 'n_examples': 186, 'n_scored': 183, ...}, ...}}, ...}
+
+    def test_forecast_in_force(ctx):
+        """Each example carries the forecast run day, issue and value the KPI evaluates."""
+        require_run(ctx["run1"])
+>       compare_examples(ctx["run1"], ctx["ref"], ["run_date", "issue_id", "forecast_mwh"])
+
+test_accuracy_mart.py:271: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+run = {'examples': [{'abs_error_mwh': '141.7170000000001', 'actual_mwh': '1564.672', 'actual_run_ids': 'SR0044770;SR0044909'...416911564,\n      "wape_b": 0.03331508565047627,\n      "relative_change": -0.29655252008990796\n    }\n  ]\n}\n', ...}
+want = {'closed_months': ['2025-07', '2025-08', '2025-09', '2025-10', '2025-11', '2025-12', ...], 'examples': {('v3', 'EAST',... {'abs_error_mwh': 16739.400999999987, 'actual_mwh': 471449.0240000002, 'n_examples': 186, 'n_scored': 183, ...}, ...}}
+fields = ['run_date', 'issue_id', 'forecast_mwh']
+
+    def compare_examples(run, want, fields):
+        got = example_map(run)
+        bad = []
+        for k, w in want["examples"].items():
+            g = got.get(k)
+            if g is None:
+                continue
+            for f in fields:
+                if f in ("forecast_mwh", "actual_mwh", "abs_error_mwh"):
+                    gv, wv = num(g[f]), w[f]
+                    ok = (gv is None and wv is None) or (gv is not None and wv is not None and abs(gv - wv) <= MWH_TOL)
+                elif f == "actual_run_ids":
+                    gv = ";".join(sorted(x for x in (g[f] or "").split(";") if x))
+                    wv = w[f]
+                    ok = gv == wv
+                else:
+                    gv, wv = (g[f] or "").strip(), w[f]
+                    ok = gv == wv
+                if not ok:
+                    bad.append((k, f, gv, wv))
+                    break
+>       assert not bad, f"{len(bad)} examples differ (key, field, got, expected), e.g. {bad[:4]}"
+E       AssertionError: 20959 examples differ (key, field, got, expected), e.g. [(('v3', 'LONDON', 'RESI', '2025-08-06', 1), 'issue_id', 'FI000069', 'FI000068'), (('v3', 'LONDON', 'RESI', '2025-08-07', 2), 'issue_id', 'FI000069', 'FI000068'), (('v3', 'LONDON', 'RESI', '2025-08-08', 3), 'issue_id', 'FI000069', 'FI000068'), (('v3', 'LONDON', 'RESI', '2025-08-09', 4), 'issue_id', 'FI000069', 'FI000068')]
+E       assert not [(('v3', 'LONDON', 'RESI', '2025-08-06', 1), 'issue_id', 'FI000069', 'FI000068'), (('v3', 'LONDON', 'RESI', '2025-08-0...sue_id', 'FI000069', 'FI000068'), (('v3', 'LONDON', 'RESI', '2025-08-11', 6), 'issue_id', 'FI000069', 'FI000068'), ...]
+
+test_accuracy_mart.py:186: AssertionError
+__________________________ test_kpi_month_and_status ___________________________
+
+ctx = {'agent_digest': '57aa0924865c98a2e2a643f07baeedb377bddd2730ead62842594ac4a08130e6', 'hidden': {'hidden_a': ({'closed_..._error_mwh': 16739.400999999987, 'actual_mwh': 471449.0240000002, 'n_examples': 186, 'n_scored': 183, ...}, ...}}, ...}
+
+    def test_kpi_month_and_status(ctx):
+        """KPI month and scored/unsettled status per example."""
+        require_run(ctx["run1"])
+>       compare_examples(ctx["run1"], ctx["ref"], ["kpi_month", "status"])
+
+test_accuracy_mart.py:277: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+run = {'examples': [{'abs_error_mwh': '141.7170000000001', 'actual_mwh': '1564.672', 'actual_run_ids': 'SR0044770;SR0044909'...416911564,\n      "wape_b": 0.03331508565047627,\n      "relative_change": -0.29655252008990796\n    }\n  ]\n}\n', ...}
+want = {'closed_months': ['2025-07', '2025-08', '2025-09', '2025-10', '2025-11', '2025-12', ...], 'examples': {('v3', 'EAST',... {'abs_error_mwh': 16739.400999999987, 'actual_mwh': 471449.0240000002, 'n_examples': 186, 'n_scored': 183, ...}, ...}}
+fields = ['kpi_month', 'status']
+
+    def compare_examples(run, want, fields):
+        got = example_map(run)
+        bad = []
+        for k, w in want["examples"].items():
+            g = got.get(k)
+            if g is None:
+                continue
+            for f in fields:
+                if f in ("forecast_mwh", "actual_mwh", "abs_error_mwh"):
+                    gv, wv = num(g[f]), w[f]
+                    ok = (gv is None and wv is None) or (gv is not None and wv is not None and abs(gv - wv) <= MWH_TOL)
+                elif f == "actual_run_ids":
+                    gv = ";".join(sorted(x for x in (g[f] or "").split(";") if x))
+                    wv = w[f]
+                    ok = gv == wv
+                else:
+                    gv, wv = (g[f] or "").strip(), w[f]
+                    ok = gv == wv
+                if not ok:
+                    bad.append((k, f, gv, wv))
+                    break
+>       assert not bad, f"{len(bad)} examples differ (key, field, got, expected), e.g. {bad[:4]}"
+E       AssertionError: 7616 examples differ (key, field, got, expected), e.g. [(('v3', 'EAST', 'RESI', '2025-08-01', 7), 'kpi_month', '2025-07', '2025-08'), (('v3', 'LONDON', 'RESI', '2025-08-01', 7), 'kpi_month', '2025-07', '2025-08'), (('v3', 'MIDLANDS', 'RESI', '2025-08-01', 7), 'kpi_month', '2025-07', '2025-08'), (('v3', 'NORTH', 'RESI', '2025-08-01', 7), 'kpi_month', '2025-07', '2025-08')]
+E       assert not [(('v3', 'EAST', 'RESI', '2025-08-01', 7), 'kpi_month', '2025-07', '2025-08'), (('v3', 'LONDON', 'RESI', '2025-08-01',... 'kpi_month', '2025-07', '2025-08'), (('v3', 'WEST', 'RESI', '2025-08-01', 7), 'kpi_month', '2025-07', '2025-08'), ...]
+
+test_accuracy_mart.py:186: AssertionError
+_____________________________ test_settlement_runs _____________________________
+
+ctx = {'agent_digest': '57aa0924865c98a2e2a643f07baeedb377bddd2730ead62842594ac4a08130e6', 'hidden': {'hidden_a': ({'closed_..._error_mwh': 16739.400999999987, 'actual_mwh': 471449.0240000002, 'n_examples': 186, 'n_scored': 183, ...}, ...}}, ...}
+
+    def test_settlement_runs(ctx):
+        """The settlement runs each scored example is evaluated against."""
+        require_run(ctx["run1"])
+>       compare_examples(ctx["run1"], ctx["ref"], ["actual_run_ids"])
+
+test_accuracy_mart.py:283: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+run = {'examples': [{'abs_error_mwh': '141.7170000000001', 'actual_mwh': '1564.672', 'actual_run_ids': 'SR0044770;SR0044909'...416911564,\n      "wape_b": 0.03331508565047627,\n      "relative_change": -0.29655252008990796\n    }\n  ]\n}\n', ...}
+want = {'closed_months': ['2025-07', '2025-08', '2025-09', '2025-10', '2025-11', '2025-12', ...], 'examples': {('v3', 'EAST',... {'abs_error_mwh': 16739.400999999987, 'actual_mwh': 471449.0240000002, 'n_examples': 186, 'n_scored': 183, ...}, ...}}
+fields = ['actual_run_ids']
+
+    def compare_examples(run, want, fields):
+        got = example_map(run)
+        bad = []
+        for k, w in want["examples"].items():
+            g = got.get(k)
+            if g is None:
+                continue
+            for f in fields:
+                if f in ("forecast_mwh", "actual_mwh", "abs_error_mwh"):
+                    gv, wv = num(g[f]), w[f]
+                    ok = (gv is None and wv is None) or (gv is not None and wv is not None and abs(gv - wv) <= MWH_TOL)
+                elif f == "actual_run_ids":
+                    gv = ";".join(sorted(x for x in (g[f] or "").split(";") if x))
+                    wv = w[f]
+                    ok = gv == wv
+                else:
+                    gv, wv = (g[f] or "").strip(), w[f]
+                    ok = gv == wv
+                if not ok:
+                    bad.append((k, f, gv, wv))
+                    break
+>       assert not bad, f"{len(bad)} examples differ (key, field, got, expected), e.g. {bad[:4]}"
+E       AssertionError: 54074 examples differ (key, field, got, expected), e.g. [(('v3', 'EAST', 'RESI', '2025-07-02', 1), 'actual_run_ids', 'SR0049443', 'SR0003501'), (('v3', 'EAST', 'RESI', '2025-07-03', 2), 'actual_run_ids', 'SR0049552', 'SR0003680'), (('v3', 'EAST', 'RESI', '2025-07-04', 3), 'actual_run_ids', 'SR0049806', 'SR0003774'), (('v3', 'EAST', 'RESI', '2025-07-05', 4), 'actual_run_ids', 'SR0049807', 'SR0003756')]
+E       assert not [(('v3', 'EAST', 'RESI', '2025-07-02', 1), 'actual_run_ids', 'SR0049443', 'SR0003501'), (('v3', 'EAST', 'RESI', '2025-... 'SR0049849', 'SR0003801'), (('v3', 'EAST', 'RESI', '2025-07-07', 6), 'actual_run_ids', 'SR0050077', 'SR0003861'), ...]
+
+test_accuracy_mart.py:186: AssertionError
+___________________________ test_actuals_and_errors ____________________________
+
+ctx = {'agent_digest': '57aa0924865c98a2e2a643f07baeedb377bddd2730ead62842594ac4a08130e6', 'hidden': {'hidden_a': ({'closed_..._error_mwh': 16739.400999999987, 'actual_mwh': 471449.0240000002, 'n_examples': 186, 'n_scored': 183, ...}, ...}}, ...}
+
+    def test_actuals_and_errors(ctx):
+        """Actual volume and absolute error per example."""
+        require_run(ctx["run1"])
+>       compare_examples(ctx["run1"], ctx["ref"], ["actual_mwh", "abs_error_mwh"])
+
+test_accuracy_mart.py:289: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+run = {'examples': [{'abs_error_mwh': '141.7170000000001', 'actual_mwh': '1564.672', 'actual_run_ids': 'SR0044770;SR0044909'...416911564,\n      "wape_b": 0.03331508565047627,\n      "relative_change": -0.29655252008990796\n    }\n  ]\n}\n', ...}
+want = {'closed_months': ['2025-07', '2025-08', '2025-09', '2025-10', '2025-11', '2025-12', ...], 'examples': {('v3', 'EAST',... {'abs_error_mwh': 16739.400999999987, 'actual_mwh': 471449.0240000002, 'n_examples': 186, 'n_scored': 183, ...}, ...}}
+fields = ['actual_mwh', 'abs_error_mwh']
+
+    def compare_examples(run, want, fields):
+        got = example_map(run)
+        bad = []
+        for k, w in want["examples"].items():
+            g = got.get(k)
+            if g is None:
+                continue
+            for f in fields:
+                if f in ("forecast_mwh", "actual_mwh", "abs_error_mwh"):
+                    gv, wv = num(g[f]), w[f]
+                    ok = (gv is None and wv is None) or (gv is not None and wv is not None and abs(gv - wv) <= MWH_TOL)
+                elif f == "actual_run_ids":
+                    gv = ";".join(sorted(x for x in (g[f] or "").split(";") if x))
+                    wv = w[f]
+                    ok = gv == wv
+                else:
+                    gv, wv = (g[f] or "").strip(), w[f]
+                    ok = gv == wv
+                if not ok:
+                    bad.append((k, f, gv, wv))
+                    break
+>       assert not bad, f"{len(bad)} examples differ (key, field, got, expected), e.g. {bad[:4]}"
+E       AssertionError: 55426 examples differ (key, field, got, expected), e.g. [(('v3', 'EAST', 'RESI', '2025-07-02', 1), 'actual_mwh', 1795.229, 1762.246), (('v3', 'EAST', 'RESI', '2025-07-03', 2), 'actual_mwh', 1804.536, 1797.975), (('v3', 'EAST', 'RESI', '2025-07-04', 3), 'actual_mwh', 1784.119, 1778.858), (('v3', 'EAST', 'RESI', '2025-07-05', 4), 'actual_mwh', 1892.7, 1877.953)]
+E       assert not [(('v3', 'EAST', 'RESI', '2025-07-02', 1), 'actual_mwh', 1795.229, 1762.246), (('v3', 'EAST', 'RESI', '2025-07-03', 2)...5), 'actual_mwh', 1962.109, 1934.09), (('v3', 'EAST', 'RESI', '2025-07-07', 6), 'actual_mwh', 1805.449, 1794.341), ...]
+
+test_accuracy_mart.py:186: AssertionError
+_______________________________ test_monthly_kpi _______________________________
+
+ctx = {'agent_digest': '57aa0924865c98a2e2a643f07baeedb377bddd2730ead62842594ac4a08130e6', 'hidden': {'hidden_a': ({'closed_..._error_mwh': 16739.400999999987, 'actual_mwh': 471449.0240000002, 'n_examples': 186, 'n_scored': 183, ...}, ...}}, ...}
+
+    def test_monthly_kpi(ctx):
+        """Monthly KPI rows, counts, sums and WAPE."""
+        require_run(ctx["run1"])
+>       check_monthly(ctx["run1"], ctx["ref"])
+
+test_accuracy_mart.py:295: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+run = {'examples': [{'abs_error_mwh': '141.7170000000001', 'actual_mwh': '1564.672', 'actual_run_ids': 'SR0044770;SR0044909'...416911564,\n      "wape_b": 0.03331508565047627,\n      "relative_change": -0.29655252008990796\n    }\n  ]\n}\n', ...}
+want = {'closed_months': ['2025-07', '2025-08', '2025-09', '2025-10', '2025-11', '2025-12', ...], 'examples': {('v3', 'EAST',... {'abs_error_mwh': 16739.400999999987, 'actual_mwh': 471449.0240000002, 'n_examples': 186, 'n_scored': 183, ...}, ...}}
+
+    def check_monthly(run, want):
+        rows = run["monthly"]
+        missing = MONTHLY_COLS - set(rows[0].keys() if rows else [])
+        assert not missing, f"monthly_kpi.csv is missing columns {sorted(missing)}"
+        got = {}
+        for r in rows:
+            k = (r["model"], r["kpi_month"], r["portfolio"], int(float(r["horizon"])))
+            assert k not in got, f"duplicate monthly KPI row {k}"
+            got[k] = r
+        missing_k, extra_k = set(want["monthly"]) - set(got), set(got) - set(want["monthly"])
+>       assert not missing_k and not extra_k, (f"monthly KPI rows differ: {len(missing_k)} missing (e.g. {sample(missing_k, 3)}), "
+                                               f"{len(extra_k)} unexpected (e.g. {sample(extra_k, 3)})")
+E       AssertionError: monthly KPI rows differ: 84 missing (e.g. [('v3', '2025-07', 'BUSINESS', 1), ('v3', '2025-07', 'BUSINESS', 2), ('v3', '2025-07', 'BUSINESS', 3)]), 24 unexpected (e.g. [('v3', '2026-02', 'IC', 2), ('v3', '2026-02', 'IC', 3), ('v3', '2026-02', 'IC', 4)])
+E       assert (not {('v3', '2025-07', 'BUSINESS', 1), ('v3', '2025-07', 'BUSINESS', 2), ('v3', '2025-07', 'BUSINESS', 3), ('v3', '2025-07', 'BUSINESS', 4), ('v3', '2025-07', 'BUSINESS', 5), ('v3', '2025-07', 'BUSINESS', 6), ...})
+
+test_accuracy_mart.py:199: AssertionError
+__________________________ test_summary_head_to_head ___________________________
+
+ctx = {'agent_digest': '57aa0924865c98a2e2a643f07baeedb377bddd2730ead62842594ac4a08130e6', 'hidden': {'hidden_a': ({'closed_..._error_mwh': 16739.400999999987, 'actual_mwh': 471449.0240000002, 'n_examples': 186, 'n_scored': 183, ...}, ...}}, ...}
+
+    def test_summary_head_to_head(ctx):
+        """Closed months and the model head-to-head."""
+        require_run(ctx["run1"])
+>       check_summary(ctx["run1"], ctx["ref"], VISIBLE_AS_OF)
+
+test_accuracy_mart.py:301: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+run = {'examples': [{'abs_error_mwh': '141.7170000000001', 'actual_mwh': '1564.672', 'actual_run_ids': 'SR0044770;SR0044909'...416911564,\n      "wape_b": 0.03331508565047627,\n      "relative_change": -0.29655252008990796\n    }\n  ]\n}\n', ...}
+want = {'closed_months': ['2025-07', '2025-08', '2025-09', '2025-10', '2025-11', '2025-12', ...], 'examples': {('v3', 'EAST',... {'abs_error_mwh': 16739.400999999987, 'actual_mwh': 471449.0240000002, 'n_examples': 186, 'n_scored': 183, ...}, ...}}
+as_of = '2026-09-22T06:00:00Z'
+
+    def check_summary(run, want, as_of):
+        s = run["summary"]
+        assert s.get("closed_months") == want["closed_months"], f"closed_months {s.get('closed_months')} expected {want['closed_months']}"
+        got = {}
+        for e in s.get("head_to_head", []):
+            k = (e.get("model_a"), e.get("model_b"))
+            assert k not in got, f"duplicate head-to-head entry {k}"
+            got[k] = e
+        assert set(got) == set(want["head_to_head"]), f"head-to-head pairs {sorted(got)} expected {sorted(want['head_to_head'])}"
+        bad = []
+        for k, w in want["head_to_head"].items():
+            g = got[k]
+            if int(g.get("n_pairs", -1)) != w["n_pairs"] or g.get("first_month") != w["first_month"] or g.get("last_month") != w["last_month"]:
+                bad.append((k, "pairs/months", (g.get("n_pairs"), g.get("first_month"), g.get("last_month")),
+                            (w["n_pairs"], w["first_month"], w["last_month"])))
+                continue
+            for f, tol in (("wape_a", WAPE_TOL), ("wape_b", WAPE_TOL), ("relative_change", REL_TOL)):
+                gv = num(g.get(f))
+                if gv is None or not math.isfinite(gv) or abs(gv - w[f]) > tol:
+                    bad.append((k, f, gv, w[f]))
+                    break
+>       assert not bad, f"head-to-head differs: {bad}"
+E       AssertionError: head-to-head differs: [(('v3', 'v4'), 'pairs/months', (18540, '2025-07', '2026-08'), (26999, '2026-01', '2026-08'))]
+E       assert not [(('v3', 'v4'), 'pairs/months', (18540, '2025-07', '2026-08'), (26999, '2026-01', '2026-08'))]
+
+test_accuracy_mart.py:243: AssertionError
+________________________ test_hidden_examples[hidden_a] ________________________
+
+ctx = {'agent_digest': '57aa0924865c98a2e2a643f07baeedb377bddd2730ead62842594ac4a08130e6', 'hidden': {'hidden_a': ({'closed_..._error_mwh': 16739.400999999987, 'actual_mwh': 471449.0240000002, 'n_examples': 186, 'n_scored': 183, ...}, ...}}, ...}
+name = 'hidden_a'
+
+    @pytest.mark.parametrize("name", HIDDEN)
+    def test_hidden_examples(ctx, name):
+        """Other extracts: evaluation examples (set and every field)."""
+        want, run = ctx["hidden"][name]
+        require_run(run)
+>       check_example_set(run, want)
+
+test_accuracy_mart.py:327: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+run = {'examples': [{'abs_error_mwh': '61.577', 'actual_mwh': '1410.092', 'actual_run_ids': 'SR0033770', 'forecast_mwh': '13...444835114,\n      "wape_b": 0.03407627562849977,\n      "relative_change": -0.20303776668689133\n    }\n  ]\n}\n', ...}
+want = {'closed_months': ['2024-12', '2025-01', '2025-02', '2025-03', '2025-04', '2025-05', ...], 'examples': {('v3', 'EAST',...{'abs_error_mwh': 21864.388000000003, 'actual_mwh': 506484.20499999984, 'n_examples': 180, 'n_scored': 174, ...}, ...}}
+
+    def check_example_set(run, want):
+        got = example_map(run)
+        missing, extra = set(want["examples"]) - set(got), set(got) - set(want["examples"])
+>       assert not missing and not extra, (f"example set differs: {len(missing)} missing (e.g. {sample(missing, 4)}), "
+                                           f"{len(extra)} unexpected (e.g. {sample(extra, 4)})")
+E       AssertionError: example set differs: 7748 missing (e.g. [('v3', 'EAST', 'BUSINESS', '2024-12-01', 1), ('v3', 'EAST', 'BUSINESS', '2024-12-01', 2), ('v3', 'EAST', 'BUSINESS', '2024-12-01', 3), ('v3', 'EAST', 'BUSINESS', '2024-12-01', 4)]), 1008 unexpected (e.g. [('v3', 'EAST', 'IC', '2026-02-01', 1), ('v3', 'EAST', 'IC', '2026-02-01', 2), ('v3', 'EAST', 'IC', '2026-02-01', 3), ('v3', 'EAST', 'IC', '2026-02-01', 4)])
+E       assert (not {('v3', 'EAST', 'BUSINESS', '2024-12-01', 1), ('v3', 'EAST', 'BUSINESS', '2024-12-01', 2), ('v3', 'EAST', 'BUSINESS', ...NESS', '2024-12-01', 4), ('v3', 'EAST', 'BUSINESS', '2024-12-01', 5), ('v3', 'EAST', 'BUSINESS', '2024-12-01', 6), ...})
+
+test_accuracy_mart.py:161: AssertionError
+________________________ test_hidden_examples[hidden_b] ________________________
+
+ctx = {'agent_digest': '57aa0924865c98a2e2a643f07baeedb377bddd2730ead62842594ac4a08130e6', 'hidden': {'hidden_a': ({'closed_..._error_mwh': 16739.400999999987, 'actual_mwh': 471449.0240000002, 'n_examples': 186, 'n_scored': 183, ...}, ...}}, ...}
+name = 'hidden_b'
+
+    @pytest.mark.parametrize("name", HIDDEN)
+    def test_hidden_examples(ctx, name):
+        """Other extracts: evaluation examples (set and every field)."""
+        want, run = ctx["hidden"][name]
+        require_run(run)
+>       check_example_set(run, want)
+
+test_accuracy_mart.py:327: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+run = {'examples': [{'abs_error_mwh': '2.1189999999999998', 'actual_mwh': '59.303', 'actual_run_ids': 'SR0028638', 'forecast...7058186752,\n      "wape_b": 0.04165413754474414,\n      "relative_change": -0.5876757556259242\n    }\n  ]\n}\n', ...}
+want = {'closed_months': ['2026-10', '2026-11', '2026-12', '2027-01', '2027-02', '2027-03', ...], 'examples': {('v3', 'EAST',... {'abs_error_mwh': 13727.573000000002, 'actual_mwh': 355193.9449999999, 'n_examples': 186, 'n_scored': 184, ...}, ...}}
+
+    def check_example_set(run, want):
+        got = example_map(run)
+        missing, extra = set(want["examples"]) - set(got), set(got) - set(want["examples"])
+>       assert not missing and not extra, (f"example set differs: {len(missing)} missing (e.g. {sample(missing, 4)}), "
+                                           f"{len(extra)} unexpected (e.g. {sample(extra, 4)})")
+E       AssertionError: example set differs: 7891 missing (e.g. [('v3', 'EAST', 'EV', '2027-01-11', 4), ('v3', 'EAST', 'EV', '2027-01-11', 7), ('v3', 'EAST', 'EV', '2027-01-12', 5), ('v3', 'EAST', 'EV', '2027-01-12', 8)]), 2478 unexpected (e.g. [('v3', 'EAST', 'EV', '2027-06-01', 2), ('v3', 'EAST', 'EV', '2027-06-01', 4), ('v3', 'EAST', 'EV', '2027-06-01', 5), ('v3', 'EAST', 'EV', '2027-06-01', 6)])
+E       assert (not {('v3', 'EAST', 'EV', '2027-01-11', 4), ('v3', 'EAST', 'EV', '2027-01-11', 7), ('v3', 'EAST', 'EV', '2027-01-12', 5), ('v3', 'EAST', 'EV', '2027-01-12', 8), ('v3', 'EAST', 'EV', '2027-01-13', 6), ('v3', 'EAST', 'EV', '2027-01-13', 9), ...})
+
+test_accuracy_mart.py:161: AssertionError
+________________________ test_hidden_examples[hidden_c] ________________________
+
+ctx = {'agent_digest': '57aa0924865c98a2e2a643f07baeedb377bddd2730ead62842594ac4a08130e6', 'hidden': {'hidden_a': ({'closed_..._error_mwh': 16739.400999999987, 'actual_mwh': 471449.0240000002, 'n_examples': 186, 'n_scored': 183, ...}, ...}}, ...}
+name = 'hidden_c'
+
+    @pytest.mark.parametrize("name", HIDDEN)
+    def test_hidden_examples(ctx, name):
+        """Other extracts: evaluation examples (set and every field)."""
+        want, run = ctx["hidden"][name]
+        require_run(run)
+>       check_example_set(run, want)
+
+test_accuracy_mart.py:327: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+run = {'examples': [{'abs_error_mwh': '27.829999999999927', 'actual_mwh': '1487.648', 'actual_run_ids': 'SR0038926', 'foreca...90307695,\n      "wape_b": 0.032848207208184176,\n      "relative_change": -0.07147429328478938\n    }\n  ]\n}\n', ...}
+want = {'closed_months': ['2026-01', '2026-02', '2026-03', '2026-04', '2026-05', '2026-06', ...], 'examples': {('v3', 'EAST',...{'abs_error_mwh': 15683.747000000005, 'actual_mwh': 296311.26200000005, 'n_examples': 186, 'n_scored': 185, ...}, ...}}
+
+    def check_example_set(run, want):
+        got = example_map(run)
+        missing, extra = set(want["examples"]) - set(got), set(got) - set(want["examples"])
+>       assert not missing and not extra, (f"example set differs: {len(missing)} missing (e.g. {sample(missing, 4)}), "
+                                           f"{len(extra)} unexpected (e.g. {sample(extra, 4)})")
+E       AssertionError: example set differs: 4323 missing (e.g. [('v3', 'EAST', 'IC', '2026-01-01', 1), ('v3', 'EAST', 'IC', '2026-01-01', 2), ('v3', 'EAST', 'IC', '2026-01-01', 3), ('v3', 'EAST', 'IC', '2026-01-01', 4)]), 1467 unexpected (e.g. [('v3', 'EAST', 'IC', '2026-11-01', 1), ('v3', 'EAST', 'IC', '2026-11-01', 2), ('v3', 'EAST', 'IC', '2026-11-01', 3), ('v3', 'EAST', 'IC', '2026-11-01', 4)])
+E       assert (not {('v3', 'EAST', 'IC', '2026-01-01', 1), ('v3', 'EAST', 'IC', '2026-01-01', 2), ('v3', 'EAST', 'IC', '2026-01-01', 3), ('v3', 'EAST', 'IC', '2026-01-01', 4), ('v3', 'EAST', 'IC', '2026-01-01', 5), ('v3', 'EAST', 'IC', '2026-01-01', 6), ...})
+
+test_accuracy_mart.py:161: AssertionError
+______________________ test_hidden_monthly_kpi[hidden_a] _______________________
+
+ctx = {'agent_digest': '57aa0924865c98a2e2a643f07baeedb377bddd2730ead62842594ac4a08130e6', 'hidden': {'hidden_a': ({'closed_..._error_mwh': 16739.400999999987, 'actual_mwh': 471449.0240000002, 'n_examples': 186, 'n_scored': 183, ...}, ...}}, ...}
+name = 'hidden_a'
+
+    @pytest.mark.parametrize("name", HIDDEN)
+    def test_hidden_monthly_kpi(ctx, name):
+        """Other extracts: monthly KPI."""
+        want, run = ctx["hidden"][name]
+        require_run(run)
+>       check_monthly(run, want)
+
+test_accuracy_mart.py:336: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+run = {'examples': [{'abs_error_mwh': '61.577', 'actual_mwh': '1410.092', 'actual_run_ids': 'SR0033770', 'forecast_mwh': '13...444835114,\n      "wape_b": 0.03407627562849977,\n      "relative_change": -0.20303776668689133\n    }\n  ]\n}\n', ...}
+want = {'closed_months': ['2024-12', '2025-01', '2025-02', '2025-03', '2025-04', '2025-05', ...], 'examples': {('v3', 'EAST',...{'abs_error_mwh': 21864.388000000003, 'actual_mwh': 506484.20499999984, 'n_examples': 180, 'n_scored': 174, ...}, ...}}
+
+    def check_monthly(run, want):
+        rows = run["monthly"]
+        missing = MONTHLY_COLS - set(rows[0].keys() if rows else [])
+        assert not missing, f"monthly_kpi.csv is missing columns {sorted(missing)}"
+        got = {}
+        for r in rows:
+            k = (r["model"], r["kpi_month"], r["portfolio"], int(float(r["horizon"])))
+            assert k not in got, f"duplicate monthly KPI row {k}"
+            got[k] = r
+        missing_k, extra_k = set(want["monthly"]) - set(got), set(got) - set(want["monthly"])
+>       assert not missing_k and not extra_k, (f"monthly KPI rows differ: {len(missing_k)} missing (e.g. {sample(missing_k, 3)}), "
+                                               f"{len(extra_k)} unexpected (e.g. {sample(extra_k, 3)})")
+E       AssertionError: monthly KPI rows differ: 35 missing (e.g. [('v3', '2024-12', 'BUSINESS', 1), ('v3', '2024-12', 'BUSINESS', 2), ('v3', '2024-12', 'BUSINESS', 3)]), 14 unexpected (e.g. [('v3', '2025-04', 'IC', 1), ('v3', '2025-04', 'IC', 2), ('v3', '2025-04', 'IC', 3)])
+E       assert (not {('v3', '2024-12', 'BUSINESS', 1), ('v3', '2024-12', 'BUSINESS', 2), ('v3', '2024-12', 'BUSINESS', 3), ('v3', '2024-12', 'BUSINESS', 4), ('v3', '2024-12', 'BUSINESS', 5), ('v3', '2024-12', 'BUSINESS', 6), ...})
+
+test_accuracy_mart.py:199: AssertionError
+______________________ test_hidden_monthly_kpi[hidden_b] _______________________
+
+ctx = {'agent_digest': '57aa0924865c98a2e2a643f07baeedb377bddd2730ead62842594ac4a08130e6', 'hidden': {'hidden_a': ({'closed_..._error_mwh': 16739.400999999987, 'actual_mwh': 471449.0240000002, 'n_examples': 186, 'n_scored': 183, ...}, ...}}, ...}
+name = 'hidden_b'
+
+    @pytest.mark.parametrize("name", HIDDEN)
+    def test_hidden_monthly_kpi(ctx, name):
+        """Other extracts: monthly KPI."""
+        want, run = ctx["hidden"][name]
+        require_run(run)
+>       check_monthly(run, want)
+
+test_accuracy_mart.py:336: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+run = {'examples': [{'abs_error_mwh': '2.1189999999999998', 'actual_mwh': '59.303', 'actual_run_ids': 'SR0028638', 'forecast...7058186752,\n      "wape_b": 0.04165413754474414,\n      "relative_change": -0.5876757556259242\n    }\n  ]\n}\n', ...}
+want = {'closed_months': ['2026-10', '2026-11', '2026-12', '2027-01', '2027-02', '2027-03', ...], 'examples': {('v3', 'EAST',... {'abs_error_mwh': 13727.573000000002, 'actual_mwh': 355193.9449999999, 'n_examples': 186, 'n_scored': 184, ...}, ...}}
+
+    def check_monthly(run, want):
+        rows = run["monthly"]
+        missing = MONTHLY_COLS - set(rows[0].keys() if rows else [])
+        assert not missing, f"monthly_kpi.csv is missing columns {sorted(missing)}"
+        got = {}
+        for r in rows:
+            k = (r["model"], r["kpi_month"], r["portfolio"], int(float(r["horizon"])))
+            assert k not in got, f"duplicate monthly KPI row {k}"
+            got[k] = r
+        missing_k, extra_k = set(want["monthly"]) - set(got), set(got) - set(want["monthly"])
+        assert not missing_k and not extra_k, (f"monthly KPI rows differ: {len(missing_k)} missing (e.g. {sample(missing_k, 3)}), "
+                                               f"{len(extra_k)} unexpected (e.g. {sample(extra_k, 3)})")
+        bad = []
+        for k, w in want["monthly"].items():
+            g = got[k]
+            if int(float(g["n_examples"])) != w["n_examples"] or int(float(g["n_scored"])) != w["n_scored"]:
+                bad.append((k, "counts", (g["n_examples"], g["n_scored"]), (w["n_examples"], w["n_scored"])))
+                continue
+            for f, tol in (("abs_error_mwh", 1e-6 * max(1, w["n_scored"])), ("actual_mwh", 1e-6 * max(1, w["n_scored"]))):
+                gv = num(g[f]) or 0.0
+                if abs(gv - w[f]) > tol:
+                    bad.append((k, f, gv, w[f]))
+                    break
+            else:
+                gw = num(g["wape"])
+                if w["wape"] is None:
+                    if gw is not None:
+                        bad.append((k, "wape", gw, None))
+                elif gw is None or abs(gw - w["wape"]) > WAPE_TOL:
+                    bad.append((k, "wape", gw, w["wape"]))
+>       assert not bad, f"{len(bad)} monthly KPI rows differ (key, field, got, expected), e.g. {bad[:4]}"
+E       AssertionError: 580 monthly KPI rows differ (key, field, got, expected), e.g. [(('v4', '2026-10', 'IC', 10), 'counts', ('181', '181'), (180, 178)), (('v4', '2026-10', 'RESI', 10), 'counts', ('181', '181'), (180, 180)), (('v4', '2026-10', 'SME', 10), 'counts', ('181', '181'), (180, 179)), (('v3', '2026-10', 'IC', 10), 'counts', ('166', '166'), (180, 178))]
+E       assert not [(('v4', '2026-10', 'IC', 10), 'counts', ('181', '181'), (180, 178)), (('v4', '2026-10', 'RESI', 10), 'counts', ('181'... 10), 'counts', ('166', '166'), (180, 179)), (('v3', '2026-10', 'SME', 10), 'counts', ('166', '166'), (180, 179)), ...]
+
+test_accuracy_mart.py:219: AssertionError
+______________________ test_hidden_monthly_kpi[hidden_c] _______________________
+
+ctx = {'agent_digest': '57aa0924865c98a2e2a643f07baeedb377bddd2730ead62842594ac4a08130e6', 'hidden': {'hidden_a': ({'closed_..._error_mwh': 16739.400999999987, 'actual_mwh': 471449.0240000002, 'n_examples': 186, 'n_scored': 183, ...}, ...}}, ...}
+name = 'hidden_c'
+
+    @pytest.mark.parametrize("name", HIDDEN)
+    def test_hidden_monthly_kpi(ctx, name):
+        """Other extracts: monthly KPI."""
+        want, run = ctx["hidden"][name]
+        require_run(run)
+>       check_monthly(run, want)
+
+test_accuracy_mart.py:336: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+run = {'examples': [{'abs_error_mwh': '27.829999999999927', 'actual_mwh': '1487.648', 'actual_run_ids': 'SR0038926', 'foreca...90307695,\n      "wape_b": 0.032848207208184176,\n      "relative_change": -0.07147429328478938\n    }\n  ]\n}\n', ...}
+want = {'closed_months': ['2026-01', '2026-02', '2026-03', '2026-04', '2026-05', '2026-06', ...], 'examples': {('v3', 'EAST',...{'abs_error_mwh': 15683.747000000005, 'actual_mwh': 296311.26200000005, 'n_examples': 186, 'n_scored': 185, ...}, ...}}
+
+    def check_monthly(run, want):
+        rows = run["monthly"]
+        missing = MONTHLY_COLS - set(rows[0].keys() if rows else [])
+        assert not missing, f"monthly_kpi.csv is missing columns {sorted(missing)}"
+        got = {}
+        for r in rows:
+            k = (r["model"], r["kpi_month"], r["portfolio"], int(float(r["horizon"])))
+            assert k not in got, f"duplicate monthly KPI row {k}"
+            got[k] = r
+        missing_k, extra_k = set(want["monthly"]) - set(got), set(got) - set(want["monthly"])
+        assert not missing_k and not extra_k, (f"monthly KPI rows differ: {len(missing_k)} missing (e.g. {sample(missing_k, 3)}), "
+                                               f"{len(extra_k)} unexpected (e.g. {sample(extra_k, 3)})")
+        bad = []
+        for k, w in want["monthly"].items():
+            g = got[k]
+            if int(float(g["n_examples"])) != w["n_examples"] or int(float(g["n_scored"])) != w["n_scored"]:
+                bad.append((k, "counts", (g["n_examples"], g["n_scored"]), (w["n_examples"], w["n_scored"])))
+                continue
+            for f, tol in (("abs_error_mwh", 1e-6 * max(1, w["n_scored"])), ("actual_mwh", 1e-6 * max(1, w["n_scored"]))):
+                gv = num(g[f]) or 0.0
+                if abs(gv - w[f]) > tol:
+                    bad.append((k, f, gv, w[f]))
+                    break
+            else:
+                gw = num(g["wape"])
+                if w["wape"] is None:
+                    if gw is not None:
+                        bad.append((k, "wape", gw, None))
+                elif gw is None or abs(gw - w["wape"]) > WAPE_TOL:
+                    bad.append((k, "wape", gw, w["wape"]))
+>       assert not bad, f"{len(bad)} monthly KPI rows differ (key, field, got, expected), e.g. {bad[:4]}"
+E       AssertionError: 546 monthly KPI rows differ (key, field, got, expected), e.g. [(('v4', '2026-01', 'IC', 7), 'counts', ('176', '176'), (186, 185)), (('v4', '2026-01', 'RESI', 7), 'counts', ('176', '176'), (186, 186)), (('v4', '2026-01', 'SME', 7), 'counts', ('176', '176'), (186, 185)), (('v3', '2026-01', 'IC', 7), 'counts', ('176', '176'), (186, 185))]
+E       assert not [(('v4', '2026-01', 'IC', 7), 'counts', ('176', '176'), (186, 185)), (('v4', '2026-01', 'RESI', 7), 'counts', ('176', ...', 7), 'counts', ('176', '176'), (186, 186)), (('v3', '2026-01', 'SME', 7), 'counts', ('176', '176'), (186, 185)), ...]
+
+test_accuracy_mart.py:219: AssertionError
+______________________ test_hidden_head_to_head[hidden_a] ______________________
+
+ctx = {'agent_digest': '57aa0924865c98a2e2a643f07baeedb377bddd2730ead62842594ac4a08130e6', 'hidden': {'hidden_a': ({'closed_..._error_mwh': 16739.400999999987, 'actual_mwh': 471449.0240000002, 'n_examples': 186, 'n_scored': 183, ...}, ...}}, ...}
+name = 'hidden_a'
+
+    @pytest.mark.parametrize("name", HIDDEN)
+    def test_hidden_head_to_head(ctx, name):
+        """Other extracts: closed months and head-to-head."""
+        want, run = ctx["hidden"][name]
+        require_run(run)
+>       check_summary(run, want, None)
+
+test_accuracy_mart.py:344: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+run = {'examples': [{'abs_error_mwh': '61.577', 'actual_mwh': '1410.092', 'actual_run_ids': 'SR0033770', 'forecast_mwh': '13...444835114,\n      "wape_b": 0.03407627562849977,\n      "relative_change": -0.20303776668689133\n    }\n  ]\n}\n', ...}
+want = {'closed_months': ['2024-12', '2025-01', '2025-02', '2025-03', '2025-04', '2025-05', ...], 'examples': {('v3', 'EAST',...{'abs_error_mwh': 21864.388000000003, 'actual_mwh': 506484.20499999984, 'n_examples': 180, 'n_scored': 174, ...}, ...}}
+as_of = None
+
+    def check_summary(run, want, as_of):
+        s = run["summary"]
+        assert s.get("closed_months") == want["closed_months"], f"closed_months {s.get('closed_months')} expected {want['closed_months']}"
+        got = {}
+        for e in s.get("head_to_head", []):
+            k = (e.get("model_a"), e.get("model_b"))
+            assert k not in got, f"duplicate head-to-head entry {k}"
+            got[k] = e
+        assert set(got) == set(want["head_to_head"]), f"head-to-head pairs {sorted(got)} expected {sorted(want['head_to_head'])}"
+        bad = []
+        for k, w in want["head_to_head"].items():
+            g = got[k]
+            if int(g.get("n_pairs", -1)) != w["n_pairs"] or g.get("first_month") != w["first_month"] or g.get("last_month") != w["last_month"]:
+                bad.append((k, "pairs/months", (g.get("n_pairs"), g.get("first_month"), g.get("last_month")),
+                            (w["n_pairs"], w["first_month"], w["last_month"])))
+                continue
+            for f, tol in (("wape_a", WAPE_TOL), ("wape_b", WAPE_TOL), ("relative_change", REL_TOL)):
+                gv = num(g.get(f))
+                if gv is None or not math.isfinite(gv) or abs(gv - w[f]) > tol:
+                    bad.append((k, f, gv, w[f]))
+                    break
+>       assert not bad, f"head-to-head differs: {bad}"
+E       AssertionError: head-to-head differs: [(('v3', 'v4'), 'pairs/months', (19173, '2024-12', '2026-01'), (28756, '2025-06', '2026-01'))]
+E       assert not [(('v3', 'v4'), 'pairs/months', (19173, '2024-12', '2026-01'), (28756, '2025-06', '2026-01'))]
+
+test_accuracy_mart.py:243: AssertionError
+______________________ test_hidden_head_to_head[hidden_b] ______________________
+
+ctx = {'agent_digest': '57aa0924865c98a2e2a643f07baeedb377bddd2730ead62842594ac4a08130e6', 'hidden': {'hidden_a': ({'closed_..._error_mwh': 16739.400999999987, 'actual_mwh': 471449.0240000002, 'n_examples': 186, 'n_scored': 183, ...}, ...}}, ...}
+name = 'hidden_b'
+
+    @pytest.mark.parametrize("name", HIDDEN)
+    def test_hidden_head_to_head(ctx, name):
+        """Other extracts: closed months and head-to-head."""
+        want, run = ctx["hidden"][name]
+        require_run(run)
+>       check_summary(run, want, None)
+
+test_accuracy_mart.py:344: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+run = {'examples': [{'abs_error_mwh': '2.1189999999999998', 'actual_mwh': '59.303', 'actual_run_ids': 'SR0028638', 'forecast...7058186752,\n      "wape_b": 0.04165413754474414,\n      "relative_change": -0.5876757556259242\n    }\n  ]\n}\n', ...}
+want = {'closed_months': ['2026-10', '2026-11', '2026-12', '2027-01', '2027-02', '2027-03', ...], 'examples': {('v3', 'EAST',... {'abs_error_mwh': 13727.573000000002, 'actual_mwh': 355193.9449999999, 'n_examples': 186, 'n_scored': 184, ...}, ...}}
+as_of = None
+
+    def check_summary(run, want, as_of):
+        s = run["summary"]
+        assert s.get("closed_months") == want["closed_months"], f"closed_months {s.get('closed_months')} expected {want['closed_months']}"
+        got = {}
+        for e in s.get("head_to_head", []):
+            k = (e.get("model_a"), e.get("model_b"))
+            assert k not in got, f"duplicate head-to-head entry {k}"
+            got[k] = e
+        assert set(got) == set(want["head_to_head"]), f"head-to-head pairs {sorted(got)} expected {sorted(want['head_to_head'])}"
+        bad = []
+        for k, w in want["head_to_head"].items():
+            g = got[k]
+            if int(g.get("n_pairs", -1)) != w["n_pairs"] or g.get("first_month") != w["first_month"] or g.get("last_month") != w["last_month"]:
+                bad.append((k, "pairs/months", (g.get("n_pairs"), g.get("first_month"), g.get("last_month")),
+                            (w["n_pairs"], w["first_month"], w["last_month"])))
+                continue
+            for f, tol in (("wape_a", WAPE_TOL), ("wape_b", WAPE_TOL), ("relative_change", REL_TOL)):
+                gv = num(g.get(f))
+                if gv is None or not math.isfinite(gv) or abs(gv - w[f]) > tol:
+                    bad.append((k, f, gv, w[f]))
+                    break
+>       assert not bad, f"head-to-head differs: {bad}"
+E       AssertionError: head-to-head differs: [(('v3', 'v4'), 'pairs/months', (28000, '2026-10', '2027-05'), (51441, '2026-10', '2027-05'))]
+E       assert not [(('v3', 'v4'), 'pairs/months', (28000, '2026-10', '2027-05'), (51441, '2026-10', '2027-05'))]
+
+test_accuracy_mart.py:243: AssertionError
+______________________ test_hidden_head_to_head[hidden_c] ______________________
+
+ctx = {'agent_digest': '57aa0924865c98a2e2a643f07baeedb377bddd2730ead62842594ac4a08130e6', 'hidden': {'hidden_a': ({'closed_..._error_mwh': 16739.400999999987, 'actual_mwh': 471449.0240000002, 'n_examples': 186, 'n_scored': 183, ...}, ...}}, ...}
+name = 'hidden_c'
+
+    @pytest.mark.parametrize("name", HIDDEN)
+    def test_hidden_head_to_head(ctx, name):
+        """Other extracts: closed months and head-to-head."""
+        want, run = ctx["hidden"][name]
+        require_run(run)
+>       check_summary(run, want, None)
+
+test_accuracy_mart.py:344: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+run = {'examples': [{'abs_error_mwh': '27.829999999999927', 'actual_mwh': '1487.648', 'actual_run_ids': 'SR0038926', 'foreca...90307695,\n      "wape_b": 0.032848207208184176,\n      "relative_change": -0.07147429328478938\n    }\n  ]\n}\n', ...}
+want = {'closed_months': ['2026-01', '2026-02', '2026-03', '2026-04', '2026-05', '2026-06', ...], 'examples': {('v3', 'EAST',...{'abs_error_mwh': 15683.747000000005, 'actual_mwh': 296311.26200000005, 'n_examples': 186, 'n_scored': 185, ...}, ...}}
+as_of = None
+
+    def check_summary(run, want, as_of):
+        s = run["summary"]
+        assert s.get("closed_months") == want["closed_months"], f"closed_months {s.get('closed_months')} expected {want['closed_months']}"
+        got = {}
+        for e in s.get("head_to_head", []):
+            k = (e.get("model_a"), e.get("model_b"))
+            assert k not in got, f"duplicate head-to-head entry {k}"
+            got[k] = e
+        assert set(got) == set(want["head_to_head"]), f"head-to-head pairs {sorted(got)} expected {sorted(want['head_to_head'])}"
+        bad = []
+        for k, w in want["head_to_head"].items():
+            g = got[k]
+            if int(g.get("n_pairs", -1)) != w["n_pairs"] or g.get("first_month") != w["first_month"] or g.get("last_month") != w["last_month"]:
+                bad.append((k, "pairs/months", (g.get("n_pairs"), g.get("first_month"), g.get("last_month")),
+                            (w["n_pairs"], w["first_month"], w["last_month"])))
+                continue
+            for f, tol in (("wape_a", WAPE_TOL), ("wape_b", WAPE_TOL), ("relative_change", REL_TOL)):
+                gv = num(g.get(f))
+                if gv is None or not math.isfinite(gv) or abs(gv - w[f]) > tol:
+                    bad.append((k, f, gv, w[f]))
+                    break
+>       assert not bad, f"head-to-head differs: {bad}"
+E       AssertionError: head-to-head differs: [(('v3', 'v4'), 'pairs/months', (14826, '2026-01', '2026-10'), (37606, '2026-01', '2026-10')), (('v3', 'v5'), 'pairs/months', (21525, '2026-01', '2026-10'), (22082, '2026-05', '2026-10')), (('v4', 'v5'), 'pairs/months', (21525, '2026-05', '2026-10'), (21831, '2026-05', '2026-10'))]
+E       assert not [(('v3', 'v4'), 'pairs/months', (14826, '2026-01', '2026-10'), (37606, '2026-01', '2026-10')), (('v3', 'v5'), 'pairs/m..., '2026-05', '2026-10')), (('v4', 'v5'), 'pairs/months', (21525, '2026-05', '2026-10'), (21831, '2026-05', '2026-10'))]
+
+test_accuracy_mart.py:243: AssertionError
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED test_accuracy_mart.py::test_warehouse_unmodified
+PASSED test_accuracy_mart.py::test_build_succeeds
+PASSED test_accuracy_mart.py::test_build_time
+PASSED test_accuracy_mart.py::test_rerun_is_deterministic
+FAILED test_accuracy_mart.py::test_example_set - AssertionError: example set ...
+FAILED test_accuracy_mart.py::test_forecast_in_force - AssertionError: 20959 ...
+FAILED test_accuracy_mart.py::test_kpi_month_and_status - AssertionError: 761...
+FAILED test_accuracy_mart.py::test_settlement_runs - AssertionError: 54074 ex...
+FAILED test_accuracy_mart.py::test_actuals_and_errors - AssertionError: 55426...
+FAILED test_accuracy_mart.py::test_monthly_kpi - AssertionError: monthly KPI ...
+FAILED test_accuracy_mart.py::test_summary_head_to_head - AssertionError: hea...
+FAILED test_accuracy_mart.py::test_hidden_examples[hidden_a] - AssertionError...
+FAILED test_accuracy_mart.py::test_hidden_examples[hidden_b] - AssertionError...
+FAILED test_accuracy_mart.py::test_hidden_examples[hidden_c] - AssertionError...
+FAILED test_accuracy_mart.py::test_hidden_monthly_kpi[hidden_a] - AssertionEr...
+FAILED test_accuracy_mart.py::test_hidden_monthly_kpi[hidden_b] - AssertionEr...
+FAILED test_accuracy_mart.py::test_hidden_monthly_kpi[hidden_c] - AssertionEr...
+FAILED test_accuracy_mart.py::test_hidden_head_to_head[hidden_a] - AssertionE...
+FAILED test_accuracy_mart.py::test_hidden_head_to_head[hidden_b] - AssertionE...
+FAILED test_accuracy_mart.py::test_hidden_head_to_head[hidden_c] - AssertionE...
+=================== 16 failed, 4 passed in 94.79s (0:01:34) ====================

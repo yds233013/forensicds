@@ -1,0 +1,125 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 11,
+            "passed": 11,
+            "failed": 0,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1790832693.8904307,
+            "stop": 1790833250.6023293
+        },
+        "tests": [
+            {
+                "name": "test_ope.py::test_logs_unmodified",
+                "status": "passed",
+                "duration": 556.5636233380064,
+                "start": 1790832693.929404,
+                "stop": 1790833250.505016,
+                "retries": 0,
+                "file_path": "test_ope.py"
+            },
+            {
+                "name": "test_ope.py::test_ope_succeeds",
+                "status": "passed",
+                "duration": 0.0023634169483557343,
+                "start": 1790833250.5078018,
+                "stop": 1790833250.510657,
+                "retries": 0,
+                "file_path": "test_ope.py"
+            },
+            {
+                "name": "test_ope.py::test_run_time",
+                "status": "passed",
+                "duration": 0.0020987490424886346,
+                "start": 1790833250.5113795,
+                "stop": 1790833250.5141482,
+                "retries": 0,
+                "file_path": "test_ope.py"
+            },
+            {
+                "name": "test_ope.py::test_decision_table",
+                "status": "passed",
+                "duration": 0.0021589179523289204,
+                "start": 1790833250.5144663,
+                "stop": 1790833250.5170736,
+                "retries": 0,
+                "file_path": "test_ope.py"
+            },
+            {
+                "name": "test_ope.py::test_target_slates",
+                "status": "passed",
+                "duration": 0.0024261250509880483,
+                "start": 1790833250.5181506,
+                "stop": 1790833250.5212967,
+                "retries": 0,
+                "file_path": "test_ope.py"
+            },
+            {
+                "name": "test_ope.py::test_policy_values",
+                "status": "passed",
+                "duration": 0.0019472090061753988,
+                "start": 1790833250.5219579,
+                "stop": 1790833250.5244272,
+                "retries": 0,
+                "file_path": "test_ope.py"
+            },
+            {
+                "name": "test_ope.py::test_intervals",
+                "status": "passed",
+                "duration": 0.0024794170749373734,
+                "start": 1790833250.5249424,
+                "stop": 1790833250.5279083,
+                "retries": 0,
+                "file_path": "test_ope.py"
+            },
+            {
+                "name": "test_ope.py::test_launch_decision",
+                "status": "passed",
+                "duration": 0.002209290978498757,
+                "start": 1790833250.5284154,
+                "stop": 1790833250.5314167,
+                "retries": 0,
+                "file_path": "test_ope.py"
+            },
+            {
+                "name": "test_ope.py::test_rerun_is_deterministic",
+                "status": "passed",
+                "duration": 0.0007997069624252617,
+                "start": 1790833250.5317223,
+                "stop": 1790833250.5327604,
+                "retries": 0,
+                "file_path": "test_ope.py"
+            },
+            {
+                "name": "test_ope.py::test_hidden_tables",
+                "status": "passed",
+                "duration": 0.0010544579708948731,
+                "start": 1790833250.532934,
+                "stop": 1790833250.5343454,
+                "retries": 2,
+                "file_path": "test_ope.py",
+                "tags": [
+                    "parametrize::name::['hidden_a', 'hidden_b', 'hidden_c']"
+                ]
+            },
+            {
+                "name": "test_ope.py::test_hidden_values_and_launch",
+                "status": "passed",
+                "duration": 0.0006976249860599637,
+                "start": 1790833250.536722,
+                "stop": 1790833250.5376165,
+                "retries": 2,
+                "file_path": "test_ope.py",
+                "tags": [
+                    "parametrize::name::['hidden_a', 'hidden_b', 'hidden_c']"
+                ]
+            }
+        ]
+    }
+}

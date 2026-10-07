@@ -1,0 +1,76 @@
+{
+  "schema_version": "ATIF-v1.7",
+  "session_id": "470f3782-b8e1-4218-91ba-1532f4672dae",
+  "agent": {
+    "name": "claude-code",
+    "version": "2.1.286",
+    "model_name": "<synthetic>",
+    "extra": {
+      "cwds": [
+        "/workspace"
+      ],
+      "git_branches": [
+        "HEAD"
+      ]
+    }
+  },
+  "steps": [
+    {
+      "step_id": 1,
+      "timestamp": "2026-10-01T03:28:19.803Z",
+      "source": "user",
+      "message": "**To:** Resource Planning Analytics\n**From:** VP Resource Planning\n**Re:** FY27 residential capacity - do we procure?\n\nWe hold 1,900 MW of firm capacity for the residential block and the regulator requires a 10 %\nreserve. Across 565,000 customers that caps mean peak-window demand at **3.057 kW per customer**.\nThe memo in `reports/` has the arithmetic.\n\nThe 2027 season is forecast materially warmer than anything in our recent record, and on the flat\ntariff our own model puts us above that ceiling. The mandatory time-of-use tariff is supposed to be\nthe mitigation - Rates expect customers to move load out of the peak window.\n\nLoad Research ran a voluntary tariff pilot last season with a randomised control group. Rates read\nthat pilot as proof the tariff closes the gap. I am not yet convinced the pilot tells us what\nhappens once the tariff applies to everybody, in the weather we are actually forecast to get.\n\nI need the expected mean peak-window load per customer for the 2027 season with the whole estate on\nthe tariff, and the procurement call that follows. Procurement lead time is nine months, so this is\ndecided now, on forecast. Start with `README.md`.\n\nRequirements:\n\n1. `cd /workspace && python -m capacity_forecast analyse --warehouse data/warehouse.sqlite --out out`\n   must write `analysis_results.json` as specified in `docs/outputs/analysis_contract.md`.\n2. The same command is re-run against each planning extract, so the method must hold in general: no\n   special-casing of particular customers, segments, dates or values in this extract.\n3. `data/warehouse.sqlite` is the system of record: do not modify it, and do not hand-edit outputs\n   or reports.\n4. Re-running on the same extract must give identical outputs.\n5. Leave the outputs regenerated for this extract, and tell me briefly whether the incumbent\n   forecast can be used for this decision as it stands.\n",
+      "extra": {
+        "is_sidechain": false
+      }
+    },
+    {
+      "step_id": 2,
+      "timestamp": "2026-10-01T03:28:20.647Z",
+      "source": "agent",
+      "model_name": "<synthetic>",
+      "message": "Credit balance is too low",
+      "metrics": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "cached_tokens": 0,
+        "extra": {
+          "output_tokens_details": null,
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "server_tool_use": {
+            "web_search_requests": 0,
+            "web_fetch_requests": 0
+          },
+          "service_tier": null,
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "inference_geo": null,
+          "iterations": null,
+          "speed": null,
+          "fallback_credit": null
+        }
+      },
+      "llm_call_count": 1,
+      "extra": {
+        "stop_reason": "stop_sequence",
+        "stop_sequence": "",
+        "cwd": "/workspace",
+        "is_sidechain": false
+      }
+    }
+  ],
+  "final_metrics": {
+    "total_prompt_tokens": 0,
+    "total_completion_tokens": 0,
+    "total_cached_tokens": 0,
+    "total_cost_usd": 0.0,
+    "total_steps": 2,
+    "extra": {
+      "total_cache_creation_input_tokens": 0,
+      "total_cache_read_input_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+    "task": {
+        "path": "candidates/p20-noshow-monitoring"
+    },
+    "trial_name": "p20-noshow-monitoring__PMcSqMB",
+    "trials_dir": "crossmodel_logs/claude/claude-p20-noshow-monitoring-1",
+    "agent_setup_timeout_multiplier": 3.0,
+    "agent": {
+        "name": "claude-code",
+        "model_name": "claude-opus-5-5"
+    },
+    "job_id": "374f31e9-665f-4c19-9df8-67391aa64016"
+}

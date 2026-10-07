@@ -1,0 +1,13 @@
+{
+    "task": {
+        "path": "candidates/g10-censored-demand"
+    },
+    "trial_name": "g10-censored-demand__bFRBxbA",
+    "trials_dir": "crossmodel_logs/claude/claude-g10-censored-demand-3",
+    "agent_setup_timeout_multiplier": 3.0,
+    "agent": {
+        "name": "claude-code",
+        "model_name": "claude-opus-5-5"
+    },
+    "job_id": "c3ee6c35-c8a6-4c7f-a34f-8f328d659f5b"
+}

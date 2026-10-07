@@ -1,0 +1,137 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 11,
+            "passed": 7,
+            "failed": 4,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1790824784.1709778,
+            "stop": 1790825152.769783
+        },
+        "tests": [
+            {
+                "name": "test_ope.py::test_logs_unmodified",
+                "status": "passed",
+                "duration": 368.32224120997125,
+                "start": 1790824784.2098184,
+                "stop": 1790825152.569042,
+                "retries": 0,
+                "file_path": "test_ope.py"
+            },
+            {
+                "name": "test_ope.py::test_ope_succeeds",
+                "status": "passed",
+                "duration": 0.0005923749995417893,
+                "start": 1790825152.5707371,
+                "stop": 1790825152.571526,
+                "retries": 0,
+                "file_path": "test_ope.py"
+            },
+            {
+                "name": "test_ope.py::test_run_time",
+                "status": "passed",
+                "duration": 0.0004377089790068567,
+                "start": 1790825152.5717118,
+                "stop": 1790825152.5722973,
+                "retries": 0,
+                "file_path": "test_ope.py"
+            },
+            {
+                "name": "test_ope.py::test_decision_table",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0012622079229913652,
+                "start": 1790825152.5724473,
+                "stop": 1790825152.6114857,
+                "retries": 0,
+                "file_path": "test_ope.py",
+                "trace": "ctx = {'agent_digest': 'f79dca072f4f5206f8184e2f04c7f54f3acee0b0a98c47e77498783fc8fee0ce', 'hidden': {'hidden_a': {'decision...0000007', 4), ('R000000007', 5), ('R000000008', 1), ...})\", 'intervals': None, 'launch': None, 'output': '', ...}, ...}\n\n    def test_decision_table(ctx):\n        \"\"\"One row per decision and slot, with the decision's slate and the click outcome merged over its serves.\"\"\"\n>       _verdict(ctx[\"run1\"], \"decisions\")\n\ntest_ope.py:313: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nrun = {'decisions': \"decision rows differ: 0 missing (e.g. []), 178890 unexpected (e.g. [('R000000007', 1), ('R000000007', 2... ('R000000007', 4), ('R000000007', 5), ('R000000008', 1), ...})\", 'intervals': None, 'launch': None, 'output': '', ...}\nname = 'decisions'\n\n    def _verdict(run: dict, name: str) -> None:\n        require_run(run)\n>       assert run.get(name) is None, run.get(name)\nE       AssertionError: decision rows differ: 0 missing (e.g. []), 178890 unexpected (e.g. [('R000000007', 1), ('R000000007', 2), ('R000000007', 3)]); decision_id must be the serve_id of the response that created the decision\nE         assert (not set() and not {('R000000007', 1), ('R000000007', 2), ('R000000007', 3), ('R000000007', 4), ('R000000007', 5), ('R000000008', 1), ...})\nE       assert \"decision rows differ: 0 missing (e.g. []), 178890 unexpected (e.g. [('R000000007', 1), ('R000000007', 2), ('R00000000...'R000000007', 1), ('R000000007', 2), ('R000000007', 3), ('R000000007', 4), ('R000000007', 5), ('R000000008', 1), ...})\" is None\nE        +  where \"decision rows differ: 0 missing (e.g. []), 178890 unexpected (e.g. [('R000000007', 1), ('R000000007', 2), ('R00000000...'R000000007', 1), ('R000000007', 2), ('R000000007', 3), ('R000000007', 4), ('R000000007', 5), ('R000000008', 1), ...})\" = <built-in method get of dict object at 0xffff8d6d17c0>('decisions')\nE        +    where <built-in method get of dict object at 0xffff8d6d17c0> = {'decisions': \"decision rows differ: 0 missing (e.g. []), 178890 unexpected (e.g. [('R000000007', 1), ('R000000007', 2... ('R000000007', 4), ('R000000007', 5), ('R000000008', 1), ...})\", 'intervals': None, 'launch': None, 'output': '', ...}.get\n\ntest_ope.py:308: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_ope.py::test_target_slates",
+                "status": "passed",
+                "duration": 0.00045245897490531206,
+                "start": 1790825152.6116843,
+                "stop": 1790825152.6122715,
+                "retries": 0,
+                "file_path": "test_ope.py"
+            },
+            {
+                "name": "test_ope.py::test_policy_values",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0012742499238811433,
+                "start": 1790825152.612388,
+                "stop": 1790825152.6318412,
+                "retries": 0,
+                "file_path": "test_ope.py",
+                "trace": "ctx = {'agent_digest': 'f79dca072f4f5206f8184e2f04c7f54f3acee0b0a98c47e77498783fc8fee0ce', 'hidden': {'hidden_a': {'decision...0000007', 4), ('R000000007', 5), ('R000000008', 1), ...})\", 'intervals': None, 'launch': None, 'output': '', ...}, ...}\n\n    def test_policy_values(ctx):\n        \"\"\"Policy values and lifts within tolerance of the generator's exact values.\"\"\"\n>       _verdict(ctx[\"run1\"], \"values\")\n\ntest_ope.py:323: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nrun = {'decisions': \"decision rows differ: 0 missing (e.g. []), 178890 unexpected (e.g. [('R000000007', 1), ('R000000007', 2... ('R000000007', 4), ('R000000007', 5), ('R000000008', 1), ...})\", 'intervals': None, 'launch': None, 'output': '', ...}\nname = 'values'\n\n    def _verdict(run: dict, name: str) -> None:\n        require_run(run)\n>       assert run.get(name) is None, run.get(name)\nE       AssertionError: policy values outside tolerance (quantity, policy, error, tolerance): [('value', 'v7', 0.04855, 0.03316), ('lift', 'v7', 0.0568, 0.0423)]\nE         assert not [('value', 'v7', 0.04855, 0.03316), ('lift', 'v7', 0.0568, 0.0423)]\nE       assert \"policy values outside tolerance (quantity, policy, error, tolerance): [('value', 'v7', 0.04855, 0.03316), ('lift', 'v7', 0.0568, 0.0423)]\\nassert not [('value', 'v7', 0.04855, 0.03316), ('lift', 'v7', 0.0568, 0.0423)]\" is None\nE        +  where \"policy values outside tolerance (quantity, policy, error, tolerance): [('value', 'v7', 0.04855, 0.03316), ('lift', 'v7', 0.0568, 0.0423)]\\nassert not [('value', 'v7', 0.04855, 0.03316), ('lift', 'v7', 0.0568, 0.0423)]\" = <built-in method get of dict object at 0xffff8d6d17c0>('values')\nE        +    where <built-in method get of dict object at 0xffff8d6d17c0> = {'decisions': \"decision rows differ: 0 missing (e.g. []), 178890 unexpected (e.g. [('R000000007', 1), ('R000000007', 2... ('R000000007', 4), ('R000000007', 5), ('R000000008', 1), ...})\", 'intervals': None, 'launch': None, 'output': '', ...}.get\n\ntest_ope.py:308: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_ope.py::test_intervals",
+                "status": "passed",
+                "duration": 0.00038745900383219123,
+                "start": 1790825152.6320035,
+                "stop": 1790825152.6325176,
+                "retries": 0,
+                "file_path": "test_ope.py"
+            },
+            {
+                "name": "test_ope.py::test_launch_decision",
+                "status": "passed",
+                "duration": 0.00037933397106826305,
+                "start": 1790825152.6326454,
+                "stop": 1790825152.633134,
+                "retries": 0,
+                "file_path": "test_ope.py"
+            },
+            {
+                "name": "test_ope.py::test_rerun_is_deterministic",
+                "status": "passed",
+                "duration": 0.0005397090571932495,
+                "start": 1790825152.6332498,
+                "stop": 1790825152.6339324,
+                "retries": 0,
+                "file_path": "test_ope.py"
+            },
+            {
+                "name": "test_ope.py::test_hidden_tables",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.000745581928640604,
+                "start": 1790825152.6340978,
+                "stop": 1790825152.645093,
+                "retries": 2,
+                "file_path": "test_ope.py",
+                "tags": [
+                    "parametrize::name::['hidden_a', 'hidden_b', 'hidden_c']"
+                ],
+                "trace": "ctx = {'agent_digest': 'f79dca072f4f5206f8184e2f04c7f54f3acee0b0a98c47e77498783fc8fee0ce', 'hidden': {'hidden_a': {'decision...0000007', 4), ('R000000007', 5), ('R000000008', 1), ...})\", 'intervals': None, 'launch': None, 'output': '', ...}, ...}\nname = 'hidden_c'\n\n    @pytest.mark.parametrize(\"name\", HIDDEN)\n    def test_hidden_tables(ctx, name):\n        \"\"\"Other extracts: decision table and target slates.\"\"\"\n        run = ctx[\"hidden\"][name]\n>       _verdict(run, \"decisions\")\n\ntest_ope.py:352: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nrun = {'decisions': \"decision rows differ: 0 missing (e.g. []), 203900 unexpected (e.g. [('R000000003', 1), ('R000000003', 2... ('R000000003', 4), ('R000000003', 5), ('R000000005', 1), ...})\", 'intervals': None, 'launch': None, 'output': '', ...}\nname = 'decisions'\n\n    def _verdict(run: dict, name: str) -> None:\n        require_run(run)\n>       assert run.get(name) is None, run.get(name)\nE       AssertionError: decision rows differ: 0 missing (e.g. []), 203900 unexpected (e.g. [('R000000003', 1), ('R000000003', 2), ('R000000003', 3)]); decision_id must be the serve_id of the response that created the decision\nE         assert (not set() and not {('R000000003', 1), ('R000000003', 2), ('R000000003', 3), ('R000000003', 4), ('R000000003', 5), ('R000000005', 1), ...})\nE       assert \"decision rows differ: 0 missing (e.g. []), 203900 unexpected (e.g. [('R000000003', 1), ('R000000003', 2), ('R00000000...'R000000003', 1), ('R000000003', 2), ('R000000003', 3), ('R000000003', 4), ('R000000003', 5), ('R000000005', 1), ...})\" is None\nE        +  where \"decision rows differ: 0 missing (e.g. []), 203900 unexpected (e.g. [('R000000003', 1), ('R000000003', 2), ('R00000000...'R000000003', 1), ('R000000003', 2), ('R000000003', 3), ('R000000003', 4), ('R000000003', 5), ('R000000005', 1), ...})\" = <built-in method get of dict object at 0xffff8d349400>('decisions')\nE        +    where <built-in method get of dict object at 0xffff8d349400> = {'decisions': \"decision rows differ: 0 missing (e.g. []), 203900 unexpected (e.g. [('R000000003', 1), ('R000000003', 2... ('R000000003', 4), ('R000000003', 5), ('R000000005', 1), ...})\", 'intervals': None, 'launch': None, 'output': '', ...}.get\n\ntest_ope.py:308: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_ope.py::test_hidden_values_and_launch",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0007845839718356729,
+                "start": 1790825152.66764,
+                "stop": 1790825152.682975,
+                "retries": 2,
+                "file_path": "test_ope.py",
+                "tags": [
+                    "parametrize::name::['hidden_a', 'hidden_b', 'hidden_c']"
+                ],
+                "trace": "ctx = {'agent_digest': 'f79dca072f4f5206f8184e2f04c7f54f3acee0b0a98c47e77498783fc8fee0ce', 'hidden': {'hidden_a': {'decision...0000007', 4), ('R000000007', 5), ('R000000008', 1), ...})\", 'intervals': None, 'launch': None, 'output': '', ...}, ...}\nname = 'hidden_c'\n\n    @pytest.mark.parametrize(\"name\", HIDDEN)\n    def test_hidden_values_and_launch(ctx, name):\n        \"\"\"Other extracts: values, intervals and launch decision.\"\"\"\n        run = ctx[\"hidden\"][name]\n        for k in (\"values\", \"intervals\", \"launch\", \"time\"):\n>           _verdict(run, k)\n\ntest_ope.py:361: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nrun = {'decisions': \"decision rows differ: 0 missing (e.g. []), 203900 unexpected (e.g. [('R000000003', 1), ('R000000003', 2... ('R000000003', 4), ('R000000003', 5), ('R000000005', 1), ...})\", 'intervals': None, 'launch': None, 'output': '', ...}\nname = 'values'\n\n    def _verdict(run: dict, name: str) -> None:\n        require_run(run)\n>       assert run.get(name) is None, run.get(name)\nE       AssertionError: policy values outside tolerance (quantity, policy, error, tolerance): [('value', 'v7', -0.04153, 0.03834)]\nE         assert not [('value', 'v7', -0.04153, 0.03834)]\nE       assert \"policy values outside tolerance (quantity, policy, error, tolerance): [('value', 'v7', -0.04153, 0.03834)]\\nassert not [('value', 'v7', -0.04153, 0.03834)]\" is None\nE        +  where \"policy values outside tolerance (quantity, policy, error, tolerance): [('value', 'v7', -0.04153, 0.03834)]\\nassert not [('value', 'v7', -0.04153, 0.03834)]\" = <built-in method get of dict object at 0xffff8d349400>('values')\nE        +    where <built-in method get of dict object at 0xffff8d349400> = {'decisions': \"decision rows differ: 0 missing (e.g. []), 203900 unexpected (e.g. [('R000000003', 1), ('R000000003', 2... ('R000000003', 4), ('R000000003', 5), ('R000000005', 1), ...})\", 'intervals': None, 'launch': None, 'output': '', ...}.get\n\ntest_ope.py:308: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

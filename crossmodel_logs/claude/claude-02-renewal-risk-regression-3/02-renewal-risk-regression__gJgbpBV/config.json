@@ -1,0 +1,13 @@
+{
+    "task": {
+        "path": "candidates/02-renewal-risk-regression"
+    },
+    "trial_name": "02-renewal-risk-regression__gJgbpBV",
+    "trials_dir": "crossmodel_logs/claude/claude-02-renewal-risk-regression-3",
+    "agent_setup_timeout_multiplier": 3.0,
+    "agent": {
+        "name": "claude-code",
+        "model_name": "claude-opus-5-5"
+    },
+    "job_id": "5f13f1fa-af2f-4c27-892b-0659e88b5018"
+}

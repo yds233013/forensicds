@@ -1,0 +1,7 @@
+estimator_implementation: visible: csv marks 0 accounts below the floor, readout claims 3
+identification: hidden_a: bridge_pp[aggregation] 11.17 vs 6.336 (tol 0.4)
+identification: hidden_a: bridge_pp[denominator] -11.07 vs -6.238 (tol 0.4)
+estimator_implementation: hidden_a: csv marks 0 accounts below the floor, readout claims 21
+estimator_implementation: hidden_b: csv marks 0 accounts below the floor, readout claims 5
+estimator_implementation: hidden_c: csv marks 0 accounts below the floor, readout claims 14
+decision: hidden_c: bonus_gate_met 'not_determinable' vs 'no'

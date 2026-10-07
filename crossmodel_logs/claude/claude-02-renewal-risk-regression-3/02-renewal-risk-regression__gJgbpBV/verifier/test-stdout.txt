@@ -1,0 +1,33 @@
+
+[notice] A new release of pip is available: 25.0.1 -> 26.2.1
+[notice] To update, run: python3 -m pip install --upgrade pip
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 19 items
+
+test_renewal_risk.py ...................                                 [100%]
+
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED test_renewal_risk.py::test_warehouse_extract_unmodified
+PASSED test_renewal_risk.py::test_training_run_succeeds
+PASSED test_renewal_risk.py::test_examples_one_per_eligible_renewal
+PASSED test_renewal_risk.py::test_contract_usage_support_features
+PASSED test_renewal_risk.py::test_crm_pipeline_features_point_in_time
+PASSED test_renewal_risk.py::test_customer_success_features_point_in_time
+PASSED test_renewal_risk.py::test_predictions_and_report_consistent
+PASSED test_renewal_risk.py::test_model_specification_preserved
+PASSED test_renewal_risk.py::test_rerun_is_deterministic
+PASSED test_renewal_risk.py::test_production_scoring_command
+PASSED test_renewal_risk.py::test_hidden_extract_examples[hidden_a]
+PASSED test_renewal_risk.py::test_hidden_extract_examples[hidden_b]
+PASSED test_renewal_risk.py::test_hidden_extract_examples[hidden_c]
+PASSED test_renewal_risk.py::test_hidden_extract_features_point_in_time[hidden_a]
+PASSED test_renewal_risk.py::test_hidden_extract_features_point_in_time[hidden_b]
+PASSED test_renewal_risk.py::test_hidden_extract_features_point_in_time[hidden_c]
+PASSED test_renewal_risk.py::test_hidden_extract_evaluation[hidden_a]
+PASSED test_renewal_risk.py::test_hidden_extract_evaluation[hidden_b]
+PASSED test_renewal_risk.py::test_hidden_extract_evaluation[hidden_c]
+============================= 19 passed in 49.29s ==============================

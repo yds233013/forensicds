@@ -1,0 +1,185 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 14,
+            "passed": 4,
+            "failed": 10,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1790829710.991276,
+            "stop": 1790829800.0448008
+        },
+        "tests": [
+            {
+                "name": "test_accuracy_mart.py::test_warehouse_unmodified",
+                "status": "passed",
+                "duration": 79.62211174395634,
+                "start": 1790829711.0363712,
+                "stop": 1790829790.6600313,
+                "retries": 0,
+                "file_path": "test_accuracy_mart.py"
+            },
+            {
+                "name": "test_accuracy_mart.py::test_build_succeeds",
+                "status": "passed",
+                "duration": 0.0007093740277923644,
+                "start": 1790829790.6605535,
+                "stop": 1790829790.6614716,
+                "retries": 0,
+                "file_path": "test_accuracy_mart.py"
+            },
+            {
+                "name": "test_accuracy_mart.py::test_example_set",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.3433864179532975,
+                "start": 1790829790.6616676,
+                "stop": 1790829791.4829912,
+                "retries": 0,
+                "file_path": "test_accuracy_mart.py",
+                "trace": "ctx = {'agent_digest': '57aa0924865c98a2e2a643f07baeedb377bddd2730ead62842594ac4a08130e6', 'hidden': {'hidden_a': ({'closed_..._error_mwh': 16739.400999999987, 'actual_mwh': 471449.0240000002, 'n_examples': 186, 'n_scored': 183, ...}, ...}}, ...}\n\n    def test_example_set(ctx):\n        \"\"\"One example per model, region, portfolio, delivery day and horizon for every forecast in closed KPI months.\"\"\"\n        require_run(ctx[\"run1\"])\n>       check_example_set(ctx[\"run1\"], ctx[\"ref\"])\n\ntest_accuracy_mart.py:265: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nrun = {'examples': [{'abs_error_mwh': '141.7170000000001', 'actual_mwh': '1564.672', 'actual_run_ids': 'SR0044770;SR0044909'...416911564,\\n      \"wape_b\": 0.03331508565047627,\\n      \"relative_change\": -0.29655252008990796\\n    }\\n  ]\\n}\\n', ...}\nwant = {'closed_months': ['2025-07', '2025-08', '2025-09', '2025-10', '2025-11', '2025-12', ...], 'examples': {('v3', 'EAST',... {'abs_error_mwh': 16739.400999999987, 'actual_mwh': 471449.0240000002, 'n_examples': 186, 'n_scored': 183, ...}, ...}}\n\n    def check_example_set(run, want):\n        got = example_map(run)\n        missing, extra = set(want[\"examples\"]) - set(got), set(got) - set(want[\"examples\"])\n>       assert not missing and not extra, (f\"example set differs: {len(missing)} missing (e.g. {sample(missing, 4)}), \"\n                                           f\"{len(extra)} unexpected (e.g. {sample(extra, 4)})\")\nE       AssertionError: example set differs: 13370 missing (e.g. [('v3', 'EAST', 'BUSINESS', '2025-07-01', 1), ('v3', 'EAST', 'BUSINESS', '2025-07-01', 2), ('v3', 'EAST', 'BUSINESS', '2025-07-01', 3), ('v3', 'EAST', 'BUSINESS', '2025-07-01', 4)]), 1002 unexpected (e.g. [('v3', 'EAST', 'IC', '2026-09-01', 1), ('v3', 'EAST', 'IC', '2026-09-01', 2), ('v3', 'EAST', 'IC', '2026-09-01', 3), ('v3', 'EAST', 'IC', '2026-09-01', 4)])\nE       assert (not {('v3', 'EAST', 'BUSINESS', '2025-07-01', 1), ('v3', 'EAST', 'BUSINESS', '2025-07-01', 2), ('v3', 'EAST', 'BUSINESS', ...NESS', '2025-07-01', 4), ('v3', 'EAST', 'BUSINESS', '2025-07-01', 5), ('v3', 'EAST', 'BUSINESS', '2025-07-01', 6), ...})\n\ntest_accuracy_mart.py:161: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_accuracy_mart.py::test_forecast_in_force",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.18014983303146437,
+                "start": 1790829791.4832246,
+                "stop": 1790829792.0155432,
+                "retries": 0,
+                "file_path": "test_accuracy_mart.py",
+                "trace": "ctx = {'agent_digest': '57aa0924865c98a2e2a643f07baeedb377bddd2730ead62842594ac4a08130e6', 'hidden': {'hidden_a': ({'closed_..._error_mwh': 16739.400999999987, 'actual_mwh': 471449.0240000002, 'n_examples': 186, 'n_scored': 183, ...}, ...}}, ...}\n\n    def test_forecast_in_force(ctx):\n        \"\"\"Each example carries the forecast run day, issue and value the KPI evaluates.\"\"\"\n        require_run(ctx[\"run1\"])\n>       compare_examples(ctx[\"run1\"], ctx[\"ref\"], [\"run_date\", \"issue_id\", \"forecast_mwh\"])\n\ntest_accuracy_mart.py:271: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nrun = {'examples': [{'abs_error_mwh': '141.7170000000001', 'actual_mwh': '1564.672', 'actual_run_ids': 'SR0044770;SR0044909'...416911564,\\n      \"wape_b\": 0.03331508565047627,\\n      \"relative_change\": -0.29655252008990796\\n    }\\n  ]\\n}\\n', ...}\nwant = {'closed_months': ['2025-07', '2025-08', '2025-09', '2025-10', '2025-11', '2025-12', ...], 'examples': {('v3', 'EAST',... {'abs_error_mwh': 16739.400999999987, 'actual_mwh': 471449.0240000002, 'n_examples': 186, 'n_scored': 183, ...}, ...}}\nfields = ['run_date', 'issue_id', 'forecast_mwh']\n\n    def compare_examples(run, want, fields):\n        got = example_map(run)\n        bad = []\n        for k, w in want[\"examples\"].items():\n            g = got.get(k)\n            if g is None:\n                continue\n            for f in fields:\n                if f in (\"forecast_mwh\", \"actual_mwh\", \"abs_error_mwh\"):\n                    gv, wv = num(g[f]), w[f]\n                    ok = (gv is None and wv is None) or (gv is not None and wv is not None and abs(gv - wv) <= MWH_TOL)\n                elif f == \"actual_run_ids\":\n                    gv = \";\".join(sorted(x for x in (g[f] or \"\").split(\";\") if x))\n                    wv = w[f]\n                    ok = gv == wv\n                else:\n                    gv, wv = (g[f] or \"\").strip(), w[f]\n                    ok = gv == wv\n                if not ok:\n                    bad.append((k, f, gv, wv))\n                    break\n>       assert not bad, f\"{len(bad)} examples differ (key, field, got, expected), e.g. {bad[:4]}\"\nE       AssertionError: 20959 examples differ (key, field, got, expected), e.g. [(('v3', 'LONDON', 'RESI', '2025-08-06', 1), 'issue_id', 'FI000069', 'FI000068'), (('v3', 'LONDON', 'RESI', '2025-08-07', 2), 'issue_id', 'FI000069', 'FI000068'), (('v3', 'LONDON', 'RESI', '2025-08-08', 3), 'issue_id', 'FI000069', 'FI000068'), (('v3', 'LONDON', 'RESI', '2025-08-09', 4), 'issue_id', 'FI000069', 'FI000068')]\nE       assert not [(('v3', 'LONDON', 'RESI', '2025-08-06', 1), 'issue_id', 'FI000069', 'FI000068'), (('v3', 'LONDON', 'RESI', '2025-08-0...sue_id', 'FI000069', 'FI000068'), (('v3', 'LONDON', 'RESI', '2025-08-11', 6), 'issue_id', 'FI000069', 'FI000068'), ...]\n\ntest_accuracy_mart.py:186: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_accuracy_mart.py::test_kpi_month_and_status",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.12953708198620006,
+                "start": 1790829792.0157692,
+                "stop": 1790829792.4949808,
+                "retries": 0,
+                "file_path": "test_accuracy_mart.py",
+                "trace": "ctx = {'agent_digest': '57aa0924865c98a2e2a643f07baeedb377bddd2730ead62842594ac4a08130e6', 'hidden': {'hidden_a': ({'closed_..._error_mwh': 16739.400999999987, 'actual_mwh': 471449.0240000002, 'n_examples': 186, 'n_scored': 183, ...}, ...}}, ...}\n\n    def test_kpi_month_and_status(ctx):\n        \"\"\"KPI month and scored/unsettled status per example.\"\"\"\n        require_run(ctx[\"run1\"])\n>       compare_examples(ctx[\"run1\"], ctx[\"ref\"], [\"kpi_month\", \"status\"])\n\ntest_accuracy_mart.py:277: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nrun = {'examples': [{'abs_error_mwh': '141.7170000000001', 'actual_mwh': '1564.672', 'actual_run_ids': 'SR0044770;SR0044909'...416911564,\\n      \"wape_b\": 0.03331508565047627,\\n      \"relative_change\": -0.29655252008990796\\n    }\\n  ]\\n}\\n', ...}\nwant = {'closed_months': ['2025-07', '2025-08', '2025-09', '2025-10', '2025-11', '2025-12', ...], 'examples': {('v3', 'EAST',... {'abs_error_mwh': 16739.400999999987, 'actual_mwh': 471449.0240000002, 'n_examples': 186, 'n_scored': 183, ...}, ...}}\nfields = ['kpi_month', 'status']\n\n    def compare_examples(run, want, fields):\n        got = example_map(run)\n        bad = []\n        for k, w in want[\"examples\"].items():\n            g = got.get(k)\n            if g is None:\n                continue\n            for f in fields:\n                if f in (\"forecast_mwh\", \"actual_mwh\", \"abs_error_mwh\"):\n                    gv, wv = num(g[f]), w[f]\n                    ok = (gv is None and wv is None) or (gv is not None and wv is not None and abs(gv - wv) <= MWH_TOL)\n                elif f == \"actual_run_ids\":\n                    gv = \";\".join(sorted(x for x in (g[f] or \"\").split(\";\") if x))\n                    wv = w[f]\n                    ok = gv == wv\n                else:\n                    gv, wv = (g[f] or \"\").strip(), w[f]\n                    ok = gv == wv\n                if not ok:\n                    bad.append((k, f, gv, wv))\n                    break\n>       assert not bad, f\"{len(bad)} examples differ (key, field, got, expected), e.g. {bad[:4]}\"\nE       AssertionError: 7616 examples differ (key, field, got, expected), e.g. [(('v3', 'EAST', 'RESI', '2025-08-01', 7), 'kpi_month', '2025-07', '2025-08'), (('v3', 'LONDON', 'RESI', '2025-08-01', 7), 'kpi_month', '2025-07', '2025-08'), (('v3', 'MIDLANDS', 'RESI', '2025-08-01', 7), 'kpi_month', '2025-07', '2025-08'), (('v3', 'NORTH', 'RESI', '2025-08-01', 7), 'kpi_month', '2025-07', '2025-08')]\nE       assert not [(('v3', 'EAST', 'RESI', '2025-08-01', 7), 'kpi_month', '2025-07', '2025-08'), (('v3', 'LONDON', 'RESI', '2025-08-01',... 'kpi_month', '2025-07', '2025-08'), (('v3', 'WEST', 'RESI', '2025-08-01', 7), 'kpi_month', '2025-07', '2025-08'), ...]\n\ntest_accuracy_mart.py:186: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_accuracy_mart.py::test_settlement_runs",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.13587916805408895,
+                "start": 1790829792.4951668,
+                "stop": 1790829792.9901454,
+                "retries": 0,
+                "file_path": "test_accuracy_mart.py",
+                "trace": "ctx = {'agent_digest': '57aa0924865c98a2e2a643f07baeedb377bddd2730ead62842594ac4a08130e6', 'hidden': {'hidden_a': ({'closed_..._error_mwh': 16739.400999999987, 'actual_mwh': 471449.0240000002, 'n_examples': 186, 'n_scored': 183, ...}, ...}}, ...}\n\n    def test_settlement_runs(ctx):\n        \"\"\"The settlement runs each scored example is evaluated against.\"\"\"\n        require_run(ctx[\"run1\"])\n>       compare_examples(ctx[\"run1\"], ctx[\"ref\"], [\"actual_run_ids\"])\n\ntest_accuracy_mart.py:283: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nrun = {'examples': [{'abs_error_mwh': '141.7170000000001', 'actual_mwh': '1564.672', 'actual_run_ids': 'SR0044770;SR0044909'...416911564,\\n      \"wape_b\": 0.03331508565047627,\\n      \"relative_change\": -0.29655252008990796\\n    }\\n  ]\\n}\\n', ...}\nwant = {'closed_months': ['2025-07', '2025-08', '2025-09', '2025-10', '2025-11', '2025-12', ...], 'examples': {('v3', 'EAST',... {'abs_error_mwh': 16739.400999999987, 'actual_mwh': 471449.0240000002, 'n_examples': 186, 'n_scored': 183, ...}, ...}}\nfields = ['actual_run_ids']\n\n    def compare_examples(run, want, fields):\n        got = example_map(run)\n        bad = []\n        for k, w in want[\"examples\"].items():\n            g = got.get(k)\n            if g is None:\n                continue\n            for f in fields:\n                if f in (\"forecast_mwh\", \"actual_mwh\", \"abs_error_mwh\"):\n                    gv, wv = num(g[f]), w[f]\n                    ok = (gv is None and wv is None) or (gv is not None and wv is not None and abs(gv - wv) <= MWH_TOL)\n                elif f == \"actual_run_ids\":\n                    gv = \";\".join(sorted(x for x in (g[f] or \"\").split(\";\") if x))\n                    wv = w[f]\n                    ok = gv == wv\n                else:\n                    gv, wv = (g[f] or \"\").strip(), w[f]\n                    ok = gv == wv\n                if not ok:\n                    bad.append((k, f, gv, wv))\n                    break\n>       assert not bad, f\"{len(bad)} examples differ (key, field, got, expected), e.g. {bad[:4]}\"\nE       AssertionError: 54074 examples differ (key, field, got, expected), e.g. [(('v3', 'EAST', 'RESI', '2025-07-02', 1), 'actual_run_ids', 'SR0049443', 'SR0003501'), (('v3', 'EAST', 'RESI', '2025-07-03', 2), 'actual_run_ids', 'SR0049552', 'SR0003680'), (('v3', 'EAST', 'RESI', '2025-07-04', 3), 'actual_run_ids', 'SR0049806', 'SR0003774'), (('v3', 'EAST', 'RESI', '2025-07-05', 4), 'actual_run_ids', 'SR0049807', 'SR0003756')]\nE       assert not [(('v3', 'EAST', 'RESI', '2025-07-02', 1), 'actual_run_ids', 'SR0049443', 'SR0003501'), (('v3', 'EAST', 'RESI', '2025-... 'SR0049849', 'SR0003801'), (('v3', 'EAST', 'RESI', '2025-07-07', 6), 'actual_run_ids', 'SR0050077', 'SR0003861'), ...]\n\ntest_accuracy_mart.py:186: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_accuracy_mart.py::test_actuals_and_errors",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.18496558401966467,
+                "start": 1790829792.9907713,
+                "stop": 1790829793.5347168,
+                "retries": 0,
+                "file_path": "test_accuracy_mart.py",
+                "trace": "ctx = {'agent_digest': '57aa0924865c98a2e2a643f07baeedb377bddd2730ead62842594ac4a08130e6', 'hidden': {'hidden_a': ({'closed_..._error_mwh': 16739.400999999987, 'actual_mwh': 471449.0240000002, 'n_examples': 186, 'n_scored': 183, ...}, ...}}, ...}\n\n    def test_actuals_and_errors(ctx):\n        \"\"\"Actual volume and absolute error per example.\"\"\"\n        require_run(ctx[\"run1\"])\n>       compare_examples(ctx[\"run1\"], ctx[\"ref\"], [\"actual_mwh\", \"abs_error_mwh\"])\n\ntest_accuracy_mart.py:289: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nrun = {'examples': [{'abs_error_mwh': '141.7170000000001', 'actual_mwh': '1564.672', 'actual_run_ids': 'SR0044770;SR0044909'...416911564,\\n      \"wape_b\": 0.03331508565047627,\\n      \"relative_change\": -0.29655252008990796\\n    }\\n  ]\\n}\\n', ...}\nwant = {'closed_months': ['2025-07', '2025-08', '2025-09', '2025-10', '2025-11', '2025-12', ...], 'examples': {('v3', 'EAST',... {'abs_error_mwh': 16739.400999999987, 'actual_mwh': 471449.0240000002, 'n_examples': 186, 'n_scored': 183, ...}, ...}}\nfields = ['actual_mwh', 'abs_error_mwh']\n\n    def compare_examples(run, want, fields):\n        got = example_map(run)\n        bad = []\n        for k, w in want[\"examples\"].items():\n            g = got.get(k)\n            if g is None:\n                continue\n            for f in fields:\n                if f in (\"forecast_mwh\", \"actual_mwh\", \"abs_error_mwh\"):\n                    gv, wv = num(g[f]), w[f]\n                    ok = (gv is None and wv is None) or (gv is not None and wv is not None and abs(gv - wv) <= MWH_TOL)\n                elif f == \"actual_run_ids\":\n                    gv = \";\".join(sorted(x for x in (g[f] or \"\").split(\";\") if x))\n                    wv = w[f]\n                    ok = gv == wv\n                else:\n                    gv, wv = (g[f] or \"\").strip(), w[f]\n                    ok = gv == wv\n                if not ok:\n                    bad.append((k, f, gv, wv))\n                    break\n>       assert not bad, f\"{len(bad)} examples differ (key, field, got, expected), e.g. {bad[:4]}\"\nE       AssertionError: 55426 examples differ (key, field, got, expected), e.g. [(('v3', 'EAST', 'RESI', '2025-07-02', 1), 'actual_mwh', 1795.229, 1762.246), (('v3', 'EAST', 'RESI', '2025-07-03', 2), 'actual_mwh', 1804.536, 1797.975), (('v3', 'EAST', 'RESI', '2025-07-04', 3), 'actual_mwh', 1784.119, 1778.858), (('v3', 'EAST', 'RESI', '2025-07-05', 4), 'actual_mwh', 1892.7, 1877.953)]\nE       assert not [(('v3', 'EAST', 'RESI', '2025-07-02', 1), 'actual_mwh', 1795.229, 1762.246), (('v3', 'EAST', 'RESI', '2025-07-03', 2)...5), 'actual_mwh', 1962.109, 1934.09), (('v3', 'EAST', 'RESI', '2025-07-07', 6), 'actual_mwh', 1805.449, 1794.341), ...]\n\ntest_accuracy_mart.py:186: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_accuracy_mart.py::test_monthly_kpi",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0014227509964257479,
+                "start": 1790829793.534999,
+                "stop": 1790829793.8884342,
+                "retries": 0,
+                "file_path": "test_accuracy_mart.py",
+                "trace": "ctx = {'agent_digest': '57aa0924865c98a2e2a643f07baeedb377bddd2730ead62842594ac4a08130e6', 'hidden': {'hidden_a': ({'closed_..._error_mwh': 16739.400999999987, 'actual_mwh': 471449.0240000002, 'n_examples': 186, 'n_scored': 183, ...}, ...}}, ...}\n\n    def test_monthly_kpi(ctx):\n        \"\"\"Monthly KPI rows, counts, sums and WAPE.\"\"\"\n        require_run(ctx[\"run1\"])\n>       check_monthly(ctx[\"run1\"], ctx[\"ref\"])\n\ntest_accuracy_mart.py:295: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nrun = {'examples': [{'abs_error_mwh': '141.7170000000001', 'actual_mwh': '1564.672', 'actual_run_ids': 'SR0044770;SR0044909'...416911564,\\n      \"wape_b\": 0.03331508565047627,\\n      \"relative_change\": -0.29655252008990796\\n    }\\n  ]\\n}\\n', ...}\nwant = {'closed_months': ['2025-07', '2025-08', '2025-09', '2025-10', '2025-11', '2025-12', ...], 'examples': {('v3', 'EAST',... {'abs_error_mwh': 16739.400999999987, 'actual_mwh': 471449.0240000002, 'n_examples': 186, 'n_scored': 183, ...}, ...}}\n\n    def check_monthly(run, want):\n        rows = run[\"monthly\"]\n        missing = MONTHLY_COLS - set(rows[0].keys() if rows else [])\n        assert not missing, f\"monthly_kpi.csv is missing columns {sorted(missing)}\"\n        got = {}\n        for r in rows:\n            k = (r[\"model\"], r[\"kpi_month\"], r[\"portfolio\"], int(float(r[\"horizon\"])))\n            assert k not in got, f\"duplicate monthly KPI row {k}\"\n            got[k] = r\n        missing_k, extra_k = set(want[\"monthly\"]) - set(got), set(got) - set(want[\"monthly\"])\n>       assert not missing_k and not extra_k, (f\"monthly KPI rows differ: {len(missing_k)} missing (e.g. {sample(missing_k, 3)}), \"\n                                               f\"{len(extra_k)} unexpected (e.g. {sample(extra_k, 3)})\")\nE       AssertionError: monthly KPI rows differ: 84 missing (e.g. [('v3', '2025-07', 'BUSINESS', 1), ('v3', '2025-07', 'BUSINESS', 2), ('v3', '2025-07', 'BUSINESS', 3)]), 24 unexpected (e.g. [('v3', '2026-02', 'IC', 2), ('v3', '2026-02', 'IC', 3), ('v3', '2026-02', 'IC', 4)])\nE       assert (not {('v3', '2025-07', 'BUSINESS', 1), ('v3', '2025-07', 'BUSINESS', 2), ('v3', '2025-07', 'BUSINESS', 3), ('v3', '2025-07', 'BUSINESS', 4), ('v3', '2025-07', 'BUSINESS', 5), ('v3', '2025-07', 'BUSINESS', 6), ...})\n\ntest_accuracy_mart.py:199: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_accuracy_mart.py::test_summary_head_to_head",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0007365409983322024,
+                "start": 1790829793.888622,
+                "stop": 1790829794.2391043,
+                "retries": 0,
+                "file_path": "test_accuracy_mart.py",
+                "trace": "ctx = {'agent_digest': '57aa0924865c98a2e2a643f07baeedb377bddd2730ead62842594ac4a08130e6', 'hidden': {'hidden_a': ({'closed_..._error_mwh': 16739.400999999987, 'actual_mwh': 471449.0240000002, 'n_examples': 186, 'n_scored': 183, ...}, ...}}, ...}\n\n    def test_summary_head_to_head(ctx):\n        \"\"\"Closed months and the model head-to-head.\"\"\"\n        require_run(ctx[\"run1\"])\n>       check_summary(ctx[\"run1\"], ctx[\"ref\"], VISIBLE_AS_OF)\n\ntest_accuracy_mart.py:301: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nrun = {'examples': [{'abs_error_mwh': '141.7170000000001', 'actual_mwh': '1564.672', 'actual_run_ids': 'SR0044770;SR0044909'...416911564,\\n      \"wape_b\": 0.03331508565047627,\\n      \"relative_change\": -0.29655252008990796\\n    }\\n  ]\\n}\\n', ...}\nwant = {'closed_months': ['2025-07', '2025-08', '2025-09', '2025-10', '2025-11', '2025-12', ...], 'examples': {('v3', 'EAST',... {'abs_error_mwh': 16739.400999999987, 'actual_mwh': 471449.0240000002, 'n_examples': 186, 'n_scored': 183, ...}, ...}}\nas_of = '2026-09-22T06:00:00Z'\n\n    def check_summary(run, want, as_of):\n        s = run[\"summary\"]\n        assert s.get(\"closed_months\") == want[\"closed_months\"], f\"closed_months {s.get('closed_months')} expected {want['closed_months']}\"\n        got = {}\n        for e in s.get(\"head_to_head\", []):\n            k = (e.get(\"model_a\"), e.get(\"model_b\"))\n            assert k not in got, f\"duplicate head-to-head entry {k}\"\n            got[k] = e\n        assert set(got) == set(want[\"head_to_head\"]), f\"head-to-head pairs {sorted(got)} expected {sorted(want['head_to_head'])}\"\n        bad = []\n        for k, w in want[\"head_to_head\"].items():\n            g = got[k]\n            if int(g.get(\"n_pairs\", -1)) != w[\"n_pairs\"] or g.get(\"first_month\") != w[\"first_month\"] or g.get(\"last_month\") != w[\"last_month\"]:\n                bad.append((k, \"pairs/months\", (g.get(\"n_pairs\"), g.get(\"first_month\"), g.get(\"last_month\")),\n                            (w[\"n_pairs\"], w[\"first_month\"], w[\"last_month\"])))\n                continue\n            for f, tol in ((\"wape_a\", WAPE_TOL), (\"wape_b\", WAPE_TOL), (\"relative_change\", REL_TOL)):\n                gv = num(g.get(f))\n                if gv is None or not math.isfinite(gv) or abs(gv - w[f]) > tol:\n                    bad.append((k, f, gv, w[f]))\n                    break\n>       assert not bad, f\"head-to-head differs: {bad}\"\nE       AssertionError: head-to-head differs: [(('v3', 'v4'), 'pairs/months', (18540, '2025-07', '2026-08'), (26999, '2026-01', '2026-08'))]\nE       assert not [(('v3', 'v4'), 'pairs/months', (18540, '2025-07', '2026-08'), (26999, '2026-01', '2026-08'))]\n\ntest_accuracy_mart.py:243: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_accuracy_mart.py::test_build_time",
+                "status": "passed",
+                "duration": 0.0005832909955643117,
+                "start": 1790829794.2392738,
+                "stop": 1790829794.2400317,
+                "retries": 0,
+                "file_path": "test_accuracy_mart.py"
+            },
+            {
+                "name": "test_accuracy_mart.py::test_rerun_is_deterministic",
+                "status": "passed",
+                "duration": 0.01507191697601229,
+                "start": 1790829794.2401886,
+                "stop": 1790829794.2554395,
+                "retries": 0,
+                "file_path": "test_accuracy_mart.py"
+            },
+            {
+                "name": "test_accuracy_mart.py::test_hidden_examples",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.28498325002146885,
+                "start": 1790829794.255643,
+                "stop": 1790829794.905684,
+                "retries": 2,
+                "file_path": "test_accuracy_mart.py",
+                "tags": [
+                    "parametrize::name::['hidden_a', 'hidden_b', 'hidden_c']"
+                ],
+                "trace": "ctx = {'agent_digest': '57aa0924865c98a2e2a643f07baeedb377bddd2730ead62842594ac4a08130e6', 'hidden': {'hidden_a': ({'closed_..._error_mwh': 16739.400999999987, 'actual_mwh': 471449.0240000002, 'n_examples': 186, 'n_scored': 183, ...}, ...}}, ...}\nname = 'hidden_c'\n\n    @pytest.mark.parametrize(\"name\", HIDDEN)\n    def test_hidden_examples(ctx, name):\n        \"\"\"Other extracts: evaluation examples (set and every field).\"\"\"\n        want, run = ctx[\"hidden\"][name]\n        require_run(run)\n>       check_example_set(run, want)\n\ntest_accuracy_mart.py:327: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nrun = {'examples': [{'abs_error_mwh': '27.829999999999927', 'actual_mwh': '1487.648', 'actual_run_ids': 'SR0038926', 'foreca...90307695,\\n      \"wape_b\": 0.032848207208184176,\\n      \"relative_change\": -0.07147429328478938\\n    }\\n  ]\\n}\\n', ...}\nwant = {'closed_months': ['2026-01', '2026-02', '2026-03', '2026-04', '2026-05', '2026-06', ...], 'examples': {('v3', 'EAST',...{'abs_error_mwh': 15683.747000000005, 'actual_mwh': 296311.26200000005, 'n_examples': 186, 'n_scored': 185, ...}, ...}}\n\n    def check_example_set(run, want):\n        got = example_map(run)\n        missing, extra = set(want[\"examples\"]) - set(got), set(got) - set(want[\"examples\"])\n>       assert not missing and not extra, (f\"example set differs: {len(missing)} missing (e.g. {sample(missing, 4)}), \"\n                                           f\"{len(extra)} unexpected (e.g. {sample(extra, 4)})\")\nE       AssertionError: example set differs: 4323 missing (e.g. [('v3', 'EAST', 'IC', '2026-01-01', 1), ('v3', 'EAST', 'IC', '2026-01-01', 2), ('v3', 'EAST', 'IC', '2026-01-01', 3), ('v3', 'EAST', 'IC', '2026-01-01', 4)]), 1467 unexpected (e.g. [('v3', 'EAST', 'IC', '2026-11-01', 1), ('v3', 'EAST', 'IC', '2026-11-01', 2), ('v3', 'EAST', 'IC', '2026-11-01', 3), ('v3', 'EAST', 'IC', '2026-11-01', 4)])\nE       assert (not {('v3', 'EAST', 'IC', '2026-01-01', 1), ('v3', 'EAST', 'IC', '2026-01-01', 2), ('v3', 'EAST', 'IC', '2026-01-01', 3), ('v3', 'EAST', 'IC', '2026-01-01', 4), ('v3', 'EAST', 'IC', '2026-01-01', 5), ('v3', 'EAST', 'IC', '2026-01-01', 6), ...})\n\ntest_accuracy_mart.py:161: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_accuracy_mart.py::test_hidden_monthly_kpi",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.002018583007156849,
+                "start": 1790829797.024918,
+                "stop": 1790829797.500788,
+                "retries": 2,
+                "file_path": "test_accuracy_mart.py",
+                "tags": [
+                    "parametrize::name::['hidden_a', 'hidden_b', 'hidden_c']"
+                ],
+                "trace": "ctx = {'agent_digest': '57aa0924865c98a2e2a643f07baeedb377bddd2730ead62842594ac4a08130e6', 'hidden': {'hidden_a': ({'closed_..._error_mwh': 16739.400999999987, 'actual_mwh': 471449.0240000002, 'n_examples': 186, 'n_scored': 183, ...}, ...}}, ...}\nname = 'hidden_c'\n\n    @pytest.mark.parametrize(\"name\", HIDDEN)\n    def test_hidden_monthly_kpi(ctx, name):\n        \"\"\"Other extracts: monthly KPI.\"\"\"\n        want, run = ctx[\"hidden\"][name]\n        require_run(run)\n>       check_monthly(run, want)\n\ntest_accuracy_mart.py:336: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nrun = {'examples': [{'abs_error_mwh': '27.829999999999927', 'actual_mwh': '1487.648', 'actual_run_ids': 'SR0038926', 'foreca...90307695,\\n      \"wape_b\": 0.032848207208184176,\\n      \"relative_change\": -0.07147429328478938\\n    }\\n  ]\\n}\\n', ...}\nwant = {'closed_months': ['2026-01', '2026-02', '2026-03', '2026-04', '2026-05', '2026-06', ...], 'examples': {('v3', 'EAST',...{'abs_error_mwh': 15683.747000000005, 'actual_mwh': 296311.26200000005, 'n_examples': 186, 'n_scored': 185, ...}, ...}}\n\n    def check_monthly(run, want):\n        rows = run[\"monthly\"]\n        missing = MONTHLY_COLS - set(rows[0].keys() if rows else [])\n        assert not missing, f\"monthly_kpi.csv is missing columns {sorted(missing)}\"\n        got = {}\n        for r in rows:\n            k = (r[\"model\"], r[\"kpi_month\"], r[\"portfolio\"], int(float(r[\"horizon\"])))\n            assert k not in got, f\"duplicate monthly KPI row {k}\"\n            got[k] = r\n        missing_k, extra_k = set(want[\"monthly\"]) - set(got), set(got) - set(want[\"monthly\"])\n        assert not missing_k and not extra_k, (f\"monthly KPI rows differ: {len(missing_k)} missing (e.g. {sample(missing_k, 3)}), \"\n                                               f\"{len(extra_k)} unexpected (e.g. {sample(extra_k, 3)})\")\n        bad = []\n        for k, w in want[\"monthly\"].items():\n            g = got[k]\n            if int(float(g[\"n_examples\"])) != w[\"n_examples\"] or int(float(g[\"n_scored\"])) != w[\"n_scored\"]:\n                bad.append((k, \"counts\", (g[\"n_examples\"], g[\"n_scored\"]), (w[\"n_examples\"], w[\"n_scored\"])))\n                continue\n            for f, tol in ((\"abs_error_mwh\", 1e-6 * max(1, w[\"n_scored\"])), (\"actual_mwh\", 1e-6 * max(1, w[\"n_scored\"]))):\n                gv = num(g[f]) or 0.0\n                if abs(gv - w[f]) > tol:\n                    bad.append((k, f, gv, w[f]))\n                    break\n            else:\n                gw = num(g[\"wape\"])\n                if w[\"wape\"] is None:\n                    if gw is not None:\n                        bad.append((k, \"wape\", gw, None))\n                elif gw is None or abs(gw - w[\"wape\"]) > WAPE_TOL:\n                    bad.append((k, \"wape\", gw, w[\"wape\"]))\n>       assert not bad, f\"{len(bad)} monthly KPI rows differ (key, field, got, expected), e.g. {bad[:4]}\"\nE       AssertionError: 546 monthly KPI rows differ (key, field, got, expected), e.g. [(('v4', '2026-01', 'IC', 7), 'counts', ('176', '176'), (186, 185)), (('v4', '2026-01', 'RESI', 7), 'counts', ('176', '176'), (186, 186)), (('v4', '2026-01', 'SME', 7), 'counts', ('176', '176'), (186, 185)), (('v3', '2026-01', 'IC', 7), 'counts', ('176', '176'), (186, 185))]\nE       assert not [(('v4', '2026-01', 'IC', 7), 'counts', ('176', '176'), (186, 185)), (('v4', '2026-01', 'RESI', 7), 'counts', ('176', ...', 7), 'counts', ('176', '176'), (186, 186)), (('v3', '2026-01', 'SME', 7), 'counts', ('176', '176'), (186, 185)), ...]\n\ntest_accuracy_mart.py:219: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_accuracy_mart.py::test_hidden_head_to_head",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0010355839622206986,
+                "start": 1790829798.719881,
+                "stop": 1790829799.137922,
+                "retries": 2,
+                "file_path": "test_accuracy_mart.py",
+                "tags": [
+                    "parametrize::name::['hidden_a', 'hidden_b', 'hidden_c']"
+                ],
+                "trace": "ctx = {'agent_digest': '57aa0924865c98a2e2a643f07baeedb377bddd2730ead62842594ac4a08130e6', 'hidden': {'hidden_a': ({'closed_..._error_mwh': 16739.400999999987, 'actual_mwh': 471449.0240000002, 'n_examples': 186, 'n_scored': 183, ...}, ...}}, ...}\nname = 'hidden_c'\n\n    @pytest.mark.parametrize(\"name\", HIDDEN)\n    def test_hidden_head_to_head(ctx, name):\n        \"\"\"Other extracts: closed months and head-to-head.\"\"\"\n        want, run = ctx[\"hidden\"][name]\n        require_run(run)\n>       check_summary(run, want, None)\n\ntest_accuracy_mart.py:344: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nrun = {'examples': [{'abs_error_mwh': '27.829999999999927', 'actual_mwh': '1487.648', 'actual_run_ids': 'SR0038926', 'foreca...90307695,\\n      \"wape_b\": 0.032848207208184176,\\n      \"relative_change\": -0.07147429328478938\\n    }\\n  ]\\n}\\n', ...}\nwant = {'closed_months': ['2026-01', '2026-02', '2026-03', '2026-04', '2026-05', '2026-06', ...], 'examples': {('v3', 'EAST',...{'abs_error_mwh': 15683.747000000005, 'actual_mwh': 296311.26200000005, 'n_examples': 186, 'n_scored': 185, ...}, ...}}\nas_of = None\n\n    def check_summary(run, want, as_of):\n        s = run[\"summary\"]\n        assert s.get(\"closed_months\") == want[\"closed_months\"], f\"closed_months {s.get('closed_months')} expected {want['closed_months']}\"\n        got = {}\n        for e in s.get(\"head_to_head\", []):\n            k = (e.get(\"model_a\"), e.get(\"model_b\"))\n            assert k not in got, f\"duplicate head-to-head entry {k}\"\n            got[k] = e\n        assert set(got) == set(want[\"head_to_head\"]), f\"head-to-head pairs {sorted(got)} expected {sorted(want['head_to_head'])}\"\n        bad = []\n        for k, w in want[\"head_to_head\"].items():\n            g = got[k]\n            if int(g.get(\"n_pairs\", -1)) != w[\"n_pairs\"] or g.get(\"first_month\") != w[\"first_month\"] or g.get(\"last_month\") != w[\"last_month\"]:\n                bad.append((k, \"pairs/months\", (g.get(\"n_pairs\"), g.get(\"first_month\"), g.get(\"last_month\")),\n                            (w[\"n_pairs\"], w[\"first_month\"], w[\"last_month\"])))\n                continue\n            for f, tol in ((\"wape_a\", WAPE_TOL), (\"wape_b\", WAPE_TOL), (\"relative_change\", REL_TOL)):\n                gv = num(g.get(f))\n                if gv is None or not math.isfinite(gv) or abs(gv - w[f]) > tol:\n                    bad.append((k, f, gv, w[f]))\n                    break\n>       assert not bad, f\"head-to-head differs: {bad}\"\nE       AssertionError: head-to-head differs: [(('v3', 'v4'), 'pairs/months', (14826, '2026-01', '2026-10'), (37606, '2026-01', '2026-10')), (('v3', 'v5'), 'pairs/months', (21525, '2026-01', '2026-10'), (22082, '2026-05', '2026-10')), (('v4', 'v5'), 'pairs/months', (21525, '2026-05', '2026-10'), (21831, '2026-05', '2026-10'))]\nE       assert not [(('v3', 'v4'), 'pairs/months', (14826, '2026-01', '2026-10'), (37606, '2026-01', '2026-10')), (('v3', 'v5'), 'pairs/m..., '2026-05', '2026-10')), (('v4', 'v5'), 'pairs/months', (21525, '2026-05', '2026-10'), (21831, '2026-05', '2026-10'))]\n\ntest_accuracy_mart.py:243: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

@@ -1,0 +1,172 @@
+{
+ "per_task": {
+  "02-renewal-risk-regression": {
+   "valid": 3,
+   "passes": 0,
+   "pass1": 0.0,
+   "pass3": 0,
+   "median_steps": 84,
+   "median_tool_calls": 51,
+   "median_completion_tokens": 22676,
+   "median_prompt_tokens": 1613392
+  },
+  "g05-sco-rollout-gate": {
+   "valid": 4,
+   "passes": 0,
+   "pass1": 0.0,
+   "pass3": 0,
+   "median_steps": 65.0,
+   "median_tool_calls": 40.0,
+   "median_completion_tokens": 16881.0,
+   "median_prompt_tokens": 814941.5
+  },
+  "g10-censored-demand": {
+   "valid": 3,
+   "passes": 0,
+   "pass1": 0.0,
+   "pass3": 0,
+   "median_steps": 62,
+   "median_tool_calls": 44,
+   "median_completion_tokens": 21913,
+   "median_prompt_tokens": 963841
+  },
+  "g24-recommender-ope": {
+   "valid": 3,
+   "passes": 0,
+   "pass1": 0.0,
+   "pass3": 0,
+   "median_steps": 60,
+   "median_tool_calls": 42,
+   "median_completion_tokens": 19901,
+   "median_prompt_tokens": 797284
+  },
+  "g36-tou-capacity-gate": {
+   "valid": 3,
+   "passes": 0,
+   "pass1": 0.0,
+   "pass3": 0,
+   "median_steps": 44,
+   "median_tool_calls": 31,
+   "median_completion_tokens": 14280,
+   "median_prompt_tokens": 465955
+  },
+  "p20-noshow-monitoring": {
+   "valid": 3,
+   "passes": 0,
+   "pass1": 0.0,
+   "pass3": 0,
+   "median_steps": 52,
+   "median_tool_calls": 45,
+   "median_completion_tokens": 19034,
+   "median_prompt_tokens": 855092
+  },
+  "p22-gauge-recalibration": {
+   "valid": 3,
+   "passes": 0,
+   "pass1": 0.0,
+   "pass3": 0,
+   "median_steps": 60,
+   "median_tool_calls": 52,
+   "median_completion_tokens": 18819,
+   "median_prompt_tokens": 876554
+  },
+  "p31-fill-rate-dispute": {
+   "valid": 3,
+   "passes": 0,
+   "pass1": 0.0,
+   "pass3": 0,
+   "median_steps": 38,
+   "median_tool_calls": 32,
+   "median_completion_tokens": 18027,
+   "median_prompt_tokens": 476203
+  },
+  "g08-forecast-accuracy-vintages": {
+   "valid": 3,
+   "passes": 1,
+   "pass1": 0.3333333333333333,
+   "pass3": 1,
+   "median_steps": 90,
+   "median_tool_calls": 64,
+   "median_completion_tokens": 30266,
+   "median_prompt_tokens": 1699301
+  },
+  "g50-courier-boost-rollout": {
+   "valid": 3,
+   "passes": 0,
+   "pass1": 0.0,
+   "pass3": 0,
+   "median_steps": 76,
+   "median_tool_calls": 50,
+   "median_completion_tokens": 19956,
+   "median_prompt_tokens": 1388674
+  },
+  "02-renewal-risk-regression__explicit-invariant": {
+   "valid": 3,
+   "passes": 0,
+   "pass3": 0
+  },
+  "p20-noshow-monitoring-v1.1": {
+   "valid": 3,
+   "passes": 0,
+   "pass3": 0
+  }
+ },
+ "suite": {
+  "tasks": 10,
+  "tasks_with_trials": 10,
+  "total_valid_trials": 31,
+  "total_passes": 1,
+  "aggregate_pass1": 0.03225806451612903,
+  "task_level_pass3": 0.1,
+  "invalid_trial_jobs": 5
+ },
+ "invalid_trials": [
+  "g50-gemini3flash-baseline-1__INVALID-verifier-refused-ldsocache",
+  "g50-gemini3flash-baseline-2__INVALID-verifier-refused-ldsocache",
+  "g50-gemini3flash-baseline-3__INVALID-verifier-refused-ldsocache",
+  "task01-gemini3flash-diagnosis__INVALID-api-key-rejected",
+  "task01-gemini3flash-diagnosis__INVALID-free-tier-quota"
+ ],
+ "criteria": {
+  "courier_supply_response": {
+   "passed": 1,
+   "total": 3
+  },
+  "decision": {
+   "passed": 4,
+   "total": 15
+  },
+  "evidence_reconstruction": {
+   "passed": 14,
+   "total": 15
+  },
+  "quantitative_result": {
+   "passed": 0,
+   "total": 3
+  },
+  "scientific_object": {
+   "passed": 11,
+   "total": 15
+  },
+  "uncertainty": {
+   "passed": 0,
+   "total": 3
+  },
+  "estimator_implementation": {
+   "passed": 11,
+   "total": 12
+  },
+  "identification": {
+   "passed": 5,
+   "total": 12
+  },
+  "independent_validation": {
+   "passed": 11,
+   "total": 12
+  },
+  "quantitative_results": {
+   "passed": 2,
+   "total": 12
+  }
+ }
+}

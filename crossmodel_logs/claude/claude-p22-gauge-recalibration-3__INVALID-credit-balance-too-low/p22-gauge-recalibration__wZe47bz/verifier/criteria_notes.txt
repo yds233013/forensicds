@@ -1,0 +1,33 @@
+evidence_reconstruction: readout.json is missing ['corrected_nonconforming_rate_pct', 'conformance_reference_offset_um', 'strata_nonconforming_rate_pct']
+evidence_reconstruction: visible: strata_nonconforming_rate_pct missing
+scientific_object: visible: conformance_reference_offset_um missing
+identification: visible: corrected_nonconforming_rate_pct missing or not a number
+estimator_implementation: visible: out/part_dispositions.csv was not written
+quantitative_results: visible: attribution_pp[material] 3.9416666666666664 vs 0.917 (tol 0.8)
+quantitative_results: visible: attribution_pp[measurement_system] 0.0 vs 2.858 (tol 0.8)
+independent_validation: visible: no corrected rate to validate
+decision: visible: supplier_decision 'raise_supplier_nonconformance' vs 'no_supplier_action'
+evidence_reconstruction: hidden_a: strata_nonconforming_rate_pct missing
+scientific_object: hidden_a: conformance_reference_offset_um missing
+identification: hidden_a: corrected_nonconforming_rate_pct missing or not a number
+estimator_implementation: hidden_a: out/part_dispositions.csv was not written
+quantitative_results: hidden_a: attribution_pp[material] 5.175 vs 0.000 (tol 0.8)
+quantitative_results: hidden_a: attribution_pp[measurement_system] 0.0 vs 5.042 (tol 0.8)
+independent_validation: hidden_a: no corrected rate to validate
+decision: hidden_a: supplier_decision 'raise_supplier_nonconformance' vs 'no_supplier_action'
+evidence_reconstruction: hidden_b: strata_nonconforming_rate_pct missing
+scientific_object: hidden_b: conformance_reference_offset_um missing
+identification: hidden_b: corrected_nonconforming_rate_pct missing or not a number
+estimator_implementation: hidden_b: out/part_dispositions.csv was not written
+quantitative_results: hidden_b: attribution_pp[material] 8.716666666666667 vs 5.717 (tol 0.8)
+quantitative_results: hidden_b: attribution_pp[measurement_system] 0.0 vs 2.883 (tol 0.8)
+independent_validation: hidden_b: no corrected rate to validate
+evidence_reconstruction: hidden_c: strata_nonconforming_rate_pct missing
+scientific_object: hidden_c: conformance_reference_offset_um missing
+identification: hidden_c: corrected_nonconforming_rate_pct missing or not a number
+estimator_implementation: hidden_c: out/part_dispositions.csv was not written
+quantitative_results: hidden_c: attribution_pp[material] 8.591666666666667 vs 0.817 (tol 0.8)
+quantitative_results: hidden_c: attribution_pp[measurement_system] 0.0 vs 4.692 (tol 0.8)
+quantitative_results: hidden_c: attribution_pp[tooling] 0.0 vs 3.083 (tol 0.8)
+independent_validation: hidden_c: no corrected rate to validate
+decision: hidden_c: supplier_decision 'raise_supplier_nonconformance' vs 'no_supplier_action'

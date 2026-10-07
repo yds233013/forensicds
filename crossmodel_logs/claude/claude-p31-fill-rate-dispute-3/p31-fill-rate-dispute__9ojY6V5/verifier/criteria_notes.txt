@@ -1,0 +1,13 @@
+identification: visible: bridge_pp[aggregation] 13.22 vs 1.831 (tol 0.4)
+identification: visible: bridge_pp[denominator] -16.17 vs -6.429 (tol 0.4)
+identification: visible: bridge_pp[returns_treatment] -3.18 vs -1.521 (tol 0.4)
+identification: hidden_a: bridge_pp[aggregation] 17.78 vs 6.336 (tol 0.4)
+identification: hidden_a: bridge_pp[denominator] -16.14 vs -6.238 (tol 0.4)
+identification: hidden_a: bridge_pp[returns_treatment] -3.11 vs -1.533 (tol 0.4)
+identification: hidden_b: bridge_pp[aggregation] 15.0 vs 1.887 (tol 0.4)
+identification: hidden_b: bridge_pp[denominator] -19.83 vs -9.195 (tol 0.4)
+identification: hidden_b: bridge_pp[returns_treatment] -4.75 vs -2.278 (tol 0.4)
+identification: hidden_c: bridge_pp[aggregation] 15.17 vs 4.474 (tol 0.4)
+identification: hidden_c: bridge_pp[denominator] -15.6 vs -6.500 (tol 0.4)
+identification: hidden_c: bridge_pp[returns_treatment] -3.19 vs -1.575 (tol 0.4)
+decision: hidden_c: bonus_gate_met 'not_determinable' vs 'no'

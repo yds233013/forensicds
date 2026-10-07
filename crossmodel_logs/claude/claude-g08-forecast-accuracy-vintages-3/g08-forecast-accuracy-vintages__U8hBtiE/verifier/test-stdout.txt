@@ -1,0 +1,34 @@
+
+[notice] A new release of pip is available: 25.0.1 -> 26.2.1
+[notice] To update, run: python3 -m pip install --upgrade pip
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 20 items
+
+test_accuracy_mart.py ....................                               [100%]
+
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED test_accuracy_mart.py::test_warehouse_unmodified
+PASSED test_accuracy_mart.py::test_build_succeeds
+PASSED test_accuracy_mart.py::test_example_set
+PASSED test_accuracy_mart.py::test_forecast_in_force
+PASSED test_accuracy_mart.py::test_kpi_month_and_status
+PASSED test_accuracy_mart.py::test_settlement_runs
+PASSED test_accuracy_mart.py::test_actuals_and_errors
+PASSED test_accuracy_mart.py::test_monthly_kpi
+PASSED test_accuracy_mart.py::test_summary_head_to_head
+PASSED test_accuracy_mart.py::test_build_time
+PASSED test_accuracy_mart.py::test_rerun_is_deterministic
+PASSED test_accuracy_mart.py::test_hidden_examples[hidden_a]
+PASSED test_accuracy_mart.py::test_hidden_examples[hidden_b]
+PASSED test_accuracy_mart.py::test_hidden_examples[hidden_c]
+PASSED test_accuracy_mart.py::test_hidden_monthly_kpi[hidden_a]
+PASSED test_accuracy_mart.py::test_hidden_monthly_kpi[hidden_b]
+PASSED test_accuracy_mart.py::test_hidden_monthly_kpi[hidden_c]
+PASSED test_accuracy_mart.py::test_hidden_head_to_head[hidden_a]
+PASSED test_accuracy_mart.py::test_hidden_head_to_head[hidden_b]
+PASSED test_accuracy_mart.py::test_hidden_head_to_head[hidden_c]
+======================== 20 passed in 81.88s (0:01:21) =========================

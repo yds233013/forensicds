@@ -1,0 +1,27 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+configfile: ../dev/null
+plugins: json-ctrf-0.3.5
+collected 15 items
+
+test_ope.py ...............                                              [100%]
+
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED test_ope.py::test_logs_unmodified
+PASSED test_ope.py::test_ope_succeeds
+PASSED test_ope.py::test_run_time
+PASSED test_ope.py::test_decision_table
+PASSED test_ope.py::test_target_slates
+PASSED test_ope.py::test_policy_values
+PASSED test_ope.py::test_intervals
+PASSED test_ope.py::test_launch_decision
+PASSED test_ope.py::test_rerun_is_deterministic
+PASSED test_ope.py::test_hidden_tables[hidden_a]
+PASSED test_ope.py::test_hidden_tables[hidden_b]
+PASSED test_ope.py::test_hidden_tables[hidden_c]
+PASSED test_ope.py::test_hidden_values_and_launch[hidden_a]
+PASSED test_ope.py::test_hidden_values_and_launch[hidden_b]
+PASSED test_ope.py::test_hidden_values_and_launch[hidden_c]
+======================== 15 passed in 556.71s (0:09:16) ========================

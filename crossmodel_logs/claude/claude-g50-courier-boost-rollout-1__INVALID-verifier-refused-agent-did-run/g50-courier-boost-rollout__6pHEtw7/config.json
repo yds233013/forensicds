@@ -1,0 +1,13 @@
+{
+    "task": {
+        "path": "candidates/g50-courier-boost-rollout"
+    },
+    "trial_name": "g50-courier-boost-rollout__6pHEtw7",
+    "trials_dir": "crossmodel_logs/claude/claude-g50-courier-boost-rollout-1",
+    "agent_setup_timeout_multiplier": 3.0,
+    "agent": {
+        "name": "claude-code",
+        "model_name": "claude-opus-5-5"
+    },
+    "job_id": "232ffa3b-3234-48c0-968b-2d6269f718e6"
+}

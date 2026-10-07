@@ -1,0 +1,13 @@
+{
+    "task": {
+        "path": "candidates/g08-forecast-accuracy-vintages"
+    },
+    "trial_name": "g08-forecast-accuracy-vintages__n6N9fyt",
+    "trials_dir": "crossmodel_logs/claude/claude-g08-forecast-accuracy-vintages-3",
+    "agent_setup_timeout_multiplier": 3.0,
+    "agent": {
+        "name": "claude-code",
+        "model_name": "claude-opus-5-5"
+    },
+    "job_id": "8f301b40-6c5f-48ab-85fc-ffacc2e6f384"
+}

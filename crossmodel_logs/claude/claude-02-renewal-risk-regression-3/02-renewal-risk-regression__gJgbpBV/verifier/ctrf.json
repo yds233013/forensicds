@@ -1,0 +1,146 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 13,
+            "passed": 13,
+            "failed": 0,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1790816352.6209414,
+            "stop": 1790816401.9042985
+        },
+        "tests": [
+            {
+                "name": "test_renewal_risk.py::test_warehouse_extract_unmodified",
+                "status": "passed",
+                "duration": 48.49728919001063,
+                "start": 1790816352.6681902,
+                "stop": 1790816401.167978,
+                "retries": 0,
+                "file_path": "test_renewal_risk.py"
+            },
+            {
+                "name": "test_renewal_risk.py::test_training_run_succeeds",
+                "status": "passed",
+                "duration": 0.0007300410070456564,
+                "start": 1790816401.1693082,
+                "stop": 1790816401.17026,
+                "retries": 0,
+                "file_path": "test_renewal_risk.py"
+            },
+            {
+                "name": "test_renewal_risk.py::test_examples_one_per_eligible_renewal",
+                "status": "passed",
+                "duration": 0.013001082988921553,
+                "start": 1790816401.1704812,
+                "stop": 1790816401.183662,
+                "retries": 0,
+                "file_path": "test_renewal_risk.py"
+            },
+            {
+                "name": "test_renewal_risk.py::test_contract_usage_support_features",
+                "status": "passed",
+                "duration": 0.03403591696405783,
+                "start": 1790816401.1838548,
+                "stop": 1790816401.2181838,
+                "retries": 0,
+                "file_path": "test_renewal_risk.py"
+            },
+            {
+                "name": "test_renewal_risk.py::test_crm_pipeline_features_point_in_time",
+                "status": "passed",
+                "duration": 0.012035376043058932,
+                "start": 1790816401.2184167,
+                "stop": 1790816401.2306826,
+                "retries": 0,
+                "file_path": "test_renewal_risk.py"
+            },
+            {
+                "name": "test_renewal_risk.py::test_customer_success_features_point_in_time",
+                "status": "passed",
+                "duration": 0.005897791939787567,
+                "start": 1790816401.2309139,
+                "stop": 1790816401.2369843,
+                "retries": 0,
+                "file_path": "test_renewal_risk.py"
+            },
+            {
+                "name": "test_renewal_risk.py::test_predictions_and_report_consistent",
+                "status": "passed",
+                "duration": 0.004522875067777932,
+                "start": 1790816401.2371259,
+                "stop": 1790816401.2418168,
+                "retries": 0,
+                "file_path": "test_renewal_risk.py"
+            },
+            {
+                "name": "test_renewal_risk.py::test_model_specification_preserved",
+                "status": "passed",
+                "duration": 0.0022354170796461403,
+                "start": 1790816401.2419837,
+                "stop": 1790816401.2443721,
+                "retries": 0,
+                "file_path": "test_renewal_risk.py"
+            },
+            {
+                "name": "test_renewal_risk.py::test_rerun_is_deterministic",
+                "status": "passed",
+                "duration": 0.0011628330685198307,
+                "start": 1790816401.2444887,
+                "stop": 1790816401.245807,
+                "retries": 0,
+                "file_path": "test_renewal_risk.py"
+            },
+            {
+                "name": "test_renewal_risk.py::test_production_scoring_command",
+                "status": "passed",
+                "duration": 0.008407874964177608,
+                "start": 1790816401.2459655,
+                "stop": 1790816401.2545276,
+                "retries": 0,
+                "file_path": "test_renewal_risk.py"
+            },
+            {
+                "name": "test_renewal_risk.py::test_hidden_extract_examples",
+                "status": "passed",
+                "duration": 0.006512166000902653,
+                "start": 1790816401.254682,
+                "stop": 1790816401.2613785,
+                "retries": 2,
+                "file_path": "test_renewal_risk.py",
+                "tags": [
+                    "parametrize::name::['hidden_a', 'hidden_b', 'hidden_c']"
+                ]
+            },
+            {
+                "name": "test_renewal_risk.py::test_hidden_extract_features_point_in_time",
+                "status": "passed",
+                "duration": 0.023039750929456204,
+                "start": 1790816401.282154,
+                "stop": 1790816401.3053906,
+                "retries": 2,
+                "file_path": "test_renewal_risk.py",
+                "tags": [
+                    "parametrize::name::['hidden_a', 'hidden_b', 'hidden_c']"
+                ]
+            },
+            {
+                "name": "test_renewal_risk.py::test_hidden_extract_evaluation",
+                "status": "passed",
+                "duration": 0.002711291948799044,
+                "start": 1790816401.35111,
+                "stop": 1790816401.3539917,
+                "retries": 2,
+                "file_path": "test_renewal_risk.py",
+                "tags": [
+                    "parametrize::name::['hidden_a', 'hidden_b', 'hidden_c']"
+                ]
+            }
+        ]
+    }
+}
